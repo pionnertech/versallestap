@@ -111,7 +111,17 @@ ISS_SUBTASKS_CANT
    transition: all 600ms ease-in-out;
 }
 
+
+#newOrgin, #newOrgin input, #newOrgin button{
+display: inline-block;
+vertical-align: top;
+}
+
+#newOrgin{
+width: 100%;
+}
 	</style>
+
 
 </head>
 <body>
@@ -328,6 +338,10 @@ ISS_SUBTASKS_CANT
 													Otros
 												</label>
 											</div>
+											<div id="newOrgin">
+											    <input type="text" id="newOr" value="" placeholder="Inserte un nuevo origen">
+											    <button class="btn-info" onclick="createRadio(document.querySelector('#newOr').value)">Crear</button>
+											</div>
 										</div>
 							 <h3><strong>Detalle de audiencia</strong></h3>
 								<div class="stream-composer media">
@@ -388,6 +402,7 @@ ISS_SUBTASKS_CANT
 	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://maps.google.com.br/maps/api/js?v=3.10&sensor=false"></script>
 	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="scripts/bootbox.min.js"></script>
     <script src="scripts/jquery.datetimepicker.js"></script>
     <script src="scripts/jquery.autocomplete.min.js"></script>
 
@@ -396,6 +411,13 @@ ISS_SUBTASKS_CANT
  
 <script type="text/javascript">
 
+//===================================
+//******* VARIABLES GLOBALES *******
+//===================================
+
+
+var geocoder;
+var map;
 
 
 //===================================
@@ -493,6 +515,9 @@ $('#Geo').on('click', function(){
 	}, 1);
      $("#map").css({ height: "500px"});
      $(this).data("val", 1);
+
+     getLatlgnBounds();
+   
 } else {
    	setTimeout(function(){
 		$("#wrap-map").css({ height: "0px"});
@@ -583,11 +608,12 @@ setRequest(narray[0], narray[6] , narray[8], 0, narray[4], narray[2], narray[3],
 // FUNCTIONS
 function IntializeGMaps(){
 
+geocoder = new google.maps.Geocoder();
 
 var LatLnginit = new google.maps.LatLng(-33.485362, -70.639343);
 
     var options = {
-        zoom: 10,
+        zoom: 14,
         zoomControl: true,
         zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
@@ -600,6 +626,40 @@ var LatLnginit = new google.maps.LatLng(-33.485362, -70.639343);
 	    map.setCenter(LatLnginit);
 
 }
+
+function getLatlgnBounds(){
+
+ var address = $("#direccion").val();
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            icon : 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=1|41C74A|000000',
+            draggable: true
+        });
+
+        google.maps.event.addListener(marker , 'dragend', function(){
+          bootbox.alert("Reubicación grabada", function() {
+                console.log("Alert Callback");
+            });
+        })
+
+      } else {
+
+      	     bootbox.alert("La Geocodificación no se pudo realizar por el siguiente motivo: " + status, function() {
+                console.log("Alert Callback");
+            });
+       
+      }
+    });
+
+}
+
+
 
 
 function setRequest(rut, direccion, audiencia, GeoLoc, Nombre, appm, appp, tipo, tel, deadD){
@@ -649,6 +709,32 @@ console.info(Math.round(fecha_limit));
 
 
 }
+
+
+function createRadio(inputVal){
+
+
+parent = document.querySelector(".controls");
+
+radio = document.createElement('input');
+radio.value = inputVal;
+radio.type = 'radio';
+radio.name = 'optionsRadios';
+
+
+label = document.createElement('label');
+label.className = "radio inline";
+label.style.marginRight = '2em';
+label.style.marginLeft = '2em';
+label.innerHTML = inputVal;
+
+label.appendChild(radio);
+parent.appendChild(label);
+
+document.querySelector("#newOr").value="";
+
+}
+
 
 function IsEmail(email){
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
