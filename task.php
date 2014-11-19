@@ -32,6 +32,13 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="scripts/selectize.min.js"></script>
     <script type="text/javascript" src="scripts/selectize.jquery.js"></script>
+    	<script type="text/javascript">
+		$(document).on('ready', function(){
+           
+
+		});
+
+	</script>
 	<style type="text/css">
      .description {
       width:90%;
@@ -236,7 +243,9 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 											<td class="cell-time align-right">Fecha</td>
 										</tr>
 
-						<? while ($fila1 = mysqli_fetch_row($Query_task)){ ?>				
+						<?
+            $i = 1;
+						 while ($fila1 = mysqli_fetch_row($Query_task)){ ?>				
 										<tr class="task">
 											<td class="cell-icon"><? printf($fila1[0]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[3]) ?></div></td>
@@ -247,25 +256,51 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 										<tr class="requirement">
 											<td colspan="4" >
 												<textarea class="description" placeholder="describa el requerimiento"></textarea>
-												<select class="delegates">
-                                                     <option val="0">'Alejandro Curaqueo', 'Contabilidad'</option>
-                                                     <option val="1">'Rodrigo Peña',  'Adquisiciones'</option>
-                                                     <option val="2">'Pedro Cortez',  'Ventas'</option>
-                                                     <option val="3">'Francisco Papal',  'Gerencia comercial'</option>
-                                                     <option val="4">'Liliana Avogadro',  'Gestión de Personas' </option>
-                                                     <option val="5">'Jefferson Pimentel',  'Gerencia general'</option>
-                                                     <option val="6">'Gabriella Santorielli', Mesa de Dinero' </option>
-                                                     <option val="7">'Laura Costa', 'Medio ambiente' </option>
-                                                     <option val="8">'Anita Acosta',  'Cobranzas'</option>
-                                                     <option val="9">'Pablo Suarez',  'Planificacipon Urbana'</option>
-                                                     <option val="10">'Leandro Martinez',  'Asistencia Tecnica' </option>
-                                                     <option val="11">'Macarena Arraño',  'Relaciones publicas'</option>
-												</select><i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
+												<label for="subject">Delegados</label>
+												<select id="delegates<? printf($i)?>">
+												 <optgroup label="Gerencia">
+                                                     <option val="0">Alejandro Curaqueo</option>
+                                                     <option val="1">Rodrigo Peña</option>
+                                                     <option val="2">Pedro Cortez</option>
+                                                  </optgroup>
+                                                  <optgroup label="Informatica">
+                                                     <option val="3">Francisco Papal</option>
+                                                     <option val="4">Liliana Avogadro</option>
+                                                  </optgroup>
+                                                  <optgroup label="Contabilidad/Finanzas">
+                                                     <option val="5">Jefferson Pimentel</option>
+                                                     <option val="6">Gabriella Santorielli</option>
+                                                     <option val="7">Laura Costa</option>
+                                                     <option val="8">Anita Acosta</option>
+                                                     <option val="9">Pablo Suarez</option>
+                                                    </optgroup>
+                                                    <optgroup label="Area Tecnica">
+                                                     <option val="10">Leandro Martinez</option>
+                                                     <option val="11">Macarena Arraño</option>
+                                                     <option val="10">Patricio bustamante</option>
+                                                     <option val="11">Felipe Beringer</option>
+                                                     <option val="10">Mario Gallardo</option>
+                                                     <option val="11">Jose Victorino</option>
+                                                     <option val="10">Eduardo Lasalle</option>
+                                                     <option val="11">Lena Fensterseifer</option>
+                                                    </optgroup>
+
+												</select>
+
+                                               <script>
+                                                $("#delegates<? printf($i) ?>").selectize();
+                                               </script>
+												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
 												<button class="btn-info enviar">Delegar task</button>
 											</td>
 										</tr>
+
+
+
                              
-                <? } ?>
+                <? 
+       $i = $i + 1;
+                } ?>
 									</tbody>
 								</table>
 
@@ -295,34 +330,19 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 	<script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
 	<script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 
-	<script type="text/javascript">
-		$(document).on('ready', function(){
-            $(".requirement").fadeOut('fast');
 
-          var select =  $('.delegates').selectize({
-               sortField: 'text'
-              });
+</body>
 
-          var selectControl = select[0].selectize;
-		});
-
-
-//eventos 
-
+<script type="text/javascript">
+	
+$(".requirement").fadeOut('fast');
 
 $(".due").on('click', function (){
 
 $(this).parent().parent().next('tr').fadeToggle('slow');
 
 });
-
-
-
-
-
-	</script>
-</body>
-
+</script>
 <?
 
 } else {
