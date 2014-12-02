@@ -69,7 +69,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     transition: all 600ms ease-in-out;
 }
 
+.sub-del{
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
 
+#delegates{
+    width:50%;
+    position: relative;
+    float: left;
+
+}
+.require-subtasks{
+    padding: 0 1em;
+    margin:.5em ;
+}
+
+
+#st-description{
+    width:80%;
+}
     </style>    
 </head>
 <body>
@@ -814,7 +834,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 </div>
 
                         <div class="tab-pane fade" id="tasks-own">
-                       
+                          <div class="media-stream">
+                              <div class="sub-del">
+                                  <h3>Subdelegar tareas</h3>
+                                  <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
+                                  <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
+                                  <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                              </div>
+
+                          </div>
 
                         </div>
                             </div>

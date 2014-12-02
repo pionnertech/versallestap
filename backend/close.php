@@ -6,7 +6,7 @@ session_start();
  $_SESSION["TxtPass"] = "";
  $_SESSION["TxtCode"] = "";
  $_SESSION["TxtFacility"] = "";
-
+ $_SESSION["TxtRange"] = "";
 
 session_destroy();
 

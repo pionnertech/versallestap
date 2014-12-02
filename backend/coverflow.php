@@ -11,7 +11,7 @@ if(isset($_POST["U"]))
 
 $datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
 
-$query = "SELECT USR_ID, USR_NAME, USR_SURNAME, USR_FACILITY FROM USERS WHERE (USR_NICK = '" . $_POST["U"] . "' AND USR_PASS = '" . $_POST['P'] . "')";
+$query = "SELECT USR_ID, USR_NAME, USR_SURNAME, USR_FACILITY, USR_RANGE FROM USERS WHERE (USR_NICK = '" . $_POST["U"] . "' AND USR_PASS = '" . $_POST['P'] . "')";
 
 $outcome = mysqli_fetch_assoc(mysqli_query($datos, $query));
 
@@ -22,6 +22,7 @@ if (!$outcome)
     $_SESSION["TxtPass"] = "";
     $_SESSION["TxtFacName"] = "";
     $_SESSION["TxtCode"] = "";
+    $_SESSION["TxtRange"] = "";
 
     session_destroy();
 
@@ -37,11 +38,11 @@ else {
  $_SESSION["TxtUser"] = $outcome['USR_NAME'];
  $_SESSION["TxtPass"] = $outcome['USR_SURNAME'];
  $_SESSION["TxtFacility"] = $outcome['USR_FACILITY'];
+ $_SESSION["USR_RANGE"] = $outcome['USR_RANGE'];
 
  echo "<script language='javascript'>window.location='../index.php'</script>";
 
 } 
-
 
 } else {
 

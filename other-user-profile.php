@@ -1,15 +1,51 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+
+<?php
+
+session_start();
+
+if(isset($_SESSION['TxtCode'])){
+
+$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+
+
+$Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
+
+//TASKS
+
+$Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SESSION['TxtCode'] );
+
+/*
+ISS_ID
+ISS_DATE_ING
+ISS_SUBJECT
+ISS_DESCRIP
+ISS_CHARGE_USR
+ISS_DEADLINE
+ISS_DAYS
+ISS_STATE
+ISS_FINISH_DATE
+ISS_DELAY_DAYS
+ISS_SUBTASKS_CANT
+*/
+
+
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edmin</title>
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">  
+    <link type="text/css" href="css/uploader_style.css" rel="stylesheet" />
     <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-        rel='stylesheet'>
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <style type="text/css">
     .done{
 background: #daedb1; /* Old browsers */
@@ -70,7 +106,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 }
 
 
+.sub-del{
+    width: 55%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#delegates{
+    width:50%;
+    position: relative;
+    float: left;
+
+}
+.require-subtasks{
+    padding: 0 1em;
+    margin:.5em ;
+}
+
+
+#st-description{
+    width:80%;
+}
+
+.attach{
+ display: inline-block;
+ vertical-align: top;
+}
     </style>    
+
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -736,72 +799,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due warning">En curso</b></td>
                                             <td class="cell-time align-right">9/04/2014</td>
                                         </tr>
-                                        <tr class="task">
-                                            <td class="cell-icon"><i class="icon-checker"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due delay">Atrasado</b></td>
-                                            <td class="cell-time align-right">10/01/2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
-                                        <tr class="task resolved">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Lorem ipsum dolor sit et, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"></td>
-                                            <td class="cell-time align-right">15 July 2014</td>
-                                        </tr>
                                     </tbody>
                                 </table>
 
@@ -811,11 +808,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                             </div>
                         </div>
                        </div> 
-                                </div>
+                  </div>
 
                         <div class="tab-pane fade" id="tasks-own">
-                       
-
+                           <div class="media-stream">
+                                <div class="sub-del">
+                                    <h3>Subdelegar tareas</h3>
+                                    <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
+                                    <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
+                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                </div>
+                                <div class="attach">
+                                    <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                                         <div id="drop">
+                                             Arrastra Aqui
+                                               <a>Buscar</a>
+                                               <input type="file" name="upl" multiple />
+                                        </div>
+                                         <ul>
+                <!-- The file uploads will be shown here -->
+                                         </ul>
+                                    </form>
+                              </div>
+                          </div>
                         </div>
                             </div>
                             <!--/.module-body-->
@@ -839,6 +854,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="scripts/jquery.knob.js"></script>
+    <script src="scripts/jquery.ui.widget.js"></script>
+    <script src="scripts/jquery.iframe-transport.js"></script>
+    <script src="scripts/jquery.fileupload.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -868,7 +888,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 $("#Audi-Display").css({ height: "250px"});
                     
                     $(this).data("val", 1);
-             }else {
+             } else {
                 $("#Audi-Display").css({ visibility : "hidden"});
                 $("#Audi-Display").css({ height: "0px"});
                     $(this).data("val", 0);
@@ -886,11 +906,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 $("#Com-Display").css({ visibility: "hidden"});
                  $("#Com-Display").css({ height: "0px"});
                        
-                          $(this).data("val" , 0)
+                          $(this).data("val" , 0);
 
              }
 
                 })
 
-    })
+    });
+
+
+
 </script>
+<?
+
+}  else {
+
+    echo "<script language='javascript'>window.location='login.php'</script>";
+}
+
+
+?>
