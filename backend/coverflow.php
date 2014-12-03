@@ -20,7 +20,7 @@ if (!$outcome)
 {
     $_SESSION["TxtUser"] = "";
     $_SESSION["TxtPass"] = "";
-    $_SESSION["TxtFacName"] = "";
+    $_SESSION["TxtFacility"] = "";
     $_SESSION["TxtCode"] = "";
     $_SESSION["TxtRange"] = "";
 
@@ -38,9 +38,24 @@ else {
  $_SESSION["TxtUser"] = $outcome['USR_NAME'];
  $_SESSION["TxtPass"] = $outcome['USR_SURNAME'];
  $_SESSION["TxtFacility"] = $outcome['USR_FACILITY'];
- $_SESSION["USR_RANGE"] = $outcome['USR_RANGE'];
+ $_SESSION["TxtRange"] = $outcome['USR_RANGE'];
 
- echo "<script language='javascript'>window.location='../index.php'</script>";
+
+switch ($outcome['USR_RANGE']) {
+	case "sadmin":
+		 echo "<script language='javascript'>window.location='../index.php'</script>";
+		break;
+	case "admin":
+		 echo "<script language='javascript'>window.location='../Admin/index.php'</script>";
+		break;
+	case "front-user":
+	    echo "<script language='javascript'>window.location='../Front/activity.php'</script>";
+		break;
+	case "back-user":
+	     echo "<script language='javascript'>window.location='../Back/other-user-profile.php'</script>";
+	break;
+
+}
 
 } 
 

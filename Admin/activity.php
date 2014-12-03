@@ -3,14 +3,22 @@
 
 session_start();
 
-if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'front-user'){
+echo $_SESSION['TxtRange'];
+
+
+if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'admin'){
 
 $datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+
+
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
 
 $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SESSION['TxtCode'] );
+
+
+
 
 /*
 ISS_ID
@@ -39,13 +47,13 @@ ISS_SUBTASKS_CANT
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Eque-e</title>
-	<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link type="text/css" href="css/theme.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="scripts/jquery.datetimepicker.css">
-	<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+	<link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link type="text/css" href="../css/theme.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
+	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-	<link type="text/css" href="css/style.css">
+	<link type="text/css" href="../css/style.css">
 	
 	<style type="text/css">
 
@@ -131,7 +139,7 @@ width: 100%;
 					<i class="icon-reorder shaded"></i>
 				</a>
 
-			  	<a class="brand" href="index.html">
+			  	<a class="brand" href="index.php">
 			  		Eque-e
 			  	</a>
 
@@ -174,7 +182,7 @@ width: 100%;
 						</a></li>
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="images/user.png" class="nav-avatar" />
+								<img src="../images/user.png" class="nav-avatar" />
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
@@ -213,7 +221,7 @@ width: 100%;
 								</a>
 							</li>
 							<li>
-								<a href="other-user-profile.html">
+								<a href="other-user-profile.php">
 									<i class="menu-icon icon-inbox"></i>
 									Perfil de usuario
 									<b class="label green pull-right">11</b>
@@ -344,7 +352,7 @@ width: 100%;
 							 <h3><strong>Detalle de audiencia</strong></h3>
 								<div class="stream-composer media">
 									<a href="#" class="media-avatar medium pull-left">
-										<img src="images/user.png">
+										<img src="../images/user.png">
 									</a>
 									<div class="media-body">
 									  <input type="text" placeholder="asunto" id="subject" />
@@ -396,13 +404,13 @@ width: 100%;
 		</div>
 	</div>
 
-	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+	<script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://maps.google.com.br/maps/api/js?v=3.10&sensor=false"></script>
-	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="scripts/bootbox.min.js"></script>
-    <script src="scripts/jquery.datetimepicker.js"></script>
-    <script src="scripts/jquery.autocomplete.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+    <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script src="../scripts/jquery.autocomplete.min.js"></script>
 
 </body>
 </html>
@@ -684,7 +692,7 @@ console.info(Math.round(fecha_limit));
 
  $.ajax({
  	type: "POST",
- 	url: "backend/issGn.php?rut=" + rut + 
+ 	url: "../backend/issGn.php?rut=" + rut + 
  	"&dn=" + direccion + 
  	"&iss=" + audiencia + 
  	"&Geoloc=" + GeoLoc + 
@@ -822,7 +830,7 @@ function dateTrans(string){
 <?
 
 } else {
-	echo "<script language='javascript'>window.location='login.php'</script>";
+	echo "<script language='javascript'>window.location='../login.php'</script>";
 }
 
 ?>

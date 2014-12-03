@@ -14,11 +14,12 @@
  	$charge = $_GET['charge'];
  	$tel = $_GET['tel'];
  	$days = $_GET['days'];
+ 	$exist = $_GET['exist'];
+
 
 $datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
 //check usuario
 $clean_rut = substr($rut , 0, (strlen($rut) - 1));
-
 
 
 $checkin = mysqli_query($datos, "SELECT CTZ_NAMES FROM CITIZENS WHERE CTZ_RUT = " . $clean_rut );
