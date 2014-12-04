@@ -9,7 +9,7 @@ if(isset($_POST["U"]))
 
 {
 
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $query = "SELECT USR_ID, USR_NAME, USR_SURNAME, USR_FACILITY, USR_RANGE FROM USERS WHERE (USR_NICK = '" . $_POST["U"] . "' AND USR_PASS = '" . $_POST['P'] . "')";
 
@@ -26,7 +26,7 @@ if (!$outcome)
 
     session_destroy();
 
-echo "<script language='javascript'>window.location='../login.php?t=1'; </script>";
+echo "<script language='javascript'>window.location='../index.php?t=1'; </script>";
 
 
 } 
@@ -61,7 +61,7 @@ switch ($outcome['USR_RANGE']) {
 
 } else {
 
-	echo "<script language='javascript'>window.location='../login.php?t=1'; </script>";
+	echo "<script language='javascript'>window.location='../index.php?t=1'; </script>";
 }
 
  ?>
