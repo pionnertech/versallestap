@@ -4,7 +4,7 @@ session_start();
 
 if(isset($_SESSION['TxtCode'])){
 
-echo "<script language='javascript'>window.location='index.php'</script>";
+echo "<script language='javascript'>window.location='Front/activity.php'</script>";
 
 } else {
 
