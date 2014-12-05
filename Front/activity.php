@@ -8,7 +8,7 @@ echo $_SESSION['TxtRange'];
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'front-user'){
 
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
@@ -915,7 +915,7 @@ var empty = [];
 for(i = 0 ; i < matrix.length ; i++){
 
 	if(matrix[i].value == '' ){
-
+        
 		$.trim($("#intext input").eq(i).parent().text()) = empty[empty.length];
 	}
 }
@@ -925,6 +925,7 @@ if(!empty){
 } else {
 
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.toString());
+	break;
 }
 
 
@@ -939,7 +940,7 @@ if($("textarea").val() === ""){
 <?
 
 } else {
-	echo "<script language='javascript'>window.location='../login.php'</script>";
+	echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 
 ?>
