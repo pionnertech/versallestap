@@ -954,7 +954,7 @@ for(i = 0 ; i < matrix.length ; i++){
 
 	if(matrix[i].value == '' ){
         
-		 empty[empty.length] = $("#intext input").eq(i).parent().text().trim() 
+		 empty[empty.length] = $("#intext input").eq(i).parent().text().trim(); 
 	}
 }
 
@@ -962,8 +962,10 @@ if(!empty){
 
 } else {
 
-	bootbox.alert("Faltan los siguientes Campos:"  + empty.toString());
+	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;') , function (){;
 	return false;
+});
+
 }
 
 
