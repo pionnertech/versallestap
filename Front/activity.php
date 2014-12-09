@@ -318,6 +318,7 @@ width: 100%;
 											<div class="controls" style="width: 100%;">
 
 											<? while ($fila2 = mysqli_fetch_row($Query_cat)){ ?>
+
 												<label class="radio inline"  style="margin:0 2em;">
 													<input type="radio" name="optionsRadios"  value="<? printf($fila2[0])?>" checked="">
 													<? printf($fila2[1])?>
@@ -899,7 +900,7 @@ $.ajax({
 		console.info(data);
        if(parseInt(data) === 0){
 
-       	consol.info('no existe');
+       	console.info('no existe');
 
        } else {
 
