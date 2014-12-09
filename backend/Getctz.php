@@ -4,7 +4,8 @@ $rut = $_GET['rut'];
 $fac = $_GET['fac'];
 
 
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
+
 
 $query = mysqli_query($datos, "SELECT * FROM CITIZENS WHERE CTZ_RUT = " . $rut);
 

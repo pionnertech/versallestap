@@ -3,13 +3,9 @@
 
 session_start();
 
-echo $_SESSION['TxtRange'];
-
-
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'admin'){
 
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
-
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
