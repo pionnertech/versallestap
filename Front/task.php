@@ -332,7 +332,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
 
 $.ajax({
 	type: "POST",
-	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" iss_id,
+	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" + iss_id,
 	success : function (data){
 		if (parseInt(data) == 1){
        console.info('works');
