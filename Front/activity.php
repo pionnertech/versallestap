@@ -13,6 +13,10 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SESSION['TxtCode'] );
 
 
+//categorias
+
+$Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtCode']);
+
 
 
 /*
@@ -312,10 +316,15 @@ width: 100%;
 								 <div class="control-group" >
 										<label class="control-label">Origen de la Audiencia</label>
 											<div class="controls" style="width: 100%;">
+
+											<? while ($fila2 = mysqli_fetch_row($Query_cat)){ ?>
 												<label class="radio inline"  style="margin:0 2em;">
-													<input type="radio" name="optionsRadios" id="optionsRadios1" value="Institucional" checked="">
-													Institucional
+													<input type="radio" name="optionsRadios"  value="<? printf($fila2[0])?>" checked="">
+													<? printf($fila2[1])?>
 												</label> 
+
+
+												<!--
 												<label class="radio inline"  style="margin:0 2em;">
 													<input type="radio" name="optionsRadios" id="optionsRadios2" value="Diputados - Senadores ">
 													Diputados - Senadores 
@@ -332,6 +341,8 @@ width: 100%;
 													<input type="radio" name="optionsRadios" id="optionsRadios3" value="Otros">
 													Otros
 												</label>
+												-->
+												<? } ?>
 											</div>
 											<div id="newOrgin">
 											    <input type="text" id="newOr" value="" placeholder="Inserte un nuevo origen">
@@ -584,8 +595,7 @@ $("#delegate").on('click', function(){
 $("#SendRequest-free").on('click', function(){
    
    bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
-	if(outcome){
-
+	if(outcome) {
 bootbox.alert("Audiencia ingresada", function (){
 var narray = [];
 var cont = document.querySelectorAll(".wrap-ing-form input");
@@ -679,6 +689,11 @@ var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2
 
 GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0; 
 
+if (missingField() == false){
+	break;
+}
+
+/*
    var args = Array.prototype.slice.call(arguments, 1);
    var st_names = args.join(",").split(",");
 
@@ -690,12 +705,13 @@ GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0;
     		});
     	}
     }
+*/
 
 
 pre_rut = rut.replace(/\./gi, "");
 rut = pre_rut.replace('-', "");
 
-fecha_limit = (new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000;
+fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
 
 
  $.ajax({
@@ -735,7 +751,7 @@ function createRadio(inputVal){
 parent = document.querySelector(".controls");
 
 radio = document.createElement('input');
-radio.value = inputVal;
+
 radio.type = 'radio';
 radio.name = 'optionsRadios';
 
@@ -750,6 +766,25 @@ label.appendChild(radio);
 parent.appendChild(label);
 
 document.querySelector("#newOr").value="";
+
+$.ajax({
+	type: "POST",
+	url: "../backend/catadd.php?des=" + inputVal + "&fac=" + fac,
+	success : function (data){
+       
+		if (parseInt(data) == 0){
+
+             console.info(data);
+
+		} else {
+
+              radio.value = inputVal;
+
+		}
+		
+	}
+});
+
 
 }
 
@@ -899,6 +934,7 @@ $.ajax({
 }
 
 
+
 function missingField(){
 
 
@@ -920,7 +956,9 @@ if(!empty){
 } else {
 
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.toString());
+	return false;
 	break;
+
 }
 
 

@@ -241,7 +241,7 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 										<tr class="task">
 											<td class="cell-icon"><? printf($fila1[0]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[3]) ?></div></td>
-											<td class="cell-status hidden-phone hidden-tablet"><b class="due done">Pendiente</b></td>
+											<td class="cell-status hidden-phone hidden-tablet"><b class="due done"></b></td>
 											<td class="cell-time align-right"><? printf($fila1[1]) ?></td>
 											<input type="hidden" value="" >		
 										</tr>
@@ -338,7 +338,7 @@ $(this).parent().parent().next('tr').fadeToggle('slow');
 <?
 
 } else {
-	echo "<script language='javascript'>window.location='login.php'</script>";
+	echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 
 ?>
