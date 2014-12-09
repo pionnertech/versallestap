@@ -690,9 +690,11 @@ var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2
 
 GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0; 
 
-if (missingField() == false){
-	break;
-}
+var pase = missingField();
+
+if ( pase !== false){
+	
+
 
 /*
    var args = Array.prototype.slice.call(arguments, 1);
@@ -740,7 +742,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	}
  })
 
-
+}
 
 
 }
