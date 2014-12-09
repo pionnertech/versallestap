@@ -1,6 +1,4 @@
-﻿
-<?php
-
+﻿<?php
 session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'admin'){
@@ -1534,5 +1532,5 @@ break;
 <?
 
  } else {
-    echo "<script language='javascript'>window.location='../login.php'</script>";
+    echo "<script language='javascript'>window.location='../index.php'</script>";
  }  ?>
