@@ -1,6 +1,5 @@
 ﻿<?php session_start();
 
-
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
@@ -8,7 +7,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (ISS_FAC_CODE = " . $_SESSION['TxtCode'] . " AND ISS_CHARGE_USR = '' )" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (A.ISS_FAC_CODE = " . $_SESSION['TxtCode'] . " AND A.ISS_CHARGE_USR = '' )" );
 
 
 ?>
@@ -303,7 +302,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 <script type="text/javascript">
 
 
-var fac = <?  printf($_SESSION['TxtCode']); ?>
+var fac = <?  printf($_SESSION['TxtCode']) ?>
 
 $(".requirement").fadeOut('fast');
 
@@ -323,27 +322,19 @@ $(".enviar").on('click', function () {
 });
 
 
-
-
-
-
-
-
-
-
-function delegate(name, msg, fechaF, iss-id){
+function delegate(name, msg, fechaF, iss_id){
 var _fS= new Date();
 
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
 $.ajax({
 	type: "POST",
-	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" iss-id,
+	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" iss_id,
 	success : function (data){
 		if (parseInt(data) == 1){
-    
+       console.info('works');
 		} else {
-
+      console.info('its');
 		}
 	}
 })
