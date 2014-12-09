@@ -1,10 +1,7 @@
-﻿<?php
-session_start();
-
+﻿<?php session_start();
 
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
-
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
