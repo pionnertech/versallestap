@@ -5,11 +5,10 @@ if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (ISS_FAC_CODE = " . $_SESSION['TxtCode']) . " AND ISS_CHARGE_USR = '' )" );
 
 
 ?>
@@ -146,13 +145,7 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 							</li>
 						</ul><!--/.widget-nav-->
 
-						<ul class="widget widget-menu unstyled">
-                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
-                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                                <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
-                                <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
-                            </ul><!--/.widget-nav-->
+
 
 						<ul class="widget widget-menu unstyled">
 							<li>
@@ -190,11 +183,6 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 								</a>
 							</li>
 						</ul>
-
-						
-					
-						
-					
 					</div><!--/.sidebar-->
 				</div><!--/.span3-->
 				<div class="span9">
@@ -238,11 +226,12 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 
 						<?
             $i = 1;
+     
 						 while ($fila1 = mysqli_fetch_row($Query_task)){ ?>				
 										<tr class="task">
-											<td class="cell-icon"><? printf($fila1[0]) ?></td>
-											<td class="cell-title"><div><? printf($fila1[3]) ?></div></td>
-											<td class="cell-status hidden-phone hidden-tablet"><b class="due done">Pendiente</b></td>
+											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[0]) ?></td>
+											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
+											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
 											<td class="cell-time align-right"><? printf($fila1[1]) ?></td>
 											<input type="hidden" value="" >		
 										</tr>
@@ -270,27 +259,19 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
                                                     <optgroup label="Area Tecnica">
                                                      <option val="10">Leandro Martinez</option>
                                                      <option val="11">Macarena Arraño</option>
-                                                     <option val="10">Patricio bustamante</option>
-                                                     <option val="11">Felipe Beringer</option>
-                                                     <option val="10">Mario Gallardo</option>
-                                                     <option val="11">Jose Victorino</option>
-                                                     <option val="10">Eduardo Lasalle</option>
-                                                     <option val="11">Lena Fensterseifer</option>
+                                                     <option val="12">Patricio bustamante</option>
+                                                     <option val="13">Felipe Beringer</option>
+                                                     <option val="14">Mario Gallardo</option>
+                                                     <option val="15">Jose Victorino</option>
+                                                     <option val="16">Eduardo Lasalle</option>
+                                                     <option val="17">Lena Fensterseifer</option>
                                                     </optgroup>
 
 												</select>
-
-                                               <script>
-                                                $("#delegates<? printf($i) ?>").selectize();
-                                               </script>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
 												<button class="btn-info enviar">Delegar task</button>
 											</td>
-										</tr>
-
-
-
-                             
+										</tr>           
                 <? 
        $i = $i + 1;
                 } ?>
@@ -308,26 +289,22 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 			</div>
 		</div><!--/.container-->
 	</div><!--/.wrapper-->
-
 	<div class="footer">
 		<div class="container">
-			 
-
-			<b class="copyright">&copy; 2014 Edmin - EGrappler.com </b> All rights reserved.
+			<b class="copyright">&copy; Eque-e.cl </b> Todos los derechos resevados.
 		</div>
 	</div>
-
-
 	<script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
 	<script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-
-
+		<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
 </body>
-
 <script type="text/javascript">
-	
+
+
+var fac = <?  printf($_SESSION['TxtCode']); ?>
+
 $(".requirement").fadeOut('fast');
 
 $(".due").on('click', function (){
@@ -335,6 +312,44 @@ $(".due").on('click', function (){
 $(this).parent().parent().next('tr').fadeToggle('slow');
 
 });
+
+
+$(".enviar").on('click', function () {
+
+	var iss_id = $(this).parent().siblings('tr').children('td').eq(1).text();
+    console.info(iss_id);
+  // delegate(name, msg, fechaF, iss-id)
+
+});
+
+
+
+
+
+
+
+
+
+
+function delegate(name, msg, fechaF, iss-id){
+var _fS= new Date();
+
+fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
+
+$.ajax({
+	type: "POST",
+	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" iss-id,
+	success : function (data){
+		if (parseInt(data) == 1){
+    
+		} else {
+
+		}
+	}
+})
+
+
+}
 
 </script>
 <?
@@ -344,3 +359,6 @@ $(this).parent().parent().next('tr').fadeToggle('slow');
 }
 
 ?>
+
+
+

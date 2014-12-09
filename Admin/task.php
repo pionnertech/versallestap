@@ -334,6 +334,14 @@ $(".due").on('click', function (){
 $(this).parent().parent().next('tr').fadeToggle('slow');
 
 });
+
+
+
+
+
+
+
+
 </script>
 <?
 

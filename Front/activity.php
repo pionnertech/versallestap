@@ -130,7 +130,7 @@ width: 100%;
 
 </head>
 <body>
-
+<input type="hidden" val="" id="latlng">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -517,7 +517,25 @@ $('#RUT').on('change keydown paste input keypress' , function(){
     	$('#RUT').css('color', 'rgba(81,198,60, 1)');
     }
 
-})
+});
+
+
+
+
+$("#ctzmail").on('change keydown paste input keypress', function (){
+
+	if(IsEmail($(this).val())) {
+
+      $(this).css('color', 'rgba(81,198,60, 1)');
+
+	} else {
+
+		$(this).css('color', 'rgba(222,6,1, 1)' );
+	}
+});
+
+
+
 
 $('#Geo').on('click', function(){
 
@@ -562,14 +580,9 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], 0, narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
+setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
 
 });
-
-
-
-
-
 
 $("#delegate").on('click', function(){
 
@@ -611,7 +624,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], 0, narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
+setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
 
 
 
@@ -657,7 +670,9 @@ function getLatlgnBounds(){
  var address = $("#direccion").val();
 
     geocoder.geocode( { 'address': address + ' - Chile'}, function(results, status) {
+
       if (status == google.maps.GeocoderStatus.OK) {
+
         map.setCenter(results[0].geometry.location);
 
         var marker = new google.maps.Marker({
@@ -667,9 +682,11 @@ function getLatlgnBounds(){
             draggable: true
         });
 
+        $("#latlng").val(marker.getLatlgnBounds.lat() + "," + marker.getLatlgnBounds.lgn());
+
         google.maps.event.addListener(marker , 'dragend', function(){
           bootbox.alert("Reubicación grabada", function() {
-                console.log("Alert Callback");
+                $("#latlng").val(marker.getLatlgnBounds.lat() + "," + marker.getLatlgnBounds.lgn());
             });
         })
 
@@ -695,9 +712,8 @@ GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0;
 
 var pase = missingField();
 
-if ( pase !== false){
+if ( pase != false){
 	
-
 
 /*
    var args = Array.prototype.slice.call(arguments, 1);
@@ -733,7 +749,8 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&tel=" + tel +
  	"&date=" + fecha_or + 
  	"&fecha_limit=" + deadD +
- 	"&days=" + fecha_limit 
+ 	"&days=" + fecha_limit +
+ 	"&fac=" + fac
  	 ,
  	success : function (data){
  		bootbox.alert("Audiencia ingresada con exito", function(){
@@ -932,8 +949,11 @@ exist = 1;
 
 function delegateRequirement(){
 
+$("#requeriment").val()
 
 $.ajax({
+
+
 
 })
 

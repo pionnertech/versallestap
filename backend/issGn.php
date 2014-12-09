@@ -15,9 +15,10 @@
  	$tel = $_GET['tel'];
  	$days = $_GET['days'];
  	$exist = $_GET['exist'];
+ 	$fac = $_GET['fac'];
 
 
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
 $clean_rut = substr($rut , 0, (strlen($rut) - 1));
 
@@ -44,7 +45,10 @@ $insertar_audi = $insertar_audi1 . $insertar_audi2;
 if(!mysqli_query($datos, $insertar_audi)){
 	echo (mysqli_error($datos));
 } else {
-echo "1";
+
+   $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
+
+echo  $iss_call;
 }
 
 
