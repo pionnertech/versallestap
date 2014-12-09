@@ -152,20 +152,13 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 							</li>
 						</ul><!--/.widget-nav-->
 
-						<ul class="widget widget-menu unstyled">
-                                <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
-                                <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                                <li><a href="form.html"><i class="menu-icon icon-paste"></i>Forms </a></li>
-                                <li><a href="table.html"><i class="menu-icon icon-table"></i>Tables </a></li>
-                                <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
-                            </ul><!--/.widget-nav-->
 
 						<ul class="widget widget-menu unstyled">
 							<li>
 								<a class="collapsed" data-toggle="collapse" href="#togglePages">
 									<i class="menu-icon icon-cog"></i>
 									<i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right"></i>
-									More Pages
+									Accessos
 								</a>
 								<ul id="togglePages" class="collapse unstyled">
 									<li>
@@ -177,13 +170,13 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISSUES");
 									<li>
 										<a href="other-user-profile.html">
 											<i class="icon-inbox"></i>
-											Profile
+											Perfil
 										</a>
 									</li>
 									<li>
 										<a href="other-user-listing.html">
 											<i class="icon-inbox"></i>
-											All Users
+											Todos Los usuarios
 										</a>
 									</li>
 								</ul>
