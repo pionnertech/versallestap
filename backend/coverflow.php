@@ -1,7 +1,6 @@
 <?php
 
 
-
 session_start();
 
 
@@ -34,10 +33,10 @@ echo "<script language='javascript'>window.location='../index.php?t=1'; </script
 
 else { 
 
- $_SESSION["TxtCode"] = $outcome['USR_ID'];
  $_SESSION["TxtUser"] = $outcome['USR_NAME'];
  $_SESSION["TxtPass"] = $outcome['USR_SURNAME'];
  $_SESSION["TxtFacility"] = $outcome['USR_FACILITY'];
+ $_SESSION["TxtCode"] = $outcome['USR_ID'];
  $_SESSION["TxtRange"] = $outcome['USR_RANGE'];
 
 
