@@ -596,8 +596,10 @@ $("#delegate").on('click', function(){
 $("#SendRequest-free").on('click', function(){
    
    bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
+
 	if(outcome) {
-bootbox.alert("Audiencia ingresada", function (){
+
+
 var narray = [];
 var cont = document.querySelectorAll(".wrap-ing-form input");
 
@@ -611,7 +613,8 @@ narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
 setRequest(narray[0], narray[6] , narray[8], 0, narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
 
-		});
+
+
 	}
 	
 });
@@ -737,6 +740,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  			 $("input").val('');
  			 $("textarea").val('');
  			 exist = 0;
+ 			 bootbox.alert("Audiencia ingresada");
  		});
  		
  	}
@@ -960,8 +964,6 @@ if(!empty){
 
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.toString());
 	return false;
-	break;
-
 }
 
 
