@@ -319,6 +319,10 @@ $(this).parent().parent().next('tr').fadeToggle('slow');
 $(".enviar").on('click', function () {
 
 	var iss_id = $(this).parent().prev().children('td').eq(1).html();
+	
+	 $(this).parent().fadeOut('fast');
+	 $(this).parent().prev().fadeOut('fast');
+
     console.info(iss_id);
   // delegate(name, msg, fechaF, iss-id)
 
