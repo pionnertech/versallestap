@@ -950,11 +950,11 @@ var matrix = document.querySelectorAll('#intext input');
 
 var empty = [];
 
-for(i = 0 ; i < matrix.length ; i++){
+for(i=0 ; i < matrix.length ; i++){
 
 	if(matrix[i].value == '' ){
         
-		 empty[empty.length] = $("#intext input").eq(i).parent().text().trim(); 
+		 empty[empty.length] = $("#intext input").eq(i).attr('placeholder');
 	}
 }
 
@@ -962,10 +962,8 @@ if(!empty){
 
 } else {
 
-	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;') , function (){;
+	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;'));
 	return false;
-});
-
 }
 
 
