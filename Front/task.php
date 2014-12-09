@@ -8,7 +8,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (ISS_FAC_CODE = " . $_SESSION['TxtCode']) . " AND ISS_CHARGE_USR = '' )" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (ISS_FAC_CODE = " . $_SESSION['TxtCode'] . " AND ISS_CHARGE_USR = '' )" );
 
 
 ?>
