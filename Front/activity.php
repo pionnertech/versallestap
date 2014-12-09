@@ -954,7 +954,7 @@ for(i = 0 ; i < matrix.length ; i++){
 
 	if(matrix[i].value == '' ){
         
-		$.trim($("#intext input").eq(i).parent().text()) = empty[empty.length];
+		 empty[empty.length] = $("#intext input").eq(i).parent().text().trim() 
 	}
 }
 
