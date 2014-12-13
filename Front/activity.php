@@ -15,7 +15,7 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
 
 //categorias
 
-$Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtCode']);
+$Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtFacility']);
 
 
 
@@ -976,7 +976,8 @@ for(i=0 ; i < matrix.length ; i++){
 	}
 }
 
-if(empty[0] === ""){
+console.log(empty.length + " --/-- " . empty[0]);
+if(empty[0] == ""){
 
 } else {
 
