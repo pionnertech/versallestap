@@ -712,7 +712,7 @@ GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0;
 
 var pase = missingField();
 
-if ( pase != false){
+if (pase != false){
 	
 
 /*
@@ -971,14 +971,12 @@ var matrix = document.querySelectorAll('#intext input');
 var empty = [];
 
 for(i=0 ; i < matrix.length ; i++){
-
 	if(matrix[i].value == '' ){
-        
 		 empty[empty.length] = $("#intext input").eq(i).attr('placeholder');
 	}
 }
 
-if(!empty){
+if(empty[0] === ""){
 
 } else {
 
@@ -988,9 +986,13 @@ if(!empty){
 
 
 //segunda fase
-if($("textarea").val() === ""){
-
+if($("textarea").val() === "") {
+  bootbox.alert("Por Favor ingrese la descripcion de la audiencia");
 }
+
+return true;
+// 3era fase ... checkear validez de los datos ingresados
+
 
 }
 
