@@ -740,11 +740,12 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&fac=" + fac
  	 ,
  	success : function (data){
+      console.info(data);
  		bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input").val('');
  			 $("textarea").val('');
  			 exist = 0;
- 			 bootbox.alert("Audiencia ingresada");
+ 			
  		});
  		
  	}
