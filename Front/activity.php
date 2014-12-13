@@ -976,7 +976,7 @@ for(i=0 ; i < matrix.length ; i++){
 	}
 }
 
-console.log(empty.length + " --/-- " . empty[0]);
+console.log(empty.length + " --/-- " + empty[0]);
 if(empty[0] == ""){
 
 } else {
