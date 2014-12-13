@@ -978,6 +978,7 @@ for(i=0 ; i < matrix.length ; i++){
 
 if(empty.length == 0){
 
+
 } else {
 
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;'));
@@ -988,6 +989,7 @@ if(empty.length == 0){
 //segunda fase
 if($("textarea").val() === "") {
   bootbox.alert("Por Favor ingrese la descripcion de la audiencia");
+  return false;
 }
 
 return true;
