@@ -1,4 +1,4 @@
-<?php
+<?php header('Content-Type: text/html; charset=utf-8');
 
 session_start();
 
@@ -43,7 +43,7 @@ ISS_SUBTASKS_CANT
 
 <head>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Eque-e</title>
 	<link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -129,6 +129,7 @@ width: 100%;
 
 
 </head>
+
 <body>
 <input type="hidden" val="" id="latlng">
 	<div class="navbar navbar-fixed-top">
@@ -714,20 +715,6 @@ var pase = missingField();
 
 if (pase != false){
 	
-
-/*
-   var args = Array.prototype.slice.call(arguments, 1);
-   var st_names = args.join(",").split(",");
-
-    for(i=0; i < args.length; i++){
-    	if(args[i] === ''){
-
-    		bootbox.alert('Falta por llenar:' + st_names[i]  , function(){
-    			return false;
-    		});
-    	}
-    }
-*/
 
 
 pre_rut = rut.replace(/\./gi, "");
