@@ -722,6 +722,20 @@ rut = pre_rut.replace('-', "");
 
 fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
 
+console.info("backend/issGn.php?rut=" + rut + 
+ 	"&dn=" + direccion + 
+ 	"&iss=" + audiencia + 
+ 	"&Geoloc=" + GeoLoc + 
+ 	"&Nombre=" + Nombre +
+ 	"&appm=" + appm +
+ 	"&appp=" + appp +
+ 	"&tipo=" + tipo + 
+ 	"&tel=" + tel +
+ 	"&date=" + fecha_or + 
+ 	"&fecha_limit=" + deadD +
+ 	"&days=" + fecha_limit +
+ 	"&fac=" + fac);
+
 
  $.ajax({
  	type: "POST",
