@@ -271,7 +271,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 
 												</select>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
-                                                <input type="text" placeholder="Fecha Termino"  class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                                <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
 												<button class="btn-info enviar">Delegar task</button>
 											</td>
 										</tr>           
@@ -331,7 +331,7 @@ $(".enviar").on('click', function () {
     var msg = $(this).parent().children('textarea').val();
     var name = $(this).parent().children('select').find(':selected').text();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
-   
+
    delegate(name, msg, fechaF, iss_id);
 
 });
