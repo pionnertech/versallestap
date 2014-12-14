@@ -318,13 +318,13 @@ $(this).parent().parent().next('tr').fadeToggle('slow');
 
 $(".enviar").on('click', function () {
 
-	var iss_id = $(this).parent().prev().children('td').eq(1).html();
+	var iss_id = $(this).parent().parent().prev().children('td').eq(0).html();
 	
+
 	 $(this).parent().fadeOut('fast');
 	 $(this).parent().prev().fadeOut('fast');
 
-    console.info(iss_id);
-   //delegate(name, msg, fechaF, iss_id);
+   delegate(name, msg, fechaF, iss_id);
 
 });
 
@@ -341,7 +341,7 @@ $.ajax({
 	success : function (data){
 
 		if (parseInt(data) == 1){
-
+       console.log(data);
        console.info('works');
 
 		} else {
