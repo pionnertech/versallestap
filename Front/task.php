@@ -271,6 +271,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 
 												</select>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
+                                                <input type="text" placeholder="Fecha Termino"  class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
 												<button class="btn-info enviar">Delegar task</button>
 											</td>
 										</tr>           
@@ -300,7 +301,8 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
 	<script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-		<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+    <script src="../scripts/jquery.datetimepicker.js"></script>
 </body>
 <script type="text/javascript">
 
@@ -322,14 +324,21 @@ $(".enviar").on('click', function () {
 	
 
 	 $(this).parent().fadeOut('fast');
-	 $(this).parent().prev().fadeOut('fast');
+	 $(this).parent().parent().prev().fadeOut('fast');
 
+
+	 //variables 
+    var msg = $(this).parent().children('textarea').val();
+    var name = $(this).parent().children('select').find(':selected').text();
+    var fechaF = $(this).parent().children("input.datetimepicker").val();
+   
    delegate(name, msg, fechaF, iss_id);
 
 });
 
 
 function delegate(name, msg, fechaF, iss_id){
+
 var _fS= new Date();
 
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
@@ -341,6 +350,7 @@ $.ajax({
 	success : function (data){
 
 		if (parseInt(data) == 1){
+
        console.log(data);
        console.info('works');
 
