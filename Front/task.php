@@ -1,4 +1,4 @@
-﻿<?php session_start();
+<?php session_start();
 
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
@@ -324,7 +324,7 @@ $(".enviar").on('click', function () {
 	 $(this).parent().prev().fadeOut('fast');
 
     console.info(iss_id);
-  // delegate(name, msg, fechaF, iss-id)
+   //delegate(name, msg, fechaF, iss_id);
 
 });
 
@@ -335,19 +335,27 @@ var _fS= new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
 $.ajax({
+
 	type: "POST",
 	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" + iss_id,
 	success : function (data){
+
 		if (parseInt(data) == 1){
+
        console.info('works');
+
 		} else {
-      console.info('its');
+
+      console.info('not works');
+
 		}
 	}
-})
+});
 
 
 }
+
+
 
 </script>
 <?
