@@ -37,8 +37,18 @@ if(!mysqli_query($datos, $insertar_ciudadano)){
   } 
 }
 
+
+if ($days == 'NaN'){
+   $diff = 999;
+} else {
+
+$date1=date_create($date);
+$date2=date_create($date_limit);
+$diff =date_diff($date1,$date2);
+}
+
 $insertar_audi1 = "INSERT INTO ISSUES(ISS_DATE_ING, ISS_DESCRIP, ISS_CHARGE_USR, ISS_DEADLINE, ISS_DAYS , ISS_STATE, ISS_FINISH_DATE , ISS_TYPE, ISS_CTZ) ";
-$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $days . " , 0 , '" . $date_limit . "', '" . $tipo . "' , " . $clean_rut . ");";
+$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $diff . " , 0 , '" . $date_limit . "', '" . $tipo . "' , " . $clean_rut . ");";
 
 $insertar_audi = $insertar_audi1 . $insertar_audi2;
 
