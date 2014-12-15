@@ -685,11 +685,11 @@ function getLatlgnBounds(){
             draggable: true
         });
 
-        $("#latlng").val(marker.getLatlgnBounds.lat() + "," + marker.getLatlgnBounds.lgn());
+        $("#latlng").val(marker.getLatLngBounds.lat() + "," + marker.getLatLngBounds.lng());
 
         google.maps.event.addListener(marker , 'dragend', function(){
           bootbox.alert("Reubicación grabada", function() {
-                $("#latlng").val(marker.getLatlgnBounds.lat() + "," + marker.getLatlgnBounds.lgn());
+                $("#latlng").val(marker.getLatLngBounds.lat() + "," + marker.getLatLngBounds.lng());
             });
         })
 
