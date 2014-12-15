@@ -753,9 +753,10 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
       
 var name = $('select').find(':selected').text();
 var msg = $("#requeriment").val();
-var dataF = $("#dtp2").val();
+var dataF = $("#dtp2").val() + " 10:00:00";
 
 delegateRequirement(name, 1, msg, dataF, fecha_or, data);
+
 $("#SendRequest").data("val", 0);
 
         } else {
