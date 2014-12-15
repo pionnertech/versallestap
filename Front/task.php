@@ -3,7 +3,6 @@
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
 
-echo $_SESSION['TxtCode'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -323,17 +322,19 @@ $('.datetimepicker').datetimepicker({
 $(".requirement").fadeOut('fast');
 
 $(".due").on('click', function (){
-
+if($(this).text() != "En Curso"){
 $(this).parent().parent().next('tr').fadeToggle('slow');
+}
+
 
 });
 
 
 $(".enviar").on('click', function () {
 
-	var iss_id = $(this).parent().parent().prev().children('td').eq(0).html();
+	var iss_id = $(this).parent().parent().prev().children('td').eq(0).text();
 	
-
+    
 	 $(this).parent().fadeOut('fast');
 	 $(this).parent().parent().prev().fadeOut('fast');
 
@@ -361,8 +362,6 @@ $.ajax({
 	success : function (data){
     console.info(data);
 		if (parseInt(data) == 1){
-
-       
 
        console.info('works');
 
