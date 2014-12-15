@@ -573,6 +573,8 @@ $("#sendEmail").on('click', function(){
 
 $("#SendRequest").on('click', function(){
 
+$(this).data("val", 1);
+
 var narray = [];
 var cont = document.querySelectorAll(".wrap-ing-form input");
 
@@ -744,6 +746,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&fac=" + fac
  	 ,
  	success : function (data){
+
         if($("#SendRequest").data("val") == 1 ){
       
 var name = $('select').find(':selected').text();
@@ -751,6 +754,7 @@ var msg = $("#requeriment").val();
 var dataF = $("#dtp2").val();
 
 delegateRequirement(name, 1, msg, dataF, fecha_or, data);
+$("#SendRequest").data("val", 0);
 
         } else {
 
