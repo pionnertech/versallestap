@@ -963,7 +963,7 @@ function delegateRequirement(name, imp, msg, dataF, dataS, iss_id){
 
 
 $.ajax({ type: "POST",
-	     url: "delegate.php?fac=" +fac +
+	     url: "../backend/delegate.php?fac=" +fac +
 	           "&name=" + name + 
 	           "&imp=" + imp +
 	           "&msg=" + msg+
