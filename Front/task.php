@@ -337,9 +337,10 @@ $(".enviar").on('click', function () {
 	 $(this).parent().fadeOut('fast');
 	 $(this).parent().parent().prev().fadeOut('fast');
 
-     console.info("/" + iss_id +"/"),
+     console.info("/" + iss_id +"/");
 	 //variables 
     var msg = $(this).parent().children('textarea').val();
+
     var name = $(this).parent().children('select').find(':selected').text();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
 
