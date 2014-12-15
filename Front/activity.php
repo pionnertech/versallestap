@@ -759,6 +759,7 @@ delegateRequirement(name, 1, msg, dataF, fecha_or, data);
 
 $("#SendRequest").data("val", 0);
 
+
         } else {
 
         	bootbox.alert("Audiencia ingresada con exito", function(){
