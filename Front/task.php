@@ -359,10 +359,11 @@ $.ajax({
 	type: "POST",
 	url: "../backend/delegate.php?fac=" + fac + "&name=" + name + "&msg=" + msg + "&dataF=" + fechaF + "&dataS=" + fechaS + "&iss-id=" + iss_id,
 	success : function (data){
-
+    console.info(data);
 		if (parseInt(data) == 1){
 
-       console.log(data);
+       
+
        console.info('works');
 
 		} else {
