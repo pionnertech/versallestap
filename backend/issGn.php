@@ -49,12 +49,8 @@ $date1=date_create($date);
 $date2=date_create($date_limit);
 $diff = date_diff($date1,$date2);
 
-
 $state = 2;
 
-echo $date . " ---/---" . $date_limit ;
-
-exit;
 
 }
 

@@ -713,7 +713,7 @@ function getLatlgnBounds(){
 
 function setRequest(rut, direccion, audiencia, GeoLoc, Nombre, appm, appp, tipo, tel, deadD, mail, subject){
 var fecha = new Date();
-var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2) + "-" + ('0' + fecha.getDate()).slice(-2)  + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + ('0'+ fecha.getSeconds()).slice(-2);
+var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2) + "-" + ('0' + fecha.getDate()).slice(-2)  + " " + ('0' + fecha.getHours()).slice(-2) + ":" + ('0' + fecha.getMinutes()).slice(-2) + ":" + ('0'+ fecha.getSeconds()).slice(-2);
 
 GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0; 
 
