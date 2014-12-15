@@ -687,8 +687,8 @@ function getLatlgnBounds(){
 
         $("#latlng").val(marker.position.lat() + "," + marker.position.lng());
 
-        google.maps.event.addListener(marker , 'dragend', function(){
-        	$("#latlng").val(this.position.lat() + "," + this.position.lng());
+        google.maps.event.addListener(marker , 'dragend', function (evt){
+        	$("#latlng").val(evt.position.lat() + "," + evt.position.lng());
           bootbox.alert("Reubicación grabada", function() {
                 console.log("ok");
             });
