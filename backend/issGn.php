@@ -51,9 +51,11 @@ $diff = date_diff($date1,$date2);
 
 
 $state = 2;
-echo $date . " ---/---" . $date_limit . "  (" . $date1 . " ---/---" . $date2 .")  " . $diff;
 
-exit
+echo $date . " ---/---" . $date_limit . "  (" . $date1 . " ---/---" . $date2 . ")  " . $diff;
+
+exit;
+
 }
 
 $insertar_audi1 = "INSERT INTO ISSUES(ISS_DATE_ING, ISS_DESCRIP, ISS_CHARGE_USR, ISS_DEADLINE, ISS_DAYS , ISS_STATE, ISS_FINISH_DATE , ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_SUBJECT) ";
