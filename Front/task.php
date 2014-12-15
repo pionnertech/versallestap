@@ -350,7 +350,7 @@ $(".enviar").on('click', function () {
 
 function delegate(name, msg, fechaF, iss_id){
 
-var _fS= new Date();
+var _fS = new Date();
 
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 

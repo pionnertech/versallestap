@@ -383,8 +383,34 @@ width: 100%;
                                 <h3>Asignar Requerimientos</h3>
                                 	<div style="width: 100%; position: relative; display: inline-block; vertical-align: top; ">
                                 	<textarea id="requeriment" name="requeriment" placeholder="Describa el requerimiento" style="display: inline-block; vertical-align: top; width: 98%; "></textarea>
-
-                                		<input type="text" name="currency" class="biginput" id="autocomplete" autocomplete="off" style="max-width: 50%;position: relative; float: left;" placeholder="delegados"/> 
+                                	<select id="delgates" class="biginput">
+												 <optgroup label="Gerencia">
+                                                     <option val="0">Alejandro Curaqueo</option>
+                                                     <option val="1">Rodrigo Peña</option>
+                                                     <option val="2">Pedro Cortez</option>
+                                                  </optgroup>
+                                                  <optgroup label="Informatica">
+                                                     <option val="3">Francisco Papal</option>
+                                                     <option val="4">Liliana Avogadro</option>
+                                                  </optgroup>
+                                                  <optgroup label="Contabilidad/Finanzas">
+                                                     <option val="5">Jefferson Pimentel</option>
+                                                     <option val="6">Gabriella Santorielli</option>
+                                                     <option val="7">Laura Costa</option>
+                                                     <option val="8">Anita Acosta</option>
+                                                     <option val="9">Pablo Suarez</option>
+                                                    </optgroup>
+                                                    <optgroup label="Area Tecnica">
+                                                     <option val="10">Leandro Martinez</option>
+                                                     <option val="11">Macarena Arraño</option>
+                                                     <option val="12">Patricio bustamante</option>
+                                                     <option val="13">Felipe Beringer</option>
+                                                     <option val="14">Mario Gallardo</option>
+                                                     <option val="15">Jose Victorino</option>
+                                                     <option val="16">Eduardo Lasalle</option>
+                                                     <option val="17">Lena Fensterseifer</option>
+                                                    </optgroup>
+												</select>
                      <i class="icon-warning-sign icon-2x" id="urgent" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                      <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                                          <input type="text" placeholder="Fecha Máxima Respuesta" value="" id="dtp2" class="datetimepicker" style="vertical-align:top; display: inline-block; position: relative; float: right;"/>
@@ -443,31 +469,8 @@ $(document).on('ready', function(){
 
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
-  var currencies = [
-    { value: 'Pedro Fernandez', data: 'Finanzas' },
-    { value: 'Alejandro Curaqueo', data: 'Contabilidad' },
-    { value: 'Eduardo Gomez', data: 'Tecnico en terreno' },
-    { value: 'Pedro Cortez', data: 'Ventas'},
-    { value: 'Francisco Papal', data: 'Gerencia comercial' },
-    { value: 'Liliana Avogadro', data: 'Gestión de Personas' },
-    { value: 'Jefferson Pimentel', data: 'Gerencia general' },
-    { value: 'Gabriella Santorielli', data: 'Mesa de Dinero' },
-    { value: 'Laura Costa', data: 'Medio ambiente' },
-    { value: 'Anita Acosta', data: 'Cobranzas' },
-    { value: 'Pablo Suarez', data: 'Planificacipon Urbana' },
-    { value: 'Leandro Martinez', data: 'Asistencia Tecnica' },
-    { value: 'Macarena Arraño', data: 'Relaciones publicas' },
-  ];
-  
 
-  // setup autocomplete function pulling from currencies[] array
-  $('#autocomplete').autocomplete({
-    lookup: currencies,
-    onSelect: function (suggestion) {
-      var thehtml = suggestion.value + ' - ' + suggestion.data;
-      $(this).val(thehtml);
-    }
-  });
+
   
 
   // date time picker.
@@ -741,14 +744,26 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&fac=" + fac
  	 ,
  	success : function (data){
-      console.info(data);
- 		bootbox.alert("Audiencia ingresada con exito", function(){
+        if($("#SendRequest").data("val") == 1 ){
+      
+var name = $('select').find(':selected').text();
+var msg = $("#requeriment").val();
+var dataF = $("#dtp2").val();
+
+delegateRequirement(name, 1, msg, dataF, fecha_or, data);
+
+        } else {
+
+        	bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input").val('');
  			 $("textarea").val('');
  			 exist = 0;
  			
  		});
  		
+
+        }
+
  	}
  })
 
@@ -938,13 +953,23 @@ exist = 1;
 })
 }
 
-function delegateRequirement(){
-
-$("#requeriment").val()
-
-$.ajax({
+function delegateRequirement(name, imp, msg, dataF, dataS, iss_id){
 
 
+$.ajax({ type: "POST",
+	     url: "delegate.php?fac=" +fac +
+	           "&name=" + name + 
+	           "&imp=" + imp +
+	           "&msg=" + msg+
+	           "&dataF=" + dataF +
+	           "&dataS=" + dataS +
+	           "&iss_id=" + iss_id,
+	           success : function (data){
+	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
+	           	console.info("ok!");
+	           })
+
+	           }
 
 })
 

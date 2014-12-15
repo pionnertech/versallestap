@@ -8,7 +8,7 @@ $importance = $_GET['imp'];
 $msg = $_GET['msg'];
 $dataF = $_GET['dataF'];
 $dataS = $_GET['dataS'];
-$iss_id = $_GET['iss-id'];
+$iss_id = $_GET['iss_id'];
 
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
