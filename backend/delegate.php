@@ -14,7 +14,7 @@ $iss_id = $_GET['iss-id'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 mysqli_query($datos, "UPDATE ISSUES SET ISS_CHARGE_USR = '" . $nombre . "' WHERE ISS_ID = " . $iss_id . ";");
-mysqli_query($datos, "UPDATE ISSUES SET ISS_EST = 2 WHERE ISS_ID = " . $iss_id   . ";");
+mysqli_query($datos, "UPDATE ISSUES SET ISS_STATE = 2 WHERE ISS_ID = " . $iss_id   . ";");
 
 
 $query_insert = "INSERT INTO SUBTASKS(STSK_DESCRIP, STSK_CHARGE_USR , STSK_STATE, STSK_FINISH_DATE , STSK_START_DATE, STSK_MAIN_USR ) ";
