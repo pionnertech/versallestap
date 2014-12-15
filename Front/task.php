@@ -334,11 +334,10 @@ $(".enviar").on('click', function () {
 
 	var iss_id = $(this).parent().parent().prev().children('td').eq(0).text();
 	
-    
 	 $(this).parent().fadeOut('fast');
 	 $(this).parent().parent().prev().fadeOut('fast');
 
-
+     console.info("/" + iss_id +"/"),
 	 //variables 
     var msg = $(this).parent().children('textarea').val();
     var name = $(this).parent().children('select').find(':selected').text();
