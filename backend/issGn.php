@@ -10,7 +10,7 @@
  	$apellidoP = $_GET["appp"];
  	$tipo = $_GET["tipo"];
  	$date = $_GET['date'];
- 	$date_limit = $_GET['fecha_limit'];
+ 	$date_limit = str_replace("/", "-", $_GET['fecha_limit']);
  	$charge = $_GET['charge'];
  	$tel = $_GET['tel'];
  	$days = $_GET['days'];
@@ -56,7 +56,7 @@ echo $date . " --- / ---" . $date_limit;
 }
 
 $insertar_audi1 = "INSERT INTO ISSUES(ISS_DATE_ING, ISS_DESCRIP, ISS_CHARGE_USR, ISS_DEADLINE, ISS_DAYS , ISS_STATE, ISS_FINISH_DATE , ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_SUBJECT) ";
-$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $diff . " , " . $state . ", '" . $date_limit . "', '" . $tipo . "' , " . $clean_rut . ", " . $fac . " , '" . $subject . "');";
+$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $diff . " , " . $state . ", '" . $date_limit . "', " . $tipo . " , " . $clean_rut . ", " . $fac . " , '" . $subject . "');";
 
 $insertar_audi = $insertar_audi1 . $insertar_audi2;
 
