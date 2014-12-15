@@ -47,10 +47,10 @@ if ($days == 'NaN'){
 
 $date1 = date_create($date);
 $date2 = date_create($date_limit);
-$diff  = date_diff($date1,$date2);
+$diff  = date_format(date_diff($date1,$date2), "d-m-Y h:i:s");
 
 $state = 2;
-echo $date . " --- / ---" . $date_limit;
+
 
 
 }
