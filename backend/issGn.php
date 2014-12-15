@@ -62,7 +62,7 @@ if(!mysqli_query($datos, $insertar_audi)){
 
    $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
 
-echo  $iss_call;
+echo  $iss_call['ISS_ID'];
 }
 
 
