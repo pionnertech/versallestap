@@ -586,7 +586,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
+setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
 
 });
 
@@ -726,22 +726,6 @@ rut = pre_rut.replace('-', "");
 
 fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
 
-console.info("../backend/issGn.php?rut=" + rut + 
- 	"&dn=" + direccion + 
- 	"&iss=" + audiencia + 
- 	"&Geoloc=" + GeoLoc + 
- 	"&Nombre=" + Nombre +
- 	"&appm=" + appm +
- 	"&appp=" + appp +
- 	"&tipo=" + tipo + 
- 	"&tel=" + tel +
- 	"&date=" + fecha_or + 
- 	"&fecha_limit=" + deadD +
- 	"&days=" + fecha_limit +
- 	"&email=" + mail +
- 	"&subject=" + subject +
- 	"&fac=" + fac);
-
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
@@ -754,7 +738,7 @@ console.info("../backend/issGn.php?rut=" + rut +
  	"&tipo=" + tipo + 
  	"&tel=" + tel +
  	"&date=" + fecha_or + 
- 	"&fecha_limit=" + deadD +
+ 	"&fecha_limit=" + deadD  + " 10:00:00" +
  	"&days=" + fecha_limit +
  	"&email=" + mail +
  	"&subject=" + subject +
