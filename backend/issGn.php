@@ -16,7 +16,8 @@
  	$days = $_GET['days'];
  	$exist = $_GET['exist'];
  	$fac = $_GET['fac'];
-
+ 	$mail = $_GET['email'];
+    
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
@@ -27,8 +28,8 @@ $checkin = mysqli_query($datos, "SELECT CTZ_NAMES FROM CITIZENS WHERE CTZ_RUT = 
 
 if(mysqli_num_rows($checkin) === 0){
                   
-$insertar_ciudadano1 = "INSERT INTO CITIZENS (CTZ_NAMES, CTZ_SURNAME1, CTZ_SURNAME2, CTZ_ADDRESS, CTZ_GEOLOC, CTZ_RUT, CTZ_DVF, CTZ_DATE_ING, CTZ_TEL) ";
-$insertar_ciudadano2 = " VALUES ('" . $nombre . "', '" . $apellidoP . "', '" . $apellidoM .  "' , '" . $direccion . "', '" . $geo . "' , " . $clean_rut . " , '" . substr($rut,-1,1) . "', '" . $date . "', " . $tel .")";
+$insertar_ciudadano1 = "INSERT INTO CITIZENS (CTZ_NAMES, CTZ_SURNAME1, CTZ_SURNAME2, CTZ_ADDRESS, CTZ_GEOLOC, CTZ_RUT, CTZ_DVF, CTZ_DATE_ING, CTZ_TEL, CTZ_MAIL) ";
+$insertar_ciudadano2 = " VALUES ('" . $nombre . "', '" . $apellidoP . "', '" . $apellidoM .  "' , '" . $direccion . "', '" . $geo . "' , " . $clean_rut . " , '" . substr($rut,-1,1) . "', '" . $date . "', " . $tel ." ,'" . $mail . "')";
 $insertar_ciudadano  = $insertar_ciudadano1 . $insertar_ciudadano2;
 
 if(!mysqli_query($datos, $insertar_ciudadano)){

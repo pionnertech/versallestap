@@ -627,7 +627,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val());
+setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
 
 	}
 	
@@ -706,7 +706,7 @@ function getLatlgnBounds(){
 
 
 
-function setRequest(rut, direccion, audiencia, GeoLoc, Nombre, appm, appp, tipo, tel, deadD){
+function setRequest(rut, direccion, audiencia, GeoLoc, Nombre, appm, appp, tipo, tel, deadD, mail, subject){
 var fecha = new Date();
 var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2) + "-" + ('0' + fecha.getDate()).slice(-2)  + " " + fecha.getHours() + ":" + fecha.getMinutes() + ":" + ('0'+ fecha.getSeconds()).slice(-2);
 
@@ -716,8 +716,6 @@ var pase = missingField();
 
 if (pase != false){
 	
-
-
 pre_rut = rut.replace(/\./gi, "");
 rut = pre_rut.replace('-', "");
 
@@ -738,6 +736,8 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&date=" + fecha_or + 
  	"&fecha_limit=" + deadD +
  	"&days=" + fecha_limit +
+ 	"&email=" + mail +
+ 	"&subject=" + subject +
  	"&fac=" + fac
  	 ,
  	success : function (data){
@@ -975,11 +975,18 @@ if(empty.length == 0){
 }
 
 
+if($("#subject").val() == ""){
+	bootbox.alert("Por favor ingrese ausnto de la audiencia", function(){
+		return false;
+	})
+}
+
 //segunda fase
 if($("textarea").val() === "") {
   bootbox.alert("Por Favor ingrese la descripcion de la audiencia");
   return false;
 }
+
 
 return true;
 // 3era fase ... checkear validez de los datos ingresados
