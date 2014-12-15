@@ -746,6 +746,8 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&fac=" + fac
  	 ,
  	success : function (data){
+  
+  console.info(data);
 
         if($("#SendRequest").data("val") == 1 ){
       
