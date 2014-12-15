@@ -309,6 +309,16 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 
 var fac = <?  printf($_SESSION['TxtCode']) ?>
 
+
+$('.datetimepicker').datetimepicker({
+	step:5,
+	lang:'es',
+	format:'d/m/Y',
+	timepicker: false
+});
+
+
+
 $(".requirement").fadeOut('fast');
 
 $(".due").on('click', function (){
