@@ -688,8 +688,9 @@ function getLatlgnBounds(){
         $("#latlng").val(marker.position.lat() + "," + marker.position.lng());
 
         google.maps.event.addListener(marker , 'dragend', function(){
+        	$("#latlng").val(this.position.lat() + "," + this.position.lng());
           bootbox.alert("Reubicación grabada", function() {
-                $("#latlng").val(this.position.lat() + "," + this.position.lng());
+                console.log("ok");
             });
         })
 
