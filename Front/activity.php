@@ -974,6 +974,9 @@ $.ajax({ type: "POST",
 	           success : function (data){
 	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
 	           	console.info("ok!");
+	          $("input").val('');
+ 			 $("textarea").val('');
+ 			 exist = 0;
 	           })
 
 	           }
