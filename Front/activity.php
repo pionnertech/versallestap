@@ -926,7 +926,7 @@ $("#Nombres").val(recall[0]);
 $("#direccion").val(recall[3]);
 $("#tel").val(recall[9]);
 $("#Geo").val(recall[4]);
-$("#ctzmail").val(recall[11]);
+$("#ctzmail").val(recall[10]);
 
 exist = 1;
 
