@@ -774,7 +774,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
-                                            <input type="hidden" val="<? printf($stsk[0])?>">
+                                            <input type="hidden" val="<? printf($stsk[0]) ?>">
                                         </tr>
                                         <? } ?>
                                     </tbody>
