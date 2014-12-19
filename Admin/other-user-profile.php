@@ -1,7 +1,4 @@
-
-<?php
-
-session_start();
+<?php session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
@@ -16,7 +13,6 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
 
 
 ?>
-
 
 
 <!DOCTYPE html>
