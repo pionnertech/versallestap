@@ -154,7 +154,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <li><a href="#">Edit Profile</a></li>
                                 <li><a href="#">Account Settings</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="../backend/close.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

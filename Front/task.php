@@ -307,7 +307,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 <script type="text/javascript">
 
 
-var fac = <?  printf($_SESSION['TxtCode']) ?>
+var fac = <?  printf($_SESSION['TxtFacility']) ?>
 
 
 $('.datetimepicker').datetimepicker({
