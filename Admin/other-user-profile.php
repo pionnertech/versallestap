@@ -3,33 +3,16 @@
 
 session_start();
 
-if(isset($_SESSION['TxtCode'])){
+if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
-
-
-$datos = mysqli_connect('mysql.nixiweb.com', "u315988979_eque", "MoNoCeRoS", "u315988979_eque");
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
 
-$Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SESSION['TxtCode'] );
-
-/*
-ISS_ID
-ISS_DATE_ING
-ISS_SUBJECT
-ISS_DESCRIP
-ISS_CHARGE_USR
-ISS_DEADLINE
-ISS_DAYS
-ISS_STATE
-ISS_FINISH_DATE
-ISS_DELAY_DAYS
-ISS_SUBTASKS_CANT
-*/
-
+$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "' AND SBTSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
 
 
 ?>
@@ -42,11 +25,11 @@ ISS_SUBTASKS_CANT
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edmin</title>
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">  
-    <link type="text/css" href="css/uploader_style.css" rel="stylesheet" />
-    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/theme.css" rel="stylesheet">  
+    <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
+    <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <style type="text/css">
     .done{
@@ -168,7 +151,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                         </li>
                         <li><a href="#">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="images/ejecutivo4.jpg" class="nav-avatar" />
+                            <img src="../images/ejecutivo4.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Your Profile</a></li>
@@ -192,13 +175,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Vista Principal
+                            <li class="active"><a href="index.php"><i class="menu-icon icon-dashboard"></i>Vista Principal
                             </a></li>
                             <li><a href="activity.php"><i class="menu-icon icon-bullhorn"></i>ingreso de Audiencias</a>
                             </li>
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 11</b> </a></li>
-                            <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
+                            <li><a href="task.php"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
                                 19</b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
@@ -352,7 +335,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left">
-                                        <img src="images/ejecutivo4.jpg">
+                                        <img src="../images/ejecutivo4.jpg">
                                     </a>
                                     <div class="media-body">
                                         <h4>
@@ -378,7 +361,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         <div class="stream-list">
                                             <div class="media stream">
                                                 <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="images/user.png">
+                                                    <img src="..7images/user.png">
                                                 </a>
                                                 <div class="media-body">
                                                     <div class="stream-headline">
@@ -392,7 +375,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                         </div>
                                                         <div class="stream-attachment photo">
                                                             <div class="responsive-photo">
-                                                                <img src="images/img.jpg" alt="" />
+                                                                <img src="../images/img.jpg" alt="" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -407,7 +390,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <!--/.media .stream-->
                                             <div class="media stream">
                                                 <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="images/user.png">
+                                                    <img src="../images/user.png">
                                                 </a>
                                                 <div class="media-body">
                                                     <div class="stream-headline">
@@ -440,7 +423,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <!--/.media .stream-->
                                             <div class="media stream">
                                                 <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="images/user.png">
+                                                    <img src="../images/user.png">
                                                 </a>
                                                 <div class="media-body">
                                                     <div class="stream-headline">
@@ -462,7 +445,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                     <div class="stream-respond">
                                                         <div class="media stream">
                                                             <a href="#" class="media-avatar small pull-left">
-                                                                <img src="images/user.png">
+                                                                <img src="../images/user.png">
                                                             </a>
                                                             <div class="media-body">
                                                                 <div class="stream-headline">
@@ -479,7 +462,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                         <!--/.media .stream-->
                                                         <div class="media stream">
                                                             <a href="#" class="media-avatar small pull-left">
-                                                                <img src="images/user.png">
+                                                                <img src="../images/user.png">
                                                             </a>
                                                             <div class="media-body">
                                                                 <div class="stream-headline">
@@ -502,7 +485,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <!--/.media .stream-->
                                             <div class="media stream">
                                                 <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="images/user.png">
+                                                    <img src="../images/user.png">
                                                 </a>
                                                 <div class="media-body">
                                                     <div class="stream-headline">
@@ -554,7 +537,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/ejecutivo3.jpg">
+                                                            <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -576,7 +559,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/ejecutivo1.jpg">
+                                                            <img src="../images/ejecutivo1.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -601,7 +584,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/ejecutivo5.jpg">
+                                                            <img src="../images/ejecutivo5.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -622,7 +605,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/user.png">
+                                                            <img src="../images/user.png">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -647,7 +630,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/user.png">
+                                                            <img src="../images/user.png">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -668,7 +651,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/user.png">
+                                                            <img src="../images/user.png">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -693,7 +676,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/user.png">
+                                                            <img src="../images/user.png">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -714,7 +697,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="images/user.png">
+                                                            <img src="../images/user.png">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -786,21 +769,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              <td class="cell-time align-right">Fecha</td>
 
                                         </tr>
+                                        <? while ( $stsk = mysqli_fetch_row($Query_subtask)){ ?> 
                                         <tr class="task">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                            <td class="cell-title"><div>Enviar personal tecnico en terreno para verificar y reparar las fallas</div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due done">Hecho</b></td>
-                                            <td class="cell-title">juanito perez</td>
-                                            <td class="cell-time align-right"><div>19/04/2013</div></td>
+                                            <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
+                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
+                                            <td class="cell-title"></td>
+                                            <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
                                         </tr>
-                                        <tr class="task">
-                                            <td class="cell-icon"><i class="icon-checker"></i></td>
-                                            <td class="cell-title"><div>
-                                                 
-                                            </div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due warning">En curso</b></td>
-                                            <td class="cell-time align-right">9/04/2014</td>
-                                        </tr>
+                                        <? } ?>
                                     </tbody>
                                 </table>
 
@@ -811,21 +788,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                         </div>
                        </div> 
                   </div>
-
+<!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
-                                    <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
+                                                <select id="delegates">
+                                                    <optgroup label="Area Tecnica">
+                                                        <option val="10">Leandro Martinez</option>
+                                                        <option val="11">Macarena Arraño</option>
+                                                        <option val="12">Patricio bustamante</option>
+                                                        <option val="13">Felipe Beringer</option>
+                                                        <option val="14">Mario Gallardo</option>
+                                                        <option val="15">Jose Victorino</option>
+                                                        <option val="16">Eduardo Lasalle</option>
+                                                        <option val="17">Lena Fensterseifer</option>
+                                                    </optgroup>
+                                                </select>
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
                                 </div>
                                 <div class="attach">
-                                    <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
-                                             Arrastre aqui sus archivos
+                                             Arrastra Aqui
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
+                                               <input type="hidden" value="" name="code">
+                                               <input type="hidden" value="" name="fac">
+                                               <input type="hidden" value="" name="user">
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
@@ -852,15 +843,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
             <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
         </div>
     </div>
-    <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="scripts/jquery.knob.js"></script>
-    <script src="scripts/jquery.ui.widget.js"></script>
-    <script src="scripts/jquery.iframe-transport.js"></script>
-    <script src="scripts/jquery.fileupload.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.knob.js"></script>
+    <script src="../scripts/jquery.ui.widget.js"></script>
+    <script src="../scripts/jquery.iframe-transport.js"></script>
+    <script src="../scripts/jquery.fileupload.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -923,7 +914,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 }  else {
 
-    echo "<script language='javascript'>window.location='login.php'</script>";
+    echo "<script language='javascript'>window.location='../login.php'</script>";
 }
 
 
