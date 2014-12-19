@@ -36,6 +36,7 @@ else {
  $_SESSION["TxtFacility"] = $outcome['USR_FACILITY'];
  $_SESSION["TxtCode"] = $outcome['USR_ID'];
  $_SESSION["TxtRange"] = $outcome['USR_RANGE'];
+ $_SESSION["TxtDept"] = $outcome['USR_DEPT'];
 
 
 switch ($outcome['USR_RANGE']) {
