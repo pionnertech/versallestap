@@ -12,7 +12,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 
-$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "' AND SBTSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
+$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
 ?>
@@ -769,7 +769,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              <td class="cell-time align-right">Fecha</td>
 
                                         </tr>
-                                        <? while ( $stsk = mysqli_fetch_row($Query_subtask)){ ?> 
+                                        <? while ($stsk = mysqli_fetch_row($Query_subtask)){ ?> 
                                         <tr class="task">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
