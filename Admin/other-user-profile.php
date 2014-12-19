@@ -113,6 +113,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
  display: inline-block;
  vertical-align: top;
 }
+
+
     </style>    
 
 </head>
@@ -346,7 +348,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="profile-tab nav nav-tabs">
+                                <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
                                     <li><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
@@ -770,7 +772,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"></td>
+                                            <td class="cell-title"><button class="btn btn-small forward"></button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
                                         </tr>
                                         <? } ?>
@@ -899,7 +901,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
              }
 
-                })
+                });
 
     });
 

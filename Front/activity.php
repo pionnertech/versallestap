@@ -962,7 +962,6 @@ exist = 1;
 
 function delegateRequirement(name, imp, msg, dataF, dataS, iss_id){
 
-
 $.ajax({ type: "POST",
 	     url: "../backend/delegate.php?fac=" +fac +
 	           "&name=" + name + 
@@ -980,16 +979,11 @@ $.ajax({ type: "POST",
 	           })
 
 	           }
-
 })
-
 
 }
 
-
-
 function missingField(){
-
 
 var matrix = document.querySelectorAll('#intext input');
 //primera fase : todos los inputs.
@@ -1024,9 +1018,19 @@ if($("textarea").val() === "") {
   return false;
 }
 
+// 3era fase ... checkear validez de los datos ingresados
+if(!IsEmail($("#ctzmail").val())){
+    bootbox.alert("E-mail ingresado no es valido");
+    return false;
+}
+
+if(!Valida_Rut(document.getElementById('RUT'))){
+    bootbox.alert("el R.U.T ingresado no es valido");
+    return false;
+}
 
 return true;
-// 3era fase ... checkear validez de los datos ingresados
+
 
 
 }
