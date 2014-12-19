@@ -8,7 +8,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-
+$Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
@@ -20,7 +20,7 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edmin</title>
+    <title>Eque-e</title>
     <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
@@ -772,8 +772,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-small forward"></button></td>
+                                            <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
+                                            <input type="hidden" val="<? printf($stsk[0])?>">
                                         </tr>
                                         <? } ?>
                                     </tbody>
@@ -792,15 +793,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
                                                 <select id="delegates">
-                                                    <optgroup label="Area Tecnica">
-                                                        <option val="10">Leandro Martinez</option>
-                                                        <option val="11">Macarena Arraño</option>
-                                                        <option val="12">Patricio bustamante</option>
-                                                        <option val="13">Felipe Beringer</option>
-                                                        <option val="14">Mario Gallardo</option>
-                                                        <option val="15">Jose Victorino</option>
-                                                        <option val="16">Eduardo Lasalle</option>
-                                                        <option val="17">Lena Fensterseifer</option>
+                                                <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
+                                              <?  while($team = mysqli_fetch_row($Query_team)){ ?>
+                                                        <option val="<? printf($team[0]) ?>"><? printf($team[1]) . " " .  printf($team[1]) ?></option>
+                                                        <? } ?>
                                                     </optgroup>
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
@@ -812,9 +808,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              Arrastra Aqui
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
-                                               <input type="hidden" value="" name="code">
-                                               <input type="hidden" value="" name="fac">
-                                               <input type="hidden" value="" name="user">
+                                               <input type="hidden" value="" name="code" id="stsk-code">
+                                               <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
+                                               <input type="hidden" value="" name="user" id="stsk-user">
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
@@ -903,9 +899,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
                 });
 
+
+$(".forward").on("click", function(){
+                                    
+var stsk_id = $(this).parent().parent().children('input').val();
+
+$("#stsk-code").val(stsk_id);
+//fades
+$("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+})
+
     });
 
 
+//INSERT INTO USERS(
+
+//INSERT INTO USERS(USR_NAME, USR_SURNAME, USR_CREATE_TIME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_FACILITY)
 
 </script>
 <?
@@ -917,3 +928,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 
 ?>
+
+
+

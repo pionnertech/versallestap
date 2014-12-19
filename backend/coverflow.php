@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 
 
@@ -10,7 +8,7 @@ if(isset($_POST["U"]))
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$query = "SELECT USR_ID, USR_NAME, USR_SURNAME, USR_FACILITY, USR_RANGE FROM USERS WHERE (USR_NICK = '" . $_POST["U"] . "' AND USR_PASS = '" . $_POST['P'] . "')";
+$query = "SELECT USR_ID, USR_NAME, USR_SURNAME, USR_FACILITY, USR_RANGE, USR_DEPT FROM USERS WHERE (USR_NICK = '" . $_POST["U"] . "' AND USR_PASS = '" . $_POST['P'] . "')";
 
 $outcome = mysqli_fetch_assoc(mysqli_query($datos, $query));
 
