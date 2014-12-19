@@ -795,7 +795,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
-                                                        <option val="<? printf($team[0]) ?>"><? printf($team[1]) . " " .  printf($team[1]) ?></option>
+                                                        <option val="<? printf($team[0]) ?>"><? printf($team[1]) . "    " .  printf($team[2]) ?></option>
                                                         <? } ?>
                                                     </optgroup>
                                                 </select>
