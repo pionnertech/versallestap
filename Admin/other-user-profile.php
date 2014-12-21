@@ -907,7 +907,9 @@ var stsk_id = $(this).parent().parent().children('input').val();
 $("#stsk-code").val(stsk_id);
 
 $('#delegates option:first-child').attr("selected", "selected");
-var current = ("#delegates").val();
+
+var current = $("#delegates").val();
+
 $("#stsk-user").val(current);
 
 //fades
