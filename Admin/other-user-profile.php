@@ -26,6 +26,7 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
     <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <style type="text/css">
     .done{
@@ -776,6 +777,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>">
                                         </tr>
+                                        <tr>
+                                            <td colspan="5">
+                                            <p>
+                                                <strong>Grado de progreso</strong> <span class="pull-right small muted">12%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-warning" style="width: 13%;"></div>
+                                            </div>
+                                            <div class="file-contents">
+                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                            </div>
+                                            </td>
+                                        </tr>
                                         <? } ?>
                                     </tbody>
                                 </table>
@@ -801,6 +815,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                </div>
+                                <div>
+                                    
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
