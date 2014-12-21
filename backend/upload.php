@@ -5,6 +5,7 @@ $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 
+
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
@@ -15,6 +16,7 @@ if(!is_dir($target_dir)){
 }
 
 if(!is_dir($target_dir . $user . "/")){
+	chmod($target_dir . $user . "/",0755);
 	mkdir($target_dir . $user . "/", 775);
 }
 
@@ -30,7 +32,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . $_FILES['upl']['name'])){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . $_FILES['upl']['name'] . "_" . $code . "_" . $user)){
 		echo '{"status":"success"}';
 		exit;
 	}
