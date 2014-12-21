@@ -4,8 +4,8 @@ if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
+
 
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
@@ -28,6 +28,7 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
     <style type="text/css">
     .done{
 background: #daedb1; /* Old browsers */
@@ -115,11 +116,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
  vertical-align: top;
 }
 
+.display-progress{
+display:none;
+}
 
     </style>    
 
 </head>
 <body>
+<input type="muser" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -775,12 +781,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
-                                            <input type="hidden" value="<? printf($stsk[0]) ?>">
+                                            <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
+                                            <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
-                                        <tr>
+                                        <tr class="display-progress">
                                             <td colspan="5">
                                             <p>
-                                                <strong>Grado de progreso</strong> <span class="pull-right small muted">12%</span>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: 13%;"></div>
@@ -814,10 +821,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                     </optgroup>
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
+                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
-                                </div>
-                                <div>
-                                    
+                                    <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
@@ -828,6 +834,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                <input type="hidden" value="" name="code" id="stsk-code">
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user">
+                                               <input type="hidden" value="" name="issId" id="issId">
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
@@ -863,12 +870,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <script src="../scripts/jquery.iframe-transport.js"></script>
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
+    <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+     <script src="../scripts/jquery.datetimepicker.js"></script>
 </body>
 
 <script type="text/javascript">
     
-
     $(document).on('ready', function(){
+
+      
+$('.datetimepicker').datetimepicker({
+    step:5,
+    lang:'es',
+    format:'d/m/Y',
+    timepicker: false
+});
 
         $("#Urgent").on('click', function(){
          
@@ -885,6 +901,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 
         })
+
+
+
+
             $("#Audi").on('click', function(){
 
              if(!$(this).data("val") || $(this).data("val") === 0 ){
@@ -919,15 +939,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 $(".forward").on("click", function(){
                                     
-var stsk_id = $(this).parent().parent().children('input').val();
+var stsk_id = $(this).parent().parent().children('input#st').val();
+var iss_ident = $(this).parent().parent().children('input#iss_id').val();
 
+$("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
 
 $('#delegates option:first-child').attr("selected", "selected");
 
 var current = $("#delegates").val();
-
-
 
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
@@ -938,21 +958,43 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
     $("#stsk-user").val($(this).val());
-})
+});
+
 
 });
 
 
-//INSERT INTO USERS(
+$("#del-subtask").on('click', function(){
+    //check type.
 
-//INSERT INTO USERS(USR_NAME, USR_SURNAME, USR_CREATE_TIME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_FACILITY)
+var _fS = new Date();
+fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
+
+    $.ajax({
+        type: "POST",
+        url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
+        "&muser=" + $("#muser").val() +
+        "&user=" + $("#stsk-user").val() +
+        "&stsk=" + $("#stsk-code").val() + 
+        "&subject=" + $("#subject").val() +
+        "&descript=" + $("#st-description").val() +
+        "&startD=" + fechaS + 
+        "&fechaF=" + $("#fechaF").val() + 
+        "&fac=" + $("#facility").val(), 
+        success : function(data){
+           bootbox.alert("Requerimiento delegado existosamente");
+           console.info(data);
+        }
+    })
+});
+
 
 </script>
 <?
 
 }  else {
 
-    echo "<script language='javascript'>window.location='../login.php'</script>";
+    echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 
 
