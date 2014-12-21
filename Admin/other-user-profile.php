@@ -834,7 +834,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <!--/.wrapper-->
     <div class="footer">
         <div class="container">
-            <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
+            <b class="copyright">&copy; 2015 Eque-E </b>Todos los derechos reservados.
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -905,10 +905,21 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input').val();
 
 $("#stsk-code").val(stsk_id);
+
+var current = $('#delegates option:first-child').attr("selected").val();
+
+$("#stsk-user").val(current);
+
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
+});
+
+
+$("#delegates").on('change', function(){
+   
+    console.info( $(this).children('option:selected').val();)
 })
 
     });
