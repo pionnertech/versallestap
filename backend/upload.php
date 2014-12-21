@@ -5,7 +5,7 @@ $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 
-$target_dir = "/var/www/html/F". $fac . "/";
+$target_dir = "/var/www/html/F" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
 
