@@ -10,7 +10,6 @@ $dataF = $_GET['dataF'];
 $dataS = $_GET['dataS'];
 $iss_id = $_GET['iss_id'];
 
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 mysqli_query($datos, "UPDATE ISSUES SET ISS_CHARGE_USR = '" . $nombre . "' WHERE ISS_ID = " . $iss_id . ";");
