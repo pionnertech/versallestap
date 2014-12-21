@@ -1,16 +1,17 @@
 <?php
 
-$fac = $_REQUEST['fac'];
+$fac  = $_REQUEST['fac'];
 $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 
-$target_dir = "/var/www/html/F" . $fac . "/";
+$target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
 
+
 if(!is_dir($target_dir)){
-	mkdir($target_dir, 775);
+	mkdir($target_dir, 0775);
 }
 
 if(!is_dir($target_dir . $user . "/")){
