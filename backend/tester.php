@@ -1,9 +1,9 @@
 <?php
 
-chmod("/var/www/html/", 755);
-mkdir("/var/www/html/10000/", 755);
+chmod("/var/www/html/", 0775);
+mkdir("/var/www/html/10001/", 0775);
 
-if(is_dir("/var/www/html/10000/")){
+if(is_dir("/var/www/html/10001/")){
 	echo 1;
 } else {
 	echo 2;
