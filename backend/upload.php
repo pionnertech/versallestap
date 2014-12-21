@@ -32,7 +32,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . basename($_FILES['upl']['name'] , strtolower($extension)) . "_" . $code . "_" . $user . strtolower($extension) )){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		exit;
 	}
