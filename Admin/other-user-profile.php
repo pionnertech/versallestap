@@ -957,7 +957,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
-    $("#stsk-user").val($(this).val());
+    $("#stsk-user").val($("#delegates :selected").text());
 });
 
 
@@ -971,6 +971,7 @@ var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
 
+console.info($(".datetimepicker").val());
 
     $.ajax({
         type: "POST",
