@@ -16,8 +16,8 @@ if(!is_dir($target_dir)){
 }
 
 if(!is_dir($target_dir . $user . "/")){
-	chmod($target_dir . $user . "/",0755);
-	mkdir($target_dir . $user . "/", 775);
+	chmod($target_dir . $user . "/",0775);
+	mkdir($target_dir . $user . "/", 0775);
 }
 
 // A list of permitted file extensions
@@ -32,7 +32,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . $_FILES['upl']['name'] . "_" . $code . "_" . $user)){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "/" . basename($_FILES['upl']['name'] , strtolower($extension)) . "_" . $code . "_" . $user . strtolower($extension) )){
 		echo '{"status":"success"}';
 		exit;
 	}
