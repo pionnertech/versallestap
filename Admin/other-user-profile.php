@@ -124,7 +124,7 @@ display:none;
 
 </head>
 <body>
-<input type="muser" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
 <input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -344,7 +344,7 @@ display:none;
                                     </a>
                                     <div class="media-body">
                                         <h4>
-                                           Juanito Perez Cotapos<small>Offline</small>
+                                           <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Offline</small>
                                         </h4>
                                         <p class="profile-brief">
                                          Gerente General En Profits Taggle Inc.
@@ -947,7 +947,7 @@ $("#stsk-code").val(stsk_id);
 
 $('#delegates option:first-child').attr("selected", "selected");
 
-var current = $("#delegates").val();
+var current = $("#delegates :selected").text();
 
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
@@ -970,6 +970,8 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
+
+
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
@@ -979,7 +981,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
         "&subject=" + $("#subject").val() +
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
-        "&fechaF=" + $("#fechaF").val() + 
+        "&fechaF=" + $(".datetimepicker").val() + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
