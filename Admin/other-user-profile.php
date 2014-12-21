@@ -906,8 +906,8 @@ var stsk_id = $(this).parent().parent().children('input').val();
 
 $("#stsk-code").val(stsk_id);
 
-var current = $('#delegates option:first-child').attr("selected").val();
-
+$('#delegates option:first-child').attr("selected", "selected");
+var current = ("#delegates").val();
 $("#stsk-user").val(current);
 
 //fades
@@ -919,7 +919,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
    
-    console.info($(this).children('option:selected').val());
+    console.info($(this).val());
 })
 
     });
