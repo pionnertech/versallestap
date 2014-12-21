@@ -919,7 +919,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
    
-    console.info( $(this).children('option:selected').val();)
+    console.info($(this).children('option:selected').val());
 })
 
     });
