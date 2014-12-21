@@ -910,7 +910,7 @@ $('#delegates option:first-child').attr("selected", "selected");
 
 var current = $("#delegates").val();
 
-$("#stsk-user").val(current);
+
 
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
@@ -920,11 +920,10 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
-   
-    console.info($(this).val());
+    $("#stsk-user").val($(this).val());
 })
 
-    });
+});
 
 
 //INSERT INTO USERS(
