@@ -411,7 +411,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                         </tr>
-                                        <tr colspan="6">
+                                        <tr>
+                                        <td colspan="6">
                                            <div class="wrap-progress">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
@@ -424,6 +425,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             </div>
 
                                            </div>
+                                           </td>
                                         </tr>
                                            <? } ?>
                                     </tbody>
