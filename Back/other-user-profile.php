@@ -391,7 +391,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-title">Inicio</td>
                                             <td class="cell-time align-right">Fecha final</td>
                                         </tr>
-                                    <? while( $stsk = mysqli_fetch_row($Query_task)){?>
+                                    <? while( $stsk = mysqli_fetch_row($Query_task) ){ ?>
                                         <tr class="task">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
