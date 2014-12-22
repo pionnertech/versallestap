@@ -115,6 +115,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
  vertical-align: top;
 }
 
+.display-progress{
+
+    display: none;
+        -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
+}
 
 .wrap-progress{
   width:100%;
@@ -411,7 +418,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                         </tr>
-                                        <tr>
+                                        <tr class="display-progress">
                                         <td colspan="6">
                                            <div class="wrap-progress">
                                             <p>
@@ -423,7 +430,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <div class="file-contents">
                                                 <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
                                             </div>
-
                                            </div>
                                            </td>
                                         </tr>
@@ -558,6 +564,20 @@ $("#stsk-user").val(user);
 $("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
+
+});
+
+$(".due").on('click', function(){
+
+if(!$(this).data("val") || !$(this).data("val") == 0 ){
+
+   $(this).parent().parent().next().css({ display: "table-row"});
+     $(this).data("val", 1);
+} else  {
+
+ $(this).data("val", 0);
+  $(this).parent().parent().next().css({ display: "none"});
+}
 
 });
 
