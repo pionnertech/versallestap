@@ -522,7 +522,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
     $(document).on('ready', function(){
 
-       $('.span2').slider();
+       $('.span2').slider({ step: 10 , max: 100, min. 0});
 
 
         $("#Urgent").on('click', function(){
