@@ -395,7 +395,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         <tr class="task">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color: <? printf($stsk[6]) ?>"><? printf($stsk[5]) ?></b></td>
+                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-inverse forward">Marcar avance</button></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[4]) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
