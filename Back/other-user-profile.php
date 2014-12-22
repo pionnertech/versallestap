@@ -515,10 +515,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 <script type="text/javascript">
     
 
-    $(document).on('ready', function(){
-
-
-   var elem = document.querySelectorAll('.js-range')[0];
+       var elem = document.querySelectorAll('.js-range')[0];
    var init = new Powerange( elem , {
      min: 0, 
      max: 100,
@@ -527,6 +524,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
      hideRange: false,
      step: 10
  }); 
+   
+    $(document).on('ready', function(){
+
+
+
 
         $("#Urgent").on('click', function(){
          
