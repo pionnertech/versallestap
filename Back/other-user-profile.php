@@ -564,6 +564,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 });
 
 
+
+    });
+
+
+
    var elem = document.querySelector(".js-range");
 
     var init = new Powerange( elem , {
@@ -575,10 +580,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
      hideRange: false,
      step:10
    });  
-
-    });
-
-
+    
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').val();
