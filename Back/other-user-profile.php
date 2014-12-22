@@ -15,10 +15,6 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, A.STSK_FINISH_DATE, B.EST_DESCRIPT, B.EST_COLOR, B.STSK_START_DATE FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "')");
 
-
-
-
-
 ?>
 
 
@@ -528,7 +524,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 }  else {
 
-    echo "<script language='javascript'>window.location='login.php'</script>";
+    echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 
 
