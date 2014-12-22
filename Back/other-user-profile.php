@@ -25,12 +25,13 @@ $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJ
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edmin</title>
-    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link type="text/css" href="css/theme.css" rel="stylesheet">  
-    <link type="text/css" href="css/uploader_style.css" rel="stylesheet" />
-    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="../css/theme.css" rel="stylesheet">  
+    <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
+    <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
     <style type="text/css">
     .done{
 background: #daedb1; /* Old browsers */
@@ -453,15 +454,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
             <b class="copyright">&copy; 2015 Eque-E </b>todos los derechos reservados.
         </div>
     </div>
-    <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="scripts/jquery.knob.js"></script>
-    <script src="scripts/jquery.ui.widget.js"></script>
-    <script src="scripts/jquery.iframe-transport.js"></script>
-    <script src="scripts/jquery.fileupload.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.knob.js"></script>
+    <script src="../scripts/jquery.ui.widget.js"></script>
+    <script src="../scripts/jquery.iframe-transport.js"></script>
+    <script src="../scripts/jquery.fileupload.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+     <script src="../scripts/jquery.datetimepicker.js"></script>
 </body>
 
 <script type="text/javascript">
