@@ -506,9 +506,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <script src="../scripts/jquery.iframe-transport.js"></script>
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
+    <script type="text/javascript" src="../scripts/powerange.js"></script> 
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
-     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <script type="text/javascript" src="../scripts/powerange.min.js"></script> 
+    <script src="../scripts/jquery.datetimepicker.js"></script>
+    
 </body>
 
 <script type="text/javascript">
@@ -607,8 +608,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
      decimal: false,
      hideRange: false,
      step: 10
-
-   }); 
+ }); 
 
 </script>
 <?
