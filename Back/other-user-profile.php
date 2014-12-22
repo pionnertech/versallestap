@@ -458,6 +458,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                    <div class="progress-go">
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
+                                            </p>
+                                             <input type="text" class="span2" />
+                                    </div>
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
@@ -473,15 +479,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <!-- The file uploads will be shown here -->
                                          </ul>
                                     </form>
-                              </div>
-                              <div>
-                                  <span><i class="chevron"></i></span>
-                              </div>
-                              <div class="progress-go">
-                                            <p>
-                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
-                                            </p>
-                              <input type="text" class="span2" />
                               </div>
                           </div>
                         </div>
