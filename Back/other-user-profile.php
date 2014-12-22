@@ -568,19 +568,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     });
 
 
+ 
 
-   var elem = document.querySelector(".js-range");
-
-    var init = new Powerange( elem , {
-     min: 0, 
-     max: 100,
-     start: 0,
-     klass: 'begin',
-     decimal: false,
-     hideRange: false,
-     step:10
-   });  
-    
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').val();
@@ -609,6 +598,17 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 });
 
+
+   var elem = document.querySelector('.js-range');
+   var init = new Powerange( elem , {
+     min: 0, 
+     max: 100,
+     start: 0,
+     decimal: false,
+     hideRange: false,
+     step: 10
+
+   }); 
 
 </script>
 <?
