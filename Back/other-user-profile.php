@@ -25,7 +25,7 @@ $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJ
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
     <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
-    <link type="text/css" href="../css/poweranger.min.css" rel="stylesheet" />
+    <link type="text/css" href="../css/poweranger.css" rel="stylesheet" />
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
@@ -564,7 +564,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 });
 
 
-    var init = new Powerange($(".js-range") , {
+   var elem = document.querySelector(".js-range");
+
+    var init = new Powerange( elem , {
      min: 0, 
      max: 100,
      start: 0,
