@@ -25,6 +25,7 @@ $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJ
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
     <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
+    <link type="text/css" href="../css/poweranger.min.css" rel="stylesheet" />
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
@@ -128,7 +129,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
   background-color: #FFF;
 
 }
+
+.progress-go{
+    width:50%;
+    text-align: center;
+
+}
     </style>    
+
 
 
 </head>
@@ -445,7 +453,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
                                 <div class="sub-del">
-                                    <h3>Subdelegar tareas</h3>
+                                    <h3>Subir Cumplimientos</h3>
                                     <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
@@ -464,6 +472,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <!-- The file uploads will be shown here -->
                                          </ul>
                                     </form>
+                              </div>
+                              <div class="progress-go">
+                                  Porcentaje de progreso a asignar
+                                  <input type="text" class="js-range"/> 
                               </div>
                           </div>
                         </div>
@@ -496,6 +508,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
      <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="../scripts/powerange.min.js"></script> 
 </body>
 
 <script type="text/javascript">
@@ -548,7 +561,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
              }
 
-                })
+                });
+
+
+    var init = new Powerange($(".js-range") , {
+     min: 0, 
+     max: 100,
+     start: 0,
+     klass: 'begin',
+     decimal: false,
+     hideRange: false,
+     step:10
+   });  
 
     });
 
