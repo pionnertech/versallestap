@@ -118,6 +118,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 </head>
 <body>
+<input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -341,7 +343,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         <p class="profile-brief">
                                          Gerente General En Profits Taggle Inc.
                                         </p>
-                                        <div class="profile-details muted">
+                                        <div class="profile-details muted" id="kitkat">
                                             <a href="#" class="btn"><i class="icon-plus shaded"></i>Send Friend Request </a>
                                             <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>Send message </a>
                                         </div>
@@ -352,7 +354,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     <li><a href="#tasks-own" data-toggle="tab">Mis Requerimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
-                   <div class="tab-pane fade" id="require">
+                   <div class="tab-pane fade active in" id="require">
                     <div class="module message">
                             <div class="module-head">
                                 <h3>Control de cumplimientos</h3>
@@ -397,7 +399,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-inverse forward">Marcar avance</button></td>
-                                            <td class="cell-time align-right"><div><? printf($stsk[4]) ?></div></td>
+                                            <td class="cell-time"><div><? printf($stsk[4]) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                         </tr>
@@ -419,11 +421,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
                                 </div>
                                 <div class="attach">
-                                    <form id="upload" method="post" action="upload.php" enctype="multipart/form-data">
+                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
+                                               <input type="hidden" value="" name="code" id="stsk-code">
+                                               <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
+                                               <input type="hidden" value="" name="user" id="stsk-user">
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
@@ -482,6 +487,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
          }
 
 
+
         })
             $("#Audi").on('click', function(){
 
@@ -516,6 +522,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
     });
 
+
+$(".forward").on('click', function(){
+
+   var subtask_id =  $(this).parent().parent().children('input').val();
+   var user = $("#muser").val();
+
+$("#stsk-code").val(subtask_id);
+$("#stsk-user").val(user);
+
+$("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+
+});
 
 
 </script>
