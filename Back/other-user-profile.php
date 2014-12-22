@@ -114,7 +114,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
  display: inline-block;
  vertical-align: top;
 }
+
+
+.wrap-progress{
+  width:100%;
+  background-color: #FFF;
+
+}
     </style>    
+
 
 </head>
 <body>
@@ -402,6 +410,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time"><div><? printf($stsk[4]) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
+                                        </tr>
+                                        <tr colspan="6">
+                                           <div class="wrap-progress">
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-warning" style="width: 13%;"></div>
+                                            </div>
+                                            <div class="file-contents">
+                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                            </div>
+
+                                           </div>
                                         </tr>
                                            <? } ?>
                                     </tbody>
