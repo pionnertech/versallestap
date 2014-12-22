@@ -25,8 +25,9 @@ $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJ
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
     <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
-    <link type="text/css" href="../css/poweranger.css" rel="stylesheet" />
+    <link type="text/css" href="../css/slider.css" rel="stylesheet" />
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
     <style type="text/css">
@@ -147,7 +148,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Edmin </a>
+                    <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Eque-E</a>
                 <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav nav-icons">
                         <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
@@ -473,9 +474,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                          </ul>
                                     </form>
                               </div>
+                              <div>
+                                  <span><i class="chevron"></i></span>
+                              </div>
                               <div class="progress-go">
-                                  Porcentaje de progreso a asignar
-                                  <input type="text" class="js-range"/> 
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
+                                            </p>
+                              <input type="text" class="span2" />
                               </div>
                           </div>
                         </div>
@@ -506,28 +512,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <script src="../scripts/jquery.iframe-transport.js"></script>
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
-    <script type="text/javascript" src="../scripts/powerange.js"></script> 
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    
+     <script src="../scripts/bootstrap-slider.js"></script>
 </body>
 
 <script type="text/javascript">
     
 
-       var elem = document.querySelectorAll('.js-range')[0];
-   var init = new Powerange( elem , {
-     min: 0, 
-     max: 100,
-     start: 0,
-     decimal: false,
-     hideRange: false,
-     step: 10
- }); 
-   
     $(document).on('ready', function(){
 
-
+       $('.span2').slider();
 
 
         $("#Urgent").on('click', function(){
@@ -576,9 +571,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
              }
 
                 });
-
-
-
     });
 
 
