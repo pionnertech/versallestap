@@ -118,9 +118,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 .display-progress{
 
     display: none;
-        -webkit-transition: all 600ms ease-in-out;
-    -moz-transition: all 600ms ease-in-out;
-    transition: all 600ms ease-in-out;
+        -webkit-transition: all 800ms ease-in-out;
+    -moz-transition: all 800ms ease-in-out;
+    transition: all 800ms ease-in-out;
 }
 
 .wrap-progress{
@@ -569,14 +569,14 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $(".due").on('click', function(){
 
-if(!$(this).data("val") || !$(this).data("val") == 0 ){
+if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
    $(this).parent().parent().next().css({ display: "table-row"});
      $(this).data("val", 1);
 } else  {
 
- $(this).data("val", 0);
   $(this).parent().parent().next().css({ display: "none"});
+   $(this).data("val", 0);
 }
 
 });
