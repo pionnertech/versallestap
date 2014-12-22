@@ -132,7 +132,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 }
 
 .progress-go{
-    width:50%;
+    width:100%;
     text-align: center;
 
 }
