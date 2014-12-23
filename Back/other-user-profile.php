@@ -132,14 +132,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 }
 
 .progress-go{
-    width:100%;
-    text-align: center;
+    width:85%;
+    text-align: left;
 
 }
-    </style>    
+
+.slider-horizontal{
+    width: 100% !important;
+}
 
 
-
+</style>    
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
@@ -455,9 +458,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                            <div class="media-stream">
                                 <div class="sub-del">
                                     <h3>Subir Cumplimientos</h3>
-                                    <input type="text" id="delegates" class="require-subtasks" val="" placeholder="ingrese nombre">
-                                    <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
-                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
+                                    <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
                                     <div class="progress-go">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
