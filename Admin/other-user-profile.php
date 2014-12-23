@@ -121,7 +121,9 @@ display:none;
 }
 
 
-
+.Pe{
+    display: table-row;
+}
 .Ec, .Hc, .At, .Pv{
     display: none;
 }
@@ -786,7 +788,7 @@ display:none;
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
-                                          switch ($stsk[3]) {
+                                          switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
                                               break;
@@ -807,7 +809,6 @@ display:none;
                                               $class = "Pv";
                                               break;
                                           }
-
 
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
