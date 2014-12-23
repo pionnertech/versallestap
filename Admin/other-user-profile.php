@@ -120,6 +120,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 display:none;
 }
 
+
+
+.Ec, .Hc, .At, .Pv{
+    display: none;
+}
+
+
+
     </style>    
 
 </head>
@@ -749,12 +757,11 @@ display:none;
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Todos</a></li>
-                                            <li><a href="#">En Progreso</a></li>
-                                            <li><a href="#">finalizados</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Nuevo requerimiento</a></li>
-                                            <li><a href="#">Atrasados</a></li>
+                                            <li><a href="#" >Todos</a></li>
+                                            <li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
+                                            <li class="switcher" id="Hc"><a href="#" >Finalizados</a></li>
+                                            <li class="switcher" id="Pv"><a href="#" >Por vencer</a></li>
+                                            <li class="switcher" id="At"><a href="#" >Atrasados</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -774,8 +781,36 @@ display:none;
                                              <td class="cell-time align-right">Fecha</td>
 
                                         </tr>
-                                        <? while ($stsk = mysqli_fetch_row($Query_subtask)){ ?> 
-                                        <tr class="task">
+                                        <? 
+                                        $class = "";
+
+                                        while ($stsk = mysqli_fetch_row($Query_subtask)){ 
+                                         
+                                          switch ($stsk[3]) {
+                                              case 'Pendiente':
+                                              $class = "Pe";
+                                              break;
+                                              case 'En Curso':
+                                               $class = "Ec";
+
+                                              break;
+
+                                              case 'Hecha':
+                                               $class = "Hc";
+                                              break;
+
+                                              case 'Atrasada':
+                                               $class = "At";
+                                              break;
+
+                                              case 'Por Vencer':
+                                              $class = "Pv";
+                                              break;
+                                          }
+
+
+                                            ?> 
+                                        <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
@@ -947,7 +982,7 @@ $("#stsk-code").val(stsk_id);
 
 $('#delegates option:first-child').attr("selected", "selected");
 
-var current = $("#delegates :selected").text();
+var current = $("#delegates").val();
 
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
@@ -970,7 +1005,6 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-
 console.info($(".datetimepicker").val());
 
     $.ajax({
@@ -991,6 +1025,23 @@ console.info($(".datetimepicker").val());
     })
 });
 
+
+
+$(".switcher").on('click', function(){
+    var all_on = document.querySelectorAll('.switcher');
+    var ex = $(this).attr("id");
+    console.info(ex);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+
+
+});
 
 </script>
 <?
