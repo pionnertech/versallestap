@@ -1,7 +1,7 @@
-﻿<?php
-session_start();
+﻿<?php session_start();
 
-if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'admin'){
+
+if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'Sadmin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
                                                                 
@@ -11,7 +11,6 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //TASKS
 
 $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  A.ISS_CHARGE_USR, B.EST_DESCRIPT, B.EST_COLOR,  A.ISS_FINISH_DATE FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
-
 
 
 ?>
