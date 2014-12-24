@@ -12,9 +12,6 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, A.STSK_FINISH_DATE, B.EST_DESCRIPT, B.EST_COLOR, A.STSK_START_DATE FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "')");
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -429,6 +426,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time"><div><? printf($stsk[4]) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
+                                            <p style="display: none;"><? printf($stsk[1]) ?></p>
                                         </tr>
                                         <tr class="display-progress">
                                         <td colspan="6">
@@ -466,6 +464,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             </p>
                                              <input type="text" class="span2" />
                                     </div>
+                                    <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
@@ -519,9 +518,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 <script type="text/javascript">
     
 
+var fac = $("#facility").val();
+var current_iss;
+
     $(document).on('ready', function(){
 
-       $('.span2').slider({ step: 10 , max: 100, min: 0});
+      var progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
 
         $("#Urgent").on('click', function(){
@@ -578,6 +580,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').val();
+   var current_iss =  $(this).parent().parent().children('p').html();
+   console.info(current_iss);
+
    var user = $("#muser").val();
 
 $("#stsk-code").val(subtask_id);
@@ -604,6 +609,52 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 });
 
 
+
+
+
+//aqui va la funcion 
+
+
+$("#upgrade").on('click', function(){
+
+var current_value = progressbar.('getValue');
+console.info(current_value);
+
+    upprogress(current_value, $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
+    current_iss = 0;
+
+})
+
+
+
+
+function upprogress(val, user, stsk_id, iss_id, des, subject){
+
+var _fS = new Date();
+date = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + ('0' + _fs.getHours()).slice(-2) + ":" + ('0' + _fs.getMinutes()).slice(-2) + ":" + ('0' + _fs.getSeconds()).slice(-2);
+
+console.info('fecha: ' + date );
+
+    $.ajax({
+           type: "POST", 
+           url: "../backend/upgrade.php?val=" + val +
+            "&stsk=" +  stsk_id + 
+            "&iss_id=" + iss_id + 
+            "&mmx=" + user + 
+            "&subject=" + subject + 
+            "&des=" + des + 
+            "&date=" + date +
+            "&fac=" + fac , 
+            success : function (data){
+                if(data === 1){
+             bootbox.alert("Progreso grabado existosamente");
+                } else {
+            bootbox.alert("Falla en la conexion al servidor");
+                }
+                
+            }
+    });
+}
 
 </script>
 <?
