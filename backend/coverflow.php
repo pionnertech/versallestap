@@ -40,6 +40,9 @@ else {
 
 
 switch ($outcome['USR_RANGE']) {
+	case "sadmin":
+	echo "<script language='javascript'>window.location='../Sadmin/index.php'</script>";
+	break;
 	case "admin":
 		 echo "<script language='javascript'>window.location='../Admin/index.php'</script>";
 		break;
