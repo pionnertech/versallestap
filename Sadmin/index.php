@@ -1,7 +1,7 @@
 ﻿<?php session_start();
 
 
-if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'Sadmin'){
+if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'sadmin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
                                                                 
