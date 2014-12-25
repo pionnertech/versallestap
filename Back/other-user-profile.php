@@ -632,15 +632,6 @@ function upprogress(val, user, stsk_id, iss_id, des, subject){
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
-console.info("../backend/upgrade.php?val=" + val +
-            "&stsk=" +  stsk_id + 
-            "&iss_id=" + iss_id + 
-            "&mmx=" + user + 
-            "&subject=" + subject + 
-            "&des=" + des + 
-            "&date=" + date +
-            "&fac=" + fac );
-
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade.php?val=" + val +
@@ -652,8 +643,8 @@ console.info("../backend/upgrade.php?val=" + val +
             "&date=" + date +
             "&fac=" + fac , 
             success : function (data){
-                console.info(data);
-                if(data === 1){
+              
+                if( parseInt(data) == 1){
              bootbox.alert("Progreso grabado existosamente");
                 } else {
             bootbox.alert("Falla en la conexion al servidor");
