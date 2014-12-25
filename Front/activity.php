@@ -17,22 +17,8 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
 
 $Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtFacility']);
 
-
-
-/*
-ISS_ID
-ISS_DATE_ING
-ISS_SUBJECT
-ISS_DESCRIP
-ISS_CHARGE_USR
-ISS_DEADLINE
-ISS_DAYS
-ISS_STATE
-ISS_FINISH_DATE
-ISS_DELAY_DAYS
-ISS_SUBTASKS_CANT
-*/
-
+$Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_DEPT, USR_NAME, USR_SURNAME FROM `USERS` WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT");
+$Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;"  );
 
 
 ?>
@@ -384,32 +370,27 @@ width: 100%;
                                 	<div style="width: 100%; position: relative; display: inline-block; vertical-align: top; ">
                                 	<textarea id="requeriment" name="requeriment" placeholder="Describa el requerimiento" style="display: inline-block; vertical-align: top; width: 98%; "></textarea>
                                 	<select id="delgates" class="biginput">
-												 <optgroup label="Gerencia">
-                                                     <option val="0">Alejandro Curaqueo</option>
-                                                     <option val="1">Rodrigo Peña</option>
-                                                     <option val="2">Pedro Cortez</option>
-                                                  </optgroup>
-                                                  <optgroup label="Informatica">
-                                                     <option val="3">Francisco Papal</option>
-                                                     <option val="4">Liliana Avogadro</option>
-                                                  </optgroup>
-                                                  <optgroup label="Contabilidad/Finanzas">
-                                                     <option val="5">Jefferson Pimentel</option>
-                                                     <option val="6">Gabriella Santorielli</option>
-                                                     <option val="7">Laura Costa</option>
-                                                     <option val="8">Anita Acosta</option>
-                                                     <option val="9">Pablo Suarez</option>
-                                                    </optgroup>
-                                                    <optgroup label="Area Tecnica">
-                                                     <option val="10">Leandro Martinez</option>
-                                                     <option val="11">Macarena Arraño</option>
-                                                     <option val="12">Patricio bustamante</option>
-                                                     <option val="13">Felipe Beringer</option>
-                                                     <option val="14">Mario Gallardo</option>
-                                                     <option val="15">Jose Victorino</option>
-                                                     <option val="16">Eduardo Lasalle</option>
-                                                     <option val="17">Lena Fensterseifer</option>
-                                                    </optgroup>
+
+                                       <? 
+                                  
+                                       while( $deptos = mysqli_fetch_row($Query_depts)){ 
+
+                                       	?>
+                                      <optgroup label="<? printf($deptos[0]) ?>">
+
+                                            <? while($per = mysqli_fetch_row($Query_personal) && $deptos[0] == $per[1] ){ 
+                                                
+                             ?>
+                                              <option value="<? printf($per[0])?>"><? printf($per[2])?> <? printf($per[3])?></option>
+                             <?
+                                            	}?>
+                                          
+                                          </optgroup>
+
+                                          <?
+                                          }
+                                        ?>
+
 												</select>
                      <i class="icon-warning-sign icon-2x" id="urgent" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                      <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
@@ -750,7 +731,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
 
         if($("#SendRequest").data("val") == 1 ){
       
-var name = $('select').find(':selected').text();
+var name = $('select').find(':selected').val();
 var msg = $("#requeriment").val();
 var dataF = $("#dtp2").val() + " 10:00:00";
 
@@ -960,11 +941,11 @@ exist = 1;
 })
 }
 
-function delegateRequirement(name, imp, msg, dataF, dataS, iss_id){
+function delegateRequirement(usr_id, imp, msg, dataF, dataS, iss_id){
 
 $.ajax({ type: "POST",
 	     url: "../backend/delegate.php?fac=" +fac +
-	           "&name=" + name + 
+	           "&usr_id=" +  + 
 	           "&imp=" + imp +
 	           "&msg=" + msg+
 	           "&dataF=" + dataF +
