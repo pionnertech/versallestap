@@ -520,10 +520,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 var fac = $("#facility").val();
 var current_iss;
+var progressbar;
 
     $(document).on('ready', function(){
 
-      var progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
+       progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
 
         $("#Urgent").on('click', function(){
@@ -623,7 +624,7 @@ console.info(current_value);
     upprogress(current_value, $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
     current_iss = 0;
 
-})
+});
 
 
 
