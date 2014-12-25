@@ -29,22 +29,20 @@ if(!mysqli_query($datos, $insertar)){
 //añadir progreso a la audiencia
 $query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id . ";");
 
-$i = 0;
+
 $suma = 0;
 $count = mysqli_num_rows($query);
 
 while ( $fila5 = mysqli_fetch_row($query) ){
 
-       $suma += $fila5[$i];
-
-       $i = $i + 1;
+       $suma += $fila5[0];
 }
 
 $upgrade = ($suma / $count);
 
 echo $suma . " / " . $count . " / " . $upgrade;
 
-if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . $upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
+if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . (int)$upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
  
  echo 0;
 
