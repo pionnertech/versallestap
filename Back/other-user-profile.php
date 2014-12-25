@@ -581,7 +581,7 @@ var progressbar;
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').val();
-   var current_iss =  $(this).parent().parent().children('p').html();
+   current_iss =  $(this).parent().parent().children('p').html();
    console.info(current_iss);
 
    var user = $("#muser").val();
@@ -618,10 +618,11 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $("#upgrade").on('click', function(){
 
-var current_value = $('.span2').slider('getValue');
-console.info(current_value);
 
-    upprogress(current_value, $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
+
+
+
+    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
     current_iss = 0;
   
 
