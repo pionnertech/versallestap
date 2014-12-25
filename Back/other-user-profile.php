@@ -623,6 +623,7 @@ console.info(current_value);
 
     upprogress(current_value, $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
     current_iss = 0;
+  
 
 });
 
@@ -632,7 +633,7 @@ console.info(current_value);
 function upprogress(val, user, stsk_id, iss_id, des, subject){
 
 var _fS = new Date();
-date = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + ('0' + _fs.getHours()).slice(-2) + ":" + ('0' + _fs.getMinutes()).slice(-2) + ":" + ('0' + _fs.getSeconds()).slice(-2);
+date = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
 console.info('fecha: ' + date );
 
