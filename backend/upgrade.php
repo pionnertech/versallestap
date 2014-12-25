@@ -42,6 +42,8 @@ while ( $fila5 = mysqli_fetch_row($query) ){
 
 $upgrade = ($suma / $count);
 
+echo $suma . " / " . $count . " / " . $upgrade;
+
 if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . $upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
  
  echo 0;

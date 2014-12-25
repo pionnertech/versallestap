@@ -375,7 +375,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 </div>
                                 <ul class="profile-tab nav nav-tabs">
                                     <li class="active"><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
-                                    <li><a href="#tasks-own" data-toggle="tab">Mis Requerimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                    <div class="tab-pane fade active in" id="require">
@@ -648,10 +647,12 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&date=" + date +
             "&fac=" + fac , 
             success : function (data){
-              
-                if( parseInt(data) == 1){
+
+         if( data == 1){
              bootbox.alert("Progreso grabado existosamente");
+
                 } else {
+
             bootbox.alert("Falla en la conexion al servidor");
                 }
                 
