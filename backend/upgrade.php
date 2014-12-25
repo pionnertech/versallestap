@@ -22,7 +22,6 @@ if(!mysqli_query($datos, $insertar)){
 	exit;
 }
 
-
 //añadir progreso a la audiencia
 $query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id . ";");
 
@@ -37,19 +36,17 @@ while ( $fila5 = mysqli_fetch_row($query) ){
        $i++;
 }
 
-
 $upgrade = ($suma / $count);
 
 
 if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . $upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
-  
+ 
  echo 0;
 
 } else {
 
-
    echo 1;
-
+   
 }
 
 
