@@ -618,7 +618,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $("#upgrade").on('click', function(){
 
-var current_value = progressbar.('getValue');
+var current_value = $('.span2').slider('getValue');
 console.info(current_value);
 
     upprogress(current_value, $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
