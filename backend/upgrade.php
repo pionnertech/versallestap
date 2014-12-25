@@ -10,9 +10,6 @@ $date = $_GET['date'];
 $fac = $_GET['fac'];
 
 
-
-
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE STSK_ID = " . $id . " ;");
@@ -39,8 +36,6 @@ while ( $fila5 = mysqli_fetch_row($query) ){
 }
 
 $upgrade = ($suma / $count);
-
-echo $suma . " / " . $count . " / " . $upgrade;
 
 if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . (int)$upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
  

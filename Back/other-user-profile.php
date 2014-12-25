@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, A.STSK_FINISH_DATE, B.EST_DESCRIPT, B.EST_COLOR, A.STSK_START_DATE FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "')");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, A.STSK_FINISH_DATE, B.EST_DESCRIPT, B.EST_COLOR, A.STSK_START_DATE, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "')");
 
 ?>
 <!DOCTYPE html>
@@ -431,10 +431,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         <td colspan="6">
                                            <div class="wrap-progress">
                                             <p>
-                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[8]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 13%;"></div>
+                                                <div class="bar bar-warning" style="width: <? printf($stsk[8]) ?>%;"></div>
                                             </div>
                                             <div class="file-contents">
                                                 <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
@@ -519,6 +519,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 var fac = $("#facility").val();
 var current_iss;
+var inner = 0;
 var progressbar;
 
     $(document).on('ready', function(){
@@ -581,8 +582,7 @@ $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
-   
-   console.info(current_iss);
+   inner = $(this).parent().parent().index();
 
    var user = $("#muser").val();
 
@@ -610,14 +610,11 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 });
 
 
-
-
-
 //aqui va la funcion 
 
 
 $("#upgrade").on('click', function(){
-    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
+    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner);
     current_iss = 0;
 
     $("#subject").val('');
@@ -631,7 +628,7 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 
 
-function upprogress(val, user, stsk_id, iss_id, des, subject){
+function upprogress(val, user, stsk_id, iss_id, des, subject, index){
 
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
@@ -647,10 +644,10 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&date=" + date +
             "&fac=" + fac , 
             success : function (data){
-    console.log(data);
          if( data == 1){
              bootbox.alert("Progreso grabado existosamente");
-
+            $('tr').eq(index+1).children('p').eq(0).children('span').html(val + '%');
+            $('tr').eq(index+1).children('div.bar').css({width : val + "%");
                 } else {
 
             bootbox.alert("Falla en la conexion al servidor");
