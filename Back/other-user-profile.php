@@ -620,7 +620,12 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 $("#upgrade").on('click', function(){
     upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val());
     current_iss = 0;
-  
+
+    $("#subject").val('');
+    $("#st-description").val('');
+    $(".span2").slider('setValue', 0);
+$("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
+$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 });
 
