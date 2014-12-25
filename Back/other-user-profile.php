@@ -426,7 +426,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-time"><div><? printf($stsk[4]) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf($stsk[7]) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
-                                            <input type="hidden" value="<? printf($stsk[1]) ?>">
+                                            <input type="hidden" value="<? printf($stsk[1]) ?>" >
                                         </tr>
                                         <tr class="display-progress">
                                         <td colspan="6">
@@ -581,7 +581,7 @@ var progressbar;
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
-   current_iss =  $(this).parent().parent().children('div').eq(1).val();
+   current_iss =  $(this).parent().parent().children('input').eq(1).val();
    
    console.info(current_iss);
 
