@@ -17,7 +17,7 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
 
 $Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtFacility']);
 
-$Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_DEPT, USR_NAME, USR_SURNAME FROM `USERS` WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT");
+
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;"  );
 
 
@@ -378,10 +378,13 @@ width: 100%;
                                        	?>
                                       <optgroup label="<? printf($deptos[0]) ?>">
 
-                                            <? while($per = mysqli_fetch_row($Query_personal) && $deptos[0] == $per[1] ){ 
+                                            <? 
+                                             
+                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."'); ");
+                                        while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>
-                                              <option value="<? printf($per[0])?>"><? printf($per[2])?> <? printf($per[3])?></option>
+                                              <option value="<? printf($per[0])?>"><? printf($per[1])?> <? printf($per[2])?></option>
                              <?
                                             	}?>
                                           
