@@ -648,6 +648,7 @@ console.info('fecha: ' + date );
             "&date=" + date +
             "&fac=" + fac , 
             success : function (data){
+                console.info(data);
                 if(data === 1){
              bootbox.alert("Progreso grabado existosamente");
                 } else {
