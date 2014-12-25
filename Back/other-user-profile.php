@@ -581,7 +581,8 @@ var progressbar;
 $(".forward").on('click', function(){
 
    var subtask_id =  $(this).parent().parent().children('input').val();
-   current_iss =  $(this).parent().parent().children('p').html();
+   current_iss =  parseInt($(this).parent().parent().children('p').html());
+   
    console.info(current_iss);
 
    var user = $("#muser").val();
