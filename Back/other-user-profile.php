@@ -644,7 +644,7 @@ console.info("../backend/upgrade.php?val=" + val +
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade.php?val=" + val +
-            "&stsk=" +  stsk_id + 
+            "&stsk_id=" +  stsk_id + 
             "&iss_id=" + iss_id + 
             "&mmx=" + user + 
             "&subject=" + subject + 
