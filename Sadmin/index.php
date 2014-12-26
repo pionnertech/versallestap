@@ -6,7 +6,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR,  SUBSTRING(A.ISS_FINISH_DATE, 1, 10), C.USR_SURNAME FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAME,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME, D.CTZ_SURNAME2 FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
 
 ?>
@@ -398,7 +398,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  C.USR_NAME
                                                     <? printf($issues[0]) ?>
                                                 </td>
                                                 <td>
-                                                    <? printf($issues[1]) ?>
+                                                    <? printf($issues[1]) ?> <? printf($issues[7]) ?> <? printf($issues[8]) ?>
                                                 </td>
                                                 <td>
                                                     <? printf($issues[2]) ?> <? printf($issues[6])?>
