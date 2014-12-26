@@ -383,7 +383,7 @@ width: 100%;
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>
-                                              <option value="<? printf($per[0])?>"><? printf($per[1])?> <? printf($per[2])?></option>
+                                              <option><? printf($per[1])?> <? printf($per[2])?></option>
                              <?
                                             	}?>
                                           
