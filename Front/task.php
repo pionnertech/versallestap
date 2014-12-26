@@ -211,6 +211,7 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
+										    <li class="switcher" id="Pe"><a href="#" >Pendientes</a></li>
 											<li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
 											<li class="switcher" id="Hc"><a href="#" >Hechos</a></li>
 											<li class="switcher" id="Pv"><a href="#" >Por Vencer</a></li>
