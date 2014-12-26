@@ -450,7 +450,7 @@ var exist = 0;
 
 $(document).on('ready', function(){
 
-$('.selectpicker').selectpicker();
+$('.selectpicker').selectpicker({ dropupAuto : false });
 
 
 
