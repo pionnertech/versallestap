@@ -493,7 +493,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
                                 <div class="sub-del">
-                                <div id="back"><i clas="fa fa-chevron-circle-left fa-3x"></i></div>
+                                <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
                                     <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
@@ -720,7 +720,10 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
     });
 }
 
-$()
+$("#back").on('click', function(){
+   $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
+$("#tasks-own").removeClass('active in');$("#require").addClass('active in'); 
+})
 
 </script>
 <?
