@@ -134,7 +134,7 @@ display:none;
 
 </head>
 <body>
-<input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
 <input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -992,7 +992,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
-    $("#stsk-user").val($("#delegates :selected").text());
+    $("#stsk-user").val($("#delegates").val();
 });
 
 
