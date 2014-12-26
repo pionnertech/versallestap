@@ -187,7 +187,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <li><a href="#">Edit Profile</a></li>
                                 <li><a href="#">Account Settings</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="../backend/close.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -226,7 +226,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     <li><a href="other-user-listing.html"><i class="icon-time"></i>Historial Requerimientos</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                            <li><a href="../backend/close.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
                         </ul>
                         <h3>Mis Compromisos</h3>
                         <div id="Urgencias" class="OwnComp">
@@ -620,6 +620,13 @@ $(".forward").on('click', function(){
 
    var user = $("#muser").val();
 
+//obten el porcentaje
+
+
+var percent = $(this).parent().parent().next().children('span.muted').html().replace(/\d+% ?/g, "");
+
+$(".span2").slider('setValue', parseInt(percent));
+
 $("#stsk-code").val(subtask_id);
 $("#stsk-user").val(user);
 
@@ -648,19 +655,21 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 
 $("#upgrade").on('click', function(){
+
     upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner);
     current_iss = 0;
 
     $("#subject").val('');
     $("#st-description").val('');
+
     $(".span2").slider('setValue', 0);
+
 $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 });
 
 $(".switcher").on('click', function(){
-    console.info('llega');
     var all_on = document.querySelectorAll('.switcher');
     var ex = $(this).attr("id");
     console.info(ex);
@@ -670,11 +679,11 @@ $(".switcher").on('click', function(){
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
            }
-        
      }
-
-
 });
+
+
+
 
 function upprogress(val, user, stsk_id, iss_id, des, subject, index){
 
