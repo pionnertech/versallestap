@@ -451,7 +451,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 
                                         ?>
-                                        <tr class="task  <? printf($class) ?>">
+                                        <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
@@ -660,6 +660,7 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 });
 
 $(".switcher").on('click', function(){
+    console.info('llega');
     var all_on = document.querySelectorAll('.switcher');
     var ex = $(this).attr("id");
     console.info(ex);
@@ -704,21 +705,8 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
     });
 }
 
-$(".switcher").on('click', function(){
-    var all_on = document.querySelectorAll('.switcher');
-    var ex = $(this).attr("id");
-    console.info(ex);
-     for(i=0; i < all_on.length ; i++){
-           if(all_on[i].id !== ex){
-              $('.' + all_on[i].id).css({ display : "none"});
-           } else {
-              $('.' + all_on[i].id).css({ display: "table-row"});
-           }
-        
-     }
 
 
-});
 </script>
 <?
 
