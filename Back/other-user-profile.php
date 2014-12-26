@@ -17,7 +17,7 @@ $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJ
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eque-E</title>
+    <title>Eque-e</title>
     <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
@@ -704,6 +704,21 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
     });
 }
 
+$(".switcher").on('click', function(){
+    var all_on = document.querySelectorAll('.switcher');
+    var ex = $(this).attr("id");
+    console.info(ex);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+
+
+});
 </script>
 <?
 
