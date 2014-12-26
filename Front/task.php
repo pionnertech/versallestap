@@ -54,6 +54,8 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
     display: none;
 }
 
+
+
 	</style>
 </head>
 <body>
@@ -363,13 +365,10 @@ $('.datetimepicker').datetimepicker({
 
 
 $(".requirement").fadeOut('fast');
+$(".display-progress").fadeOut('fast');
 
 $(".due").on('click', function (){
-if($(this).text() != "En Curso"){
 $(this).parent().parent().next('tr').fadeToggle('slow');
-}
-
-
 });
 
 
