@@ -578,8 +578,8 @@ setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narra
 
 $("#delegate").on('click', function(){
 
-$(".dropdown-menu").eq(2).removeClass('show');
-$(".dropdown-menu").eq(2).addClass('hidden');
+$("div.dropdown-menu").removeClass('show');
+$("div.dropdown-menu").addClass('hidden');
 	if($(this).data("val") === 1){
 
        $("#del-wrap  div , #del-wrap input, #del-wrap h3").removeClass('show');
