@@ -38,6 +38,7 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 	<link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
 	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	<link type="text/css" href="../css/bootstrap-select.css" rel="stylesheet">
 	<link type="text/css" href="../css/style.css">
 	
 	<style type="text/css">
@@ -369,10 +370,9 @@ width: 100%;
                                 <h3>Asignar Requerimientos</h3>
                                 	<div style="width: 100%; position: relative; display: inline-block; vertical-align: top; ">
                                 	<textarea id="requeriment" name="requeriment" placeholder="Describa el requerimiento" style="display: inline-block; vertical-align: top; width: 98%; "></textarea>
-                                	<select id="delgates" class="biginput">
-
+                                	<select id="delgates" class="biginput selectpicker" data-live-search="true">
                                        <? 
-                                  
+ 
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
 
                                        	?>
@@ -422,7 +422,7 @@ width: 100%;
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <script src="../scripts/jquery.autocomplete.min.js"></script>
+    <script src="../scripts/bootstrap-select.js"></script>
 
 </body>
 </html>
@@ -448,6 +448,7 @@ var exist = 0;
 //===================================
 
 
+$('.selectpicker').selectpicker();
 
 $(document).on('ready', function(){
 
@@ -948,7 +949,7 @@ function delegateRequirement(usr_id, imp, msg, dataF, dataS, iss_id){
 
 $.ajax({ type: "POST",
 	     url: "../backend/delegate.php?fac=" +fac +
-	           "&usr_id=" +  + 
+	           "&usr_id=" + usr_id + 
 	           "&imp=" + imp +
 	           "&msg=" + msg+
 	           "&dataF=" + dataF +
