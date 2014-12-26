@@ -992,7 +992,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
-    $("#stsk-user").val($("#delegates").val();
+    $("#stsk-user").val($("#delegates").val());
 });
 
 
