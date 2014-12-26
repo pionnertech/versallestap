@@ -596,6 +596,8 @@ $("div.dropdown-menu").addClass('hidden');
      $(this).data("val", 1);
 	}
 
+$("div.dropdown-menu").removeClass('show');
+$("div.dropdown-menu").addClass('hidden');
 });
 
 
