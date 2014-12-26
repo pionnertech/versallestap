@@ -287,12 +287,15 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
                              ?>
                                               <option value="<? printf($per[0]) ?>"><? printf($per[1])?> <? printf($per[2])?></option>
                              <?
-                                            	}?>
+                                            	}
+                                         mysqli_data_seek($per, 0);
+                                            	?>
                                           
                                           </optgroup>
 
                                           <?
                                           }
+                                          mysqli_data_seek($deptos, 0);
                                         ?>
 
 												</select>
