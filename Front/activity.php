@@ -163,7 +163,6 @@ width: 100%;
 								<li><a href="#">One more separated link</a></li>
 							</ul>
 						</li>
-						
 						<li><a href="#">
 							Support
 						</a></li>
@@ -578,8 +577,6 @@ setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narra
 
 $("#delegate").on('click', function(){
 
-$("div.dropdown-menu").removeClass('show');
-$("div.dropdown-menu").addClass('hidden');
 	if($(this).data("val") === 1){
 
        $("#del-wrap  div , #del-wrap input, #del-wrap h3").removeClass('show');
@@ -596,8 +593,6 @@ $("div.dropdown-menu").addClass('hidden');
      $(this).data("val", 1);
 	}
 
-$("div.dropdown-menu").removeClass('show');
-$("div.dropdown-menu").addClass('hidden');
 });
 
 
