@@ -397,6 +397,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
+                                            <li class="switcher" id="Pe"><a href="#">Pendientes</a></li>
                                             <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
                                             <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
                                             <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
