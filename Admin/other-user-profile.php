@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
-$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = '" . $_SESSION['TxtUser'] . " " . $_SESSION['TxtPass'] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
+$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
 ?>
@@ -759,11 +759,10 @@ display:none;
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" >Todos</a></li>
-                                            <li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
-                                            <li class="switcher" id="Hc"><a href="#" >Finalizados</a></li>
-                                            <li class="switcher" id="Pv"><a href="#" >Por vencer</a></li>
-                                            <li class="switcher" id="At"><a href="#" >Atrasados</a></li>
+                                            <li class="switcher" id="Ec">En Curso</li>
+                                            <li class="switcher" id="Hc">Finalizados</li>
+                                            <li class="switcher" id="Pv">Por vencer</li>
+                                            <li class="switcher" id="At">Atrasados</li>
                                         </ul>
                                     </div>
                                 </div>
