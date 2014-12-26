@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, A.STSK_FINISH_DATE, B.EST_DESCRIPT, B.EST_COLOR, A.STSK_START_DATE, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, A.STSK_START_DATE, A.STSK_PROGRESS, A.STSK_STATE FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
 
 ?>
 <!DOCTYPE html>
@@ -426,7 +426,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
                                     while( $stsk = mysqli_fetch_row($Query_task) ){ 
 
-                                    switch ($stsk[3]){
+                                    switch ($stsk[9]){
                                               case 'Pendiente':
                                               $class = "Pe";
                                               break;
