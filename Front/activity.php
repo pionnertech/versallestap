@@ -38,7 +38,8 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 	<link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
 	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-	<link type="text/css" href="../css/bootstrap-select.css" rel="stylesheet">
+	<link type="text/css" media="screen" href="../css/bootstrap-select.css" rel="stylesheet">
+
 	<link type="text/css" href="../css/style.css">
 	
 	<style type="text/css">
@@ -383,7 +384,7 @@ width: 100%;
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>
-                                              <option><? printf($per[1])?> <? printf($per[2])?></option>
+                                              <option value="<? printf($per[0]) ?>"><? printf($per[1])?> <? printf($per[2])?></option>
                              <?
                                             	}?>
                                           
@@ -414,18 +415,16 @@ width: 100%;
 			<b class="copyright">&copy; Eque-e </b> Todos Los derechos reservados.
 		</div>
 	</div>
-
 	<script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="../scripts/bootstrap-select.js"></script>
 	<script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="http://maps.google.com.br/maps/api/js?v=3.10&sensor=false"></script>
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-
-
 </body>
 </html>
-<script src="../scripts/bootstrap-select.js"></script>
+
 <script type="text/javascript">
 
 //===================================
