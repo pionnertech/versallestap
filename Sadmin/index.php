@@ -1,21 +1,15 @@
-﻿<?php session_start();
-
-
+<?php session_start();
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'sadmin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
                                                                 
-
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-//TASKS
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  A.ISS_CHARGE_USR, B.EST_DESCRIPT, B.EST_COLOR,  A.ISS_FINISH_DATE FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR,  SUBSTRING(A.ISS_FINISH_DATE, 1, 10), C.USR_SURNAME FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -407,7 +401,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, A.ISS_CTZ,  A.ISS_CHAR
                                                     <? printf($issues[1]) ?>
                                                 </td>
                                                 <td>
-                                                    <? printf($issues[2]) ?>
+                                                    <? printf($issues[2]) ?> <? printf($issues[6])?>
                                                 </td>
                                                 <td class="center" style="color: <? printf($issues[4]) ?>">
                                                     <? printf($issues[3]) ?>
