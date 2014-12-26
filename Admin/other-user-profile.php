@@ -759,10 +759,10 @@ display:none;
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li class="switcher" id="Ec">En Curso</li>
-                                            <li class="switcher" id="Hc">Finalizados</li>
-                                            <li class="switcher" id="Pv">Por vencer</li>
-                                            <li class="switcher" id="At">Atrasados</li>
+                                            <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
+                                            <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
+                                            <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
+                                            <li class="switcher" id="At"><a href="#">Atrasados</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1040,6 +1040,20 @@ $(".switcher").on('click', function(){
         
      }
 
+
+});
+
+$(".due").on('click', function(){
+
+if(!$(this).data("val") || !$(this).data("val") === 0 ){
+
+   $(this).parent().parent().next().css({ display: "table-row"});
+     $(this).data("val", 1);
+} else  {
+
+  $(this).parent().parent().next().css({ display: "none"});
+   $(this).data("val", 0);
+}
 
 });
 
