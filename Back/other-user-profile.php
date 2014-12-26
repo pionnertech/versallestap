@@ -138,11 +138,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     width: 100% !important;
 }
 
+.Pe{
+    display: table-row;
+}
+.Ec, .Hc, .At, .Pv{
+    display: none;
+}
 
 </style>    
 </head>
 <body>
-<input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
 <input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -386,17 +392,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn">Todos</button>
+                                        <button class="btn">Pendientes</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Todos</a></li>
-                                            <li><a href="#">En Progreso</a></li>
-                                            <li><a href="#">finalizados</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">Nuevo requerimiento</a></li>
-                                            <li><a href="#">Atrasados</a></li>
+                                            <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
+                                            <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
+                                            <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
+                                            <li class="switcher" id="At"><a href="#">Atrasados</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -416,8 +420,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-title">Inicio</td>
                                             <td class="cell-time align-right">Fecha final</td>
                                         </tr>
-                                    <? while( $stsk = mysqli_fetch_row($Query_task) ){ ?>
-                                        <tr class="task">
+                                    <? 
+                                     $class = "";
+
+                                    while( $stsk = mysqli_fetch_row($Query_task) ){ 
+
+                                    switch ($stsk[3]){
+                                              case 'Pendiente':
+                                              $class = "Pe";
+                                              break;
+                                              case 'En Curso':
+                                               $class = "Ec";
+
+                                              break;
+
+                                              case 'Hecha':
+                                               $class = "Hc";
+                                              break;
+
+                                              case 'Atrasada':
+                                               $class = "At";
+                                              break;
+
+                                              case 'Por Vencer':
+                                              $class = "Pv";
+                                              break;
+                                          }
+
+
+
+                                        ?>
+                                        <tr class="task  <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
@@ -497,7 +530,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     <!--/.wrapper-->
     <div class="footer">
         <div class="container">
-            <b class="copyright">&copy; 2015 Eque-E </b>todos los derechos reservados.
+            <b class="copyright">&copy; 2015 Eque-e </b>todos los derechos reservados.
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -625,8 +658,21 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 });
 
+$(".switcher").on('click', function(){
+    var all_on = document.querySelectorAll('.switcher');
+    var ex = $(this).attr("id");
+    console.info(ex);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
 
 
+});
 
 function upprogress(val, user, stsk_id, iss_id, des, subject, index){
 
