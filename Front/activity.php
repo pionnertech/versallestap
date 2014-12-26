@@ -370,7 +370,7 @@ width: 100%;
                                 <h3>Asignar Requerimientos</h3>
                                 	<div style="width: 100%; position: relative; display: inline-block; vertical-align: top; ">
                                 	<textarea id="requeriment" name="requeriment" placeholder="Describa el requerimiento" style="display: inline-block; vertical-align: top; width: 98%; "></textarea>
-                                	<select id="delgates" class="biginput selectpicker" data-live-search="true">
+                                	<select class="selectpicker" data-live-search="true">
                                        <? 
  
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
@@ -448,15 +448,12 @@ var exist = 0;
 //===================================
 
 
-$('.selectpicker').selectpicker();
+
 
 $(document).on('ready', function(){
 
+$('.selectpicker').selectpicker({size: 4});
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
-
-
-
-  
 
   // date time picker.
 
