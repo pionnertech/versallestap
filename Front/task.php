@@ -245,14 +245,12 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 												<label for="subject">Delegados</label>
 												<select id="delegates<? printf($i)?>">
                                        <? 
- 
-                                       while( $deptos = mysqli_fetch_row($Query_depts)){ 
 
+                                       while( $deptos = mysqli_fetch_row($Query_depts)){ 
                                        	?>
                                       <optgroup label="<? printf(strtoupper($deptos[0])) ?>">
-
                                             <? 
-                                             
+        
                                    $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."'); ");
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
@@ -339,15 +337,15 @@ $(".enviar").on('click', function () {
 	 //variables 
     var msg = $(this).parent().children('textarea').val();
 
-    var name = $(this).parent().children('select').find(':selected').text();
+    var usr_id = $(this).parent().children('select').val();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
 
-   delegate(name, msg, fechaF, iss_id);
+   delegate(usr_id, msg, fechaF, iss_id);
 
 });
 
 
-function delegate(name, msg, fechaF, iss_id){
+function delegate(usr_id, msg, fechaF, iss_id){
 
 var _fS = new Date();
 
@@ -356,7 +354,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
 $.ajax({
 	type: "POST",
 	url: "../backend/delegate.php?fac=" + fac + 
-	"&name=" + name + 
+	"&usr_id=" + usr_id + 
 	"&msg=" + msg + 
 	"&dataF=" + fechaF + 
 	"&dataS=" + fechaS + 
