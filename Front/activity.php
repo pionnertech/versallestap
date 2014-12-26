@@ -455,6 +455,8 @@ $(document).on('ready', function(){
 $('.selectpicker').selectpicker({size: 8});
 
 $(".dropdown-menu").removeClass('show');
+$(".dropdown-menu").removeClass('show');
+
 $(".dropdown-menu").addClass('hide');
 
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
