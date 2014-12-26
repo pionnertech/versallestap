@@ -305,10 +305,10 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
                                         <tr class="display-progress">
                                             <td colspan="5">
                                             <p>
-                                                <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($Query_task[5]) ?>%</span>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: <? printf($Query_task[5]) ?>%;"></div>
+                                                <div class="bar bar-warning" style="width: <? printf($fila1[5]) ?>%;"></div>
                                             </div>
                                             <div class="file-contents">
                                                 <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
