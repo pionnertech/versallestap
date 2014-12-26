@@ -454,10 +454,7 @@ $(document).on('ready', function(){
 
 $('.selectpicker').selectpicker({size: 8});
 
-$(".dropdown-menu").removeClass('show');
-$(".dropdown-menu").removeClass('show');
 
-$(".dropdown-menu").addClass('hide');
 
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
@@ -581,6 +578,11 @@ setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narra
 
 
 $("#delegate").on('click', function(){
+	
+$(".dropdown-menu").removeClass('show');
+$(".dropdown-menu").addClass('hide');
+
+
 
 	if($(this).data("val") === 1){
 
