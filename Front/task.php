@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
@@ -263,11 +263,14 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 											<td class="cell-time align-right"><? printf($fila1[1]) ?></td>
 											<input type="hidden" value="" >		
 										</tr>
+                                        <? if($class == "Pe"){ ?>
+
+
 										<tr class="requirement">
 											<td colspan="4" >
 												<textarea class="description" placeholder="describa el requerimiento"></textarea>
 												<label for="subject">Delegados</label>
-												<select id="delegates<? printf($i)?>">
+												<select id="delegates<? printf($i)?> ">
                                        <? 
 
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
@@ -294,7 +297,27 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
                                                 <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
 												<button class="btn-info enviar">Delegar task</button>
 											</td>
-										</tr>           
+										</tr>   
+
+    <? } else { ?>
+
+
+                                        <tr class="display-progress">
+                                            <td colspan="5">
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($Query_task[5]) ?>%</span>
+                                            </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-warning" style="width: <? printf($Query_task[5]) ?>%;"></div>
+                                            </div>
+                                            <div class="file-contents">
+                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                            </div>
+                                            </td>
+                                        </tr>
+
+    <? }?>
+
                 <? 
        $i = $i + 1;
                 } ?>
