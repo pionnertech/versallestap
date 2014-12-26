@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . " AND A.ISS_CHARGE_USR = 0 )" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
@@ -32,12 +32,10 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="css/selectize.bootstrap3.css" />
 	<script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="../scripts/selectize.min.js"></script>
-    <script type="text/javascript" src="../scripts/selectize.jquery.js"></script>
+
     	<script type="text/javascript">
 		$(document).on('ready', function(){
            
-
 		});
 
 	</script>
@@ -48,6 +46,13 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
     .delegates{
     width:50%;
     }
+
+.Pe{
+    display: table-row;
+}
+.Ec, .Hc, .At, .Pv{
+    display: none;
+}
 
 	</style>
 </head>
@@ -204,12 +209,10 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
-											<li><a href="#">Todos</a></li>
-											<li><a href="#">En Curso</a></li>
-											<li><a href="#">Hechos</a></li>
-											<li><a href="#">Atrasados</a></li>
-											<li class="divider"></li>
-											<li><a href="#">Reci</a></li>
+											<li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
+											<li class="switcher" id="Hc"><a href="#" >Hechos</a></li>
+											<li class="switcher" id="Pv"><a href="#" >Por Vencer</a></li>
+											<li class="switcher" id="At"><a href="#" >Atrasados</a></li>
 										</ul>
 									</div>
 								</div>
@@ -229,10 +232,31 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 										</tr>
 
 						<?
+			$class = "";			
             $i = 1;
      
-						 while ($fila1 = mysqli_fetch_row($Query_task)){ ?>				
-										<tr class="task">
+						 while ($fila1 = mysqli_fetch_row($Query_task)){ 
+
+                                          switch ($fila1[3]){
+                                              case 'Pendiente':
+                                              $class = "Pe";
+                                              break;
+                                              case 'En Curso':
+                                               $class = "Ec";
+                                              break;
+                                              case 'Hecha':
+                                               $class = "Hc";
+                                              break;
+                                              case 'Atrasada':
+                                               $class = "At";
+                                              break;
+                                              case 'Por Vencer':
+                                              $class = "Pv";
+                                              break;
+                                          }
+
+						 	?>				
+										<tr class="task <? printf($class) ?>">
 											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[0]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
@@ -344,6 +368,19 @@ $(".enviar").on('click', function () {
 
 });
 
+$(".switcher").on('click', function(){
+	 var all_on = document.querySelectorAll('.switcher');
+     var ex = $(this).attr("id");
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+
+})
 
 function delegate(usr_id, msg, fechaF, iss_id){
 
@@ -376,6 +413,8 @@ $.ajax({
 
 
 }
+
+
 
 
 
