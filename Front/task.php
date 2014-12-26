@@ -11,6 +11,8 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //TASKS
 $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE (A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . " AND A.ISS_CHARGE_USR = 0 )" );
 
+$Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
+
 
 ?>
 
@@ -242,32 +244,28 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 												<textarea class="description" placeholder="describa el requerimiento"></textarea>
 												<label for="subject">Delegados</label>
 												<select id="delegates<? printf($i)?>">
-												 <optgroup label="Gerencia">
-                                                     <option val="0">Alejandro Curaqueo</option>
-                                                     <option val="1">Rodrigo Peña</option>
-                                                     <option val="2">Pedro Cortez</option>
-                                                  </optgroup>
-                                                  <optgroup label="Informatica">
-                                                     <option val="3">Francisco Papal</option>
-                                                     <option val="4">Liliana Avogadro</option>
-                                                  </optgroup>
-                                                  <optgroup label="Contabilidad/Finanzas">
-                                                     <option val="5">Jefferson Pimentel</option>
-                                                     <option val="6">Gabriella Santorielli</option>
-                                                     <option val="7">Laura Costa</option>
-                                                     <option val="8">Anita Acosta</option>
-                                                     <option val="9">Pablo Suarez</option>
-                                                    </optgroup>
-                                                    <optgroup label="Area Tecnica">
-                                                     <option val="10">Leandro Martinez</option>
-                                                     <option val="11">Macarena Arraño</option>
-                                                     <option val="12">Patricio bustamante</option>
-                                                     <option val="13">Felipe Beringer</option>
-                                                     <option val="14">Mario Gallardo</option>
-                                                     <option val="15">Jose Victorino</option>
-                                                     <option val="16">Eduardo Lasalle</option>
-                                                     <option val="17">Lena Fensterseifer</option>
-                                                    </optgroup>
+                                       <? 
+ 
+                                       while( $deptos = mysqli_fetch_row($Query_depts)){ 
+
+                                       	?>
+                                      <optgroup label="<? printf(strtoupper($deptos[0])) ?>">
+
+                                            <? 
+                                             
+                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."'); ");
+                                        while($per = mysqli_fetch_row($Query_personal)){ 
+                                                
+                             ?>
+                                              <option value="<? printf($per[0]) ?>"><? printf($per[1])?> <? printf($per[2])?></option>
+                             <?
+                                            	}?>
+                                          
+                                          </optgroup>
+
+                                          <?
+                                          }
+                                        ?>
 
 												</select>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
