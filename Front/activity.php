@@ -376,7 +376,7 @@ width: 100%;
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
 
                                        	?>
-                                      <optgroup label="<? printf($deptos[0]) ?>">
+                                      <optgroup label="<? printf(strtoupper($deptos[0])) ?>">
 
                                             <? 
                                              
@@ -452,7 +452,11 @@ var exist = 0;
 
 $(document).on('ready', function(){
 
-$('.selectpicker').selectpicker({size: 4});
+$('.selectpicker').selectpicker({size: 8});
+
+$(".dropdown-menu").removeClass('show');
+$(".dropdown-menu").addClass('hide');
+
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
   // date time picker.
