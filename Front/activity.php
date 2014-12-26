@@ -732,7 +732,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
 
         if($("#SendRequest").data("val") == 1 ){
       
-var name = $('select').find(':selected').val();
+var name = $('.selectpicker').val();
 var msg = $("#requeriment").val();
 var dataF = $("#dtp2").val() + " 10:00:00";
 
