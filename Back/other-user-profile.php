@@ -426,7 +426,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
                                     while( $stsk = mysqli_fetch_row($Query_task) ){ 
 
-                                    switch ($stsk[5]){
+                                    switch ($stsk[5] ){
                                               case 'Pendiente':
                                               $class = "Pe";
                                               break;
