@@ -623,7 +623,7 @@ $(".forward").on('click', function(){
 //obten el porcentaje
 
 
-var percent = $(this).parent().parent().next().children('span.muted').html().replace(/\d+% ?/g, "");
+var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html().replace(/\d+% ?/g, "");
 
 $(".span2").slider('setValue', parseInt(percent));
 
