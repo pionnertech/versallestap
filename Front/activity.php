@@ -422,11 +422,11 @@ width: 100%;
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <script src="../scripts/bootstrap-select.js"></script>
+
 
 </body>
 </html>
- 
+<script src="../scripts/bootstrap-select.js"></script>
 <script type="text/javascript">
 
 //===================================
