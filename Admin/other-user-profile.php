@@ -1076,6 +1076,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 $(".cell-icon").on('click', function(){
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
+  console.info(iss_id);
    unlock(stsk, iss_id, $(this).children('i'));
 
 });
