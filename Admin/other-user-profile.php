@@ -787,6 +787,7 @@ display:none;
                                         $class = "";
                                         $situation = "";
                                         $color = "";
+                                        $lock = "";
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
@@ -794,11 +795,13 @@ display:none;
 
                                             $situation = "warning";
                                             $color = "color:#EE8817;";
+                                            $lock = "disabled";
 
                                          } else {
 
                                             $situation = "lock";
                                             $color = "color: #44D933;";
+                                            $lock = "";
                                          }
 
 
@@ -829,7 +832,7 @@ display:none;
                                             <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
+                                            <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
@@ -1091,12 +1094,16 @@ $.ajax({
            object.removeClass("fa-warning");
            object.addClass("fa-lock");
            object.css({color:"#44D933"});
+           object.parent().parent().children('td.cell-title').children('button').attr('disabled', true);
+           object.parent().parent().children('td.cell-title').children('button').unbind('click');
            object.fadeIn(400);
-           });
 
-           
+           });
+  
        }
-})
+});
+
+
 }
 
 </script>
