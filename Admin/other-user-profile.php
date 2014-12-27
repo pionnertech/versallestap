@@ -865,7 +865,7 @@ display:none;
 
                                            $handler = opendir("../" . $_SESSION['TxtFacility'] . "/" );
 
-                                           while ($archivos = readdir($handler)){
+                                           while (false !== ($archivos = readdir($handler)){
 
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
 
