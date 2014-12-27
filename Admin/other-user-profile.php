@@ -1084,11 +1084,11 @@ $.ajax({
        success : function(data){
         console.log(data);
 
-           object.fadeOut(800, function(){
+           object.fadeOut(400, function(){
            object.removeClass("fa-warning");
            object.addClass("fa-lock");
            object.css({color:"#44D933"});
-           object.fadeIn(800);
+           object.fadeIn(400);
            });
 
            
