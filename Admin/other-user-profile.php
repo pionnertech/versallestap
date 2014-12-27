@@ -823,7 +823,7 @@ display:none;
 
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
-                                            <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?>"></i></td>
+                                            <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
@@ -1068,6 +1068,28 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 });
+
+$(".cell-icon").on('click', function(){
+  var stsk =  $(this).parent().children('input').eq(0).val();
+    console.info(stsk);
+   //unlock(stsk, $())
+});
+
+
+function unlock(stsk_id, object){
+
+$.ajax({
+       type: "POST",
+       url: "../backend/unlock.php?stsk_id=" + stsk_id,
+       success : function(data){
+           object.fadeToggle(400);
+           object.removeClass("fa-warning");
+           object.removeClass("fa-lock");
+           object.css({color:"#44D933"});
+           object.fadeToggle(400);
+       }
+})
+}
 
 </script>
 <?
