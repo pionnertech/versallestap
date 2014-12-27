@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR,SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . "  AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR,SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 
 ?>
 <!DOCTYPE html>
@@ -708,11 +708,12 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&fac=" + fac , 
             success : function (data){
          if( data == 1){
-             bootbox.alert("Progreso grabado existosamente");
+             bootbox.alert("Progreso grabado existosamente", function(){
             $('tr').eq(index+1).children('p').eq(0).children('span').html(val + '%');
             $('tr').eq(index+1).children('div.bar').css({width : val + "%"});
-                } else {
+             });
 
+                } else {
             bootbox.alert("Falla en la conexion al servidor");
                 }
                 
