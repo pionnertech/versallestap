@@ -12,6 +12,7 @@ $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM US
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
+
 ?>
 
 
@@ -114,6 +115,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 .attach{
  display: inline-block;
  vertical-align: top;
+}
+
+.file-contents, 
+.file-contents p{
+    display: inline-block;
+    vertical-align: top;
 }
 
 .display-progress{
@@ -789,6 +796,9 @@ display:none;
                                         $color = "";
                                         $lock = "";
 
+
+
+
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
                                          if($stsk[7] == 0 || $stsk[7] == '0'){
@@ -827,6 +837,9 @@ display:none;
                                               break;
                                           }
 
+
+        //archivos adjuntos
+
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
@@ -846,7 +859,47 @@ display:none;
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
                                             <div class="file-contents">
-                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+
+                                            <?   
+                                           $file_extension = "";
+
+                                           $handler = opendir("../" . $_SESSION['TxtFacility'] . "/" );
+
+                                           while ($archivos = readdir($handler)){
+
+                                         if(preg_match("/_" . $stsk[0] . "_/g", $archivos) == 1){
+
+                                             $extension = substr($archivos, -3);
+
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='xlsx'):
+                                                      $file_extension = "excel-";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='docx' ):
+                                                      $file_extension = 'word-';
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o"></i></p>
+
+                                                  <? }
+                                                  } ?>
+
                                             </div>
                                             </td>
                                         </tr>
