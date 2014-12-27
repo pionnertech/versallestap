@@ -795,13 +795,13 @@ display:none;
 
                                             $situation = "warning";
                                             $color = "color:#EE8817;";
-                                            $lock = "disabled";
+                                            $lock = "";
 
                                          } else {
 
                                             $situation = "lock";
                                             $color = "color: #44D933;";
-                                            $lock = "";
+                                            $lock = "disabled";
                                          }
 
 
