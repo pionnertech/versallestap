@@ -783,9 +783,11 @@ display:none;
 
                                         </tr>
                                         <? 
+
                                         $class = "";
                                         $situation = "";
-                                        $color = ""
+                                        $color = "";
+                                        
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
                                          if($stsk[8] == 0 || $stsk[8] == '0'){
@@ -793,7 +795,7 @@ display:none;
                                             $color = "background-color:#EE8817; color:white;";
                                          } else {
                                             $situation = "lock";
-                                            $color ="color: #44D933;";
+                                            $color = "color: #44D933;";
                                          }
 
 
