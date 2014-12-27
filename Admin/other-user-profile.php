@@ -1082,11 +1082,16 @@ $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id,
        success : function(data){
-           object.fadeOut(800);
+        console.log(data);
+
+           object.fadeOut(800, function(){
            object.removeClass("fa-warning");
            object.addClass("fa-lock");
            object.css({color:"#44D933"});
            object.fadeIn(800);
+           });
+
+           
        }
 })
 }
