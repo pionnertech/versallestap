@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
-$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
+$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
 ?>
@@ -775,18 +775,28 @@ display:none;
                                 <table class="table table-message">
                                     <tbody>
                                         <tr class="heading">
-                                            <td class="cell-icon"></td>
+                                            <td class="cell-icon"><i class="fa fa-lock" style="color: white;"></i></td>
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                             <td class="cell-title">Responsable</td>
-                                             <td class="cell-time align-right">Fecha</td>
+                                            <td class="cell-title">Accion</td>
+                                            <td class="cell-time align-right">Fecha</td>
 
                                         </tr>
                                         <? 
                                         $class = "";
-
+                                        $situation = "";
+                                        $color = ""
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
+                                         if($stsk[8] == 0 || $stsk[8] == '0'){
+                                            $situation = "warning";
+                                            $color = "background-color:#EE8817; color:white;";
+                                         } else {
+                                            $situation = "lock";
+                                            $color ="color: #44D933;";
+                                         }
+
+
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
@@ -811,7 +821,7 @@ display:none;
 
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
+                                            <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?>"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
