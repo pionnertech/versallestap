@@ -861,11 +861,13 @@ display:none;
                                             <div class="file-contents">
 
                                             <?   
-                                           $file_extension = "";
+                                           
 
-                                           $handler = opendir("../" . $_SESSION['TxtFacility'] . "/" );
+                                           if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" )){
 
-                                           while (false !== ($archivos = readdir($handler)){
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos = readdir($handler))){
 
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
 
@@ -900,6 +902,7 @@ display:none;
                                                   <? }
                                                   } 
                                         closedir($handler);
+                                    }
                                                   ?>
 
                                             </div>
