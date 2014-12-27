@@ -787,12 +787,12 @@ display:none;
                                         $class = "";
                                         $situation = "";
                                         $color = "";
-                                        
+
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
                                          if($stsk[8] == 0 || $stsk[8] == '0'){
                                             $situation = "warning";
-                                            $color = "background-color:#EE8817; color:white;";
+                                            $color = "color:#EE8817;";
                                          } else {
                                             $situation = "lock";
                                             $color = "color: #44D933;";
