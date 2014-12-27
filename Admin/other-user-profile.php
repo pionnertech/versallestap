@@ -853,8 +853,6 @@ display:none;
                                         <? } ?>
                                     </tbody>
                                 </table>
-
-
                             </div>
                             <div class="module-foot">
                             </div>
@@ -1077,19 +1075,19 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $(".cell-icon").on('click', function(){
   var stsk =  $(this).parent().children('input').eq(0).val();
-   unlock(stsk, $(this).children('i'));
+  var iss_id = $(this).parent().children('input').eq(1).val();
+   unlock(stsk, iss_id, $(this).children('i'));
 
 });
 
 
-function unlock(stsk_id, object){
+function unlock(stsk_id, iss_id, object){
 
 $.ajax({
        type: "POST",
-       url: "../backend/unlock.php?stsk_id=" + stsk_id,
+       url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
         console.log(data);
-
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
            object.addClass("fa-lock");
