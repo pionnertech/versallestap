@@ -14,10 +14,11 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE STSK_ID = " . $id . " ;");
 
-$handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id);
+$handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR);");
 
 $adition = 0;
 $n = 0;
+
 while ($row = mysqli_fetch_row($handler)) {
     $adition += $row[0];
     $n = $n + 1;
@@ -37,7 +38,7 @@ if(!mysqli_query($datos, $insertar)){
 }
 
 //añadir progreso a la audiencia
-$query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id . ";");
+$query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR;");
 
 
 $suma = 0;
