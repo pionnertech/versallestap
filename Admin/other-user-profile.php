@@ -862,8 +862,9 @@ display:none;
 
                                             <?   
                                            
+                                      while($steam = mysqli_fetch_row($Query_team)){
 
-                                           if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" )){
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
 
                                           $file_extension = "";
 
@@ -903,6 +904,8 @@ display:none;
                                                   } 
                                         closedir($handler);
                                     }
+                                }
+                                  mysqli_data_seek($Query_team);
                                                   ?>
 
                                             </div>
@@ -926,7 +929,9 @@ display:none;
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
                                                         <option value="<? printf($team[0]) ?>"><? printf($team[1]) ?> <?printf($team[2]) ?></option>
-                                                        <? } ?>
+                                                        <? } 
+                                                   mysqli_data_seek($Query_team);
+                                                        ?>
                                                     </optgroup>
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
