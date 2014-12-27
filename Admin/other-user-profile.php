@@ -867,7 +867,7 @@ display:none;
 
                                            while ($archivos = readdir($handler)){
 
-                                         if(preg_match("/_" . $stsk[0] . "_/g", $archivos) == 1){
+                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
 
                                              $extension = substr($archivos, -3);
 
@@ -898,7 +898,9 @@ display:none;
                                                 <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o"></i></p>
 
                                                   <? }
-                                                  } ?>
+                                                  } 
+                                        closedir($handler);
+                                                  ?>
 
                                             </div>
                                             </td>
