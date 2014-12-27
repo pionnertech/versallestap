@@ -790,10 +790,13 @@ display:none;
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
-                                         if($stsk[8] == 0 || $stsk[8] == '0'){
+                                         if($stsk[7] == 0 || $stsk[7] == '0'){
+
                                             $situation = "warning";
                                             $color = "color:#EE8817;";
+
                                          } else {
+
                                             $situation = "lock";
                                             $color = "color: #44D933;";
                                          }
