@@ -140,6 +140,7 @@ display:none;
 }
 .iname{
     display:block;
+    text-align: center;
 }
 
 
@@ -885,11 +886,11 @@ display:none;
                                                       $file_extension = "pdf-";
                                                       $cor = "#FA2E2E";
                                                       break;
-                                                      case ($extension =='xls' || $extension =='xlsx'):
+                                                      case ($extension =='xls' || $extension =='lsx'):
                                                       $file_extension = "excel-";
                                                       $cor = "#44D933";
                                                       break;
-                                                      case ($extension =='doc' || $extension =='docx' ):
+                                                      case ($extension =='doc' || $extension =='ocx' ):
                                                       $file_extension = 'word-';
                                                       $cor = "#5F6FE0";
                                                       break;
