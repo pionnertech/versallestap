@@ -741,7 +741,7 @@ $("#SendRequest").data("val", 0);
 
 
         } else {
-
+            console.info(data);
         	bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input").val('');
  			 $("textarea").val('');
