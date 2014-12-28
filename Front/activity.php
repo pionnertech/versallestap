@@ -708,6 +708,22 @@ rut = pre_rut.replace('-', "");
 
 fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
 
+console.info( url: "../backend/issGn.php?rut=" + rut + 
+ 	"&dn=" + direccion + 
+ 	"&iss=" + audiencia + 
+ 	"&Geoloc=" + GeoLoc + 
+ 	"&Nombre=" + Nombre +
+ 	"&appm=" + appm +
+ 	"&appp=" + appp +
+ 	"&tipo=" + tipo + 
+ 	"&tel=" + tel +
+ 	"&date=" + fecha_or + 
+ 	"&fecha_limit=" + deadD  + " 10:00:00" +
+ 	"&days=" + fecha_limit +
+ 	"&email=" + mail +
+ 	"&subject=" + subject +
+ 	"&fac=" + fac);
+
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
@@ -952,11 +968,12 @@ $.ajax({ type: "POST",
 	           "&dataS=" + dataS +
 	           "&iss_id=" + iss_id,
 	           success : function (data){
+
 	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
 	           	console.info("ok!");
-	          $("input").val('');
- 			 $("textarea").val('');
- 			 exist = 0;
+	            $("input").val('');
+ 			    $("textarea").val('');
+ 			    exist = 0;
 	           })
 
 	           }
