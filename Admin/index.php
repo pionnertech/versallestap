@@ -4,27 +4,11 @@ session_start();
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'admin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-                                                                
-
+                                                            
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
-
-//TASKS
 
 $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SESSION['TxtCode'] );
 
-/*
-ISS_ID
-ISS_DATE_ING
-ISS_SUBJECT
-ISS_DESCRIP
-ISS_CHARGE_USR
-ISS_DEADLINE
-ISS_DAYS
-ISS_STATE
-ISS_FINISH_DATE
-ISS_DELAY_DAYS
-ISS_SUBTASKS_CANT
-*/
 
 ?>
 
@@ -35,7 +19,7 @@ ISS_SUBTASKS_CANT
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>E-Que</title>
+        <title>Eque-e</title>
         <style type="text/css">
 
         #client_logo{
@@ -1424,7 +1408,7 @@ ISS_SUBTASKS_CANT
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../scripts/common.js" type="text/javascript"></script>
+       
       
     </body>
 <script type="text/javascript">
