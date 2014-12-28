@@ -137,6 +137,8 @@ display:none;
 
 .ifile{
     margin:1em;
+    display: inline-block;
+    vertical-align: top;
 }
 
 
