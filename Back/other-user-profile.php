@@ -705,7 +705,9 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&subject=" + subject + 
             "&des=" + des + 
             "&date=" + date +
-            "&fac=" + fac , 
+            "&fac=" + fac 
+            
+            , 
             success : function (data){
          if( data == 1){
              bootbox.alert("Progreso grabado existosamente", function(){

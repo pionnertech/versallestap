@@ -612,7 +612,7 @@ for(i=0;i < cont.length ; i++){
 }
 
 narray[narray.length] = document.querySelector("#descrip-audi").value;
-narray[narray.length] = $(".controls  input[type=radio]:checked").val();
+narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
 setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
 
@@ -707,23 +707,6 @@ pre_rut = rut.replace(/\./gi, "");
 rut = pre_rut.replace('-', "");
 
 fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
-
-console.info( url: "../backend/issGn.php?rut=" + rut + 
- 	"&dn=" + direccion + 
- 	"&iss=" + audiencia + 
- 	"&Geoloc=" + GeoLoc + 
- 	"&Nombre=" + Nombre +
- 	"&appm=" + appm +
- 	"&appp=" + appp +
- 	"&tipo=" + tipo + 
- 	"&tel=" + tel +
- 	"&date=" + fecha_or + 
- 	"&fecha_limit=" + deadD  + " 10:00:00" +
- 	"&days=" + fecha_limit +
- 	"&email=" + mail +
- 	"&subject=" + subject +
- 	"&fac=" + fac);
-
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
@@ -759,7 +742,7 @@ $("#SendRequest").data("val", 0);
         } else {
             console.info(data);
         	bootbox.alert("Audiencia ingresada con exito", function(){
- 			 $("input").val('');
+ 			 $("input[type=text]").val('');
  			 $("textarea").val('');
  			 exist = 0;
  			
@@ -1041,3 +1024,7 @@ return true;
 }
 
 ?>
+
+ ../backend/issGn.php?rut=235567490&dn=Av ricardo lyon 550&iss=backend&Geoloc=0&Nombre=David luanuss&appm=Paulaner&appp=Fensterseiffer-Friedrich&tipo=5&tel=34565434&date=2014-12-28 01:03:28&fecha_limit= 10:00:00&days=NaN&email=pionner256@outlook.com&subject=test&fac=10000
+ ../backend/issGn.php?rut=235567490&dn=Av ricardo lyon 550&iss=besta54&Geoloc=0&Nombre=David luanuss&appm=Paulaner&appp=Fensterseiffer-Friedrich&tipo=5&tel=34565434&date=2014-12-28 01:04:40&fecha_limit= 10:00:00&days=NaN&email=pionner256@outlook.com&subject=otro test&fac=10000
+ tipo
