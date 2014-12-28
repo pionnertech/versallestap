@@ -289,12 +289,15 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
                              <?
                                             	}
                                          mysqli_data_seek($Query_personal, 0);
+
                                             	?>
                                           
                                           </optgroup>
 
                                           <?
+                                          
                                           }
+
                                           mysqli_data_seek($Query_depts, 0);
                                         ?>
 
@@ -414,12 +417,13 @@ var _fS = new Date();
 
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
+var fech = reverseDate(fechaF);
 $.ajax({
 	type: "POST",
 	url: "../backend/delegate.php?fac=" + fac + 
 	"&usr_id=" + usr_id + 
 	"&msg=" + msg + 
-	"&dataF=" + fechaF + 
+	"&dataF=" + fech + 
 	"&dataS=" + fechaS + 
 	"&iss_id=" + iss_id + 
 	"&fac=" + fac,
@@ -440,7 +444,9 @@ $.ajax({
 
 }
 
-
+function reverseDate(string){
+ return string.substring(6,10) + "-" + string.substring(3,5) + "-" +string.substring(0,2);
+}
 
 
 

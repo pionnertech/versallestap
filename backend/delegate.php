@@ -6,7 +6,7 @@ $usr_id = $_GET['usr_id'];
 $surname = $_GET['surmane'];
 $importance = $_GET['imp'];
 $msg = $_GET['msg'];
-$dataF = $_GET['dataF'];
+$dataF = $_GET['dataF'] + "10:00:00";
 $dataS = $_GET['dataS'];
 $iss_id = $_GET['iss_id'];
 
