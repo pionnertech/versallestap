@@ -873,39 +873,47 @@ display:none;
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
 
                                              $extension = substr($archivos, -3);
-
+                                              $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
                                                       $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
                                                       break;
                                                       case ($extension =='xls' || $extension =='xlsx'):
                                                       $file_extension = "excel-";
+                                                      $cor = "#44D933";
                                                       break;
                                                       case ($extension =='doc' || $extension =='docx' ):
                                                       $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
                                                       break;
                                                       case ($extension == 'zip'):
                                                       $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
                                                       break;
                                                       case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
                                                       $file_extension = "picture-";
+                                                      $cor = "#338B93";
                                                       break;
                                                       default :
                                                       $file_extension = "";
+                                                      $cor = "#8E9193";
                                                       break;
                                                  }
 
 
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o"></i></p>
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <? printf($archivos) ?>
+                                                </p>
 
                                                   <? }
                                                   } 
                                         closedir($handler);
                                     }
                                 }
-                                  mysqli_data_seek($Query_team);
+                                  mysqli_data_seek($Query_team, 0);
                                                   ?>
 
                                             </div>
@@ -930,7 +938,7 @@ display:none;
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
                                                         <option value="<? printf($team[0]) ?>"><? printf($team[1]) ?> <?printf($team[2]) ?></option>
                                                         <? } 
-                                                   mysqli_data_seek($Query_team);
+                                                   mysqli_data_seek($Query_team, 0);
                                                         ?>
                                                     </optgroup>
                                                 </select>
