@@ -137,8 +137,9 @@ display:none;
 
 .ifile{
     margin:1em;
-    display: inline-block;
-    vertical-align: top;
+}
+.iname{
+    display:block;
 }
 
 
@@ -910,7 +911,7 @@ display:none;
                                           ?>
 
                                                 <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                 <? printf($archivos) ?>
+                                                 <span class="iname"><? printf($archivos) ?></span>
                                                 </p>
 
                                                   <? }
