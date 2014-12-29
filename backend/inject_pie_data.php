@@ -52,18 +52,12 @@ while ($deptos = mysqli_fetch_row($query_dept_global)){
 
 $n = 0;
 echo "{\"de" . $x . "\":[";
-echo $fac . "   /   " . $array_dept[$x];
 
 $handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY A.USR_DEPT" );
 
-if(!$handler){
-	echo mysqli_errno($datos);
-}
-
-
    while($fila3 = mysqli_fetch_row($handler)){
 
-      echo "{\"" . $fila3[2] . "\":\"" . $fila[0] . "\"}";
+      echo "{\"" . $fila3[2] . "\":\"" . $fila3[0] . "\"}";
 
       if($n < $counter){
 
