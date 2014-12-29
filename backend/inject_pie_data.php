@@ -59,12 +59,12 @@ $count = mysqli_num_rows($handler);
    while ($fila3 = mysqli_fetch_row($handler)){
 
       echo "{\"" . $fila3[2] . "\":\"" . $fila3[0] . "\"}";
-
+       
       if($n < $count){
 
       	echo ",";
       }
-       $n = $n + 1;
+      
    }
    echo "]}";
 
@@ -78,28 +78,4 @@ $count = mysqli_num_rows($handler);
 echo "]}";
 
 
-
-
-
-
-
-//statics
-
-/*
-a. Carga de trabajo de funcionarios
-
-b. % de cumplimiento por trabajos asignados
-
-c. % de cumplimiento por área o departamento
-
-d. Ranking de cumplimiento (los 5 más cumplidores)
-
-e. Ranking de incumplimiento (los 5 más incumplidores)
-
-f. Ranking de requerimientos más demandados
-
-g. Tiempos promedios en cumplir requerimientos por temas
-
-h. Comunas que más realizan requerimientos.
-*/
 ?>
