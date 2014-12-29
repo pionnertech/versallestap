@@ -10,7 +10,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $array_dept = [];
 $i = 0;
 
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " . $fac . " ORDER BY USR_DEPT");
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT;");
 
 while($f1 = mysqli_fetch_row($query_count_departament)){
 $array_dept[$i] = $f1[0];
@@ -56,16 +56,17 @@ if(!$handler){
 } else {
 	$counter = mysqli_num_rows($handler);
 }
-	
    while($fila3 = mysqli_fetch_row($handler)){
       echo "{\"" . $fila3[2] . "\":\"" . $fila[0] . "\"}";
       if($n < $counter){
       	echo ",";
       }
-       $n = $n +1;
+       $n = $n + 1;
    }
    echo "]}";
+
    $x = $x + 1;
+
    if($x < $cant_dept){
    	  echo ",";
    }
