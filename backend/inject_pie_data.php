@@ -10,7 +10,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $array_dept = [];
 $i = 0;
 
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " . $fac);
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " . $fac . " ORDER BY USR_DEPT");
 
 while($f1 = mysqli_fetch_row($query_count_departament)){
 $array_dept[$i] = $f1[0];
@@ -27,8 +27,8 @@ $cant_dept = count($array_dept);
 
 //obtener la cantidad de requerimientos por tipo
 
-$can_by_cantbydept = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, A.STSK_STATE FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) WHERE STSK_FAC_CODE = " . $fac . " GROUP BY B.USR_DEPT, A.STSK_STATE  ")
-$query_dept_global= mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT ");
+$can_by_cantbydept = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, A.STSK_STATE FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) WHERE STSK_FAC_CODE = " . $fac . " GROUP BY B.USR_DEPT, A.STSK_STATE  ");
+$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT;");
 $array_cantbydept = mysqli_fetch_array($can_by_cantbydept);
 
 $i = 0;
@@ -48,7 +48,7 @@ $i = 0;
 while ($deptos = mysqli_fetch_row($query_dept_global)){
 $n = 0;
 echo "{\"de" . $i . "\":[";
-$handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.STSK_STATE FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$i] . "' GROUP BY B.USR_DEPT, A.STSK_STATE  " );
+$handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.STSK_STATE FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$i] . "' GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY A.USR_DEPT" );
 $counter = mysql_num_rows($handler);	
    while($fila3 = mysqli_fetch_row($handler)){
       echo "{\"" . $fila3[2] . "\":\"" . $fila[0] . "\"}";
