@@ -36,10 +36,11 @@ echo "{ \"data\" : [{\"global\":[";
 
 while ($global1 = mysqli_fetch_row($query_dept_global)) {
 	echo "{\"d" . $i . "\":\"" . $global1[0] . "\"}";
+	$i = $i + 1;
        if($i  < $cant_dept ){
        	echo ",";
        }
-       $i = $i + 1;
+       
 }
 
 echo "]},";
@@ -64,9 +65,11 @@ if(!$handler){
        $n = $n +1;
    }
    echo "]}";
+   $x = $x + 1;
    if($x < $cant_dept){
    	  echo ",";
    }
+
 }
 
 echo "]}";
