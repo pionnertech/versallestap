@@ -44,7 +44,7 @@ while ($global1 = mysqli_fetch_row($query_dept_global)) {
 
 echo "]},";
 $x = 0;
-
+mysqli_data_seek($query_dept_global, 0);
 while ($deptos = mysqli_fetch_row($query_dept_global)){
 $n = 0;
 echo "{\"de" . $x . "\":[";
