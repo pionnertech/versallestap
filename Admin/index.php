@@ -1425,12 +1425,12 @@ $(document).on('ready', function(){
 
 array_set = [
 <?
-$pass = mysqli_query ($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY EST_DESCRIPT");
+$pass = mysqli_query ($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
 
 while( $fila2 = mysql_fetch_row($pass)){
 ?>
 { label: <? printf($fila2[0]) ?>,  data: <? printf($fila2[1]) ?>, color: <? printf($fila2[2]) ?>},
-<? }?>
+<? } ?>
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
