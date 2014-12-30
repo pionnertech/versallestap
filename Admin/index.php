@@ -1420,25 +1420,28 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
 <script type="text/javascript">
     
 
-     /*function setData(){
+
+setData();
+
+     function setData(){
         getValues( function (content){
                var data = content;
                array_data = data;
                console.info(content);
         });
-     }*/
+     }
 
-getvalues();
 
-function getValues(){
-//var data;
+
+function getValues(callback){
+var data;
 $.ajax({
     type: "POST", 
     url: "../backend/inject_pie_data.php?facility=" + fac,
     success : function (resp){
             console.info(resp);
             data = resp;
-            /*callback(data);*/
+            callback(data);
 
     }, 
     error :  function (error){
