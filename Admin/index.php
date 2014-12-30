@@ -1414,11 +1414,37 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
         <script src="../scripts/jlinq.js" type="text/javascript"></script>
         <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../scripts/common_pie.js" type="text/javascript"></script>
+ 
       
     </body>
 <script type="text/javascript">
     
+
+     function setData(){
+        getValues( function (content){
+               var data = content;
+               array_data = data;
+               console.info(content);
+        });
+     }
+
+
+function getValues(callback){
+var data;
+$.ajax({
+    type: "POST", 
+    url: "../backend/inject_pie_data.php?facility=" + fac,
+    success : function (resp){
+        console.info(resp);
+            data = resp;
+            callback(data);
+
+    }
+});
+}
+
+
+
 setIconState('Actas');
 setIconState('Audiencias');
 setIconState('Urgencias');
