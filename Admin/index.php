@@ -1435,10 +1435,13 @@ $.ajax({
     type: "POST", 
     url: "../backend/inject_pie_data.php?facility=" + fac,
     success : function (resp){
-        console.info(resp);
+            console.info(resp);
             data = resp;
             callback(data);
 
+    }, 
+    error :  function (error){
+        console.log(error);
     }
 });
 }
