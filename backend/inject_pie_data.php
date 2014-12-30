@@ -29,16 +29,19 @@ $cant_dept = count($array_dept);
 
 $can_by_cantbydept = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, A.STSK_STATE FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) WHERE STSK_FAC_CODE = " . $fac . " GROUP BY B.USR_DEPT, A.STSK_STATE  ");
 $query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT;");
-
+$query_total_subtasks = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID )  FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY EST_DESCRIPT");
 $array_cantbydept = mysqli_fetch_array($can_by_cantbydept);
 
-$i = 0;
-echo "{ \"data\" : [{\"global\":[";
 
-while ($global1 = mysqli_fetch_row($query_dept_global)) {
-	echo "{\"d" . $i . "\":\"" . $global1[0] . "\"}";
+$i = 0;
+
+$limit = mysqli_num_rows($query_total_subtasks);
+
+echo "{ \"data\" : [{\"global\":[";
+while ($global1 = mysqli_fetch_row($query_total_subtasks)) {
+	echo "{\"" . $global1[0] . "\":\"" . $global1[1] . "\"}";
 	$i = $i + 1;
-       if($i  < $cant_dept ){
+       if($i  < $limit ){
        	echo ",";
        }
        
