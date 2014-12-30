@@ -1399,16 +1399,22 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
+                <b class="copyright">&copy; 2015 Eque-e </b>All rights reserved.
             </div>
         </div>
+        <script type="text/javascript">
+      var fac = <? printf($_SESSION['TxtFacility']) ?>
+        </script>
         <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
         <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jlinq.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jlinq.jquery.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
-       
+        <script src="../scripts/common_pie.js" type="text/javascript"></script>
       
     </body>
 <script type="text/javascript">

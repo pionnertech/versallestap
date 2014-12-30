@@ -60,6 +60,7 @@ $count = mysqli_num_rows($handler);
 
       echo "{\"" . $fila3[2] . "\":\"" . $fila3[0] . "\"}";
        
+       $n = $n + 1;
       if($n < $count){
 
       	echo ",";
