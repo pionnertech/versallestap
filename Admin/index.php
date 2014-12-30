@@ -1421,13 +1421,86 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
     
 
 
-setData();
+$(document).on('ready', function(){
+
+array_set = [
+<?
+$pass = mysqli_query ($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY EST_DESCRIPT");
+
+while( $fila2 = mysql_fetch_row($pass)){
+?>
+{ label: <? printf($fila2[0]) ?>,  data: <? printf($fila2[1]) ?>, color: <? printf($fila2[2]) ?>},
+<? }?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+    $.plot("#placeholder2", array_data, {
+           series: {
+            pie: {
+                show: true
+            }
+         },
+         legend: {
+            labelBoxBorderColor: "none"
+         }
+    }
+
+});
+
+/*
 
      function setData(){
         getValues( function (content){
-               var data = content;
-               array_data = data;
-               console.info(content);
+
+            var array_states = ['Pendiente', 'En Curso', 'Atrasada', 'Por Vencer', 'Hecha'];
+/*
+Pendiente
+#DED901
+
+En Curso
+#178FD0
+
+Atrasada
+#E70101
+
+Por Vencer
+#EDB405
+
+Hecha
+#1CC131
+
+*/
+
+
+
+    /*        
+                array_data = JSON.parse(content);
+                var jhandler = jlinq.from(array_data.data).select();
+
+                // first construct your depto array 
+                var array_dept = [];
+                var n = 0;
+             for (i=0; i < jhandler.length; i++){
+                for (var key in jhandler[i]){
+                    array_dept[n] = key;
+                    n++;
+                }
+              }
+
+
+              //second: match available states
+             for (i=0;i<5;i++){
+                if(array_states[i] == jhandler[] )
+             }
+
+
+               var ht = jhandler.global[0];
+            
+              //third: iterate thought JSON dococ to build you dat array
+               for (i=0, i < ht.length;i++){
+                    { label: ht.,  data: 36.6, color: "#AA4643"}
+                  }
+               
         });
      }
 
@@ -1450,7 +1523,7 @@ $.ajax({
 });
 }
 
-
+*/
 
 setIconState('Actas');
 setIconState('Audiencias');
