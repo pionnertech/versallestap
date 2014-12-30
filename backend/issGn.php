@@ -49,7 +49,16 @@ $date1 = strtotime($date);
 $date2 = strtotime($date_limit);
 $diff = round(($date2 - $date1)/86400);
 
+if($diff <= 3){
+$state = 4;	
+} else if($diff <= 0){
+
+$state = 3;
+} else {
 $state = 2;
+}
+
+
 
 }
 

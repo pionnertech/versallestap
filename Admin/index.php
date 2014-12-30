@@ -339,15 +339,14 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
                             <div class="module">
                                 <div class="module-head">
                                     <h3>
-                                        Profit Chart</h3>
+                                        Situación general de requerimientos</h3>
                                 </div>
                                 <div class="module-body">
                                     <div class="chart inline-legend grid">
-                                        <div id="placeholder2" class="graph" style="height: 500px">
+                                        <div id="placeholder2" class="graph" style="height: 300px">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <!--/.module-->
                             <div class="module hide">
                                 <div class="module-head">
@@ -1439,6 +1438,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
     $.plot("#placeholder2", array_set, {
            series: {
             pie: {
+                 innerRadius: 0.5,
                 show: true
             }
          },
