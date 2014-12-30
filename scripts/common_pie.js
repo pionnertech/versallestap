@@ -23,13 +23,19 @@ $(document).ready(function () {
 
     //Graph/Chart index.html
 
+     function setData(){
+     	getValues( function (content){
+               var data = content
+               array_data = data;
+     	});
+     }
 
 
 function getValues(callback){
 var data;
 $.ajax({
 	type: "POST", 
-	url: "inject_pie_data.php?facility=" + fac
+	url: "inject_pie_data.php?facility=" + fac,
 	success : function (resp){
 		    data = resp;
 		    callback(data);
@@ -38,18 +44,7 @@ $.ajax({
 }
 
 
-
-     function setData(){
-     	getValues( function (content){
-               var data = content.parseJSON;
-               array_data = data;
-     	});
-     }
-
-
-
-
-		function showTooltip(x, y, contents) {
+function showTooltip(x, y, contents) {
 			$('<div id="gridtip">' + contents + '</div>').css( {
 				position: 'absolute',
 				display: 'none',

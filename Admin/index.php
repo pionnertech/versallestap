@@ -1411,8 +1411,8 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
-        <script src="../scripts/flot/jlinq.js" type="text/javascript"></script>
-        <script src="../scripts/flot/jlinq.jquery.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="../scripts/common_pie.js" type="text/javascript"></script>
       
