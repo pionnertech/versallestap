@@ -1431,7 +1431,7 @@ $pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_CO
 while ( $fila2 = mysqli_fetch_row($pass)) {
 
 ?>
-{ label: "'" + <? printf( $fila2[0] ) ?> + "'",  data: <? printf( $fila2[1] ) ?> , color: "'" + <? printf( $fila2[2] ) ?> + "'"},
+{ label: "<? printf(  $fila2[0] ) ?>" ,  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
 
 <? } ?>
 
