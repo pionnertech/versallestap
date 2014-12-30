@@ -1432,9 +1432,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
 
 ?>
 { label: "<? printf(  $fila2[0] ) ?>" ,  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
-
 <? } ?>
-
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
