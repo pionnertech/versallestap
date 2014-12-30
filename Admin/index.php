@@ -1445,7 +1445,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
          legend: {
             labelBoxBorderColor: "none"
          }
-    }
+    });
 
 });
 
