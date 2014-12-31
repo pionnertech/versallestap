@@ -466,6 +466,24 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
      //google maps...
  IntializeGMaps();
 
+	$("#html5_uploader").pluploadQueue({
+		// General settings
+		runtimes : 'html5',
+		url : '../upload.php',
+		chunk_size : '1mb',
+		unique_names : true,
+		
+		filters : {
+			max_file_size : '10mb',
+			mime_types: [
+				{title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
+				{title : "Zip files", extensions : "zip"}
+			]
+		},
+
+		// Resize images on clientside if we can
+		resize : {width : 320, height : 240, quality : 90}
+	});
 
 	$('#dtp1').datetimepicker({
 	step:5,
