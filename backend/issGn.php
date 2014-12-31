@@ -41,7 +41,7 @@ if(!mysqli_query($datos, $insertar_ciudadano)){
 
 } else if(mysqli_num_rows($checkin) !== 0 && $argument == 1){
 
-mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . ";)",
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . ";)");
 mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME1 = '" . $apellidoP . "' WHERE CTZ_RUT=" . $clean_rut . ";");
 mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME2 = '" . $apellidoM . "' WHERE CTZ_RUT=" . $clean_rut . ";");
 mysqli_query($datos, "UPDATE CITIZENS SET CTZ_ADDRESS = '" . $direccion . "' WHERE CTZ_RUT=" . $clean_rut . ";");
