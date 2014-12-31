@@ -49,6 +49,8 @@ mysqli_query($datos, "UPDATE CITIZENS SET CTZ_GEOLOC = '" . $geo . "' WHERE CTZ_
 mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE CTZ_RUT=" . $clean_rut . ";");
 mysqli_query($datos, "UPDATE CITIZENS SET CTZ_MAIL = '" . $mail . "' WHERE CTZ_RUT=" . $clean_rut . ";");
 
+echo $clean_rut;
+exit;
 
 } else {
 
