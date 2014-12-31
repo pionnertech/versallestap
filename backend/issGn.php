@@ -41,7 +41,7 @@ if(!mysqli_query($datos, $insertar_ciudadano)){
 
 } else if(mysqli_num_rows($checkin) !== 0 && $argument == 1){
 
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . ";)")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . ";")){
 	echo "nombre " .  mysqli_errno($datos);
 	exit;
 }
