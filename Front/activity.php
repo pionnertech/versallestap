@@ -926,9 +926,9 @@ function Valida_Rut( Objeto )
 		var pre_rut = Objeto.value.replace(/\./g, "");
          pre_rut = pre_rut.replace('-', "");
          var rut = pre_rut.substring(0, pre_rut.length-1);
-
-		checkIfExist(rut);
-
+        if(exist !== 1){
+            checkIfExist(rut);
+        }
 		return true;
 	}
 }
@@ -1035,7 +1035,7 @@ if(empty.length == 0){
 
 
 if($("#subject").val() == ""){
-	bootbox.alert("Por favor ingrese ausnto de la audiencia", function(){
+	bootbox.alert("Por favor ingrese asunto de la audiencia", function(){
 		return false;
 	})
 }
@@ -1056,8 +1056,6 @@ if(!Valida_Rut(document.getElementById('RUT'))){
     bootbox.alert("el R.U.T ingresado no es valido");
     return false;
 }
-
-
 
 return true;
 
