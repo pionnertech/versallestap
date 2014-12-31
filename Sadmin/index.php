@@ -356,7 +356,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 ?>
                                    <div class="chart inline-legend grid linerchart" align="center">
                                         <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
-                                        <strong><? printf($f1[0])?></strong>
+                                        <strong><? printf($f1[0]) ?></strong>
                                     </div>
  <? 
     $i = $i + 1;

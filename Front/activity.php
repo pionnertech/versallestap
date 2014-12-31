@@ -364,9 +364,11 @@ width: 100%;
 											</a>
 										</div>
 										<div id="html5_uploader" style="width: 100%;">
-										<form action="upload" method="POST" enctype="multipart/form-data">
+										<form action="../backend/upload_front.php" method="POST" enctype="multipart/form-data">
 											<input type="file" id="filehand" name="upl" multiple />
-											<input type="submit">
+											<input type="submit" value="subir" id="subir" style="display:none">
+											<input type="hidden" value="" name="issue" id="issues">
+											<input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
 									    </form>
 										</div>
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
@@ -796,9 +798,14 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&argument=" + argument
  	 ,
  	success : function (data){
-  
 
-        if($("#SendRequest").data("val") == 1 ){
+
+  if(document.getElementById("filehand").value != ""){
+         $("#issues").val(data);
+  	     $("#subir").trigger('click');
+  }
+
+if($("#SendRequest").data("val") == 1 ){
       
 var name = $('.selectpicker').val();
 var msg = $("#requeriment").val();
@@ -811,6 +818,7 @@ $("#SendRequest").data("val", 0);
 
         } else {
             console.info(data);
+
         	bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input[type=text], input[type=tel]").val('');
  			 $("textarea").val('');
