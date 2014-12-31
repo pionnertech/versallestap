@@ -622,7 +622,6 @@ setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narra
 });
 } else {
 
-
  bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
 
 	if(outcome) {
@@ -639,10 +638,12 @@ narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
 setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
 
+	} else  {
+		argument = 1;
 	}
 	
 });
-	
+
 }
 })
 } else {
