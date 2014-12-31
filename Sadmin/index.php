@@ -3,10 +3,10 @@ if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'sadmin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
                                                                 
-$Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
+$Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtFacility']);
 
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAME,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2 FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2 FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
 
 ?>
@@ -340,7 +340,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAME,  C.USR_NAM
                                 </div>
                                 <div class="module-body">
                                     <div class="chart inline-legend grid">
-                                        <div id="placeholder2" class="graph" style="height: 500px">
+                                        <div id="placeholder2" class="graph" style="height: 200px">
                                         </div>
                                     </div>
                                 </div>
@@ -489,6 +489,10 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
     });
 
 });
+
+        $("#placeholder2").bind("plothover", pieHover);
+        $("#placeholder2").bind("plotclick", pieClick);
+
 setIconState('Actas');
 setIconState('Audiencias');
 setIconState('Urgencias');
@@ -584,6 +588,19 @@ break;
         }
 }
 
+        function pieHover(event, pos, obj) {
+            if (!obj)
+                return;
+            percent = parseFloat(obj.series.percent).toFixed(2);
+            $("#hover").html('<span>' + obj.series.label + ' - ' + percent + '%</span>');
+        }
+
+        function pieClick(event, pos, obj) {
+            if (!obj)
+                return;
+            percent = parseFloat(obj.series.percent).toFixed(2);
+            alert('' + obj.series.label + ': ' + percent + '%');
+        }
 
 
 
