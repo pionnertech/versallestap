@@ -521,14 +521,14 @@ $cant_dept = count($array_dept);
 
 <?
 $query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-$i = 0;
+$x = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 
 ?>
 var array_set_<? printf($filax[1]) ?> = [];
 array_set_<? printf($filax[1]) ?> = [
 <?
-$handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$i] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
+$handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
 
 while($datos = mysqli_fetch_row($handler)){
 
@@ -538,7 +538,7 @@ while($datos = mysqli_fetch_row($handler)){
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot("#chart<? printf($i) ?>", array_set_<? printf($filax[1]) ?>, {
+    $.plot("#chart<? printf($x) ?>", array_set_<? printf($filax[1]) ?>, {
            series: {
             pie: {
                 innerRadius: 0.5,
@@ -560,7 +560,7 @@ while($datos = mysqli_fetch_row($handler)){
 
 
 <? 
-  $i = $i + 1;
+  $x = $x + 1;
 }
 
  ?>
