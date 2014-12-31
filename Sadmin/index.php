@@ -561,7 +561,7 @@ while($subt = mysqli_fetch_row($handler)){
 }
 
  ?>
-
+});
 $("#placeholder2").bind("plothover", pieHover);
 $("#placeholder2").bind("plotclick", pieClick);
 
