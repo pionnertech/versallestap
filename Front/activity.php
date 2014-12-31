@@ -213,7 +213,7 @@ width: 100%;
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right"><? printf($cantidad) ?></b>
+									<b class="label orange pull-right"><? printf($cantidad['ISS_ID']) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
@@ -350,9 +350,9 @@ width: 100%;
 											<textarea id="descrip-audi" class="span12" style="height: 70px; resize: none;"></textarea>
 										</div>
 										<div class="clearfix">
-											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Marcar como urgente">
-												<i class="icon-warning-sign shaded" title="Marcar como urgente"></i>
-											</a>
+											<button class="btn btn-small" rel="tooltip" data-placement="top" title="Marcar como urgente" >
+												<i class="icon-warning-sign shaded" title="Marcar como urgente" onclick="this.style.color: orange"></i>
+											</button >
 											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
 												<i class="icon-paper-clip shaded"></i>
 											</a>
@@ -364,13 +364,16 @@ width: 100%;
 											</a>
 										</div>
 										<div id="html5_uploader" style="width: 100%;">
+                                       <!--
 										<form action="../backend/upload_front.php" method="POST" enctype="multipart/form-data">
 											<input type="file" id="filehand" name="upl" multiple />
 											<input type="submit" value="subir" id="subir" style="display:none">
 											<input type="hidden" value="" name="issue" id="issues">
 											<input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
 									    </form>
+									    -->
 										</div>
+       
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
 									</div>
 								</div>
@@ -798,12 +801,6 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&argument=" + argument
  	 ,
  	success : function (data){
-
-
-  if(document.getElementById("filehand").value != ""){
-         $("#issues").val(data);
-  	     $("#subir").trigger('click');
-  }
 
 if($("#SendRequest").data("val") == 1 ){
       
