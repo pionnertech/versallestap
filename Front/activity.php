@@ -1064,7 +1064,7 @@ return true;
 //special event
 
 $("input[type=text]").on('change keypress keydown input paste', function (){
-	if(exist == 1 && $(this).attr('class') !== "datetimepicker"){
+	if(exist == 1 && ($(this).attr('class') !== "datetimepicker" || $(this).attr('id') !== "RUT")){
 		argument = 1;
 	}
 })

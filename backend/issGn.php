@@ -18,6 +18,7 @@
  	$fac = $_GET['fac'];
  	$mail = $_GET['email'];
     $subject = $_GET['subject'];
+    $argument = $_GET['argument'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
@@ -32,11 +33,27 @@ $insertar_ciudadano1 = "INSERT INTO CITIZENS (CTZ_NAMES, CTZ_SURNAME1, CTZ_SURNA
 $insertar_ciudadano2 = " VALUES ('" . $nombre . "', '" . $apellidoP . "', '" . $apellidoM .  "' , '" . $direccion . "', '" . $geo . "' , " . $clean_rut . " , '" . substr($rut,-1,1) . "', '" . $date . "', " . $tel ." ,'" . $mail . "')";
 $insertar_ciudadano  = $insertar_ciudadano1 . $insertar_ciudadano2;
 
+
 if(!mysqli_query($datos, $insertar_ciudadano)){
      echo (mysqli_error($datos));
    exit;
   } 
-}
+
+} else if(mysqli_num_rows($checkin) !== 0 && $argument == 1){
+
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . ";)",
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME1 = '" . $apellidoP . "' WHERE CTZ_RUT=" . $clean_rut . ";");
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME2 = '" . $apellidoM . "' WHERE CTZ_RUT=" . $clean_rut . ";");
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_ADDRESS = '" . $direccion . "' WHERE CTZ_RUT=" . $clean_rut . ";");
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_GEOLOC = '" . $geo . "' WHERE CTZ_RUT=" . $clean_rut . ";");
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE CTZ_RUT=" . $clean_rut . ";");
+mysqli_query($datos, "UPDATE CITIZENS SET CTZ_MAIL = '" . $mail . "' WHERE CTZ_RUT=" . $clean_rut . ";");
+
+
+} else {
+
+
+} 
 
 
 if ($days == 'NaN'){
