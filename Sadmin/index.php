@@ -498,14 +498,13 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
          legend: {
             show: false         
         },
-        grid: 
+        grid: {
         hoverable: true,
         clickable: true
     }
-
-    );
-
 });
+
+
 
 //graficos secundarios por depart
 <?
