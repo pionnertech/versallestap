@@ -344,10 +344,10 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                     </div>
 
                                    <div class="chart inline-legend grid linerchart">
-                                        <div id="chart1" class="graph" style="height: 200px"></div>
+                                        <div id="chart0" class="graph" style="height: 200px"></div>
                                     </div>
                                    <div class="chart inline-legend grid linerchart">
-                                        <div id="chart2" class="graph" style="height: 200px"></div>
+                                        <div id="chart1" class="graph" style="height: 200px"></div>
                                     </div>
 
 
@@ -521,7 +521,7 @@ $cant_dept = count($array_dept);
 
 <?
 $query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-$i = 1;
+$i = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 
 ?>
