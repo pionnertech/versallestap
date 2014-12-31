@@ -973,7 +973,7 @@ $("#apllP").val(recall[2]);
 $("#applM").val(recall[1]);
 $("#Nombres").val(recall[0]);
 $("#direccion").val(recall[3]);
-$("#tel").val(recall[9]);
+$("#tel").val(recall[8]);
 $("#Geo").val(recall[4]);
 $("#ctzmail").val(recall[9]);
 
