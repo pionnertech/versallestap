@@ -598,12 +598,19 @@ $("#delegate").on('click', function(){
 
 
 $("#SendRequest-free").on('click', function(){
-   
+  
+  if(argument == 1){
+	bootbox.confirm("Se detectaron cambios en los datos del ciudadano, Desea actualizar la información", function (response){
+        if(!response){
+            argument = 0;
+        } 
+	})
+}
+
+
    bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
 
 	if(outcome) {
-
-
 var narray = [];
 var cont = document.querySelectorAll(".wrap-ing-form input");
 
@@ -744,7 +751,7 @@ $("#SendRequest").data("val", 0);
         } else {
             console.info(data);
         	bootbox.alert("Audiencia ingresada con exito", function(){
- 			 $("input[type=text]").val('');
+ 			 $("input[type=text], input[type=tel]").val('');
  			 $("textarea").val('');
  			 exist = 0;
  			
@@ -1012,13 +1019,7 @@ if(!Valida_Rut(document.getElementById('RUT'))){
     return false;
 }
 
-if(argument == 1){
-	bootbox.confirm("Se detectaron cambios en los datos del ciudadano, Desea actualizar la información", function (response){
-        if(!response){
-            argument = 0;
-        } 
-	})
-}
+
 
 return true;
 
