@@ -336,13 +336,21 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                             <div class="module">
                                 <div class="module-head">
                                     <h3>
-                                        Profit Chart</h3>
+                                       Gráfico General</h3>
                                 </div>
                                 <div class="module-body">
                                     <div class="chart inline-legend grid">
-                                        <div id="placeholder2" class="graph" style="height: 200px">
-                                        </div>
+                                        <div id="placeholder2" class="graph" style="height: 250px"></div>
                                     </div>
+
+                                   <div class="chart inline-legend grid linerchart">
+                                        <div id="chart1" class="graph" style="height: 200px"></div>
+                                    </div>
+                                   <div class="chart inline-legend grid linerchart">
+                                        <div id="chart2" class="graph" style="height: 200px"></div>
+                                    </div>
+
+
                                 </div>
                             </div>
                             <!--/.module-->
@@ -484,14 +492,89 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
             }
          },
          legend: {
-            labelBoxBorderColor: "none"
-         }
-    });
+            show: false         
+        },
+        grid: 
+        hoverable: true,
+        clickable: true
+    }
+
+    );
 
 });
 
-        $("#placeholder2").bind("plothover", pieHover);
-        $("#placeholder2").bind("plotclick", pieClick);
+//graficos secundarios por depart
+<?
+$array_dept = [];
+$i = 0;
+
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT;");
+
+while($f1 = mysqli_fetch_row($query_count_departament)){
+$array_dept[$i] = $f1[0];
+$i = $i + 1;
+}
+
+$cant_dept = count($array_dept);
+
+?>
+
+<?
+$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $fac . " GROUP BY USR_DEPT;");
+$i = 1;
+while($filax = mysqli_fetch_row($query_dept_global)){
+
+?>
+var array_set_<? printf($filax[1]) ?> = [];
+array_set_<? printf($filax[1]) ?> = [
+<?
+$handler  = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
+
+while($datos = mysqli_fetch_row($handler)){
+
+?>
+{ label: "<? printf(  $datos[1] ) ?>",  data: <? printf( $datos[0] ) ?> , color:"<? printf( $datos[2] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+    $.plot("#chart<? printf($i) ?>", array_set_<? printf($filax[1]) ?>, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: 
+        hoverable: true,
+        clickable: true
+    }
+
+    );
+
+
+
+
+
+<? 
+  $i = $i + 1;
+}
+
+ ?>
+
+
+
+
+
+
+
+
+
+$("#placeholder2").bind("plothover", pieHover);
+$("#placeholder2").bind("plotclick", pieClick);
 
 setIconState('Actas');
 setIconState('Audiencias');
