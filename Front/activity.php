@@ -1,4 +1,4 @@
-<?php header('Content-Type: text/html; charset=utf-8');
+<?php 
 
 session_start();
 
@@ -39,6 +39,7 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 	<link type="text/css" media="screen" href="../css/bootstrap-select.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
 
 	<link type="text/css" href="../css/style.css">
 	
@@ -272,25 +273,25 @@ width: 100%;
 							<div class="module-body">
 									<div class="media stream new-update" align="center" id="intext">
 									<div class="wrap-ing-form" style="vertical-align: top; display: inline-block; width:100%;">
-					R.U.T &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="RUT" placeholder="R.U.T" style="width: 30% !important;" maxlength="12"/>
+					R.U.T &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="RUT" placeholder="R.U.T" style="width: 30% !important;" maxlength="12" class="ctz_data"/>
 					          &ensp;&ensp;&ensp;&ensp;Fecha Audiencia&ensp;&ensp;&ensp;&ensp; 
                            <input type="text" placeholder="fecha de audiencia" value="" id="dtp1" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     </div>
                                         <div class="wrap-ing-form">
-                    Apellido Paterno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="apllP" placeholder="Apellido Paterno"/><br><br>
+                    Apellido Paterno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="apllP" placeholder="Apellido Paterno" class="ctz_data"/><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Apellido Materno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="applM" placeholder="Apellido Materno" /><br><br>
+                    Apellido Materno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="applM" placeholder="Apellido Materno" class="ctz_data"/><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Nombres &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="Nombres" placeholder="Nombres" /><br><br>
+                    Nombres &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="Nombres" placeholder="Nombres" class="ctz_data" /><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Telefono &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="tel" placeholder="Teléfono" id="tel" maxlength="12" /><br><br>
+                    Telefono &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="tel" placeholder="Teléfono" id="tel" maxlength="12" class="ctz_data" /><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
                                         <div id="sub-wrap">
-                    Dirección &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="direccion" placeholder="Dirección"/>
+                    Dirección &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="direccion" placeholder="Dirección" class="ctz_data"/>
                      <i class="icon-map-marker icon-2x" id="Geo" ></i>
                     </div>
                     <div id="wrap-map" style="width: 100%; height:0px;">
@@ -298,7 +299,7 @@ width: 100%;
                     </div>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Correo Electronico &ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" value="" id="ctzmail" placeholder="Correo Electronico"/><br><br>
+                    Correo Electronico &ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" value="" id="ctzmail" placeholder="Correo Electronico" class="ctz_data"/><br><br>
                                         </div>
 									</div>
 								 <div class="control-group" >
@@ -362,6 +363,7 @@ width: 100%;
 											   <i class="icon-retweet shaded"></i> 
 											</a>
 										</div>
+										<div id="html5_uploader" style="width: 500px; height: 330px;">Your browser doesn't support native upload.</div>
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
 									</div>
 								</div>
@@ -422,6 +424,8 @@ width: 100%;
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
+    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
 </body>
 </html>
 
@@ -1063,8 +1067,8 @@ return true;
 
 //special event
 
-$("input[type=text]").on('change keypress keydown input paste', function (){
-	if(exist == 1 && ($(this).attr('class') !== "datetimepicker" || $(this).attr('id') !== "RUT")){
+$("input.ctz_data").on('change keypress keydown input paste', function (){
+	if(exist == 1 && $(this).attr('id') !== "RUT")){
 		argument = 1;
 	}
 });
