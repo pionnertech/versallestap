@@ -23,25 +23,6 @@ $(document).ready(function () {
 
     //Graph/Chart index.html
 
-     function setData(){
-     	getValues( function (content){
-               var data = content
-               array_data = data;
-     	});
-     }
-
-
-function getValues(callback){
-var data;
-$.ajax({
-	type: "POST", 
-	url: "inject_pie_data.php?facility=" + fac,
-	success : function (resp){
-		    data = resp;
-		    callback(data);
-	}
-});
-}
 
 
 function showTooltip(x, y, contents) {

@@ -435,6 +435,7 @@ width: 100%;
 var geocoder;
 var map;
 var GeoRef;
+var argument = 0;
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
 
 
@@ -723,7 +724,8 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	"&days=" + fecha_limit +
  	"&email=" + mail +
  	"&subject=" + subject +
- 	"&fac=" + fac
+ 	"&fac=" + fac +
+ 	"&argument=" + argument
  	 ,
  	success : function (data){
   
@@ -1010,11 +1012,25 @@ if(!Valida_Rut(document.getElementById('RUT'))){
     return false;
 }
 
+if(argument == 1){
+	bootbox.confirm("Se detectaron cambios en los datos del ciudadano, Desea actualizar la información", function (response){
+        if(!response){
+            argument = 0;
+        } 
+	})
+}
+
 return true;
 
-
-
 }
+
+//special event
+
+$("input[type=text]").on('change keypress keydown input paste', function (){
+	if(exist == 1 && $(this).attr('class') !== "datetimepicker"){
+		argument = 1;
+	}
+})
 
 </script>
 <?
@@ -1024,7 +1040,3 @@ return true;
 }
 
 ?>
-
- ../backend/issGn.php?rut=235567490&dn=Av ricardo lyon 550&iss=backend&Geoloc=0&Nombre=David luanuss&appm=Paulaner&appp=Fensterseiffer-Friedrich&tipo=5&tel=34565434&date=2014-12-28 01:03:28&fecha_limit= 10:00:00&days=NaN&email=pionner256@outlook.com&subject=test&fac=10000
- ../backend/issGn.php?rut=235567490&dn=Av ricardo lyon 550&iss=besta54&Geoloc=0&Nombre=David luanuss&appm=Paulaner&appp=Fensterseiffer-Friedrich&tipo=5&tel=34565434&date=2014-12-28 01:04:40&fecha_limit= 10:00:00&days=NaN&email=pionner256@outlook.com&subject=otro test&fac=10000
- tipo
