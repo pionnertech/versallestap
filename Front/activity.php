@@ -756,7 +756,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
- 	"&dn=" + direccion + 
+ 	"&dn=" + direccion.replace(/\,/gi," " ) + 
  	"&iss=" + audiencia + 
  	"&Geoloc=" + GeoLoc + 
  	"&Nombre=" + Nombre +
@@ -975,7 +975,7 @@ $("#Nombres").val(recall[0]);
 $("#direccion").val(recall[3]);
 $("#tel").val(recall[9]);
 $("#Geo").val(recall[4]);
-$("#ctzmail").val(recall[10]);
+$("#ctzmail").val(recall[9]);
 
 exist = 1;
 
@@ -1067,7 +1067,7 @@ $("input[type=text]").on('change keypress keydown input paste', function (){
 	if(exist == 1 && ($(this).attr('class') !== "datetimepicker" || $(this).attr('id') !== "RUT")){
 		argument = 1;
 	}
-})
+});
 
 </script>
 <?
