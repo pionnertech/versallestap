@@ -453,6 +453,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAME,  C.USR_NAM
         <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
         <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="../scripts/common.js" type="text/javascript"></script>
@@ -460,6 +461,34 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAME,  C.USR_NAM
     </body>
 <script type="text/javascript">
     
+$(document).on('ready', function(){
+
+array_set = [
+<?
+
+$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+
+while ( $fila2 = mysqli_fetch_row($pass)) {
+
+?>
+{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+    $.plot("#placeholder2", array_set, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            labelBoxBorderColor: "none"
+         }
+    });
+
+});
 setIconState('Actas');
 setIconState('Audiencias');
 setIconState('Urgencias');
