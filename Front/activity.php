@@ -19,7 +19,7 @@ $Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSI
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;"  );
 
-$cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");"));
+$cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS CANT FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");"));
 
 ?>
 
@@ -213,7 +213,7 @@ width: 100%;
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right"><? printf($cantidad['ISS_ID']) ?></b>
+									<b class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
@@ -351,7 +351,7 @@ width: 100%;
 										</div>
 										<div class="clearfix">
 											<button class="btn btn-small" rel="tooltip" data-placement="top" title="Marcar como urgente" >
-												<i class="icon-warning-sign shaded" title="Marcar como urgente" onclick="this.style.color: orange"></i>
+												<i class="icon-warning-sign shaded" title="Marcar como urgente" id="mkur"></i>
 											</button >
 											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
 												<i class="icon-paper-clip shaded"></i>
@@ -1092,11 +1092,21 @@ return true;
 //special event
 
 $("input.ctz_data").on('change keypress keydown input paste', function (){
-	if(exist == 1 && $(this).attr('id') !== "RUT")){
+	if(exist == 1 && $(this).attr('id') !== "RUT"){
 		argument = 1;
 	}
 });
 
+$("#mkur").on('click', function(){
+	var st = $(this).data("val");
+	if(st != 0 || st != ""){
+	   $(this).css({ color : "orange"});
+	   $(this).data("val", 0)
+     } else {
+       $(this).css({ color : "gray"});
+       $(this).data("val", 1);
+     }
+})
 </script>
 <?
 
