@@ -344,17 +344,24 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                     <h3>
                                        Gráfico General</h3>
                                 </div>
-                                <div class="module-body" style="display: inline-block; vertical-align: top;">
+                                <div class="module-body">
                                     <div class="chart inline-legend grid" style="width: 100%;">
                                         <div id="placeholder2" style="height: 250px"></div>
                                     </div>
-                                   <div class="chart inline-legend grid linerchart">
-                                        <div id="chart0" class="graph" style="height: 200px"></div>
-                                    </div>
-                                   <div class="chart inline-legend grid linerchart">
-                                        <div id="chart1" class="graph" style="height: 200px"></div>
-                                    </div>
 
+<?
+$i = 0;
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
+while($f1 = mysqli_fetch_row($query_count_departament)){
+?>
+                                   <div class="chart inline-legend grid linerchart" align="center">
+                                        <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
+                                        <strong><? printf($f1[0])?></strong>
+                                    </div>
+ <? 
+    $i = $i + 1;
+
+ } ?>
                                 </div>
                             </div>
                             <!--/.module-->
