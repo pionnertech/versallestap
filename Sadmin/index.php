@@ -35,6 +35,12 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
              opacity: 0;
         }
 
+        .linerchart{
+            width:33.33%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -338,18 +344,16 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                     <h3>
                                        Gráfico General</h3>
                                 </div>
-                                <div class="module-body">
-                                    <div class="chart inline-legend grid">
-                                        <div id="placeholder2" class="graph" style="height: 250px"></div>
+                                <div class="module-body" style="display: inline-block; vertical-align: top;">
+                                    <div class="chart inline-legend grid" style="width: 100%;">
+                                        <div id="placeholder2" style="height: 250px"></div>
                                     </div>
-
                                    <div class="chart inline-legend grid linerchart">
                                         <div id="chart0" class="graph" style="height: 200px"></div>
                                     </div>
                                    <div class="chart inline-legend grid linerchart">
                                         <div id="chart1" class="graph" style="height: 200px"></div>
                                     </div>
-
 
                                 </div>
                             </div>
