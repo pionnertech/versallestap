@@ -17,9 +17,9 @@ $Query_task = mysqli_query($datos, "SELECT * FROM ISS WHERE FAC_CODE = " . $_SES
 
 $Query_cat = mysqli_query($datos, "SELECT * FROM CAT WHERE CAT_FAC = " . $_SESSION['TxtFacility']);
 
-
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;"  );
 
+$cantidad = mysqli_query($datos, "SELECT COUNT( ISS_ID ) FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");");
 
 ?>
 
@@ -213,7 +213,7 @@ width: 100%;
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right">19</b>
+									<b class="label orange pull-right"><? printf($cantidad) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
@@ -363,7 +363,12 @@ width: 100%;
 											   <i class="icon-retweet shaded"></i> 
 											</a>
 										</div>
-										<div id="html5_uploader" style="width: 500px; height: 330px;">Your browser doesn't support native upload.</div>
+										<div id="html5_uploader" style="width: 100%;">
+										<form action="upload" method="POST" enctype="multipart/form-data">
+											<input type="file" id="filehand" name="upl" multiple />
+											<input type="submit">
+									    </form>
+										</div>
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
 									</div>
 								</div>
@@ -424,8 +429,8 @@ width: 100%;
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
-    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
+    <!--<script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  -->
+    <!--<script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>-->
 </body>
 </html>
 
@@ -465,14 +470,13 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
      //google maps...
  IntializeGMaps();
-
+/*
 	$("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
-		url : '../upload.php',
+		url : '../.php',
 		chunk_size : '1mb',
 		unique_names : true,
-		
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
@@ -480,11 +484,8 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 				{title : "Zip files", extensions : "zip"}
 			]
 		},
-
-		// Resize images on clientside if we can
-		resize : {width : 320, height : 240, quality : 90}
 	});
-
+    */
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
