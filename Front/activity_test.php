@@ -1126,18 +1126,18 @@ $("#mkur").on('click', function(){3
      }
 });
 
+var clip = 0;
 $("#clip").on('click', function(){
 
-var clip = $(this).data("val");
-if(clip.data("val") == 0 || clip.data("val") == "" ){
+if(clip == 0 || clip == "" ){
 
    $("#wrap-html5").css({ height : "240px"});
-    $(this).data("val", 1)
+    clip = 1;
 } else {
-    $(this).data("val", 0);
+   
    $("#wrap-html5").css({ height : "0px"});
-    
-}
+    clip = 0;
+} 
 
 });
 
