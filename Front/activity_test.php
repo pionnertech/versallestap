@@ -482,7 +482,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
      //google maps...
  IntializeGMaps();
 
-	var UQ = $("#html5_uploader").pluploadQueue({
+ UQ = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
 		url : '../backend/upload_front_test.php',
@@ -503,7 +503,9 @@ UQ.bind("FileUploaded", function(up, file, response) {
   UQ.splice();
 });
 
-    
+UQ.bind('BeforeUpload', function(up, file) {
+    up.settings.multipart_params = {"fac": <? $_SESSION['TxtFacility'] ?> };
+});    
 
 
 
