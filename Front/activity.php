@@ -111,10 +111,16 @@ display: inline-block;
 vertical-align: top;
 }
 
-#newOrgin{
+#newOrgin, #wrap-html5{
 width: 100%;
 }
+
+#wrap-html5{
+   display:none;
+}
 	</style>
+
+
 
 
 </head>
@@ -353,9 +359,9 @@ width: 100%;
 											<button class="btn btn-small" rel="tooltip" data-placement="top" title="Marcar como urgente" >
 												<i class="icon-warning-sign shaded" title="Marcar como urgente" id="mkur"></i>
 											</button >
-											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
-												<i class="icon-paper-clip shaded"></i>
-											</a>
+											<button class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
+												<i class="icon-paper-clip shaded" id="clip"></i>
+											</button>
 											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Geolocalización">
 												<i class="icon-map-marker shaded"></i>
 											</a>
@@ -363,7 +369,8 @@ width: 100%;
 											   <i class="icon-retweet shaded"></i> 
 											</a>
 										</div>
-										<div id="html5_uploader" style="width: 100%;">
+										<div id="wrap-html5">
+										     <div id="html5_uploader" style="width: 100%;">
                                        <!--
 										<form action="../backend/upload_front.php" method="POST" enctype="multipart/form-data">
 											<input type="file" id="filehand" name="upl" multiple />
@@ -372,8 +379,8 @@ width: 100%;
 											<input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
 									    </form>
 									    -->
-										</div>
-       
+										     </div>
+                                        </div>
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
 									</div>
 								</div>
@@ -405,8 +412,7 @@ width: 100%;
                                           <?
                                           }
                                         ?>
-
-												</select>
+								</select>
                      <i class="icon-warning-sign icon-2x" id="urgent" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                      <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                                          <input type="text" placeholder="Fecha Máxima Respuesta" value="" id="dtp2" class="datetimepicker" style="vertical-align:top; display: inline-block; position: relative; float: right;"/>
@@ -434,8 +440,8 @@ width: 100%;
 	<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <!--<script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  -->
-    <!--<script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>-->
+    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
+    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
 </body>
 </html>
 
@@ -452,16 +458,13 @@ var GeoRef;
 var argument = 0;
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
 
-
+var UQ;
 var exist = 0;
 
 
 //===================================
 //*********** EVENTS ****************
 //===================================
-
-
-
 
 $(document).on('ready', function(){
 
@@ -475,22 +478,34 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
      //google maps...
  IntializeGMaps();
-/*
-	$("#html5_uploader").pluploadQueue({
+
+ UQ = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
-		url : '../.php',
+		url : '../backend/upload_front_test.php?fac=' + fac + "&rut=" + $("#RUT").val(),
 		chunk_size : '1mb',
 		unique_names : true,
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
 				{title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
-				{title : "Zip files", extensions : "zip"}
+				{title : "Zip files", extensions : "zip" }
 			]
 		},
 	});
-    */
+
+
+
+UQ.bind("FileUploaded", function (up, file, response) {
+  UQ.splice();
+});
+
+UQ.bind('BeforeUpload', function (up, file) {
+    up.settings.multipart_params = {"fac": fac };
+});    
+
+
+
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
@@ -1097,7 +1112,7 @@ $("input.ctz_data").on('change keypress keydown input paste', function (){
 	}
 });
 
-$("#mkur").on('click', function(){
+$("#mkur").on('click', function(){3
 	var st = $(this).data("val");
 	if(st != 0 || st != ""){
 	   $(this).css({ color : "orange"});
@@ -1106,7 +1121,14 @@ $("#mkur").on('click', function(){
        $(this).css({ color : "gray"});
        $(this).data("val", 1);
      }
-})
+});
+
+
+$("#clip").on('click', function(){
+   $("#wrap-html5").fadeToggle(400);
+
+});
+
 </script>
 <?
 
