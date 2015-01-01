@@ -476,20 +476,28 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
      //google maps...
  IntializeGMaps();
 
-	$("#html5_uploader").pluploadQueue({
+	var UQ = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
-		url : '../backend/upload_tester.php',
+		url : '../backend/upload_front_test.php',
 		chunk_size : '1mb',
 		unique_names : true,
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
 				{title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
-				{title : "Zip files", extensions : "zip"}
+				{title : "Zip files", extensions : "zip" }
 			]
 		},
 	});
+
+
+
+UQ.bind("FileUploaded", function(up, file, response) {
+  console.info(up);
+  console.info(response);
+});
+
     
 	$('#dtp1').datetimepicker({
 	step:5,
