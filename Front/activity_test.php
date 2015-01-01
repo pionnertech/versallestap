@@ -68,7 +68,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
      	width: 150px !important;
      }
 
-     #wrap-map, #map, #wrap-html5{
+     #wrap-map, #map{
      	     -webkit-transition: all 600ms ease-in-out;
             -moz-transition: all 600ms ease-in-out;
              transition: all 600ms ease-in-out;
@@ -116,7 +116,7 @@ width: 100%;
 }
 
 #wrap-html5{
-  height:0px;
+   display:none;
 }
 	</style>
 
@@ -1126,18 +1126,9 @@ $("#mkur").on('click', function(){3
      }
 });
 
-var clip = 0;
+
 $("#clip").on('click', function(){
-
-if(clip == 0 || clip == "" ){
-
-   $("#wrap-html5").css({ height : "240px"});
-    clip = 1;
-} else {
-   
-   $("#wrap-html5").css({ height : "0px"});
-    clip = 0;
-} 
+   $("#wrap-html5").fadeToggle(400);
 
 });
 
