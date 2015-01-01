@@ -458,7 +458,7 @@ var GeoRef;
 var argument = 0;
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
 
-
+var UQ;
 var exist = 0;
 
 
@@ -499,11 +499,11 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
 
 
-UQ.bind("FileUploaded", function(up, file, response) {
+UQ.bind("FileUploaded", function (up, file, response) {
   UQ.splice();
 });
 
-UQ.bind('BeforeUpload', function(up, file) {
+UQ.bind('BeforeUpload', function (up, file) {
     up.settings.multipart_params = {"fac": <? $_SESSION['TxtFacility'] ?> };
 });    
 
