@@ -457,7 +457,7 @@ var map;
 var GeoRef;
 var argument = 0;
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
-var rut = 0;
+var rut_value = 0;
 var UQ;
 var exist = 0;
 
@@ -482,7 +482,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
  UQ = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
-		url : '../backend/upload_front.php?fac=' + fac + "&rut=" + $("#RUT").val() ,
+		url : '../backend/upload_front.php?fac=' + fac + '&rut=' + rut_value ,
 		chunk_size : '1mb',
 		unique_names : true,
 		filters : {
@@ -969,7 +969,7 @@ function Valida_Rut( Objeto )
 		var pre_rut = Objeto.value.replace(/\./g, "");
          pre_rut = pre_rut.replace('-', "");
          var rut = pre_rut.substring(0, pre_rut.length-1);
-         rut = $("#RUT").val();
+          
         if(exist !== 1){
             checkIfExist(rut);
         }
@@ -1002,14 +1002,14 @@ $.ajax({
 	type: "POST",
 	url: "../backend/Getctz.php?rut=" + rut + "&fac=" + fac,
 	success : function (data){
-		console.info(data);
+	
        if(parseInt(data) === 0){
 
        	console.info('no existe');
 
        } else {
 
-
+rut_value = $("#RUT").val();
 
 recall = data.split(",");
 
