@@ -457,7 +457,7 @@ var map;
 var GeoRef;
 var argument = 0;
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
-
+var rut = 0;
 var UQ;
 var exist = 0;
 
@@ -969,6 +969,7 @@ function Valida_Rut( Objeto )
 		var pre_rut = Objeto.value.replace(/\./g, "");
          pre_rut = pre_rut.replace('-', "");
          var rut = pre_rut.substring(0, pre_rut.length-1);
+         rut = $("#RUT").val();
         if(exist !== 1){
             checkIfExist(rut);
         }
