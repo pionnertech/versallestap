@@ -504,7 +504,7 @@ UQ.bind("FileUploaded", function (up, file, response) {
 });
 
 UQ.bind('BeforeUpload', function (up, file) {
-    up.settings.multipart_params = {"fac": <? $_SESSION['TxtFacility'] ?> };
+    up.settings.multipart_params = {"fac": fac };
 });    
 
 
