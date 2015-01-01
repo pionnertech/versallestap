@@ -28,7 +28,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 basename($_FILES['upl']['name'] , "." . strtolower($extension))
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "Front/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $issue . "." . $extension )) {
+if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "Front/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $issue . "." . $extension )){
 		echo '{"status":"success"}';
 		exit;
 	}

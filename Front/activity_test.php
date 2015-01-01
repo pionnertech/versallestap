@@ -68,7 +68,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
      	width: 150px !important;
      }
 
-     #wrap-map, #map{
+     #wrap-map, #map, #wrap-html5{
      	     -webkit-transition: all 600ms ease-in-out;
             -moz-transition: all 600ms ease-in-out;
              transition: all 600ms ease-in-out;
@@ -111,10 +111,16 @@ display: inline-block;
 vertical-align: top;
 }
 
-#newOrgin{
+#newOrgin, #wrap-html5{
 width: 100%;
 }
+
+#wrap-html5{
+  height:0px;
+}
 	</style>
+
+
 
 
 </head>
@@ -353,9 +359,9 @@ width: 100%;
 											<button class="btn btn-small" rel="tooltip" data-placement="top" title="Marcar como urgente" >
 												<i class="icon-warning-sign shaded" title="Marcar como urgente" id="mkur"></i>
 											</button >
-											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
-												<i class="icon-paper-clip shaded"></i>
-											</a>
+											<button class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Adjuntar Archivos">
+												<i class="icon-paper-clip shaded" id="clip"></i>
+											</button>
 											<a href="#" class="btn btn-small" rel="tooltip" data-placement="top" data-original-title="Geolocalización">
 												<i class="icon-map-marker shaded"></i>
 											</a>
@@ -363,7 +369,8 @@ width: 100%;
 											   <i class="icon-retweet shaded"></i> 
 											</a>
 										</div>
-										<div id="html5_uploader" style="width: 100%;">
+										<div id="wrap-html5">
+										     <div id="html5_uploader" style="width: 100%;">
                                        <!--
 										<form action="../backend/upload_front.php" method="POST" enctype="multipart/form-data">
 											<input type="file" id="filehand" name="upl" multiple />
@@ -372,8 +379,8 @@ width: 100%;
 											<input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
 									    </form>
 									    -->
-										</div>
-       
+										     </div>
+                                        </div>
 										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
 									</div>
 								</div>
@@ -405,8 +412,7 @@ width: 100%;
                                           <?
                                           }
                                         ?>
-
-												</select>
+								</select>
                      <i class="icon-warning-sign icon-2x" id="urgent" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                      <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                                          <input type="text" placeholder="Fecha Máxima Respuesta" value="" id="dtp2" class="datetimepicker" style="vertical-align:top; display: inline-block; position: relative; float: right;"/>
@@ -494,11 +500,13 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
 
 UQ.bind("FileUploaded", function(up, file, response) {
-  console.info(up);
-  console.info(response);
+  UQ.splice();
 });
 
     
+
+
+
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
@@ -1114,7 +1122,23 @@ $("#mkur").on('click', function(){3
        $(this).css({ color : "gray"});
        $(this).data("val", 1);
      }
-})
+});
+
+$("#clip").on('click', function(){
+
+var clip = $(this).data("val");
+if(clip.data("val") == 0 || clip.data("val") == "" ){
+
+   $("#wrap-html5").css({ height : "240px"});
+    $(this).data("val", 1)
+} else {
+    $(this).data("val", 0);
+   $("#wrap-html5").css({ height : "0px"});
+    
+}
+
+});
+
 </script>
 <?
 
