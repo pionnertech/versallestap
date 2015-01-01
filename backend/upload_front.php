@@ -1,6 +1,7 @@
 <?php
 
 $fac = $_GET['fac'];
+$rut = $_GET['rut'];
 
 $dir = "/var/www/html/" . $fac;
 
