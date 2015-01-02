@@ -13,7 +13,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
-$cantidad = mysqli_query($datos, "SELECT COUNT( ISS_ID ) FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");");
+$cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS CANT FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");"));
 
 ?>
 
@@ -151,7 +151,7 @@ $cantidad = mysqli_query($datos, "SELECT COUNT( ISS_ID ) FROM ISSUES WHERE (ISS_
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right"><? printf($cantidad) ?></b>
+									<b class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
