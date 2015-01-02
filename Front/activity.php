@@ -500,12 +500,6 @@ UQ.bind("FileUploaded", function (up, file, response) {
   UQ.splice();
 });
 
-UQ.bind('BeforeUpload', function (up, file) {
-    up.settings.multipart_params = {"fac": fac };
-});    
-
-
-
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
@@ -1009,7 +1003,13 @@ $.ajax({
 
        } else {
 
-rut_value = $("#RUT").val();
+
+var rut_1 = $("#RUT").val();
+var rut_2= rut_1.replace(/\./gi, "");
+var rut_3= rut_2.replace('-', "");
+var rut_4= rut_3.substring(1,rut_3.length -1);
+rut_value = rut_4;
+
 
 recall = data.split(",");
 
