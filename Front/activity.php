@@ -484,8 +484,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 		runtimes : 'html5',
 		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
-		unique_names : true
-	
+		unique_names : true,
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
@@ -495,13 +494,13 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 		},
 	});
 
-uploader.bind('BeforeUpload', function(up, file) {
-    up.settings.multipart_params = {"fac_id": file.id , "rut" : $("#RUT").val()};
+uploader.bind('BeforeUpload', function (up, file) {
+    up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
 });
 
 
 uploader.bind("FileUploaded", function (up, file, response) {
-  up.splice();
+  console.info(response),
 });
 
 	$('#dtp1').datetimepicker({
