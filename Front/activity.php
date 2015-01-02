@@ -527,7 +527,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
   
             StateChanged: function(up) {
                 // Called when the state of the queue is changed
-                log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
+                console.log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
             },
   
             QueueChanged: function(up) {
@@ -576,6 +576,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
+                console.info(file[0].name + "(*)");
             },
   
             ChunkUploaded: function(up, file, info) {
