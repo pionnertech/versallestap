@@ -22,10 +22,12 @@ if(!is_dir($basedir . $usr_id . "/")){
  if ($file_array = opendir("../" . $fac . "/temporary/" )){
        while (false !== ($archivos = readdir($file_array))){
            if(preg_match_all("/(" . $rut['ISS_CTZ'] . ")_/", $archivos) == 1){
-                 if(move_uploaded_file($archivos, $basedir . "/" . $usr_id . "/" . $archivos )){
+           	$extension = pathinfo($targetdir . $archivos,  PATHINFO_EXTENSION);
+                 if(copy($targetdir . $archivos , $basedir . $usr_id . "/" . basename(str_replace($archivos, "",$rut['ISS_CTZ'] ), "." . $extension ) . "_"  . $extension )) {
                  	echo "was upload_" . $archivos;
+                    unlink($targetdir . $archivos);
                  } else {
-                 	echo "no se pudo";
+                 	echo "wasnot upload" ;
                  }
            } else{
            	echo "no matching";
