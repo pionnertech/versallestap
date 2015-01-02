@@ -19,18 +19,22 @@ if(!is_dir($basedir . $usr_id . "/")){
 }
 
 //retive all file matching rut 
- if ($file_array = opendir("../" . $_SESSION['TxtFacility'] . "/temporary/" )){
+ if ($file_array = opendir("../" . $fac . "/temporary/" )){
        while (false !== ($archivos = readdir($file_array))){
-           if(preg_match_all("/_" . $rut['ISS_CTZ'] . "_/", $archivos) == 1){
+           if(preg_match_all("/(" . $rut['ISS_CTZ'] . ")_/", $archivos) == 1){
                  if(move_uploaded_file($archivos, $basedir . "/" . $usr_id . "/" . $archivos )){
                  	echo "was upload_" . $archivos;
                  } else {
                  	echo "no se pudo";
                  }
+           } else{
+           	echo "no matching";
            }
 
 
           }
+ } else {
+ 	echo "no opendir";
  }
 
 
