@@ -482,9 +482,10 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
  UQ = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
-		url : '../backend/upload_front.php?fac=' + fac + '&rut=' + rut_value ,
+		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
 		unique_names : true,
+		multipart_params: {fac_id : fac,  rut : rut_value },
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
