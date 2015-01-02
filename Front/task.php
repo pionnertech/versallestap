@@ -13,6 +13,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
+$cantidad = mysqli_query($datos, "SELECT COUNT( ISS_ID ) FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");");
 
 ?>
 
@@ -143,7 +144,6 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 								<a href="other-user-profile.html">
 									<i class="menu-icon icon-inbox"></i>
 									Perfil de usuario
-									<b class="label green pull-right">11</b>
 								</a>
 							</li>
 							
@@ -151,7 +151,7 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right">19</b>
+									<b class="label orange pull-right"><? printf($cantidad) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
@@ -230,8 +230,8 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 										<tr class="heading">
 											<td class="cell-icon"></td>
 											<td class="cell-title">Requerimiento</td>
-											<td class="cell-status hidden-phone hidden-tablet">Status</td>
-											<td class="cell-time align-right">Fecha</td>
+											<td class="cell-status hidden-phone hidden-tablet">Estado</td>
+											<td class="cell-time align-right">Fecha de entrega</td>
 										</tr>
 
 						<?
@@ -304,7 +304,7 @@ $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE U
 												</select>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
                                                 <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
-												<button class="btn-info enviar">Delegar task</button>
+												<button class="btn-info enviar">Delegar Audiencia</button>
 											</td>
 										</tr>   
 
@@ -394,6 +394,8 @@ $(".enviar").on('click', function () {
     var fechaF = $(this).parent().children("input.datetimepicker").val();
 
    delegate(usr_id, msg, fechaF, iss_id);
+   switchTempToAsigned(iss_id, usr_id);
+
 
 });
 
@@ -440,14 +442,28 @@ $.ajax({
 		}
 	}
 });
-
-
 }
+
+
+
 
 function reverseDate(string){
  return string.substring(6,10) + "-" + string.substring(3,5) + "-" +string.substring(0,2);
 }
 
+
+function switchTempToAsigned(iss_id, usr_id){
+
+$.ajax({
+	type: "POST",
+	url: "../backend/move.php?iss_id=" + iss_id + "&usr_id=" + usr_id + "&fac=" + fac,
+	success :  function (data){
+		console.info(data);
+	}
+})
+
+
+}
 
 
 </script>
