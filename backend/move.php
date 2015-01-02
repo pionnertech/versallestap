@@ -21,9 +21,9 @@ if(!is_dir($basedir . $usr_id . "/")){
 //retive all file matching rut 
  if ($file_array = opendir("../" . $fac . "/temporary/" )){
        while (false !== ($archivos = readdir($file_array))){
-           if(preg_match_all("/(" . $rut['ISS_CTZ'] . ")_/", $archivos) == 1){
+           if(preg_match_all("/_(" . $rut['ISS_CTZ'] . ")_/", $archivos) == 1){
            	$extension = pathinfo($targetdir . $archivos,  PATHINFO_EXTENSION);
-                 if(copy($targetdir . $archivos , $basedir . $usr_id . "/" . basename(str_replace($archivos, "",$rut['ISS_CTZ'] ), "." . $extension ) . "_"  . $extension )) {
+                 if(copy($targetdir . $archivos , $basedir . $usr_id . "/" . basename(str_replace($archivos, "",$rut['ISS_CTZ'] ), "." . $extension ) . "_."  . $extension )) {
                  	echo "was upload_" . $archivos;
                     unlink($targetdir . $archivos);
                  } else {
@@ -32,8 +32,6 @@ if(!is_dir($basedir . $usr_id . "/")){
            } else{
            	echo "no matching";
            }
-
-
           }
  } else {
  	echo "no opendir";
