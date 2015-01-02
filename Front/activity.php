@@ -480,7 +480,6 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
  IntializeGMaps();
 
  uploader = $("#html5_uploader").pluploadQueue({
-		// General settings
 		runtimes : 'html5',
 		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
@@ -492,6 +491,114 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 				{title : "Zip files", extensions : "zip" }
 			]
 		},
+        preinit : {
+            Init: function(up, info) {
+                console.log('[Init]', 'Info:', info, 'Features:', up.features);
+            },
+ 
+            UploadFile: function(up, file) {
+                console.log('[UploadFile]', file);
+ 
+                // You can override settings before the file is uploaded
+                // up.setOption('url', 'upload.php?id=' + file.id);
+                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+            }
+        },
+  init : {
+            PostInit: function() {
+                // Called after initialization is finished and internal event handlers bound
+                console.log('[PostInit]');
+                 
+                document.getElementById('uploadfiles').onclick = function() {
+                    uploader.start();
+                    return false;
+                };
+            },
+ 
+            Browse: function(up) {
+                // Called when file picker is clicked
+                console.log('[Browse]');
+            },
+ 
+            Refresh: function(up) {
+                // Called when the position or dimensions of the picker change
+                console.log('[Refresh]');
+            },
+  
+            StateChanged: function(up) {
+                // Called when the state of the queue is changed
+                log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
+            },
+  
+            QueueChanged: function(up) {
+                // Called when queue is changed by adding or removing files
+                console.log('[QueueChanged]');
+            },
+ 
+            OptionChanged: function(up, name, value, oldValue) {
+                // Called when one of the configuration options is changed
+                console.log('[OptionChanged]', 'Option Name: ', name, 'Value: ', value, 'Old Value: ', oldValue);
+            },
+ 
+            BeforeUpload: function(up, file) {
+                // Called right before the upload for a given file starts, can be used to cancel it if required
+                console.log('[BeforeUpload]', 'File: ', file);
+            },
+  
+            UploadProgress: function(up, file) {
+                // Called while file is being uploaded
+                console.log('[UploadProgress]', 'File:', file, "Total:", up.total);
+            },
+ 
+            FileFiltered: function(up, file) {
+                // Called when file successfully files all the filters
+                console.log('[FileFiltered]', 'File:', file);
+            },
+  
+            FilesAdded: function(up, files) {
+                // Called when files are added to queue
+                console.log('[FilesAdded]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FilesRemoved: function(up, files) {
+                // Called when files are removed from queue
+                console.log('[FilesRemoved]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FileUploaded: function(up, file, info) {
+                // Called when file has finished uploading
+                console.log('[FileUploaded] File:', file, "Info:", info);
+            },
+  
+            ChunkUploaded: function(up, file, info) {
+                // Called when file chunk has finished uploading
+                console.log('[ChunkUploaded] File:', file, "Info:", info);
+            },
+ 
+            UploadComplete: function(up, files) {
+                // Called when all files are either uploaded or failed
+                console.log('[UploadComplete]');
+            },
+ 
+            Destroy: function(up) {
+                // Called when uploader is destroyed
+                console.log('[Destroy] ');
+            },
+  
+            Error: function(up, args) {
+                // Called when error occurs
+                console.log('[Error] ', args);
+            }
+        }
+
 	});
 
 uploader.bind('BeforeUpload', function (up, file) {
@@ -500,7 +607,7 @@ uploader.bind('BeforeUpload', function (up, file) {
 
 
 uploader.bind("FileUploaded", function (up, file, response) {
-  console.info(response),
+  console.info(response);
 });
 
 	$('#dtp1').datetimepicker({
