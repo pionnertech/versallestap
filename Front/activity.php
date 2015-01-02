@@ -479,13 +479,13 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
      //google maps...
  IntializeGMaps();
 
- UQ = $("#html5_uploader").pluploadQueue({
+ uploader = $("#html5_uploader").pluploadQueue({
 		// General settings
 		runtimes : 'html5',
 		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
-		unique_names : true,
-		multipart_params: {fac_id : fac,  rut : rut_value },
+		unique_names : true
+	
 		filters : {
 			max_file_size : '10mb',
 			mime_types: [
@@ -495,10 +495,13 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 		},
 	});
 
+uploader.bind('BeforeUpload', function(up, file) {
+    up.settings.multipart_params = {"fac_id": file.id , "rut" : $("#RUT").val()};
+});
 
 
-UQ.bind("FileUploaded", function (up, file, response) {
-  UQ.splice();
+uploader.bind("FileUploaded", function (up, file, response) {
+  up.splice();
 });
 
 	$('#dtp1').datetimepicker({
