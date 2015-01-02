@@ -143,6 +143,9 @@ display:none;
     text-align: center;
 }
 
+.module{
+    max-width: 100% !important; 
+}
 
     </style>    
 
@@ -563,6 +566,8 @@ display:none;
                                         </div>
                                         <div class="module-body">
                                             <div class="row-fluid">
+
+                                       <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -570,7 +575,7 @@ display:none;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                Hellen
+                                                                <? printf($fila_per[]) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Pakistan</small></p>
@@ -585,6 +590,9 @@ display:none;
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <? } ?>
+
+
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">

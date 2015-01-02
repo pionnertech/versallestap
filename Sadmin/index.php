@@ -71,11 +71,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Item No. 1</a></li>
-                                    <li><a href="#">Don't Click</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Example Header</li>
-                                    <li><a href="#">A Separated link</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Support </a></li>
@@ -83,9 +78,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                 <img src="../images/user.png" class="nav-avatar" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Your Profile</a></li>
-                                    <li><a href="#">Edit Profile</a></li>
-                                    <li><a href="#">Account Settings</a></li>
                                     <li class="divider"></li>
                                     <li><a href="../backend/close.php">Logout</a></li>
                                 </ul>
@@ -465,7 +457,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
+                <b class="copyright">&copy; 2015 Eque-e - eque-e.cl </b>Todos los derechos reservados.
             </div>
         </div>
         <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
