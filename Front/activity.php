@@ -576,7 +576,8 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                console.info(file[0].name + "(*)");
+                console.info(file.name + "(*)");
+                console.info(file[1] + "(*)");
             },
   
             ChunkUploaded: function(up, file, info) {
