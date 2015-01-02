@@ -497,11 +497,10 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             },
  
             UploadFile: function(up, file) {
+
                 console.log('[UploadFile]', file);
- 
-                // You can override settings before the file is uploaded
-                // up.setOption('url', 'upload.php?id=' + file.id);
-                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+                up.setOption('url', 'upload.php?fac_id=' + fac + "&rut=" + rut_value );
+               // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
   init : {
@@ -576,8 +575,8 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                console.info(file.name + "(*)");
-                console.info(file[1] + "(*)");
+                console.info(file.name);
+
             },
   
             ChunkUploaded: function(up, file, info) {
