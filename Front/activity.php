@@ -499,7 +499,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption('url', 'upload.php?fac_id=' + fac + "&rut=" + rut_value );
+                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&rut=" + rut_value );
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
