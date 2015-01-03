@@ -119,8 +119,18 @@ width: 100%;
 #wrap-html5{
    display:none;
 }
-	</style>
 
+
+#cleanup{
+padding: .5em;
+border-radius: 39px;
+display: inline-block;
+vertical-align: top;
+color: white;
+float: right;
+background-color: rgb(114, 232, 111);
+}
+	</style>
 
 
 
@@ -262,10 +272,6 @@ width: 100%;
 								</a>
 							</li>
 						</ul>
-
-						
-
-					
 					</div><!--/.sidebar-->
 				</div><!--/.span3-->
 
@@ -275,7 +281,8 @@ width: 100%;
 
 						<div class="module">
 							<div class="module-head">
-								<h3>Ingreso de Audiencias</h3>
+								<h3 style="display: inline-block; vertical-align: top;">Ingreso de Audiencias</h3>
+								<p id="cleanup"><i class="fa fa-refresh" style="font-size:1.5em;"></i></p>
 							</div>
 							<div class="module-body">
 									<div class="media stream new-update" align="center" id="intext">
