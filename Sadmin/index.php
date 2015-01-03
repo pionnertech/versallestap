@@ -99,8 +99,8 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                 <li class="active">
                                     <a href="index.php">
                                     <i class="menu-icon icon-dashboard">
-                                     Vista Principal
                                     </i>
+                                     Vista Principal
                                     </a>
                                 </li>
                                 <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario </a></li>
@@ -180,91 +180,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                         </li>
                                     </ul>
                                     </a>
-                                <a id="Urgencias" href="#" class="btn-box big span4"><i class="icon-warning-sign"></i><b>5</b>
-                                        <p class="text-muted">
-                                            Urgencias</p>
-                       <ul class="widget widget-usage unstyled progressDisplay"  id="urgent-Display">
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias Recibidas</strong> <span class="pull-right small muted">78%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar" style="width: 78%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias en Curso</strong> <span class="pull-right small muted">56%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 56%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias por Vencer</strong> <span id="U-active" class="pull-right small muted">44%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 44%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias Atrasadas</strong> <span class="pull-right small muted">67%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 67%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    </a>
-                                </div>
-                                <div class="row">
-   
-                                </div>
-                                <div class="btn-box-row row-fluid">
-                                    <ul class="widget widget-usage unstyled span4">
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias Entrantes</strong> <span class="pull-right small muted">78%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar" style="width: 78%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias Activas</strong> <span class="pull-right small muted">56%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 56%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias por vencer</strong> <span class="pull-right small muted">44%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 44%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias Atrasadas</strong> <span class="pull-right small muted">67%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 67%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                             <!--/#btn-controls-->
