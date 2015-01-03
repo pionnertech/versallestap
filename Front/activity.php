@@ -38,6 +38,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	<link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
 	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
 	<link type="text/css" media="screen" href="../css/bootstrap-select.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
 
@@ -575,7 +576,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                console.info(file.name);
+                up.splice();
 
             },
   
@@ -928,19 +929,20 @@ var name = $('.selectpicker').val();
 var msg = $("#requeriment").val();
 var dataF = $("#dtp2").val() + " 10:00:00";
 
+
 delegateRequirement(name, 1, msg, dataF, fecha_or, data);
 
 $("#SendRequest").data("val", 0);
 
 
         } else {
-            console.info(data);
 
         	bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input[type=text], input[type=tel]").val('');
  			 $("textarea").val('');
  			 exist = 0;
- 			
+ 			 argument = 0;
+ 			 $("#clip").trigger('click');
  		});
  		
 
@@ -1153,12 +1155,14 @@ $.ajax({ type: "POST",
 	           "&dataS=" + dataS +
 	           "&iss_id=" + iss_id,
 	           success : function (data){
-
+               console.info(data);
 	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
-	           	console.info("ok!");
+
 	            $("input").val('');
  			    $("textarea").val('');
  			    exist = 0;
+ 			    argument 0;
+ 			     $("#clip").trigger('click');
 	           })
 
 	           }
@@ -1238,8 +1242,16 @@ $("#mkur").on('click', function(){3
 
 $("#clip").on('click', function(){
    $("#wrap-html5").fadeToggle(400);
-
 });
+
+$("#cleanup").on('click', function(){
+	$("input[type=text]").val('');
+	$("textarea").val('');
+	$("#clip").trigger('click');
+	exist = 0;
+	argument = 0;
+});
+
 
 </script>
 <?

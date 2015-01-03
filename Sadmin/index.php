@@ -47,7 +47,7 @@ vertical-align: top;
     }
 
 
-@media (width : 768px){
+@media (max-width : 768px){
    .wrap-progress{
     width: 100%;
    }
