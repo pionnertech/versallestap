@@ -593,7 +593,9 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
                 // Called when all files are either uploaded or failed
                 console.log('[UploadComplete]');
                 up.splice();
-                up.refresh();
+                $(".plupload_buttons").css("display", "inline");
+                $(".plupload_upload_status").css("display", "inline");
+
             },
  
             Destroy: function(up) {
