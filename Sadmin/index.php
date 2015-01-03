@@ -47,6 +47,12 @@ vertical-align: top;
     }
 
 
+@media (width : 768px){
+   .wrap-progress{
+    width: 100%;
+   }
+}
+
 
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -145,7 +151,7 @@ vertical-align: top;
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                <a id="Audiencias" href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
+                                <a id="Audiencias" href="#" class="btn-box big span4" style="height: 266px; padding-top: 6em;"><i class="icon-user"></i><b>15</b>
                                         <p class="text-muted">
                                             Audiencias</p>
                                     </a>
