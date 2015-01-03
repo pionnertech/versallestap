@@ -1254,6 +1254,7 @@ $("#clip").on('click', function(){
 
 $("#cleanup").on('click', function(){
 	$("input[type=text]").val('');
+	$("input[type=tel]").val('');
 	$("textarea").val('');
 	$("#clip").trigger('click');
 	exist = 0;
