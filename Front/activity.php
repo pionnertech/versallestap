@@ -517,10 +517,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
                 // Called after initialization is finished and internal event handlers bound
                 console.log('[PostInit]');
                  
-                document.getElementById('uploadfiles').onclick = function() {
-                    uploader.start();
-                    return false;
-                };
+
             },
  
             Browse: function(up) {
@@ -585,6 +582,7 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 up.splice();
+                up.refresh();
 
             },
   
