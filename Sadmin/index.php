@@ -26,13 +26,12 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
             padding:0;
         }
         .progressDisplay{
-            height:0 ;
             max-width:100%;
             -webkit-transition: all 600ms ease-in-out;
             -moz-transition: all 600ms ease-in-out;
              transition: all 600ms ease-in-out;
              margin-left: 1em;
-             opacity: 0;
+
         }
 
         .linerchart{
@@ -40,6 +39,14 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
             display: inline-block;
             vertical-align: top;
         }
+    .wrap-porgress{
+        width:70%;
+        margin: 0 1em;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+
 
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -142,7 +149,8 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                         <p class="text-muted">
                                             Audiencias</p>
                                     </a>
-                                                                    <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
+                                    <div class="wrap-progress" >
+                                     <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
                                             <p>
                                              <strong>Audiencias Recibidas</strong> <span class="pull-right small muted">78%</span>
@@ -180,6 +188,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                             </div>
                                         </li>
                                     </ul>
+                                </div>
                                 </div>
                             </div>
                             <!--/#btn-controls-->
