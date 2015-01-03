@@ -141,7 +141,8 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                 <a id="Audiencias" href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
                                         <p class="text-muted">
                                             Audiencias</p>
-                                    <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
+                                    </a>
+                                                                    <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
                                             <p>
                                              <strong>Audiencias Recibidas</strong> <span class="pull-right small muted">78%</span>
@@ -179,7 +180,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                             </div>
                                         </li>
                                     </ul>
-                                    </a>
                                 </div>
                             </div>
                             <!--/#btn-controls-->
@@ -416,49 +416,18 @@ while($subt = mysqli_fetch_row($handler)){
 $("#placeholder2").bind("plothover", pieHover);
 $("#placeholder2").bind("plotclick", pieClick);
 
-setIconState('Actas');
 setIconState('Audiencias');
-setIconState('Urgencias');
-
-    $("#Actas").on('click', function(){
-      if($(this).data("val") === 1){
-    $("#Act-Display").css({ opacity : "0"});
-       $("#Act-Display").css({ height : "0px"});
-          $(this).data("val", 0);
-      } else {
-        $("#Act-Display").css({ height : "270px"});
-           $("#Act-Display").css({ opacity : "1"});   
-              $(this).data("val", 1);
-      }
-    });
-
     $("#Audiencias").on('click', function(){
       if($(this).data("val") === 1){
      $("#Audi-Display").css({ opacity : "0"}); 
-        $("#Audi-Display").css({ height : "0px"});
           $(this).data("val", 0);
       } else {
 
-       $("#Audi-Display").css({ height : "270px"});
           $("#Audi-Display").css({ opacity : "1"}); 
             $(this).data("val", 1);  
       }
-      
     });
 
-  $("#Urgencias").on('click', function(){
-    if($(this).data("val") === 1){
-$("#urgent-Display").css({ opacity : "0"}); 
-     $("#urgent-Display").css({ height : "0px"});
-        $(this).data("val", 0);
-    } else {
-    $("#urgent-Display").css({ height : "270px"});
-          $("#urgent-Display").css({ opacity : "1"}); 
-             $(this).data("val", 1);
-    }
-       
-        
-    });
 
 
 
