@@ -129,6 +129,7 @@ vertical-align: top;
 color: white;
 float: right;
 background-color: rgb(114, 232, 111);
+cursor:pointer;
 }
 	</style>
 
@@ -1168,7 +1169,7 @@ $.ajax({ type: "POST",
 	            $("input").val('');
  			    $("textarea").val('');
  			    exist = 0;
- 			    argument 0;
+ 			    argument = 0;
  			     $("#clip").trigger('click');
 	           })
 
