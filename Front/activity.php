@@ -487,8 +487,34 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
      //google maps...
  IntializeGMaps();
+ uploaderInt();
+ 
+uploader.bind('BeforeUpload', function (up, file) {
+    up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
+});
 
- uploader = $("#html5_uploader").pluploadQueue({
+
+	$('#dtp1').datetimepicker({
+	step:5,
+	lang:'es',
+	format:'d/m/Y',
+	timepicker: false
+});
+
+    $('#dtp2').datetimepicker({
+	step:5,
+	lang:'es',
+	format:'d/m/Y',
+	timepicker: false
+});
+	
+
+	});
+
+
+var uploaderInt = function(){
+
+uploader =  $("#html5_uploader").pluploadQueue({
 		runtimes : 'html5',
 		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
@@ -592,9 +618,9 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                 console.log('[UploadComplete]');
-                up.splice();
-                $(".plupload_buttons").css("display", "inline");
-                $(".plupload_upload_status").css("display", "inline");
+                $("#clip").trigger('click');
+                up.destroy();
+                uploaderInt();
 
             },
  
@@ -611,29 +637,9 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
 	});
 
-uploader.bind('BeforeUpload', function (up, file) {
-    up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
-});
+};
 
 
-uploader.bind("FileUploaded", function (up, file, response) {
-    
-});
-
-	$('#dtp1').datetimepicker({
-	step:5,
-	lang:'es',
-	format:'d/m/Y',
-	timepicker: false
-});
-
-    $('#dtp2').datetimepicker({
-	step:5,
-	lang:'es',
-	format:'d/m/Y',
-	timepicker: false
-});
-	});
 
 
 
