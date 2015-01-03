@@ -96,14 +96,14 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="index.php"><i class="menu-icon icon-dashboard"></i>Vista Principal
-                                </a></li>
-                                <li><a href="activity.php"><i class="menu-icon icon-bullhorn"></i>ingreso de Audiencias</a>
+                                <li class="active">
+                                    <a href="index.php">
+                                    <i class="menu-icon icon-dashboard">
+                                     Vista Principal
+                                    </i>
+                                    </a>
                                 </li>
-                                <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
-                                    11</b> </a></li>
-                                <li><a href="task.php"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
-                                    19</b> </a></li>
+                                <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario </a></li>
                             </ul>
 
                             <!--/.widget-nav-->
@@ -138,51 +138,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                    <a id="Actas" href="#" class="btn-box big span4"><i class="icon-group"></i><b>20</b>
-                                        <p class="text-muted">
-                                           Actas de Consejo </p>
-                                 <ul class="widget widget-usage unstyled progressDisplay" id="Act-Display">
-                                        <li>
-                                            <p>
-                                             <strong>Compromisos Entrantes</strong> <span class="pull-right small muted">17%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar" style="width: 17%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos en Curso</strong><span class="pull-right small muted">88%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 88%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 12%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 2%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    </a>
-                                      
-
-
                                 <a id="Audiencias" href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
                                         <p class="text-muted">
                                             Audiencias</p>
@@ -272,28 +227,10 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
    
                                 </div>
                                 <div class="btn-box-row row-fluid">
-                                    <div class="span8">
-                                        <div class="row-fluid">
-                                            <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-envelope"></i><b>Messages</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-group"></i><b>Clients</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-exchange"></i><b>Expenses</b>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="row-fluid">
-                                            <div class="span12">
-                                                <a href="#" class="btn-box small span4"><i class="icon-save"></i><b>Total Sales</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-bullhorn"></i><b>Social Feed</b>
-                                                </a><a href="#" class="btn-box small span4"><i class="icon-sort-down"></i><b>Bounce
-                                                    Rate</b> </a>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <ul class="widget widget-usage unstyled span4">
                                         <li>
                                             <p>
-                                                <strong>Solicitudes Entrantes</strong> <span class="pull-right small muted">78%</span>
+                                                <strong>Audiencias Entrantes</strong> <span class="pull-right small muted">78%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar" style="width: 78%;">
@@ -302,7 +239,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Solicitudes Activas</strong> <span class="pull-right small muted">56%</span>
+                                                <strong>Audiencias Activas</strong> <span class="pull-right small muted">56%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-success" style="width: 56%;">
@@ -311,7 +248,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Solicitudes por vencer</strong> <span class="pull-right small muted">44%</span>
+                                                <strong>Audiencias por vencer</strong> <span class="pull-right small muted">44%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: 44%;">
@@ -320,7 +257,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Solicutdes Atrasadas</strong> <span class="pull-right small muted">67%</span>
+                                                <strong>Audiencias Atrasadas</strong> <span class="pull-right small muted">67%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-danger" style="width: 67%;">

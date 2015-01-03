@@ -12,11 +12,11 @@ $uploadOk = 1;
 
 
 if(!is_dir($target_dir)){
-	mkdir($target_dir, 0775);
+	mkdir($target_dir, 0775, true);
 }
 
 if(!is_dir($target_dir . $user . "/")){
-
+	chmod($target_dir . $user . "/");
 	mkdir($target_dir . $user . "/", 0775, true);
 }
 

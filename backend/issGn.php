@@ -61,7 +61,7 @@ if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_GEOLOC = '" . $geo . "' WHERE 
 	echo "geo " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE CTZ_RUT=" . $clean_rut . ";")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE CTZ_RUT = " . $clean_rut . ";")){
 	echo "tel " . mysqli_errno($datos);
 	exit;
 }
@@ -90,15 +90,15 @@ $date2 = strtotime($date_limit);
 $diff = round(($date2 - $date1)/86400);
 
 if($diff <= 3){
+
 $state = 4;	
+
 } else if($diff <= 0){
 
 $state = 3;
 } else {
 $state = 2;
 }
-
-
 
 }
 
@@ -111,7 +111,7 @@ if(!mysqli_query($datos, $insertar_audi)){
 	echo (mysqli_error($datos));
 } else {
 
-   $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
+$iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
 
 echo  $iss_call['ISS_ID'];
 }
