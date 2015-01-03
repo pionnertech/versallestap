@@ -581,8 +581,6 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                up.splice();
-                up.refresh();
 
             },
   
@@ -594,6 +592,8 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                 console.log('[UploadComplete]');
+                up.splice();
+                up.refresh();
             },
  
             Destroy: function(up) {
@@ -615,7 +615,7 @@ uploader.bind('BeforeUpload', function (up, file) {
 
 
 uploader.bind("FileUploaded", function (up, file, response) {
-  console.info(response);
+    
 });
 
 	$('#dtp1').datetimepicker({
