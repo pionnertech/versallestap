@@ -488,7 +488,6 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
      //google maps...
  IntializeGMaps();
  uploaderInt();
-
 uploader.bind('BeforeUpload', function (up, file) {
     up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
 });
