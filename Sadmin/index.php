@@ -39,11 +39,11 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
             display: inline-block;
             vertical-align: top;
         }
-    .wrap-porgress{
-        width:70%;
-        margin: 0 1em;
-        display: inline-block;
-        vertical-align: top;
+    .wrap-progress{
+width: 66%;
+float: right;
+display: inline-block;
+vertical-align: top;
     }
 
 
