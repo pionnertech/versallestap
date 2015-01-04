@@ -563,7 +563,6 @@ display:none;
                                         </div>
                                         <div class="module-body">
                                             <div class="row-fluid">
-
                                        <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
                                                 <div class="span6">
                                                     <div class="media user">
@@ -572,7 +571,7 @@ display:none;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                <? printf($fila_per[]) ?>
+                                                                <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Pakistan</small></p>
