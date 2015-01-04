@@ -984,6 +984,7 @@ display:none;
                                            while (false !== ($archivos2 = readdir($handler2))){
 
                                              $extension = substr($archivos2, -3);
+
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
@@ -1009,6 +1010,8 @@ display:none;
                                                       default :
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
+                                                      break;
+                                                      case ($archivo2 == "." || $archivo2 ".."):
                                                       break;
                                                  }
 
