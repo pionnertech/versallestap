@@ -1007,9 +1007,7 @@ display:none;
                                                       $file_extension = "picture-";
                                                       $cor = "#338B93";
                                                       break;
-                                                      case ($extension == "txt")
-                                                      $file_extension = "";
-                                                      $cor = "#8E9193";
+                                                      case ($extension == "txt"):
                                                       break;
                                                  }
 
