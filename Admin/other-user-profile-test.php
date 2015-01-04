@@ -140,6 +140,7 @@ display:none;
     vertical-align: top;
 }
 
+
 .iname{
     display:block;
     text-align: center;
@@ -1015,12 +1016,12 @@ display:none;
                                           ?>
 
                                                 <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                 <span class="iname"><? printf($archivos) ?></span>
+                                                 <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
 
                                                   <? }
                                                   
-                                        closedir($handler);
+                                        closedir($handler2);
                                     }
                                  ?>
                               </div>
