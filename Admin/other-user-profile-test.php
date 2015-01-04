@@ -984,7 +984,7 @@ display:none;
                                            while (false !== ($archivos2 = readdir($handler2))){
 
                                              $extension = substr($archivos2, -3);
-                                          if($archivos2 !== ".." || $archivos2 !== "."){
+                                          
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
@@ -1011,14 +1011,16 @@ display:none;
                                                       break;
                                                  }
 
-                                              }
+                                              if($archivos2 !== ".." || $archivos2 !== "."){
                                           ?>
 
                                                 <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
 
-                                                  <? }
+                                                  <? 
+                                                  }
+                                              }
                                                   
                                         closedir($handler2);
                                     }
