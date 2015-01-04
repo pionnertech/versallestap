@@ -135,8 +135,11 @@ display:none;
 }
 
 .ifile{
-    margin:1em;
+    margin:1.2em;
+    display: inline-block;
+    vertical-align: top;
 }
+
 .iname{
     display:block;
     text-align: center;
