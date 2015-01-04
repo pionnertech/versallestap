@@ -973,9 +973,6 @@ display:none;
                                     </form>
                               </div>
                               <div class="incoming-files">
-
-
-
                                             <?                                              
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
@@ -985,7 +982,7 @@ display:none;
 
                                          if(preg_match_all("/_" . $ . "_/", $archivos2) == 1){
 
-                                             $extension = substr($archivos, -3);
+                                             $extension = substr($archivos2, -3);
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
@@ -1026,11 +1023,6 @@ display:none;
                                         closedir($handler);
                                     }
                                 } ?>
-
-
-
-
-
                               </div>
                           </div>
                         </div>
