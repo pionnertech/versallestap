@@ -964,7 +964,7 @@ width:17em;
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
                                 <div id="wrap-dropper">
-                                    <div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div id="dropper" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
 
                                 </div>
