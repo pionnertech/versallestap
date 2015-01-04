@@ -138,6 +138,7 @@ display:none;
     margin:1.2em;
     display: inline-block;
     vertical-align: top;
+    cursor: pointer;
 }
 
 
@@ -146,7 +147,10 @@ display:none;
     text-align: center;
 }
 
-
+#drop {
+height:20em;
+width:17em;
+}
 
     </style>    
 
@@ -959,6 +963,11 @@ display:none;
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
+                                <div id="wrap-dropper">
+                                    <div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    </div>
+
+                                </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
@@ -971,7 +980,7 @@ display:none;
                                                <input type="hidden" value="" name="issId" id="issId">
                                         </div>
                                          <ul>
-                <!-- The file uploads will be shown here -->
+
                                          </ul>
                                     </form>
                               </div>
@@ -1014,7 +1023,7 @@ display:none;
                                               if($archivos2 !== ".." || $archivos2 !== "."){
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" ondragstart="drag(event)" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
 
@@ -1237,6 +1246,20 @@ $.ajax({
 });
 
 
+}
+
+function drop (event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+}
+
+function allowDrop (event) {
+    ev.preventDefault();
+}
+
+function drag (event) {
+    ev.dataTransfer.setData("text", ev.target.id);
 }
 
 </script>
