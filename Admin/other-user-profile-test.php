@@ -1011,7 +1011,7 @@ display:none;
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
-                                                      case ($archivo2 == "." || $archivo2 ".."):
+                                                      case ($archivo2 == "." || $archivo2 == ".."):
                                                       break;
                                                  }
 
