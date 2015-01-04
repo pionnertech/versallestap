@@ -1019,7 +1019,7 @@ display:none;
                                                   
                                         closedir($handler);
                                     }
-                                } ?>
+                                 ?>
                               </div>
                           </div>
                         </div>
