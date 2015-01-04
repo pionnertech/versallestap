@@ -147,9 +147,10 @@ display:none;
     text-align: center;
 }
 
-#drop {
+#D-drop{
 height:20em;
 width:17em;
+float:right;
 }
 
     </style>    
@@ -963,8 +964,8 @@ width:17em;
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
-                                <div id="wrap-dropper">
-                                    <div id="dropper" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <div id="wrap-D">
+                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
 
                                 </div>
