@@ -979,8 +979,6 @@ display:none;
 
                                            while (false !== ($archivos2 = readdir($handler2))){
 
-                                         if(preg_match_all("/_" . $ . "_/", $archivos2) == 1){
-
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
                                                  switch (true) {
@@ -1018,7 +1016,7 @@ display:none;
                                                 </p>
 
                                                   <? }
-                                                  } 
+                                                  
                                         closedir($handler);
                                     }
                                 } ?>
