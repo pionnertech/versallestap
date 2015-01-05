@@ -166,6 +166,7 @@ height:20em;
 width:17em;
 float:right;
 background-color: lightgray;
+border-radius: 20px;
 
 }
 
@@ -1089,13 +1090,24 @@ background-color: lightgray;
 
 <script type="text/javascript">
     
+    var st = 0;
+
     $(document).on('ready', function(){
 
 
 $(".toggle-attach").on('click', function(){
-    $(".attach").fadeToggle(400, function(){
-        $("#wrap-D").fadeToggle(400);
-    })
+
+    if (st == 0){
+
+ $(".attach").css({ display : "none"});
+ $("#wrap-D").css({ display: "inline-block"});
+ st = 1;
+    } else {
+         $(".attach").css({ display : "inline-block"});
+         $("#wrap-D").css({ display: "none" });
+   st = 0;
+    }
+
 })
       
 $('.datetimepicker').datetimepicker({
