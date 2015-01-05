@@ -517,7 +517,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
                                           ?>
 
-                                             <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>/<? printf($archivos)?>" class="down">  <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                             <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>/<? printf($archivos)?>" class="down" download>  <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos) ?></span>
                                                 </p>
                                              </a>
