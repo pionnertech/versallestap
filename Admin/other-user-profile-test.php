@@ -156,6 +156,10 @@ display:none;
     background-color: gray;
     border-radius: 15px;
 }
+
+.toggle-attach i{
+    color:white;
+}
 #D-drop{
 height:20em;
 width:17em;
@@ -957,7 +961,7 @@ float:right;
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
-                           <p class="toggle-attach"><i class="fa fa-papperclip"></i></p>
+                           <p class="toggle-attach"><i class="fa fa-paperclip fa-2x"></i></p>
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
 
@@ -1086,7 +1090,7 @@ float:right;
 
 
 $(".toggle-attach").on('click', function(){
-    $("#attach").fadeToggle(400, function(){
+    $(".attach").fadeToggle(400, function(){
         $("#wrap-D").fadeToggle(400);
     })
 })
