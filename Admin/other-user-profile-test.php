@@ -1311,7 +1311,7 @@ function allowDrop (event) {
 }
 
 function drag (event) {
-    event.dataTransfer.setData("text", ev.target.id);
+    event.dataTransfer.setData("text", event.target.id);
 }
 
 </script>
