@@ -476,7 +476,66 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[8]) ?>%;"></div>
                                             </div>
                                             <div class="file-contents">
-                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                             
+                              <?   
+                                           
+                                      while($steam = mysqli_fetch_row($Query_team)){
+
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos = readdir($handler))){
+
+                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
+
+                                             $extension = substr($archivos, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos) ?></span>
+                                                </p>
+
+                                                  <? 
+                                                  } 
+                                        
+                                    }
+                                }
+                                closedir($handler);
+                                  mysqli_data_seek($Query_team, 0);
+                                }
+                                                  ?>
+
+
                                             </div>
                                            </div>
                                            </td>
@@ -726,7 +785,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 $("#back").on('click', function(){
    $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in'); 
-})
+});
 
 </script>
 <?
