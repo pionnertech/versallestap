@@ -1106,8 +1106,10 @@ border-radius: 20px;
 <script type="text/javascript">
     
     var st = 0;
-    var fac = <? printf($_SESSION['TxtFacility'] ) ?>
-    var mainuser = <? printf($_SESSION['TxtCode'])  ?>
+    var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
+    
+    var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
+    
     $(document).on('ready', function(){
 
 
