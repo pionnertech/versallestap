@@ -159,11 +159,14 @@ display:none;
 
 .toggle-attach i{
     color:white;
+    padding:.8em;
 }
 #D-drop{
 height:20em;
 width:17em;
 float:right;
+background-color: lightgray;
+
 }
 
     </style>    
