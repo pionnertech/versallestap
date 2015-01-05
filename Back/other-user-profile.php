@@ -479,15 +479,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              
                               <?   
                                            
-                                      while($steam = mysqli_fetch_row($Query_team)){
+                                    
 
-                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension = "";
 
                                            while (false !== ($archivos = readdir($handler))){
 
-                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
+                                         if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
 
                                              $extension = substr($archivos, -3);
                                               $cor = "";
@@ -532,7 +532,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 }
                                 closedir($handler);
                                   mysqli_data_seek($Query_team, 0);
-                                }
+                                
                                                   ?>
 
 
