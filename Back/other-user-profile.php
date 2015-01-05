@@ -517,10 +517,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                             <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>/<? printf($archivos)?>" class="down">  <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos) ?></span>
                                                 </p>
-
+                                             </a>
                                                   <? 
                                                   } 
                                         
@@ -782,6 +782,8 @@ $("#back").on('click', function(){
    $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in'); 
 });
+
+
 
 </script>
 <?
