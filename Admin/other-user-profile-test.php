@@ -163,11 +163,19 @@ display:none;
 }
 #D-drop{
 height:20em;
-width:17em;
+width:20em;
 float:right;
 background-color: lightgray;
 border-radius: 20px;
 
+}
+
+#D-drop:after{
+    content:"Arrastre aqui sus archivos";
+    color: white;
+    position: relative;
+    top:6em;
+    left:6em;
 }
 
     </style>    
