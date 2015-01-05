@@ -1304,6 +1304,8 @@ function drop (event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
+    document.getElementById(data).style.width:"100%";
+    document.querySelector("#" + data + " span").style.textAlign = "left";
 }
 
 function allowDrop (event) {
