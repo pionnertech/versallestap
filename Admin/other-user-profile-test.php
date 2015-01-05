@@ -147,6 +147,15 @@ display:none;
     text-align: center;
 }
 
+#wrap-D{
+    display: none;
+
+}
+.toggle-attach{
+    float:right;
+    background-color: gray;
+    border-radius: 15px;
+}
 #D-drop{
 height:20em;
 width:17em;
@@ -948,8 +957,10 @@ float:right;
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
+                           <p class="toggle-attach"><i class="fa fa-papperclip"></i></p>
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
+
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
@@ -1073,6 +1084,12 @@ float:right;
     
     $(document).on('ready', function(){
 
+
+$(".toggle-attach").on('click', function(){
+    $("#attach").fadeToggle(400, function(){
+        $("#wrap-D").fadeToggle(400);
+    })
+})
       
 $('.datetimepicker').datetimepicker({
     step:5,
