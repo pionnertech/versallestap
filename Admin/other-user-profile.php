@@ -10,8 +10,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
-
-
+$query_issues = mysqli_query($datos, "SELECT A.ISS_ID FROM ISSUES WHERE ISS_CHARGE_USR = " )
 
 ?>
 
@@ -136,15 +135,54 @@ display:none;
 }
 
 .ifile{
-    margin:1em;
-}
-.iname{
-    display:block;
-    text-align: center;
+    margin:1.2em;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
 }
 
-.module{
-    max-width: 100% !important; 
+
+.iname{
+    display:block;
+    text-align: left;
+}
+
+#wrap-D{
+    display: none;
+
+}
+.toggle-attach{
+    float:right;
+    background-color: gray;
+    border-radius: 15px;
+}
+
+.toggle-attach i{
+    color:white;
+    padding:.2em;
+}
+#D-drop{
+height:20em;
+width:20em;
+float:right;
+background-color: lightgray;
+border-radius: 20px;
+
+}
+
+#D-drop:after{
+    content:"Arrastre aqui sus archivos";
+    color: white;
+    position: relative;
+    top:6em;
+    left:6em;
+
+}
+
+.attach, #wrap-D{
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
 }
 
     </style>    
@@ -566,7 +604,6 @@ display:none;
                                         </div>
                                         <div class="module-body">
                                             <div class="row-fluid">
-
                                        <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
                                                 <div class="span6">
                                                     <div class="media user">
@@ -575,7 +612,7 @@ display:none;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                <? printf($fila_per[]) ?>
+                                                                <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Pakistan</small></p>
@@ -811,9 +848,6 @@ display:none;
                                         $color = "";
                                         $lock = "";
 
-
-
-
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
                                          if($stsk[7] == 0 || $stsk[7] == '0'){
@@ -946,8 +980,10 @@ display:none;
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
+                           <p class="toggle-attach"><i class="fa fa-paperclip fa-2x"></i></p>
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
+
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
@@ -962,6 +998,11 @@ display:none;
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
+                                <div id="wrap-D">
+                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    </div>
+
+                                </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
@@ -974,9 +1015,60 @@ display:none;
                                                <input type="hidden" value="" name="issId" id="issId">
                                         </div>
                                          <ul>
-                <!-- The file uploads will be shown here -->
+
                                          </ul>
                                     </form>
+                              </div>
+                              <div class="incoming-files">
+                                            <?                                              
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+
+                                          $file_extension2 = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+
+                                             $extension = substr($archivos2, -3);
+                                          
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                 }
+
+                                              if($archivos2 !== ".." || $archivos2 !== "."){
+                                          ?>
+
+                                                <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos2) ?></span>
+                                                </p>
+
+                                                  <? 
+                                                  }
+                                              }
+                                                  
+                                        closedir($handler2);
+                                    }
+                                 ?>
                               </div>
                           </div>
                         </div>
@@ -1013,8 +1105,28 @@ display:none;
 
 <script type="text/javascript">
     
+    var st = 0;
+    var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
+    
+    var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
+    
     $(document).on('ready', function(){
 
+
+$(".toggle-attach").on('click', function(){
+
+    if (st == 0){
+
+ $(".attach").css({ display : "none"});
+ $("#wrap-D").css({ display: "inline-block"});
+ st = 1;
+    } else {
+         $(".attach").css({ display : "inline-block"});
+         $("#wrap-D").css({ display: "none" });
+   st = 0;
+    }
+
+})
       
 $('.datetimepicker').datetimepicker({
     step:5,
@@ -1191,6 +1303,36 @@ $.ajax({
 
 }
 
+function drop (event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+    document.getElementById(data).style.width = "100%";
+    $("#" + data + " span").css("text-align", "left");
+    var chargeuser = $("#delegates :selected").val();
+    moveAtDragDropfiles(data, mainuser, chargeuser);
+
+}
+
+function allowDrop (event) {
+    event.preventDefault();
+}
+
+function drag (event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
+
+    $.ajax({ type: "POST",
+        url : "../backend/switchfiles.php?fac=" + fac + "&file_name=" + name + "&main_usr_id=" + main_usr_id + "&charge_usr_id=" + charge_usr_id,
+        success : function (data){
+
+          console.info("and..." + data);
+        }
+
+    })
+}
 </script>
 <?
 
