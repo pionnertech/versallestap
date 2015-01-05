@@ -1058,7 +1058,7 @@ border-radius: 20px;
                                               if($archivos2 !== ".." || $archivos2 !== "."){
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" ondragstart="drag(event)" style="color: <? printf($cor) ?> "></i>
+                                                <p class="ifile" ondragstart="drag(event)"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
 
