@@ -1307,11 +1307,11 @@ function drop (event) {
 }
 
 function allowDrop (event) {
-    ev.preventDefault();
+    event.preventDefault();
 }
 
 function drag (event) {
-    ev.dataTransfer.setData("text", ev.target.id);
+    event.dataTransfer.setData("text", ev.target.id);
 }
 
 </script>
