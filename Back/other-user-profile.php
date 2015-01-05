@@ -453,8 +453,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                               break;
                                           }
 
-
-
                                         ?>
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
@@ -479,8 +477,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              
                               <?   
                                            
-                                    
-
                                         if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension = "";
@@ -531,7 +527,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     }
                                 }
                                 closedir($handler);
-                                  mysqli_data_seek($Query_team, 0);
+                                 
                                 
                                                   ?>
 
