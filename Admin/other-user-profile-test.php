@@ -159,7 +159,7 @@ display:none;
 
 .toggle-attach i{
     color:white;
-    padding:.8em;
+    padding:.2em;
 }
 #D-drop{
 height:20em;
