@@ -176,6 +176,13 @@ border-radius: 20px;
     position: relative;
     top:6em;
     left:6em;
+
+}
+
+.attach, #wrap-D{
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
 }
 
     </style>    
