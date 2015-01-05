@@ -13,8 +13,11 @@ if(!is_file($dir . $main_usr_id . "/" . $file_name)){
 	exit;
 }
 
- if(copy($dir . $main_usr_id . "/" . $file_name, $dir . $main_usr_id . "/" . $file_name )){
+ if(copy($dir . $main_usr_id . "/" . $file_name, $dir . $charge_usr_id . "/" . $file_name )){
  	echo "was copied";
  	unlink($dir . $main_usr_id . "/" . $file_name);
+ } else {
+ 	echo $dir . $main_usr_id . "/" . $file_name  . "<br />";
+ 	echo $dir . $main_usr_id . "/" . $file_name
  }
 ?>
