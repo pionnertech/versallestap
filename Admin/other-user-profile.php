@@ -628,7 +628,6 @@ border-radius: 20px;
                                                         </div>
                                                     </div>
                                                 </div>
-                                             <? mysqli_data_seek($Query_team, $i +1) ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -636,7 +635,7 @@ border-radius: 20px;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
+                                                                <? printf(next($fila_per[1])) ?> <? printf(next($fila_per[1])) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Serviu</small></p>
