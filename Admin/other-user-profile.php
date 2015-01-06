@@ -165,8 +165,9 @@ display:none;
 height:20em;
 width:20em;
 float:right;
-background-color: gray;
+background-color: white ;
 border-radius: 20px;
+border: 1px orange solid;
 
 }
 
@@ -174,9 +175,9 @@ border-radius: 20px;
     content:"Arrastre aqui sus archivos";
     color: white;
     position: relative;
-    top:6em;
-    left:4.5em;
+    top:3em;
     font-size: 2em;
+
 }
 
 .attach, #wrap-D{
