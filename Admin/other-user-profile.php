@@ -886,6 +886,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
+                                                <option value="0"></option>
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
                                                         <option value="<? printf($team[0]) ?>"><? printf($team[1]) ?> <?printf($team[2]) ?></option>
                                                         <? } 
