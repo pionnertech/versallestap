@@ -827,9 +827,9 @@ border-radius: 20px;
                                                         ?>
                                                     </optgroup>
                                                 </select>
-                                    <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
-                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
-                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
+                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
                                 <div id="wrap-D">
@@ -984,9 +984,6 @@ $('.datetimepicker').datetimepicker({
 
         })
 
-
-
-
             $("#Audi").on('click', function(){
 
              if(!$(this).data("val") || $(this).data("val") === 0 ){
@@ -1042,8 +1039,6 @@ $("#delegates").on('change', function(){
     $("#stsk-user").val($("#delegates").val());
 });
 
-
-
 });
 
 
@@ -1068,7 +1063,9 @@ console.info($(".datetimepicker").val());
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
-           console.info(data);
+           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+            $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+            $(".eras").val('');
         }
     })
 });
