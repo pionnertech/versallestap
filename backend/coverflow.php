@@ -44,7 +44,7 @@ switch ($outcome['USR_RANGE']) {
 	echo "<script language='javascript'>window.location='../Sadmin/index.php'</script>";
 	break;
 	case "admin":
-		 echo "<script language='javascript'>window.location='../Admin/index.php'</script>";
+		 echo "<script language='javascript'>window.location='../Admin/other-user-profile.php'</script>";
 		break;
 	case "front-user":
 	    echo "<script language='javascript'>window.location='../Front/activity.php'</script>";
