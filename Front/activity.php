@@ -484,7 +484,8 @@ $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 $(".ctz_def").attr("disabled", true);
 
 $("#html5_uploader_browse").addClass('plupload_disabled');
-$("#html5_uploader_browse").removeAttr("href");
+$("#clip").addClass('disabled');
+
   // date time picker.
 
      //google maps...
@@ -668,15 +669,14 @@ $('#RUT').on('change keydown paste input keypress' , function(){
     	$('#RUT').css('color', 'rgba(222,6,1, 1)' );
     	$('.ctz_def').attr('disabled', true);
     	$("#html5_uploader_browse").addClass('plupload_disabled');
-    	$("#html5_uploader_browse").removeAttr("href");
+        $("#clip").addClass('disabled');
 
     } else {
 
     	$('#RUT').css('color', 'rgba(81,198,60, 1)');
         $('.ctz_def').attr('disabled', false);
         $("#html5_uploader_browse").removeClass('plupload_disabled');
-        $("#html5_uploader_browse").attr("href", "#");
-
+        $("#clip").removeClass('disabled');
     }
 
 });
@@ -1266,7 +1266,12 @@ $("#mkur").on('click', function(){3
 
 
 $("#clip").on('click', function(){
-   $("#wrap-html5").fadeToggle(400);
+	if($(this).hasClass("disabled")){
+
+	} else {
+        $("#wrap-html5").fadeToggle(400);
+	}
+   
 });
 
 $("#cleanup").on('click', function(){
