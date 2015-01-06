@@ -24,7 +24,7 @@ width:30em;
 
 .dataTables_wrapper>div+div{
     float:left;
-    right:-1em;
+    right:-0.1em;
 }
 
 
