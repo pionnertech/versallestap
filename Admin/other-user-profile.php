@@ -628,7 +628,7 @@ border-radius: 20px;
                                                         </div>
                                                     </div>
                                                 </div>
-                                             <? mysqli_data_seek($fila_per, $i) ?>
+                                             <? mysqli_data_seek($Query_team, $i +1) ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
