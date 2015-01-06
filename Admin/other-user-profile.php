@@ -165,7 +165,7 @@ display:none;
 height:20em;
 width:20em;
 float:right;
-background-color: lightgray;
+background-color: gray;
 border-radius: 20px;
 
 }
@@ -175,8 +175,8 @@ border-radius: 20px;
     color: white;
     position: relative;
     top:6em;
-    left:6em;
-
+    left:4.5em;
+    font-size: 2em;
 }
 
 .attach, #wrap-D{
@@ -636,8 +636,8 @@ border-radius: 20px;
                                                         <div class="media-body">
                                                             <h3 class="media-title">
 
-                                                            
-                                                                <? printf($fila_per[0] +1) ?> <? printf($fila_per[1] +1) ?>
+
+                                                                <? printf($fila_per[0]) ?> <? printf($fila_per[1] +1) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Serviu</small></p>
@@ -1174,6 +1174,7 @@ function drop (event) {
     $("#" + data + " span").css("text-align", "left");
     var chargeuser = $("#delegates :selected").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
+    $("#D-drop:after").css("content", " ");
 
 }
 
