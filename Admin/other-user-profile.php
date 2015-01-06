@@ -635,7 +635,7 @@ border-radius: 20px;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                <? printf(next($Query_team)) ?> <? printf(next($Query_team)) ?>
+                                                                <? printf($fila_per[0] +1) ?> <? printf($fila_per[1] +1) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Serviu</small></p>
