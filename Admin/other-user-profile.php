@@ -135,7 +135,7 @@ display:none;
 }
 
 .ifile{
-    margin:1.2em;
+    margin:.5em;
     display: inline-block;
     vertical-align: top;
     cursor: pointer;
@@ -149,8 +149,9 @@ display:none;
 
 #wrap-D{
     display: none;
-
+    max-height: 20em;
 }
+
 .toggle-attach{
     float:right;
     background-color: gray;
@@ -168,16 +169,18 @@ float:right;
 background-color: white ;
 border-radius: 20px;
 border: 1px orange solid;
+overflow-y: auto;
 
 }
 
 #D-drop:after{
-    content:"Arrastre aqui sus archivos";
-    color: gray;
-    position: relative;
-    top:3em;
-    font-size:2em;
-
+content: "Arrastre aqui sus archivos";
+color: gray;
+position: relative;
+top: 8em;
+left: 2em;
+font-style: italic;
+font-size: 1.3em;
 }
 
 .attach, #wrap-D{
@@ -186,7 +189,18 @@ border: 1px orange solid;
     transition: all 600ms ease-in-out;
 }
 
+.after:after{
+content: "Arrastre aqui sus archivos";
+}
+
+.no-after:after{
+    content:"";
+}
+
+
+
     </style>    
+
 
 </head>
 <body>
