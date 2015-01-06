@@ -9,7 +9,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
-$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . "  AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
+$Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
 
 ?>
@@ -116,6 +116,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
  vertical-align: top;
 }
 
+.file-contents, 
+.file-contents p{
+    display: inline-block;
+    vertical-align: top;
+}
+
 .display-progress{
 display:none;
 }
@@ -128,13 +134,88 @@ display:none;
     display: none;
 }
 
+.ifile{
+    margin:.5em;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+
+.iname{
+    display:block;
+    text-align: left;
+}
+
+#wrap-D{
+    display: none;
+    max-height: 20em;
+}
+
+.toggle-attach{
+    float:right;
+    background-color: gray;
+    border-radius: 15px;
+}
+
+.toggle-attach i{
+    color:white;
+    padding:.2em;
+}
+#D-drop{
+height:20em;
+width:20em;
+float:right;
+background-color: white ;
+border-radius: 20px;
+border: 1px orange solid;
+overflow-y: auto;
+overflow-x: hidden;
+}
+
+#D-drop:after{
+content: "Arrastre aqui sus archivos";
+color: gray;
+position: relative;
+top: 8em;
+left: 2em;
+font-style: italic;
+font-size: 1.3em;
+}
+
+.attach, #wrap-D{
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
+}
+
+.after:after{
+content: "Arrastre aqui sus archivos";
+}
+
+.no-after:after{
+    content:"";
+}
+
+.collaborates{
+    width:100%;
+}
+
+.collaborates, .collaborates p{
+    display: inline-block;
+    vertical-align: top;
+    font-size: .8em;
+    font-style: italic;
+
+}
 
 
     </style>    
 
+
 </head>
 <body>
-<input id="muser" type="hidden" value="<? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?>">
+<input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
 <input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
@@ -190,14 +271,8 @@ display:none;
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li class="active"><a href="index.php"><i class="menu-icon icon-dashboard"></i>Vista Principal
-                            </a></li>
-                            <li><a href="activity.php"><i class="menu-icon icon-bullhorn"></i>ingreso de Audiencias</a>
-                            </li>
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 11</b> </a></li>
-                            <li><a href="task.php"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
-                                19</b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
  
@@ -212,9 +287,10 @@ display:none;
                                     <li><a href="other-user-listing.html"><i class="icon-time"></i>Historial Requerimientos</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout</a></li>
                         </ul>
                         <h3>Mis Compromisos</h3>
+                        <!--
                         <div id="Urgencias" class="OwnComp">
                             <div class="OwnComp-bars" style="border-right-color: #EA0000; border-left-color: #EA0000; cursor: pointer;" id="Urgent">Urgencias</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Urgent-Display">
@@ -255,8 +331,8 @@ display:none;
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
-                               <div id="Audiencias" class="OwnComp">
+                                </div> -->
+                 <div id="Audiencias" class="OwnComp">
                 <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Audiencias</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
@@ -297,7 +373,7 @@ display:none;
                                         </li>
                                     </ul>
                                 </div>
-                            <div id="Compromisos" class="OwnComp">
+                           <!-- <div id="Compromisos" class="OwnComp">
                               <div class="OwnComp-bars" style="border-right-color: #005FAA; border-left-color: #005FAA; cursor: pointer;" id="Com">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
                                         <li>
@@ -339,8 +415,8 @@ display:none;
                                     </ul>
                                 </div>
 
-
-                    </div>
+-->
+                    </div> 
                     <!--/.sidebar-->
                 </div>
                 <!--/.span3-->
@@ -360,16 +436,16 @@ display:none;
                                          Gerente General En Profits Taggle Inc.
                                         </p>
                                         <div class="profile-details muted">
-                                            <a href="#" class="btn"><i class="icon-plus shaded"></i>Send Friend Request </a>
-                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>Send message </a>
+                                            <a href="#" class="btn"><i class="icon-plus shaded"></i></a>
+                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i></a>
                                         </div>
                                     </div>
                                 </div>
+
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
                                     <li><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
-                                    <li><a href="#tasks-own" data-toggle="tab">Mis Requerimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                                     <div class="tab-pane fade active in" id="activity">
@@ -548,7 +624,14 @@ display:none;
                                             </div>
                                         </div>
                                         <div class="module-body">
-                                            <div class="row-fluid">
+
+                                       <? 
+                                        $i = 0;
+                                       while( $fila_per = mysqli_fetch_row($Query_team)){ 
+                                         $i = $i + 1;
+                                        ?>
+
+                                           <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -556,10 +639,10 @@ display:none;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                Hellen
+                                                                <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
-                                                                <small class="muted">Pakistan</small></p>
+                                                                <small class="muted">Serviu</small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-envelope"></i>
@@ -574,13 +657,16 @@ display:none;
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/ejecutivo1.jpg">
+                                                            <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
-                                                                Donga John</h3>
+
+
+                                                                <? printf($fila_per[0]) ?> <? printf($fila_per[1] +1) ?>
+                                                            </h3>
                                                             <p>
-                                                                <small class="muted">Pakistan</small></p>
+                                                                <small class="muted">Serviu</small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-envelope"></i>
@@ -592,145 +678,9 @@ display:none;
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/ejecutivo5.jpg">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Andre</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/user.png">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/user.png">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/user.png">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.row-fluid-->
-                                            <br />
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/user.png">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                John Donga</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="span6">
-                                                    <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
-                                                            <img src="../images/user.png">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <h3 class="media-title">
-                                                                Donga John</h3>
-                                                            <p>
-                                                                <small class="muted">Pakistan</small></p>
-                                                            <div class="media-option btn-group shaded-icon">
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-envelope"></i>
-                                                                </button>
-                                                                <button class="btn btn-small">
-                                                                    <i class="icon-share-alt"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           </div>
+                                            <? } ?>
+                                            
                                             <!--/.row-fluid-->
                                             <br />
                                             <div class="pagination pagination-centered">
@@ -759,11 +709,10 @@ display:none;
                                             <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" >Todos</a></li>
-                                            <li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
-                                            <li class="switcher" id="Hc"><a href="#" >Finalizados</a></li>
-                                            <li class="switcher" id="Pv"><a href="#" >Por vencer</a></li>
-                                            <li class="switcher" id="At"><a href="#" >Atrasados</a></li>
+                                            <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
+                                            <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
+                                            <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
+                                            <li class="switcher" id="At"><a href="#">Atrasados</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -776,18 +725,36 @@ display:none;
                                 <table class="table table-message">
                                     <tbody>
                                         <tr class="heading">
-                                            <td class="cell-icon"></td>
+                                            <td class="cell-icon"><i class="fa fa-lock" style="color: white;"></i></td>
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                             <td class="cell-title">Responsable</td>
-                                             <td class="cell-time align-right">Fecha</td>
+                                            <td class="cell-title">Accion</td>
+                                            <td class="cell-time align-right">Fecha</td>
 
                                         </tr>
                                         <? 
+
                                         $class = "";
+                                        $situation = "";
+                                        $color = "";
+                                        $lock = "";
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
+                                         if($stsk[7] == 0 || $stsk[7] == '0'){
+
+                                            $situation = "warning";
+                                            $color = "color:#EE8817;";
+                                            $lock = "";
+
+                                         } else {
+
+                                            $situation = "lock";
+                                            $color = "color: #44D933;";
+                                            $lock = "disabled";
+                                         }
+
+
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
@@ -810,12 +777,15 @@ display:none;
                                               break;
                                           }
 
+
+        //archivos adjuntos
+
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
+                                            <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-small forward">Delegar</button></td>
+                                            <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
@@ -823,21 +793,84 @@ display:none;
                                         <tr class="display-progress">
                                             <td colspan="5">
                                             <p>
-                                                <strong>Grado de progreso</strong><span class="pull-right small muted">12%</span>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 13%;"></div>
+                                                <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
+                                            </div>
+                                            <div class="collaborates">
+                                            Delegado a :[
+                                                <?
+$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
+ while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
+   <p><? printf($fila_spec[0]) ?> <? printf($fila_spec[1]) ?> / </p>
+    <?  }  ?>
+    ];
                                             </div>
                                             <div class="file-contents">
-                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                           
+                                            <?   
+                                           
+                                      while($steam = mysqli_fetch_row($Query_team)){
+
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos = readdir($handler))){
+
+                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
+
+                                             $extension = substr($archivos, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos) ?></span>
+                                                </p>
+
+                                                  <? }
+                                                  } 
+                                        closedir($handler);
+                                    }
+                                }
+                                  mysqli_data_seek($Query_team, 0);
+                                                  ?>
+
                                             </div>
                                             </td>
                                         </tr>
                                         <? } ?>
                                     </tbody>
                                 </table>
-
-
                             </div>
                             <div class="module-foot">
                             </div>
@@ -847,19 +880,29 @@ display:none;
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
+                           <p class="toggle-attach"><i class="fa fa-paperclip fa-2x"></i></p>
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
+
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
+                                                <option value="0"></option>
                                               <?  while($team = mysqli_fetch_row($Query_team)){ ?>
                                                         <option value="<? printf($team[0]) ?>"><? printf($team[1]) ?> <?printf($team[2]) ?></option>
-                                                        <? } ?>
+                                                        <? } 
+                                                   mysqli_data_seek($Query_team, 0);
+                                                        ?>
                                                     </optgroup>
                                                 </select>
-                                    <input type="text" id="subject" class="require-subtasks" val="" placeholder="asunto">
-                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
-                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
+                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
+                                </div>
+                                <div id="wrap-D">
+                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    </div>
+
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
@@ -873,13 +916,63 @@ display:none;
                                                <input type="hidden" value="" name="issId" id="issId">
                                         </div>
                                          <ul>
-                <!-- The file uploads will be shown here -->
+
                                          </ul>
                                     </form>
                               </div>
-                          </div>
-                        </div>
-                            </div>
+                              <div class="incoming-files">
+                                            <?                                              
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+
+                                          $file_extension2 = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+
+                                             $extension = substr($archivos2, -3);
+                                          
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                 }
+
+                                              if($archivos2 !== ".." || $archivos2 !== "."){
+                                          ?>
+
+                                                <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos2) ?></span>
+                                                </p>
+
+                                                  <? 
+                                                  }
+                                              }
+                                                  
+                                        closedir($handler2);
+                                    }
+                                 ?>
+                                       </div>
+                                    </div>
+                                 </div>
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
@@ -907,13 +1000,33 @@ display:none;
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
-     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script src="../scripts/jquery.datetimepicker.js"></script>
 </body>
 
 <script type="text/javascript">
     
+    var st = 0;
+    var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
+    
+    var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
+    
     $(document).on('ready', function(){
 
+
+$(".toggle-attach").on('click', function(){
+
+    if (st == 0){
+
+ $(".attach").css({ display : "none"});
+ $("#wrap-D").css({ display: "inline-block"});
+ st = 1;
+    } else {
+         $(".attach").css({ display : "inline-block"});
+         $("#wrap-D").css({ display: "none" });
+   st = 0;
+    }
+
+})
       
 $('.datetimepicker').datetimepicker({
     step:5,
@@ -937,9 +1050,6 @@ $('.datetimepicker').datetimepicker({
 
 
         })
-
-
-
 
             $("#Audi").on('click', function(){
 
@@ -993,9 +1103,8 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
-    $("#stsk-user").val($("#delegates :selected").text());
+    $("#stsk-user").val($("#delegates").val());
 });
-
 
 });
 
@@ -1021,7 +1130,10 @@ console.info($(".datetimepicker").val());
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
-           console.info(data);
+           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+            $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+            $("#D-drop").empty();
+            $(".eras").val('');
         }
     })
 });
@@ -1044,6 +1156,83 @@ $(".switcher").on('click', function(){
 
 });
 
+$(".due").on('click', function(){
+
+if(!$(this).data("val") || !$(this).data("val") === 0 ){
+
+   $(this).parent().parent().next().css({ display: "table-row"});
+     $(this).data("val", 1);
+} else  {
+
+  $(this).parent().parent().next().css({ display: "none"});
+   $(this).data("val", 0);
+}
+
+});
+
+$(".cell-icon").on('click', function(){
+  var stsk =  $(this).parent().children('input').eq(0).val();
+  var iss_id = $(this).parent().children('input').eq(1).val();
+  console.info(iss_id);
+   unlock(stsk, iss_id, $(this).children('i'));
+
+});
+
+
+function unlock(stsk_id, iss_id, object){
+
+$.ajax({
+       type: "POST",
+       url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
+       success : function(data){
+        console.log(data);
+           object.fadeOut(400, function(){
+           object.removeClass("fa-warning");
+           object.addClass("fa-lock");
+           object.css({color:"#44D933"});
+           object.parent().parent().children('td.cell-title').children('button').attr('disabled', true);
+           object.parent().parent().children('td.cell-title').children('button').unbind('click');
+           object.fadeIn(400);
+
+           });
+  
+       }
+});
+
+
+}
+
+function drop (event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+    document.getElementById(data).style.width = "100%";
+    $("#" + data + " span").css("text-align", "left");
+    var chargeuser = $("#delegates :selected").val();
+    moveAtDragDropfiles(data, mainuser, chargeuser);
+    $("#D-drop:after").css("content", " ");
+
+}
+
+function allowDrop (event) {
+    event.preventDefault();
+}
+
+function drag (event) {
+    event.dataTransfer.setData("text", event.target.id);
+}
+
+function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
+
+    $.ajax({ type: "POST",
+        url : "../backend/switchfiles.php?fac=" + fac + "&file_name=" + name + "&main_usr_id=" + main_usr_id + "&charge_usr_id=" + charge_usr_id,
+        success : function (data){
+
+          console.info("and..." + data);
+        }
+
+    })
+}
 </script>
 <?
 

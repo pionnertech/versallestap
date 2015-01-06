@@ -285,7 +285,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                     <? printf($issues[3]) ?>
                                                 </td>
                                                 <td class="center">
-                                                    <? printf($issues[5]) ?>
+                                                    <? printf(substr($issues[5], 1, 10)) ?>
                                                 </td>
                                             </tr>
                                        <? } ?>
@@ -443,6 +443,10 @@ $("#placeholder2").bind("plotclick", pieClick);
     });
 
 
+$("#cleanup").on("click", function({
+    $("input[type=text]").val('');
+    $("textarea").val('');
+})
 
 
 
@@ -512,6 +516,12 @@ break;
 
 
 </script>
+
+
+
+
+
+
 <?
 
  } else {
