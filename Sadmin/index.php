@@ -285,7 +285,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                     <? printf($issues[3]) ?>
                                                 </td>
                                                 <td class="center">
-                                                    <? printf(substr($issues[5], 1, 10)) ?>
+                                                    <? printf(substr($issues[5], 0, 10)) ?>
                                                 </td>
                                             </tr>
                                        <? } ?>
