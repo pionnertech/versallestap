@@ -1065,6 +1065,7 @@ console.info($(".datetimepicker").val());
            bootbox.alert("Requerimiento delegado existosamente");
            $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+            $("#D-drop").empty();
             $(".eras").val('');
         }
     })
