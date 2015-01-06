@@ -18,7 +18,19 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Que</title>
         <style type="text/css">
+#DataTables_Table_0_filter input{
+width:30em;
+}
 
+.dataTables_wrapper>div+div{
+    float:right;
+    right:-1em;
+}
+
+
+#DataTables_Table_0_length{
+   float: left;
+}
         #client_logo{
             max-width: 3em;
             border:0;
