@@ -635,6 +635,8 @@ border-radius: 20px;
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
+
+                                                            
                                                                 <? printf($fila_per[0] +1) ?> <? printf($fila_per[1] +1) ?>
                                                             </h3>
                                                             <p>
