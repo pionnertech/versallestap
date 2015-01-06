@@ -10,7 +10,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
-$query_issues = mysqli_query($datos, "SELECT A.ISS_ID FROM ISSUES WHERE ISS_CHARGE_USR = " )
+$query_issues = mysqli_query($datos, "SELECT A.ISS_ID FROM ISSUES WHERE ISS_CHARGE_USR = "  . . );
 
 ?>
 
@@ -197,6 +197,17 @@ content: "Arrastre aqui sus archivos";
     content:"";
 }
 
+.collaborates{
+    width:100%;
+}
+
+.collaborates, .collaborates p{
+    display: inline-block;
+    vertical-align: top;
+    font-size: .8em;
+    font-style: italic;
+
+}
 
 
     </style>    
@@ -787,8 +798,17 @@ content: "Arrastre aqui sus archivos";
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
+                                            <div class="collaborates">
+                                            Delegado a :[
+                                                <?
+$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.SURNAME FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE STSK_ISS_ID = " . $stsk[1] . ";");
+ while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
+   <p><? printf($fila_spec[0]) ?> <? printf($fila_spec[1]) ?></p>
+    <?  }  ?>
+    ];
+                                            </div>
                                             <div class="file-contents">
-
+                                           
                                             <?   
                                            
                                       while($steam = mysqli_fetch_row($Query_team)){
