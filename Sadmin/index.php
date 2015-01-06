@@ -23,13 +23,13 @@ width:30em;
 }
 
 .dataTables_wrapper>div+div{
-    float:right;
+    float:left;
     right:-1em;
 }
 
 
 #DataTables_Table_0_length{
-   float: left;
+   float: right;
 }
         #client_logo{
             max-width: 3em;
