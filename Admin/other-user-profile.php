@@ -245,14 +245,8 @@ border-radius: 20px;
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li class="active"><a href="index.php"><i class="menu-icon icon-dashboard"></i>Vista Principal
-                            </a></li>
-                            <li><a href="activity.php"><i class="menu-icon icon-bullhorn"></i>ingreso de Audiencias</a>
-                            </li>
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 11</b> </a></li>
-                            <li><a href="task.php"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
-                                19</b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
  
@@ -267,9 +261,10 @@ border-radius: 20px;
                                     <li><a href="other-user-listing.html"><i class="icon-time"></i>Historial Requerimientos</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout</a></li>
                         </ul>
                         <h3>Mis Compromisos</h3>
+                        <!--
                         <div id="Urgencias" class="OwnComp">
                             <div class="OwnComp-bars" style="border-right-color: #EA0000; border-left-color: #EA0000; cursor: pointer;" id="Urgent">Urgencias</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Urgent-Display">
@@ -310,8 +305,8 @@ border-radius: 20px;
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
-                               <div id="Audiencias" class="OwnComp">
+                                </div> -->
+                 <div id="Audiencias" class="OwnComp">
                 <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Audiencias</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
@@ -352,7 +347,7 @@ border-radius: 20px;
                                         </li>
                                     </ul>
                                 </div>
-                            <div id="Compromisos" class="OwnComp">
+                           <!-- <div id="Compromisos" class="OwnComp">
                               <div class="OwnComp-bars" style="border-right-color: #005FAA; border-left-color: #005FAA; cursor: pointer;" id="Com">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
                                         <li>
@@ -395,7 +390,7 @@ border-radius: 20px;
                                 </div>
 
 
-                    </div>
+                    </div> -->
                     <!--/.sidebar-->
                 </div>
                 <!--/.span3-->
@@ -424,7 +419,6 @@ border-radius: 20px;
                                     <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
                                     <li><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
-                                    <li><a href="#tasks-own" data-toggle="tab">Mis Requerimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                                     <div class="tab-pane fade active in" id="activity">
