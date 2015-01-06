@@ -482,11 +482,15 @@ $('.selectpicker').selectpicker({ dropupAuto : false });
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
 $(".ctz_def").attr("disabled", true);
+
+$("#html5_uploader_browse").addClass('plupload_disabled');
   // date time picker.
 
      //google maps...
  IntializeGMaps();
  uploaderInt();
+
+ 
 uploader.bind('BeforeUpload', function (up, file) {
     up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
 });
@@ -539,8 +543,6 @@ uploader =  $("#html5_uploader").pluploadQueue({
             PostInit: function() {
                 // Called after initialization is finished and internal event handlers bound
                 console.log('[PostInit]');
-                 
-
             },
  
             Browse: function(up) {
@@ -661,12 +663,17 @@ $('#RUT').on('change keydown paste input keypress' , function(){
 	var To = Valida_Rut(document.getElementById('RUT'));
 
     if (To === false){
+
     	$('#RUT').css('color', 'rgba(222,6,1, 1)' );
     	$('.ctz_def').attr('disabled', true);
+    	$("#html5_uploader_browse").addClass('plupload_disabled');
 
     } else {
+
     	$('#RUT').css('color', 'rgba(81,198,60, 1)');
-         $('.ctz_def').attr('disabled', false);
+        $('.ctz_def').attr('disabled', false);
+        $("#html5_uploader_browse").removeClass('plupload_disabled');
+
     }
 
 });
