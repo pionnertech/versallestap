@@ -801,7 +801,7 @@ content: "Arrastre aqui sus archivos";
                                             <div class="collaborates">
                                             Delegado a :[
                                                 <?
-$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.SURNAME FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE STSK_ISS_ID = " . $stsk[1] . ";");
+$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE STSK_ISS_ID = " . $stsk[1] . ";");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
    <p><? printf($fila_spec[0]) ?> <? printf($fila_spec[1]) ?></p>
     <?  }  ?>
