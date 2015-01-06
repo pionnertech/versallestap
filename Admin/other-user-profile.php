@@ -389,8 +389,8 @@ border-radius: 20px;
                                     </ul>
                                 </div>
 
-
-                    </div> -->
+-->
+                    </div> 
                     <!--/.sidebar-->
                 </div>
                 <!--/.span3-->
@@ -415,6 +415,7 @@ border-radius: 20px;
                                         </div>
                                     </div>
                                 </div>
+
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
                                     <li><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
@@ -1063,10 +1064,9 @@ border-radius: 20px;
                                         closedir($handler2);
                                     }
                                  ?>
-                              </div>
-                          </div>
-                        </div>
-                            </div>
+                                       </div>
+                                    </div>
+                                 </div>
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
@@ -1094,7 +1094,7 @@ border-radius: 20px;
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
-     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script src="../scripts/jquery.datetimepicker.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -1202,6 +1202,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $("#delegates").on('change', function(){
     $("#stsk-user").val($("#delegates").val());
 });
+
 
 
 });
