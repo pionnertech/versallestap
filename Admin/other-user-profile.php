@@ -410,8 +410,8 @@ border-radius: 20px;
                                          Gerente General En Profits Taggle Inc.
                                         </p>
                                         <div class="profile-details muted">
-                                            <a href="#" class="btn"><i class="icon-plus shaded"></i>Send Friend Request </a>
-                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>Send message </a>
+                                            <a href="#" class="btn"><i class="icon-plus shaded"></i></a>
+                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -598,7 +598,7 @@ border-radius: 20px;
                                             </div>
                                         </div>
                                         <div class="module-body">
-                                            <div class="row-fluid">
+                                           <div class="row-fluid">
                                        <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
                                                 <div class="span6">
                                                     <div class="media user">
@@ -610,7 +610,7 @@ border-radius: 20px;
                                                                 <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
-                                                                <small class="muted">Pakistan</small></p>
+                                                                <small class="muted">Serviu</small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-envelope"></i>
