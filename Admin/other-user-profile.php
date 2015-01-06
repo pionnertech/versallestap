@@ -173,10 +173,10 @@ border: 1px orange solid;
 
 #D-drop:after{
     content:"Arrastre aqui sus archivos";
-    color: white;
+    color: gray;
     position: relative;
     top:3em;
-    font-size: 2em;
+    font-size:2em;
 
 }
 
