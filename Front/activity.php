@@ -481,6 +481,7 @@ $('.selectpicker').selectpicker({ dropupAuto : false });
 
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
+$(".ctz_def").attr("disabled", true);
   // date time picker.
 
      //google maps...
