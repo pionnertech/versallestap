@@ -598,8 +598,8 @@ border-radius: 20px;
                                             </div>
                                         </div>
                                         <div class="module-body">
-                                           <div class="row-fluid">
                                        <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
+                                           <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -622,8 +622,32 @@ border-radius: 20px;
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <? mysqli_data_seek($fila_per, next($fila_per) )?>
+                                                <div class="span6">
+                                                    <div class="media user">
+                                                        <a class="media-avatar pull-left" href="#">
+                                                            <img src="../images/ejecutivo3.jpg">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-title">
+                                                                <? printf($fila_per[1]) ?> <? printf($fila_per[2]) ?>
+                                                            </h3>
+                                                            <p>
+                                                                <small class="muted">Serviu</small></p>
+                                                            <div class="media-option btn-group shaded-icon">
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-envelope"></i>
+                                                                </button>
+                                                                <button class="btn btn-small">
+                                                                    <i class="icon-share-alt"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                           </div>
                                             <? } ?>
-                                            </div>
+                                            
                                             <!--/.row-fluid-->
                                             <br />
                                             <div class="pagination pagination-centered">
