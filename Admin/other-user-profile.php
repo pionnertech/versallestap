@@ -598,7 +598,13 @@ border-radius: 20px;
                                             </div>
                                         </div>
                                         <div class="module-body">
-                                       <? while( $fila_per = mysqli_fetch_row($Query_team)){ ?>
+
+                                       <? 
+                                        $i = 0;
+                                       while( $fila_per = mysqli_fetch_row($Query_team)){ 
+                                         $i = $i + 1;
+                                        ?>
+
                                            <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
@@ -622,7 +628,7 @@ border-radius: 20px;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <? mysqli_data_seek($Query_team, next($fila_per) )?>
+                                             <? mysqli_data_seek($Query_team, $i) ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
