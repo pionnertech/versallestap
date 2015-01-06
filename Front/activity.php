@@ -293,20 +293,20 @@ cursor:pointer;
                            <input type="text" placeholder="fecha de audiencia" value="" id="dtp1" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     </div>
                                         <div class="wrap-ing-form">
-                    Apellido Paterno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="apllP" placeholder="Apellido Paterno" class="ctz_data"/><br><br>
+                    Apellido Paterno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="apllP" placeholder="Apellido Paterno" class="ctz_data ctz_def"/><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Apellido Materno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="applM" placeholder="Apellido Materno" class="ctz_data"/><br><br>
+                    Apellido Materno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="applM" placeholder="Apellido Materno" class="ctz_data ctz_def"/><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Nombres &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="Nombres" placeholder="Nombres" class="ctz_data" /><br><br>
+                    Nombres &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="Nombres" placeholder="Nombres" class="ctz_data ctz_def" /><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Telefono &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="tel" placeholder="Teléfono" id="tel" maxlength="12" class="ctz_data" /><br><br>
+                    Telefono &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="tel" placeholder="Teléfono" id="tel" maxlength="12" class="ctz_data ctz_def" /><br><br>
                                         </div>
                                         <div class="wrap-ing-form">
                                         <div id="sub-wrap">
-                    Dirección &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="direccion" placeholder="Dirección" class="ctz_data"/>
+                    Dirección &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="direccion" placeholder="Dirección" class="ctz_data ctz_def"/>
                      <i class="icon-map-marker icon-2x" id="Geo" ></i>
                     </div>
                     <div id="wrap-map" style="width: 100%; height:0px;">
@@ -314,7 +314,7 @@ cursor:pointer;
                     </div>
                                         </div>
                                         <div class="wrap-ing-form">
-                    Correo Electronico &ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" value="" id="ctzmail" placeholder="Correo Electronico" class="ctz_data"/><br><br>
+                    Correo Electronico &ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" value="" id="ctzmail" placeholder="Correo Electronico" class="ctz_data ctz_def"/><br><br>
                                         </div>
 									</div>
 								 <div class="control-group" >
@@ -479,8 +479,6 @@ $(document).on('ready', function(){
 
 $('.selectpicker').selectpicker({ dropupAuto : false });
 
-
-
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
   // date time picker.
@@ -572,6 +570,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
             BeforeUpload: function(up, file) {
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
+                $("#SendRequest-free").attr("disabled", true);
             },
   
             UploadProgress: function(up, file) {
@@ -619,7 +618,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
                 $("#clip").trigger('click');
                 up.destroy();
                 uploaderInt();
-
+                $("#SendRequest-free").attr("disabled", false);
             },
  
             Destroy: function(up) {
@@ -662,8 +661,11 @@ $('#RUT').on('change keydown paste input keypress' , function(){
 
     if (To === false){
     	$('#RUT').css('color', 'rgba(222,6,1, 1)' );
+    	$('.ctz_def').attr('disabled', true);
+
     } else {
     	$('#RUT').css('color', 'rgba(81,198,60, 1)');
+         $('.ctz_def').attr('disabled', false);
     }
 
 });
