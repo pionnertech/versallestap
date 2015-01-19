@@ -237,42 +237,7 @@ cursor:pointer;
 						</ul><!--/.widget-nav-->
 
 
-						<ul class="widget widget-menu unstyled">
-							<li>
-								<a class="collapsed" data-toggle="collapse" href="#togglePages">
-									<i class="menu-icon icon-cog"></i>
-									<i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right"></i>
-									Vistas
-								</a>
-								<ul id="togglePages" class="collapse unstyled">
-									<li>
-										<a href="other-login.html">
-											<i class="icon-inbox"></i>
-											Progresos
-										</a>
-									</li>
-									<li>
-										<a href="other-user-profile.html">
-											<i class="icon-inbox"></i>
-											Estadisticas
-										</a>
-									</li>
-									<li>
-										<a href="other-user-listing.html">
-											<i class="icon-inbox"></i>
-											No Conformidades
-										</a>
-									</li>
-								</ul>
-							</li>
-							
-							<li>
-								<a href="backend/close.php">
-									<i class="menu-icon icon-signout"></i>
-									Logout
-								</a>
-							</li>
-						</ul>
+					
 					</div><!--/.sidebar-->
 				</div><!--/.span3-->
 
