@@ -24,7 +24,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edmin</title>
+	<title>Eque-e</title>
 	<link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link type="text/css" href="../css/theme.css" rel="stylesheet">
@@ -55,8 +55,9 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
     display: none;
 }
 
-
-
+.progress , .ajuste{
+	width:50%;
+}
 	</style>
 </head>
 <body>
@@ -313,7 +314,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                         <tr class="display-progress">
                                             <td colspan="5">
-                                            <p>
+                                            <p class="adjuste">
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
