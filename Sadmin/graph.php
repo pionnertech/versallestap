@@ -205,8 +205,8 @@ $query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FRO
 $x = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 ?>
-var array_set_<? str_replace(" ", "_" , printf($filax[1])) ?> = [];
-array_set_<? str_replace(" ", "_" , printf($filax[1])) ?> = [
+var array_set_<? str_ireplace(" ", "_" , printf($filax[1])) ?> = [];
+array_set_<? str_ireplace(" ", "_" , printf($filax[1])) ?> = [
 <?
 $handler = "";
 $handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
