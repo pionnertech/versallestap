@@ -25,6 +25,14 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
         <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
+
+            <style type="text/css">
+
+                    .linerchart{
+            width:33.33%;
+            display: inline-block;
+            vertical-align: top;
+        }</style>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -111,7 +119,7 @@ $i = 0;
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 while($f1 = mysqli_fetch_row($query_count_departament)){
 ?>
-                                   <div class="chart inline-legend grid linerchart" align="center" style="width: 100%;">
+                                   <div class="chart inline-legend grid linerchart" align="center" >
                                         <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
                                         <strong><? printf($f1[0]) ?></strong>
                                     </div>
