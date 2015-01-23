@@ -11,8 +11,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -97,7 +95,33 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                     <!--/.span3-->
                     <div class="span9">
                         <div class="content">
-                          
+                           
+                        <div class="module">
+                                <div class="module-head">
+                                    <h3>
+                                       Gráfico General</h3>
+                                </div>
+                                <div class="module-body">
+                                    <div class="chart inline-legend grid" style="width: 100%;">
+                                        <div id="placeholder2" style="height: 250px"></div>
+                                    </div>
+
+<?
+$i = 0;
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
+while($f1 = mysqli_fetch_row($query_count_departament)){
+?>
+                                   <div class="chart inline-legend grid linerchart" align="center">
+                                        <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
+                                        <strong><? printf($f1[0]) ?></strong>
+                                    </div>
+ <? 
+    $i = $i + 1;
+
+ } ?>
+                                </div>
+                            </div>
+
                         </div>
                         <!--/.content-->
                     </div>
@@ -112,7 +136,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                 <b class="copyright">&copy; 2015 Eque-e </b>All rights reserved.
             </div>
         </div>
-        <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script type="text/javascript">
 
               function heighter(obj){
@@ -120,9 +144,118 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                          }
         </script>
 
-        <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+        <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
+        <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script type="text/jvascript">
+
+$(document).on('ready', function(){
+
+array_set = [
+<?
+
+$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+
+while ( $fila2 = mysqli_fetch_row($pass)) {
+
+?>
+{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+    $.plot("#placeholder2", array_set, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+        hoverable: true,
+        clickable: true
+    }
+});
+
+
+
+//graficos secundarios por depart
+<?
+$array_dept = [];
+$i = 0;
+
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
+
+while($f1 = mysqli_fetch_row($query_count_departament)){
+$array_dept[$i] = $f1[0];
+$i = $i + 1;
+}
+
+$cant_dept = count($array_dept);
+
+?>
+
+<?
+$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
+$x = 0;
+while($filax = mysqli_fetch_row($query_dept_global)){
+?>
+var array_set_<? printf($filax[1]) ?> = [];
+array_set_<? printf($filax[1]) ?> = [
+<?
+$handler = "";
+$handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
+
+while($subt = mysqli_fetch_row($handler)){
+?>
+{ label: "<? printf(  $subt[2] ) ?>",  data: <? printf( $subt[0] ) ?> , color:"<? printf( $subt[3] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+    $.plot("#chart<? printf($x) ?>", array_set_<? printf($filax[1]) ?>, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+        hoverable: true,
+        clickable: true
+    }
+});
+
+<? 
+  $x = $x + 1;
+}
+
+ ?>
+});
+$("#placeholder2").bind("plothover", pieHover);
+$("#placeholder2").bind("plotclick", pieClick);
+
+             function pieHover(event, pos, obj) {
+            if (!obj)
+                return;
+            percent = parseFloat(obj.series.percent).toFixed(2);
+            $("#hover").html('<span>' + obj.series.label + ' - ' + percent + '%</span>');
+        }
+
+        function pieClick(event, pos, obj) {
+            if (!obj)
+                return;
+            percent = parseFloat(obj.series.percent).toFixed(2);
+            alert('' + obj.series.label + ': ' + percent + '%');
+        }
 
 
 
@@ -130,3 +263,10 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
 </script>
     </body>
 
+<?
+
+} else {
+
+    echo "<script language='javascript'>window.location='../index.php'</script>";
+}
+?>
