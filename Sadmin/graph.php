@@ -216,12 +216,12 @@ $handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DES
 
 while($subt = mysqli_fetch_row($handler)){
 ?>
-{ label: "<? printf(  $subt[2] ) ?>",  data: <? printf( str_ireplace(" ", "_" , $subt[0] )) ?> , color:"<? printf( $subt[3] ) ?>"},
+{ label: "<? printf(  $subt[2] ) ?>",  data: <? printf( $subt[0] ) ?> , color:"<? printf( $subt[3] ) ?>"},
 <? } ?>
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot("#chart<? printf($x) ?>", array_set_<? printf($filax[1]) ?>, {
+    $.plot("#chart<? printf($x) ?>", array_set_<? printf(str_replace(" ", "_" , $filax[1])) ?>, {
            series: {
             pie: {
                 innerRadius: 0.5,
