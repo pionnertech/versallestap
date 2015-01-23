@@ -154,6 +154,8 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
 $(document).on('ready', function(){
 
+});
+
 array_set = [
 <?
 
@@ -240,7 +242,7 @@ while($subt = mysqli_fetch_row($handler)){
 }
 
  ?>
-});
+
 
 
 $("#placeholder2").bind("plothover", pieHover);
