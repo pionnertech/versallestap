@@ -149,12 +149,12 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
-        <script src="../scripts/common.js" type="text/javascript"></script>
-        <script type="text/jvascript">
+        <script src="../scripts/common_pie.js" type="text/javascript"></script>
+        <script type="text/javascript">
 
 $(document).on('ready', function(){
 
-});
+
 
 array_set = [
 <?
@@ -243,6 +243,7 @@ while($subt = mysqli_fetch_row($handler)){
 
  ?>
 
+});
 
 
 $("#placeholder2").bind("plothover", pieHover);
