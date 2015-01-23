@@ -106,7 +106,6 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
                                     <div class="chart inline-legend grid" style="width: 100%;">
                                         <div id="placeholder2" style="height: 250px"></div>
                                     </div>
-
 <?
 $i = 0;
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
@@ -206,8 +205,8 @@ $query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FRO
 $x = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 ?>
-var array_set_<? printf($filax[1]) ?> = [];
-array_set_<? printf($filax[1]) ?> = [
+var array_set_<? str_replace(" ", "_" , printf($filax[1])) ?> = [];
+array_set_<? str_replace(" ", "_" , printf($filax[1])) ?> = [
 <?
 $handler = "";
 $handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
