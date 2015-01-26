@@ -144,7 +144,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                 <b class="copyright">&copy; 2015 Eque-e </b>All rights reserved.
             </div>
         </div>
-        <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="../scripts/jquery-1.6.1.min.js" type="text/javascript"></script>
         <script type="text/javascript">
 
               function heighter(obj){
