@@ -146,11 +146,9 @@ vertical-align: top;
                             <ul class="widget widget-menu unstyled">
                                 <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
                                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                                </i>More Pages </a>
+                                </i>Estadisticas</a>
                                     <ul id="togglePages" class="collapse unstyled">
-                                        <li><a href="other-login.html"><i class="icon-inbox"></i>Login </a></li>
-                                        <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Profile </a></li>
-                                        <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
+                                        <li><a href="graph.php"><i class="icon-inbox"></i>Gráficos</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="backend/close.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
@@ -210,31 +208,6 @@ vertical-align: top;
                                 </div>
                             </div>
                             <!--/#btn-controls-->
-                            <div class="module">
-                                <div class="module-head">
-                                    <h3>
-                                       Gráfico General</h3>
-                                </div>
-                                <div class="module-body">
-                                    <div class="chart inline-legend grid" style="width: 100%;">
-                                        <div id="placeholder2" style="height: 250px"></div>
-                                    </div>
-
-<?
-$i = 0;
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-while($f1 = mysqli_fetch_row($query_count_departament)){
-?>
-                                   <div class="chart inline-legend grid linerchart" align="center">
-                                        <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
-                                        <strong><? printf($f1[0]) ?></strong>
-                                    </div>
- <? 
-    $i = $i + 1;
-
- } ?>
-                                </div>
-                            </div>
                             <!--/.module-->
                             <div class="module hide">
                                 <div class="module-head">
