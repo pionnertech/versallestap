@@ -416,10 +416,9 @@ cursor:pointer;
     <script src="../scripts/jquery.datetimepicker.js"></script>
     <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
     <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
-    <script type="text/javascript" src="../scripts/i18n/defaults-es_CL.js"></script>
+    <script type="text/javascript" src="../scripts/es.js"></script>
 </body>
 </html>
-
 <script type="text/javascript">
 
 //===================================
