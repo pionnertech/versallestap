@@ -157,7 +157,6 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
-        <script src="../scripts/common_pie.js" type="text/javascript"></script>
         <script type="text/javascript">
 
 $(document).on('ready', function(){
@@ -177,7 +176,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot("#placeholder2", array_set, {
+    $.plot($("#placeholder2"), array_set, {
            series: {
             pie: {
                 innerRadius: 0.5,
@@ -229,7 +228,7 @@ while($subt = mysqli_fetch_row($handler)){
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot("#chart<? printf($x) ?>", array_set_<? printf(str_replace(" ", "_" , $filax[1])) ?>, {
+    $.plot($("#chart<? printf($x) ?>") , array_set_<? printf(str_replace(" ", "_" , $filax[1])) ?>, {
            series: {
             pie: {
                 innerRadius: 0.5,
