@@ -6,8 +6,6 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-
-//TASKS
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 
@@ -443,168 +441,11 @@ content: "Arrastre aqui sus archivos";
                                 </div>
 
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
-                                    <li class="active"><a href="#activity" data-toggle="tab">Eventos</a></li>
-                                    <li><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
+                                    <li class="active"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
-                                    <div class="tab-pane fade active in" id="activity">
-                                        <div class="stream-list">
-                                            <div class="media stream">
-                                                <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="..7images/user.png">
-                                                </a>
-                                                <div class="media-body">
-                                                    <div class="stream-headline">
-                                                        <h5 class="stream-author">
-                                                            John Donga <small>08 July, 2014</small>
-                                                        </h5>
-                                                        <div class="stream-text">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type.
-                                                        </div>
-                                                        <div class="stream-attachment photo">
-                                                            <div class="responsive-photo">
-                                                                <img src="../images/img.jpg" alt="" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/.stream-headline-->
-                                                    <div class="stream-options">
-                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
-                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
-                                                            class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.media .stream-->
-                                            <div class="media stream">
-                                                <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="../images/user.png">
-                                                </a>
-                                                <div class="media-body">
-                                                    <div class="stream-headline">
-                                                        <h5 class="stream-author">
-                                                            John Donga <small>08 July, 2014</small>
-                                                        </h5>
-                                                        <div class="stream-text">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type.
-                                                        </div>
-                                                        <div class="stream-attachment video">
-                                                            <div class="responsive-video">
-                                                                <iframe src="//player.vimeo.com/video/20630217" width="560" height="315" frameborder="0"
-                                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                                                <p>
-                                                                    <a href="http://vimeo.com/20630217">Google Car</a> from <a href="http://vimeo.com/user3524956">
-                                                                        Henk Rogers</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/.stream-headline-->
-                                                    <div class="stream-options">
-                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
-                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
-                                                            class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.media .stream-->
-                                            <div class="media stream">
-                                                <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="../images/user.png">
-                                                </a>
-                                                <div class="media-body">
-                                                    <div class="stream-headline">
-                                                        <h5 class="stream-author">
-                                                            John Donga <small>08 July, 2014</small>
-                                                        </h5>
-                                                        <div class="stream-text">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type.
-                                                        </div>
-                                                    </div>
-                                                    <!--/.stream-headline-->
-                                                    <div class="stream-options">
-                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
-                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
-                                                            class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
-                                                    </div>
-                                                    <div class="stream-respond">
-                                                        <div class="media stream">
-                                                            <a href="#" class="media-avatar small pull-left">
-                                                                <img src="../images/user.png">
-                                                            </a>
-                                                            <div class="media-body">
-                                                                <div class="stream-headline">
-                                                                    <h5 class="stream-author">
-                                                                        John Donga <small>10 July 14</small>
-                                                                    </h5>
-                                                                    <div class="stream-text">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                                    </div>
-                                                                </div>
-                                                                <!--/.stream-headline-->
-                                                            </div>
-                                                        </div>
-                                                        <!--/.media .stream-->
-                                                        <div class="media stream">
-                                                            <a href="#" class="media-avatar small pull-left">
-                                                                <img src="../images/user.png">
-                                                            </a>
-                                                            <div class="media-body">
-                                                                <div class="stream-headline">
-                                                                    <h5 class="stream-author">
-                                                                        John Donga <small>12 July 14</small>
-                                                                    </h5>
-                                                                    <div class="stream-text">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                                                        Ipsum is simply dummy text.
-                                                                    </div>
-                                                                </div>
-                                                                <!--/.stream-headline-->
-                                                            </div>
-                                                        </div>
-                                                        <!--/.media .stream-->
-                                                    </div>
-                                                    <!--/.stream-respond-->
-                                                </div>
-                                            </div>
-                                            <!--/.media .stream-->
-                                            <div class="media stream">
-                                                <a href="#" class="media-avatar medium pull-left">
-                                                    <img src="../images/user.png">
-                                                </a>
-                                                <div class="media-body">
-                                                    <div class="stream-headline">
-                                                        <h5 class="stream-author">
-                                                            John Donga <small>08 July, 2014</small>
-                                                        </h5>
-                                                        <div class="stream-text">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                                            Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                                            unknown printer took a galley of type.
-                                                        </div>
-                                                    </div>
-                                                    <!--/.stream-headline-->
-                                                    <div class="stream-options">
-                                                        <a href="#" class="btn btn-small"><i class="icon-thumbs-up shaded"></i>Like </a>
-                                                        <a href="#" class="btn btn-small"><i class="icon-reply shaded"></i>Reply </a><a href="#"
-                                                            class="btn btn-small"><i class="icon-retweet shaded"></i>Repost </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.media .stream-->
-                                            <div class="media stream load-more">
-                                                <a href="#"><i class="icon-refresh shaded"></i>Load more... </a>
-                                            </div>
-                                        </div>
-                                        <!--/.stream-list-->
-                                    </div>
-                                    <div class="tab-pane fade" id="friends">
+                                    <div class="tab-pane fade active in" id="friends">
                                         <div class="module-option clearfix">
                                             <form>
                                             <div class="input-append pull-left">
@@ -948,7 +789,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                       $file_extension = "archive-";
                                                       $cor = "#DDCE62";
                                                       break;
-                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      case ($extension == "png" || $extension =='jpg' || $extension == 'bmp'):
                                                       $file_extension = "picture-";
                                                       $cor = "#338B93";
                                                       break;
@@ -958,15 +799,12 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                               if($archivos2 !== ".." || $archivos2 !== "."){
                                           ?>
-
-                                                <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
-
                                                   <? 
                                                   }
                                               }
-                                                  
                                         closedir($handler2);
                                     }
                                  ?>
@@ -1227,13 +1065,13 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
     $.ajax({ type: "POST",
         url : "../backend/switchfiles.php?fac=" + fac + "&file_name=" + name + "&main_usr_id=" + main_usr_id + "&charge_usr_id=" + charge_usr_id,
         success : function (data){
-
           console.info("and..." + data);
         }
 
     })
 }
 </script>
+
 <?
 
 }  else {
