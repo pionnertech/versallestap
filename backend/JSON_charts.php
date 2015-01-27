@@ -31,7 +31,7 @@ $queryStr =  "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR 
 $handler_general = mysqli_query($datos, $queryStr);
 echo "\"" . $array_dept[$i] . "\":[{";
 
-$query_just = "SELECT USR_NAME FROM USERS WHERE ( USR_FAC_CODE =" . $fac . " AND USR_DEPT = '" .  $array_dept[$i]  . "')";
+$query_just = "SELECT USR_NAME FROM USERS WHERE ( USR_FACILITY =" . $fac . " AND USR_DEPT = '" .  $array_dept[$i]  . "')";
 $just_hand = mysqli_query($datos, $query_just);
 
 $x = 0;
