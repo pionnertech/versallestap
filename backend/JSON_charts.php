@@ -64,7 +64,8 @@ $y = 0;
     
   }
 
-echo "]}"
+echo "]}";
+
 unset($per_array);
 
 }
