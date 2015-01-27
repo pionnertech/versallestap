@@ -49,7 +49,7 @@ $limit = count($per_hand);
 
 $y = 0;
 
-  while($fila2 = mysqli_fetch_row($per_hand){
+  while($fila2 = mysqli_fetch_row($per_hand)){
 
       echo "{ label : \"" . $fila2[2]  . "\", data: " . $fila2[0] . ", color:  \"" . $fila2[1] . "\"}";
  
