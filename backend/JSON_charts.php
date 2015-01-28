@@ -80,8 +80,6 @@ while ($fila4 = mysqli_fetch_row($handler_general) ){
     } else {
      
     }
-
-
 }
 
 
