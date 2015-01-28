@@ -67,7 +67,7 @@ echo ",";
 
 $z = 0;
 $top = mysqli_num_rows($handler_general);
-echo "\"General\" : [{";
+echo "\"General\" : [";
 
 while ($fila4 = mysqli_fetch_row($handler_general) ){
   
