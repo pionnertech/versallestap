@@ -63,7 +63,7 @@ $y = 0;
     }
   }
 
-echo ",";
+echo "],";
 
 $z = 0;
 $top = mysqli_num_rows($handler_general);
