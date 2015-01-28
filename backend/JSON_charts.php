@@ -65,6 +65,26 @@ $y = 0;
     
   }
 
+$z = 0;
+$top = mysqli_num_rows($handler_general);
+echo "General : [{";
+
+while ($fila4 = mysqli_fetch_row($handler_general) ){
+  
+   echo "{ label : \"" . $fila4[2]  . "\", data: " . $fila4[0] . ", color:  \"" . $fila4[3] . "\"}";
+   
+   $z = $z + 1;
+
+   if($z == $top -1 ){
+      echo ",";
+    } else {
+      
+    }
+
+
+}
+
+
 echo "]}";
 
 unset($per_array);

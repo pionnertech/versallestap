@@ -96,9 +96,10 @@ function updateChart(depto, name, index_d, index_p, mode){
 
 $.ajax({ type: "POST", 
 	    url: "../backend/JSON_charts.php?facility=" + fac, 
-	    success: function(database){
-    console.info(database);
- var newData_eval = jlinq.from(database.data).select();
+	    success: function(datab){
+	    	
+var database = JSON.parse(datab);
+var newData_eval = jlinq.from(database.data).select();
 
 console.info(mode);
 
