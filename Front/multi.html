@@ -45,107 +45,6 @@
 <script type="text/javascript">
 	
 
-var database = { "data": [
-   { "ADMINISTRACION_Y_FINANZAS": [
-   	                             {
-                                     "personal" :[
-                                             {
-                                             	"Juanito" : [
-                                                       { label : "En Curso" , data: 15 , color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 80, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 56, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 8, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 12, color: "#DED901"}
-                                             	]
-                                             },
-                                             {
-                                             	"Enrique" : [
-                                                       { label : "En Curso" , data: 15 , color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 3, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 4, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 97, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 4, color: "#DED901"}
-                                             	]
-                                             },
-                                             {
-                                             	"Pepito" : [
-                                                       { label : "En Curso" , data: 30 , color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 10, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 19, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 40, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 17, color: "#DED901"}
-                                             	]
-                                             }
-                                    
-                                     ]
-
-   	                             },
-   	                            
-   	                             {
-                                   "General" : [
-                                                       { label : "En Curso" , data: 40, color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 100, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 19, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 4, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 30, color: "#DED901"}
-                                             	]
-                                             
-                                        
-                                            
-   	                                 }
-
-   	                            
-   ]},
-     {  "CONTROL_Y_GESTION_VIVIENDA" : [
-     {
-       "personal" : [
-                                          {
-                                             	"Pancho" : [
-                                                       { label : "En Curso" , data: 55 , color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 5, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 85, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 23, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 19, color: "#DED901"}
-                                             	]
-                                             },
-                                             {
-                                             	"Mengano" : [
-                                                       { label : "En Curso" , data: 29, color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 28, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 64, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 67, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 15, color: "#DED901"}
-                                             	]
-                                             },
-                                             {
-                                             	"Fulano" : [
-                                                       { label :"En Curso" , data: 44 , color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 12, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 78, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 6, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 16, color: "#DED901"}
-                                             	]
-                                             }
-
-               ]
-     },    	                             
-     {
-                                   "General" : [
-                                                       { label : "En Curso" , data: 40, color: "#178FD0"},
-                                                       { label :"Atrasadas" , data : 100, color: "#E70101"},
-                                                       { label :"Por vencer" , data : 19, color: "#EDB405"},
-                                                       { label :"Hechas" , data : 4, color: "#1CC131"},
-                                                       { label :"Pendientes" , data : 30, color: "#DED901"}
-                                             	]
-                                             
-                                          
-   	                                 }
-
-   	                    ]}
-
-	]}
-
-
 var perplot;
 
 $(document).on('ready', function(){
@@ -194,8 +93,15 @@ updateChart(depto_eval, name, ind1, ind2, mode);
 
 function updateChart(depto, name, index_d, index_p, mode){
 
-var newData_eval = jlinq.from(database.data).select();
-console.info(mode)
+
+$.ajax({ type: "POST", 
+	    url: "../backend/JSON_charts.php?facility=" + fac, 
+	    success: function(database){
+    console.info(database);
+ var newData_eval = jlinq.from(database.data).select();
+
+console.info(mode);
+
 if (mode == 1){
 
   console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "].General");
@@ -208,10 +114,18 @@ if (mode == 1){
 
 }
 
+console.info(newData);
+perplot.setData(newData);
 
-console.info(newData)
+	    }
+	})
 
-//perplot.setData(newData);
+
+
+
+
+
+
 
 }
 
