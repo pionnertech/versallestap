@@ -78,9 +78,9 @@ while ($fila4 = mysqli_fetch_row($handler_general) ){
    $z = $z + 1;
 
    if($z == $top -1 ){
-      
+       echo ",";
     } else {
-      echo ",";
+     
     }
 
 
