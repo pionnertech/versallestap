@@ -52,7 +52,7 @@ $y = 0;
 
   while($fila2 = mysqli_fetch_row($per_hand)){
 
-      echo "{ label : \"" . $fila2[2]  . "\", data: " . $fila2[0] . ", color:  \"" . $fila2[1] . "\"}";
+      echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
  
       $y = $y + 1;
 
@@ -61,19 +61,17 @@ $y = 0;
     } else {
     	
     }
-
-    
   }
 
 echo ",";
 
 $z = 0;
 $top = mysqli_num_rows($handler_general);
-echo "General : [{";
+echo "\"General\" : [{";
 
 while ($fila4 = mysqli_fetch_row($handler_general) ){
   
-   echo "{ label : \"" . $fila4[2]  . "\", data: " . $fila4[0] . ", color:  \"" . $fila4[3] . "\"}";
+   echo "{\"label\":\"" . $fila4[2]  . "\", \"data\":\"" . $fila4[0] . "\", \"color\": \"" . $fila4[3] . "\"}";
    
    $z = $z + 1;
 
