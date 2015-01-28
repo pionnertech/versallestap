@@ -43,7 +43,7 @@ $per_array = [];
 
 echo "\"" . $per_array[$i] . "\":[";
 //each personal
-$queryPer = "SELECT COUNT(A.STSK_ID), B.EST_COLOR,  B.EST_DESCRIPT FROM SUBTASKS A INNER JOIN EST B ON(A.STSK_STATE = B.EST_CODE) INNER JOIN USERS C ON(A.STSK_CHARGE_USR = C.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND USR_DEPT = '" . $array_dept[$i] . "' GROUP BY USR_NAME, EST_DESCRIPT";
+$queryPer = "SELECT COUNT(A.STSK_ID), B.EST_COLOR,  B.EST_DESCRIPT FROM SUBTASKS A INNER JOIN EST B ON(A.STSK_STATE = B.EST_CODE) INNER JOIN USERS C ON(A.STSK_CHARGE_USR = C.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND USR_DEPT = '" . $array_dept[$i] . "') GROUP BY USR_NAME, EST_DESCRIPT";
 $per_hand = mysqli_query($datos, $queryPer);
 $limit = count($per_hand);
 
