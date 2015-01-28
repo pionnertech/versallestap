@@ -68,6 +68,14 @@ echo "]}";
 
 unset($per_array);
 
+
+if ($i == $cant_dept -1){
+
+} else {
+	
+   echo ",";
+}
+
 }
 
 
