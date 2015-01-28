@@ -57,9 +57,9 @@ $y = 0;
       $y = $y + 1;
 
     if($y == $limit -1 ){
-
+      echo ",";
     } else {
-    	echo ",";
+    	
     }
 
     
