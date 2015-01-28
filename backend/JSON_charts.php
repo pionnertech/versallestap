@@ -55,8 +55,7 @@ $y = 0;
  
       $y = $y + 1;
 
-    if($y = $limit -1){
-     
+    if($y == $limit -1){
     } else {
     	echo ",";
     }
@@ -72,7 +71,7 @@ unset($per_array);
 if ($i == $cant_dept -1){
 
 } else {
-	
+
    echo ",";
 }
 
