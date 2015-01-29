@@ -121,13 +121,12 @@ var matriz =[];
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
   for (i=0; i < newData.length ; i++){
-
+   console.log('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]")
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
     
   }
 
 console.info("llega hasta despues del bucle");
-
 
 matriz = JSON.stringify(matriz);
 
