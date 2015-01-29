@@ -95,9 +95,9 @@ function updateChart(depto, name, index_d, index_p, mode){
 
 
 $.ajax({ type: "POST", 
-	    url: "../backend/JSON_charts.php?facility=" + fac, 
+	    url: "../backend/JSON.php?facility=" + fac, 
 	    success: function(datab){
-	    	
+
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
@@ -120,13 +120,6 @@ perplot.setData(newData);
 
 	    }
 	})
-
-
-
-
-
-
-
 
 }
 
