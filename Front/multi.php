@@ -130,7 +130,7 @@ if (mode == 1){
 
 } else {
 
-  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + );
+  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
   newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]");
 
 }
