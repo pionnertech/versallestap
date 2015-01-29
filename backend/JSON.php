@@ -54,6 +54,7 @@ for($i=0; $i < $cant_dept; $i++){
  	            $x = $x + 1;
             }
     $per_count = count($per_array);
+
 //========================
 //bucle de las personas / 
 //========================
@@ -65,6 +66,7 @@ for($i=0; $i < $cant_dept; $i++){
                 $query_per = "SELECT COUNT(A.STSK_ID), B.EST_COLOR,  B.EST_DESCRIPT FROM SUBTASKS A INNER JOIN EST B ON(A.STSK_STATE = B.EST_CODE)" . 
                              " INNER JOIN USERS C ON(A.STSK_CHARGE_USR = C.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND USR_DEPT = '" . $array_dept[$i] . "' AND " . 
                              " USR_NAME = '" . $per_array[$y] . "') GROUP BY USR_NAME, EST_DESCRIPT";
+
                 $hand_per  = mysqli_query($datos, $query_per);
 
 //=======================
@@ -72,10 +74,24 @@ for($i=0; $i < $cant_dept; $i++){
 //======================= 
 
 
+                if ( mysqli_num_rows($hand_per) == 0) {
+
+                	  echo "{\"label\":\"n/n\", \"data\": \"100\", \"color\":\"#FFF\"}]";
+
+                	      if($y == $per_count -1 ){
+
+                            } else {
+
+    	                        echo ",";
+
+                            }
+                }
+
                 while($fila2 = mysqli_fetch_row($hand_per) ){
             
                         echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
-                         
+                        
+
                             if($y == $per_count -1 ){
 
                             } else {
@@ -91,7 +107,7 @@ for($i=0; $i < $cant_dept; $i++){
 // bucle general
 //==========================
 
-    echo "\"], General\" : [";
+    echo "], General\" : [";
 
     $queryStr = "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN" . 
                 " USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) " . 
