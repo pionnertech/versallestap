@@ -111,15 +111,17 @@ for($i=0; $i < $cant_dept; $i++){
 
                     }
 
-                echo "]}"; 
-      
-                     if($y <= $per_count -1 ){
+                echo "]},"; 
+      /*
+                     if($y < $per_count  ){
                                
                      } else {
                                
                          echo ",";
                                
                        }
+                       */
+
                        
             }
 
