@@ -137,7 +137,8 @@ trat3 = trat2.replace("\"color\"", "color");
 
 console.info(trat3);
 
-var matrix = eval("'" + trat3 + "'");
+var matrix = eval(trat3);
+
 console.info(matrix);
 //recreate
 $.plot($("#placeholder2"), matrix, {
