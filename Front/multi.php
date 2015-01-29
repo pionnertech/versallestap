@@ -113,10 +113,12 @@ $.ajax({ type: "POST",
 	    url: "../backend/JSON.php?facility=" + fac, 
 	    success: function(datab){
 
-datas = JSON.parse(datab);
-
+//set Jlinq and parse database
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
+
+// clean up the plot chart
+$("#placeholder2").empty();
 
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
@@ -125,11 +127,23 @@ var matriz =[];
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
     
   }
-  console.info(matriz);
-  perplot.setData(matriz);
-  perplot.setupGrid(); //only necessary if your new data will change the axes or grid
-  perplot.draw();
 
+//recreate
+$.plot($("#placeholder2"), matriz, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+        hoverable: true,
+        clickable: true
+    }
+});
 
 	    }
 	})
