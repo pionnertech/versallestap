@@ -92,13 +92,8 @@ var depto_eval = document.querySelector("#selection").options[document.querySele
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
 var ind1 = $("#selection").val();
-var mode  = 1;
+var mode = 0;
 
-if (name == 'General' ){
-	mode == 1;
-} else { 
-   mode = 0;
-}
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 updateChart(depto_eval, name, ind1, ind2, mode);
 
@@ -126,7 +121,7 @@ var matriz =[];
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
   for (i=0; i < newData.length ; i++){
 
-   matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
+   matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
     
   }
 
