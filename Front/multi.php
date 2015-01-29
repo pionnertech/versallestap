@@ -119,11 +119,15 @@ $("#placeholder2").empty();
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
+
   for (i=0; i < newData.length ; i++){
 
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
     
   }
+
+console.info("llega hasta despues del bucle");
+
 
 matriz = JSON.stringify(matriz);
 
@@ -131,8 +135,8 @@ trat1 = matriz.replace("\"label\"", "label");
 trat2 = trat1.replace("\"data\"", "data");
 trat3 = trat2.replace("\"color\"", "color");
 
-console.info(trat3);
 
+console.info(trat3);
 
 var matrix = eval("'" + trat3 + "'");
 console.info(matrix);
