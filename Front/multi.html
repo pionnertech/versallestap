@@ -1,3 +1,18 @@
+<?php 
+
+
+$fac = $_GET['facility'];
+
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
+
+//departamntos
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT;");
+
+//personal
+mysqli_query($datos, "SELECT USR_NAME, USR_SURNAME FROM USERS")
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +43,10 @@
                              		<option value="1">CONTROL_Y_GESTION_VIVIENDA</option>
                              	</select>
                              	<select id="personal">
-                             	    <option value="107">General</option>
-                             		<option value="0">Juanito</option>
-                             		<option value="1">Pepito</option>
-                             		<option value="2">Enrique</option>
+                             	    <option value="0">General</option>
+                             		<option value="1">Juanito</option>
+                             		<option value="2">Pepito</option>
+                             		<option value="3">Enrique</option>
                              	</select>
                              </div>
 </body>
@@ -44,7 +59,7 @@
 <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 	
-
+var datas;
 var perplot;
 var fac = 10000;
 $(document).on('ready', function(){
@@ -100,6 +115,8 @@ $.ajax({ type: "POST",
 
 console.info(datab);
 
+datas = JSON.parse(datab);
+
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
@@ -112,8 +129,8 @@ if (mode == 1){
 
 } else {
 
-  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "].personal[" + index_p + "]");
-  newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "].personal[" + index_p + "]");
+  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + );
+  newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]");
 
 }
 
