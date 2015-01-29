@@ -91,7 +91,6 @@ for($i=0; $i < $cant_dept; $i++){
             
                         echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
                         
-
                             if($y == $per_count -1 ){
 
                             } else {
@@ -99,15 +98,24 @@ for($i=0; $i < $cant_dept; $i++){
     	                         echo ",";
 
                             }
-                     }
-                             
+                    }
+
+                 echo "]"; 
+                 
+                    if($y == $per_count -1 ){
+
+                        } else {
+
+    	                 echo ",";
+
+                     }          
             }
 
 //==========================
 // bucle general
 //==========================
 
-    echo "], General\" : [";
+    echo ", General\" : [";
 
     $queryStr = "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN" . 
                 " USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) " . 
