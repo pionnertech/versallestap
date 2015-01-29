@@ -89,8 +89,8 @@ perplot = $.plot($("#placeholder2") , data , {
 $("#selection, #personal").on("change" , function (){
 
 var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text;
-var name = document.querySelector("#personal").options[document.querySelectorAll("#selection")[0].selectedIndex].text;
-var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#selection")[0].selectedIndex].value;
+var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
+var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
 var ind1 = $("#selection").val();
 var mode  = 1;
 
