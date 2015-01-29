@@ -113,7 +113,7 @@ for($i=0; $i < $cant_dept; $i++){
 
                     }
 
-                echo "]"; 
+                echo "]}"; 
         
                      if($y == $per_count ){
                                
