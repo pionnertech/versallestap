@@ -113,14 +113,10 @@ $.ajax({ type: "POST",
 	    url: "../backend/JSON.php?facility=" + fac, 
 	    success: function(datab){
 
-console.info(datab);
-
 datas = JSON.parse(datab);
 
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
-
-
 
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
