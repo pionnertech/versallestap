@@ -123,7 +123,7 @@ $("#placeholder2").empty();
 
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
-
+console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
   for (i=0; i < newData.length ; i++){
 
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
