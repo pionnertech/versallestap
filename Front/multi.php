@@ -116,12 +116,12 @@ var newData_eval = jlinq.from(database.data).select();
 // clean up the plot chart
 $("#placeholder2").empty();
 
-newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
+
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
-  for (i=0; i < newData.length ; i++){
-   console.log('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]")
+  for (i=0; i < newData_eval.length ; i++){
+   console.log('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
     
   }
