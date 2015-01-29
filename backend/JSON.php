@@ -26,7 +26,7 @@ $cant_dept = count($array_dept);
 //========================
 //empieza el data
 //========================
-echo "{ \"data\": [{";
+echo "{ \"data\": [";
 
 
 //=========================
@@ -35,7 +35,7 @@ echo "{ \"data\": [{";
 
 for($i=0; $i < $cant_dept; $i++){
 
-    echo "\"" . $array_dept[$i] . "\":[";
+    echo "{\"" . $array_dept[$i] . "\":[";
 
 
 //======================
