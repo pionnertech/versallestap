@@ -101,7 +101,7 @@ for($i=0; $i < $cant_dept; $i++){
                         
                         $w = $w + 1;
 
-                        if($w <= $per_count ){
+                        if($w == $per_count ){
                                
                          } else {
                                
@@ -112,17 +112,9 @@ for($i=0; $i < $cant_dept; $i++){
                     }
 
                 echo "]},"; 
-      /*
-                     if($y < $per_count  ){
-                               
-                     } else {
-                               
-                         echo ",";
-                               
-                       }
-                       */
 
-                       
+
+
             }
 
 //==========================
