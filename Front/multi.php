@@ -130,7 +130,7 @@ var matriz =[];
     
   }
 
-  perplot.setData(newData);
+  perplot.setData(matriz);
   perplot.setupGrid(); //only necessary if your new data will change the axes or grid
   perplot.draw();
 
