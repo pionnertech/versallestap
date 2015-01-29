@@ -127,11 +127,11 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
 
   for (i=0;i < matriz.length;i++){
 
-      matriz[i] = matriz[i].replace("\"label\"", "label");
-      matriz[i] = matriz[i].replace("\"data\"", "data");
-      matriz[i] = matriz[i].replace("\"color\"", "color");
+      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"label\"", "label"));
+      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"data\"", "data"));
+      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"color\"", "color"));
 
-
+     
       }
 
 matriz = JSON.stringify(matriz);
