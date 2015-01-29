@@ -129,7 +129,6 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
     
   }
-
  matrix = matriz;
 //recreate
 $.plot($("#placeholder2"), matriz, {
