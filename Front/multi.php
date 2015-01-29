@@ -131,8 +131,8 @@ var matriz =[];
   }
 
   perplot.setData(newData);
-
-console.info(newData);
+  perplot.setupGrid(); //only necessary if your new data will change the axes or grid
+  perplot.draw();
 
 
 	    }
