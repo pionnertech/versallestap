@@ -121,7 +121,6 @@ datas = JSON.parse(datab);
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
-console.info(mode);
 
 if (mode == 1){
 
@@ -130,13 +129,19 @@ if (mode == 1){
 
 } else {
 
-  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
-  newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]");
+newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
+var matriz =[];
+  for (i=0; i < newData.length ; i++){
+
+   matriz[i] = newData2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
+    
+  }
+
+  perplot.setData(newData);
 
 }
-
 console.info(newData);
-perplot.setData(newData);
+
 
 	    }
 	})
