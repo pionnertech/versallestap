@@ -45,7 +45,7 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
                              	</select>
                              	<select id="personal">
                           <? while ($fila1 = mysqli_fetch_row($data_per)){ ?>
-                                   <option value="<? printf($fila1[0])?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
+                                   <option value="<? printf($fila1[0]) ?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
                           <? } ?>
                              	</select>
                              </div>
@@ -62,6 +62,7 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 var datas;
 var perplot;
 var fac = 10000;
+var matrix;
 $(document).on('ready', function(){
 
 	var data = [{ label: "progreso",  data: 43, color: "#0000FF"},{ label: "estamina",  data: 40, color: "#FF0000"},{ label: "efectos especiales",  data: 17, color: "#00FF00"}];
@@ -92,7 +93,7 @@ var name = document.querySelector("#personal").options[document.querySelectorAll
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#selection")[0].selectedIndex].value;
 var ind1 = $("#selection").val();
 var mode  = 1;
-console.info(name);
+
 if (name == 'General' ){
 	mode == 1;
 } else { 
@@ -122,12 +123,14 @@ $("#placeholder2").empty();
 
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
+
   for (i=0; i < newData.length ; i++){
 
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
     
   }
 
+matriz = matrix;
 //recreate
 $.plot($("#placeholder2"), matriz, {
            series: {
