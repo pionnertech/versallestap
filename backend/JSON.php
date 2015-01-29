@@ -78,7 +78,7 @@ for($i=0; $i < $cant_dept; $i++){
 
                 	  echo "{\"label\":\"n/n\", \"data\": \"100\", \"color\":\"#FFF\"}]";
 
-                	      if($y == $per_count -1 ){
+                	      if($y == $per_count ){
 
                             } else {
 
@@ -87,12 +87,22 @@ for($i=0; $i < $cant_dept; $i++){
                             }
                 }
 
+
+//====
+//indicador
+// =====
+
+                $w = 0;
+
                 while($fila2 = mysqli_fetch_row($hand_per) ){
             
+
+
                         echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
                         
-                        echo $y . "  " . $per_count;
-                        if($y == $per_count ){
+                        $w = $w+1;
+
+                        if($y == $w-1){
                                
                          } else {
                                
