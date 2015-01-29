@@ -101,7 +101,7 @@ for($i=0; $i < $cant_dept; $i++){
                         
                         $w = $w + 1;
 
-                        if($w <= mysqli_num_rows($hand_per)){
+                        if($w = mysqli_num_rows($hand_per)){
                                
                          } else {
                                
