@@ -131,11 +131,16 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
   }
 
 matriz = JSON.stringify(matriz);
+
 trat1 = matriz.replace("\"label\"", "label");
-trat2 = matriz.replace("\"data\"", "data");
-trat3 = matriz.replace("\"color\"", "color");
+trat2 = trat1.replace("\"data\"", "data");
+trat3 = trat2.replace("\"color\"", "color");
+
+console.info(trat3);
+
 
 var matrix = eval("'" + trat3 + "'");
+console.info(matrix);
 //recreate
 $.plot($("#placeholder2"), matrix, {
            series: {
