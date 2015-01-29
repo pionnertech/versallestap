@@ -178,6 +178,6 @@ unset($per_array);
 
 //termina el data
 
-echo "}]}";
+echo "]}";
 
 ?>
