@@ -99,9 +99,9 @@ for($i=0; $i < $cant_dept; $i++){
 
                         echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
                         
-                        $w = $w+1;
+                        $w = $w + 1;
 
-                        if($w == $per_count - 1){
+                        if($w <= $per_count ){
                                
                          } else {
                                
