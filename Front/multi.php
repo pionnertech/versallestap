@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT;");
 
 //personal
-mysqli_query($datos, "SELECT USR_NAME, USR_SURNAME FROM USERS");
+ $data_per = mysqli_query($datos, "SELECT USR_ID,  USR_NAME FROM USERS");
 
 ?>
 
@@ -44,10 +44,9 @@ mysqli_query($datos, "SELECT USR_NAME, USR_SURNAME FROM USERS");
                              		<option value="1">CONTROL_Y_GESTION_VIVIENDA</option>
                              	</select>
                              	<select id="personal">
-                             	    <option value="0">General</option>
-                             		<option value="1">Juanito</option>
-                             		<option value="2">Pepito</option>
-                             		<option value="3">Enrique</option>
+                          <? while ($fila1 = mysqli_fetch_row($data_per)){ ?>
+                                   <option value="<? printf($fila1[0])?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
+                          <? } ?>
                              	</select>
                              </div>
 </body>
@@ -122,12 +121,6 @@ var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
 
-if (mode == 1){
-
-  console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "].General");
-  newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "].General");
-
-} else {
 
 newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "");
 var matriz =[];
@@ -139,7 +132,6 @@ var matriz =[];
 
   perplot.setData(newData);
 
-}
 console.info(newData);
 
 
