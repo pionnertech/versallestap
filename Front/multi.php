@@ -130,7 +130,7 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
     
   }
 
-matriz = matrix;
+ matrix = matriz;
 //recreate
 $.plot($("#placeholder2"), matriz, {
            series: {
