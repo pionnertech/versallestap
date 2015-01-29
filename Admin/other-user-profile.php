@@ -428,10 +428,10 @@ content: "Arrastre aqui sus archivos";
                                     </a>
                                     <div class="media-body">
                                         <h4>
-                                           <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Offline</small>
+                                           <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Online</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         Gerente General En Profits Taggle Inc.
+                                         <? printf($_SESSION['TxtPosition']) ?> En SERVIU.
                                         </p>
                                         <div class="profile-details muted">
                                             <a href="#" class="btn"><i class="icon-plus shaded"></i></a>
