@@ -86,7 +86,7 @@ for($i=0; $i < $cant_dept; $i++){
 
                             }
                 }
-
+                
                 while($fila2 = mysqli_fetch_row($hand_per) ){
             
                         echo "{\"label\":\"" . $fila2[2]  . "\", \"data\": \"" . $fila2[0] . "\", \"color\":\"" . $fila2[1] . "\"}";
@@ -100,7 +100,7 @@ for($i=0; $i < $cant_dept; $i++){
                             }
                     }
 
-                 echo "]"; 
+                echo "]"; 
 
                     if($y == $per_count -1 ){
 
