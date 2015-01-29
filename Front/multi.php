@@ -122,10 +122,10 @@ newData = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + na
 var matriz =[];
   for (i=0; i < newData.length ; i++){
 
-   matriz[i] = newData2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
+   matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i +"]");
     
   }
-
+  console.info(matriz);
   perplot.setData(matriz);
   perplot.setupGrid(); //only necessary if your new data will change the axes or grid
   perplot.draw();
