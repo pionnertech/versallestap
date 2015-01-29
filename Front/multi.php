@@ -121,19 +121,20 @@ var matriz =[];
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
   for (i=0; i < newData_eval.length ; i++){
-   console.log('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
-    
   }
 
-console.info("llega hasta despues del bucle");
+
+  for (i=0;i < matriz.length;i++){
+
+      matriz[i] = matriz[i].replace("\"label\"", "label");
+      matriz[i] = matriz[i].replace("\"data\"", "data");
+      matriz[i] = matriz[i].replace("\"color\"", "color");
+
+
+      }
 
 matriz = JSON.stringify(matriz);
-
-trat1 = matriz.replace("\"label\"", "label");
-trat2 = trat1.replace("\"data\"", "data");
-trat3 = trat2.replace("\"color\"", "color");
-
 
 console.info(trat3);
 
