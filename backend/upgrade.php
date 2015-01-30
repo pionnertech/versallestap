@@ -25,12 +25,16 @@ while ($row = mysqli_fetch_row($handler)) {
 }
 
 $setto = ($adition / $n);
-
+echo $setto;
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR );");
 
-if ((int)$setto == 100){
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR ) ");
+//set DONE to local;
+if ((int)$val == 100){
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
 }
+
+
+
 
 $insertar = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_DESCRIPT, TRF_SUBJECT, TRF_FAC_CODE, TRF_ING_DATE, TRF_USER) ";
 $insertar .= "VALUES (" . $id . ", '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', '" . $user . "');";
@@ -60,7 +64,7 @@ if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$upgrade . "
 
 } else {
 
- echo 1;
+ echo 1 ;
    
 }
 
