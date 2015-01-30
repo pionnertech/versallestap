@@ -51,13 +51,13 @@ while ( $fila5 = mysqli_fetch_row($query) ){
 
 $upgrade = ($suma / $count);
 
-if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS =" . (int)$upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
+if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
  
  echo 0;
 
 } else {
 
-   echo 1;
+ echo 1;
    
 }
 
