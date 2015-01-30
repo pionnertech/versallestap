@@ -125,24 +125,11 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
   }
 
 
-  for (i=0;i < matriz.length;i++){
-
-      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"label\"", "label"));
-      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"data\"", "data"));
-      matriz[i] = eval(JSON.stringify(matriz[i]).replace("\"color\"", "color"));
-
-     
-      }
-
-matriz = JSON.stringify(matriz);
-
-console.info(trat3);
-
-var matrix = eval(trat3);
+var matrix = matriz;
 
 console.info(matrix);
 //recreate
-$.plot($("#placeholder2"), matrix, {
+$.plot($("#placeholder2"), matriz, {
            series: {
             pie: {
                 innerRadius: 0.5,
