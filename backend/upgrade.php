@@ -38,7 +38,7 @@ if(!mysqli_query($datos, $insertar)){
 }
 
 //añadir progreso a la audiencia
-$query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR;");
+$query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR);");
 
 
 $suma = 0;
