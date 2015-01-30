@@ -124,7 +124,6 @@ console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
   }
 
-
 var matrix = matriz;
 
 console.info(matrix);
