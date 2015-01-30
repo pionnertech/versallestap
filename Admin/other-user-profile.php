@@ -627,7 +627,7 @@ content: "Arrastre aqui sus archivos";
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
-                                            <td class="cell-time align-right"><span><? printf($stsk[4]) ?></span></td>
+                                            <td class="cell-time align-right"><span><? printf(substr($stsk[4], 1, 10)) ?></span></td>
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
