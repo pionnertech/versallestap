@@ -460,7 +460,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-inverse forward">Marcar avance</button></td>
                                             <td class="cell-time"><div><? printf($stsk[4]) ?></div></td>
-                                            <td class="cell-time align-right"><div><? printf(date("d/m/Y", strtotime(substr($stsk[7], 0, 10))) ?></div></td>
+                                            <td class="cell-time align-right"><div><? printf(date("d/m/Y", strtotime(substr($stsk[7], 0, 10)))) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                             <input type="hidden" value="<? printf($stsk[1]) ?>" >
                                         </tr>
