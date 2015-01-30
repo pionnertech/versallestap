@@ -376,7 +376,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                            <? printf($_SESSION['TxtUser'])?> <? printf($_SESSION['TxtPass'])?><small>Offline</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         Gerente General En Profits Taggle Inc.
+                                         <? printf($_SESSION['TxtPosition']) ?> en SERVIU.
                                         </p>
                                         <div class="profile-details muted" id="kitkat">
                                             <a href="#" class="btn"><i class="icon-plus shaded"></i>Send Friend Request </a>
