@@ -113,6 +113,10 @@ $.ajax({ type: "POST",
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
+//make contador
+var conta = eval('newData_eval[' + index_d + '].' + depto );
+
+
 // clean up the plot chart
 $("#placeholder2").empty();
 
@@ -120,7 +124,8 @@ var matriz =[];
 
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
-  for (i=0; i < newData_eval.length ; i++){
+  for (i=0; i < conta.length ; i++){
+
    matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
   }
 
