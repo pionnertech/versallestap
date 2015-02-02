@@ -217,7 +217,12 @@ content: "Arrastre aqui sus archivos";
     width: 100%;
 }
 
+.incoming-files{
+    display:none;
+}
+
     </style>    
+
 
 
 </head>
@@ -945,7 +950,14 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $("#delegates").on('change', function(){
+
+    if ($(this).val() == " " || $(this).val() == ""){
+        $(".incoming-files").css({display: "none"});
+    } else {
+        $(".incoming-files").css({display: "block"});
+    }
     $("#stsk-user").val($("#delegates").val());
+
 });
 
 });
@@ -957,7 +969,6 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.info($(".datetimepicker").val());
 
     $.ajax({
         type: "POST",
