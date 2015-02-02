@@ -678,7 +678,7 @@ $(".forward").on('click', function(){
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
    inner = $(this).parent().parent().index();
-   subject = $(this).parent().parent().children('td').eq(2).text();
+   subject = $(this).parent().parent().children('td').eq(1).text();
    console.info(subject);
 
    var user = $("#muser").val();
