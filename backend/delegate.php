@@ -7,7 +7,7 @@ $rut = $_GET['rut'];
 $surname = $_GET['surmane'];
 $importance = $_GET['imp'];
 $msg = $_GET['msg'];
-$dataF = date('Y-m-d h:i:s', strtotime($_GET['dataF']);
+$dataF = date('Y-m-d h:i:s', strtotime($_GET['dataF']));
 $dataS = $_GET['dataS'];
 $iss_id = $_GET['iss_id'];
 
