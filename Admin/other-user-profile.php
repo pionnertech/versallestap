@@ -480,7 +480,7 @@ content: "Arrastre aqui sus archivos";
                                                 <? 
                if($i < $person_count){
 
-                                                mysqli_data_seek($fila_per, $i)
+                                                mysqli_data_seek($Query_team, $i);
                   }
 
                                                  ?>
