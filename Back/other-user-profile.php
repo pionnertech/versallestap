@@ -150,6 +150,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     cursor:pointer;
 }
 
+#audititle{
+    font-style: italic;
+    color: gray;
+}
 </style>    
 </head>
 <body>
@@ -550,6 +554,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <div class="sub-del">
                                 <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
+                                    <strong><small id="audititle"></small></strong>
                                     <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
                                     <div class="progress-go">
@@ -679,7 +684,7 @@ $(".forward").on('click', function(){
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
    inner = $(this).parent().parent().index();
    subject = $(this).parent().parent().children('td').eq(1).text();
-   console.info(subject);
+   $("#audititle").html(subject);
 
    var user = $("#muser").val();
 
