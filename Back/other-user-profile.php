@@ -155,6 +155,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     color: gray;
     width:100%;
 }
+#wrapaudi{
+    display:block;
+    width: 100%;
+}
 </style>    
 </head>
 <body>
@@ -555,7 +559,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <div class="sub-del">
                                 <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
-                                    <strong><small id="audititle"></small></strong>
+                                    <strong id="wrapaudi"><small id="audititle"></small></strong>
                                     <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
                                     <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
                                     <div class="progress-go">
