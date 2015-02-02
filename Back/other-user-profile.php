@@ -422,7 +422,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-icon"></td>
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                            <td class="cell-title"></td>
+                                            <td class="cell-title">Marcar Avance</td>
                                             <td class="cell-title">Inicio</td>
                                             <td class="cell-time align-right">Fecha final</td>
                                         </tr>
