@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASKS
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, SUBSTRING(A.ISS_DATE_ING, 1, 10), A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, A.ISS_DATE_ING, A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
@@ -264,7 +264,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[0]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
-											<td class="cell-time align-right"><? printf($fila1[1]) ?></td>
+											<td class="cell-time align-right"><? printf(date("d/m/Y", strtotime(substr($fila1[4], 0, 10)))) ?></td>
 											<input type="hidden" value="" >		
 										</tr>
                                         <? if($class == "Pe"){ ?>
