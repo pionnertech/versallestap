@@ -478,10 +478,9 @@ content: "Arrastre aqui sus archivos";
                                                     </div>
                                                 </div>
                                                 <? 
-               if($i < $person_count){
-
+                                                        if($i < $person_count){
                                                 mysqli_data_seek($Query_team, $i);
-                  }
+                                                              }
 
                                                  ?>
                                                 <div class="span6">
@@ -509,7 +508,10 @@ content: "Arrastre aqui sus archivos";
                                                     </div>
                                                 </div>
                                            </div>
-                                            <? } ?>
+                                            <? }
+                                             mysqli_data_seek($Query_team, 0);
+
+                                             ?>
                                             
                                             <!--/.row-fluid-->
                                             <br />
