@@ -2,12 +2,12 @@
 
 $muser = $_GET['muser'];
 $user = $_GET['user'];
-$fechaF = $_GET['fechaF'];
+$fechaF = date('Y-m-d h:i:s', $_GET['fechaF']);
 $iss_id = $_GET['iss_id'];
 $stsk_id = $_GET['stsk'];
 $subject = $_GET['subject'];
 $descript = $_GET['descript'];
-$startD = $_GET['startD'] . " 10:00:00";
+$startD = $_GET['startD'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
