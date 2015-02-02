@@ -757,7 +757,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension2 = "";
-                                          basename()
+                                        
                                            while (false !== ($archivos2 = readdir($handler2))){
 
                                              $extension = substr($archivos2, -3);
