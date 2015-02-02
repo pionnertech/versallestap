@@ -951,7 +951,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
 
-    if ($(this).val() == " " || $(this).val() == ""){
+    if ($(this).val() == 0 || $(this).val() == ""){
         $(".incoming-files").css({display: "none"});
     } else {
         $(".incoming-files").css({display: "block"});
