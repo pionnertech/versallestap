@@ -153,6 +153,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 #audititle{
     font-style: italic;
     color: gray;
+    width:100%;
 }
 </style>    
 </head>
