@@ -207,6 +207,15 @@ content: "Arrastre aqui sus archivos";
 
 }
 
+#audititle{
+    font-style: italic;
+    color: gray;
+    width:100%;
+}
+#wrapaudi{
+    display:block;
+    width: 100%;
+}
 
     </style>    
 
@@ -715,7 +724,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                            <p class="toggle-attach"><i class="fa fa-paperclip fa-2x"></i></p>
                                 <div class="sub-del">
                                     <h3>Subdelegar tareas</h3>
-
+                                    <strong id="wrapaudi"><small id="audititle"></small></strong>
                                                 <select id="delegates">
                                                 <optgroup label="<? printf($_SESSION['TxtDept']) ?>">
                                                 <option value="0"></option>
@@ -916,6 +925,10 @@ $(".forward").on("click", function(){
                                     
 var stsk_id = $(this).parent().parent().children('input#st').val();
 var iss_ident = $(this).parent().parent().children('input#iss_id').val();
+var subject = $(this).parent().parent().children('td').eq(1).text();
+
+$("#audititle").html("\"" + subject + "\"");
+
 
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);

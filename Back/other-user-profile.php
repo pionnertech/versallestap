@@ -689,7 +689,7 @@ $(".forward").on('click', function(){
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
    inner = $(this).parent().parent().index();
    subject = $(this).parent().parent().children('td').eq(1).text();
-   $("#audititle").html(subject);
+   $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
 
