@@ -282,7 +282,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                       <optgroup label="<? printf(strtoupper($deptos[0])) ?>">
                                             <? 
         
-                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."'); ");
+                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."' AND USR_RANGE= 'admin'); ");
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>

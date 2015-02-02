@@ -235,23 +235,13 @@ content: "Arrastre aqui sus archivos";
                     <ul class="nav pull-right">
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
                             <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Item No. 1</a></li>
-                                <li><a href="#">Don't Click</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Example Header</li>
-                                <li><a href="#">A Separated link</a></li>
-                            </ul>
+                            <ul class="dropdown-menu">  </ul>
                         </li>
                         <li><a href="#">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="../images/ejecutivo4.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Your Profile</a></li>
-                                <li><a href="#">Edit Profile</a></li>
-                                <li><a href="#">Account Settings</a></li>
-                                <li class="divider"></li>
                                 <li><a href="../backend/close.php">Logout</a></li>
                             </ul>
                         </li>
@@ -275,18 +265,7 @@ content: "Arrastre aqui sus archivos";
                         <!--/.widget-nav-->
  
                         <!--/.widget-nav-->
-                        <ul class="widget widget-menu unstyled">
-                            <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
-                            </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                            </i>Vistas </a>
-                                <ul id="togglePages" class="collapse unstyled">
-                                    <li><a href="other-login.html"><i class="icon-bar-chart"></i> Estadisticas</a></li>
-                                    <li><a href="other-user-profile.html"><i class="icon-upload-alt"></i>Progresos</a></li>
-                                    <li><a href="other-user-listing.html"><i class="icon-time"></i>Historial Requerimientos</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout</a></li>
-                        </ul>
+
                         <h3>Mis Compromisos</h3>
                         <!--
                         <div id="Urgencias" class="OwnComp">
@@ -627,7 +606,7 @@ content: "Arrastre aqui sus archivos";
                                             <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
-                                            <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10))))?></span></td>
+                                            <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
@@ -766,7 +745,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension2 = "";
-
+                                          basename()
                                            while (false !== ($archivos2 = readdir($handler2))){
 
                                              $extension = substr($archivos2, -3);
@@ -797,7 +776,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                       break;
                                                  }
 
-                                              if($archivos2 !== ".." || $archivos2 !== "."){
+                                              if(strlen($archivos2) > 4){
                                           ?>
                                         <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>

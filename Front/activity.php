@@ -373,7 +373,7 @@ cursor:pointer;
 
                                             <? 
                                              
-                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."'); ");
+                                   $Query_personal = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM `USERS` WHERE (USR_FACILITY = " .  $_SESSION['TxtFacility'] . " AND USR_DEPT= '" . $deptos[0] ."' AND  USR_RANGE = 'admin'); ");
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>
@@ -930,6 +930,10 @@ $("#SendRequest").data("val", 0);
         	bootbox.alert("Audiencia ingresada con exito", function(){
  			 $("input[type=text], input[type=tel]").val('');
  			 $("textarea").val('');
+
+ 			 $("input[type=text], input[type=tel]").attr('disable', true);
+ 			 $("textarea").attr('disable', true);
+
  			 exist = 0;
  			 argument = 0;
  			 $("#clip").trigger('click');
