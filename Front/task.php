@@ -266,7 +266,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
 											<td class="cell-time align-right"><? 
 											if ($fila1[4] == 'pendiente'){
-											printf(date("d/m/Y", strtotime(substr($fila1[1], 0, 10)))),
+											printf(date("d/m/Y", strtotime(substr($fila1[1], 0, 10))));
 										} else {
 											printf(date("d/m/Y", strtotime(substr($fila1[6], 0, 10))));
 										}
