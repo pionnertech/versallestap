@@ -106,7 +106,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 
 #st-description{
-    width:80%;
+    width:95%;
 }
 
 .attach{
@@ -219,6 +219,13 @@ content: "Arrastre aqui sus archivos";
 
 .incoming-files{
     display:none;
+}
+
+#froback{
+    position: relative;
+    float: right;
+    color:darkgray;
+    font-style: italic;
 }
 
     </style>    
@@ -729,6 +736,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                            <div class="media-stream">
                            <p class="toggle-attach"><i class="fa fa-paperclip fa-2x"></i></p>
                                 <div class="sub-del">
+                                    <strong id="froback">Para Back Office</strong>
                                     <h3>Subdelegar tareas</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
                                                 <select id="delegates">
@@ -864,11 +872,12 @@ $(".toggle-attach").on('click', function(){
 
  $("#wrap-D").css({ display: "none"});
  $(".attach").css({ display : "inline-block" });
- 
+ $("#froback").html('Para Front office');
  st = 1;
     } else {
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
+         $("#froback").html('Para Back Office');
    st = 0;
     }
 
