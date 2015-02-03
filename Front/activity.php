@@ -131,7 +131,10 @@ float: right;
 background-color: rgb(114, 232, 111);
 cursor:pointer;
 }
+
+
 	</style>
+
 
 
 
@@ -913,6 +916,8 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	 ,
  	success : function (data){
 
+
+
 if($("#SendRequest").data("val") == 1 ){
       
 var name = $('.selectpicker').val();
@@ -1251,6 +1256,13 @@ $("#cleanup").on('click', function(){
 	exist = 0;
 	argument = 0;
 });
+
+
+
+window.addEventListener('resize', function(){
+
+})
+
 
 
 </script>
