@@ -375,18 +375,19 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                                      } 
                                                        closedir($handler);
                                                      }
-                                                     }
+                                                     
+
                                                   ?>
                                                 
                                             </div>
                                             </td>
                                         </tr>
 
-    <? }?>
+                    <? } ?>
 
                 <? 
        $i = $i + 1;
-                } ?>
+               }  ?>
 									</tbody>
 								</table>
 
