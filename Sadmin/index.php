@@ -323,8 +323,9 @@ background-color: white;
                                             <dt>Encargado</dt>
                                             <dd>
                                                 Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                                            <dt>Ciudadano</dt>
                                             <dd>
-                                                Donec id elit non mi porta gravida at eget metus.</dd>
+                                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
                                             <dt>Detalle Audiencia</dt>
                                             <dd>
                                                 Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -480,7 +481,7 @@ function getDataTable(iss_id){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
                     document.querySelector(".adjuste span").innerHTML =  matrix[5];
-                    document.querySelector(".forward").innerHTML = matrix[5];
+                    document.querySelector(".forward").style.width = matrix[5];
                 
     $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
         $("#suite").fadeIn('slow');
