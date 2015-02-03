@@ -54,7 +54,7 @@ if(!is_dir($basedir . $usr_id . "/")){
                  	echo "wasnot upload" ;
                  }
            } else{
-           	echo "no matching" . $dataF . ;
+           	echo "no matching" . $dataF ;
            }
           }
  } else {
