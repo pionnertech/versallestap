@@ -27,6 +27,7 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
     <style type="text/css">
     .done{
 background: #daedb1; /* Old browsers */
@@ -226,7 +227,9 @@ content: "Arrastre aqui sus archivos";
     float: right;
     color:darkgray;
     font-style: italic;
+
 }
+
 
     </style>    
 
@@ -646,6 +649,7 @@ content: "Arrastre aqui sus archivos";
                                         </tr>
                                         <tr class="display-progress">
                                             <td colspan="5">
+                                            <p class="golang"><i class="fa fa-paperclip fa-2x" style="color:darkyellow;"></i></p>
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
                                             </p>
@@ -720,6 +724,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                   ?>
 
                                             </div>
+                                            <div class="toFront"></div>
                                             </td>
                                         </tr>
                                         <? } ?>
@@ -854,6 +859,9 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
+    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
+    <script type="text/javascript" src="../scripts/es.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -864,7 +872,6 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
     $(document).on('ready', function(){
-
 
 $(".toggle-attach").on('click', function(){
 
@@ -1051,6 +1058,12 @@ $(".cell-icon").on('click', function(){
 });
 
 
+$(".golang").on('click', function(){
+ var object = $(this).parent().children('div.toFront');
+    plupload.ini($(".toFront"));
+})
+
+
 function unlock(stsk_id, iss_id, object){
 
 $.ajax({
@@ -1104,6 +1117,132 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
     })
 }
+
+var uploaderInt = function(object){
+
+uploader =  $(object).pluploadQueue({
+        runtimes : 'html5',
+        url : '../backend/upload_for_front.php?'  ,
+        chunk_size : '1mb',
+        unique_names : true,
+  filters : {
+            max_file_size : '10mb',
+            mime_types: [
+                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
+                {title : "Zip files", extensions : "zip" }
+            ]
+        },
+  preinit : {
+            Init: function(up, info) {
+                console.log('[Init]', 'Info:', info, 'Features:', up.features);
+            },
+ 
+            UploadFile: function(up, file) {
+
+                console.log('[UploadFile]', file);
+                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&rut=" + rut_value );
+               // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+            }
+        },
+  init : {
+            PostInit: function() {
+                // Called after initialization is finished and internal event handlers bound
+                console.log('[PostInit]');
+            },
+ 
+            Browse: function(up) {
+                // Called when file picker is clicked
+                console.log('[Browse]');
+            },
+ 
+            Refresh: function(up) {
+                // Called when the position or dimensions of the picker change
+                console.log('[Refresh]');
+            },
+  
+            StateChanged: function(up) {
+                // Called when the state of the queue is changed
+                console.log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
+            },
+  
+            QueueChanged: function(up) {
+                // Called when queue is changed by adding or removing files
+                console.log('[QueueChanged]');
+            },
+ 
+            OptionChanged: function(up, name, value, oldValue) {
+                // Called when one of the configuration options is changed
+                console.log('[OptionChanged]', 'Option Name: ', name, 'Value: ', value, 'Old Value: ', oldValue);
+            },
+ 
+            BeforeUpload: function(up, file) {
+                // Called right before the upload for a given file starts, can be used to cancel it if required
+                console.log('[BeforeUpload]', 'File: ', file);
+                $("#SendRequest-free").attr("disabled", true);
+            },
+  
+            UploadProgress: function(up, file) {
+                // Called while file is being uploaded
+                console.log('[UploadProgress]', 'File:', file, "Total:", up.total);
+            },
+ 
+            FileFiltered: function(up, file) {
+                // Called when file successfully files all the filters
+                console.log('[FileFiltered]', 'File:', file);
+            },
+  
+            FilesAdded: function(up, files) {
+                // Called when files are added to queue
+                console.log('[FilesAdded]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FilesRemoved: function(up, files) {
+                // Called when files are removed from queue
+                console.log('[FilesRemoved]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FileUploaded: function(up, file, info) {
+                // Called when file has finished uploading
+                console.log('[FileUploaded] File:', file, "Info:", info);
+
+            },
+  
+            ChunkUploaded: function(up, file, info) {
+                // Called when file chunk has finished uploading
+                console.log('[ChunkUploaded] File:', file, "Info:", info);
+            },
+ 
+            UploadComplete: function(up, files) {
+                // Called when all files are either uploaded or failed
+                console.log('[UploadComplete]');
+                $("#clip").trigger('click');
+                up.destroy();
+                uploaderInt();
+                $("#SendRequest-free").attr("disabled", false);
+            },
+ 
+            Destroy: function(up) {
+                // Called when uploader is destroyed
+                console.log('[Destroy] ');
+            },
+  
+            Error: function(up, args) {
+                // Called when error occurs
+                console.log('[Error] ', args);
+            }
+        } // init
+
+    });
+
+};
 
 
 </script>
