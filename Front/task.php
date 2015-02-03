@@ -327,7 +327,11 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                             </div>
                                             <div class="file-contents">
                                                 
-                                         <? while (false !== ($archivos = readdir($handler))){ 
+                                         <? 
+
+                            if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
+
+                                         while (false !== ($archivos = readdir($handler))){ 
 
                                              if(preg_match_all("/_[" . $fila1[0] . "]_/", $archivos) == 1){
 
@@ -370,6 +374,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                                   <? }
                                                      } 
                                                        closedir($handler);
+                                                     }
                                                      }
                                                   ?>
                                                 
