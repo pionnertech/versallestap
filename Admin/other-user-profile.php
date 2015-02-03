@@ -1065,7 +1065,7 @@ $(".cell-icon").on('click', function(){
 
 $(".golang").on('click', function(){
  var object = $(this).parent().children('div.toFront');
-    plupload.init($(".toFront"));
+     uploaderInt(($(".toFront"));
 })
 
 
