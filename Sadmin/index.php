@@ -377,7 +377,7 @@ background-color: white;
 <script type="text/javascript">
     
     var fac = <? printf($_SESSION['TxtFacility']) ?>;
-    
+
 $(document).on('ready', function(){
 
 
@@ -477,7 +477,7 @@ function getDataTable(iss_id){
                var matrix = data.split("|");
 
                for(i=0;i < 5 ; i++){
-                    document.querySelectorAll(".dl-horizontal dt")[0].innerHTML = matrix[i]; 
+                    document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
                     document.querySelector(".adjuste span").innerHTML =  matrix[5];
                     document.querySelector(".forward").innerHTML = matrix[5];
