@@ -197,7 +197,7 @@ content: "Arrastre aqui sus archivos";
 }
 
 .collaborates{
-    width:100%;
+    width:80%;
 }
 
 .collaborates, .collaborates p{
@@ -230,6 +230,10 @@ content: "Arrastre aqui sus archivos";
 
 }
 
+.golang, .collaborates{
+    display:inline-block;
+    vertical-align: top;
+}
 
     </style>    
 
@@ -649,7 +653,7 @@ content: "Arrastre aqui sus archivos";
                                         </tr>
                                         <tr class="display-progress">
                                             <td colspan="5">
-                                            <p class="golang"><i class="fa fa-paperclip fa-2x" style="color:darkyellow;"></i></p>
+                                            
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
                                             </p>
@@ -665,6 +669,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     <?  }  ?>
     ];
                                             </div>
+                                            <p class="golang"><i class="fa fa-paperclip fa-2x" style="color:darkyellow;"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
