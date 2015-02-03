@@ -65,7 +65,7 @@ vertical-align: top;
    }
 }
 
-.suite{
+#suite{
     display:none;
 }
         </style>
@@ -335,95 +335,7 @@ vertical-align: top;
     
 $(document).on('ready', function(){
 
-array_set = [
-<?
 
-$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
-
-while ( $fila2 = mysqli_fetch_row($pass)) {
-
-?>
-{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
-<? } ?>
-{ label: "n/n",  data: 0, color: "#FFF"}
-];
-
-    $.plot("#placeholder2", array_set, {
-           series: {
-            pie: {
-                innerRadius: 0.5,
-                show: true
-            }
-         },
-         legend: {
-            show: false         
-        },
-        grid: {
-        hoverable: true,
-        clickable: true
-    }
-});
-
-
-
-//graficos secundarios por depart
-<?
-$array_dept = [];
-$i = 0;
-
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-
-while($f1 = mysqli_fetch_row($query_count_departament)){
-$array_dept[$i] = $f1[0];
-$i = $i + 1;
-}
-
-$cant_dept = count($array_dept);
-
-?>
-
-<?
-$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-$x = 0;
-while($filax = mysqli_fetch_row($query_dept_global)){
-?>
-var array_set_<? printf($filax[1]) ?> = [];
-array_set_<? printf($filax[1]) ?> = [
-<?
-$handler = "";
-$handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
-
-while($subt = mysqli_fetch_row($handler)){
-?>
-{ label: "<? printf(  $subt[2] ) ?>",  data: <? printf( $subt[0] ) ?> , color:"<? printf( $subt[3] ) ?>"},
-<? } ?>
-{ label: "n/n",  data: 0, color: "#FFF"}
-];
-
-    $.plot("#chart<? printf($x) ?>", array_set_<? printf($filax[1]) ?>, {
-           series: {
-            pie: {
-                innerRadius: 0.5,
-                show: true
-            }
-         },
-         legend: {
-            show: false         
-        },
-        grid: {
-        hoverable: true,
-        clickable: true
-    }
-});
-
-<? 
-  $x = $x + 1;
-}
-
- ?>
-});
-$("#placeholder2").bind("plothover", pieHover);
-$("#placeholder2").bind("plotclick", pieClick);
 
     $("#Audiencias").on('click', function(){
       if($(this).data("val") === 1){
@@ -437,11 +349,11 @@ $("#placeholder2").bind("plotclick", pieClick);
     });
 
 
-$("#cleanup").on("click", function({
+$("#cleanup").on("click", function(){
     $("input[type=text]").val('');
     $("textarea").val('');
 })
-
+});
 
 
 // switch para colorear el icono segun valores pasados
@@ -492,19 +404,7 @@ break;
         }
 }
 
-        function pieHover(event, pos, obj) {
-            if (!obj)
-                return;
-            percent = parseFloat(obj.series.percent).toFixed(2);
-            $("#hover").html('<span>' + obj.series.label + ' - ' + percent + '%</span>');
-        }
 
-        function pieClick(event, pos, obj) {
-            if (!obj)
-                return;
-            percent = parseFloat(obj.series.percent).toFixed(2);
-            alert('' + obj.series.label + ': ' + percent + '%');
-        }
 
 
 
@@ -512,7 +412,7 @@ $(".situation").on('click', function(){
 
     $(this).parent().parent().parent().parent().fadeOut("slow", function(){
                      
-                     $(".suite").fadeIn("slow");
+                     $("#suite").fadeIn("slow");
         });
     
 })
