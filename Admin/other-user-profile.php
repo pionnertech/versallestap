@@ -1068,7 +1068,7 @@ $(".cell-icon").on('click', function(){
 
 $(".golang").on('click', function(){
 
-    if($(this).data("val") == ""){
+    if($(this).data("val") == undefined){
           $(this).data("val", 1);
              var object = $(this).parent().children('div.toFront');
                  uploaderInt(object);
