@@ -1068,17 +1068,14 @@ $(".cell-icon").on('click', function(){
 
 $(".golang").on('click', function(){
 
-    
     if($(this).data("val") == ""){
-      $(this).data("val",1);
-       var object = $(this).parent().children('div.toFront');
-       uploaderInt($(".toFront"));
+          $(this).data("val", 1);
+             var object = $(this).parent().children('div.toFront');
+                 uploaderInt(object);
+
     } else {
         $(".toFront").fadeToggle('slow');
     }
-
-
-
 
 });
 
