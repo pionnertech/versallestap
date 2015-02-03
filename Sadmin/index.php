@@ -74,6 +74,14 @@ position: relative;
 float:right;
 vertical-align: top;
 }
+
+.situation{
+cursor:pointer;
+}
+
+.situation:hover{
+background-color: lightgray;
+}
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -306,7 +314,7 @@ vertical-align: top;
                                 </div>
                               <div id="suite">
                                  <div class="docs-example">
-                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);"></i></div>
+                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
                                         <dl class="dl-horizontal">
                                             <dt>Asunto</dt>
                                             <dd>
