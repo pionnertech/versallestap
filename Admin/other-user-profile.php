@@ -230,6 +230,9 @@ content: "Arrastre aqui sus archivos";
 
 }
 
+.golang i{
+    font-size: 1.5em;
+}
 .golang, .collaborates{
     display:inline-block;
     vertical-align: top;
@@ -669,7 +672,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     <?  }  ?>
     ];
                                             </div>
-                                            <p class="golang"><i class="fa fa-paperclip fa-2x" style="color:darkyellow;"></i></p>
+                                            <p class="golang"><i class="fa fa-paperclip " style="color:darkyellow;"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
