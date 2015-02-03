@@ -490,14 +490,14 @@ uploader =  $("#html5_uploader").pluploadQueue({
 		url : '../backend/upload_front.php?'  ,
 		chunk_size : '1mb',
 		unique_names : true,
-		filters : {
+  filters : {
 			max_file_size : '10mb',
 			mime_types: [
 				{title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
 				{title : "Zip files", extensions : "zip" }
 			]
 		},
-        preinit : {
+  preinit : {
             Init: function(up, info) {
                 console.log('[Init]', 'Info:', info, 'Features:', up.features);
             },
@@ -603,7 +603,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
                 // Called when error occurs
                 console.log('[Error] ', args);
             }
-        }
+        } // init
 
 	});
 
@@ -753,15 +753,20 @@ var cont = document.querySelectorAll(".wrap-ing-form input");
 
 for(i=0;i < cont.length ; i++){
    narray[i] = cont[i].value;
-   console.info(cont[i].value)
+   console.info(cont[i].value);
 }
 
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
+
 setRequest(narray[0], narray[6] , narray[8], $("latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
+
+
+
 }	
 });
+
 } else {
 
  bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
@@ -917,6 +922,7 @@ fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_
  	success : function (data){
 
 
+console.info(data);
 
 if($("#SendRequest").data("val") == 1 ){
       
@@ -1136,9 +1142,6 @@ $("#ctzmail").val(recall[9]);
 exist = 1;
 
        }
-
-
-
 	}
 })
 }
@@ -1162,6 +1165,7 @@ $.ajax({ type: "POST",
  			    exist = 0;
  			    argument = 0;
  			     $("#clip").trigger('click');
+
 	           })
 
 	           }
