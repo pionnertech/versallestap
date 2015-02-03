@@ -218,7 +218,7 @@ content: "Arrastre aqui sus archivos";
 }
 
 .incoming-files{
-    display:none;
+    display:inline-block;
 }
 
     </style>    
@@ -745,6 +745,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
+                                <strong id="tipo">Para Front Office</strong>
                                 <div id="wrap-D">
                                     <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
@@ -860,12 +861,13 @@ $(".toggle-attach").on('click', function(){
 
     if (st == 0){
 
- $(".attach").css({ display : "none"});
- $("#wrap-D").css({ display: "inline-block"});
+ $("#wrap-D").css({ display: "none"});
+ $(".attach").css({ display : "inline-block" });
+ 
  st = 1;
     } else {
-         $(".attach").css({ display : "inline-block"});
-         $("#wrap-D").css({ display: "none" });
+         $(".attach").css({ display: "none"});
+         $("#wrap-D").css({ display: "inline-block" });
    st = 0;
     }
 
@@ -1085,6 +1087,8 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
     })
 }
+
+
 </script>
 
 <?
