@@ -1060,7 +1060,7 @@ $(".cell-icon").on('click', function(){
 
 $(".golang").on('click', function(){
  var object = $(this).parent().children('div.toFront');
-    plupload.ini($(".toFront"));
+    plupload.init($(".toFront"));
 })
 
 
