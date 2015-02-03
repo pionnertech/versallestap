@@ -469,9 +469,10 @@ content: "Arrastre aqui sus archivos";
 
                                        <?
 
-                                        
+                                         $i = 0;
+                                        $person_count = mysqli_num_rows($Query_team) - 1;
                                         while( $fila_per = mysqli_fetch_row($Query_team)){ 
-                                        
+                                         $i = $i + 1;
 
                                         ?>
 
@@ -498,7 +499,10 @@ content: "Arrastre aqui sus archivos";
                                                         </div>
                                                     </div>
                                                 </div>
-                                               <? $fila_per2 = mysqli_fetch_row($Query_team) ?>
+                                               <? 
+                                               if($i < $person_count){
+                                                      $fila_per2 = mysqli_fetch_row($Query_team);
+                                               ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -507,8 +511,7 @@ content: "Arrastre aqui sus archivos";
                                                         <div class="media-body">
                                                             <h3 class="media-title">
                        
-
-                                                                <? printf($fila_per2[0]) ?> <? printf($fila_per2[1] ) ?>
+                                                                <? printf($fila_per2[1]) ?> <? printf($fila_per2[2] ) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Serviu</small></p>
@@ -524,6 +527,8 @@ content: "Arrastre aqui sus archivos";
                                                     </div>
                                                 </div>
                                            </div>
+                                           <? } ?>
+                                           
                                             <? }
                                              mysqli_data_seek($Query_team, 0);
 
