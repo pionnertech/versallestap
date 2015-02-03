@@ -80,7 +80,7 @@ cursor:pointer;
 }
 
 .situation:hover{
-background-color: lightgray;
+background-color: white;
 }
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
