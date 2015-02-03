@@ -971,7 +971,7 @@ $("#delegates").on('change', function(){
     if ($(this).val() == 0 ){
             $(".incoming-files").css({display: "none"});
     } else  {
-        if(st = 0){
+        if(st == 0){
              $(".incoming-files").css({display: "block"});
         } 
     }
