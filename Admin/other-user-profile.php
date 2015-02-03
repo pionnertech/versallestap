@@ -146,7 +146,7 @@ display:none;
 }
 
 #wrap-D{
-    display: none;
+    display: inline-block;
     max-height: 20em;
 }
 
@@ -221,9 +221,6 @@ content: "Arrastre aqui sus archivos";
     display:none;
 }
 
-#wrap-D{
- display:none;
-}
     </style>    
 
 
@@ -749,7 +746,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
-                                <strong id="tipo">Para Front Office</strong>
+                       
                                 <div id="wrap-D">
                                     <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
