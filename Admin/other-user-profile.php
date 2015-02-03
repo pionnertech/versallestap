@@ -469,10 +469,9 @@ content: "Arrastre aqui sus archivos";
 
                                        <?
 
-                                        $i = 0;
-                                        $person_count = mysqli_num_rows($Query_team) - 1;
+                                        
                                         while( $fila_per = mysqli_fetch_row($Query_team)){ 
-                                        $i = $i + 1;
+                                        
 
                                         ?>
 
@@ -499,12 +498,7 @@ content: "Arrastre aqui sus archivos";
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <? 
-                                                        if($i < $person_count){
-                                                mysqli_data_seek($Query_team, $i);
-                                                              }
-
-                                                 ?>
+                                               <? $fila_per2 = mysqli_fetch_row($Query_team) ?>
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left" href="#">
@@ -512,9 +506,9 @@ content: "Arrastre aqui sus archivos";
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
+                       
 
-
-                                                                <? printf($fila_per[0]) ?> <? printf($fila_per[1] ) ?>
+                                                                <? printf($fila_per2[0]) ?> <? printf($fila_per2[1] ) ?>
                                                             </h3>
                                                             <p>
                                                                 <small class="muted">Serviu</small></p>
