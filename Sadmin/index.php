@@ -481,7 +481,7 @@ function getDataTable(iss_id){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
                     document.querySelector(".adjuste span").innerHTML =  matrix[5];
-                    document.querySelector(".forward").style.width = matrix[5];
+                    document.querySelector(".forward").style.width = matrix[5] + "%";
                 
     $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
         $("#suite").fadeIn('slow');
