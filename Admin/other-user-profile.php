@@ -876,6 +876,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     
     var st = 0;
     var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
+
     
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
@@ -1060,7 +1061,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 $(".cell-icon").on('click', function(){
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
-  console.info(iss_id);
+ 
    unlock(stsk, iss_id, $(this).children('i'));
 
 });
@@ -1069,10 +1070,10 @@ $(".cell-icon").on('click', function(){
 $(".golang").on('click', function(){
 
     if($(this).data("val") == undefined){
-          $(this).data("val", 1);
-             var object = $(this).parent().children('div.toFront');
-                 uploaderInt(object);
-
+        $(this).data("val", 1);
+            var object = $(this).parent().children('div.toFront');
+            var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
+                uploaderInt(object, iss_id);
     } else {
         $(".toFront").fadeToggle('slow');
     }
@@ -1136,7 +1137,7 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
     })
 }
 
-var uploaderInt = function(object){
+var uploaderInt = function(object, iss_id){
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
@@ -1158,7 +1159,7 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&rut=" + rut_value );
+                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&iss_id=" + iss_id);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
@@ -1240,11 +1241,7 @@ uploader =  $(object).pluploadQueue({
  
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
-                console.log('[UploadComplete]');
-                $("#clip").trigger('click');
-                up.destroy();
-                uploaderInt();
-                $("#SendRequest-free").attr("disabled", false);
+                   
             },
  
             Destroy: function(up) {
