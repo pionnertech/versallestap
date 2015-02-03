@@ -317,7 +317,6 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
     <? } else { ?>
 
-
                                         <tr class="display-progress">
                                             <td colspan="5">
                                             <p class="adjuste">
@@ -327,7 +326,53 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                                 <div class="bar bar-warning" style="width: <? printf($fila1[5]) ?>%;"></div>
                                             </div>
                                             <div class="file-contents">
-                                                <p class="ifile"><i class="fa fa-file-excel-o"></i></p>
+                                                
+                                         <? while (false !== ($archivos = readdir($handler))){ 
+
+                                             if(preg_match_all("/_[" . $fila1[0] . "]_/", $archivos) == 1){
+
+                                             $extension = substr($archivos, -3);
+                                             $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+
+                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos) ?></span>
+                                                </p>
+                                                           
+                                                  <? }
+                                                     } 
+                                                       closedir($handler);
+                                                     }
+                                                  ?>
+                                                
                                             </div>
                                             </td>
                                         </tr>
