@@ -10,7 +10,7 @@
  	$apellidoP = $_GET["appp"];
  	$tipo = $_GET["tipo"];
  	$date = $_GET['date'];
- 	$date_limit = str_replace("/", "-", $_GET['fecha_limit']);
+ 	$date_limit = date('Y-m-d', strtotime(substr($_GET['fecha_limit'], 0, 10)));
  	$charge = $_GET['charge'];
  	$tel = $_GET['tel'];
  	$days = $_GET['days'];
