@@ -6,7 +6,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtFacility']);
 
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2 FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
 
 ?>
@@ -273,6 +273,7 @@ background-color: white;
                                         <tbody>
                                         <? while ($issues = mysqli_fetch_row( $Query_task )){ ?>
                                             <tr class="gradeA">
+                                            <input type="hidden" value="<?printf($issues[9]) ?>" id="iss_id">
                                                 <td>
                                                     <? printf($issues[0]) ?>
                                                 </td>
@@ -335,7 +336,7 @@ background-color: white;
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                         </p>
                                             <div class="progress tight">
-                                                <div class="bar bar-info"></div>
+                                                <div class="bar forward"></div>
                                             </div>
                                         <pre class="pre files">
                                              
@@ -374,6 +375,8 @@ background-color: white;
       
     </body>
 <script type="text/javascript">
+    
+    var fac = <? printf($_SESSION['TxtFacility']) ?>;
     
 $(document).on('ready', function(){
 
@@ -448,9 +451,11 @@ break;
 
 
 $(".situation").on('click', function(){
-    $(this).parent().parent().parent().parent().fadeOut("slow", function(){
-            $("#suite").fadeIn("slow");
-        });
+
+var iss = $(this).parent().children('input').val();
+
+getDataTable(iss);
+
 });
 
 
@@ -461,6 +466,36 @@ $("#back").on('click', function(){
 });
 
 
+
+function getDataTable(iss_id){
+
+    $.ajax({
+        type: "POST", 
+        url: "../backend/datatotable.php?fac=" + fac + "&iss_id=" + iss_id,
+        success : function (data){
+
+               var matrix = data.split("|");
+
+               for(i=0;i < 5 ; i++){
+                    document.querySelectorAll(".dl-horizontal dt")[0].innerHTML = matrix[i]; 
+                }
+                    document.querySelector(".adjuste span").innerHTML =  matrix[5];
+                    document.querySelector(".forward").innerHTML = matrix[5];
+                
+    $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
+        $("#suite").fadeIn('slow');
+    });
+
+        }
+    })
+}
+
+
+
+
+
+
+
 </script>
 
 <?
@@ -468,3 +503,5 @@ $("#back").on('click', function(){
  } else {
     echo "<script language='javascript'>window.location='../index.php'</script>";
  }  ?>
+
+
