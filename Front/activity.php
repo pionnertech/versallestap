@@ -372,7 +372,7 @@ cursor:pointer;
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
 
                                        	?>
-                                      <optgroup label="<? printf(strtoupper($deptos[0])) ?>">
+                                      
 
                                             <? 
                                              
@@ -380,11 +380,11 @@ cursor:pointer;
                                         while($per = mysqli_fetch_row($Query_personal)){ 
                                                 
                              ?>
-                                              <option value="<? printf($per[0]) ?>"><? printf($per[1])?> <? printf($per[2])?></option>
+                                              <option value="<? printf($per[0]) ?>"><? printf($per[1])?> <? printf($per[2])?> - <small><? printf(strtoupper($deptos[0])) ?></small></option>
                              <?
                                             	}?>
                                           
-                                          </optgroup>
+                                        
 
                                           <?
                                           }
