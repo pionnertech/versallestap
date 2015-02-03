@@ -966,14 +966,12 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $("#delegates").on('change', function(){
 
     if ($(this).val() == 0 ){
-        if(st = 1){
             $(".incoming-files").css({display: "none"});
-        } else {
-           $(".incoming-files").css({display: "block"});
-        }
-        
     } else  {
-        $(".incoming-files").css({display: "block"});
+        if(st = 0){
+             $(".incoming-files").css({display: "block"});
+        }
+       
     }
     $("#stsk-user").val($("#delegates").val());
 
