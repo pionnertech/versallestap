@@ -299,7 +299,27 @@ vertical-align: top;
                                     </table>
                                 </div>
                               <div id="suite">
-                                  <strong>Lebaron</strong>
+                                 <div class="docs-example">
+                                        <dl class="dl-horizontal">
+                                            <dt>Description lists</dt>
+                                            <dd>
+                                                A description list is perfect for defining terms.</dd>
+                                            <dt>Euismod</dt>
+                                            <dd>
+                                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                                            <dd>
+                                                Donec id elit non mi porta gravida at eget metus.</dd>
+                                            <dt>Malesuada porta</dt>
+                                            <dd>
+                                                Etiam porta sem malesuada magna mollis euismod.</dd>
+                                        </dl>
+                                        <pre class="pre"><span class="tag">&lt;dl</span><span class="pln"> </span><span class="atn">
+                                            class</span><span class="pun">=</span><span class="atv">"dl-horizontal"</span><span
+                                                class="tag">&gt;</span>
+  <span class="tag">&lt;dt&gt;</span><span class="pln">...</span><span class="tag">&lt;/dt&gt;</span>
+  <span class="tag">&lt;dd&gt;</span><span class="pln">...</span><span class="tag">&lt;/dd&gt;</span>
+<span class="tag">&lt;/dl&gt;</span></pre>
+                                    </div>
                               </div>
 
                             </div>
