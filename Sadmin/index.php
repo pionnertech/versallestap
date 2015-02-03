@@ -68,6 +68,11 @@ vertical-align: top;
 #suite{
     display:none;
 }
+#back{
+position: relative;
+float:right;
+vertical-align: top;
+}
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -300,25 +305,33 @@ vertical-align: top;
                                 </div>
                               <div id="suite">
                                  <div class="docs-example">
+                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);"></i></div>
                                         <dl class="dl-horizontal">
-                                            <dt>Description lists</dt>
+                                            <dt>Asunto</dt>
                                             <dd>
                                                 A description list is perfect for defining terms.</dd>
-                                            <dt>Euismod</dt>
+                                            <dt>Encargado</dt>
                                             <dd>
                                                 Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
                                             <dd>
                                                 Donec id elit non mi porta gravida at eget metus.</dd>
-                                            <dt>Malesuada porta</dt>
+                                            <dt>Detalle Audiencia</dt>
+                                            <dd>
+                                                Etiam porta sem malesuada magna mollis euismod.</dd>
+                                            <dt>Fecha De Entrega</dt>
                                             <dd>
                                                 Etiam porta sem malesuada magna mollis euismod.</dd>
                                         </dl>
-                                        <pre class="pre"><span class="tag">&lt;dl</span><span class="pln"> </span><span class="atn">
-                                            class</span><span class="pun">=</span><span class="atv">"dl-horizontal"</span><span
-                                                class="tag">&gt;</span>
-  <span class="tag">&lt;dt&gt;</span><span class="pln">...</span><span class="tag">&lt;/dt&gt;</span>
-  <span class="tag">&lt;dd&gt;</span><span class="pln">...</span><span class="tag">&lt;/dd&gt;</span>
-<span class="tag">&lt;/dl&gt;</span></pre>
+                                        <p class="adjuste">
+                                            <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                        </p>
+                                            <div class="progress tight">
+                                                <div class="bar bar-info"></div>
+                                            </div>
+                                        <pre class="pre files">
+                                             
+
+                                        </pre>
                                     </div>
                               </div>
 
@@ -425,24 +438,21 @@ break;
 }
 
 
-
-
-
 $(".situation").on('click', function(){
-
     $(this).parent().parent().parent().parent().fadeOut("slow", function(){
-                     
-                     $("#suite").fadeIn("slow");
+            $("#suite").fadeIn("slow");
         });
-    
-})
+});
+
+
+$("#back").on('click', function(){
+    $("#suite").fadeOut("slow", function(){
+        $("div.table").fadeIn('slow');
+    });
+});
+
 
 </script>
-
-
-
-
-
 
 <?
 
