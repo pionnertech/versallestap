@@ -879,7 +879,10 @@ $(".toggle-attach").on('click', function(){
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
          $("#froback").html('Para Back Office');
-         $(".incoming-files").css({display : "block"});
+         if ($("#delegates").val() != 0){
+             $(".incoming-files").css({display : "block"});
+         }
+        
    st = 0;
     }
 
@@ -970,8 +973,7 @@ $("#delegates").on('change', function(){
     } else  {
         if(st = 0){
              $(".incoming-files").css({display: "block"});
-        }
-       
+        } 
     }
     $("#stsk-user").val($("#delegates").val());
 
