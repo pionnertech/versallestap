@@ -17,6 +17,7 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>E-Que</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
         <style type="text/css">
 #DataTables_Table_0_filter input{
 width:30em;
@@ -447,7 +448,7 @@ $(".situation").on('click', function(){
 
 $("#back").on('click', function(){
     $("#suite").fadeOut("slow", function(){
-        $("div.table").fadeIn('slow');
+        $("#DataTables_Table_0_wrapper").fadeIn('slow');
     });
 });
 
