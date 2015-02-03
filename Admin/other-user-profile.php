@@ -1067,9 +1067,22 @@ $(".cell-icon").on('click', function(){
 
 
 $(".golang").on('click', function(){
- var object = $(this).parent().children('div.toFront');
-     uploaderInt($(".toFront"));
-})
+
+    
+    if($(this).data("val") == ""){
+      $(this).data("val",1);
+       var object = $(this).parent().children('div.toFront');
+       uploaderInt($(".toFront"));
+    } else {
+        $(".toFront").fadeToggle('slow');
+    }
+
+
+
+
+});
+
+
 
 
 function unlock(stsk_id, iss_id, object){
