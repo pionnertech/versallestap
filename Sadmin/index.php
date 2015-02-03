@@ -65,7 +65,9 @@ vertical-align: top;
    }
 }
 
-
+.suite{
+    display:none;
+}
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -266,7 +268,7 @@ vertical-align: top;
                                                 <td>
                                                     <? printf($issues[2]) ?> <? printf($issues[6])?>
                                                 </td>
-                                                <td class="center" style="color: <? printf($issues[4]) ?>">
+                                                <td class="center situation" style="color: <? printf($issues[4]) ?>">
                                                     <? printf($issues[3]) ?>
                                                 </td>
                                                 <td class="center">
@@ -296,7 +298,14 @@ vertical-align: top;
                                         </tfoot>
                                     </table>
                                 </div>
+                              <div id="suite">
+                                  <strong>Lebaron</strong>
+                              </div>
+
                             </div>
+
+
+
                             <!--/.module-->
                         </div>
                         <!--/.content-->
@@ -499,6 +508,14 @@ break;
 
 
 
+$(".situation").on('click', function(){
+
+    $(this).parent().parent().parent().parent().fadeOut("slow", function(){
+                     
+                     $(".suite").fadeIn("slow");
+        });
+    
+})
 
 </script>
 
