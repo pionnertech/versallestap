@@ -526,9 +526,10 @@ content: "Arrastre aqui sus archivos";
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <? } ?>
                                            </div>
-                                           <? } ?>
                                            
+
                                             <? }
                                              mysqli_data_seek($Query_team, 0);
 
