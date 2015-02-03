@@ -873,11 +873,13 @@ $(".toggle-attach").on('click', function(){
  $("#wrap-D").css({ display: "none"});
  $(".attach").css({ display : "inline-block" });
  $("#froback").html('Para Front office');
+ $(".incoming-files").css({display : "none"});
  st = 1;
     } else {
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
          $("#froback").html('Para Back Office');
+         $(".incoming-files").css({display : "block"});
    st = 0;
     }
 
@@ -963,7 +965,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
 
-    if ($(this).val() == 0 || $(this).val() == ""){
+    if ($(this).val() == 0 && st == 0){
         $(".incoming-files").css({display: "none"});
     } else {
         $(".incoming-files").css({display: "block"});
