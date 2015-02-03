@@ -965,9 +965,9 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("#delegates").on('change', function(){
 
-    if ($(this).val() == 0 && st == 0){
+    if ($(this).val() == 0 && st == 1){
         $(".incoming-files").css({display: "none"});
-    } else {
+    } else  {
         $(".incoming-files").css({display: "block"});
     }
     $("#stsk-user").val($("#delegates").val());
