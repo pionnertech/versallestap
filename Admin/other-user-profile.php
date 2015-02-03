@@ -110,7 +110,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 }
 
 .attach{
- display: inline-block;
+ display: none;
  vertical-align: top;
 }
 
@@ -218,10 +218,14 @@ content: "Arrastre aqui sus archivos";
 }
 
 .incoming-files{
-    display:inline-block;
+    display:none;
 }
 
+#wrap-D{
+ display:none;
+}
     </style>    
+
 
 
 
