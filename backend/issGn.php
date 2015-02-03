@@ -24,7 +24,6 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
 $clean_rut = substr($rut , 0, (strlen($rut) - 1));
 
-
 $checkin = mysqli_query($datos, "SELECT CTZ_NAMES FROM CITIZENS WHERE CTZ_RUT = " . $clean_rut );
 
 if(mysqli_num_rows($checkin) === 0){
@@ -70,8 +69,6 @@ if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_MAIL = '" . $mail . "' WHERE C
 	exit;
 }
 
-echo $clean_rut;
-exit;
 
 } else {
 
