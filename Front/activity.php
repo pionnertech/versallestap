@@ -133,7 +133,7 @@ cursor:pointer;
 }
 
 
-div.dropdown-menu{
+div.dropdown-menu,  ul.dropdown-menu{
 	max-width: 5em;
 }
 	</style>
@@ -1143,6 +1143,11 @@ $.ajax({
        if(parseInt(data) === 0){
 
        	console.info('no existe');
+       var rut_1 = $("#RUT").val();
+var rut_2= rut_1.replace(/\./gi, "");
+var rut_3= rut_2.replace('-', "");
+var rut_4= rut_3.substring(0,rut_3.length -1);
+rut_value = rut_4;
 
        } else {
 
