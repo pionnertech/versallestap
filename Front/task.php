@@ -381,10 +381,10 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                           ?>
 
-                                                <p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                <a href="../<? printf($_SESSION['TxtFacility'])?>/reply/<? printf($archivos)?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  
-                                                </p>
-                                                           
+                                                       </p>
+                                                </a>          
                                                   <? }
                                                      } 
                                                        closedir($handler);
