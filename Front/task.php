@@ -339,9 +339,6 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                             <p class="adjuste" style="display: inline-block;">
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
                                             </p>
-                                            <div class="progress tight" style="display: inline-block;">
-                                                <div class="bar bar-warning" style="width: <? printf($fila1[5]) ?>%;"></div>
-                                            </div>
                                             <div class="file-contents">
                                                 
                                          <? 
@@ -396,6 +393,9 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                                   ?>
                                                 
+                                            </div>
+                                           <div class="progress tight" style="display: inline-block;">
+                                                <div class="bar bar-warning" style="width: <? printf($fila1[5]) ?>%;"></div>
                                             </div>
                                             </td>
                                         </tr>
