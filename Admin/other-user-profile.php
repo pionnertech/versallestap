@@ -680,8 +680,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                          while($steam = mysqli_fetch_row($Query_team)){
 
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
-                                    if(!$handler){
-                                        
+                                    if(!is_dir($handler){
+
                                        continue; 
 
                                     } else {
