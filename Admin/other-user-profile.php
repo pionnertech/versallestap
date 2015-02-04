@@ -677,13 +677,13 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                            
                                             <?   
                                            
-                                      while($steam = mysqli_fetch_row($Query_team)){
+                         while($steam = mysqli_fetch_row($Query_team)){
 
-                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
-
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+                                    if($handler){
                                           $file_extension = "";
 
-                                           while (false !== ($archivos = readdir($handler))){
+                                        while (false !== ($archivos = readdir($handler))){
 
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
 
@@ -726,6 +726,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                   <? }
                                                   } 
                                         closedir($handler);
+                                       }
                                     }
                                 }
                                   mysqli_data_seek($Query_team, 0);
