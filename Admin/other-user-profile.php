@@ -1248,7 +1248,7 @@ uploader =  $(object).pluploadQueue({
  
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
-                   console.log(up + " " + files)
+                   console.log("reponse", files);
             },
  
             Destroy: function(up) {
