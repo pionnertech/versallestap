@@ -2,7 +2,7 @@
 
 
 	$rut = $_GET["rut"];
- 	$direccion = $_GET["dn"];
+ 	$direccion = str_replace(",", ".", $_GET["dn"]);
  	$audiencia = $_GET["iss"]; 
  	$geo = $_GET["Geoloc"]; 
  	$nombre = $_GET["Nombre"];
