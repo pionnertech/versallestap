@@ -332,8 +332,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                             if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
                                      
                                          while (false !== ($archivos = readdir($handler))){ 
-                                            echo "<script>console.info('" . preg_match_all("/_[" . $fila1[0] . "]_/g", $archivos) . "');</script>";
-                                             if(preg_match_all("/_[" . $fila1[0] . "]_/g", $archivos) == 1){
+                                      echo "<script>console.info('" . preg_match_all("/_[" . $fila1[0] . "]_/", $archivos) . " ' + ' " . $archivos . "');</script>";
+                                             if(preg_match_all("/_[" . $fila1[0] . "]_/", $archivos) == 1){
 
                                              $extension = substr($archivos, -3);
                                              $cor = "";
