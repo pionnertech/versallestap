@@ -1166,7 +1166,7 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&iss_id=" + iss_id);
+                up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
