@@ -896,6 +896,15 @@ var pase = missingField();
 
 
 
+
+
+
+if (pase != false){
+	
+pre_rut = rut.replace(/\./gi, "");
+rut = pre_rut.replace('-', "");
+
+fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
 console.info("../backend/issGn.php?rut=" + rut + 
  	"&dn=" + direccion.replace(/\,/gi," " ) + 
  	"&iss=" + audiencia + 
@@ -912,14 +921,6 @@ console.info("../backend/issGn.php?rut=" + rut +
  	"&subject=" + subject +
  	"&fac=" + fac +
  	"&argument=" + argument);
-
-
-if (pase != false){
-	
-pre_rut = rut.replace(/\./gi, "");
-rut = pre_rut.replace('-', "");
-
-fecha_limit = Math.round((new Date(dateTrans(deadD)).getTime() - new Date(fecha_or).getTime()) / 86400000);
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
