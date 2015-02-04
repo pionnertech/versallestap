@@ -296,7 +296,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 											<? while ($fila2 = mysqli_fetch_row($Query_cat)){ ?>
 
 												<label class="radio inline"  style="margin:0 2em;">
-													<input type="radio" name="optionsRadios"  value="<? printf($fila2[0])?>" checked="">
+													<input type="radio" name="optionsRadios"  value="<? printf($fila2[0])?>" >
 													<? printf($fila2[1])?>
 												</label> 
 
