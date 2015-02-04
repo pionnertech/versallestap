@@ -12,7 +12,7 @@ if(!is_dir($dir . "reply/")){
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 if(move_uploaded_file($_FILES['file']['tmp_name'], $dir . "reply/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_[" . $iss_id . "]_." . $extension  )) {
-	echo $dir . "reply/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . $extension;
+	echo $dir . "reply/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_[" . $iss_id . "]_." . $extension  ;
 }
 
 ?>
