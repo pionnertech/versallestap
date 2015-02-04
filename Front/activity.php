@@ -894,6 +894,26 @@ GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0;
 
 var pase = missingField();
 
+
+
+console.info("../backend/issGn.php?rut=" + rut + 
+ 	"&dn=" + direccion.replace(/\,/gi," " ) + 
+ 	"&iss=" + audiencia + 
+ 	"&Geoloc=" + GeoLoc + 
+ 	"&Nombre=" + Nombre +
+ 	"&appm=" + appm +
+ 	"&appp=" + appp +
+ 	"&tipo=" + tipo + 
+ 	"&tel=" + tel +
+ 	"&date=" + fecha_or + 
+ 	"&fecha_limit=" + deadD  + " 10:00:00" +
+ 	"&days=" + fecha_limit +
+ 	"&email=" + mail +
+ 	"&subject=" + subject +
+ 	"&fac=" + fac +
+ 	"&argument=" + argument);
+
+
 if (pase != false){
 	
 pre_rut = rut.replace(/\./gi, "");
