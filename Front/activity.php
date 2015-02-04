@@ -133,7 +133,11 @@ cursor:pointer;
 }
 
 
+div.dropdown-menu{
+	max-width: 5em;
+}
 	</style>
+
 
 
 
