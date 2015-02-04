@@ -64,7 +64,17 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	display:inline-block;
 	vertical-align: top;
 }
+
+.ifile{
+	display: inline-block;
+	vertical-align: top;
+	margin:.4em;
+}
+
+
+
 	</style>
+
 
 </head>
 <body>
@@ -374,8 +384,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                 <span class="iname"><? printf($archivos) ?></span>
+                                                <p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 
                                                 </p>
                                                            
                                                   <? }
