@@ -1190,7 +1190,7 @@ $.ajax({ type: "POST",
                console.info(data);
 	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
 
-	            $("input").val('');
+	            $("input[type=tel] , input[type=text]").val('');
  			    $("textarea").val('');
  			    exist = 0;
  			    argument = 0;
