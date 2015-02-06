@@ -458,8 +458,6 @@ $(".ctz_def").attr("disabled", true);
 $("#html5_uploader_browse").addClass('plupload_disabled');
 $("#clip").addClass('disabled');
 
-$(".dropdown-menu").removeClass("show");
-$(".dropdown-menu").addClass("hide");
 
   // date time picker.
 
@@ -487,6 +485,11 @@ uploader.bind('BeforeUpload', function (up, file) {
 	timepicker: false
 });
 	
+while ($(".dropdown-menu").hasClass("show")){
+	$(".dropdown-menu").removeClass("show");
+}
+
+$(".dropdown-menu").addClass("hide");
 
 	});
 
