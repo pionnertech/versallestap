@@ -447,9 +447,9 @@ var exist = 0;
 //*********** EVENTS ****************
 //===================================
 
+$('.selectpicker').selectpicker({ dropupAuto : false });
 $(document).on('ready', function(){
 
-$('.selectpicker').selectpicker({ dropupAuto : false });
 
 $("#del-wrap  div , #del-wrap input, #del-wrap h3 ").addClass('hidden');
 
