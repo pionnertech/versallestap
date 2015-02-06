@@ -228,13 +228,6 @@ div.dropdown-menu,  ul.dropdown-menu{
 								</a>
 							</li>
 							<li>
-								<a href="other-user-profile.php">
-									<i class="menu-icon icon-inbox"></i>
-									Perfil de usuario
-									<b class="label green pull-right">11</b>
-								</a>
-							</li>
-							<li>
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
@@ -985,7 +978,7 @@ $("#SendRequest").data("val", 0);
  			 exist = 0;
  			 argument = 0;
  			 $("#clip").trigger('click');
- 			 
+
  			 var addvalue = parseInt($("#counter-task").html());
              $("#counter-task").html(addvalue + 1);
 
