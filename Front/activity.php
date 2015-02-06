@@ -491,6 +491,7 @@ while ($(".dropdown-menu").hasClass("show")){
 
 $(".dropdown-menu").addClass("hide");
 
+
 	});
 
 var uploaderInt = function(){
