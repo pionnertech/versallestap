@@ -224,7 +224,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 								<div class="pull-left">
 									Filtro : &nbsp;
 									<div class="btn-group">
-										<button class="btn">Todos</button>
+										<button class="btn" id="filter-title">Pendientes</button>
 										<button class="btn dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>
 										</button>
@@ -475,8 +475,12 @@ $(".enviar").on('click', function () {
 });
 
 $(".switcher").on('click', function(){
+
 	 var all_on = document.querySelectorAll('.switcher');
      var ex = $(this).attr("id");
+
+     $("#filter-title").html(ex);
+
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
