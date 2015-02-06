@@ -158,18 +158,13 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 									ingreso de Audiencias
 								</a>
 							</li>
-							<li>
-								<a href="other-user-profile.html">
-									<i class="menu-icon icon-inbox"></i>
-									Perfil de usuario
-								</a>
-							</li>
+
 							
 							<li>
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
+									<b id="counter-task" class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
