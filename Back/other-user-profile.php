@@ -571,7 +571,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
                                 <div class="attach">
-                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
+                                    <form id="upload" method="post" action="../backend/upload_back_to_admin.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
@@ -745,7 +745,7 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 $(".switcher").on('click', function(){
     var all_on = document.querySelectorAll('.switcher');
     var ex = $(this).attr("id");
-    console.info(ex);
+
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
