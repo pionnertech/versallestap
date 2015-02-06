@@ -448,6 +448,7 @@ var exist = 0;
 //===================================
 
 $('.selectpicker').selectpicker({ dropupAuto : false });
+
 $(document).on('ready', function(){
 
 
@@ -485,11 +486,7 @@ uploader.bind('BeforeUpload', function (up, file) {
 	timepicker: false
 });
 	
-while ($(".dropdown-menu").hasClass("show")){
-	$(".dropdown-menu").removeClass("show");
-}
 
-$(".dropdown-menu").addClass("hide");
 
 
 	});
@@ -621,6 +618,14 @@ uploader =  $("#html5_uploader").pluploadQueue({
 };
 
 
+$(window).scroll(function(){
+
+$(".dropdown-menu").removeClass("show");
+     if(!$(".dropdown-menu").hasClass("hide")){
+     	  $(".dropdown-menu").addClass("hide");
+     }
+
+})
 
 
 
