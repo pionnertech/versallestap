@@ -478,8 +478,8 @@ $(".switcher").on('click', function(){
 
 	 var all_on = document.querySelectorAll('.switcher');
      var ex = $(this).attr("id");
-
-     $("#filter-title").html(ex);
+     var name =  $(this).html();
+     $("#filter-title").html(name);
 
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
