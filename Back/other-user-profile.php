@@ -487,13 +487,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                               <?   
                                            
                                         if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
-
+                                        
                                           $file_extension = "";
 
                                            while (false !== ($archivos = readdir($handler))){
-
+                                            echo "<script>console.info('" . $archivos . "');</script>";
                                          if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
-
+                                             
                                              $extension = substr($archivos, -3);
                                               $cor = "";
                                                  switch (true) {
