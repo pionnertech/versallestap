@@ -1249,6 +1249,23 @@ if(!Valida_Rut(document.getElementById('RUT'))){
     return false;
 }
 
+//4ta fase checkear datos 
+
+if($("#SendRequest").data("val") == 1){
+	if($("#requeriment").val() == ""){
+		bootbox.alert("Por favor ingrese la descripción del requerimiento");
+		return false;
+	}
+}
+
+if($("#SendRequest").data("val") == 1){
+	if($("#dtp2").val() == ""){
+		bootbox.alert("Por favor ingrese fecha de respuesta");
+		return false;
+	}
+}
+
+
 return true;
 
 }
