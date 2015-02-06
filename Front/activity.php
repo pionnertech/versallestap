@@ -238,7 +238,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 								<a href="task.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
-									<b class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
+									<b id="counter-task" class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
 								</a>
 							</li>
 						</ul><!--/.widget-nav-->
@@ -985,6 +985,10 @@ $("#SendRequest").data("val", 0);
  			 exist = 0;
  			 argument = 0;
  			 $("#clip").trigger('click');
+ 			 
+ 			 var addvalue = parseInt($("#counter-task").html());
+             $("#counter-task").html(addvalue + 1);
+
  		});
  		
 
