@@ -544,7 +544,11 @@ uploader =  $("#html5_uploader").pluploadQueue({
             BeforeUpload: function(up, file) {
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
-                $("#SendRequest-free").attr("disabled", true);
+                
+                         up.settings.multipart_params = {
+                                   filename: file.name
+                               };
+                $("#SendRequest-free").attr("disabled", true);               
             },
   
             UploadProgress: function(up, file) {
