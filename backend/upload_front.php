@@ -3,7 +3,7 @@
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
 $name = $_REQUEST['name'];
-,l
+
 $dir = "/var/www/html/" . $fac;
 
 if(!is_dir($dir . "/temporary/")){
