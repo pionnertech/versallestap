@@ -5,9 +5,9 @@ $rut = $_REQUEST['rut'];
 
 $dir = "/var/www/html/" . $fac;
 
-if(!is_dir($dir . "temporary/")){
+if(!is_dir($dir . "/temporary/")){
 
-	mkdir($dir . "temporary/", 0775, true);
+	mkdir($dir . "/temporary/", 0775, true);
 }
 
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);

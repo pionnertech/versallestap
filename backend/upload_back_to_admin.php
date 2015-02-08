@@ -4,6 +4,8 @@ $fac  = $_REQUEST['fac'];
 $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
+mysqli_master_query($datos, "SELECT USR_ FROM USERS WHERE (USR_");
 
 
 $target_dir = "/var/www/html/" . $fac . "/";

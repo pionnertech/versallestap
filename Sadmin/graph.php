@@ -1,4 +1,4 @@
-﻿<?php session_start();
+<?php session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'sadmin'){
 
@@ -144,7 +144,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                 <b class="copyright">&copy; 2015 Eque-e </b>All rights reserved.
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.2/jquery.min.js"></script>
         <script type="text/javascript">
 
               function heighter(obj){

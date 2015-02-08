@@ -11,8 +11,6 @@ $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_D
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -460,20 +458,9 @@ content: "Arrastre aqui sus archivos";
                                         <div class="module-option clearfix">
                                             <form>
                                             <div class="input-append pull-left">
-                                                <input type="text" class="span3" placeholder="Filtrar por nombre...">
-                                                <button type="submit" class="btn">
-                                                    <i class="icon-search"></i>
-                                                </button>
+                                                
                                             </div>
                                             </form>
-                                            <div class="btn-group pull-right" data-toggle="buttons-radio">
-                                                <button type="button" class="btn">
-                                                    Todos</button>
-                                                <button type="button" class="btn">
-                                                    Planta</button>
-                                                <button type="button" class="btn">
-                                                    Contrata</button>
-                                            </div>
                                         </div>
                                         <div class="module-body">
 
@@ -581,7 +568,7 @@ content: "Arrastre aqui sus archivos";
                                     </div>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-primary">Crear Requerimiento</a>
+                                   
                                 </div>
                             </div>
                         <div>

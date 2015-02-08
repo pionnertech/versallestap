@@ -29,6 +29,8 @@ for($i=0; $i < $cant_dept; $i++){
 
 $queryStr =  "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$i] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT";
 $handler_general = mysqli_query($datos, $queryStr);
+
+//abre departamento
 echo "\"" . $array_dept[$i] . "\":[{";
 
 $query_just = "SELECT USR_NAME FROM USERS WHERE ( USR_FACILITY =" . $fac . " AND USR_DEPT = '" .  $array_dept[$i]  . "')";
@@ -40,6 +42,7 @@ $per_array = [];
  	 $per_array[$x] = $fila3[0];
  	 $x = $x + 1;
  }
+//abre personas
 
 echo "\"" . $per_array[$i] . "\":[";
 
@@ -82,8 +85,8 @@ while ($fila4 = mysqli_fetch_row($handler_general) ){
     }
 }
 
-
-echo "]}";
+//cierra el general
+echo "]";
 
 unset($per_array);
 
@@ -97,6 +100,7 @@ if ($i == $cant_dept -1){
 
 }
 
+//close data
 echo "]}";
 
 ?>
