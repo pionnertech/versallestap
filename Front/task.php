@@ -508,6 +508,8 @@ $.ajax({
 		if (parseInt(data) == 1){
 
        console.info('works');
+       
+       $("#counter-task").html(parseInt($(this).html()) -1);
 
 		} else {
 
@@ -538,6 +540,9 @@ $.ajax({
 
 
 }
+
+
+
 
 
 </script>
