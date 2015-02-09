@@ -2,7 +2,7 @@
 
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
-$name = $_REQUEST['name'];
+$name = $_REQUEST['fullnaming'];
 
 $dir = "/var/www/html/" . $fac;
 
