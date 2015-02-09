@@ -1007,7 +1007,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
         "&subject=" + $("#subject").val() +
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
-        "&fechaF=" + $(".datetimepicker").val() + 
+        "&fechaF=" + ($(".datetimepicker").val()).replace("/", "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
