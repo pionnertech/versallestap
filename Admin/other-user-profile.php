@@ -785,7 +785,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                               </div>
                               <div class="incoming-files">
                                             <?                                              
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "_in/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension2 = "";
                                         
@@ -998,6 +998,16 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
+console.log("../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
+        "&muser=" + $("#muser").val() +
+        "&user=" + $("#stsk-user").val() +
+        "&stsk=" + $("#stsk-code").val() + 
+        "&subject=" + $("#subject").val() +
+        "&descript=" + $("#st-description").val() +
+        "&startD=" + fechaS + 
+        "&fechaF=" + $(".datetimepicker").val() + 
+        "&fac=" + $("#facility").val());
+
 
     $.ajax({
         type: "POST",
@@ -1016,6 +1026,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
+            console.log(data);
         }
     })
 });
