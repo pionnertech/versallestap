@@ -555,7 +555,7 @@ content: "Arrastre aqui sus archivos";
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn">Todos</button>
+                                        <button class="btn" id="showtitle" >Todos</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
@@ -1024,9 +1024,14 @@ console.info();
 
 
 $(".switcher").on('click', function(){
+
     var all_on = document.querySelectorAll('.switcher');
+
     var ex = $(this).attr("id");
-    console.info(ex);
+    var title_in = $(this).html();
+    $("#showtitle").html(title_in);
+
+
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
@@ -1070,6 +1075,7 @@ $(".golang").on('click', function(){
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
                 uploaderInt(object, iss_id);
     } else {
+
         $(".toFront").fadeToggle('slow');
     }
 
