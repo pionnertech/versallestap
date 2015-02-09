@@ -757,6 +757,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                     </optgroup>
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
+                                    <input type="hidden" value="" id="current-task"> 
                                     <input type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
@@ -958,6 +959,8 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input#st').val();
 var iss_ident = $(this).parent().parent().children('input#iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
+var index_current = $(this).index();
+
 
 $("#audititle").html("\"" + subject + "\"");
 
@@ -974,6 +977,8 @@ $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('acti
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 });
+
+
 
 
 $("#delegates").on('change', function(){
@@ -1016,7 +1021,11 @@ console.info();
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
+                var target =  $("#current-task").val();
+
             console.info(data);
+
+
         }
     })
 });
@@ -1031,7 +1040,6 @@ $(".switcher").on('click', function(){
     var title_in = $(this).html();
     $("#showtitle").html(title_in);
 
-
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
@@ -1043,6 +1051,11 @@ $(".switcher").on('click', function(){
 
 
 });
+
+
+
+
+
 
 $(".due").on('click', function(){
 
