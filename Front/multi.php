@@ -115,19 +115,18 @@ var newData_eval = jlinq.from(database.data).select();
 
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
-
+var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
 // clean up the plot chart
 $("#placeholder2").empty();
 
 var matriz =[];
 
-console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
-consol.info(conta);
+   Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
-  for (i=0; i < conta.length ; i++){
+  for (i=0; i < per_conta.length ; i++){
 
-   matriz[i] =  
+    matriz[i] =  Mtx_data[i]
   }
 
 var matrix = matriz;
