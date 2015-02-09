@@ -671,7 +671,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                     } else {
 
-                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
                                     
 
                                           $file_extension = "";
@@ -785,7 +785,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                               </div>
                               <div class="incoming-files">
                                             <?                                              
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "_in/" . $_SESSION['TxtCode'] . "/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension2 = "";
                                         
@@ -998,17 +998,6 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.log("../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
-        "&muser=" + $("#muser").val() +
-        "&user=" + $("#stsk-user").val() +
-        "&stsk=" + $("#stsk-code").val() + 
-        "&subject=" + $("#subject").val() +
-        "&descript=" + $("#st-description").val() +
-        "&startD=" + fechaS + 
-        "&fechaF=" + $(".datetimepicker").val() + 
-        "&fac=" + $("#facility").val());
-
-
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
@@ -1026,7 +1015,7 @@ console.log("../backend/stsk-del.php?iss_id=" + $("#issId").val() +
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
-            console.log(data);
+            console.info(data);
         }
     })
 });
