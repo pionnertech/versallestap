@@ -21,7 +21,7 @@ echo 0;
 
 } else {
 
- $handler = mysqli_query($datos, "SELECT STSK_CHARGE_USR WHERE STSK_ISS_ID = " . $iss_id);
+ $handler = mysqli_query($datos, "SELECT STSK_CHARGE_USR FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id);
  while ($fila1v = mysqli_fetch_row($handler)){
  	echo $fila1v .",";
  }
