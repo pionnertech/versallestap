@@ -665,13 +665,13 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                             <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
-                               if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/")){
+                               if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/")){
 
                                   continue; 
 
                                     } else {
 
-                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
                                     
 
                                           $file_extension = "";
