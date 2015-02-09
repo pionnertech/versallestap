@@ -126,7 +126,7 @@ var matriz =[];
 
   for (i=0; i < per_conta.length ; i++){
 
-    matriz[i] =  Mtx_data[i]
+    matriz[i] =  Mtx_data[i];
   }
 
 var matrix = matriz;
@@ -160,3 +160,6 @@ $.plot($("#placeholder2"), matriz, {
 
 
 </script>
+
+
+
