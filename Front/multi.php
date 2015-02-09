@@ -123,10 +123,11 @@ $("#placeholder2").empty();
 var matriz =[];
 
 console.info('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
+consol.info(conta);
 
   for (i=0; i < conta.length ; i++){
 
-   matriz[i] =  eval('newData_eval[' + index_d + '].' + depto + "[" +  mode + "]." + name + "[" + i +"]");
+   matriz[i] =  
   }
 
 var matrix = matriz;
