@@ -959,11 +959,11 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input#st').val();
 var iss_ident = $(this).parent().parent().children('input#iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = $(this).index();
+var index_current = $(this).index() + 1;
 
 
 $("#audititle").html("\"" + subject + "\"");
-
+$("#current-task").html(index_current);
 
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
@@ -1022,8 +1022,10 @@ console.info();
             $("#D-drop").empty();
             $(".eras").val('');
                 var target =  $("#current-task").val();
+                var current_collaborates =  $(".collaborates").eq(target).html("Delegado a : [" + data + "]");
+                
 
-            console.info(data);
+                console.info(data);
 
 
         }
