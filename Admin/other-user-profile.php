@@ -998,7 +998,7 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.info(($(".datetimepicker").val()).replace(/\//g, "-"));
+console.info();
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
@@ -1008,7 +1008,7 @@ console.info(($(".datetimepicker").val()).replace(/\//g, "-"));
         "&subject=" + $("#subject").val() +
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
-        "&fechaF=" + ($(".datetimepicker").val()).replace("/", "-") + 
+        "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
