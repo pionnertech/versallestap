@@ -998,7 +998,7 @@ $("#del-subtask").on('click', function(){
 var _fS = new Date();
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.info(($(".datetimepicker").val()).replace("/", "-"));
+console.info(($(".datetimepicker").val()).replace(/\/g/ "-"));
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
