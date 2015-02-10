@@ -8,7 +8,8 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
-$count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
+$count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
