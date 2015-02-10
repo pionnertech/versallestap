@@ -236,11 +236,17 @@ content: "Arrastre aqui sus archivos";
     vertical-align: top;
 }
 
+.info-content{
+    width:100%;
+}
+
+.iss-descript{
+    font-style: italic;
+    font-size:.7em;
+    display: inline-block;
+    vertical-align: top;
+}
     </style>    
-
-
-
-
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -643,7 +649,14 @@ content: "Arrastre aqui sus archivos";
                                         </tr>
                                         <tr class="display-progress">
                                             <td colspan="5">
-                                            
+                                    <div class="info-content">
+                                            <? 
+$shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_NAMES FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
+                       
+                                            ?>
+                              <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?></p> 
+                              <p class="iss-descript"><strong>Descripcion audiencia</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
+                                        </div>
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
                                             </p>
@@ -977,7 +990,7 @@ $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
 
 $(".ifile").css({display : "none"});
-$(".iss" + iss_ident).css({ display : "block"});
+$(".iss" + iss_ident).css({ display : "inline-block"});
 
 console.info(index_current);
 
