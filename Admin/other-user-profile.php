@@ -965,6 +965,9 @@ var index_current = $(this).index() + 1;
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").html(index_current);
 
+console.info(index_current),
+
+
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
 
@@ -1021,6 +1024,7 @@ console.info();
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
+
                 var target =  $("#current-task").val();
                 var current_collaborates =  $(".collaborates").eq(target).html("Delegado a : [" + data + "]");
 
