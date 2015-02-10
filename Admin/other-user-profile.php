@@ -641,7 +641,7 @@ content: "Arrastre aqui sus archivos";
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
-                                        <tr class="display-progress">
+                                        <tr class="display-progress <? printf($class) ?>">
                                             <td colspan="5">
                                             
                                             <p>
@@ -1023,7 +1023,6 @@ console.info();
             $(".eras").val('');
                 var target =  $("#current-task").val();
                 var current_collaborates =  $(".collaborates").eq(target).html("Delegado a : [" + data + "]");
-                
 
                 console.info(data);
 

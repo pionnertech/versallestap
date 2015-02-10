@@ -473,7 +473,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                             <input type="hidden" value="<? printf($stsk[1]) ?>" >
                                         </tr>
-                                        <tr class="display-progress">
+                                        <tr class="display-progress <? printf($class) ?>">
                                         <td colspan="6">
                                            <div class="wrap-progress">
                                             <p>

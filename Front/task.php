@@ -290,7 +290,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                         	?>
 
 
-										<tr class="requirement">
+										<tr class="requirement  <? printf($class) ?>">
 											<td colspan="4" >
 												<textarea class="description" placeholder="describa el requerimiento"></textarea>
 												<label for="subject">Delegados</label>
@@ -329,7 +329,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                    <? } else { ?>
 
-                                        <tr class="display-progress">
+                                        <tr class="display-progress  <? printf($class) ?>">
                                             <td colspan="5">
                                             <p class="adjuste" style="display: inline-block;">
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
@@ -508,7 +508,7 @@ $.ajax({
 		if (parseInt(data) == 1){
 
        console.info('works');
-       
+
        $("#counter-task").html(parseInt($(this).html()) -1);
 
 		} else {
@@ -519,9 +519,6 @@ $.ajax({
 	}
 });
 }
-
-
-
 
 function reverseDate(string){
  return string.substring(6,10) + "-" + string.substring(3,5) + "-" +string.substring(0,2);
