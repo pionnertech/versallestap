@@ -473,7 +473,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
                                             <input type="hidden" value="<? printf($stsk[1]) ?>" >
                                         </tr>
-                                        <tr class="display-progress <? printf($class) ?>">
+                                        <tr class="display-progress">
                                         <td colspan="6">
                                            <div class="wrap-progress">
                                             <p>
@@ -579,7 +579,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                <input type="hidden" value="" name="code" id="stsk-code">
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user">
-                                               <input type="hidden" value="" name=""
+                                               <input type="hidden" value="" name="">
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
@@ -744,8 +744,11 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 });
 
 $(".switcher").on('click', function(){
+
     var all_on = document.querySelectorAll('.switcher');
     var ex = $(this).attr("id");
+
+   $(".display-progress").css({ display: "none"});
 
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
@@ -777,7 +780,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             
             , 
             success : function (data){
-     console.info(data); 
+         console.info(data); 
          if( parseInt(data) == 1){
 
              bootbox.alert("Progreso grabado existosamente", function(){
