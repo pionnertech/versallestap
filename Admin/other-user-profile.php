@@ -677,6 +677,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                             <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
+                            echo "<script>console.info('" . $steam[0] . "')</script>";
                                if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/")){
 
                                   continue; 
