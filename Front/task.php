@@ -329,7 +329,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                    <? } else { ?>
 
-                                        <tr class="display-progress  <? printf($class) ?>">
+                                        <tr class="display-progress ">
                                             <td colspan="5">
                                             <p class="adjuste" style="display: inline-block;">
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
@@ -474,6 +474,7 @@ $(".switcher").on('click', function(){
 	 var all_on = document.querySelectorAll('.switcher');
      var ex = $(this).attr("id");
      var name =  $(this).html();
+      $(".display-progress").css({ display: "none"});
      $("#filter-title").html(name);
 
      for(i=0; i < all_on.length ; i++){

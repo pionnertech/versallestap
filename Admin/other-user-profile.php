@@ -641,7 +641,7 @@ content: "Arrastre aqui sus archivos";
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
-                                        <tr class="display-progress <? printf($class) ?>">
+                                        <tr class="display-progress">
                                             <td colspan="5">
                                             
                                             <p>
@@ -1039,6 +1039,7 @@ $(".switcher").on('click', function(){
 
     var ex = $(this).attr("id");
     var title_in = $(this).html();
+    $(".display-progress").css({ display: "none"});
     $("#showtitle").html(title_in);
 
      for(i=0; i < all_on.length ; i++){
