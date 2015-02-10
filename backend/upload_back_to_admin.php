@@ -5,7 +5,6 @@ $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-mysqli_master_query($datos, "SELECT USR_ FROM USERS WHERE (USR_");
 
 
 $target_dir = "/var/www/html/" . $fac . "/";
@@ -16,7 +15,6 @@ $uploadOk = 1;
 if(!is_dir($target_dir)){
 	mkdir($target_dir, 0775, true);
 }
-
 
 if(!is_dir($target_dir . $user . "_in/")){
 	chmod($target_dir . $user . "_in/");
@@ -36,7 +34,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 	}
 	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "_in/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
-		exit;
+		
 	}
 }
 
@@ -44,3 +42,5 @@ echo '{"status":"error"}';
 exit;
 
 ?>
+
+
