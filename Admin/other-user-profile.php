@@ -652,7 +652,6 @@ content: "Arrastre aqui sus archivos";
                                     <div class="info-content">
                                             <? 
 $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_NAMES FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
-                       
                                             ?>
                               <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?></p> 
                               <p class="iss-descript"><strong>Descripcion audiencia</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
