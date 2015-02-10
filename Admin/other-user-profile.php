@@ -959,13 +959,13 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input#st').val();
 var iss_ident = $(this).parent().parent().children('input#iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = $(this).index() + 1;
+var index_current = $(this).eq() + 1;
 
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").html(index_current);
 
-console.info(index_current),
+console.info(index_current);
 
 
 $("#issId").val(iss_ident);
