@@ -784,10 +784,10 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
          if( parseInt(data) == 1){
 
              bootbox.alert("Progreso grabado existosamente", function(){
-                 console.info(index);
-            $('tr').eq(index+1).children('p').eq(0).children('span').html(val + '%');
-            $('tr').eq(index+1).children('div.bar').css({width : val + "%"});
-           
+
+            $("tr").eq(index+1*2).children("td").children().children().eq(0).children('span').html(val + "%");
+            $("tr").eq(index+1*2).children("td").children().children().eq(1).children().css({ width : val +"%"});
+
              });
 
                 } else {
