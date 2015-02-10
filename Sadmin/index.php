@@ -177,7 +177,7 @@ background-color: white;
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
-                                <a id="Audiencias" href="#" class="btn-box big span4" style="height: 266px; padding-top: 6em;"><i class="icon-user"></i><b><? printf($count_iss['COUNT(ISS_ID)']  ?></b>
+                                <a id="Audiencias" href="#" class="btn-box big span4" style="height: 266px; padding-top: 6em;"><i class="icon-user"></i><b><? printf($count_iss['COUNT(ISS_ID)']) ?></b>
                                         <p class="text-muted">
                                             Audiencias</p>
                                     </a>
