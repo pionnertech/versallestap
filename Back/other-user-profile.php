@@ -579,7 +579,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                                <input type="hidden" value="" name="code" id="stsk-code">
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user">
-                                               <input type="hidden" value="" name="">
+                                               <input type="hidden" value="" name="">  
                                         </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
