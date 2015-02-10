@@ -21,7 +21,7 @@ echo 0;
 
 } else {
 
- $handler = mysqli_query($datos, "SELECT STSK_CHARGE_USR FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_id);
+ $handler = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, '', B.USR_SURNAME) FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR != STSK_MAIN_USR )");
  while ($fila1v = mysqli_fetch_row($handler)){
  	echo $fila1v[0] . ",";
  }
