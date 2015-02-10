@@ -976,6 +976,9 @@ var index_current = parseInt($(this).index() + 1);
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
 
+$(".ifile").css({display : "none"});
+$(".iss" + iss_ident).css({ display : "block"});
+
 console.info(index_current);
 
 
