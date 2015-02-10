@@ -686,15 +686,17 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
                                     
+                              echo "<script>console.info('" . $steam[0] . "')</script>";
 
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
-
+                                               echo "<script>console.info('" . $steam[0] . "' + ' / " . $archivos . "')</script>";
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
-
-                                             $extension = substr($archivos, -3);
+                                             
+                                              $extension = substr($archivos, -3);
                                               $cor = "";
+
                                                  switch (true) {
                                                       case ($extension =='pdf'):
                                                       $file_extension = "pdf-";
