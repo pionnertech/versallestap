@@ -729,7 +729,11 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                             <div class="toFront"></div>
                                             </td>
                                         </tr>
-                                        <? } ?>
+                                        <? } 
+
+                                    mysqli_data_seek($Query_subtask, 0);
+
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -785,16 +789,20 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                     </form>
                               </div>
                               <div class="incoming-files">
-                                            <?                                              
+                                            <?    
+                                while($stsk_esp = mysqli_fetch_row($Query_subtask)){
+                                   
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
 
-                                             $extension = substr($archivos2, -3);
+                                            if(preg_match_all("/_" . $stsk_esp[0] . "_/", $archivos) == 1){
+                                     
+                                                $extension = substr($archivos2, -3);
                                           
-                                              $cor = "";
+                                                $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
                                                       $file_extension = "pdf-";
@@ -822,14 +830,17 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile iss<? printf($stsk_esp[0]) ?>" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
                                                   <? 
                                                   }
-                                              }
+                                                }
+                                              } // while false
                                         closedir($handler2);
-                                    }
+                                        }
+                                    } //while
+                                  
                                  ?>
                                        </div>
                                     </div>
@@ -1279,6 +1290,8 @@ uploader =  $(object).pluploadQueue({
     });
 
 };
+
+
 
 
 </script>
