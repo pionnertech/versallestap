@@ -785,12 +785,13 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             $("tr").eq(index+1).children("td").children().children().eq(1).children().css({ width : val +"%"});
 
             if(val == 100){
+
                $("tr").eq(index).children().eq(2).children().html("HECHA");
                $("tr").eq(index).children().eq(2).children().css("background-color", "#1CC131");
 
                     switch(true){
                         case $("tr").eq(index).hasClass("Pv"): 
-                                 $("tr").eq(index).removeClass("Pv"):
+                                 $("tr").eq(index).removeClass("Pv");
                         break;
                         case $("tr").eq(index).hasClass("At"):
                                  $("tr").eq(index).removeClass("At");
