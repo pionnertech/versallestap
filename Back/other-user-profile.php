@@ -446,17 +446,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                               break;
                                               case 'En Curso':
                                                $class = "Ec";
-
                                               break;
-
                                               case 'Hecha':
                                                $class = "Hc";
                                               break;
-
                                               case 'Atrasada':
                                                $class = "At";
                                               break;
-
                                               case 'Por Vencer':
                                               $class = "Pv";
                                               break;
@@ -787,12 +783,32 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
             $("tr").eq(index+1).children("td").children().children().eq(0).children('span').html(val + "%");
             $("tr").eq(index+1).children("td").children().children().eq(1).children().css({ width : val +"%"});
+
+            if(val == 100){
+               $("tr").eq(index).children().eq(2).children().html("HECHA");
+               $("tr").eq(index).children().eq(2).children().css("background-color", "#1CC131");
+
+                    switch(true){
+                        case $("tr").eq(index).hasClass("Pv"): 
+                                 $("tr").eq(index).removeClass("Pv"):
+                        break;
+                        case $("tr").eq(index).hasClass("At"):
+                                 $("tr").eq(index).removeClass("At");
+                        break;
+                        case $("tr").eq(index).hasClass("Pe"):
+                                 $("tr").eq(index).removeClass("Pe");
+                        break;
+                    }
+
+                 $("tr").eq(index).addClass("Hc");    
+                }
    
              });
 
-                } else {
+            } else {
 
             bootbox.alert("Falla en la conexion al servidor");
+
                 }
                 
             }
