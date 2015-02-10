@@ -171,7 +171,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 
 .iss-descript{
     font-style: italic;
-
+    font-size:.7em;
+    display: inline-block;
+    vertical-align: top;
 }
 </style>    
 </head>
