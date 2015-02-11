@@ -1029,6 +1029,7 @@ $("#delegates").on('change', function(){
 });
 
 
+
 $("#del-subtask").on('click', function(){
     //check type.
 
@@ -1049,16 +1050,17 @@ console.info();
         "&fac=" + $("#facility").val(), 
         success : function(data){
            bootbox.alert("Requerimiento delegado existosamente");
-           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+            $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
-
+       
                 var target =  $("#current-task").val();
                 console.info(target);
                 var current_collaborates =  $(".collaborates").eq(target).html("Delegado a : [" + data + "]");
 
                 console.info(data);
+                    $("#upload ul").empty();
 
 
         }
