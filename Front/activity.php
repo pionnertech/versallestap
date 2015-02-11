@@ -145,7 +145,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 </head>
 
 <body>
-<input type="hidden" val="" id="latlng">
+<input type="hidden" value="" id="latlng">
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -882,6 +882,7 @@ function getLatlgnBounds(){
         	$("#latlng").val(marker.position.lat() + "," + marker.position.lng());
           bootbox.alert("Reubicación grabada", function() {
                 console.log("ok");
+
             });
         })
 
@@ -906,10 +907,6 @@ var fecha_or = fecha.getFullYear() + "-" + ('0' + (fecha.getMonth()+1)).slice(-2
 GeoLoc = typeof GeoLoc != 'undefined' ? GeoLoc : 0; 
 
 var pase = missingField();
-
-
-
-
 
 
 if (pase != false){
