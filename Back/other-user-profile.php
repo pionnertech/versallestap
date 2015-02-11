@@ -805,8 +805,8 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
              bootbox.alert("Progreso grabado existosamente", function(){
 
-            $("tr").eq(index+1).children("td").children().children().eq(0).children('span').html(val + "%");
-            $("tr").eq(index+1).children("td").children().children().eq(1).children().css({ width : val +"%"});
+            $("tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
+            $("tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
 
             if(val == 100){
 
@@ -833,11 +833,11 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             } else {
 
             bootbox.alert("Falla en la conexion al servidor");
+    });
 
                 }
                 $("#upload ul").empty();
             }
-    });
 }
 
 $("#back").on('click', function(){
