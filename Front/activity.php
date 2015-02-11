@@ -682,23 +682,28 @@ $("#ctzmail").on('change keydown paste input keypress', function (){
 
 $('#Geo').on('click', function(){
 
+
  if (!$(this).data("val") || $(this).data("val") === 0){
 	setTimeout(function(){
 		$("#wrap-map").css({ height: "500px"});
 	}, 1);
+
      $("#map").css({ height: "500px"});
      $(this).data("val", 1);
 
      getLatlgnBounds();
    
 } else {
+
    	setTimeout(function(){
 		$("#wrap-map").css({ height: "0px"});
 	}, 1);
      $("#map").css({ height: "0px"});
      $(this).data("val", 0);
-
 }
+
+
+
 })
 
 $("#urgent").on('click', function(){
@@ -811,6 +816,7 @@ setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narr
  bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
 
 	if(outcome) {
+
 var narray = [];
 var cont = document.querySelectorAll(".wrap-ing-form input");
 
