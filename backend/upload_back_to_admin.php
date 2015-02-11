@@ -7,6 +7,16 @@ $user = $_REQUEST['user'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
+
+
+
+//averiguar el numero de subtask matriz
+$hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSL_ID = " . $code));
+$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FRM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn . ")"));
+
+
+
+
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
@@ -32,7 +42,8 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		echo '{"status":"error"}';
 		exit;
 	}
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "_in/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_" . $user . "." . strtolower($extension) )){
+
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "_in/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $real_code['STSK_ID'] . "_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		
 	}
