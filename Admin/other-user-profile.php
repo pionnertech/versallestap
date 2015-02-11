@@ -691,7 +691,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
-                                               echo "<script>console.info('" . $steam[0] . "' + ' / " . $archivos . "')</script>";
+                                               echo "<script>console.info('" . $steam[0] . "' + ' / " . $archivos . "' + ' / " . $stsk[0] . "')</script>";
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
                                              
                                               $extension = substr($archivos, -3);
