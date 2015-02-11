@@ -11,7 +11,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 //averiguar el numero de subtask matriz
-$hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSL_ID = " . $code));
+$hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
 $real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FRM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn . ")"));
 
 
