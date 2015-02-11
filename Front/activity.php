@@ -489,7 +489,7 @@ var uploaderInt = function(){
 uploader =  $("#html5_uploader").pluploadQueue({
 		runtimes : 'html5',
 		url : '../backend/upload_front.php?'  ,
-		chunk_size : '1mb',
+		chunk_size : '2mb',
 		unique_names : true,
   filters : {
 			max_file_size : '10mb',
