@@ -691,7 +691,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
-                                               echo "<script>console.info('" . $steam[0] . "' + ' / " . $archivos . "' + ' / " . $stsk[0] . "')</script>";
+                              
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
                                              
                                               $extension = substr($archivos, -3);
@@ -727,8 +727,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
 
                                           ?>
 
-                                                <p class="ifile"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                 <span class="iname"><? printf($archivos) ?></span>
+                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"></span>
                                                 </p>
 
                                                   <? }
