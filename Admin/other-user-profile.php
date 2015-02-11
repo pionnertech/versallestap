@@ -671,7 +671,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     <?  }  ?>
     ];
                                             </div>
-                                            <p class="golang"><i class="fa fa-paperclip " style="color:darkyellow;"></i></p>
+                                            <p class="golang"><i class="fa fa-paperclip" style="color:darkyellow;"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
@@ -1033,7 +1033,7 @@ $("#del-subtask").on('click', function(){
     //check type.
 
 var _fS = new Date();
-fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
+var fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
 console.info();
     $.ajax({
@@ -1122,6 +1122,7 @@ $(".golang").on('click', function(){
         $(this).data("val", 1);
             var object = $(this).parent().children('div.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
+            consol.info((object, iss_id));
                 uploaderInt(object, iss_id);
     } else {
 
