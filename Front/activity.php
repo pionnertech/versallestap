@@ -203,7 +203,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 								<li><a href="#">Edit Profile</a></li>
 								<li><a href="#">Account Settings</a></li>
 								<li class="divider"></li>
-								<li><a href="backend/close.php">Logout</a></li>
+								<li><a href="../backend/close.php">Logout</a></li>
 							</ul>
 						</li>
 					</ul>
