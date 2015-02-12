@@ -827,17 +827,20 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
                  $("tr").eq(index).addClass("Hc");    
                 }
+
+
    
              });
 
             } else {
 
             bootbox.alert("Falla en la conexion al servidor");
-    });
+            
+               };
 
                 }
                 $("#upload ul").empty();
-            }
+            });
 }
 
 $("#back").on('click', function(){
