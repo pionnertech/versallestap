@@ -428,7 +428,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                              $taint = "#1CC131";
                                              $tuba = "Finalizadas";
                                           break;
-
+                                          case 1:
+                                             $type = "fa-flag";
+                                             $taint = "#DED901";
+                                             $tuba = "Pendientes";
+                                          break;
 
                                        }
 
