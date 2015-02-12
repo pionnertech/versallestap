@@ -453,7 +453,7 @@ $(".enviar").on('click', function () {
 
    var check  = checker($(this));
    
-   if (!check){
+   if (!check || check == false){
      
      var iss_id = $(this).parent().parent().prev().children('td').eq(0).text();
 	
@@ -550,20 +550,19 @@ $.ajax({
 
 
 function checker(object){
-	
+
 console.info(object.parent().children('.datetimepicker').val())
 console.info(object.parent().children('.description').val());
 
     if(object.parent().children('.datetimepicker').val()){
-    	bootbox.alert("igresar fecha de termino", function (){
-          return true;
-    	})
+    	bootbox.alert("igresar fecha de termino");
+    	return true;
     }
 
     if(object.parent().children('.description').val()){
-    	bootbox.alert("igresar descripcion requerimiento", function (){
+    	bootbox.alert("Ingresar descripcion requerimiento")
           return true;
-    	})
+    	
     }
 
     return false;
