@@ -474,7 +474,9 @@ content: "Arrastre aqui sus archivos";
 
                                     ?>
                                       
-<a class="btn"><p style="display: inline-block; vertical-align: top;"><? printf($fi[0]) ?></p><i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i></a>
+<a class="btn"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em: font-weight: 800;" ><? printf($fi[0]) ?></p>
+<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+</a>
                                         
 
                                   <? }?>
