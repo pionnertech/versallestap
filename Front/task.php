@@ -451,7 +451,11 @@ $(this).parent().parent().next('tr').fadeToggle('slow');
 
 $(".enviar").on('click', function () {
 
-	var iss_id = $(this).parent().parent().prev().children('td').eq(0).text();
+   var check  = checker($(this));
+   
+   if (!check){
+     
+     var iss_id = $(this).parent().parent().prev().children('td').eq(0).text();
 	
 	 $(this).parent().fadeOut('fast');
 	 $(this).parent().parent().prev().fadeOut('fast');
@@ -462,9 +466,14 @@ $(".enviar").on('click', function () {
 
     var usr_id = $(this).parent().children('select').val();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
+  
 
    delegate(usr_id, msg, fechaF, iss_id);
    switchTempToAsigned(iss_id, usr_id);
+
+
+
+   } 
 
 
 });
@@ -540,6 +549,22 @@ $.ajax({
 }
 
 
+function checker(object){
+
+    if(object.parent().children('.datetimepicker').val()){
+    	bootbox.alert("igresar fecha de termino", function (){
+          return true;
+    	})
+    }
+
+    if(object.parent().children('.description').val()){
+    	bootbox.alert("igresar descripcion requerimiento", function (){
+          return true;
+    	})
+    }
+
+    return false;
+}
 
 
 
