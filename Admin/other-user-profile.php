@@ -1119,6 +1119,8 @@ $(".cell-icon").on('click', function(){
 
 
 $(".golang").on('click', function(){
+console.info("llega");
+console.log($(this).data("val"));
 
     if($(this).data("val") == undefined){
         $(this).data("val", 1);
