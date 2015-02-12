@@ -455,18 +455,22 @@ content: "Arrastre aqui sus archivos";
                                           case 2:
                                             $type = "fa-angle-double-right";
                                             $taint = "#178FD0";
+                                            $tuba =  "En Curso"
                                           break;
                                           case 4:
                                             $type = "fa-clock-o";
                                             $taint = "#EDB405";
+                                            $tuba = "Por Vencer";
                                           break;
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
+                                            $Tuba = "Atrasadas";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
-                                            $taint = "#1CC131";
+                                             $taint = "#1CC131";
+                                             $tuba = "Finalizadas";
                                           break;
 
 
@@ -474,7 +478,7 @@ content: "Arrastre aqui sus archivos";
 
                                     ?>
                                       
-<a class="btn"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
 <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
 </a>
                                         
