@@ -1127,7 +1127,7 @@ console.log($(this).data("val"));
         $(this).data("val", 1);
             var object = $(this).parent().children('div.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
-            console.info((object, iss_id));
+            console.info(object.index() + " / " +  iss_id);
                 uploaderInt(object, iss_id);
     } else {
 
