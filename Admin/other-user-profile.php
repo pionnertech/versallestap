@@ -455,7 +455,7 @@ content: "Arrastre aqui sus archivos";
                                           case 2:
                                             $type = "fa-angle-double-right";
                                             $taint = "#178FD0";
-                                            $tuba =  "En Curso"
+                                            $tuba =  "En Curso";
                                           break;
                                           case 4:
                                             $type = "fa-clock-o";
