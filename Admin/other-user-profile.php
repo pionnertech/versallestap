@@ -1123,7 +1123,7 @@ console.info("llega");
 console.log($(this).data("val"));
 
     if($(this).data("val") === undefined){
-      condsole.info("controld flujo funciona");
+      console.info("controld flujo funciona");
         $(this).data("val", 1);
             var object = $(this).parent().children('div.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
