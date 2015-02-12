@@ -451,7 +451,7 @@ content: "Arrastre aqui sus archivos";
                                         <div class="profile-details muted">
                                   <?  while($fi = mysqli_fetch_row($Query_alerts)){ 
                                        
-                                       switch($fi[1]){
+                                       switch((int)$fi[1]){
                                           case 2:
                                             $type = "fa-angle-double-right";
                                             $taint = "#178FD0";
