@@ -554,12 +554,12 @@ function checker(object){
 console.info(object.parent().children('.datetimepicker').val())
 console.info(object.parent().children('.description').val());
 
-    if(object.parent().children('.datetimepicker').val()){
+    if(object.parent().children('.datetimepicker').val() == ""){
     	bootbox.alert("igresar fecha de termino");
     	return true;
     }
 
-    if(object.parent().children('.description').val()){
+    if(object.parent().children('.description').val() == ""){
     	bootbox.alert("Ingresar descripcion requerimiento")
           return true;
     	
@@ -567,8 +567,6 @@ console.info(object.parent().children('.description').val());
 
     return false;
 }
-
-
 
 </script>
 <?
@@ -578,6 +576,4 @@ console.info(object.parent().children('.description').val());
 }
 
 ?>
-
-
 
