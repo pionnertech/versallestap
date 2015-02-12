@@ -8,7 +8,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
-
+$Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
 ?>
 <!DOCTYPE html>
@@ -449,8 +449,35 @@ content: "Arrastre aqui sus archivos";
                                          <? printf($_SESSION['TxtPosition']) ?> En SERVIU.
                                         </p>
                                         <div class="profile-details muted">
-                                            <a href="#" class="btn"><i class="icon-plus shaded"></i></a>
-                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i></a>
+                                  <?  while($fi = mysqli_fetch_row($Query_alerts)){ 
+                                       
+                                       switch($fi[1]){
+                                          case 2:
+                                            $type = "fa-angle-double-right";
+                                            $taint = "#178FD0";
+                                          break;
+                                          case 4:
+                                            $type = "fa-clock-o";
+                                            $taint = "#EDB405";
+                                          break;
+                                          case 3:
+                                            $type = "fa-exclamation-triangle";
+                                            $taint = "#E70101";
+                                          break;
+                                          case 5:
+                                             $type = "fa-check-circle";
+                                            $taint = "#1CC131";
+                                          break;
+
+
+                                       }
+
+                                    ?>
+                                      
+<a class="btn"><p style="display: inline-block; vertical-align: top;"><? printf($fa[0]) ?></p><i class="fa <? printf($$type) ?>" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i></a>
+                                        
+
+                                  <? }?>
                                         </div>
                                     </div>
                                 </div>
