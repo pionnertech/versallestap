@@ -550,6 +550,9 @@ $.ajax({
 
 
 function checker(object){
+	
+console.info(object.parent().children('.datetimepicker').val())
+console.info(object.parent().children('.description').val());
 
     if(object.parent().children('.datetimepicker').val()){
     	bootbox.alert("igresar fecha de termino", function (){
