@@ -1119,7 +1119,8 @@ $(".cell-icon").on('click', function(){
 
 
 $(".golang").on('click', function(){
-var ini = $(this).index();
+
+
 
     if($(this).data("val") === undefined){
      
@@ -1130,7 +1131,7 @@ var ini = $(this).index();
                 uploaderInt(object, iss_id);
     } else {
 
-        $(".toFront").eq(ini).fadeToggle('slow');
+       $(this).parent().children('.toFront').fadeToggle('slow');
     }
 
 });
