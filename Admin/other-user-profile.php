@@ -730,7 +730,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                          <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
                                                 </p>
-
+                                                </a>
                                                   <? }
                                                   } 
                                         closedir($handler);
@@ -1119,15 +1119,13 @@ $(".cell-icon").on('click', function(){
 
 
 $(".golang").on('click', function(){
-console.info("llega");
-console.log($(this).data("val"));
 
     if($(this).data("val") === undefined){
-      console.info("controld flujo funciona");
+     
         $(this).data("val", 1);
-            var object = $(this).parent().children('div.toFront');
+            var object = $(this).parent().children('.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
-            console.info(object.index() + " / " +  iss_id);
+        
                 uploaderInt(object, iss_id);
     } else {
 
