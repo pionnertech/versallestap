@@ -10,7 +10,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //TASKS
 
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
-
+$Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -404,8 +404,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                          <? printf($_SESSION['TxtPosition']) ?> en SERVIU.
                                         </p>
                                         <div class="profile-details muted" id="kitkat">
-                                            <a href="#" class="btn"><i class="icon-plus shaded"></i>Send Friend Request </a>
-                                            <a href="#" class="btn"><i class="icon-envelope-alt shaded"></i>Send message </a>
+
+                                  <?  while($fi = mysqli_fetch_row($Query_alerts)){ 
+                                       
+                                       switch((int)$fi[1]){
+                                          case 2:
+                                            $type = "fa-angle-double-right";
+                                            $taint = "#178FD0";
+                                            $tuba =  "En Curso";
+                                          break;
+                                          case 4:
+                                            $type = "fa-clock-o";
+                                            $taint = "#EDB405";
+                                            $tuba = "Por Vencer";
+                                          break;
+                                          case 3:
+                                            $type = "fa-exclamation-triangle";
+                                            $taint = "#E70101";
+                                            $Tuba = "Atrasadas";
+                                          break;
+                                          case 5:
+                                             $type = "fa-check-circle";
+                                             $taint = "#1CC131";
+                                             $tuba = "Finalizadas";
+                                          break;
+
+
+                                       }
+
+                                    ?>
+<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+</a>
+
+    <? } ?>
                                         </div>
                                     </div>
                                 </div>
