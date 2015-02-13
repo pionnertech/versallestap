@@ -2,6 +2,7 @@
 
 $iss_id = $_GET['iss_id'];
 $fac = $_GET['fac'];
+$chusr = $_GET['chusr'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -31,6 +32,27 @@ while ($fila = mysqli_fetch_row($handler)) {
 	}
    
 }
+
+/*
+$per_query = "SELECT USR_DEPT FROM USERS WHERE USR_ID = " . $chusr ; 
+
+    $dept = mysqli_fetch_assoc(mysqli_query($datos,$per_query ));
+    
+    $users =  mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE(USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user' ) ");
+*/
+  
+if($hdir = opendir("/var/www/html/" . $fac . "/reply/")){
+
+     while (false !== ($files = readdir($hdir))){
+
+     	 if(preg_match_all("/_\[" . $iss_id  . "\]_/", $files) == 1){
+
+     	 	 $outcome .= $files;
+     	 }
+     }
+
+}
+
 
 echo $outcome;
 

@@ -6,7 +6,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtFacility']);
 
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID, C.USR_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
 $count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
 
@@ -97,6 +97,12 @@ cursor:pointer;
 
 .situation:hover{
 background-color: white;
+}
+
+.in-files, .files{
+display: inline-block;
+vertical-align: top;
+
 }
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -205,7 +211,7 @@ background-color: white;
                                              <strong>Audiencias <? printf($des_graph[1])?></strong> <span class="pull-right small muted"><? printf($des_graph[3]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar" style="width: <? printf($des_graph[3]) ?>%; color: <? printf($des_graph) ?>">
+                                                <div class="bar" style="width: <? printf($des_graph[3]) ?>%; color: <? printf($des_graph[0]) ?>">
                                                 </div>
                                             </div>
                                         </li>
@@ -265,6 +271,7 @@ background-color: white;
                                         <? while ($issues = mysqli_fetch_row( $Query_task )){ ?>
                                             <tr class="gradeA">
                                             <input type="hidden" value="<?printf($issues[9]) ?>" id="iss_id">
+                                         
                                                 <td>
                                                     <? printf($issues[0]) ?>
                                                 </td>
@@ -445,8 +452,7 @@ break;
 $(".situation").on('click', function(){
 
 var iss = $(this).parent().children('input').val();
-
-getDataTable(iss);
+getDataTable(iss, chusr);
 
 });
 
@@ -459,7 +465,7 @@ $("#back").on('click', function(){
 
 
 
-function getDataTable(iss_id){
+function getDataTable(iss_id, usr_charge){
 
     $.ajax({
         type: "POST", 
@@ -473,11 +479,18 @@ function getDataTable(iss_id){
                 }
                     document.querySelector(".adjuste span").innerHTML =  matrix[5];
                     document.querySelector(".forward").style.width = matrix[5] + "%";
-                
+                   
+                for (i=6; i < matrix.length; i++){
+                     
+                     recallFiles(matrix[i]);
+                } 
+
     $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
         $("#suite").fadeIn('slow');
     });
 
+
+          
         }
     })
 }
@@ -485,6 +498,70 @@ function getDataTable(iss_id){
 
 
 
+
+function recallFiles(name){
+
+var extension = name.substring(name.length -3 , name.length);
+
+var parent = document.querySelector(".pre");
+
+     var p = document.createElement('p');
+     var i = document.createElement('p');
+     
+     switch(extension){
+
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+
+
+            i.className = "fa fa-" + setClass;
+            i.style.color = cor;
+            p.title = name;
+            p.className = "in-files";
+
+            p.appendChild(i);
+            object.appendChild(p);
+
+}
 
 
 
