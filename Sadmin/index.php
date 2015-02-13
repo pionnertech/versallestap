@@ -96,10 +96,13 @@ cursor:pointer;
 .situation:hover{
 background-color: white;
 }
-
+.in-files{
+    margin:.6em;
+}
 .in-files, .files{
 display: inline-block;
 vertical-align: top;
+
 
 }
         </style>
@@ -501,7 +504,7 @@ function getDataTable(iss_id, usr_charge){
                     document.querySelector(".forward").style.width = matrix[5] + "%";
                    
                 for (i=6; i < matrix.length; i++){
-                     
+                     console.info(i);
                      recallFiles(matrix[i]);
                 } 
 
@@ -576,7 +579,7 @@ var parent = document.querySelector(".pre");
     }
 
 
-            i.className = "fa fa-" + setClass;
+            i.className = "fa fa-2x fa-" + setClass;
             i.style.color = cor;
             p.title = name;
             a.className = "in-files";
