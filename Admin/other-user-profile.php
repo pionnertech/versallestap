@@ -958,7 +958,7 @@ $(".toggle-attach").on('click', function(){
 
 })
       
-$('.datetimepicker').datetimepicker({
+var dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
     format:'d/m/Y',
