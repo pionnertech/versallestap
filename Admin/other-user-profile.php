@@ -930,11 +930,24 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     
     var st = 0;
     var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
-
+    var dateTime;
     
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
     $(document).on('ready', function(){
+
+      
+ dateTime = $('.datetimepicker').datetimepicker({
+    step:5,
+    lang:'es',
+    format:'d/m/Y',
+    timepicker: false
+});
+
+
+
+
+
 
 $(".toggle-attach").on('click', function(){
 
@@ -957,13 +970,7 @@ $(".toggle-attach").on('click', function(){
     }
 
 })
-      
-var dateTime = $('.datetimepicker').datetimepicker({
-    step:5,
-    lang:'es',
-    format:'d/m/Y',
-    timepicker: false
-});
+
 
         $("#Urgent").on('click', function(){
          
