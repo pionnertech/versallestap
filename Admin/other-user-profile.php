@@ -845,7 +845,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                            echo "<script>console.info('" . $stsk_esp[1] . "' + ' - " . $archivos2 . "')</script>";
+                                          
                                             if(preg_match_all("/_" . $stsk_esp[1] . "_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
@@ -943,9 +943,6 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     format:'d/m/Y',
     timepicker: false
 });
-
-
-
 
 
 
@@ -1089,6 +1086,7 @@ console.info();
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
+
            bootbox.alert("Requerimiento delegado existosamente");
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
@@ -1101,7 +1099,7 @@ console.info();
 
                 console.info(data);
                     $("#upload ul").empty();
-
+    
 
         }
     })
@@ -1203,6 +1201,7 @@ $.ajax({
 }
 
 function drop (event) {
+
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
@@ -1211,6 +1210,8 @@ function drop (event) {
     var chargeuser = $("#delegates :selected").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
+
+
 
 }
 
