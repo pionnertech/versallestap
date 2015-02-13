@@ -10,6 +10,21 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
 
 $count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
 
+
+$graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.ISS_ID ) AS count, ROUND(SUM( 100 ) / total) AS percentage " . 
+               "FROM ISSUES A " .
+               "INNER JOIN EST B ON ( A.ISS_STATE = B.EST_CODE ) " .
+               "CROSS JOIN ( " .
+               "SELECT COUNT( * ) AS total " .
+               "FROM ISSUES WHERE ISS_FAC_CODE = 10000 " .
+               ")  x " .
+               "GROUP BY 1 ";
+
+$graph = mysqli_query($datos, $graph_query);
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -184,42 +199,17 @@ background-color: white;
                                     </a>
                                     <div class="wrap-progress" >
                                      <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
+                                     <? while($des_graph = mysqli_fetch_row($graph)) { ?>
                                         <li>
                                             <p>
-                                             <strong>Audiencias Recibidas</strong> <span class="pull-right small muted">78%</span>
+                                             <strong>Audiencias <? printf($des_graph[1])?></strong> <span class="pull-right small muted"><? printf($des_graph[3]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar" style="width: 78%;">
+                                                <div class="bar" style="width: <? printf($des_graph[3]) ?>%; color: <? printf($des_graph) ?>">
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias en Curso</strong> <span class="pull-right small muted">38%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 18%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias por vencer</strong> <span class="pull-right small muted">44%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 44%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Audiencias Atrasadas</strong> <span class="pull-right small muted">67%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 67%;">
-                                                </div>
-                                            </div>
-                                        </li>
+                                     <? } ?>
                                     </ul>
                                 </div>
                                 </div>
