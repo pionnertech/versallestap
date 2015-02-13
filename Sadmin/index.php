@@ -356,11 +356,11 @@ vertical-align: top;
                                             <div class="progress tight">
                                                 <div class="bar forward"></div>
                                             </div>
-                                        <div class="pre files">
+                                        <div class="files">
                                             
 
                                         </div>
-                                        <pre>
+                                        <pre class="pre">
                                              
 
                                         </pre>
@@ -504,7 +504,7 @@ function getDataTable(iss_id, usr_charge){
                     document.querySelector(".forward").style.width = matrix[5] + "%";
                    
                 for (i=6; i < matrix.length; i++){
-                     console.info(i);
+                     console.info(i + " - " + matrix.length);
                      recallFiles(matrix[i]);
                 } 
 
