@@ -452,7 +452,7 @@ break;
 $(".situation").on('click', function(){
 
 var iss = $(this).parent().children('input').val();
-getDataTable(iss, chusr);
+getDataTable(iss);
 
 });
 
