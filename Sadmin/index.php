@@ -524,9 +524,12 @@ function getDataTable(iss_id, usr_charge){
 
 function recallFiles(name){
 
+
 var extension = name.substring(name.length -3 , name.length);
 
 var parent = document.querySelector(".pre");
+
+$(".pre").empty();
 
      var p = document.createElement('p');
      var i = document.createElement('p');
