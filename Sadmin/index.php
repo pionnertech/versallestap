@@ -524,6 +524,8 @@ var parent = document.querySelector(".pre");
      var p = document.createElement('p');
      var i = document.createElement('p');
      
+     var setClass ="";
+
      switch(extension){
 
                 case "pdf": 
