@@ -11,13 +11,13 @@ $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NA
 $count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
 
 
-$graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.ISS_ID ) AS count, ROUND(SUM( 100 ) / total) AS percentage " . 
+$graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.ISS_ID ),  ROUND((COUNT( A.ISS_ID )  / total) *100) AS percentage " . 
                "FROM ISSUES A " .
-               "INNER JOIN EST B ON ( A.ISS_STATE = B.EST_CODE ) " .
+               "RIGHT JOIN EST B ON ( A.ISS_STATE = B.EST_CODE ) " .
                "CROSS JOIN ( " .
-               "SELECT COUNT( * ) AS total " .
-               "FROM ISSUES WHERE ISS_FAC_CODE = 10000 " .
-               ")  x " .
+               "SELECT COUNT(ISS_ID ) AS total " .
+               "FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . 
+               " )  x " .
                "GROUP BY 1 ";
 
 $graph = mysqli_query($datos, $graph_query);
