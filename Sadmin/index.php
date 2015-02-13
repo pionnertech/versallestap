@@ -23,8 +23,6 @@ $graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.ISS_ID ),  ROUND((C
 $graph = mysqli_query($datos, $graph_query);
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -205,13 +203,31 @@ vertical-align: top;
                                     </a>
                                     <div class="wrap-progress" >
                                      <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
-                                     <? while($des_graph = mysqli_fetch_row($graph)) { ?>
+                                     <? while($des_graph = mysqli_fetch_row($graph)) { 
+                                           switch ($des_graph[1]) {
+                                               case 'Hecha':
+                                                   $class = "bar-success";
+                                                   break;
+                                               case 'Pendiente':
+                                                   $class = "bar-warning";
+                                                   break;
+                                               case 'Por Vencer':
+                                                   $class = "bar-warning";
+                                                   break;
+                                               case 'Atrasada':
+                                                   $class = "bar-danger";
+                                                   break;
+                                               default:
+                                                   $class = "bar-info";
+                                                   break;
+                                           }
+                                        ?>
                                         <li>
                                             <p>
                                              <strong>Audiencias <? printf($des_graph[1])?></strong> <span class="pull-right small muted"><? printf($des_graph[3]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
-                                                <div class="bar" style="width: <? printf($des_graph[3]) ?>%; color: <? printf($des_graph[0]) ?>">
+                                                <div class="bar <? printf($class) ?>" style="width: <? printf($des_graph[3]) ?>%;">
                                                 </div>
                                             </div>
                                         </li>
