@@ -353,7 +353,11 @@ vertical-align: top;
                                             <div class="progress tight">
                                                 <div class="bar forward"></div>
                                             </div>
-                                        <pre class="pre files">
+                                        <div class="pre files">
+                                            
+
+                                        </div>
+                                        <pre>
                                              
 
                                         </pre>
@@ -523,9 +527,10 @@ var parent = document.querySelector(".pre");
 
      var p = document.createElement('p');
      var i = document.createElement('p');
-     
-     var setClass ="";
+     var a = document.createElement('a');
 
+     var setClass ="";
+     var cor ="";
      switch(extension){
 
                 case "pdf": 
@@ -574,10 +579,15 @@ var parent = document.querySelector(".pre");
             i.className = "fa fa-" + setClass;
             i.style.color = cor;
             p.title = name;
-            p.className = "in-files";
+            a.className = "in-files";
+            a.href = "../" + fac + "/reply/" + name;
+            a.setAttribute("download", name);
+           
+
 
             p.appendChild(i);
-            object.appendChild(p);
+            a.appendChild(p)
+            parent.appendChild(a);
 
 }
 
