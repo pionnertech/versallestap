@@ -76,7 +76,7 @@ for($i=0; $i < $cant_dept; $i++){
 
                 if ( mysqli_num_rows($hand_per) == 0) {
 
-                	  echo "{\"label\":\"n/n\", \"data\": \"100\", \"color\":\"#FFF\"}]}";
+                	  echo "{\"label\":\"n/n\", \"data\": \"100\", \"color\":\"#BDB9B9\"}]}";
 
                 	      if($y == $per_count ){
 
