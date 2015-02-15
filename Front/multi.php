@@ -14,7 +14,7 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 $depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT");
 
 $parray = array();
-$darray = array()
+$darray = array();
 $i = 0;
 
 while($extra = mysqli_fetch_row($depts)){
@@ -66,11 +66,10 @@ while($extra = mysqli_fetch_row($depts)){
                              	<select id="personal">
                           <?  
                           $z= 0;
-                          $ancient = "";
+                          $ancient = $darray[0];
                           for($y=0; $y < count($parray); $y++){ 
 
                             ?>
-
                             <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
 
                             <?
