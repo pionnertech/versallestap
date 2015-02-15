@@ -14,13 +14,14 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 $depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT");
 
 $parray = array();
-
+$darray = array()
 $i = 0;
 
 while($extra = mysqli_fetch_row($depts)){
     $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
         while( $sub = mysqli_fetch_row($handup)){
                $parray[$i] = $sub[0];
+               $darray[$i] = $extra[0];
                $i = $i + 1;
         }
 }
@@ -73,7 +74,7 @@ while($extra = mysqli_fetch_row($depts)){
                             <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
 
                             <?
-                                  if($parray[$y][1] != $parray[$y-1][1]){  
+                                  if($darray[$y] != $darray[$y-1]){  
                                  
                                      $z = 0;  } else {
                                         $z = $z+1;
