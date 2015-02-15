@@ -13,7 +13,7 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 
 $depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT");
 
-$parray = [];
+$parray = array();
 
 $i = 0;
 
