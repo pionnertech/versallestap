@@ -54,8 +54,9 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
                           $y = 0;
 
                           while ($fila1 = mysqli_fetch_row($data_per)){ ?>
-                                   <option value="<? printf($i) ?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
-                          <? $y = $y + 1; } ?>
+                                   <option value="<? printf($y) ?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
+                          <? $y = $y + 1 }
+                           ?>
                              	</select>
                              </div>
 </body>
