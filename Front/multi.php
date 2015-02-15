@@ -97,7 +97,7 @@ $("#selection, #personal").on("change" , function (){
 var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text;
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
-var ind1 = $("#selection").val();
+var ind1 = $("#selection").val() - 1;
 var mode = 0;
 
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
@@ -136,9 +136,12 @@ var matriz =[];
    Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
   for (i=0; i < per_conta.length ; i++){
+     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" ));
+     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" ));
+     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" ));
 
-    matriz[i] =  Mtx_data[i];
-  }
+    matriz[i] = {label : val1 , data : val2 , color: val3 }
+  } 
 
 var matrix = matriz;
 
