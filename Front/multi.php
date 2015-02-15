@@ -110,6 +110,7 @@ updateChart(depto_eval, name, ind1, ind2, mode);
 
 function updateChart(depto, name, index_d, index_p, mode){
 
+console.info(depto + " / " + name + " / " + index_p + " / " + mode);
 
 $.ajax({ type: "POST", 
 	    url: "../backend/JSON.php?facility=" + fac, 
@@ -119,9 +120,13 @@ $.ajax({ type: "POST",
 var database = JSON.parse(datab);
 var newData_eval = jlinq.from(database.data).select();
 
+
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
+
+
+console.info("valor de per_conta : " + per_conta.length);
 
 // clean up the plot chart
 $("#placeholder2").empty();
