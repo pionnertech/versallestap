@@ -140,13 +140,10 @@ var matriz =[];
      var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" );
      var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
      console.info(val1 + "/" + val2 + "/" + val3);
-    matriz[i] = { label : "\"" + val1 + "\"" , data : val2 , color: "\"" + val3 + "\"" }
+     matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
     console.info(matriz[i]);
   } 
 
-var matrix = matriz;
-
-console.info(matrix);
 //recreate
 $.plot($("#placeholder2"), matriz, {
            series: {
