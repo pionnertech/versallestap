@@ -9,6 +9,25 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2 FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
 
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT;");
+
+//personal
+ $data_per = mysqli_query($datos, "SELECT DISTINCT B.USR_NAME , B.USR_DEPT FROM USERS B RIGHT JOIN SUBTASKS A ON(B.STSK_CHARGE_USR = A.USR_ID) WHERE STSK_FAC_CODE = 10000 ORDER BY USR_DEPT");
+
+$depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT");
+
+$parray = array();
+$darray = array();
+$i = 0;
+
+while($extra = mysqli_fetch_row($depts)){
+    $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
+        while( $sub = mysqli_fetch_row($handup)){
+               $parray[$i] = $sub[0];
+               $darray[$i] = $extra[0];
+               $i = $i + 1;
+        }
+}
 
 ?>
 
@@ -134,6 +153,61 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                         <!--/.content-->
                     </div>
                     <!--/.span9-->
+
+                    <div class="span9">
+                        <div class="content">
+                            <div class="module">
+                                <div class="module-head">
+                                    <h3>Gráfico Dinamico</h3>
+                                </div>
+                                <div class="module-body">
+                                    <div class="chart inline-legend grid" style="width: 100%; height: 100%">
+                                         <div id="dynamics" style="height: 350px; width:350px;"></div>
+                                    </div>
+                                    <div id="data-contents">
+                                        <select id="selection">
+                                        <?  $i = 1;
+                                               while($fila1 = mysqli_fetch_row($query_count_departament)) {
+                                        ?>
+                                    <option value="<? printf($i) ?>"><? printf(str_replace(" ", "_", $fila1[0]))?></option>
+
+                                        <? $i = $i + 1; } ?>
+
+                                        </select>
+                                        <select id="personal">
+                                        <option value="0">GENERAL</option>
+                                        <?  
+                                            $z= 0;
+                       
+                                            for($y=0; $y < count($parray); $y++){ 
+
+                                                    if(($y-1) < 0){
+
+                                                        $z = 0;
+
+                                                    } else {
+
+                                                        if($darray[$y] != $darray[$y-1]){  
+                                 
+                                                             $z = 0;  
+
+                                                        } else {
+
+                                                            $z = $z+1;
+                                                        }                                          
+                                                    }
+                                        ?>
+                                        <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                       <?
+                                            }
+
+                                        ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
                 </div>
             </div>
             <!--/.container-->
@@ -159,9 +233,12 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script type="text/javascript">
 
+var fac = <? printf($_SESSION['TxtFacility']) ?>;
+var datas;
+var perplot;
+var matrix;
+
 $(document).on('ready', function(){
-
-
 
 array_set = [
 <?
@@ -270,7 +347,80 @@ $("#placeholder2").bind("plotclick", pieClick);
             alert('' + obj.series.label + ': ' + percent + '%');
         }
 
+$("#selection, #personal").on("change" , function (){
 
+var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text;
+var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
+var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
+var ind1 = $("#selection").val() - 1;
+var mode = 0;
+// ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
+updateChart(depto_eval, name, ind1, ind2, mode);
+
+})
+
+// create data.
+
+function updateChart(depto, name, index_d, index_p, mode){
+
+console.info(depto + " / " + name + " / " + index_d + " / "+ index_p + " / " + mode);
+
+$.ajax({ type: "POST", 
+        url: "../backend/JSON.php?facility=" + fac, 
+        success: function(datab){
+
+//set Jlinq and parse database
+var database = JSON.parse(datab);
+var newData_eval = jlinq.from(database.data).select();
+
+
+//make contador
+var conta = eval('newData_eval[' + index_d + '].' + depto );
+var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
+
+console.log('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name);
+
+console.info("valor de per_conta : " + per_conta.length);
+
+// clean up the plot chart
+$("#dynamics").html('');
+
+var matriz =new Array();
+
+   Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
+
+  for (i=0; i < per_conta.length ; i++){
+     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].label" );
+     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].data" );
+     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].color" );
+
+     console.info(val1 + "/" + val2 + "/" + val3);
+     matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
+     console.info(matriz[i]);
+  } 
+
+//recreate
+$.plot($("#dynamics"), matriz, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+            
+        hoverable: true,
+        clickable: true
+    }
+});
+
+        }
+    })
+
+}
 
 
 </script>
