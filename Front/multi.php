@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT;");
 
 //personal
- $data_per = mysqli_query($datos, "SELECT A.USR_NAME FROM USERS A  INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT; ");
+ $data_per = mysqli_query($datos, "SELECT DISTINCT A.USR_NAME FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID) WHERE STSK_FAC_CODE = 10000 ORDER BY USR_DEPT");
 
 
 ?>
