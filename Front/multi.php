@@ -125,6 +125,7 @@ var newData_eval = jlinq.from(database.data).select();
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
+console.log('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name);
 
 console.info("valor de per_conta : " + per_conta.length);
 
@@ -141,7 +142,7 @@ var matriz =[];
      var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
      console.info(val1 + "/" + val2 + "/" + val3);
      matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
-    console.info(matriz[i]);
+     console.info(matriz[i]);
   } 
 
 //recreate
