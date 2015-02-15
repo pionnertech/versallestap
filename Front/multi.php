@@ -9,8 +9,22 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT;");
 
 //personal
- $data_per = mysqli_query($datos, "SELECT DISTINCT A.USR_NAME FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID) WHERE STSK_FAC_CODE = 10000 ORDER BY USR_DEPT");
+ $data_per = mysqli_query($datos, "SELECT DISTINCT B.USR_NAME , B.USR_DEPT FROM USERS B RIGHT JOIN SUBTASKS A ON(B.STSK_CHARGE_USR = A.USR_ID) WHERE STSK_FAC_CODE = 10000 ORDER BY USR_DEPT");
 
+$depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A  JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT")
+
+$personel_array = array(array());
+
+$i = 0;
+
+while($extra = mysqli_fetch_row($depto_eval)){
+    $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = " . $extra[0] );
+        while( $sub = mysqli_fetch_row($handup)){
+               $personel_array[$i][0] = $handup[$i];
+               $personel_array[$i][1] = $extra[0];
+               $i = $i + 1;
+        }
+}
 
 ?>
 
@@ -51,11 +65,23 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
                              	</select>
                              	<select id="personal">
                           <?  
-                          $y = 0;
+                          $z= 0;
+                          $ancient = "";
+                          for($y=0; $y < count($personel_array); $y++){ 
 
-                          while ($fila1 = mysqli_fetch_row($data_per)){ ?>
-                                   <option value="<? printf($y) ?>"><? printf(str_replace(" ", "_", $fila1[0]))?></option>
-                          <? $y = $y + 1; } ?>
+                            ?>
+
+                            <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $personel_array[$y][0]))?></option>
+
+                            <?
+                                  if($personel_array[$y][1] != $personel_array[$y-1][1]){  
+                                 
+                                     $z = 0;  } else {
+                                        $z = $z+1;
+                                     }                                          
+                                 }
+
+                           ?>
                              	</select>
                              </div>
 </body>
