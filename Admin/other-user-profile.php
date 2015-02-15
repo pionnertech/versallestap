@@ -230,14 +230,8 @@ content: "Arrastre aqui sus archivos";
 
 .spac{
     margin-right:.8em;
-    background: #1e5799; /* Old browsers */
-background: -moz-linear-gradient(top,  #1e5799 0%, #7db9e8 6%, #7db9e8 31%, #2989d8 83%, #2989d8 83%, #207cca 95%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(6%,#7db9e8), color-stop(31%,#7db9e8), color-stop(83%,#2989d8), color-stop(83%,#2989d8), color-stop(95%,#207cca)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #1e5799 0%,#7db9e8 6%,#7db9e8 31%,#2989d8 83%,#2989d8 83%,#207cca 95%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #1e5799 0%,#7db9e8 6%,#7db9e8 31%,#2989d8 83%,#2989d8 83%,#207cca 95%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #1e5799 0%,#7db9e8 6%,#7db9e8 31%,#2989d8 83%,#2989d8 83%,#207cca 95%); /* IE10+ */
-background: linear-gradient(to bottom,  #1e5799 0%,#7db9e8 6%,#7db9e8 31%,#2989d8 83%,#2989d8 83%,#207cca 95%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
+    color: #1e5799; /* Old browsers */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
 
 }
 
