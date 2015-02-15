@@ -204,7 +204,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         }                                          
                                                     }
                                         ?>
-                                        <option value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                        <option class="<? printf($darray[$y]) ?>" value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
@@ -360,6 +360,9 @@ $("#selection, #personal").on("change" , function (){
 
 var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text;
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
+$("#personal option").css({ display: "none" });
+$("#personal option." + depto_eval).css({ display: "block" });
+
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
 var ind1 = $("#selection").val() - 1;
 var mode = 0;
