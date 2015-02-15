@@ -499,7 +499,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                               case 'En Curso':
                                                $class = "Ec";
                                               break;
-                                              case 'Hecha':
+                                              case 'Finalizada':
                                                $class = "Hc";
                                               break;
                                               case 'Atrasada':
@@ -547,7 +547,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                           $file_extension = "";
 
                                            while (false !== ($archivos = readdir($handler))){
-                                            echo "<script>console.info('" . $archivos . "' + '" . $stsk[1] . "');</script>";
+                                            
                                          if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
                                              
                                              $extension = substr($archivos, -3);
@@ -846,7 +846,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
             if(val == 100){
 
-               $("tr").eq(index).children().eq(2).children().html("HECHA");
+               $("tr").eq(index).children().eq(2).children().html("FINALIZADA");
                $("tr").eq(index).children().eq(2).children().css({backgroundColor : "#1CC131"});
 
                     switch(true){

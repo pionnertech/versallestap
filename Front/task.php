@@ -260,7 +260,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                               case 'En Curso':
                                                $class = "Ec";
                                               break;
-                                              case 'Hecha':
+                                              case 'Finalizada':
                                                $class = "Hc";
                                               break;
                                               case 'Atrasada':
@@ -536,7 +536,6 @@ function reverseDate(string){
 
 
 function switchTempToAsigned(iss_id, usr_id){
-
 $.ajax({
 	type: "POST",
 	url: "../backend/move.php?iss_id=" + iss_id + "&usr_id=" + usr_id + "&fac=" + fac,
@@ -544,29 +543,20 @@ $.ajax({
 		console.info(data);
 	}
 })
-
-
 }
 
-
 function checker(object){
-
-console.info(object.parent().children('.datetimepicker').val())
-console.info(object.parent().children('.description').val());
-
     if(object.parent().children('.datetimepicker').val() == ""){
     	bootbox.alert("igresar fecha de termino");
     	return true;
     }
-
     if(object.parent().children('.description').val() == ""){
     	bootbox.alert("Ingresar descripcion requerimiento")
           return true;
-    	
     }
-
-    return false;
+        return false;
 }
+
 
 </script>
 <?

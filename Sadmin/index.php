@@ -208,7 +208,7 @@ vertical-align: top;
                                      <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                      <? while($des_graph = mysqli_fetch_row($graph)) { 
                                            switch ($des_graph[1]) {
-                                               case 'Hecha':
+                                               case 'Finalizada':
                                                    $class = "bar-success";
                                                    break;
                                                case 'Pendiente':

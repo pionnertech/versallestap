@@ -654,7 +654,7 @@ content: "Arrastre aqui sus archivos";
 
                                               break;
 
-                                              case 'Hecha':
+                                              case 'Finalizada':
                                                $class = "Hc";
                                               break;
 
