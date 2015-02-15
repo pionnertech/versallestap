@@ -11,6 +11,7 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 //personal
  $data_per = mysqli_query($datos, "SELECT USR_ID,  USR_NAME FROM USERS");
 
+
 ?>
 
 
@@ -40,8 +41,13 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
                              </div>
                              <div>
                              	<select id="selection">
-                             		<option value="0">ADMINISTRACION_Y_FINANZAS</option>
-                             		<option value="1">CONTROL_Y_GESTION_VIVIENDA</option>
+                                <option value="0">GENERAL</option>
+     <?  $i = 1;
+     while($fila1 = mysqli_fetch_row($query_count_departament)) 
+        { ?>
+                             		<option value="<? printf($i)  ?>"><? printf(str_replace(" ", "_", $fila1[0]))?></option>
+
+                                    <? } ?>
                              	</select>
                              	<select id="personal">
                           <? while ($fila1 = mysqli_fetch_row($data_per)){ ?>
@@ -144,6 +150,7 @@ $.plot($("#placeholder2"), matriz, {
             show: false         
         },
         grid: {
+            
         hoverable: true,
         clickable: true
     }
@@ -153,10 +160,6 @@ $.plot($("#placeholder2"), matriz, {
 	})
 
 }
-
-
-
-
 
 
 </script>
