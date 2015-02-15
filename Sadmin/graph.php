@@ -48,7 +48,15 @@ while($extra = mysqli_fetch_row($depts)){
             width:33.33%;
             display: inline-block;
             vertical-align: top;
-        }</style>
+        }
+        .data-contents{
+            display: inline-block;
+            vertical-align: top;
+            width: auto;
+
+        }
+
+        </style>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -151,17 +159,18 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                     </div>
                     <!--/.span9-->
 
-                    <div class="span9">
+                    <div class="span9" style="float: right;">
                         <div class="content">
                             <div class="module">
                                 <div class="module-head">
                                     <h3>Gráfico Dinamico</h3>
                                 </div>
                                 <div class="module-body">
-                                    <div class="chart inline-legend grid" style="width: 100%; height: 100%">
+                                    <div class="chart inline-legend grid" style="width: 350px; height: 350px; display: inline-block;">
                                          <div id="dynamics" style="height: 350px; width:350px;"></div>
                                     </div>
                                     <div id="data-contents">
+                                    <p><i class="fa fa-building"></i>Departamento</p>
                                         <select id="selection">
                                         <?  $i = 1;
                                                while($fil22 = mysqli_fetch_row($qcd)) {
@@ -194,7 +203,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         }                                          
                                                     }
                                         ?>
-                                        <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                        <option value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
