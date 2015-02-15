@@ -66,19 +66,24 @@ while($extra = mysqli_fetch_row($depts)){
                              	<select id="personal">
                           <?  
                           $z= 0;
-                          $ancient = $darray[0];
+                       
                           for($y=0; $y < count($parray); $y++){ 
 
-                            ?>
-                            <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                             if(($y-1) < 0){
 
-                            <?
+                                $z = 0;
+                            } else {
                                   if($darray[$y] != $darray[$y-1]){  
                                  
                                      $z = 0;  } else {
                                         $z = $z+1;
                                      }                                          
                                  }
+                            ?>
+                            <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+
+                            <?
+                              }
 
                            ?>
                              	</select>
