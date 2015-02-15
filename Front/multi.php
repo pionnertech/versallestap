@@ -20,7 +20,7 @@ $i = 0;
 while($extra = mysqli_fetch_row($depts)){
     $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
         while( $sub = mysqli_fetch_row($handup)){
-               $parray[$i] = $handup[$i];
+               $parray[$i] = $sub[$i];
                $i = $i + 1;
         }
 }
