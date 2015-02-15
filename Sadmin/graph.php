@@ -228,6 +228,8 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <script src="../scripts/flot/jquery.flot.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
 
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
