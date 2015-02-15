@@ -130,9 +130,9 @@ console.log('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name)
 console.info("valor de per_conta : " + per_conta.length);
 
 // clean up the plot chart
-$("#placeholder2").empty();
+$("#placeholder2").html('');
 
-var matriz =[];
+var matriz =new Array();
 
    Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
