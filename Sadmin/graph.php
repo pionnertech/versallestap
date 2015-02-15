@@ -204,7 +204,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         }                                          
                                                     }
                                         ?>
-                                        <option class="<? printf($darray[$y]) ?>" value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                        <option class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
