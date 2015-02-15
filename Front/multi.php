@@ -13,15 +13,15 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
 
 $depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A  JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = 10000 GROUP BY USR_DEPT")
 
-$personel_array = [];
+$parray = [];
 
 $i = 0;
 
 while($extra = mysqli_fetch_row($depto_eval)){
     $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = " . $extra[0] );
         while( $sub = mysqli_fetch_row($handup)){
-               $personel_array[$i][0] = $handup[$i];
-               $personel_array[$i][1] = $extra[0];
+               $parray[$i][0] = $handup[$i];
+               $parray[$i][1] = $extra[0];
                $i = $i + 1;
         }
 }
@@ -67,14 +67,14 @@ while($extra = mysqli_fetch_row($depto_eval)){
                           <?  
                           $z= 0;
                           $ancient = "";
-                          for($y=0; $y < count($personel_array); $y++){ 
+                          for($y=0; $y < count($parray); $y++){ 
 
                             ?>
 
-                            <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $personel_array[$y][0]))?></option>
+                            <option value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y][0]))?></option>
 
                             <?
-                                  if($personel_array[$y][1] != $personel_array[$y-1][1]){  
+                                  if($parray[$y][1] != $parray[$y-1][1]){  
                                  
                                      $z = 0;  } else {
                                         $z = $z+1;
