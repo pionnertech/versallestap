@@ -45,14 +45,17 @@ $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM
      <?  $i = 1;
      while($fila1 = mysqli_fetch_row($query_count_departament)) 
         { ?>
-                             		<option value="<? printf($i)  ?>"><? printf(str_replace(" ", "_", $fila1[0]))?></option>
+                             		<option value="<? printf($i) ?>"><? printf(str_replace(" ", "_", $fila1[0]))?></option>
 
-                                    <? } ?>
+                                    <? $i = $i + 1; } ?>
                              	</select>
                              	<select id="personal">
-                          <? while ($fila1 = mysqli_fetch_row($data_per)){ ?>
-                                   <option value="<? printf($fila1[0]) ?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
-                          <? } ?>
+                          <?  
+                          $y = 0;
+
+                          while ($fila1 = mysqli_fetch_row($data_per)){ ?>
+                                   <option value="<? printf($i) ?>"><? printf(str_replace(" ", "_", $fila1[1]))?></option>
+                          <? $y = $y + 1; } ?>
                              	</select>
                              </div>
 </body>
@@ -140,6 +143,7 @@ var matriz =new Array();
      var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" );
      var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" );
      var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
+
      console.info(val1 + "/" + val2 + "/" + val3);
      matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
      console.info(matriz[i]);
