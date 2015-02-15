@@ -136,9 +136,9 @@ var matriz =[];
    Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
   for (i=0; i < per_conta.length ; i++){
-     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" ));
-     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" ));
-     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" ));
+     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" );
+     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" );
+     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
 
     matriz[i] = {label : val1 , data : val2 , color: val3 }
   } 
