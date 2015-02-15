@@ -113,7 +113,7 @@ updateChart(depto_eval, name, ind1, ind2, mode);
 
 function updateChart(depto, name, index_d, index_p, mode){
 
-console.info(depto + " / " + name + " / " + index_p + " / " + mode);
+console.info(depto + " / " + name + " / " + index_d + " / "+ index_p + " / " + mode);
 
 $.ajax({ type: "POST", 
 	    url: "../backend/JSON.php?facility=" + fac, 
@@ -126,9 +126,9 @@ var newData_eval = jlinq.from(database.data).select();
 
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
-var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
+var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
 
-console.log('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name);
+console.log('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name);
 
 console.info("valor de per_conta : " + per_conta.length);
 
@@ -140,9 +140,9 @@ var matriz =new Array();
    Mtx_data = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name );
 
   for (i=0; i < per_conta.length ; i++){
-     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" );
-     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" );
-     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
+     var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].label" );
+     var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].data" );
+     var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].color" );
 
      console.info(val1 + "/" + val2 + "/" + val3);
      matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
