@@ -1022,7 +1022,7 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input#st').val();
 var iss_ident = $(this).parent().parent().children('input#iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = parseInt($(this).index() + 1);
+var index_current = parseInt($(this).index());
 
 
 $("#audititle").html("\"" + subject + "\"");
@@ -1096,7 +1096,6 @@ console.info();
                 var target =  $("#current-task").val();
                 console.info(target);
                 var current_collaborates =  $(".collaborates").eq(target).html("Delegado a : [" + data + "]");
-
                 console.info(data);
                     $("#upload ul").empty();
     
@@ -1157,9 +1156,6 @@ $(".cell-icon").on('click', function(){
 
 
 $(".golang").on('click', function(){
-
-
-
     if($(this).data("val") === undefined){
      
         $(this).data("val", 1);
