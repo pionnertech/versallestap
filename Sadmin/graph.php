@@ -49,7 +49,7 @@ while($extra = mysqli_fetch_row($depts)){
             display: inline-block;
             vertical-align: top;
         }
-        .data-contents{
+        #data-contents{
             display: inline-block;
             vertical-align: top;
             width: auto;
@@ -166,7 +166,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                     <h3>Gráfico Dinamico</h3>
                                 </div>
                                 <div class="module-body">
-                                    <div class="chart inline-legend grid" style="width: 350px; height: 350px; display: inline-block;">
+                                    <div  style="width: 350px; height: 350px; display: inline-block;">
                                          <div id="dynamics" style="height: 350px; width:350px;"></div>
                                     </div>
                                     <div id="data-contents">
