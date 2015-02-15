@@ -139,8 +139,9 @@ var matriz =[];
      var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].label" );
      var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].data" );
      var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + mode + "]." + name + "[" + i + "].color" );
-
-    matriz[i] = {label : val1 , data : val2 , color: val3 }
+     console.info(val1 + "/" + val2 + "/" + val3);
+    matriz[i] = { label : "\"" + val1 + "\"" , data : val2 , color: "\"" + val3 + "\"" }
+    console.info(matriz[i]);
   } 
 
 var matrix = matriz;
