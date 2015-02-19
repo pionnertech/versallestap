@@ -193,7 +193,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
                                                     } else {
 
-                                                        if($darray[$y] != $darray[$y-1]){  
+                                                        if($darray[$y] != $darray[$y-1] || count($darray) == $y){  
                                  
                                  ?>
                                     <option class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
