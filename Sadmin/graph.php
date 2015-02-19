@@ -214,8 +214,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                         ?>
                                         
                                         </select>
-                                    </div>
-                                  <div class="wrap-progress" >
+                                                                          <div class="wrap-progress" >
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                             <li>
                                                 <p>
@@ -258,6 +257,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                 </div>
                                             </li>
                                          </ul>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
