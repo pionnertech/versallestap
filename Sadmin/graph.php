@@ -182,7 +182,6 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
                                         </select>
                                         <select id="personal">
-                                        <option id="general" value="0">GENERAL</option>
                                         <?  
                                             $z = 0;
                        
@@ -196,6 +195,9 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
                                                         if($darray[$y] != $darray[$y-1]){  
                                  
+                                 ?>
+                                    <option class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z) ?>">General</option>
+                                 <?
                                                              $z = 0;  
 
                                                         } else {
@@ -204,7 +206,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         }                                          
                                                     }
                                         ?>
-                                        <option class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><i class="fa fa-user" style="margin-right:.5em; color: gray"></i><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                        <option class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
