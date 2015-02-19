@@ -18,7 +18,7 @@ $graph = mysqli_query($datos, $graph_query);
 
 
 while ( $fila = mysqli_fetch_row($graph)){
-     echo $fila[0] . "/" . $fila[1] . "/" . $fila[2];
+     echo $fila[0] . "/" . $fila[1] . "/" . $fila[2] . "/" . $fila[3];
 }
 
 ?>
