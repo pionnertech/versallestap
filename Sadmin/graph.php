@@ -181,6 +181,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                         <? $i = $i + 1; } ?>
 
                                         </select>
+                                        <p><i class="fa fa-user"></i>Usuario</p>
                                         <select id="personal">
                                         <?  
                                             $z = 0;
@@ -213,6 +214,50 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                         ?>
                                         
                                         </select>
+                                    </div>
+                                  <div class="wrap-progress" >
+                                         <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias Pendientes</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar bar-warning" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias En Curso</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar bar-warning" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias Atrasadas</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar bar-danger" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias Finalizadas</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar bar-success" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                         </ul>
                                     </div>
                                 </div>
                             </div>
