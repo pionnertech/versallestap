@@ -182,7 +182,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
                                         </select>
                                         <select id="personal">
-                                        <option value="0">GENERAL</option>
+                                        <option id="general" value="0">GENERAL</option>
                                         <?  
                                             $z = 0;
                        
@@ -362,6 +362,7 @@ var depto_eval = document.querySelector("#selection").options[document.querySele
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
 $("#personal option").css({ display: "none" });
 $("#personal option." + depto_eval).css({ display: "block" });
+$("#personal option#general").css({ display: "block" });
 
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
 var ind1 = $("#selection").val() - 1;
@@ -369,7 +370,7 @@ var mode = 0;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 updateChart(depto_eval, name, ind1, ind2, mode);
 
-})
+});
 
 // create data.
 
