@@ -175,7 +175,9 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                          <div id="dynamics" style="height: 350px; width:350px;"></div>
                                     </div>
                                     <div id="data-contents">
-                                    <p><i class="fa fa-building"></i>Departamento</p>
+                                    <p><i class="fa fa-building"></i><span style="margin-right: 27%">Departamento</span>
+                                    <i class="fa fa-user"></i><span style="margin-right: 27%">Usuario</span>
+                                    </p>
                                         <select id="selection">
                                         <?  $i = 1;
                                                while($fil22 = mysqli_fetch_row($qcd)) {
@@ -221,7 +223,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Pendientes</strong><span class="pull-right small muted"></span>
+                                                    <strong>Audiencias Pendientes</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-warning" style="width:;"></div>
@@ -229,7 +231,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias En Curso</strong><span class="pull-right small muted"></span>
+                                                    <strong>Audiencias En Curso</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar" style="width:;"></div>
@@ -237,7 +239,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Atrasadas</strong><span class="pull-right small muted"></span>
+                                                    <strong>Audiencias Atrasadas</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-danger" style="width:;"></div>
@@ -245,7 +247,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted"></span>
+                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-warning" style="width:;"></div>
@@ -253,7 +255,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Finalizadas</strong><span class="pull-right small muted"></span>
+                                                    <strong>Audiencias Finalizadas</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-success" style="width:;"></div>
