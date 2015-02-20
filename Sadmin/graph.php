@@ -26,6 +26,7 @@ while($extra = mysqli_fetch_row($depts)){
         }
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -181,7 +182,6 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                         <? $i = $i + 1; } ?>
 
                                         </select>
-                                        <p><i class="fa fa-user"></i>Usuario</p>
                                         <select id="personal">
                                         <?  
                                             $z = 0;
@@ -296,6 +296,8 @@ var perplot;
 var matrix;
 
 $(document).on('ready', function(){
+
+updateChart();
 
 array_set = [
 <?
@@ -416,24 +418,31 @@ var ind2 = document.querySelector("#personal").options[document.querySelectorAll
 var ind1 = $("#selection").val() - 1;
 var mode = 0;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
-updateChart(depto_eval, name, ind1, ind2, mode);
+setDataByJSON(depto_eval, name, ind1, ind2, mode);
 
 });
 
 // create data.
 
-function updateChart(depto, name, index_d, index_p, mode){
-
-console.info(depto + " / " + name + " / " + index_d + " / "+ index_p + " / " + mode);
+function updateChart(){
 
 $.ajax({ type: "POST", 
         url: "../backend/JSON.php?facility=" + fac, 
         success: function(datab){
 
-//set Jlinq and parse database
-var database = JSON.parse(datab);
-var newData_eval = jlinq.from(database.data).select();
+              datab = datas;
 
+                }
+       })
+
+}
+
+
+
+function setDataByJSON(depto, name, index_d, index_p, mode){
+
+var database = JSON.parse(datas);
+var newData_eval = jlinq.from(database.data).select();
 
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
@@ -477,12 +486,7 @@ $.plot($("#dynamics"), matriz, {
         clickable: true
     }
 });
-
-        }
-    })
-
 }
-
 
 </script>
     </body>
