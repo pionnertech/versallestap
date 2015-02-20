@@ -15,13 +15,16 @@ $depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER 
 
 $parray = array();
 $darray = array();
+$iarray = array();
+
 $i = 0;
 
 while($extra = mysqli_fetch_row($depts)){
-    $handup = mysqli_query($datos, "SELECT USR_NAME FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
+    $handup = mysqli_query($datos, "SELECT USR_NAME, USR_ID FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
         while( $sub = mysqli_fetch_row($handup)){
                $parray[$i] = $sub[0];
                $darray[$i] = $extra[0];
+               $iarray[$i] = $sub[1];
                $i = $i + 1;
         }
 }
@@ -197,7 +200,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         if($darray[$y] != $darray[$y-1] || count($darray) == $y){  
                                  
                                  ?>
-                                    <option class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
+                                    <option id="general" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
@@ -207,14 +210,14 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                                         }                                          
                                                     }
                                         ?>
-                                        <option class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
                                         ?>
                                         
                                         </select>
-                                                                          <div class="wrap-progress" >
+                                    <div class="wrap-progress" >
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                             <li>
                                                 <p>
@@ -234,18 +237,18 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted"></span>
-                                                </p>
-                                                <div class="progress tight">
-                                                    <div class="bar bar-warning" style="width:;"></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <p>
                                                     <strong>Audiencias Atrasadas</strong><span class="pull-right small muted"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-danger" style="width:;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <p>
+                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted"></span>
+                                                </p>
+                                                <div class="progress tight">
+                                                    <div class="bar bar-warning" style="width:;"></div>
                                                 </div>
                                             </li>
                                             <li>
@@ -417,8 +420,9 @@ $("#personal option#general").css({ display: "block" });
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
 var ind1 = $("#selection").val() - 1;
 var mode = 0;
+var usrId = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].id;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
-setDataByJSON(depto_eval, name, ind1, ind2, mode);
+setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
 
 });
 
@@ -437,7 +441,7 @@ $.ajax({ type: "POST",
 
 
 
-function setDataByJSON(depto, name, index_d, index_p, mode){
+function setDataByJSON(depto, name, index_d, index_p, mode, usrId){
 
 var database = JSON.parse(datas);
 var newData_eval = jlinq.from(database.data).select();
@@ -445,10 +449,6 @@ var newData_eval = jlinq.from(database.data).select();
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
-
-console.log('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name);
-
-console.info("valor de per_conta : " + per_conta.length);
 
 // clean up the plot chart
 $("#dynamics").html('');
@@ -461,10 +461,9 @@ var matriz =new Array();
      var val1 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].label" );
      var val2 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].data" );
      var val3 = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name + "[" + i + "].color" );
-
-     console.info(val1 + "/" + val2 + "/" + val3);
+    
      matriz[i] = { label : val1 , data : parseInt(val2) , color:  val3 }
-     console.info(matriz[i]);
+   
   } 
 
 //recreate
@@ -484,6 +483,36 @@ $.plot($("#dynamics"), matriz, {
         clickable: true
     }
 });
+
+getValueToBars(usrId);
+}
+
+function getValueToBars(usr_id){
+    $.ajax({
+        type:"POST",
+        url: "../backend/graphVar.php?user_id=" + usr_id,
+        success : function (data){
+              injectBarVars(data);
+        }
+
+    })
+
+}
+
+
+function injectBarVars(idata){
+
+  var narray = idata.split("/");
+  var listA = [0,2,4,6,8];
+  var listB = [1,3,5,7,9];
+
+  for (i=0; i < 5 ; i++){
+   
+    document.querySelectorAll(".wrap-progress li p span")[i].innerHTML = narray[listA[i]];
+    document.querySelectorAll(".wrap-progress li div.bar")[i].style.width = narray[listB[i]] + "%";
+   
+  }
+
 }
 
 </script>
