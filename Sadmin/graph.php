@@ -429,11 +429,9 @@ function updateChart(){
 $.ajax({ type: "POST", 
         url: "../backend/JSON.php?facility=" + fac, 
         success: function(datab){
-
-              datab = datas;
-
+               datas = datab;
                 }
-       })
+       });
 
 }
 
