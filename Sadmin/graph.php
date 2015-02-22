@@ -68,7 +68,7 @@ while($extra = mysqli_fetch_row($depts)){
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Edmin </a>
+                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Eque-e</a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
                         <ul class="nav nav-icons">
                             <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
@@ -107,50 +107,15 @@ while($extra = mysqli_fetch_row($depts)){
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard
-                                </a></li>
-                                <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>News Feed </a>
-                                </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
+                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Página principal<b class="label green pull-right">
                                     11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
+                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i><b class="label orange pull-right">
                                     19</b> </a></li>
                             </ul>
                         </div>
                         <!--/.sidebar-->
                     </div>
                     <!--/.span3-->
-                    <div class="span9">
-                        <div class="content">
-                           
-                        <div class="module">
-                                <div class="module-head">
-                                    <h3>
-                                       Gráfico General</h3>
-                                </div>
-                                <div class="module-body">
-                                    <div class="chart inline-legend grid" style="width: 100%;">
-                                        <div id="placeholder2" style="height: 250px"></div>
-                                    </div>
-<?
-$i = 0;
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-while($f1 = mysqli_fetch_row($query_count_departament)){
-?>
-                                   <div class="chart inline-legend grid linerchart" align="center" >
-                                        <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
-                                        <strong><? printf($f1[0]) ?></strong>
-                                    </div>
- <? 
-    $i = $i + 1;
-
- } ?>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!--/.content-->
-                    </div>
                     <!--/.span9-->
 
                     <div class="span9" style="float: right;">
@@ -264,7 +229,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
         <!--/.wrapper-->
         <div class="footer">
             <div class="container">
-                <b class="copyright">&copy; 2015 Eque-e </b>All rights reserved.
+                <b class="copyright">&copy; 2015 Eque-e </b>Todos los derechos reservados.
             </div>
         </div>
         <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -293,100 +258,8 @@ $(document).on('ready', function(){
 
 updateChart();
 
-array_set = [
-<?
 
-$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
-
-while ( $fila2 = mysqli_fetch_row($pass)) {
-
-?>
-{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
-<? } ?>
-{ label: "n/n",  data: 0, color: "#FFF"}
-];
-
-    $.plot($("#placeholder2"), array_set, {
-           series: {
-            pie: {
-                innerRadius: 0.5,
-                show: true
-            }
-         },
-         legend: {
-            show: false         
-        },
-        grid: {
-        hoverable: true,
-        clickable: true
-    }
-});
-
-
-
-//graficos secundarios por depart
-<?
-$array_dept = [];
-$i = 0;
-
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-
-while($f1 = mysqli_fetch_row($query_count_departament)){
-$array_dept[$i] = $f1[0];
-$i = $i + 1;
-}
-
-$cant_dept = count($array_dept);
-
-?>
-
-<?
-$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
-$x = 0;
-while($filax = mysqli_fetch_row($query_dept_global)){
-?>
-var array_set_<? printf(str_ireplace(" ", "_" , $filax[1])) ?> = [];
-array_set_<?  printf(str_ireplace(" ", "_" , $filax[1])) ?> = [
-<?
-$handler = "";
-$handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
-
-while($subt = mysqli_fetch_row($handler)){
-?>
-{ label: "<? printf(  $subt[2] ) ?>",  data: <? printf( $subt[0] ) ?> , color:"<? printf( $subt[3] ) ?>"},
-<? } ?>
-{ label: "n/n",  data: 0, color: "#FFF"}
-];
-
-    $.plot($("#chart<? printf($x) ?>") , array_set_<? printf(str_replace(" ", "_" , $filax[1])) ?>, {
-           series: {
-            pie: {
-                innerRadius: 0.5,
-                show: true
-            }
-         },
-         legend: {
-            show: false         
-        },
-        grid: {
-        hoverable: true,
-        clickable: true
-    }
-});
-
-<? 
-  $x = $x + 1;
-}
-
- ?>
-
-});
-
-
-$("#placeholder2").bind("plothover", pieHover);
-$("#placeholder2").bind("plotclick", pieClick);
-
-             function pieHover(event, pos, obj) {
+         function pieHover(event, pos, obj) {
             if (!obj)
                 return;
             percent = parseFloat(obj.series.percent).toFixed(2);
@@ -399,6 +272,8 @@ $("#placeholder2").bind("plotclick", pieClick);
             percent = parseFloat(obj.series.percent).toFixed(2);
             alert('' + obj.series.label + ': ' + percent + '%');
         }
+});
+
 
 $("#selection, #personal").on("change" , function (){
 
