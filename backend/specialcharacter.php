@@ -87,9 +87,9 @@ while($extra = mysqli_fetch_row($depts)){
                         <!--/.sidebar-->
                     </div>
                     <!--/.span3-->
-                    <div class="span9">
+                    <div style="width: 100%;">
                         <div class="content">
-                           
+                      
                         <div class="module">
                                 <div class="module-head">
                                     <h3>
