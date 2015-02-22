@@ -20,7 +20,6 @@ $query = "SELECT A.ISS_SUBJECT, " .
 "INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ ) " .
 "WHERE (ISS_FAC_CODE = " . $fac . " AND ISS_ID = " . $iss_id . ")";
 
-
 $handler = mysqli_query($datos, $query);
 
 $outcome = "";
@@ -33,14 +32,6 @@ while ($fila = mysqli_fetch_row($handler)) {
    
 }
 
-/*
-$per_query = "SELECT USR_DEPT FROM USERS WHERE USR_ID = " . $chusr ; 
-
-    $dept = mysqli_fetch_assoc(mysqli_query($datos,$per_query ));
-    
-    $users =  mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE(USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user' ) ");
-*/
-  
 if($hdir = opendir("/var/www/html/" . $fac . "/reply/")){
 
      while (false !== ($files = readdir($hdir))){
@@ -52,7 +43,6 @@ if($hdir = opendir("/var/www/html/" . $fac . "/reply/")){
      }
 
 }
-
 
 echo $outcome;
 
