@@ -914,7 +914,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     <!--/.wrapper-->
     <div class="footer">
         <div class="container">
-            <b class="copyright">&copy; 2015 Eque-E </b>Todos los derechos reservados.
+            <b class="copyright">&copy; 2015 Eque-e </b>Todos los derechos reservados.
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
@@ -1077,7 +1077,7 @@ $("#del-subtask").on('click', function(){
     //check type.
 
 var _fS = new Date();
-var fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
+var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
 console.info();
     $.ajax({
@@ -1092,7 +1092,6 @@ console.info();
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
-
            bootbox.alert("Requerimiento delegado existosamente");
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
