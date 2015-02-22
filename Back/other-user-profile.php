@@ -438,7 +438,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn">Pendientes</button>
+                                        <button class="btn" id="titlen">Pendientes</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
@@ -783,7 +783,10 @@ $(".switcher").on('click', function(){
 
     var all_on = document.querySelectorAll('.switcher');
     var ex = $(this).attr("id");
+    var cur_name = $(this).html();
+    var titlen = $("#titlen").html(cur_name );
 
+    
    $(".display-progress").css({ display: "none"});
 
      for(i=0; i < all_on.length ; i++){
