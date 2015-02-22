@@ -220,24 +220,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
-                                11</b> </a></li>
+                            <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario</a></li>
                         </ul>
                         <!--/.widget-nav-->
  
                         <!--/.widget-nav-->
-                        <ul class="widget widget-menu unstyled">
-                            <li><a class="collapsed" data-toggle="collapse" href="#togglePages"><i class="menu-icon icon-cog">
-                            </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                            </i>Vistas </a>
-                                <ul id="togglePages" class="collapse unstyled">
-                                    <li><a href="other-login.html"><i class="icon-bar-chart"></i> Estadisticas</a></li>
-                                    <li><a href="other-user-profile.html"><i class="icon-upload-alt"></i>Progresos</a></li>
-                                    <li><a href="other-user-listing.html"><i class="icon-time"></i>Historial Requerimientos</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="../backend/close.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
-                        </ul>
                         <h3>Mis Compromisos</h3>
                         <div id="Urgencias" class="OwnComp">
                             <div class="OwnComp-bars" style="border-right-color: #EA0000; border-left-color: #EA0000; cursor: pointer;" id="Urgent">Urgencias</div>
@@ -786,7 +773,7 @@ $(".switcher").on('click', function(){
     var cur_name = $(this).html();
     var titlen = $("#titlen").html(cur_name );
 
-    
+
    $(".display-progress").css({ display: "none"});
 
      for(i=0; i < all_on.length ; i++){
