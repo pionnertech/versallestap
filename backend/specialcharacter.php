@@ -151,8 +151,6 @@ var matrix;
 
 $(document).on('ready', function(){
 
-updateChart();
-
 array_set = [
 <?
 
