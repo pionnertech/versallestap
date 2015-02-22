@@ -198,25 +198,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                     </button>
                     </form>
                     <ul class="nav pull-right">
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                            <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Item No. 1</a></li>
-                                <li><a href="#">Don't Click</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Example Header</li>
-                                <li><a href="#">A Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Support </a></li>
+                     
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="images/ejecutivo4.jpg" class="nav-avatar" />
+                            <img src="../img/<? printf($_SESSION['TxtCode']) ?>.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Your Profile</a></li>
-                                <li><a href="#">Edit Profile</a></li>
-                                <li><a href="#">Account Settings</a></li>
-                                <li class="divider"></li>
                                 <li><a href="../backend/close.php">Logout</a></li>
                             </ul>
                         </li>
@@ -234,14 +220,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Vista Principal
-                            </a></li>
-                            <li><a href="activity.php"><i class="menu-icon icon-bullhorn"></i>ingreso de Audiencias</a>
-                            </li>
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 11</b> </a></li>
-                            <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Control de Cumplimientos<b class="label orange pull-right">
-                                19</b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
  
@@ -394,7 +374,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left">
-                                        <img src="images/ejecutivo4.jpg">
+                                        <img src="../img/<? printf($_SESSION['TxtCode']) ?>.jpg">
                                     </a>
                                     <div class="media-body">
                                         <h4>
