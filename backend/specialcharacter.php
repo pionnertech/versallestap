@@ -104,7 +104,7 @@ $i = 0;
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY USR_DEPT;");
 while($f1 = mysqli_fetch_row($query_count_departament)){
 ?>
-                                   <div class="chart inline-legend grid linerchart" align="center" >
+                                   <div class="chart inline-legend grid linerchart" align="center" style="width:30% !important;" >
                                         <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
                                         <strong><? printf($f1[0]) ?></strong>
                                     </div>
