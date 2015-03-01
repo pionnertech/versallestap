@@ -14,7 +14,7 @@ $str_traffic = "SELECT A.TRF_STSK_ID,  " .
 "A.TRF_SUBJECT, " . 
 "A.TRF_DESCRIPT, " . 
 "A.TRF_ING_DATE, " . 
-"A.TRF_USER,CONCAT(B.USR_NAME," ",  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
+"A.TRF_USER, CONCAT(B.USR_NAME , " ",  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
 
 $Query_traffic =  mysqli_query($datos, $str_traffic);
 
