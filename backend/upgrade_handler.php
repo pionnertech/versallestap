@@ -37,5 +37,6 @@ while($row = mysqli_fetch_row($handler)){
 	 }
 }
 
+echo "]}";
 
 ?>
