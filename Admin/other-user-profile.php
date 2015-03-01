@@ -1416,7 +1416,6 @@ uploader =  $(object).pluploadQueue({
 $(".events").on('click', function(){
 
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
-  console.info("primary: " + primary)
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
             $(".st" + primary).css({display: "table-row"});
@@ -1424,7 +1423,7 @@ $(".events").on('click', function(){
 })
 
 $("#back-to-main").click(function(){
-    $(".st" + $(this).data("val") ).css({display: "table-row"});
+    $(".st" + $(this).data("val") ).css({display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
              
