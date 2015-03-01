@@ -839,7 +839,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           <td>Descripción</td>
                                      </tr>
                             <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
-                                     <tr class="task st<? $rows[0] ?> chrono" >
+                                     <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td><a href="#" class="media-avatar pull-left"><img src="../img/<? printf($rows[4]) ?>.jpg"></a></td>
                                          <td><?php printf($rows[5]) ?> ha Progresado en la tarea un x%  </td>
                                      </tr>
