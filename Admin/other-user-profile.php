@@ -1415,7 +1415,7 @@ uploader =  $(object).pluploadQueue({
 
 $(".events").on('click', function(){
 
-  var primary = $(this).parent().parent().prev().children('input').eq(0).val();
+  var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
   console.info("primary: " + primary)
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
