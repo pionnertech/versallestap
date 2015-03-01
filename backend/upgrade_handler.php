@@ -18,8 +18,11 @@ $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
 "A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) " . 
 "WHERE (TRF_FAC_CODE = " . $fac . " AND TRF_STSK_SRC_ID = " . $id_s . ");";
 
+echo $str_traffic;
+
 $handler = mysqli_query($datos, $str_traffic);
 $num = mysqli_num_rows($handler);
+
 $i= 0;
 echo "{\"datos\":[";
 
