@@ -623,7 +623,6 @@ function fillTableJSON(iss_id){
         type: "POST",
         url: "../backend/upgrade_handler.php?iss_id=" + iss_id + "&fac=" + fac,
         success : function(data){
-            dtab = JSON.parse(data);
               scheduledTable(JSON.parse(data));
 
         }
@@ -637,16 +636,15 @@ var table = document.getElementById('black-belt');
 
     $("#black-belt").empty();
     //jlinq
-
     var db = jlinq.from(database.datos).select();
-     
-    for (var i=0; i > db.length; i++) {
-      
+     console.info(db.length);
+    for (i=0; i > db.length; i++) {
+      console.info(i);
     var tr  = document.createElement('tr'); 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
-
+    
         td1.innerHTML = db[i].user;
         td2.innerHTML = db[i].subject;
         td3.innerHTML = db[i].des;
