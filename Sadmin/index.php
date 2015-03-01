@@ -367,16 +367,17 @@ vertical-align: top;
                                                     <td>Asunto</td>
                                                     <td>Descripcion progreso</td>
                                                 </th>
-                                                <tbody>
+                                                <tbody id="black-belt">
+                                                <tr>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
 
                                         <pre class="pre">
-                                             
 
                                         </pre>
                                     </div>
@@ -631,9 +632,9 @@ function fillTableJSON(iss_id){
 
 function scheduledTable(database){
 
-var table = document.querySelector('#scheduled tbody');
+var table = document.querySelector('#scheduled #black-belt');
 
-    $("#scheduled tbody").empty();
+    $("#scheduled #black-belt").empty();
     //jlinq
 
     var db = jlinq.from(database.datos).select();
