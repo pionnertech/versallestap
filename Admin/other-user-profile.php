@@ -280,8 +280,14 @@ margin: 0 .5em;
     display: none;
 }
 
-
+#back-to-main i{
+    cursor: pointer;
+}
+#back-to-main i:hover{
+color: lightgreen;
+}
     </style>    
+
 
 
 
@@ -527,7 +533,7 @@ margin: 0 .5em;
                                 </div>
 
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
-                                    <li class="active"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
+                                    <li class="active" id="aux-back"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
@@ -1422,9 +1428,11 @@ $(".events").on('click', function(){
         $("#events").addClass("active in");
             $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
+                $("#aux-back").data("val", primary);
 })
 
-$("#back-to-main").click(function(){
+$("#back-to-main , #aux-back").click(function(){
+
     $(".st" + $(this).data("val") ).css({display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
