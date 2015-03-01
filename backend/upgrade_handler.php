@@ -8,7 +8,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 //seek data
-$id_s = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " $iss_id " AND STSK_CHARGE_USR = STSK_MAIN_USR"));
+$id_s = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR"));
 
 
 $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
