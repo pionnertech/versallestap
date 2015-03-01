@@ -102,6 +102,15 @@ background-color: white;
 .in-files, .files{
 display: inline-block;
 vertical-align: top;
+}
+
+.itinerario{
+    overflow-y:auto;
+    max-height:17em;
+    height: 0em;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
 
 
 }
@@ -360,7 +369,8 @@ vertical-align: top;
                                             
 
                                         </div>
-                                        <div>
+                                        <i class="fa fa-chevron-down fa-2x" id="table-show"></i>
+                                        <div class="itinerario">
                                             <table class="table table-message" id="scheduled">
                                                 <tr>
                                                     <td>Usuario</td>
@@ -510,6 +520,26 @@ $("#back").on('click', function(){
 });
 
 
+$("#table-show").click(function(){
+
+if ($(this).data("val") == "" || $(this).data("val") == 0 || $(this).data("val") == undefined){
+       $(this).removeClass("fa-chevron-down");
+    $(this).addClass("fa-chevron-up");
+
+    $("#itinerario").css({ height: "17em"});  
+     $(this).data("val", 1);
+}  else {
+
+    $(this).removeClass("fa-chevron-up");
+    $(this).addClass("fa-chevron-down");
+
+    $("#itinerario").css({ height: "0em"});
+    $(this).data("val", 0);
+}
+
+
+
+})
 
 function getDataTable(iss_id, usr_charge){
 
