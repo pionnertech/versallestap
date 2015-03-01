@@ -494,7 +494,7 @@ $(".situation").on('click', function(){
 
 var iss = $(this).parent().children('input').val();
 getDataTable(iss);
-fillTableJSON(iss);
+
 
 });
 
@@ -527,11 +527,11 @@ function getDataTable(iss_id, usr_charge){
                      recallFiles(matrix[i]);
                 } 
 
-    $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
-        $("#suite").fadeIn('slow');
-    });
+                         $("#DataTables_Table_0_wrapper").fadeOut("slow", function(){
+                             $("#suite").fadeIn('slow');
+                         });
 
-
+                                fillTableJSON(iss_id);
           
         }
     })
@@ -654,7 +654,6 @@ var table = document.querySelector('#scheduled #black-belt');
             tr.appendChild(td2);
             tr.appendChild(td3);
 
-    
         table.appendChild(tr);
 
 
