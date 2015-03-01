@@ -1429,7 +1429,7 @@ $(".events").on('click', function(){
         $("#events").addClass("active in");
         if($(".st" + primary).length == 0){
           
-        $("")
+             $("#events .task").removeAttr('style');
         }
            else {
                 $(".st" + primary).css({display: "table-row"});
