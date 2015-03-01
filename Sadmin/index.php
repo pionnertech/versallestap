@@ -638,7 +638,7 @@ var table = document.querySelector('#scheduled #black-belt');
     //jlinq
 
     var db = jlinq.from(database.datos).select();
-  console.info(db.length);
+      console.info(db[0].subject[0]);
     for (var i=0; i > db.length; i++) {
         console.info(db[i].subject[0]);
     var tr  = document.createElement('tr'); 
@@ -647,8 +647,8 @@ var table = document.querySelector('#scheduled #black-belt');
     var td3 = document.createElement('td');
 
         td1.text = db[i].user[0];
-        td1.text = db[i].subject[0];
-        td1.text = db[i].des[0];
+        td2.text = db[i].subject[0];
+        td3.text = db[i].des[0];
             
             tr.appendChild(td1);
             tr.appendChild(td2);
