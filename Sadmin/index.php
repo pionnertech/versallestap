@@ -633,15 +633,15 @@ function fillTableJSON(iss_id){
 
 function scheduledTable(database){
 
-var table = document.querySelector('#scheduled #black-belt');
+var table = document.getElementById('black-belt');
 
-    $("#scheduled #black-belt").empty();
+    $("#black-belt").empty();
     //jlinq
 
     var db = jlinq.from(database.datos).select();
      
     for (var i=0; i > db.length; i++) {
-        console.info(db[i].subject[0]);
+      
     var tr  = document.createElement('tr'); 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
