@@ -366,10 +366,12 @@ vertical-align: top;
                                                     <td>Usuario</td>
                                                     <td>Asunto</td>
                                                     <td>Descripcion progreso</td>
+                                                    <td>Fecha</td>
                                                 </tr>
                                                 <tbody id="black-belt">
 
                                                 <tr>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -645,17 +647,19 @@ var table = document.getElementById('black-belt');
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
     
         td1.innerHTML = db[i].user;
         td2.innerHTML = db[i].subject;
         td3.innerHTML = db[i].des;
-            
+        td4.innerHTML = db[i].date;
+
             tr.appendChild(td1);
             tr.appendChild(td2);
             tr.appendChild(td3);
+            tr.appendChild(td4);
 
         table.appendChild(tr);
-
 
     };
 
