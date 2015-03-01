@@ -847,7 +847,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                             <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td><div class="media"><a href="#" class="media-avatar pull-left"><img src="../img/<? printf($rows[4]) ?>.jpg"></a></div></td>
-                                         <td><?php str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($rows[5])))) ?> 
+                                         <td><?php printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($rows[5]))))) ?> 
                                             <? print($rows[1]) ?> / <? printf($rows[2])?>
                                           </td>
                                      </tr>
@@ -1423,12 +1423,18 @@ uploader =  $(object).pluploadQueue({
 
 $(".events").on('click', function(){
 
+
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
-            $(".st" + primary).css({display: "table-row"});
+        if($(".st" + primary).length == 0){
+          
+        $("")
+        }
+           else {
+                $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
-                   $("#aux-back").attr("disabled", true);
+           }         
                
 })
 
@@ -1436,7 +1442,7 @@ $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
-           $("#aux-back").removeAttr("disabled");
+           
              
 });
 
