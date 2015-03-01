@@ -14,7 +14,7 @@ $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
 "A.TRF_SUBJECT, " . 
 "A.TRF_DESCRIPT, " . 
 "A.TRF_ING_DATE, " . 
-"A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
+"A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " ORDER BY TRF_USER, TRF_ING_DATE;";
 
 $Query_traffic =  mysqli_query($datos, $str_traffic);
 
@@ -841,7 +841,9 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                             <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td><div class="media"><a href="#" class="media-avatar pull-left"><img src="../img/<? printf($rows[4]) ?>.jpg"></a></div></td>
-                                         <td><?php printf($rows[5]) ?> ha Progresado en la tarea un x%  </td>
+                                         <td><?php str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($rows[5])))) ?> 
+                                            <? print($rows[1]) ?> / <? printf($rows[2])?>
+                                          </td>
                                      </tr>
                             <?      }        ?>         
                                 </tbody>
