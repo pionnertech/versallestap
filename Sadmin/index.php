@@ -622,7 +622,7 @@ function fillTableJSON(iss_id){
         url: "../backend/upgrade_handler.php?iss_id=" + iss_id + "&fac=" + fac,
         success : function(data){
             console.info(JSON.parse(data));
-              scheduledTable(JSON.parse(database));
+              scheduledTable(JSON.parse(data));
 
         }
     })
