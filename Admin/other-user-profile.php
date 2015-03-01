@@ -276,7 +276,13 @@ font-size: 1.5em;
 width:auto;
 margin: 0 .5em;
 }
+.chrono{
+    display: none;
+}
+
+
     </style>    
+
 
 
 </head>
@@ -523,7 +529,6 @@ margin: 0 .5em;
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
-                                    <li><a href="#events"  data-toggle="tab">Eventos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                                     <div class="tab-pane fade active in" id="friends">
@@ -833,8 +838,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           <td>Descripción</td>
                                      </tr>
                             <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
-                                     <tr class="task st<? $rows[0] ?>" >
-                                         <td></td>
+                                     <tr class="task st<? $rows[0] ?> chrono" >
+                                         <td><a href="#" class="media-avatar pull-left"><img src="../img/<? printf($rows[4]) ?>.jpg"></a></td>
                                          <td><?php printf($rows[5]) ?> ha Progresado en la tarea un x%  </td>
                                      </tr>
                             <?      }        ?>         
@@ -1405,7 +1410,24 @@ uploader =  $(object).pluploadQueue({
 };
 
 
+//historial de eventos 
 
+$(".events").on('click', function(){
+
+  var primary = $(this).parent().parent().prev().children('input').eq(0).val();
+    $("#require").removeCLass("active in");
+        $("#events").addCLass("active in");
+            $(".st" + primary).css({display: "table-row"});
+                $("#back-to-main").data("val", primary);
+})
+
+
+$("#back-to-main").click(function(){
+    $(".st" + $(this).data("val") ).css({display: "table-row"});
+        $("#events").removeCLass("active in");
+          $("#require").addCLass("active in");
+             
+});
 
 </script>
 
