@@ -281,7 +281,7 @@ margin: 0 .5em;
 }
 
 #back-to-main i{
-    cursor: pointer;
+cursor: pointer;
 }
 #back-to-main i:hover{
 color: lightgreen;
@@ -1428,14 +1428,15 @@ $(".events").on('click', function(){
         $("#events").addClass("active in");
             $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
-                $("#aux-back").data("val", primary);
+                 $("#aux-back").attr("disabled", true);
+               
 })
 
-$("#back-to-main , #aux-back").click(function(){
-
+$("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
+           $("#aux-back").removeAttr("disabled");
              
 });
 
