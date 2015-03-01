@@ -1428,7 +1428,7 @@ $(".events").on('click', function(){
         $("#events").addClass("active in");
             $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
-                 $("#aux-back").attr("disabled", true);
+                   $("#aux-back").attr("disabled", true);
                
 })
 
