@@ -615,7 +615,7 @@ $(".pre").empty();
 
 }
 
-function fillTableJSON(){
+function fillTableJSON(iss_id){
 
     $.ajax({
         type: "POST",
@@ -633,7 +633,7 @@ function scheduledTable(database){
 
 var table = document.querySelector('#scheduled tbody');
 
-    table.innerHTML = "";
+    $("#scheduled tbody").empty();
     //jlinq
 
     var db = jlinq.from(database.datos).select();
