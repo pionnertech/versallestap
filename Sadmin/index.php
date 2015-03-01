@@ -639,8 +639,8 @@ var table = document.querySelector('#scheduled #black-belt');
 
     var db = jlinq.from(database.datos).select();
 
-    for (var i =0; i >= db.length; i++) {
-        
+    for (var i=0; i > db.length; i++) {
+        console.info(db[i].subject[0]);
     var tr  = document.createElement('tr'); 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -655,7 +655,7 @@ var table = document.querySelector('#scheduled #black-belt');
             tr.appendChild(td3);
 
     
-                table.appendChild(tr);
+        table.appendChild(tr);
 
 
     };
