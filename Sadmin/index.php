@@ -417,6 +417,7 @@ vertical-align: top;
 <script type="text/javascript">
     
     var fac = <? printf($_SESSION['TxtFacility']) ?>;
+    var dtab;
 
 $(document).on('ready', function(){
 
@@ -622,7 +623,7 @@ function fillTableJSON(iss_id){
         type: "POST",
         url: "../backend/upgrade_handler.php?iss_id=" + iss_id + "&fac=" + fac,
         success : function(data){
-            console.info(JSON.parse(data));
+            dtab = JSON.parse(data);
               scheduledTable(JSON.parse(data));
 
         }
@@ -638,7 +639,7 @@ var table = document.querySelector('#scheduled #black-belt');
     //jlinq
 
     var db = jlinq.from(database.datos).select();
-      console.info(db[0].subject[0]);
+      console.info(db[0].subject[1]);
     for (var i=0; i > db.length; i++) {
         console.info(db[i].subject[0]);
     var tr  = document.createElement('tr'); 
