@@ -637,9 +637,9 @@ var table = document.getElementById('black-belt');
     $("#black-belt").empty();
     //jlinq
     var db = jlinq.from(database.datos).select();
-     console.info(db.length);
-    for (i=0; i > db.length; i++) {
-      console.info(i);
+
+    for (i=0; i < db.length; i++) {
+     
     var tr  = document.createElement('tr'); 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
