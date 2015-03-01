@@ -14,7 +14,7 @@ $str_traffic = "SELECT A.TRF_STSK_ID,  " .
 "A.TRF_SUBJECT, " . 
 "A.TRF_DESCRIPT, " . 
 "A.TRF_ING_DATE, " . 
-"A.TRF_USER, CONCAT(B.USR_NAME , " ",  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
+"A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
 
 $Query_traffic =  mysqli_query($datos, $str_traffic);
 
@@ -119,6 +119,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
 .attach{
  display: none;
  vertical-align: top;
+}
+
+
+.file-contents{
+width: 100%;
 }
 
 .file-contents, 
@@ -246,7 +251,7 @@ content: "Arrastre aqui sus archivos";
 .golang i, .spac{
     font-size: 1.5em;
 }
-.golang, .collaborates{
+.golang, .collaborates, .wrap-events{
     display:inline-block;
     vertical-align: top;
 }
@@ -261,7 +266,19 @@ content: "Arrastre aqui sus archivos";
     display: inline-block;
     vertical-align: top;
 }
+
+.events{
+color: #24B56C;
+font-size: 1.5em;
+}
+
+.wrap-events{
+width:auto;
+margin: 0 .5em;
+}
     </style>    
+
+
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -721,6 +738,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
     
                                             </div>
                                             <p class="golang"><i class="fa fa-paperclip" style="color:darkyellow;"></i></p>
+                                            <p class="wrap-events"><i class="fa fa-history events"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
