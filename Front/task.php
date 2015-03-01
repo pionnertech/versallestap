@@ -456,7 +456,7 @@ $(".display-progress").fadeOut('fast');
 
 $(".due").on('click', function (){
 $(this).parent().parent().next('tr').fadeToggle('slow');
-iden_iss =  
+//iden_iss ;
 });
 
 
