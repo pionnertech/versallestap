@@ -362,12 +362,15 @@ vertical-align: top;
                                         </div>
                                         <div>
                                             <table class="table table-message" id="scheduled">
-                                                <th>
+                                                
+
+                                                
+                                                <tbody id="black-belt">
+                                                <tr>
                                                     <td>Usuario</td>
                                                     <td>Asunto</td>
                                                     <td>Descripcion progreso</td>
-                                                </th>
-                                                <tbody id="black-belt">
+                                                </tr>
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
