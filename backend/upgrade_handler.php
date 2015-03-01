@@ -29,7 +29,7 @@ while($row = mysqli_fetch_row($handler)){
 	echo "{\"user\":\"" . str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($row[5])))) . "\", ";
 	echo "\"subject\":\"" . $row[1] . "\",";
 	echo "\"des\":\"" . $row[2] . "\",";
-	echo "\"date\":\"". $row[3] . "\"}";
+	echo "\"date\":\"". date("d/m/Y h:i:s", strtotime($row[3])) . "\"}";
     
     $i = $i + 1;
 
