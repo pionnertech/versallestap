@@ -831,7 +831,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                   </div>
                   <div class="tab-pane fade" id="events">
                         <div class="module-body table"> 
-                           <div id="back-to-main"><i class="fa fa-cheveron-circle-left" style="color: #16A2E4; float: left"></i></div>                            
+                           <div id="back-to-main"><i class="fa fa-chevron-circle-left" style="color: #16A2E4; float: left; font-size:1.5em"></i></div>                            
                             <table class="table table-message">
                                 <tbody>
                                      <tr class="heading">
