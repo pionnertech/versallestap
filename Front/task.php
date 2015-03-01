@@ -155,7 +155,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 							<li>
 								<a href="activity.php">
 									<i class="menu-icon icon-bullhorn"></i>
-									ingreso de Audiencias
+									ingreso de Compromisos Externos
 								</a>
 							</li>
 
@@ -323,7 +323,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 												</select>
 												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
                                                 <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
-												<button class="btn-info enviar">Delegar Audiencia</button>
+												<button class="btn-info enviar">Delegar Compromiso</button>
 											</td>
 										</tr>   
 

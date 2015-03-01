@@ -10,6 +10,14 @@ $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM US
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
+$str_traffic = "SELECT A.TRF_STSK_ID,  " .
+"A.TRF_SUBJECT, " . 
+"A.TRF_DESCRIPT, " . 
+"A.TRF_ING_DATE, " . 
+"A.TRF_USER,CONCAT(B.USR_NAME," ",  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ";";
+
+$Query_traffic =  mysqli_query($datos, $str_traffic);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -353,11 +361,11 @@ content: "Arrastre aqui sus archivos";
                                     </ul>
                                 </div> -->
                  <div id="Audiencias" class="OwnComp">
-                <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Audiencias</div>
+                <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
                                             <p>
-                                             <strong>Audiencias Recibidas</strong> <span class="pull-right small muted">17%</span>
+                                             <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar" style="width: 17%;">
@@ -366,7 +374,7 @@ content: "Arrastre aqui sus archivos";
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias Activas</strong><span class="pull-right small muted">88%</span>
+                                                <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-success" style="width: 88%;">
@@ -375,7 +383,7 @@ content: "Arrastre aqui sus archivos";
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias por vencer</strong> <span class="pull-right small muted">12%</span>
+                                                <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: 12%;">
@@ -384,7 +392,7 @@ content: "Arrastre aqui sus archivos";
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-danger" style="width: 2%;">
@@ -472,12 +480,12 @@ content: "Arrastre aqui sus archivos";
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasadas";
+                                            $Tuba = "Atrasados";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizadas";
+                                             $tuba = "Finalizados";
                                           break;
 
 
@@ -498,6 +506,7 @@ content: "Arrastre aqui sus archivos";
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
                                     <li><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
+                                    <li><a href="#events"  data-toggle="tab">Eventos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                                     <div class="tab-pane fade active in" id="friends">
@@ -694,7 +703,7 @@ content: "Arrastre aqui sus archivos";
 $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_NAMES FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
                                             ?>
                               <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?></p> 
-                              <p class="iss-descript"><strong>Descripcion audiencia</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
+                              <p class="iss-descript"><strong>Descripcion compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
                                         </div>
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
@@ -797,6 +806,26 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                         </div>
                        </div> 
                   </div>
+                  <div class="tab-pane fade" id="events">
+                        <div class="module-body table">                             
+                            <table class="table table-message">
+                                <tbody>
+                                     <tr class="heading">
+                                          <td>Usuario</td>
+                                          <td>Descripción</td>
+                                     </tr>
+                            <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
+                                     <tr class="task st<? $rows[0] ?>" >
+                                         <td></td>
+                                         <td><?php printf($rows[5]) ?> ha Progresado en la tarea un x%  </td>
+                                     </tr>
+                            <?      }        ?>         
+                                </tbody>
+                            </table>
+                        </div>
+
+                  </div>
+
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">

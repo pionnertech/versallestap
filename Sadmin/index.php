@@ -202,7 +202,7 @@ vertical-align: top;
                                 <div class="btn-box-row row-fluid">
                                 <a id="Audiencias" href="#" class="btn-box big span4" style="height: 266px; padding-top: 6em;"><i class="icon-user"></i><b><? printf($count_iss[0]) ?></b>
                                         <p class="text-muted">
-                                            Audiencias</p>
+                                            Compromisos externos</p>
                                     </a>
                                     <div class="wrap-progress" >
                                      <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
@@ -227,7 +227,7 @@ vertical-align: top;
                                         ?>
                                         <li>
                                             <p>
-                                             <strong>Audiencias <? printf($des_graph[1])?></strong> <span class="pull-right small muted"><? printf($des_graph[3]) ?>%</span>
+                                             <strong>Compromisos <? printf($des_graph[1])?></strong> <span class="pull-right small muted"><? printf($des_graph[3]) ?>%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar <? printf($class) ?>" style="width: <? printf($des_graph[3]) ?>%;">
@@ -343,7 +343,7 @@ vertical-align: top;
                                             <dt>Ciudadano</dt>
                                             <dd>
                                                 Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                                            <dt>Detalle Audiencia</dt>
+                                            <dt>Detalle Compromiso</dt>
                                             <dd>
                                                 Etiam porta sem malesuada magna mollis euismod.</dd>
                                             <dt>Fecha De Entrega</dt>

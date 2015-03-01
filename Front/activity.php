@@ -207,7 +207,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 							<li>
 								<a href="activity.php">
 									<i class="menu-icon icon-bullhorn"></i>
-									Ingreso de audiencias
+									Ingreso compromisos externos
 								</a>
 							</li>
 							<li>
@@ -230,15 +230,15 @@ div.dropdown-menu,  ul.dropdown-menu{
 
 						<div class="module">
 							<div class="module-head">
-								<h3 style="display: inline-block; vertical-align: top;">Ingreso de Audiencias</h3>
+								<h3 style="display: inline-block; vertical-align: top;">Ingreso Compromiso Externo</h3>
 								<p id="cleanup"><i class="fa fa-refresh" style="font-size:1.5em;"></i></p>
 							</div>
 							<div class="module-body">
 									<div class="media stream new-update" align="center" id="intext">
 									<div class="wrap-ing-form" style="vertical-align: top; display: inline-block; width:100%;">
 					R.U.T &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="RUT" placeholder="R.U.T" style="width: 30% !important;" maxlength="12" class="ctz_data"/>
-					          &ensp;&ensp;&ensp;&ensp;Fecha Audiencia&ensp;&ensp;&ensp;&ensp; 
-                           <input type="text" placeholder="fecha de audiencia" value="" id="dtp1" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
+					          &ensp;&ensp;&ensp;&ensp;Fecha compromiso&ensp;&ensp;&ensp;&ensp; 
+                           <input type="text" placeholder="fecha del compromiso" value="" id="dtp1" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     </div>
                                         <div class="wrap-ing-form">
                     Apellido Paterno &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<input type="text" id="apllP" placeholder="Apellido Paterno" class="ctz_data ctz_def"/><br><br>
@@ -266,7 +266,7 @@ div.dropdown-menu,  ul.dropdown-menu{
                                         </div>
 									</div>
 								 <div class="control-group" >
-										<label class="control-label">Origen de la Audiencia</label>
+										<label class="control-label">Origen del compromiso</label>
 											<div class="controls" style="width: 100%;">
 
 											<? while ($fila2 = mysqli_fetch_row($Query_cat)){ ?>
@@ -302,7 +302,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 											    <button class="btn-info" onclick="createRadio(document.querySelector('#newOr').value)">Crear</button>
 											</div>
 										</div>
-							 <h3><strong>Detalle de audiencia</strong></h3>
+							 <h3><strong>Detalle del compromiso</strong></h3>
 								<div class="stream-composer media">
 									<a href="#" class="media-avatar medium pull-left">
 										<img src="../images/user.png">
@@ -338,7 +338,7 @@ div.dropdown-menu,  ul.dropdown-menu{
 									    -->
 										     </div>
                                         </div>
-										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar Audiencia</button></div>
+										<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest-free">Ingresar compromiso</button></div>
 									</div>
 								</div>
 
@@ -374,7 +374,7 @@ div.dropdown-menu,  ul.dropdown-menu{
                      <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                                          <input type="text" placeholder="Fecha Máxima Respuesta" value="" id="dtp2" class="datetimepicker" style="vertical-align:top; display: inline-block; position: relative; float: right;"/>
                                 	</div>
-                                	<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest">Ingresar audiencia delegada</button></div>
+                                	<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest">Ingresar compromiso delegado</button></div>
                                 </div>
 						</div><!--/.module-->
 					</div><!--/.content-->
@@ -746,7 +746,7 @@ $("#SendRequest-free").on('click', function(){
 	bootbox.confirm("Se detectaron cambios en los datos del ciudadano, Desea actualizar la información", function (response){
         if(!response){
             argument = 0;
-   bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
+   bootbox.confirm("Desea ingresar el compromiso sin delegar?", function (outcome){
 
 	if(outcome) {
 var narray = [];
@@ -770,7 +770,7 @@ setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narr
 
 } else {
 
- bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
+ bootbox.confirm("Desea ingresar el compromiso sin delegar?", function (outcome){
 
 	if(outcome) {
 var narray = [];
@@ -796,7 +796,7 @@ setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narr
 })
 } else {
 
- bootbox.confirm("Desea ingresar la audiencia sin delegar?", function (outcome){
+ bootbox.confirm("Desea ingresar el compromiso sin delegar?", function (outcome){
 
 	if(outcome) {
 
@@ -960,7 +960,7 @@ $("#SendRequest").data("val", 0);
 
         } else {
 
-        	bootbox.alert("Audiencia ingresada con exito", function(){
+        	bootbox.alert("Compromiso ingresado con exito", function(){
  			 $("input[type=text], input[type=tel]").val('');
  			 $("textarea").val('');
 
@@ -1189,7 +1189,7 @@ $.ajax({ type: "POST",
 	           "&iss_id=" + iss_id,
 	           success : function (data){
                console.info(data);
-	           bootbox.alert("La audiencia fue ingresada y delegada exitosamente", function(){
+	           bootbox.alert("El compromiso fué ingresado y delegado exitosamente", function(){
 
 	            $("input[type=tel] , input[type=text]").val('');
  			    $("textarea").val('');
@@ -1228,14 +1228,14 @@ if(empty.length == 0){
 
 
 if($("#subject").val() == ""){
-	bootbox.alert("Por favor ingrese asunto de la audiencia", function(){
+	bootbox.alert("Por favor ingrese asunto del compromiso", function(){
 		return false;
 	})
 }
 
 //segunda fase
 if($("textarea").val() === "") {
-  bootbox.alert("Por Favor ingrese la descripcion de la audiencia");
+  bootbox.alert("Por Favor ingrese la descripcion del compromiso");
   return false;
 }
 

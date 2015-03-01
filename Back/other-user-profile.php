@@ -268,11 +268,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     </ul>
                                 </div>
                                <div id="Audiencias" class="OwnComp">
-                <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Audiencias</div>
+                <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                         <li>
                                             <p>
-                                             <strong>Audiencias Recibidas</strong> <span class="pull-right small muted">17%</span>
+                                             <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar" style="width: 17%;">
@@ -281,7 +281,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias Activas</strong><span class="pull-right small muted">88%</span>
+                                                <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-success" style="width: 88%;">
@@ -290,7 +290,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias por vencer</strong> <span class="pull-right small muted">12%</span>
+                                                <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: 12%;">
@@ -299,7 +299,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         </li>
                                         <li>
                                             <p>
-                                                <strong>Audiencias Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
                                             </p>
                                             <div class="progress tight">
                                                 <div class="bar bar-danger" style="width: 2%;">
@@ -496,7 +496,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                        
                                             ?>
                               <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?></p> 
-                              <p class="iss-descript"><strong>Descripcion audiencia</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
+                              <p class="iss-descript"><strong>Descripcion Compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
                                         </div>
                                            <div class="wrap-progress">
                                             <p>
