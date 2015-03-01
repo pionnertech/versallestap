@@ -1423,7 +1423,6 @@ $(".events").on('click', function(){
                 $("#back-to-main").data("val", primary);
 })
 
-
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "table-row"});
         $("#events").removeClass("active in");
