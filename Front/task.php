@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASK
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, A.ISS_DATE_ING, A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS, A.ISS_FINISH_DATE FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
+$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, A.ISS_DATE_ING, A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS, A.ISS_FINISH_DATE, A.ISS_CTZ FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
@@ -32,7 +32,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	<link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
 	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="css/selectize.bootstrap3.css" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
 	<script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
 
     	<script type="text/javascript">
@@ -273,6 +274,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 						 	?>				
 										<tr class="task <? printf($class) ?>">
+										    <input type="hidden" value="<? printf($fila1[7])?>">
 											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[0]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
@@ -406,6 +408,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 							</div>
 							<div class="module-foot">
+							   <div id="attach"></div>
 							</div>
 						</div>
 						
@@ -425,11 +428,18 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	<script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
+    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
+    <script type="text/javascript" src="../scripts/es.js"></script>
 </body>
 <script type="text/javascript">
 
 
-var fac = <?  printf($_SESSION['TxtFacility']) ?>
+var fac = <?  printf($_SESSION['TxtFacility']) ?>;
+var iden_iss;
+$(document).on('ready', function(){
+	uploaderInt($("#attach"));
+});
 
 
 $('.datetimepicker').datetimepicker({
@@ -446,6 +456,7 @@ $(".display-progress").fadeOut('fast');
 
 $(".due").on('click', function (){
 $(this).parent().parent().next('tr').fadeToggle('slow');
+iden_iss =  
 });
 
 
@@ -474,7 +485,6 @@ $(".enviar").on('click', function () {
 
 
    } 
-
 
 });
 
@@ -558,6 +568,128 @@ function checker(object){
 }
 
 
+
+var uploaderInt = function(object){
+
+uploader =  $(object).pluploadQueue({
+        runtimes : 'html5',
+        url : '../backend/upload_front.php?'  ,
+        chunk_size : '1mb',
+        unique_names : true,
+  filters : {
+            max_file_size : '10mb',
+            mime_types: [
+                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
+                {title : "Zip files", extensions : "zip" }
+            ]
+        },
+  preinit : {
+            Init: function(up, info) {
+                console.log('[Init]', 'Info:', info, 'Features:', up.features);
+            },
+ 
+            UploadFile: function(up, file) {
+
+                console.log('[UploadFile]', file);
+                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&rut=" + iden_iss);
+               // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+            }
+        },
+  init : {
+            PostInit: function() {
+                // Called after initialization is finished and internal event handlers bound
+                console.log('[PostInit]');
+            },
+ 
+            Browse: function(up) {
+                // Called when file picker is clicked
+                console.log('[Browse]');
+            },
+ 
+            Refresh: function(up) {
+                // Called when the position or dimensions of the picker change
+                console.log('[Refresh]');
+            },
+  
+            StateChanged: function(up) {
+                // Called when the state of the queue is changed
+                console.log('[StateChanged]', up.state == plupload.STARTED ? "STARTED" : "STOPPED");
+            },
+  
+            QueueChanged: function(up) {
+                // Called when queue is changed by adding or removing files
+                console.log('[QueueChanged]');
+            },
+ 
+            OptionChanged: function(up, name, value, oldValue) {
+                // Called when one of the configuration options is changed
+                console.log('[OptionChanged]', 'Option Name: ', name, 'Value: ', value, 'Old Value: ', oldValue);
+            },
+ 
+            BeforeUpload: function(up, file) {
+                // Called right before the upload for a given file starts, can be used to cancel it if required
+                console.log('[BeforeUpload]', 'File: ', file);
+                $("#SendRequest-free").attr("disabled", true);
+            },
+  
+            UploadProgress: function(up, file) {
+                // Called while file is being uploaded
+                console.log('[UploadProgress]', 'File:', file, "Total:", up.total);
+            },
+ 
+            FileFiltered: function(up, file) {
+                // Called when file successfully files all the filters
+                console.log('[FileFiltered]', 'File:', file);
+            },
+  
+            FilesAdded: function(up, files) {
+                // Called when files are added to queue
+                console.log('[FilesAdded]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FilesRemoved: function(up, files) {
+                // Called when files are removed from queue
+                console.log('[FilesRemoved]');
+  
+                plupload.each(files, function(file) {
+                    console.log('  File:', file);
+                });
+            },
+  
+            FileUploaded: function(up, file, info) {
+                // Called when file has finished uploading
+                console.log('[FileUploaded] File:', file, "Info:", info);
+
+            },
+  
+            ChunkUploaded: function(up, file, info) {
+                // Called when file chunk has finished uploading
+                console.log('[ChunkUploaded] File:', file, "Info:", info);
+            },
+ 
+            UploadComplete: function(up, files) {
+                // Called when all files are either uploaded or failed
+                   console.log("reponse", files);
+            },
+ 
+            Destroy: function(up) {
+                // Called when uploader is destroyed
+                console.log('[Destroy] ');
+            },
+  
+            Error: function(up, args) {
+                // Called when error occurs
+                console.log('[Error] ', args);
+            }
+        } // init
+
+    });
+
+};
 </script>
 <?
 
