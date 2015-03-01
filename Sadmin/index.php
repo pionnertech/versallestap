@@ -360,6 +360,21 @@ vertical-align: top;
                                             
 
                                         </div>
+                                        <div>
+                                            <table class="table table-message" id="scheduled">
+                                                <th>
+                                                    <td>Usuario</td>
+                                                    <td>Asunto</td>
+                                                    <td>Descripcion progreso</td>
+                                                </th>
+                                                <tbody>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
                                         <pre class="pre">
                                              
 
@@ -393,6 +408,8 @@ vertical-align: top;
         <script src="../scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.js" type="text/javascript"></script>
+        <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
         <script src="../scripts/common.js" type="text/javascript"></script>
       
     </body>
@@ -476,6 +493,7 @@ $(".situation").on('click', function(){
 
 var iss = $(this).parent().children('input').val();
 getDataTable(iss);
+fillTableJSON(iss);
 
 });
 
@@ -597,7 +615,52 @@ $(".pre").empty();
 
 }
 
+function fillTableJSON(){
 
+    $.ajax({
+        type: "POST",
+        url: "../backend/upgrade_handler.php?iss_id=" + iss_id + "&fac=" + fac,
+        success : function(data){
+            console.info(JSON.parse(data));
+              scheduledTable(JSON.parse(database));
+
+        }
+    })
+}
+
+
+function scheduledTable(database){
+
+var table = document.querySelector('#scheduled tbody');
+
+    table.innerHTML = "";
+    //jlinq
+
+    var db = jlinq.from(database.datos).select();
+
+    for (var i =0; i >= db.length; i++) {
+        
+    var tr  = document.createElement('tr'); 
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+
+        td1.text = db[i].user[0];
+        td1.text = db[i].subject[0];
+        td1.text = db[i].des[0];
+            
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+
+    
+                table.appendChild(tr);
+
+
+    };
+
+
+}
 
 </script>
 
