@@ -38,8 +38,17 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ISS_ID = " 
 }
 
 
+
+
+
+//seek the original admin-admin subtask 
+
+$var1 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM `SUBTASKS` WHERE STSK_ID = " . $id));
+$var2 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM `SUBTASKS` WHERE (STSK_ISS_ID = " . $var1['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR)"));
+
+
 $insertar = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_DESCRIPT, TRF_SUBJECT, TRF_FAC_CODE, TRF_ING_DATE, TRF_USER) ";
-$insertar .= "VALUES (" . $id . ", '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', '" . $user . "');";
+$insertar .= "VALUES (" . $var2['STSK_ID'] . ", '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', '" . $user . "');";
 
 if(!mysqli_query($datos, $insertar)){
 	echo "status failed";
