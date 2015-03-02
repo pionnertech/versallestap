@@ -28,6 +28,7 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
 
 $x = 0;
 
+echo $dept;
 
    $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
