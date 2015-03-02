@@ -27,8 +27,7 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
 } else {
 
 $x = 0;
-$est_array = [];
-$specialA = [];
+
 
    $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
@@ -46,8 +45,7 @@ $specialA = [];
   
 
         while ( $fila = mysqli_fetch_row($graph)){
-          echo $fila[0] . "/" . round(($fila[0] / $x) * 100) ;
-          
+          echo $fila[0] . "/" . round(($fila[0] / $x) * 100);
         }
    
 
