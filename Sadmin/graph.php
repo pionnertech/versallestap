@@ -305,8 +305,6 @@ $.ajax({ type: "POST",
 
 }
 
-
-
 function setDataByJSON(depto, name, index_d, index_p, mode, usrId){
 
 var database = JSON.parse(datas);
@@ -350,13 +348,14 @@ $.plot($("#dynamics"), matriz, {
     }
 });
 
-getValueToBars(usrId);
+getValueToBars(usrId, depto);
+
 }
 
-function getValueToBars(usr_id){
+function getValueToBars(usr_id, dept){
     $.ajax({
         type:"POST",
-        url: "../backend/graphVar.php?user_id=" + usr_id,
+        url: "../backend/graphVar.php?user_id=" + usr_id + "&dept=" + dept,
         success : function (data){
               injectBarVars(data);
         }
@@ -372,7 +371,7 @@ function injectBarVars(idata){
   var listA = [0,2,4,6,8];
   var listB = [1,3,5,7,9];
 
-  for (i=0; i < 5 ; i++){
+  for (i=0; i < narray.length ; i++){
    
     document.querySelectorAll(".wrap-progress li p span")[i].innerHTML = narray[listA[i]];
     document.querySelectorAll(".wrap-progress li div.bar")[i].style.width = narray[listB[i]] + "%";
