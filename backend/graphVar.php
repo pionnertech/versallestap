@@ -31,11 +31,10 @@ $x = 0;
 
    $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
-"RIGHT JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
+"INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
 "WHERE (USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . ") GROUP BY C.EST_CODE ";
 
        $graph = mysqli_query($datos, $graph_query);
-       $est = mysqli_query($datos, "SELECT EST_COLOR FROM EST");
 
        while($cuenta = mysqli_fetch_row($graph)){
        	   $x += $cuenta[0];
@@ -43,9 +42,8 @@ $x = 0;
           
        mysqli_data_seek($graph, 0);
   
-
         while ( $fila = mysqli_fetch_row($graph)){
-          echo $fila[0] . "/" . round(($fila[0] * 100)  / $x);
+          echo $fila[0] . " / " . round(($fila[0] / $x) * 100);
         }
    
 
