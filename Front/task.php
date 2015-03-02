@@ -439,7 +439,9 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 var fac = <?  printf($_SESSION['TxtFacility']) ?>;
 var iden_iss;
 $(document).on('ready', function(){
+
 	uploaderInt($("#attach"));
+	$("#attach").fadeIn(1);
 });
 
 
