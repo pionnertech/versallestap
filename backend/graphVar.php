@@ -27,26 +27,29 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
 } else {
 
 $x = 0;
+$est_array = [];
+$specialA = [];
 
-   $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_DESCRIPT FROM SUBTASKS A " .
+   $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_COLOR FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
 "RIGHT JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
-"WHERE (USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . ") GROUP BY C.EST_DESCRIPT";
-
+"WHERE (USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . ") GROUP BY C.EST_COLOR ";
 
        $graph = mysqli_query($datos, $graph_query);
-       $est = mysqli_query($datos, "SELECT EST_DESCRIPT FROM EST");
+       $est = mysqli_query($datos, "SELECT EST_COLOR FROM EST");
 
        while($cuenta = mysqli_fetch_row($graph)){
        	   $x += $cuenta[0];
-       }
-
-        mysqli_data_seek($graph, 0);
+       }  
+          
+       mysqli_data_seek($graph, 0);
+  
 
         while ( $fila = mysqli_fetch_row($graph)){
-          echo  round(($fila[0] / $x) * 100) . "/" . $fila[3] . "/";
+          echo round(($fila[0] / $x) * 100) . "/" . $fila[1];
+          
         }
-     
+   
 
 }
 
