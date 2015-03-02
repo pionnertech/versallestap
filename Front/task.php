@@ -71,7 +71,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	vertical-align: top;
 	margin:.4em;
 }
-#module-foot{
+#attach{
 	height: 0;
 	 -webkit-transition: all 600ms ease-in-out;
     -moz-transition: all 600ms ease-in-out;
