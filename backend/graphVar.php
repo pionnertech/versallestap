@@ -40,10 +40,10 @@ $x = 0;
        	   $x += $cuenta[0];
        }  
           
-       mysqli_data_seek($graph, 0);
+       $inner_query = mysqli_query($datos, $graph_query);
   
-        while ( $fila = mysqli_fetch_row($graph)){
-          echo $fila[0] . " / " . round(($fila[0] / $x) * 10);
+        while ( $fila2 = mysqli_fetch_row($inner_query)){
+          echo $fila2[0] . " / " . round(($fila2[0] / $x) * 100);
         }
    
 
