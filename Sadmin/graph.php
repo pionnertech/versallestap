@@ -168,7 +168,7 @@ $lastone= "";
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
