@@ -153,7 +153,7 @@ while($extra = mysqli_fetch_row($depts)){
 
                                                     } else {
 
-                                                        if($darray[$y] != $darray[$y-1] || count($darray)-1 == $y ){  
+                                                        if($darray[$y] != $darray[$y-1] || count($darray) == $y+1 ){  
                                  ?>
                                     <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?> <? printf($y)?> <? printf(count($darray)) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
