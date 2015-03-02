@@ -30,18 +30,18 @@ $x = 0;
 
 echo $dept;
 
-   $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
+   $graph_queryi = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
 "INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
-"WHERE (USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . ") GROUP BY C.EST_CODE ";
+"WHERE (B.USR_DEPT = '" . $dept . "' AND B.USR_FACILITY = " . $fac . ") GROUP BY C.EST_CODE ";
 
-       $graph = mysqli_query($datos, $graph_query);
+       $graph = mysqli_query($datos, $graph_queryi);
 
        while($cuenta = mysqli_fetch_row($graph)){
        	   $x += $cuenta[0];
        }  
           
-       $inner_query = mysqli_query($datos, $graph_query);
+       $inner_query = mysqli_query($datos, $graph_queryi);
   
         while ( $fila2 = mysqli_fetch_row($inner_query)){
           echo $fila2[0] . " / " . round(($fila2[0] / $x) * 100);
