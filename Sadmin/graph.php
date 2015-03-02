@@ -156,7 +156,7 @@ while($extra = mysqli_fetch_row($depts)){
                                                         if($darray[$y] != $darray[$y-1] || count($darray) == $y){  
                                  
                                  ?>
-                                    <option id="general" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
+                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
@@ -314,7 +314,6 @@ datax = newData_eval;
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
-
 // clean up the plot chart
 $("#dynamics").html('');
 
