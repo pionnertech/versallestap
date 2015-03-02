@@ -6,6 +6,7 @@ $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 if($user_id != "General"){
+
 $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
                " ROUND((COUNT( A.STSK_ID ) / total) *100) AS percentage " .
                " FROM SUBTASKS A RIGHT JOIN EST B ON " .
@@ -27,10 +28,11 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
 
 $x = 0;
 
+   $graph_query = "SELECT COUNT(A.STSK_ID), C.EST_DESCRIPT FROM SUBTASKS A " .
+"RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
+"RIGHT JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
+"WHERE (USR_DEPT = '" . $dept . "' AND USR_FACILITY = " . $fac . ") GROUP BY C.EST_DESCRIPT";
 
-   $graph_query = "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN" . 
-                " USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) RIGHT JOIN EST C ON(C.EST_CODE = A.STSK_STATE) " . 
-                " WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $dept . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT";
 
        $graph = mysqli_query($datos, $graph_query);
        $est = mysqli_query($datos, "SELECT EST_DESCRIPT FROM EST");
