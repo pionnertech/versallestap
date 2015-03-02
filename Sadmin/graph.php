@@ -29,7 +29,9 @@ while($extra = mysqli_fetch_row($depts)){
         }
 }
 
-
+$counterId =count($darray);
+$latest = 0;
+$lastone= "";
 ?>
 
 <!DOCTYPE html>
@@ -153,24 +155,25 @@ while($extra = mysqli_fetch_row($depts)){
 
                                                     } else {
 
-                                                        if($darray[$y] != $darray[$y-1] || count($darray) == $y+1 ){  
+                                                        if($darray[$y] != $darray[$y-1] || count($darray) == $y ){  
                                  ?>
-                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?> <? printf($y)?> <? printf(count($darray)) ?>" value="<? printf($z+1) ?>">General</option>
+                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?> " value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
                                                         } else {
 
                                                             $z = $z+1;
+                                                            $latest = $z;
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?> <? printf($y)?> <? printf(count($darray)) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$latest])) ?> " value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
                                         ?>
-                                        
+                                        <option id="General" class="<? printf(str_replace(" ", "_", $darray[$latest])) ?>" value="<? printf($latest+1) ?>">General</option>
                                         </select>
                                     <div class="wrap-progress" >
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
