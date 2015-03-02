@@ -32,8 +32,8 @@ echo $dept;
 
    $graph_queryi = "SELECT COUNT(A.STSK_ID), C.EST_CODE FROM SUBTASKS A " .
 "RIGHT JOIN EST C ON (C.EST_CODE = A.STSK_STATE) " .
-"INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) " .
-"WHERE (B.USR_DEPT = '" . $dept . "' AND B.USR_FACILITY = " . $fac . ") GROUP BY C.EST_CODE ";
+"INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR AND B.USR_DEPT = '" . $dept . "' AND B.USR_FACILITY = " . $fac . ") " .
+" GROUP BY C.EST_CODE ";
 
        $graph = mysqli_query($datos, $graph_queryi);
 
