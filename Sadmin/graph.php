@@ -310,6 +310,7 @@ function setDataByJSON(depto, name, index_d, index_p, mode, usrId){
 var database = JSON.parse(datas);
 var newData_eval = jlinq.from(database.data).select();
 
+console.info(JSON.stringify(database));
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
