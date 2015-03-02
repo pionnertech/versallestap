@@ -155,9 +155,9 @@ $lastone= "";
 
                                                     } else {
 
-                                                        if($darray[$y] != $darray[$y-1] || count($darray) == $y ){  
+                                                        if($darray[$y] != $darray[$y-1]  ){  
                                  ?>
-                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?> " value="<? printf($z+1) ?>">General</option>
+                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
@@ -168,7 +168,7 @@ $lastone= "";
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$latest])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
