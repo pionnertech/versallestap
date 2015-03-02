@@ -371,7 +371,7 @@ function injectBarVars(idata){
   var listA = [0,2,4,6,8];
   var listB = [1,3,5,7,9];
 
-  for (i=0; i < narray.length ; i++){
+  for (i=0; i < (narray.length)/2 ; i++){
    
     document.querySelectorAll(".wrap-progress li p span")[i].innerHTML = narray[listA[i]];
     document.querySelectorAll(".wrap-progress li div.bar")[i].style.width = narray[listB[i]] + "%";
