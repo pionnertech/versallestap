@@ -357,7 +357,7 @@ getValueToBars(usrId, depto);
 function getValueToBars(usr_id, dept){
     $.ajax({
         type:"POST",
-        url: "../backend/graphVar.php?user_id=" + usr_id + "&dept=" + dept´+ "&fac=" + fac,
+        url: "../backend/graphVar.php?user_id=" + usr_id + "&dept=" + dept + "&fac=" + fac,
         success : function (data){
              console.info(data)
               injectBarVars(data);
