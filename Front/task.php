@@ -441,7 +441,7 @@ var iden_iss;
 $(document).on('ready', function(){
 
 	uploaderInt($("#attach"));
-	$("#attach").fadeIn(1);
+	$("#attach").fadeOut(1);
 });
 
 
@@ -463,10 +463,10 @@ $(".due").on('click', function (){
 
    if($(this).data("val") == 0 || $(this).data("val") == "" || $(this).data("val") == undefined){
    	     $("#attach").fadeIn("slow");
+   	     $(this).data("val", 1);
    } else {
    	     $("#attach").fadeOut("slow");
               $(this).data("val", 0);
-
    }
 
 });
