@@ -18,7 +18,7 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
                 " WHERE (A.STSK_FAC_CODE = " . $fac . " AND B.USR_DEPT = '" . $array_dept[$i] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT"*/
 
                 $graph = mysqli_query($datos, $graph_query);
-                
+
                 while ( $fila = mysqli_fetch_row($graph)){
                         echo  $fila[2] . "/" . $fila[3] . "/";
                       }
@@ -38,7 +38,7 @@ $x = 0;
        	   $x += $cuenta[0];
        }
      
-        mysql_data_seek($graph, 0);
+        mysqli_data_seek($graph, 0);
   
        while ( $fila = mysqli_fetch_row($graph)){
           echo  ($fila[0] / $x) * 100 . "/" . $fila[3] . "/";
