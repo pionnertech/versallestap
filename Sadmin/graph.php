@@ -92,7 +92,7 @@ $lastone= "";
                                 <img src="images/user.png" class="nav-avatar" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="../backend/close.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -109,9 +109,9 @@ $lastone= "";
                     <div class="span3">
                         <div class="sidebar">
                             <ul class="widget widget-menu unstyled">
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Página principal<b class="label green pull-right">
+                                <li><a href="index.php"><i class="menu-icon icon-inbox"></i>Página principal<b class="label green pull-right">
                                     11</b> </a></li>
-                                <li><a href="task.html"><i class="menu-icon icon-tasks"></i><b class="label orange pull-right">
+                                <li><a href="#"><i class="menu-icon icon-tasks"></i><b class="label orange pull-right">
                                     19</b> </a></li>
                             </ul>
                         </div>
