@@ -43,9 +43,9 @@ $x = 0;
           
        mysqli_data_seek($graph, 0);
   
-echo $x . "<br />";
+
         while ( $fila = mysqli_fetch_row($graph)){
-          echo $fila[0] . "/" . round(($fila[0] / $x) * 100);
+          echo $fila[0] . "/" . (($fila[0] / $x) * 100);
         }
    
 
