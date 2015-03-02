@@ -44,7 +44,7 @@ echo $dept;
        $inner_query = mysqli_query($datos, $graph_queryi);
   
         while ( $fila2 = mysqli_fetch_row($inner_query)){
-          echo $fila2[0] . " / " . round(($fila2[0] / $x) * 100);
+          echo $fila2[0] . " / " . $fila2[1];/*round(($fila2[0] / $x) * 100);*/
         }
    
 
