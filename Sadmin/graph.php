@@ -165,7 +165,7 @@ while($extra = mysqli_fetch_row($depts)){
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?> <? printf($y)?> <? printf(count($darray)) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
