@@ -71,6 +71,12 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	vertical-align: top;
 	margin:.4em;
 }
+.module-foot{
+	height: 0;
+	 -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    transition: all 600ms ease-in-out;
+}
 
 
 
@@ -455,8 +461,18 @@ $(".requirement").fadeOut('fast');
 $(".display-progress").fadeOut('fast');
 
 $(".due").on('click', function (){
-$(this).parent().parent().next('tr').fadeToggle('slow');
-//iden_iss ;
+   $(this).parent().parent().next('tr').fadeToggle('slow');
+   iden_iss = $(this).parent().parent().children('input').eq(0).val();
+   
+   if($(this).data("val") == 0 || $(this).data("val") == "" || $(this).data("val") == undefined){
+   	     $(".module-foot").css({ height: "20em"});
+              $(this).data("val", 1);
+   } else {
+
+   	     $(".module-foot").css({ height: "0em"});
+              $(this).data("val", 0);
+   }
+
 });
 
 
