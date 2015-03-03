@@ -902,7 +902,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='@topColor', end
 	 
 	margin-right: 10px;
 	 
-	color: #767676;
+	color: #FFF;
 	 -webkit-transition: all .2s ease-in-out;
 -moz-transition: all .2s ease-in-out;
 transition: all .2s ease-in-out;
@@ -928,8 +928,8 @@ transition: all .2s ease-in-out;
 	border-top: 1px solid #555
 }
 .widget-menu>li>a {
-	background-color: #2d2b32;
-	color: #767676;
+	background-color: #9D99A8;
+	color: #FFF;
 	-webkit-transition: all .2s ease-in-out;
 -moz-transition: all .2s ease-in-out;
 transition: all .2s ease-in-out;

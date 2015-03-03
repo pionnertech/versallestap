@@ -10,13 +10,8 @@ $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM US
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
-$str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
-"A.TRF_SUBJECT, " . 
-"A.TRF_DESCRIPT, " . 
-"A.TRF_ING_DATE, " . 
-"A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME)  FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " ORDER BY TRF_USER, TRF_ING_DATE;";
-
-$Query_traffic =  mysqli_query($datos, $str_traffic);
+$str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
+$Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
 ?>
 <!DOCTYPE html>
@@ -286,6 +281,13 @@ cursor: pointer;
 #back-to-main i:hover{
 color: lightgreen;
 }
+
+.user-schedule{
+    width:100%;
+    height: auto;
+}
+
+
     </style>    
 
 
@@ -842,17 +844,41 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                             <table class="table table-message">
                                 <tbody>
                                      <tr class="heading">
-                                          <td>Usuario</td>
+                                          <td>Asunto</td>
                                           <td>Descripción</td>
+                                          <td>Fecha Progreso</td>
                                      </tr>
-                            <? while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
+                           <? while ($trf = mysqli_fetch_row($Query_trf_usr)){ ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="user-schedule">
+                                            <div class="media">
+                                                <a href="#" class="media-avatar pull-left">
+                                                    <img src="../img/<? printf($trf[0]) ?>.jpg">
+                                                </a>
+                                            </div>
+                                            <p style="font-size: 2em; font-style: italic; color: gray; display: inline-block; vertical-align: top;"><? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <? 
+$str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
+"A.TRF_SUBJECT, " . 
+"A.TRF_DESCRIPT, " . 
+"A.TRF_ING_DATE " . 
+"FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) " . 
+"WHERE USR_ID = " . $trf[0] . " ORDER BY TRF_ING_DATE;";
+
+$Query_traffic =  mysqli_query($datos, $str_traffic);
+
+                            while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
-                                         <td><div class="media"><a href="#" class="media-avatar pull-left"><img src="../img/<? printf($rows[4]) ?>.jpg"></a></div></td>
-                                         <td><?php printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($rows[5]))))) ?> 
-                                            <? print($rows[1]) ?> / <? printf($rows[2])?>
-                                          </td>
+                                         <td class="cell-title"><? printf($rows[1])?></td>
+                                         <td class="cell-title"><? printf($rows[2])?></td>
+                                         <td class="cell-time align-right"><? printf($rows[3])?></td>
                                      </tr>
-                            <?      }        ?>         
+                             <?      }        ?>  
+                         <?      }        ?>        
                                 </tbody>
                             </table>
                         </div>
@@ -975,12 +1001,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                             <span class="caret"></span>
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="#">Todos</a></li>
-                                                                <li><a href="#">En Progreso</a></li>
-                                                                <li><a href="#">finalizados</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#">Nuevo requerimiento</a></li>
-                                                                <li><a href="#">Atrasados</a></li>
+                                                                <li><a href="#"></a></li>
+                                                                <li><a href="#">En Curso</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1008,7 +1030,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                                            </tbody>
                                                     </table> 
                                             </div>
-                                      </div> 
+                                         </div> 
                                      </div> 
                                  </div>
                             <!--/.module-body-->

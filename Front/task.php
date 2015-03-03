@@ -228,7 +228,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 										<ul class="dropdown-menu">
 										    <li class="switcher" id="Pe"><a href="#" >Pendientes</a></li>
 											<li class="switcher" id="Ec"><a href="#" >En Curso</a></li>
-											<li class="switcher" id="Hc"><a href="#" >Hechos</a></li>
+											<li class="switcher" id="Hc"><a href="#" >Finalizados</a></li>
 											<li class="switcher" id="Pv"><a href="#" >Por Vencer</a></li>
 											<li class="switcher" id="At"><a href="#" >Atrasados</a></li>
 										</ul>
