@@ -938,9 +938,9 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                             <table class="table table-message">
                                 <tbody>
                                      <tr class="heading">
-                                          <td>Asunto</td>
-                                          <td>Descripción</td>
-                                          <td>Fecha Progreso</td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
                                      </tr>
                            <? while ($trf = mysqli_fetch_row($Query_trf_usr)){ ?>
                                 <tr>
@@ -955,7 +955,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="task">
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
