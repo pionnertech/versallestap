@@ -14,6 +14,12 @@
       .wrap-charts{
         display:none;
       }
+      strong {
+        font-size:.8em;
+      }
+      #Com-Display li{
+        padding: 5px;
+      }
         </style>
 </head>
 <body>
@@ -205,7 +211,7 @@
                                             <p>
                                              <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
                                             </p>
-                                            <div class="progress tight">
+                                            <div class="progress tight" style="height: 5px;">
                                                 <div class="bar" style="width: 17%;">
                                                 </div>
                                             </div>
@@ -214,7 +220,7 @@
                                             <p>
                                                 <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
                                             </p>
-                                            <div class="progress tight">
+                                            <div class="progress tight" style="height: 5px;">
                                                 <div class="bar bar-success" style="width: 88%;">
                                                 </div>
                                             </div>
@@ -223,7 +229,7 @@
                                             <p>
                                                 <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
                                             </p>
-                                            <div class="progress tight">
+                                            <div class="progress tight" style="height: 5px;">
                                                 <div class="bar bar-warning" style="width: 12%;">
                                                 </div>
                                             </div>
@@ -232,7 +238,7 @@
                                             <p>
                                                 <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
                                             </p>
-                                            <div class="progress tight">
+                                            <div class="progress tight" style="height: 5px;">
                                                 <div class="bar bar-danger" style="width: 2%;">
                                                 </div>
                                             </div>
@@ -666,15 +672,26 @@
 </body>
 <script type="text/javascript">
     
+    var um = 0;
     $(document).on('ready', function(){
 
 
-    })
+    });
 
 $("#av1").click(function(){
-    $("#wc1").parent().prev().fadeToggle(400, function(){
-        $("#wc1").fadeToggle(400);
-    })
+
+if (um == 0){
+    $("#wc1").parent().prev().fadeOut(400, function(){
+        $("#wc1").fadeIn(400);
+    });
+
+    um  = 1;
+} else {
+    $("#wc1").fadeOut(400, function(){
+        $("#wc1").parent().prev().fadeIn(400);
+    });
+    um = 0;
+}
 });
 
 </script>

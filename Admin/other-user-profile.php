@@ -287,6 +287,16 @@ color: lightgreen;
     height: auto;
 }
 
+      .wrap-charts{
+        display:none;
+      }
+      strong {
+        font-size:.8em;
+      }
+      #Com-Display li{
+        padding: 5px;
+      }
+
 
     </style>    
 
@@ -562,7 +572,7 @@ color: lightgreen;
                                            <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
+                                                        <a class="media-avatar pull-left stusr" href="#" >
                                                             <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
@@ -578,6 +588,48 @@ color: lightgreen;
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-share-alt"></i>
                                                                 </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="media">
+                                                            <div class="wrap-charts wc">
+                                                                <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
+                                                                    <li>
+                                                                        <p>
+                                                                         <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar" style="width: 17%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-success" style="width: 88%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-warning" style="width: 12%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-danger" style="width: 2%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -605,6 +657,48 @@ color: lightgreen;
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-share-alt"></i>
                                                                 </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="media">
+                                                            <div class="wrap-charts wc">
+                                                                <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
+                                                                    <li>
+                                                                        <p>
+                                                                         <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar" style="width: 17%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-success" style="width: 88%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-warning" style="width: 12%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <p>
+                                                                            <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                                        </p>
+                                                                        <div class="progress tight" style="height: 5px;">
+                                                                            <div class="bar bar-danger" style="width: 2%;">
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -860,6 +954,11 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                             <p style="font-size: 2em; font-style: italic; color: gray; display: inline-block; vertical-align: top;"><? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?></p>
                                         </div>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>Asunto</td>
+                                    <td>Descripción</td>
+                                    <td>Fecha Progreso</td>
                                 </tr>
                             <? 
 $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
@@ -1519,6 +1618,24 @@ $("#back-to-main").click(function(){
            
              
 });
+
+
+$(".stusr").click(function(){
+if (um == 0){
+    $("#wc1").parent().prev().fadeOut(400, function(){
+        $("#wc1").fadeIn(400);
+    });
+
+    um  = 1;
+} else {
+    
+    $("#wc1").fadeOut(400, function(){
+        $("#wc1").parent().prev().fadeIn(400);
+    });
+    um = 0;
+}
+});
+
 
 </script>
 
