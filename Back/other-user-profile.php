@@ -15,8 +15,7 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_START_DATE DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 if(!$notify){
-
-    $manu = "";
+     $manu = "";
 } else {
     
     $manu = $notify['STSK_DESCRIP'];
@@ -662,8 +661,8 @@ var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
 var progressbar;
-var previuosData = <? printf($manu) ?>;
-var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
+var previuosData = "'" + <? printf($manu) ?> + "'";
+var mainuser = <? printf("\"" . $_SESSION['TxtCode'] . "\"")  ?>;
 
 
     $(document).on('ready', function(){
