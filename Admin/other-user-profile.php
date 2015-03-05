@@ -1144,6 +1144,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
             </div>
         </div>
         <!--/.container-->
+        <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
     <div class="footer">
