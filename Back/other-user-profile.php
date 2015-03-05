@@ -11,6 +11,17 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
+
+$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_START_DATE DESC LIMIT 1";
+$notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+if(!$notify){
+
+    $manu = "";
+} else {
+    
+    $manu = $notify['STSK_DESCRIP'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -622,6 +633,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
             </div>
         </div>
         <!--/.container-->
+        <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
     <div class="footer">
@@ -650,9 +662,14 @@ var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
 var progressbar;
+var previuosData = <? printf($manu) ?>;
+var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
+
 
     $(document).on('ready', function(){
 
+
+    
        progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
 
@@ -803,7 +820,6 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac 
-            
             , 
             success : function (data){
           
@@ -854,7 +870,59 @@ $("#back").on('click', function(){
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in'); 
 });
 
+    var Notification = window.Notification || window.mozNotification || window.webkitNotification;
 
+    Notification.requestPermission(function (permission) {
+        // console.log(permission);
+    });
+
+    function showAlert(message) {
+        var instance = new Notification(
+            "Te ha llegado un nuevo requerimiento:", {
+                body: message,
+                icon: "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png"
+
+            }
+        );
+
+        instance.onclick = function () {
+            // Something to do
+        };
+        instance.onerror = function () {
+            // Something to do
+        };
+        instance.onshow = function () {
+          $('#chatAudio')[0].play();
+        };
+        instance.onclose = function () {
+            // Something to do
+        };
+
+        return false;
+    }
+
+if(typeof(EventSource) !== "undefined") {
+
+    var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    source.onmessage = function(event) {
+
+       if (event.data !== previuosData){
+
+        var eventMessage = event.data.split('\n');
+        showAlert(eventMessage[0]);
+
+        previuosData = event.data;
+
+    } else {
+        
+    }
+}
+
+} else {
+
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
 
 </script>
 <?
