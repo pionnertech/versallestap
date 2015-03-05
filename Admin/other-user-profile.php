@@ -1634,17 +1634,19 @@ $("#back-to-main").click(function(){
 
 $(".stusr").click(function(){
 
+var indicator = $(this).index();
+
 if (um == 0){
 
     $(this).parent().children('.media-body').fadeOut(400, function(){
-        $(this).parent().children("div.media").children('div.wc').fadeIn(400);
+        $(".stusr").eq(indicator).parent().children("div.media").children('div.wc').fadeIn(400);
     });
 
     um  = 1;
 } else {
     
    $(this).parent().children("div.media").children("div.wc").fadeOut(400, function(){
-        $(this).parent().children('.media-body').fadeIn(400);
+        $(".stusr").eq(indicator).parent().children(".media-body").fadeIn(400);
     });
     um = 0;
 }
