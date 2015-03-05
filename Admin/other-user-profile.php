@@ -1636,14 +1636,14 @@ $(".stusr").click(function(){
 
 if (um == 0){
 
-    $("#wc1").parent().children('.media-body').fadeOut(400, function(){
-        $(this).parent().children("div.wc").fadeIn(400);
+    $(this).parent().children('.media-body').fadeOut(400, function(){
+        $(this).parent().children("div.media").children('div.wc').fadeIn(400);
     });
 
     um  = 1;
 } else {
     
-   $(this).parent().children("div.wc").fadeOut(400, function(){
+   $(this).parent().children("div.media").children("div.wc").fadeOut(400, function(){
         $(this).parent().children('.media-body').fadeIn(400);
     });
     um = 0;
