@@ -661,8 +661,8 @@ var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
 var progressbar;
-var previuosData = "'" + <? printf($manu) ?> + "'";
-var mainuser = <? printf("\"" . $_SESSION['TxtCode'] . "\"")  ?>;
+var previuosData =  <? "\"" . printf($manu) . "\"" ?>  ;
+var mainuser = <? printf( $_SESSION['TxtCode'] . "\"")  ?>;
 
 
     $(document).on('ready', function(){

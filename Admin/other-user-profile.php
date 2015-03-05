@@ -19,7 +19,7 @@ if(!$notify){
 
     $manu = "";
 } else {
-    
+
     $manu = $notify['STSK_DESCRIP'];
 }
 
@@ -1183,8 +1183,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var st = 0;
     var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
     var dateTime;
-    var previuosData = <? printf() ?>;
-    
+    var previuosData = <? "\"" . printf($manu) . "\"" ?>;
+    var um = 0;
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
     $(document).on('ready', function(){
