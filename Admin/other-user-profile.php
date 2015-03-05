@@ -303,7 +303,7 @@ color: lightgreen;
       strong {
         font-size:.8em;
       }
-      #Com-Display li{
+      .progressDisplay li{
         padding: 5px;
       }
 
@@ -602,7 +602,7 @@ color: lightgreen;
                                                         </div>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
-                                                                <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
+                                                                <ul class="widget widget-usage unstyled progressDisplay" >
                                                                     <li>
                                                                         <p>
                                                                          <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
@@ -671,7 +671,7 @@ color: lightgreen;
                                                         </div>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
-                                                                <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
+                                                                <ul class="widget widget-usage unstyled progressDisplay">
                                                                     <li>
                                                                         <p>
                                                                          <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
