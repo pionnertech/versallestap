@@ -1621,16 +1621,18 @@ $("#back-to-main").click(function(){
 
 
 $(".stusr").click(function(){
+
 if (um == 0){
-    $("#wc1").parent().prev().fadeOut(400, function(){
-        $("#wc1").fadeIn(400);
+
+    $("#wc1").parent().children('.media-body').fadeOut(400, function(){
+        $(this).parent().children("div.wc").fadeIn(400);
     });
 
     um  = 1;
 } else {
     
-    $("#wc1").fadeOut(400, function(){
-        $("#wc1").parent().prev().fadeIn(400);
+   $(this).parent().children("div.wc").fadeOut(400, function(){
+        $(this).parent().children('.media-body').fadeIn(400);
     });
     um = 0;
 }
