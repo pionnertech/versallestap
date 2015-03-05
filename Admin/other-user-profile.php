@@ -1172,6 +1172,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var st = 0;
     var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
     var dateTime;
+    var previuosData = "";
     
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
@@ -1638,6 +1639,59 @@ if (um == 0){
 }
 });
 
+    var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+
+    Notification.requestPermission(function (permission) {
+        // console.log(permission);
+    });
+
+    function showAlert(message) {
+        var instance = new Notification(
+            "Te ha llegado un nuevo requerimiento:", {
+                body: message,
+                icon: "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png"
+
+            }
+        );
+
+        instance.onclick = function () {
+            // Something to do
+        };
+        instance.onerror = function () {
+            // Something to do
+        };
+        instance.onshow = function () {
+            // Something to do
+        };
+        instance.onclose = function () {
+            // Something to do
+        };
+
+        return false;
+    }
+
+if(typeof(EventSource) !== "undefined") {
+
+    var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    source.onmessage = function(event) {
+
+       if (event.data !== previuosData){
+
+        var eventMessage = event.data.split('\n');
+        showAlert(eventMessage[0]);
+
+        previuosData = event.data;
+
+    } else {
+        
+    }
+}
+
+} else {
+
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
 
 </script>
 
