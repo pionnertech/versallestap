@@ -999,7 +999,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      <tr class="task st<? printf($rows[0]) ?>  chrono " >
                                          <td class="cell-title"><? printf($rows[1])?></td>
                                          <td class="cell-title"><? printf($rows[2])?></td>
-                                         <td class="cell-time align-right"><? printf($rows[3])?></td>
+                                         <td class="cell-time align-right"><? printf(date_format('d-m-Y',$rows[3]))?></td>
                                      </tr>
                              <?      }        ?>  
                          <?      }        ?>        
