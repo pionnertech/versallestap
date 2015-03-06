@@ -1791,10 +1791,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
                     $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
                     $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
-});
+};
 
 
-    }
+    
     tr1.appendChild(td1);
     tr1.appendChild(td2);
     tr1.appendChild(td3);
