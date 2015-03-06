@@ -1770,7 +1770,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr1.appendChild(inp2);
 
     parent.appendChild(tr1);
-    parent.appendChild(tr2);
+
 
 // second tr
 
@@ -1847,7 +1847,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     tr2.appendChild(i2);
     tr2.appendChild(i3);
-   
+    parent.appendChild(tr2);
 }
 
 </script>
