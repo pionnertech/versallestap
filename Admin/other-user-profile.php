@@ -1757,6 +1757,25 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td3.appendChild(b);
 
 
+    var is = document.createElement('i');
+    is.className    = "fa fa-warning";
+    is.style.color  = "#EE8817";
+    is.style.cursor =  "pointer"
+    td1.appendChild(is);
+
+
+    is.onclick = function (){
+
+          var stsk   = $(this).parent().parent().children('input').eq(0).val();
+          var iss_id = $(this).parent().parent().children('input').eq(1).val();
+ 
+          unlock(stsk, iss_id, $(this));
+
+    }
+
+
+
+
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
              $(this).parent().parent().next().css({ display: "table-row"});
