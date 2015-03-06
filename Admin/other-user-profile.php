@@ -984,6 +984,7 @@ WHERE (TRF_FAC_CODE = 10000 AND USR_DEPT = 'OFICINA FSV') ORDER BY TRF_USER*/
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
                                 </tr>
+                                
                             <? 
 $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
 "A.TRF_SUBJECT, " . 
