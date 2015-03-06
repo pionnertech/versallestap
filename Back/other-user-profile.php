@@ -148,10 +148,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     width: 100% !important;
 }
 
-.Pe{
+.At{
     display: table-row;
 }
-.Ec, .Hc, .At, .Pv{
+.Ec, .Hc, .Pe, .Pv{
     display: none;
 }
 
@@ -778,23 +778,23 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+
     source.onmessage = function(event) {
 
-       if (event.data !== previuosData){
+       var eventMessage = event.data.split('\n');
+     
+       if (eventMessage[0] !== previuosData){
 
-        var eventMessage = event.data.split('\n');
         showAlert(eventMessage[0]);
 
-        previuosData = event.data;
+        previuosData = eventMessage[0];
 
-    } else {
-        
     }
 }
 
 } else {
 
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+   // document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
 
