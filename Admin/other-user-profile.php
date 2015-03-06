@@ -650,7 +650,7 @@ color: lightgreen;
                                                ?>
                                                 <div class="span6">
                                                     <div class="media user">
-                                                        <a class="media-avatar pull-left" href="#">
+                                                        <a class="media-avatar pull-left stusr" href="#">
                                                             <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
@@ -763,7 +763,7 @@ color: lightgreen;
                             </div>
                         <div>
                             <div class="module-body table">                             
-                                <table class="table table-message">
+                                <table class="table table-message" id="ext-tasks-table">
                                     <tbody>
                                         <tr class="heading">
                                             <td class="cell-icon"><i class="fa fa-lock" style="color: white;"></i></td>
@@ -824,8 +824,8 @@ color: lightgreen;
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
-                                            <td class="cell-title"><span><? printf($stsk[2])  ?></span></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
+                                            <td class="cell-title"><? printf($stsk[2])  ?></td>
+                                            <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
                                             <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
@@ -1634,7 +1634,9 @@ $("#back-to-main").click(function(){
 
 $(".stusr").click(function(){
 
-var indicator = $(this).index();
+var indicator = $(this).eq();
+
+console.info(indicator)
 
 if (um == 0){
 
@@ -1675,6 +1677,7 @@ if (um == 0){
         };
         instance.onshow = function () {
           $('#chatAudio')[0].play();
+
         };
         instance.onclose = function () {
             // Something to do
@@ -1692,6 +1695,7 @@ if(typeof(EventSource) !== "undefined") {
 
         var eventMessage = event.data.split('\n');
         showAlert(eventMessage[0]);
+        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
         previuosData = event.data;
 
@@ -1704,6 +1708,141 @@ if(typeof(EventSource) !== "undefined") {
 
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
+}
+
+function inputTask(stsk_descript, stsk, iss, ctz, desc){
+
+    var parent =  document.querySelector("#ext-tasks-table tbody");
+
+    var tr1 = document.createElement('tr');
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+
+    var inp1 = document.createElement('input');
+    var inp2 = document.createElement('input');
+
+    var b = document.createElement('b');
+   
+    td1.className = "cell-icon";
+    td2.className = "cell-title";
+    td3.className = "cell-status";
+    td4.className = "cell-title";
+    td5.className = "cell-time align-right";
+   
+    inp1.type = "hidden";
+    inp2.type = "hidden";
+
+    inp1.value = stsk;
+    inp2.value = iss;
+
+    inp1.id = "st";
+    inp2.id = "iss_id";
+    
+    b.className = "due";
+    b.style.backgroundColor = "#178FD0";
+    b.appendChild(tr3);
+    b.innerHTML = "EN CURSO";
+
+    b.onclick = function(){
+        if(!$(this).data("val") || !$(this).data("val") === 0 ){
+             $(this).parent().parent().next().css({ display: "table-row"});
+             $(this).data("val", 1);
+       } else  {
+         $(this).parent().parent().next().css({ display: "none"});
+        $(this).data("val", 0);
+        }
+    }
+
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+    tr1.appendChild(td5);
+    tr1.appendChild(inp1);
+    tr1.appendChild(inp2);
+
+    parent.appendChild(tr1);
+
+// second tr
+
+    var tr2  = document.createElement('tr');
+    var td6  = document.createElement('td');
+
+    var div1 = document.createElement('div');
+    var div2 = document.createElement('div');
+    var div3 = document.createElement('div');
+    var div4 = document.createElement('div');
+
+    var i1   = document.createElement('i');
+    var i2   = document.createElement('i');
+    var i3   = document.createElement('i');
+   
+    var p1   = document.createElement('p');
+    var p2   = document.createElement('p');
+    var p3   = document.createElement('p');
+    var p4   = document.createElement('p');
+    var p5   = document.createElement('p');
+   
+    var str1 = document.createElement('strong');
+    var str2 = document.createElement('strong');
+
+    var td2.innerHTML = stsk_descript;
+
+
+    tr2.className = "display-progress";
+    td6.colSpan = "5";
+    div1.className = "info-content";
+
+  
+    p1.className = "iss-descript";
+    p2.className = "iss-descript";
+
+    str1.innerHTML = "Ciudadano : " + ctz;
+    str2.innerHTML = "Descripción: " + desc;
+
+    
+    var str3  = document.createElement('strong');
+    var span1 = document.createElement('span');
+
+
+    str3.innerHTML  = "Grado de progreso";
+    span1.innerHTML = "0%";
+    span1.className = "pull-right small muted";
+    div2.className  = "progress tight";
+    div3.className  = "bar bar-warning";
+    div4.className  = "collaborates";
+    
+
+    i1.className = "fa fa-group spac";
+    i2.className = "fa fa-paperclip";
+    i3.className = "fa fa-history events";
+
+    p4.className = "golang";
+    p5.className = "wrap-events";
+
+    p1.appendChild(str1);
+    p2.appendChild(str2);
+    p3.appendChild(str3);
+    p3.appendChild(span1);
+
+
+    div1.appendChild(p1);
+    div1.appendChild(p2);
+    div2.appendChild(div3);
+
+    td6.appendChild(div1);
+    tr2.appendChild(td6);
+    tr2.appendChild(p3);
+    tr2.appendChild(div2);
+    tr2.appendChild(div4);
+
+    tr2.appendChild(i2);
+    tr2.appendChild(i3);
+   
 }
 
 </script>

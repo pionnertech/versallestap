@@ -259,6 +259,35 @@ var datax;
 
 $(document).on('ready', function(){
 
+array_set = [
+<?
+
+$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+
+while ( $fila2 = mysqli_fetch_row($pass)) {
+
+?>
+{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
+
+ $.plot($("#dynamics"), array_set, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+        hoverable: true,
+        clickable: true
+    }
+});
+
 updateChart();
 
 
