@@ -1907,6 +1907,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     td6.appendChild(i2);
     td6.appendChild(i3);
+    td6.appendChild(p4);
+    td6.appendChild(p5);
     parent.appendChild(tr2);
 }
 
