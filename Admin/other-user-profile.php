@@ -979,7 +979,7 @@ WHERE (TRF_FAC_CODE = 10000 AND USR_DEPT = 'OFICINA FSV') ORDER BY TRF_USER*/
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="task">
+                                <tr class="task u<? printf($trf[0]) ?>">
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
