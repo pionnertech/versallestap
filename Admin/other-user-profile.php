@@ -1838,6 +1838,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var i1   = document.createElement('i');
     var i2   = document.createElement('i');
     var i3   = document.createElement('i');
+    var i4   = document.createElement('i');
    
     var p1   = document.createElement('p');
     var p2   = document.createElement('p');
@@ -1878,6 +1879,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     i1.className = "fa fa-group spac";
     i2.className = "fa fa-paperclip";
     i3.className = "fa fa-history events";
+    i4.className = "fa fa-group spac";
+
 
     p4.className = "golang";
     p5.className = "wrap-events";
@@ -1888,7 +1891,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     p3.appendChild(span1);
     p4.appendChild(i2);
     p5.appendChild(i3);
-
+    div4.appendChild(i4);
 
 
 
