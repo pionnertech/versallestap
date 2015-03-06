@@ -1733,6 +1733,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
    
+    td2.innerHTML = stsk_descript;
+
     inp1.type = "hidden";
     inp2.type = "hidden";
 
@@ -1790,7 +1792,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var str1 = document.createElement('strong');
     var str2 = document.createElement('strong');
 
-    var td2.innerHTML = stsk_descript;
+  
 
 
     tr2.className = "display-progress";
