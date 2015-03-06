@@ -996,10 +996,10 @@ $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
 $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                             while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
-                                     <tr class="task st<? printf($rows[0]) ?>  chrono" >
+                                     <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td class="cell-title"><? printf($rows[1])?></td>
                                          <td class="cell-title"><? printf($rows[2])?></td>
-                                         <td class="cell-time align-right"><? printf(date_format('d-m-Y', strtotime($rows[3])))?></td>
+                                         <td class="cell-time align-right"><? printf(date_format('d-m-Y', strtotime($rows[3]))) ?></td>
                                      </tr>
                              <?      }        ?>  
                          <?      }        ?>        
