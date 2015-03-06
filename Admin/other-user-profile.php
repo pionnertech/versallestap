@@ -1691,9 +1691,10 @@ if(typeof(EventSource) !== "undefined") {
     var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     source.onmessage = function(event) {
 
-       if (event.data !== previuosData){
+       var eventMessage = event.data.split('\n');
 
-        var eventMessage = event.data.split('\n');
+       if (eventMessage[0] !== previuosData){
+
         showAlert(eventMessage[0]);
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
