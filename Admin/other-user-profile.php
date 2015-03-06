@@ -1747,7 +1747,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     
     b.className = "due";
     b.style.backgroundColor = "#178FD0";
-    b.appendChild(tr3);
+    b.appendChild(td3);
     b.innerHTML = "EN CURSO";
 
     b.onclick = function(){
