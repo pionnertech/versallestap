@@ -142,10 +142,10 @@ display:none;
 }
 
 
-.Pe{
+.At{
     display: table-row;
 }
-.Ec, .Hc, .At, .Pv{
+.Ec, .Hc, .Pe, .Pv{
     display: none;
 }
 
