@@ -999,7 +999,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td class="cell-title"><? printf($rows[1])?></td>
                                          <td class="cell-title"><? printf($rows[2])?></td>
-                                         <td class="cell-time align-right"><? printf(date_format('d-m-Y', strtotime($rows[3]))) ?></td>
+                                         <td class="cell-time align-right"><? printf(date('d-m-Y', strtotime($rows[3]))) ?></td>
                                      </tr>
                              <?      }        ?>  
                          <?      }        ?>        
@@ -1721,7 +1721,9 @@ if(typeof(EventSource) !== "undefined") {
        var eventMessage = event.data.split('\n');
 
        if (eventMessage[0] !== previuosData){
-
+          
+   console.info( eventMessage[0] + "/" + previuosData);
+   
         showAlert(eventMessage[0]);
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
