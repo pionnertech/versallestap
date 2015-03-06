@@ -1886,6 +1886,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     p2.appendChild(str2);
     p3.appendChild(str3);
     p3.appendChild(span1);
+    p4.appendChild(i2);
+    p5.appendChild(i3);
+
+
 
 
     div1.appendChild(p1);
