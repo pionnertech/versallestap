@@ -1623,8 +1623,9 @@ $(".events").on('click', function(){
 
   //get the Classes by ID 
 
- var ucla =  $(this).parent().prev().prev().children('input');
+ var ucla =  $(this).parent().prev().prev().children('p').children('input');
   
+
    for (i=0; i < ucla.length; i++){
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
