@@ -549,13 +549,13 @@ function getDataTable(iss_id, object, color ){
         type: "POST", 
         url: "../backend/datatotable.php?fac=" + fac + "&iss_id=" + iss_id,
         beforeSend: function(){
-          object.html(object.html() + "<i style='color: " + color + "; font-size: .8em;'  class='fa fa-spinner fa-pulse'></i>");
-          
+          object.html(object.html() + "<i style='color: " + color + "; margin-left: 40%;'  class='fa fa-spinner fa-pulse'></i>");
+
         },
         success : function (data){
 
                var matrix = data.split("|");
-
+               object.children('i').remove();
                for(i=0;i < 5 ; i++){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
