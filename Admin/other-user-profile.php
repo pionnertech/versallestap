@@ -1648,7 +1648,7 @@ $(".events").on('click', function(){
 
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
-      $("utrf").css({ display: "none"});
+      $(".utrf").css({ display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
            
