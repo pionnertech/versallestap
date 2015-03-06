@@ -1,4 +1,5 @@
 <?php session_start();
+
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == 'sadmin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
@@ -507,7 +508,8 @@ break;
 $(".situation").on('click', function(){
 
 var iss = $(this).parent().children('input').val();
-getDataTable(iss);
+var color = $(this).css("color");
+getDataTable(iss, $(this), color);
 
 
 });
@@ -541,11 +543,15 @@ if ($(this).data("val") == "" || $(this).data("val") == 0 || $(this).data("val")
 
 })
 
-function getDataTable(iss_id, usr_charge){
+function getDataTable(iss_id, object, color ){
 
     $.ajax({
         type: "POST", 
         url: "../backend/datatotable.php?fac=" + fac + "&iss_id=" + iss_id,
+        beforeSend: function(){
+          object.html(object.html() + "<i style='color: " + color + "; font-size: .8em;'  class='fa fa-spinner fa-pulse'></i>");
+          
+        },
         success : function (data){
 
                var matrix = data.split("|");
