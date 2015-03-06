@@ -1875,12 +1875,12 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     td6.appendChild(div1);
     tr2.appendChild(td6);
-    tr2.appendChild(p3);
-    tr2.appendChild(div2);
-    tr2.appendChild(div4);
+    td6.appendChild(p3);
+    td6.appendChild(div2);
+    td6.appendChild(div4);
 
-    tr2.appendChild(i2);
-    tr2.appendChild(i3);
+    td6.appendChild(i2);
+    td6.appendChild(i3);
     parent.appendChild(tr2);
 }
 
