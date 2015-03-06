@@ -306,7 +306,9 @@ color: lightgreen;
       .progressDisplay li{
         padding: 5px;
       }
-
+  .utrf{
+    display: none;
+  }
 
     </style>    
 
@@ -504,8 +506,8 @@ color: lightgreen;
                         <div class="module">
                             <div class="module-body">
                                 <div class="profile-head media">
-                                    <a href="#" class="media-avatar pull-left">
-                                        <img src="../images/ejecutivo4.jpg">
+                                    <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
+                                        <img src="../images/ejecutivo4.jpg" style="width: 100%; height: 100%">
                                     </a>
                                     <div class="media-body">
                                         <h4>
@@ -849,9 +851,12 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                             <div class="collaborates">
                                             <i class="fa fa-group spac"></i>
                                                 <?
-$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
+$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
-   <p><? printf($fila_spec[0]) ?>   <? printf($fila_spec[1]) ?> - </p>
+   <p ><? printf($fila_spec[0]) ?>   <? printf($fila_spec[1]) ?> - 
+   <input type="hidden" value="u<? printf($fila_spec[2])?>">
+   </p>
+
     <?  }  ?>
     
                                             </div>
@@ -952,16 +957,25 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME FROM USERS A
                                           <td></td>
                                           <td></td>
                                      </tr>
-                           <? while ($trf = mysqli_fetch_row($Query_trf_usr)){ ?>
-                                <tr>
-                                    <td colspan="3">
+                           <? 
+
+/*SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME), C.STSK_PROGRESS , A.TRF_STSK_SRC_ID
+FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID)
+INNER JOIN SUBTASKS C ON(C.STSK_ID = A.TRF_STSK_SRC_ID) 
+WHERE (TRF_FAC_CODE = 10000 AND USR_DEPT = 'OFICINA FSV') ORDER BY TRF_USER*/
+
+                           while ($trf = mysqli_fetch_row($Query_trf_usr)){
+
+                            ?>
+                                <tr class="u<? printf($trf[0]) ?> utrf">
+                                    <td colspan="3" >
                                         <div class="user-schedule">
-                                            <div class="media">
-                                                <a href="#" class="media-avatar pull-left">
-                                                    <img src="../img/<? printf($trf[0]) ?>.jpg">
+                                            <div class="media" style="display : inline-block">
+                                                <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
+                                                    <img src="../img/<? printf($trf[0]) ?>.jpg" style="width: 100%; height: 100%">
                                                 </a>
                                             </div>
-                                            <p style="font-size: 2em; font-style: italic; color: gray; display: inline-block; vertical-align: top;"><? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?></p>
+                                            <p style="font-size: 2em; font-style: italic; color: gray; display: inline-block; vertical-align: bottom;"><? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?></p>
                                         </div>
                                     </td>
                                 </tr>
@@ -981,7 +995,7 @@ $str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
 $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                             while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
-                                     <tr class="task st<? printf($rows[0]) ?> chrono" >
+                                     <tr class="task st<? printf($rows[0]) ?> u<? printf($trf[0])?> chrono " >
                                          <td class="cell-title"><? printf($rows[1])?></td>
                                          <td class="cell-title"><? printf($rows[2])?></td>
                                          <td class="cell-time align-right"><? printf($rows[3])?></td>
@@ -1189,7 +1203,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     
     $(document).on('ready', function(){
 
-      
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
@@ -1608,10 +1621,20 @@ uploader =  $(object).pluploadQueue({
 
 $(".events").on('click', function(){
 
+  //get the Classes by ID 
+
+ var ucla =  $(this).parent().prev().prev().children('input');
+  
+   for (i=0; i < ucla.length; i++){
+       $("." + ucla.eq(i).val()).css({ display: "table-row"});
+   }
+
 
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
+
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
+
         if($(".st" + primary).length == 0){
           
              $("#events .task").removeAttr('style');
@@ -1621,10 +1644,11 @@ $(".events").on('click', function(){
                 $("#back-to-main").data("val", primary);
            }         
                
-})
+});
 
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
+      $("utrf").css({ display: "none"});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
            
@@ -1698,7 +1722,7 @@ if(typeof(EventSource) !== "undefined") {
         showAlert(eventMessage[0]);
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
-        previuosData = event.data;
+        previuosData = eventMessage[0];
 
     } else {
         
