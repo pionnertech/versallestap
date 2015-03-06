@@ -1716,7 +1716,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
     var tr1 = document.createElement('tr');
-    tr1.className = "task Ec";
+    tr1.className = "task";
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -1748,8 +1748,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     
     b.className = "due";
     b.style.backgroundColor = "#178FD0";
-    b.appendChild(td3);
     b.innerHTML = "EN CURSO";
+
 
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
