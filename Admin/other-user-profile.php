@@ -1716,6 +1716,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
     var tr1 = document.createElement('tr');
+    tr1.className = "task Ec";
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -1769,6 +1770,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr1.appendChild(inp2);
 
     parent.appendChild(tr1);
+    parent.appendChild(tr2);
 
 // second tr
 
