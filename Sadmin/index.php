@@ -196,7 +196,7 @@ vertical-align: top;
                                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                                 </i>Estadisticas</a>
                                     <ul id="togglePages" class="collapse unstyled">
-                                        <li><a href="graph.php"><i class="icon-inbox"></i>Gráficos</a></li>
+                                        <li><a href="graph.php"><i class="icon-inbox"></i>Análisis de trabajo</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="backend/close.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
