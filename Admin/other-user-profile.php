@@ -1727,13 +1727,18 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var inp1 = document.createElement('input');
     var inp2 = document.createElement('input');
 
-    var b = document.createElement('b');
-   
+    var b   = document.createElement('b');
+    var btn = document.createElement('button');
+    
     td1.className = "cell-icon";
     td2.className = "cell-title";
     td3.className = "cell-status";
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
+
+    btn.className   = "btn btn-small forward";
+    btn.innerHTML   = "Delegar";
+    td4.appendChild(btn);  
    
     td2.innerHTML = stsk_descript;
 
@@ -1749,6 +1754,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     b.className = "due";
     b.style.backgroundColor = "#178FD0";
     b.innerHTML = "EN CURSO";
+    td3.appendChild(b);
 
 
     b.onclick = function(){
@@ -1761,6 +1767,34 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
         }
     }
 
+
+    btn.onclick = function(){
+
+            var stsk_id = $(this).parent().parent().children('input#st').val();
+            var iss_ident = $(this).parent().parent().children('input#iss_id').val();
+            var subject = $(this).parent().parent().children('td').eq(1).text();
+            var index_current = parseInt($(this).index());
+
+            $("#audititle").html("\"" + stsk_descript + "\"");
+            $("#current-task").val(index_current);
+
+            $(".ifile").css({display : "none"});
+            $(".iss" + iss_ident).css({ display : "inline-block"});
+
+             $("#issId").val(iss_ident);
+             $("#stsk-code").val(stsk_id);
+
+                $('#delegates option:first-child').attr("selected", "selected");
+
+                var current = $("#delegates").val();
+
+                    $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
+                    $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+});
+
+
+    }
     tr1.appendChild(td1);
     tr1.appendChild(td2);
     tr1.appendChild(td3);
