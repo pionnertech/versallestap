@@ -13,7 +13,7 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
-$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_START_DATE DESC LIMIT 1";
+$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 if(!$notify){
 
@@ -959,10 +959,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-/*SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME), C.STSK_PROGRESS , A.TRF_STSK_SRC_ID
-FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID)
-INNER JOIN SUBTASKS C ON(C.STSK_ID = A.TRF_STSK_SRC_ID) 
-WHERE (TRF_FAC_CODE = 10000 AND USR_DEPT = 'OFICINA FSV') ORDER BY TRF_USER*/
+$Query_trf_usr  =  mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIP, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_ID = " . $stsk[0] .  " AND TRF_USER = " . $_SESSION['TxtCode'] . ")");
+
 
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
 
@@ -1723,7 +1721,7 @@ if(typeof(EventSource) !== "undefined") {
        if (eventMessage[0] !== previuosData){
           
    console.info( eventMessage[0] + "/" + previuosData);
-   
+
         showAlert(eventMessage[0]);
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
