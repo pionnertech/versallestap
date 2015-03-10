@@ -880,7 +880,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC  WHERE  TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
+$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
 
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
 
@@ -897,7 +897,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC  
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="task u<? printf($trf[0]) ?>" >
+                                <tr class="task htd" >
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
@@ -1543,14 +1543,11 @@ $(".events").on('click', function(){
   //get the Classes by ID 
 
  var ucla =  $(this).parent().prev().prev().children('p').children('input');
-  
 
    for (i=0; i < ucla.length; i++){
     console.info(ucla.eq(i).val());
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
-
-
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
@@ -1558,15 +1555,14 @@ $(".events").on('click', function(){
 
         if($(".st" + primary).length == 0){
           
-             $("#events .task").removeAttr('style');
+             $("#events .task").css({display : 'none'});
         }
            else {
+
                 $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
-           }         
-               
+           }          
 });
-
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
       $(".utrf").css({ display: "none"});
