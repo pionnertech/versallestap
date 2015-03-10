@@ -312,12 +312,10 @@ color: lightgreen;
   .utrf{
     display: none;
   }
-
+.htd{
+    display: none;
+}
     </style>    
-
-
-
-
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
