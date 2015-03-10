@@ -876,7 +876,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
+$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ', B.USR_SURNAME) FROM TRAFFIC INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
 
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
 
@@ -1556,7 +1556,7 @@ $(".events").on('click', function(){
         }
            else {
 
-                $(".htd" + primary).css({display: "none"});
+                $(".htd" + primary).css({display: "table-row"});
                 $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
 
@@ -1564,13 +1564,11 @@ $(".events").on('click', function(){
 });
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
+    $(".htd" + $(this).data("val")).css({display: "none"});
       $(".utrf").css({ display: "none"});
       $("#events .task").css({display : 'none'});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
-
-           
-             
 });
 
 
