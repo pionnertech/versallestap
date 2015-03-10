@@ -1,4 +1,4 @@
-<?php session_start();
+<?php session_start(); header('Content-Type: text/html; charset=utf-8');
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'back-user'){
 
