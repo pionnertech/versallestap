@@ -473,9 +473,9 @@ while ($fetch_trf = mysqli_fetch_row($trf_hand)) {
                                                     <td>Fecha</td>
                                                 </tr>
                                                 <tr>
-                                                    <td><? printf($fetch_trf[0])?></td>
-                                                    <td><? printf($fetch_trf[1])?></td>
-                                                    <td><? printf(date('d-m-Y', strtotime($fetch_trf[2])) ?></td>
+                                                    <td><? printf($fetch_trf[0]) ?></td>
+                                                    <td><? printf($fetch_trf[1]) ?></td>
+                                                    <td><? printf(date('d-m-Y', strtotime($fetch_trf[2]))) ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>   
