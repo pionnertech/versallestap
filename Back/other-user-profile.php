@@ -462,7 +462,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
 $str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_ID = " . $stsk[0] . "  AND TRF_USER = " . $_SESSION['TxtCode'] . ")";
 $trf_hand = mysqli_query($datos, $str_query_trf);
-       while ($fetch_trf = mysqli_fetch_row($trf_hand)) { 
+      
 ?>
                                         <table class="table">
                                             <tbody>
@@ -471,15 +471,16 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                     <td>Descripcion</td>
                                                     <td>Fecha</td>
                                                 </tr>
-                                          
+                                             <?   while ($fetch_trf = mysqli_fetch_row($trf_hand)) { ?>
                                                 <tr>
                                                     <td><? printf($fetch_trf[0]) ?></td>
                                                     <td><? printf($fetch_trf[1]) ?></td>
                                                     <td><? printf(date('d/m/Y', strtotime($fetch_trf[2]))) ?></td>
                                                 </tr>
+                                             <? } ?> 
                                             </tbody>
                                         </table> 
-                                        <? } ?>  
+                                
                                            </td>
                                         </tr>
                                            <? } ?>
