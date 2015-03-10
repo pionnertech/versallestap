@@ -329,7 +329,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                             </div>
                         <div>
                             <div class="module-body table">                             
-                                <table class="table table-message ext-tasks-table">
+                                <table class="table table-message" id="ext-tasks-table">
                                     <tbody>
                                         <tr class="heading">
                                             <td class="cell-icon"></td>
