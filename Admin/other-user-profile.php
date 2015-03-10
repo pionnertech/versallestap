@@ -1557,6 +1557,7 @@ $(".events").on('click', function(){
            else {
 
                 $(".htd" + primary).css({display: "table-row"});
+                console.info(".htd" + primary);
                 $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
 
