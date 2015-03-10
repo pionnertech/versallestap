@@ -1559,6 +1559,7 @@ $(".events").on('click', function(){
              $("#events .task").css({display : 'none'});
         }
            else {
+
                 $(".htd" + primary).css({display: "none"});
                 $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
@@ -1568,8 +1569,10 @@ $(".events").on('click', function(){
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
       $(".utrf").css({ display: "none"});
+      $("#events .task").css({display : 'none'});
         $("#events").removeClass("active in");
           $("#require").addClass("active in");
+
            
              
 });
