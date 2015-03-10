@@ -377,10 +377,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                         <td colspan="6">
                                         <div class="info-content">
                                             <? 
-$shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_NAMES FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
+$shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_NAMES, B.CTZ_SURNAME1 FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
                        
                                             ?>
-                              <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?></p> 
+                              <p class="iss-descript"><strong>Ciudadano</strong> : <? printf($shine['CTZ_NAMES']) ?> <? printf($shine['CTZ_SURNAME1']) ?></p> 
                               <p class="iss-descript"><strong>Descripcion Compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>            
                                         </div>
                                            <div class="wrap-progress">
@@ -797,6 +797,210 @@ if(typeof(EventSource) !== "undefined") {
    // document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
+
+
+function inputTask(stsk_descript, stsk, iss, ctz, desc){
+
+    var parent =  document.querySelector("#ext-tasks-table tbody");
+
+    var tr1 = document.createElement('tr');
+    tr1.className = "task";
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+
+    var inp1 = document.createElement('input');
+    var inp2 = document.createElement('input');
+
+    var b   = document.createElement('b');
+    var btn = document.createElement('button');
+    
+    td1.className = "cell-icon";
+    td2.className = "cell-title";
+    td3.className = "cell-status";
+    td4.className = "cell-title";
+    td5.className = "cell-time align-right";
+
+    btn.className   = "btn btn-small forward";
+    btn.innerHTML   = "Delegar";
+    td4.appendChild(btn);  
+   
+    td2.innerHTML = stsk_descript;
+
+    inp1.type = "hidden";
+    inp2.type = "hidden";
+
+    inp1.value = stsk;
+    inp2.value = iss;
+
+    inp1.id = "st";
+    inp2.id = "iss_id";
+    
+    b.className = "due";
+    b.style.backgroundColor = "#178FD0";
+    b.innerHTML = "EN CURSO";
+    td3.appendChild(b);
+
+
+    var is = document.createElement('i');
+    is.className    = "fa fa-warning";
+    is.style.color  = "#EE8817";
+    is.style.cursor =  "pointer"
+    td1.appendChild(is);
+
+
+    is.onclick = function (){
+
+          var stsk   = $(this).parent().parent().children('input').eq(0).val();
+          var iss_id = $(this).parent().parent().children('input').eq(1).val();
+ 
+          unlock(stsk, iss_id, $(this));
+
+    }
+
+
+
+
+    b.onclick = function(){
+        if(!$(this).data("val") || !$(this).data("val") === 0 ){
+             $(this).parent().parent().next().css({ display: "table-row"});
+             $(this).data("val", 1);
+       } else  {
+         $(this).parent().parent().next().css({ display: "none"});
+        $(this).data("val", 0);
+        }
+    }
+
+
+    btn.onclick = function(){
+
+            var stsk_id = $(this).parent().parent().children('input#st').val();
+            var iss_ident = $(this).parent().parent().children('input#iss_id').val();
+            var subject = $(this).parent().parent().children('td').eq(1).text();
+            var index_current = parseInt($(this).index());
+
+            $("#audititle").html("\"" + stsk_descript + "\"");
+            $("#current-task").val(index_current);
+
+            $(".ifile").css({display : "none"});
+            $(".iss" + iss_ident).css({ display : "inline-block"});
+
+             $("#issId").val(iss_ident);
+             $("#stsk-code").val(stsk_id);
+
+                $('#delegates option:first-child').attr("selected", "selected");
+
+                var current = $("#delegates").val();
+
+                    $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
+                    $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+};
+
+
+    
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+    tr1.appendChild(td5);
+    tr1.appendChild(inp1);
+    tr1.appendChild(inp2);
+
+    parent.appendChild(tr1);
+
+
+// second tr
+
+    var tr2  = document.createElement('tr');
+    var td6  = document.createElement('td');
+
+    var div1 = document.createElement('div');
+    var div2 = document.createElement('div');
+    var div3 = document.createElement('div');
+    var div4 = document.createElement('div');
+
+    var i1   = document.createElement('i');
+    var i2   = document.createElement('i');
+    var i3   = document.createElement('i');
+    var i4   = document.createElement('i');
+   
+    var p1   = document.createElement('p');
+    var p2   = document.createElement('p');
+    var p3   = document.createElement('p');
+    var p4   = document.createElement('p');
+    var p5   = document.createElement('p');
+   
+    var str1 = document.createElement('strong');
+    var str2 = document.createElement('strong');
+
+  
+
+
+    tr2.className = "display-progress";
+    td6.colSpan = "5";
+    div1.className = "info-content";
+
+  
+    p1.className = "iss-descript";
+    p2.className = "iss-descript";
+
+    str1.innerHTML = "Ciudadano : " + ctz;
+    str2.innerHTML = "Descripción: " + desc;
+
+    
+    var str3  = document.createElement('strong');
+    var span1 = document.createElement('span');
+
+
+    str3.innerHTML  = "Grado de progreso";
+    span1.innerHTML = "0%";
+    span1.className = "pull-right small muted";
+    div2.className  = "progress tight";
+    div3.className  = "bar bar-warning";
+    div4.className  = "collaborates";
+    
+
+    i1.className = "fa fa-group spac";
+    i2.className = "fa fa-paperclip";
+    i3.className = "fa fa-history events";
+    i4.className = "fa fa-group spac";
+
+
+    p4.className = "golang";
+    p5.className = "wrap-events";
+
+    p1.appendChild(str1);
+    p2.appendChild(str2);
+    p3.appendChild(str3);
+    p3.appendChild(span1);
+    p4.appendChild(i2);
+    p5.appendChild(i3);
+    div4.appendChild(i4);
+
+
+
+    div1.appendChild(p1);
+    div1.appendChild(p2);
+    div2.appendChild(div3);
+
+    td6.appendChild(div1);
+    tr2.appendChild(td6);
+    td6.appendChild(p3);
+    td6.appendChild(div2);
+    td6.appendChild(div4);
+
+    td6.appendChild(i2);
+    td6.appendChild(i3);
+    td6.appendChild(p4);
+    td6.appendChild(p5);
+    parent.appendChild(tr2);
+}
+
+
 
 </script>
 <?
