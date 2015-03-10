@@ -460,8 +460,9 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
 <?    
 
-$str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE WHERE (TRF_STSK_ID =" . $stsk[0] . "  AND  TRF_USER = " . $_SESSION['TxtCode'] . ")";
+$str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_ID = " . $stsk[0] . "  AND TRF_USER = " . $_SESSION['TxtCode'] . ")";
 $trf_hand = mysqli_query($datos, $str_query_trf);
+
 while ($fetch_trf = mysqli_fetch_row($trf_hand)) {
 
 ?>
@@ -1102,7 +1103,7 @@ function getFiles(iss_id, usr_id, callback){
 var files;
    $.ajax({
           type: "POST",
-          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac;
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac,
           success: function(data){
           files = data;
           callback(files);
