@@ -12,8 +12,9 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
-$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 )ORDER BY STSK_START_DATE DESC LIMIT 1";
+$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 ) ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+
 if(!$notify){
      $manu = "";
 } else {
@@ -367,7 +368,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
                                             <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-default forward"><i class="fa fa-chevron-circle-right"></i></button></td>
+                                             <? if($class == "Hc"){
+                                                  $enable = "disabled";
+                                              } else {
+                                                  $enable = "";
+                                              }
+                                              ?>
+                                            <td class="cell-title"><button class="btn btn-default forward" <? printf($enable) ?> ><i class="fa fa-chevron-circle-right"></i></button></td>
                                             <td class="cell-time"><div><? printf(date("d/m/Y", strtotime(substr($stsk[7], 0, 10)))) ?></div></td>
                                             <td class="cell-time align-right"><div><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></div></td>
                                             <input type="hidden" value="<? printf($stsk[0]) ?>" >
