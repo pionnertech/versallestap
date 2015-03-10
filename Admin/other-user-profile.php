@@ -880,9 +880,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-$Query_trf_usr  =  mysqli_query($datos, "SELECT TRF_USER, TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_ID = " . $stsk[0] );
-
-
+$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC WHERE TRF_STSK_ID = " . $stsk[0] );
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
 
                             ?>
@@ -918,7 +916,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
                                          <td class="cell-title"><? printf($rows[1])?></td>
                                          <td class="cell-title"><? printf($rows[2])?></td>
-                                         <td class="cell-time align-right"><? printf(date('d-m-Y', strtotime($rows[3]))) ?></td>
+                                         <td class="cell-time align-right"><? printf(date('d/m/Y', strtotime($rows[3]))) ?></td>
                                      </tr>
                              <?      }        ?>  
                          <?      }        ?>        
