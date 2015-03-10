@@ -329,7 +329,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                             </div>
                         <div>
                             <div class="module-body table">                             
-                                <table class="table table-message">
+                                <table class="table table-message ext-tasks-table">
                                     <tbody>
                                         <tr class="heading">
                                             <td class="cell-icon"></td>
@@ -767,6 +767,7 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
         };
         instance.onshow = function () {
           $('#chatAudio')[0].play();
+             inputTask(stsk_descript, stsk, iss, ctz, desc)
         };
         instance.onclose = function () {
             // Something to do
@@ -777,20 +778,21 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 if(typeof(EventSource) !== "undefined") {
 
-    var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    var source = new EventSource("../backend/sse-event-back.php?usr=" + mainuser);
 
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
      
-       if (eventMessage[0] !== previuosData){
+        if (eventMessage[2] !== previuosData){
 
-        showAlert(eventMessage[0]);
+            previuosData = eventMessage[2];
 
-        previuosData = eventMessage[0];
-
+                showAlert(eventMessage[2]);
+     
+                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3]);
+        }
     }
-}
 
 } else {
 
@@ -817,6 +819,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     var b   = document.createElement('b');
     var btn = document.createElement('button');
+    var i0  = document.createElement('i');
     
     td1.className = "cell-icon";
     td2.className = "cell-title";
@@ -824,6 +827,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
 
+
+     i0.className   = "fa fa-chevron-circle-right"
     btn.className   = "btn btn-small forward";
     btn.innerHTML   = "Delegar";
     td4.appendChild(btn);  
@@ -844,26 +849,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     b.innerHTML = "EN CURSO";
     td3.appendChild(b);
 
-
-    var is = document.createElement('i');
-    is.className    = "fa fa-warning";
-    is.style.color  = "#EE8817";
-    is.style.cursor =  "pointer"
-    td1.appendChild(is);
-
-
-    is.onclick = function (){
-
-          var stsk   = $(this).parent().parent().children('input').eq(0).val();
-          var iss_id = $(this).parent().parent().children('input').eq(1).val();
- 
-          unlock(stsk, iss_id, $(this));
-
-    }
-
-
-
-
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
              $(this).parent().parent().next().css({ display: "table-row"});
@@ -877,26 +862,26 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     btn.onclick = function(){
 
-            var stsk_id = $(this).parent().parent().children('input#st').val();
-            var iss_ident = $(this).parent().parent().children('input#iss_id').val();
-            var subject = $(this).parent().parent().children('td').eq(1).text();
-            var index_current = parseInt($(this).index());
+   var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
+   current_iss    =  $(this).parent().parent().children('input').eq(1).val();
+   inner          =  $(this).parent().parent().index();
+   subject        =  $(this).parent().parent().children('td').eq(1).text();
 
-            $("#audititle").html("\"" + stsk_descript + "\"");
-            $("#current-task").val(index_current);
+   $("#audititle").html("\"" + subject + "\"");
 
-            $(".ifile").css({display : "none"});
-            $(".iss" + iss_ident).css({ display : "inline-block"});
+   var user = $("#muser").val();
 
-             $("#issId").val(iss_ident);
-             $("#stsk-code").val(stsk_id);
+//obten el porcentaje
 
-                $('#delegates option:first-child').attr("selected", "selected");
+   var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
-                var current = $("#delegates").val();
+        $(".span2").slider('setValue', parseInt(percent));
 
-                    $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
-                    $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+        $("#stsk-code").val(subtask_id);
+        $("#stsk-user").val(user);
+
+        $("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
+        $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 };
 
@@ -921,23 +906,18 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var div1 = document.createElement('div');
     var div2 = document.createElement('div');
     var div3 = document.createElement('div');
-    var div4 = document.createElement('div');
 
-    var i1   = document.createElement('i');
-    var i2   = document.createElement('i');
     var i3   = document.createElement('i');
     var i4   = document.createElement('i');
    
     var p1   = document.createElement('p');
     var p2   = document.createElement('p');
     var p3   = document.createElement('p');
-    var p4   = document.createElement('p');
-    var p5   = document.createElement('p');
+
    
     var str1 = document.createElement('strong');
     var str2 = document.createElement('strong');
 
-  
 
 
     tr2.className = "display-progress";
@@ -961,27 +941,13 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     span1.className = "pull-right small muted";
     div2.className  = "progress tight";
     div3.className  = "bar bar-warning";
-    div4.className  = "collaborates";
+
     
-
-    i1.className = "fa fa-group spac";
-    i2.className = "fa fa-paperclip";
-    i3.className = "fa fa-history events";
-    i4.className = "fa fa-group spac";
-
-
-    p4.className = "golang";
-    p5.className = "wrap-events";
 
     p1.appendChild(str1);
     p2.appendChild(str2);
     p3.appendChild(str3);
     p3.appendChild(span1);
-    p4.appendChild(i2);
-    p5.appendChild(i3);
-    div4.appendChild(i4);
-
-
 
     div1.appendChild(p1);
     div1.appendChild(p2);
@@ -991,12 +957,9 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
-    td6.appendChild(div4);
 
-    td6.appendChild(i2);
-    td6.appendChild(i3);
-    td6.appendChild(p4);
-    td6.appendChild(p5);
+
+
     parent.appendChild(tr2);
 }
 

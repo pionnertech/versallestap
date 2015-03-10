@@ -29,7 +29,7 @@ echo "data:" . $manu['STSK_ID'] . "\n";
 echo "data:" . $manu['STSK_ISS_ID'] . "\n";
 echo "data:" . $manu['STSK_DESCRIP'] . "\n";
 echo "data:" . $manu['ISS_DESCRIP'] . "\n";
-echo "data:" . $manu['NAME'] . "\n"
+echo "data:" . $manu['NAME'] . "\n";
 echo "data:" . $manu['FECHA_INICIAL'] . "\n";
 echo "data:" . $manu['FECHA_FINAL'] . "\n\n";
 
