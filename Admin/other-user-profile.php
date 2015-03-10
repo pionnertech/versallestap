@@ -15,6 +15,9 @@ $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+
+
+
 if(!$notify){
 
     $manu = "";
@@ -517,45 +520,50 @@ color: lightgreen;
                                                                 </button>
                                                             </div>
                                                         </div>
+                                                        <?
+$matrix = "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
+          "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per[0]. ")) * 100) AS percentage  " .
+          "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per[0]. ")  " .
+          "GROUP BY B.EST_DESCRIPT";
+$handler = mysqli_query($datos, $matrix);
+
+                                                        ?>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
                                                                 <ul class="widget widget-usage unstyled progressDisplay" >
+                                                       <? while( $uI = mysqli_fetch_row($handler)) {?>
                                                                     <li>
                                                                         <p>
-                                                                         <strong>Compromisos en curso</strong> <span class="pull-right small muted">17%</span>
+                                                                         <strong>Compromisos <? printf($uI[2]) ?></strong> <span class="pull-right small muted"><? printf($uI[0]) ?> / <? printf($uI[3]) ?>%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar" style="width: 17%;">
+
+                                                                        <? 
+                                                                           switch ($uI[2]) {
+                                                                               case 'Pendiente':
+                                                                                   $ix = " bar-warning";
+                                                                                   break;
+                                                                                case 'En curso':                                                                             
+                                                                                   $ix = " bar-info";
+                                                                                   break;
+                                                                                case  'Atrasada':                                                                                                                                                               case 'Pendiente':
+                                                                                   $ix = " bar-danger";
+                                                                                   break;
+                                                                                case  'Finalizada':                                                                                                                                                                case 'Pendiente':
+                                                                                   $ix = " bar-success";
+                                                                                   break;
+                                                                                case  'Por Vencer':
+                                                                                    $ix = " bar-warning";
+                                                                                   break;
+                                                                          
+                                                                           }
+
+                                                                        ?>
+                                                                            <div class="bar<? printf($ix) ?>" style="width: <? printf($uI[3]) ?>%;">
                                                                             </div>
                                                                         </div>
                                                                     </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos finalizados</strong><span class="pull-right small muted">88%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-success" style="width: 88%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-warning" style="width: 12%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-danger" style="width: 2%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
+                                                                <? } ?>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -586,45 +594,47 @@ color: lightgreen;
                                                                 </button>
                                                             </div>
                                                         </div>
+                                                    <?
+$matrix2= "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
+          "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per[0]. ")) * 100) AS percentage  " .
+          "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per[0]. ")  " .
+          "GROUP BY B.EST_DESCRIPT";
+$handler2 = mysqli_query($datos, $matrix2);
+
+                                                        ?>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
+                                                             <? while( $uI2 = mysqli_fetch_row($handler2)) {?>
                                                                     <li>
                                                                         <p>
-                                                                         <strong>Compromisos en curso</strong> <span class="pull-right small muted">17%</span>
+                                                                         <strong>Compromisos <? printf($uI2[2]) ?></strong> <span class="pull-right small muted"><? printf($uI[0]) ?> / <? printf($uI[3]) ?>%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar" style="width: 17%;">
+                                                                        <? 
+                                                                           switch ($uI2[2]) {
+                                                                               case 'Pendiente':
+                                                                                   $ix = " bar-warning";
+                                                                                   break;
+                                                                                case 'En curso':                                                                             
+                                                                                   $ix = " bar-info";
+                                                                                   break;
+                                                                                case  'Atrasada':                                                                                                                                                               case 'Pendiente':
+                                                                                   $ix = " bar-danger";
+                                                                                   break;
+                                                                                case  'Finalizada':                                                                                                                                                                case 'Pendiente':
+                                                                                   $ix = " bar-success";
+                                                                                   break;
+                                                                                case  'Por Vencer':
+                                                                                    $ix = " bar-warning";
+                                                                                   break;
+                                                                                            }
+                                                                        ?>
+                                                                            <div class="bar<? printf($ix) ?>" style="width: <? printf($uI2[3]) ?>%;">
                                                                             </div>
                                                                         </div>
                                                                     </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos finalizados</strong><span class="pull-right small muted">88%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-success" style="width: 88%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-warning" style="width: 12%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <p>
-                                                                            <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
-                                                                        </p>
-                                                                        <div class="progress tight" style="height: 5px;">
-                                                                            <div class="bar bar-danger" style="width: 2%;">
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
+                                                                <? } ?>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -632,13 +642,9 @@ color: lightgreen;
                                                 </div>
                                                 <? } ?>
                                            </div>
-                                           
-
                                             <? }
                                              mysqli_data_seek($Query_team, 0);
-
                                              ?>
-                                            
                                             <!--/.row-fluid-->
                                             <br />
                                             <div class="pagination pagination-centered">
