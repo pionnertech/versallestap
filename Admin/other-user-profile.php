@@ -1867,7 +1867,7 @@ function getFiles(iss_id, usr_id, callback){
 var files;
    $.ajax({
           type: "POST",
-          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac;
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac,
           success: function(data){
           files = data;
           callback(files);
