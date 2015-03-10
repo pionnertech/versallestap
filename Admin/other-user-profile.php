@@ -897,7 +897,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC  
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="task" >
+                                <tr class="task u<? printf($trf[0]) ?>" >
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
