@@ -371,48 +371,6 @@ color: lightgreen;
                         <!--/.widget-nav-->
 
                         <h3>Mis Compromisos</h3>
-                        <!--
-                        <div id="Urgencias" class="OwnComp">
-                            <div class="OwnComp-bars" style="border-right-color: #EA0000; border-left-color: #EA0000; cursor: pointer;" id="Urgent">Urgencias</div>
-                                 <ul class="widget widget-usage unstyled progressDisplay" id="Urgent-Display">
-                                        <li>
-                                            <p>
-                                             <strong>Urgencias Recibidas</strong> <span class="pull-right small muted">17%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar" style="width: 17%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias Activas</strong><span class="pull-right small muted">88%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 88%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias por vencer</strong> <span class="pull-right small muted">12%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 12%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Urgencias Atrasadas</strong> <span class="pull-right small muted">2%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 2%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div> -->
                  <div id="Audiencias" class="OwnComp">
                 <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
@@ -454,49 +412,6 @@ color: lightgreen;
                                         </li>
                                     </ul>
                                 </div>
-                           <!-- <div id="Compromisos" class="OwnComp">
-                              <div class="OwnComp-bars" style="border-right-color: #005FAA; border-left-color: #005FAA; cursor: pointer;" id="Com">Compromisos</div>
-                                 <ul class="widget widget-usage unstyled progressDisplay" id="Com-Display">
-                                        <li>
-                                            <p>
-                                             <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar" style="width: 17%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-success" style="width: 88%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos por vencer</strong> <span class="pull-right small muted">12%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-warning" style="width: 12%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
-                                            </p>
-                                            <div class="progress tight">
-                                                <div class="bar bar-danger" style="width: 2%;">
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
--->
                     </div> 
                     <!--/.sidebar-->
                 </div>
@@ -1659,9 +1574,9 @@ $("#back-to-main").click(function(){
 
 $(".stusr").click(function(){
 
-var indicator = $(this).eq();
+var indicator = $(this).index();
 
-console.info(indicator)
+console.info(indicator);
 
 if (um == 0){
 
