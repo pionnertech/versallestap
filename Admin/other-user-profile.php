@@ -880,7 +880,7 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-$Query_trf_usr  =  mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIP, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_ID = " . $stsk[0] .  " AND TRF_USER = " . $_SESSION['TxtCode'] . ")");
+$Query_trf_usr  =  mysqli_query($datos, "SELECT TRF_USER, TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_ID = " . $stsk[0] );
 
 
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
@@ -1052,7 +1052,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                 <div class="pull-right">
                                 </div>
                             </div>
-                                            <div class="module-body table">
+                         <div class="module-body table">
                                                    <table class="table table-message">
                                                       <tbody>
                                                           <tr class="heading">
@@ -1760,7 +1760,11 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
 };
 
+// callback function
 
+getFiles(function (data){
+     
+})
     
     tr1.appendChild(td1);
     tr1.appendChild(td2);
@@ -1859,6 +1863,20 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td6.appendChild(p5);
     parent.appendChild(tr2);
 }
+
+
+function getFiles(iss_id, usr_id, callback){
+var files;
+   $.ajax({
+          type: "POST",
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac;
+          success: function(data){
+          files = data;
+          callback(files);
+          }
+   })
+};
+
 
 </script>
 
