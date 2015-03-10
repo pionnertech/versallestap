@@ -499,7 +499,7 @@ color: lightgreen;
                                            <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
-                                                        <a class="media-avatar pull-left stusr" href="#" >
+                                                        <a class="media-avatar pull-left stusr"  >
                                                             <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
@@ -567,7 +567,7 @@ color: lightgreen;
                                                ?>
                                                 <div class="span6">
                                                     <div class="media user">
-                                                        <a class="media-avatar pull-left stusr" href="#">
+                                                        <a class="media-avatar pull-left stusr">
                                                             <img src="../images/ejecutivo3.jpg">
                                                         </a>
                                                         <div class="media-body">
