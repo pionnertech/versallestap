@@ -312,9 +312,7 @@ color: lightgreen;
   .utrf{
     display: none;
   }
-.htd{
-    display: none;
-}
+
     </style>    
 </head>
 <body>
@@ -895,7 +893,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC W
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="task htd<? printf($trf[0]) ?>" >
+                                <tr class="htd<? printf($trf[0]) ?>" style="display: none;" >
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
