@@ -478,7 +478,8 @@ while ($fetch_trf = mysqli_fetch_row($trf_hand)) {
                                                     <td><? printf(date('d-m-Y', strtotime($fetch_trf[2]))) ?></td>
                                                 </tr>
                                             </tbody>
-                                        </table>   
+                                        </table> 
+                                        <? } ?>  
                                            </td>
                                         </tr>
                                            <? } ?>
