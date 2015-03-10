@@ -1556,13 +1556,11 @@ $(".events").on('click', function(){
 
         if($(".st" + primary).length == 0){
           
-             $("#events .htd").css({display : 'none'});
+             $("#events .task").css({display : 'none'});
         }
            else {
                 $(".htd" + primary).css({display: "none"});
                 $(".st" + primary).css({display: "table-row"});
-
-
                 $("#back-to-main").data("val", primary);
 
            }          
