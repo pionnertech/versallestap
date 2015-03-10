@@ -12,7 +12,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
-$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_START_DATE DESC LIMIT 1";
+$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 )ORDER BY STSK_START_DATE DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 if(!$notify){
      $manu = "";
@@ -767,7 +767,7 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
         };
         instance.onshow = function () {
           $('#chatAudio')[0].play();
-             inputTask(stsk_descript, stsk, iss, ctz, desc)
+             
         };
         instance.onclose = function () {
             // Something to do
@@ -790,18 +790,18 @@ if(typeof(EventSource) !== "undefined") {
 
                 showAlert(eventMessage[2]);
      
-                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3]);
+                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3], eventMessage[6], eventMessage[5] );
         }
     }
 
 } else {
 
-   // document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
 
 }
 
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -813,6 +813,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var td3 = document.createElement('td');
     var td4 = document.createElement('td');
     var td5 = document.createElement('td');
+    var td7 = document.createElement('td');
+
 
     var inp1 = document.createElement('input');
     var inp2 = document.createElement('input');
@@ -826,12 +828,15 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td3.className = "cell-status";
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
+    td7.className = "cell-time align-right";
 
+    td5.innerHTML = dateIn;
+    td7.innerHTML = dateOut;
 
-     i0.className   = "fa fa-chevron-circle-right"
-    btn.className   = "btn btn-small forward";
-    btn.innerHTML   = "Delegar";
-    td4.appendChild(btn);  
+     i0.className   = "fa fa-chevron-circle-right";
+     btn.appendChild(i0);
+     btn.className   = "btn btn-small forward";
+     td4.appendChild(btn);  
    
     td2.innerHTML = stsk_descript;
 
@@ -892,6 +897,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr1.appendChild(td3);
     tr1.appendChild(td4);
     tr1.appendChild(td5);
+    tr1.appendChild(td7);
     tr1.appendChild(inp1);
     tr1.appendChild(inp2);
 
@@ -921,7 +927,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
 
     tr2.className = "display-progress";
-    td6.colSpan = "5";
+    td6.colSpan = "6";
     div1.className = "info-content";
 
   
