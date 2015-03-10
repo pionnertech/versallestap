@@ -4,10 +4,7 @@ if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'back-user'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
-
-//TASKS
 
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
