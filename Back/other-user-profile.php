@@ -819,9 +819,13 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     var inp1 = document.createElement('input');
     var inp2 = document.createElement('input');
 
-    var b   = document.createElement('b');
-    var btn = document.createElement('button');
-    var i0  = document.createElement('i');
+    var b    = document.createElement('b');
+    var btn  = document.createElement('button');
+    var i0   = document.createElement('i');
+    var icon = document.createElement('i');
+
+    icon.className = "icon-checker high";
+    td1.appendChild(icon);
     
     td1.className = "cell-icon";
     td2.className = "cell-title";
