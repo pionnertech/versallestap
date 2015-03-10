@@ -1555,12 +1555,14 @@ $(".events").on('click', function(){
 
         if($(".st" + primary).length == 0){
           
-             $("#events .task").css({display : 'none'});
+             $("#events .htd").css({display : 'none'});
         }
            else {
-
+                $(".htd").css({display: "none"});
                 $(".st" + primary).css({display: "table-row"});
+
                 $("#back-to-main").data("val", primary);
+
            }          
 });
 $("#back-to-main").click(function(){
