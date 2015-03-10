@@ -522,7 +522,7 @@ color: lightgreen;
                                                                 <ul class="widget widget-usage unstyled progressDisplay" >
                                                                     <li>
                                                                         <p>
-                                                                         <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
+                                                                         <strong>Compromisos en curso</strong> <span class="pull-right small muted">17%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar" style="width: 17%;">
@@ -531,7 +531,7 @@ color: lightgreen;
                                                                     </li>
                                                                     <li>
                                                                         <p>
-                                                                            <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
+                                                                            <strong>Compromisos finalizados</strong><span class="pull-right small muted">88%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar bar-success" style="width: 88%;">
@@ -549,7 +549,7 @@ color: lightgreen;
                                                                     </li>
                                                                     <li>
                                                                         <p>
-                                                                            <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                                            <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar bar-danger" style="width: 2%;">
@@ -591,7 +591,7 @@ color: lightgreen;
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
                                                                     <li>
                                                                         <p>
-                                                                         <strong>Compromisos Recibidos</strong> <span class="pull-right small muted">17%</span>
+                                                                         <strong>Compromisos en curso</strong> <span class="pull-right small muted">17%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar" style="width: 17%;">
@@ -600,7 +600,7 @@ color: lightgreen;
                                                                     </li>
                                                                     <li>
                                                                         <p>
-                                                                            <strong>Compromisos Activos</strong><span class="pull-right small muted">88%</span>
+                                                                            <strong>Compromisos finalizados</strong><span class="pull-right small muted">88%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar bar-success" style="width: 88%;">
@@ -618,7 +618,7 @@ color: lightgreen;
                                                                     </li>
                                                                     <li>
                                                                         <p>
-                                                                            <strong>Compromisos Atrasadas</strong> <span class="pull-right small muted">2%</span>
+                                                                            <strong>Compromisos Atrasados</strong> <span class="pull-right small muted">2%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                             <div class="bar bar-danger" style="width: 2%;">
@@ -1574,7 +1574,7 @@ $("#back-to-main").click(function(){
 
 $(".stusr").click(function(){
 
-var indicator = $(this).index();
+var indicator = $(this).index('.stusr');
 
 console.info(indicator);
 
