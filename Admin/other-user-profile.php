@@ -880,7 +880,8 @@ $spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FR
                                      </tr>
                            <? 
 
-$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC WHERE TRF_STSK_ID = " . $stsk[0] );
+$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC  WHERE  TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
+
                            while ($trf = mysqli_fetch_row($Query_trf_usr)){
 
                             ?>
