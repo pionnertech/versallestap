@@ -897,7 +897,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT TRF_USER FROM TRAFFIC W
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="task htd" >
+                                <tr class="task htd<? printf($trf[0]) ?>" >
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
@@ -1545,6 +1545,7 @@ $(".events").on('click', function(){
  var ucla =  $(this).parent().prev().prev().children('p').children('input');
 
    for (i=0; i < ucla.length; i++){
+
     console.info(ucla.eq(i).val());
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
@@ -1558,8 +1559,9 @@ $(".events").on('click', function(){
              $("#events .htd").css({display : 'none'});
         }
            else {
-                $(".htd").css({display: "none"});
+                $(".htd" + primary).css({display: "none"});
                 $(".st" + primary).css({display: "table-row"});
+
 
                 $("#back-to-main").data("val", primary);
 
