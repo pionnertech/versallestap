@@ -438,7 +438,9 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
                                           ?>
 
-                                             <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>/<? printf($archivos)?>" class="down" download>  <p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                             <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>/<? printf($archivos)?>" class="down" download> 
+                                              <p class="ifile" title="<? printf($archivos) ?>">
+                                                 <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname" ></span>
                                                 </p>
                                              </a>
@@ -455,6 +457,28 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
                                             </div>
                                            </div>
+
+<?    
+
+$str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE WHERE (TRF_STSK_ID =" . $stsk[0] . "  AND  TRF_USER = " . $_SESSION['TxtCode'] . ")";
+$trf_hand = mysqli_query($datos, $str_query_trf);
+while ($fetch_trf = mysqli_fetch_row($trf_hand)) {
+
+?>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Asunto</td>
+                                                    <td>Descripcion</td>
+                                                    <td>Fecha</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><? printf($fetch_trf[0])?></td>
+                                                    <td><? printf($fetch_trf[1])?></td>
+                                                    <td><? printf(date('d-m-Y', strtotime($fetch_trf[2])) ?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>   
                                            </td>
                                         </tr>
                                            <? } ?>
@@ -898,7 +922,14 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
 
 };
 
+//callback function
 
+    var  divFile = document.createElement('div');
+    var  a       = document.createElement('a');
+
+
+    divFile.className = "file-contents";
+    
     
     tr1.appendChild(td1);
     tr1.appendChild(td2);
@@ -920,6 +951,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     var div1 = document.createElement('div');
     var div2 = document.createElement('div');
     var div3 = document.createElement('div');
+    var div4 = document.createElement('div');
 
     var i3   = document.createElement('i');
     var i4   = document.createElement('i');
@@ -933,6 +965,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     var str2 = document.createElement('strong');
 
 
+   // div 4
+
+   div4.className = "wrap-progress";
+   td6.appendChild(div4);
 
     tr2.className = "display-progress";
     td6.colSpan = "6";
@@ -957,6 +993,88 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     div3.className  = "bar bar-warning";
 
     
+  getFiles(stsk, $("#muser").val()  , function (data){
+
+   arrayFiles = data.split("|");
+ 
+ for (var i = 0; i < arrayFiles.length; i++){
+    
+    a           = document.createElement('a');
+    a.href      = "../" + fac + "/" + $("#muser").val() + "/" + arrayFiles[i];
+    a.className = "down";
+    a.setAttribute('download', true);
+   
+
+    pS = document.createElement('p');
+    pS.className = "ifile";
+    pS.title = arrayFiles[i];
+
+    iN = document.createElement('i');
+
+     var setClass ="";
+     var cor ="";
+     var extension = arrayFiles[i].substring(arrayFiles[i].length -3 , arrayFiles[i].length);
+     switch(extension){
+
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+
+    iN.className = "fa fa-file-" + setClass + " fa-2x";
+    iN.style.color = cor;
+
+    spanS = document.createElement('span');
+    spanS.className = "iname";
+   
+    pS.appendChild(iN);
+    pS.appendChild(spanS);
+
+    a.appendChild(pS);
+    divFile.appendChild(a);
+    div4.appendChild(divFile);
+
+
+ }
+
+  });
 
     p1.appendChild(str1);
     p2.appendChild(str2);
@@ -978,6 +1096,18 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
 }
 
 
+
+function getFiles(iss_id, usr_id, callback){
+var files;
+   $.ajax({
+          type: "POST",
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac;
+          success: function(data){
+          files = data;
+          callback(files);
+          }
+   })
+}
 
 </script>
 <?
