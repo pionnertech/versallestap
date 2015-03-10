@@ -464,9 +464,9 @@ $str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WH
 $trf_hand = mysqli_query($datos, $str_query_trf);
 
 ?>
-                                        <table class="table table-message">
+                                        <table class="table">
                                             <tbody>
-                                                <tr class="heading">
+                                                <tr >
                                                     <td>Asunto</td>
                                                     <td>Descripcion</td>
                                                     <td>Fecha</td>
@@ -475,7 +475,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                 <tr>
                                                     <td><? printf($fetch_trf[0]) ?></td>
                                                     <td><? printf($fetch_trf[1]) ?></td>
-                                                    <td><? printf(date('d-m-Y', strtotime($fetch_trf[2]))) ?></td>
+                                                    <td><? printf(date('d/m/Y', strtotime($fetch_trf[2]))) ?></td>
                                                 </tr>
                                             </tbody>
                                         </table> 
