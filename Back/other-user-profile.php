@@ -1002,7 +1002,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     div3.className  = "bar bar-warning";
 
     
-  getFiles(stsk, $("#muser").val()  , function (data){
+  getFiles(iss, $("#muser").val()  , function (data){
 
    arrayFiles = data.split("|");
  
