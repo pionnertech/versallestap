@@ -1080,6 +1080,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     divFile.appendChild(a);
     div4.appendChild(divFile);
 
+    insertAfter(div3, div4);
 
  }
 
@@ -1143,6 +1144,9 @@ object.appendChild(tr);
 
 }
 
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 </script>
 <?
