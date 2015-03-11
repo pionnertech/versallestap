@@ -1080,7 +1080,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     divFile.appendChild(a);
     div4.appendChild(divFile);
 
-    insertAfter(div3, div4);
+    insertAfter(div2, div4);
 
  }
 
