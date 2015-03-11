@@ -735,10 +735,10 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
 
-            $("tr").eq(index+2).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
-            $("tr").eq(index+2).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
-
-            progressTableUpdate(subject, des, date, $("tr").eq(index+2).children("table"));
+            $("#ext-tasks-table tr").eq(index+2).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
+            $("#ext-tasks-table tr").eq(index+2).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
+            
+            progressTableUpdate(subject, des, date, $(".task").eq(index+2).next().children('td').children('table').children('tbody'));
             
 
             if(val == 100){
