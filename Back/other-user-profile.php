@@ -184,7 +184,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     vertical-align: top;
 }
 
-@media screen and (max-width: 880px){
+@media screen and (max-width: 1024px){
   .sub-del{
     width: 100%;
   }
