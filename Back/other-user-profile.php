@@ -183,6 +183,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
     display: inline-block;
     vertical-align: top;
 }
+
+@media screen and (max-width: 880px){
+  .sub-del{
+    width: 100%;
+  }
+}
 </style>    
 </head>
 <body>
@@ -555,6 +561,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
     <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
      <script src="../scripts/bootstrap-slider.js"></script>
 </body>
 
@@ -1011,9 +1018,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     a           = document.createElement('a');
     a.href      = "../" + fac + "/" + $("#muser").val() + "/" + arrayFiles[i];
     a.className = "down";
-    a.setAttribute('download', true);
+    a.setAttribute('download');
    
-
     pS = document.createElement('p');
     pS.className = "ifile";
     pS.title = arrayFiles[i];
