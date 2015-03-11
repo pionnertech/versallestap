@@ -1126,8 +1126,8 @@ var td1 = document.createElement('td');
 var td2 = document.createElement('td');
 var td3 = document.createElement('td');
 
-td3.innerHTML = subject;
-td3.innerHTML = description;
+td1.innerHTML = subject;
+td2.innerHTML = description;
 td3.innerHTML = date;
 
 tr.appendChild(td1);
