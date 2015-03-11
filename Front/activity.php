@@ -990,14 +990,11 @@ $("#SendRequest").data("val", 0);
 
 function createRadio(inputVal){
 
-
 parent = document.querySelector(".controls");
-
 radio = document.createElement('input');
 
 radio.type = 'radio';
 radio.name = 'optionsRadios';
-
 
 label = document.createElement('label');
 label.className = "radio inline";
@@ -1159,8 +1156,12 @@ var rut_3= rut_2.replace('-', "");
 var rut_4= rut_3.substring(0,rut_3.length -1);
 rut_value = rut_4;
 
-
 recall = data.split(",");
+
+
+for (i=0; i < recall.length; i++){
+	console.info("posicion " + i + " tienes : "+ recall[i])
+}
 
 $("#apllP").val(recall[2]);
 $("#applM").val(recall[1]);
@@ -1169,6 +1170,9 @@ $("#direccion").val(recall[3]);
 $("#tel").val(recall[8]);
 $("#Geo").val(recall[4]);
 $("#ctzmail").val(recall[9]);
+
+
+
 
 exist = 1;
 
