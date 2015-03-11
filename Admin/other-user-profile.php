@@ -893,7 +893,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="htd<? printf($trf[0]) ?>" style="display: none;" >
+                                <tr class="task u<? printf($trf[0]) ?>"  >
                                     <td>Asunto</td>
                                     <td>Descripción</td>
                                     <td>Fecha Progreso</td>
@@ -1056,7 +1056,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                               <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                                               <td class="cell-title">Responsable</td>
                                                               <td class="cell-time align-right">Fecha</td>
-                    
                                                             </tr>
                                                             <tr class="task">
                                                                 <td class="cell-icon"><i class="icon-checker high"></i></td>
@@ -1557,15 +1556,16 @@ $(".events").on('click', function(){
            else {
 
                 $(".htd" + primary).css({display: "table-row"});
-                console.info(".htd" + primary);
                 $(".st" + primary).css({display: "table-row"});
                 $("#back-to-main").data("val", primary);
 
            }          
 });
+
+
+
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
-    $(".htd" + $(this).data("val")).css({display: "none"});
       $(".utrf").css({ display: "none"});
       $("#events .task").css({display : 'none'});
         $("#events").removeClass("active in");
