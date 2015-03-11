@@ -188,6 +188,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
   .sub-del{
     width: 100%;
   }
+  #upgrade{
+    position: relative;
+    margin: 3em 0;
+  }
+  #upload{
+    width:100%;
+  }
+  #drop{
+    display: block;
+  }
 }
 </style>    
 </head>
