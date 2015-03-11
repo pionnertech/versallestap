@@ -457,7 +457,6 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
                                             </div>
                                            </div>
-
 <?    
 
 $str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_ID = " . $stsk[0] . "  AND TRF_USER = " . $_SESSION['TxtCode'] . ")";
@@ -685,7 +684,11 @@ $("#upgrade").on('click', function(){
 $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
+
+
 });
+
+
 
 $(".switcher").on('click', function(){
 
@@ -731,8 +734,12 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
+
             $("tr").eq(index+2).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
             $("tr").eq(index+2).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
+
+            progressTableUpdate(subject, des, date, $("tr").eq(index+2).children("table"));
+            
 
             if(val == 100){
 
@@ -1110,6 +1117,26 @@ var files;
           }
    })
 }
+
+function progressTableUpdate(subject, description, date, object){
+
+var tr  = document.createElement('tr');
+
+var td1 = document.createElement('td');
+var td2 = document.createElement('td');
+var td3 = document.createElement('td');
+
+td3.innerHTML = subject;
+td3.innerHTML = description;
+td3.innerHTML = date;
+
+tr.appendChild(td1);
+tr.appendChild(td2);
+tr.appendChild(td3);
+
+object.appendChild(tr);
+}
+
 
 </script>
 <?
