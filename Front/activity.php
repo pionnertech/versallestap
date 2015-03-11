@@ -1156,7 +1156,7 @@ var rut_3= rut_2.replace('-', "");
 var rut_4= rut_3.substring(0,rut_3.length -1);
 rut_value = rut_4;
 
-recall = data.split(",");
+recall = data.split("|");
 
 
 for (i=0; i < recall.length; i++){
