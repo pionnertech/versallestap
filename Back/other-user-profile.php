@@ -191,11 +191,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
   #upgrade{
     position: relative;
     margin: 3em 0;
+    left: 35%;
   }
   #upload{
     width:100%;
   }
-  #drop{
+  #drop a{
     display: block;
   }
 }

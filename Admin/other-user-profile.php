@@ -1630,6 +1630,7 @@ if (um == 0){
 if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
@@ -1653,6 +1654,8 @@ if(typeof(EventSource) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
+
+
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
@@ -1758,7 +1761,81 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 // callback function
 
 getFiles(function (data){
-     
+    
+      var files =  data.split("|");
+      var elem = [];
+      var fileParent = document.querySelector('.incoming-files');
+
+      for (n=0; n < files.length ; n++){
+      
+         elem[n]           = document.createElement('p');
+         elem[n].className = "ifile iss" + iss;
+         elem[n].id        = files[i];
+         elem[n].setAttribute("draggable", true);
+
+         elem[n].ondragstart = function(event){
+                 drag(event);
+          }
+        var extension = files[i].substring(files[n].length -3 , files[n].length);
+              switch(extension){
+
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+        
+         elem_i[n]             = document.createElement('i');
+         elem_i[n].className   = "fa fa-file-" + setClass + " fa-2x";
+         elem_i[n].style.color = cor;
+         
+         elem_s[n]           = document.createElement('span');
+         elem_s[n].className = "iname";
+         elem_s[n].innerHTML = files[n];
+
+         elem[n].appendChild(elem_i[n]);
+         elem[n].appendChild(elem_s[n]);
+
+         fileParent.appendChild(elem[n]);
+      }
+
+
 })
     
     tr1.appendChild(td1);
