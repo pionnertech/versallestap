@@ -1,8 +1,9 @@
 <?php
 
 
-$iss_stsk = $_GET['st'];
-$percent  = $_GET['per'];
+$iss_stsk    = $_GET['st'];
+$percent     = $_GET['per'];
+$stsk_src_id = $_GET['srcid'];
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
@@ -11,7 +12,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 while (true) {
 	
-$handler    = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_stsk . " GROUP BY STSK_CHARGE_USR ");
+$handler    = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_stsk . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
 $count      = mysqli_num_rows($handler);
 
 while ($fila = mysqli_fetch_row($handler)){
@@ -31,7 +32,7 @@ if ($ctp >= 99.9 ){
 //GEt the Last User that grow up his progress
 
 
-$query_usr = mysqli_query($datos, "SELECT TRF_USER FROM TRAFFIC WHERE TRF_STSK_ID = " . $iss_stsk . " ORDER BY TRF_ING_DATE DESC LIMIT 1" );
+$query_usr = mysqli_query($datos, "SELECT TRF_USER FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk_src_id . " ORDER BY TRF_ING_DATE DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
 sleep(1);
@@ -42,6 +43,8 @@ echo "data :" . $classText .  "\n\n";
 
 ob_end_flush();
 flush();
+
+$sum = 0;
 }
 
 
