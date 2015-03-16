@@ -772,12 +772,16 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                             <div class="collaborates">
                                             <i class="fa fa-group spac"></i>
                                                 <?
-$spec_tem = mysqli_query($datos, "SELECT A.USR_NAME , A.USR_SURNAME, A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
-   <p ><? printf($fila_spec[0]) ?>   <? printf($fila_spec[1]) ?> - 
-   <input type="hidden" value="u<? printf($fila_spec[2])?>">
-   </p>
+    <div class="media" style="display : inline-block">
+        <a href="#" class="media-avatar hovertip" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
+            <img src="../img/<? echo $fila_spec[1]; ?>.jpg" style="width: 100%; height: 100%">
+        </a>
+        <input type="hidden" value="u<? printf($fila_spec[1])?>">
+    </div>
 
+   
     <?  }  ?>
     
                                             </div>
@@ -1540,14 +1544,16 @@ uploader =  $(object).pluploadQueue({
 $(".events").on('click', function(){
 
   //get the Classes by ID 
-
- var ucla =  $(this).parent().prev().prev().children('p').children('input');
+  // cambio de fotos
+ var ucla =  $(this).parent().prev().prev().children('div.media').children('input');
 
    for (i=0; i < ucla.length; i++){
 
     console.info(ucla.eq(i).val());
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
+
+   
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
