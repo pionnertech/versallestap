@@ -763,25 +763,25 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
             
-
             if(val == 100){
 
-               $("tr").eq(index).children().eq(2).children().html("FINALIZADA");
-               $("tr").eq(index).children().eq(2).children().css({backgroundColor : "#1CC131"});
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html("FINALIZADA");
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().removeAttr("style");
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().css({backgroundColor : "#00BF00 !important"});
 
                     switch(true){
-                        case $("tr").eq(index).hasClass("Pv"): 
-                                 $("tr").eq(index).removeClass("Pv");
+                        case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pv"): 
+                                 $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pv");
                         break;
-                        case $("tr").eq(index).hasClass("At"):
-                                 $("tr").eq(index).removeClass("At");
+                        case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("At"):
+                                 $("#ext-tasks-table > tbody > tr").eq(index).removeClass("At");
                         break;
-                        case $("tr").eq(index).hasClass("Pe"):
-                                 $("tr").eq(index).removeClass("Pe");
+                        case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pe"):
+                                 $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pe");
                         break;
                     }
 
-                 $("tr").eq(index).addClass("Hc");    
+                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
                 }
 
 
