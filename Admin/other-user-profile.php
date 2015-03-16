@@ -888,7 +888,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                 <tr class="u<? printf($trf[0]) ?> utrf">
                                     <td colspan="3" >
                                         <div class="user-schedule">
-                                            <div class="media" style="display : inline-block">
+                                            <div class="media hovertip" style="display : inline-block">
                                                 <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
                                                     <img src="../img/<? printf($trf[0]) ?>.jpg" style="width: 100%; height: 100%">
                                                 </a>
@@ -1095,8 +1095,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <!--<script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>-->
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../scripts/jquery.knob.js"></script>
