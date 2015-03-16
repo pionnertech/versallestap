@@ -1975,20 +1975,6 @@ function updateProgress(){
 }
 
 
-    var content = 'We ask for your age only for statistical purposes.';
-
-    $(document).tooltip({
-        items: "input",
-        content: function () {
-            var element = $(this);
-            if (element.is("input")) {
-                return "<p class='arrow'>" + content + "</p>";
-            }
-        }
-    });
-
-
-
 
 </script>
 
