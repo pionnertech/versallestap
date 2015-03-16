@@ -11,8 +11,8 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 while (true) {
 	
-$handler    = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_stsk . " ORDER BY TRF_USER ");
-$subhandler = mysqli_fetch_assoc($handler);
+$handler    = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE STSK_ISS_ID = " . $iss_stsk . " GROUP BY STSK_CHARGE_USR ");
+
 
 while ($fila = mysqli_fetch_row($handler)){
 	$sum += $fila[0];
