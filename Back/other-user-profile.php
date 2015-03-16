@@ -421,7 +421,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/", 0775, true); 
    
                               } 
-                              
+
                                         if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
                                         
                                           $file_extension = "";
@@ -485,6 +485,7 @@ $str_query_trf = "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WH
 $trf_hand = mysqli_query($datos, $str_query_trf);
       
 ?>
+
                                         <table class="table">
                                             <tbody>
                                                 <tr>
@@ -493,6 +494,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                     <td>Fecha</td>
                                                 </tr>
                                              <?   while ($fetch_trf = mysqli_fetch_row($trf_hand)) { ?>
+                                             <? echo "<script> console.info(" . $fetch_trf[0] . " + '/' + " . $fetch_trf[1]  . " + '/' + " . $fetch_trf[0] . ") </script>"; ?>
                                                 <tr>
                                                     <td><? printf($fetch_trf[0]) ?></td>
                                                     <td><? printf($fetch_trf[1]) ?></td>
