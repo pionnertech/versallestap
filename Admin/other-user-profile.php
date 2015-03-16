@@ -313,6 +313,10 @@ color: lightgreen;
     display: none;
   }
 
+.bolder{
+    font-weight: bolder;
+}
+
     </style>    
 </head>
 <body>
@@ -894,9 +898,9 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                     </td>
                                 </tr>
                                 <tr class="task u<? printf($trf[0]) ?>"  >
-                                    <td>Asunto</td>
-                                    <td>Descripción</td>
-                                    <td>Fecha Progreso</td>
+                                    <td><span class="bolder">Asunto</span></td>
+                                    <td><span class="bolder">Descripción</span></td>
+                                    <td><span class="bolder">Fecha Progreso</span></td>
                                 </tr>
 
                             <? 
