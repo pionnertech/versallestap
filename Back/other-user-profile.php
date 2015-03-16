@@ -418,9 +418,10 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
 
                               if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/")) {
                                   
-                                    continue; 
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/", 0775, true); 
    
-                              } else {
+                              } 
+                              
                                         if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
                                         
                                           $file_extension = "";
@@ -473,10 +474,6 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                     }
                                 } //aqui cierra el opendir
                                 closedir($handler);
-                            }
-                                
-                                 
-                                
                                                   ?>
 
 
