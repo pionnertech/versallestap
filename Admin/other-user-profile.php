@@ -888,8 +888,8 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                 <tr class="u<? printf($trf[0]) ?> utrf">
                                     <td colspan="3" >
                                         <div class="user-schedule">
-                                            <div class="media hovertip" style="display : inline-block">
-                                                <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?>">
+                                            <div class="media" style="display : inline-block">
+                                                <a href="#" class="media-avatar pull-left hovertip" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?>">
                                                     <img src="../img/<? printf($trf[0]) ?>.jpg" style="width: 100%; height: 100%">
                                                 </a>
                                             </div>
