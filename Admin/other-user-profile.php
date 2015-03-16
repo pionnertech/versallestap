@@ -1095,7 +1095,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <!--<script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="../scripts/jquery.knob.js"></script>
@@ -1971,9 +1972,23 @@ var files;
 
 function updateProgress(){
 
- 
 
 }
+
+
+    var content = 'We ask for your age only for statistical purposes.';
+
+    $(document).tooltip({
+        items: "input",
+        content: function () {
+            var element = $(this);
+            if (element.is("input")) {
+                return "<p class='arrow'>" + content + "</p>";
+            }
+        }
+    });
+
+
 
 
 </script>
