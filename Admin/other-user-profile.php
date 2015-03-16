@@ -900,7 +900,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                 <tr class="task u<? printf($trf[0]) ?>"  >
                                     <td><span class="bolder">Asunto</span></td>
                                     <td><span class="bolder">Descripción</span></td>
-                                    <td><span class="bolder">Fecha Progreso</span></td>
+                                    <td class="align-right"><span class="bolder">Fecha Progreso</span></td>
                                 </tr>
 
                             <? 
