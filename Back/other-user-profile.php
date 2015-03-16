@@ -494,8 +494,8 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                 </tr>
                                              <?   while ($fetch_trf = mysqli_fetch_row($trf_hand)) { ?>
                                                 <tr>
-                                                    <td><? printf($fetch_trf[0]) ?></td>
-                                                    <td><? printf($fetch_trf[1]) ?></td>
+                                                    <td><? echo $fetch_trf[0]; ?></td>
+                                                    <td><? echo $fetch_trf[1]; ?></td>
                                                     <td><? echo date('d/m/Y', strtotime($fetch_trf[2])); ?></td>
                                                 </tr>
                                              <? } ?> 
