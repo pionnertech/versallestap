@@ -494,7 +494,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                     <td>Fecha</td>
                                                 </tr>
                                              <?   while ($fetch_trf = mysqli_fetch_row($trf_hand)) { ?>
-                                             <? echo "<script> console.info(" . $fetch_trf[0] . " + '/' + " . $fetch_trf[1]  . " + '/' + " . $fetch_trf[0] . ") </script>"; ?>
+                                             <? echo "<script> console.info(" . $fetch_trf[0] . " + '/' + " . $fetch_trf[1]  . " + '/' + " . $fetch_trf[2] . ") </script>"; ?>
                                                 <tr>
                                                     <td><? printf($fetch_trf[0]) ?></td>
                                                     <td><? printf($fetch_trf[1]) ?></td>
