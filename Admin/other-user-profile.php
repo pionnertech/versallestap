@@ -911,9 +911,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                             while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
                                      <tr class="task st<? printf($rows[0]) ?> chrono" >
-                                         <td class="cell-title"><? printf($rows[1])?></td>
-                                         <td class="cell-title"><? printf($rows[2])?></td>
-                                         <td class="cell-time align-right"><? printf(date('d/m/Y', strtotime($rows[3]))) ?></td>
+                                         <td class="cell-title"><? echo $rows[1]; ?></td>
+                                         <td class="cell-title"><? echo $rows[2]; ?></td>
+                                         <td class="cell-time align-right"><? echo date('d/m/Y', strtotime($rows[3])); ?></td>
                                      </tr>
                              <?      }        ?>  
                          <?      }        ?>        
@@ -1629,7 +1629,8 @@ if (um == 0){
 
 if(typeof(EventSource) !== "undefined") {
 
-    var source = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    var source   = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    var progress = new EventSource("../backend/time-pro-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
 
@@ -1648,6 +1649,20 @@ if(typeof(EventSource) !== "undefined") {
         
     }
 }
+
+    progress.onmessage =  function (event){
+       
+        progressMessage = event.data.split('\n');
+
+            if (progressMessage[0] != preProgress) {
+
+
+            }
+
+
+   }
+
+
 
 } else {
 
@@ -1927,8 +1942,8 @@ getFiles(function (data){
     tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
-    td6.appendChild(div4);
 
+    td6.appendChild(div4);
     td6.appendChild(i2);
     td6.appendChild(i3);
     td6.appendChild(p4);
@@ -1948,6 +1963,13 @@ var files;
           }
    })
 };
+
+
+function updateProgress(){
+
+ 
+
+}
 
 
 </script>
