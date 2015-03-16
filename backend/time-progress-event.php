@@ -31,7 +31,7 @@ if ($ctp >= 99.9 ){
 //GEt the Last User that grow up his progress
 
 
-$query_usr = mysqli_query($datos, "SELECT TRF_USER FROM TRAFFIC WHERE TRF_STSK_ID = " . $stsk_trf . " ORDER BY TRF_ING_DATE DESC LIMIT 1" );
+$query_usr = mysqli_query($datos, "SELECT TRF_USER FROM TRAFFIC WHERE TRF_STSK_ID = " . $iss_stsk . " ORDER BY TRF_ING_DATE DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
 sleep(1);
