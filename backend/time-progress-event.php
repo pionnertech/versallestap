@@ -12,7 +12,6 @@ header('Cache-Control: no-cache');
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 while (true) {
-	
 
 $news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE STSK_MAIN_USR = "  . $usr);
 
@@ -54,9 +53,9 @@ echo "data :" . $classText .  "\n\n";
 
 
 	}  else {
-      sleep(1);
-     echo "data :" . "\n";
-     echo "data :" . "\n";
+     sleep(1);
+     echo "data :" . $new[0] . "\n";
+     echo "data :" . $new[1] . "\n";
 }
 
 //GEt the Last User that grow up his progress
