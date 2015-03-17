@@ -17,7 +17,7 @@ $news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, 
 
 while( $new = mysqli_fetch_row($news)){
 
-	if($new[0] != $new[1]){
+	if($new[0] !== $new[1]){
 
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $new[0] . " WHERE STSK_ID =" . $new[2]);
 
@@ -27,6 +27,7 @@ while( $new = mysqli_fetch_row($news)){
        while ($fila = mysqli_fetch_row($handler)){
 	         $sum += $fila[0];
           }
+
         $ctp   = (($sum * 100) / (100 * $count));
 
         $classText = "";
@@ -50,22 +51,33 @@ echo "data :" . date('d/m/Y', strtotime($user['TRF_ING_DATE'] )) .  "\n";
 echo "data :" . $user['TRF_STSK_SRC_ID'] . "\n";
 echo "data :" . $ctp .  "\n";
 echo "data :" . $classText .  "\n\n";
+ob_end_flush();
+flush();
 
+$sum = 0;
 
 	}  else {
 
      sleep(1);
-     echo "data :" . $new[0] . "\n";
-     echo "data :" . $new[1] . "\n";
-}
-
-//GEt the Last User that grow up his progress
- }
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" . $new[0] . "\n";
+echo "data :" . $new[1] . "\n\n";
 
 ob_end_flush();
 flush();
 
 $sum = 0;
+}
+
+//GEt the Last User that grow up his progress
+ }
+
+
 }
 
 
