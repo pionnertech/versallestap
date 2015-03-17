@@ -32,14 +32,17 @@ if ($ctp >= 99.9 ){
 //GEt the Last User that grow up his progress
 
 
-$query_usr = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME, ' ', A.USR_SURNAME) AS NAME, A.TRF_SUBJECT, A.TRF_DESCRIPT FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $stsk_src_id . " ORDER BY TRF_ID DESC LIMIT 1" );
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $stsk_src_id . " ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
 sleep(1);
 
 echo "data :" . str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME'])))).  "\n";
+echo "data :" . $user['TRF_USER'] .  "\n";
 echo "data :" . $user['TRF_SUBJECT'] .  "\n";
 echo "data :" . $user['TRF_DESCRIPT'] .  "\n";
+echo "data :" . $user['TRF_ING_DATE'] . "\n";
+echo "data :" . $user['TRF_STSK_SRC_ID'] .  "\n";
 echo "data :" . $ctp .  "\n";
 echo "data :" . $classText .  "\n\n";
 

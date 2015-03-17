@@ -895,7 +895,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                   <div class="tab-pane fade" id="events">
                         <div class="module-body table"> 
                            <div id="back-to-main"><i class="fa fa-chevron-circle-left" style="color: #16A2E4; float: left; font-size:1.5em"></i></div>                            
-                            <table class="table table-message">
+                            <table class="table table-message" id="del-partners">
                                 <tbody>
                                      <tr class="heading">
                                           <td></td>
@@ -1293,6 +1293,7 @@ console.info();
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
+
            bootbox.alert("Requerimiento delegado existosamente");
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
@@ -1301,8 +1302,26 @@ console.info();
        
                 var target =  $("#current-task").val();
                 var ancient = $(".collaborates").eq(target).html();
-                var current_collaborates =  $(".collaborates").eq(target).html(ancient + data + " -");
                
+                var key_main    = document.querySelectorAll(".collaborates")[target];
+
+                var a_del       = document.createElement('a');
+                a_del.className = "hovertip";
+                a_del.title     = ancient + data;
+
+                var img_del =  document.createElement('img');
+                img_del.src = "../img/" + $("#stsk-user").val() + "_opt.jpg";
+
+                var inp_del   = document.createElement('input');
+                inp_del.type  = "hidden";
+                inp_del.value = "u" + $("#stsk-user").val();
+
+                a_del.appendChild(img_del);
+                a_del.appendChild(inp_del);
+                key_main.appendChild(a_del);
+
+               // nueva delegacia 
+
                     $("#upload ul").empty();
     
 
@@ -1685,6 +1704,7 @@ if(typeof(EventSource) !== "undefined") {
         progressMessage = event.data.split('\n');
 
             if (progressMessage[0] != preProgress) {
+              
 
 
             }
@@ -1995,13 +2015,124 @@ var files;
 };
 
 
-function updateProgress(){
+function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk){
 
+document.querySelector(".ext-tasks-table .bar")[ind].style.width = percent + "%";
+
+var parent = document.querySelector("#del-partners");
+
+var tr_av  = document.createElement('tr');
+var td1_av = document.createElement('td');
+var td2_av = document.createElement('td');
+var td3_av = document.createElement('td');
+
+td1_av.innerHTML = subject;
+td2_av.innerHTML = descript;
+td3_av.innerHTML = date;
+
+tr_av.appendChild(td1_av);
+tr_av.appendChild(td2_av);
+tr_av.appendChild(td3_av);
+
+
+// search the user;
+
+var search1 = document.querySelectorAll(".u" + userId)[0];
+
+    if(!search1){
+    // create user .. pfffff... no comments.
+
+
+        tr_usr   = document.createElement('tr');
+        td_usr   = document.createElement('td');
+        div_usr1 = document.createElement('div');
+        div_usr2 = document.createElement('div');
+        a_usr    = document.createElement('a');
+        img_usr  = document.createElement('img');
+        p_usr    = document.createElement('p');
+
+        tr_usr2   = document.createElement('tr');
+        td_usr1   = document.createElement('td');
+        td_usr2   = document.createElement('td');
+        td_usr3   = document.createElement('td');
+
+        span_usr1 = document.createElement('span');
+        span_usr2 = document.createElement('span');
+        span_usr3 = document.createElement('span');
+
+  // style and attr assigments
+
+       tr_usr.className = "u" + user + " utrf";
+       td_usr.colSpan = 3;
+       div_usr1.className = "user-schedule";
+       div_usr2.className = "media";
+       div_usr2.style.display = "inline-block";
+       a_usr.className = "media-avatar pull-left";
+       a_usr.style.width = "4em";
+       a_usr.style.height = "4em";
+       a_usr.title = usr_name;
+       img_usr.src = "../img/" + usr_id + ".jpg";
+       img_usr.style.width = "100%";
+       img_usr.style.height = "100%";
+
+       p_usr.style.fontSize = "2em";
+       p_usr.style.fontStyle = "italic";
+       p_usr.style.color = "gray";
+       p_usr.style.display = "inline-block";
+       p_usr.style.verticalAlign = "bottom";
+       p_usr.innerHTML = usr_name;
+
+       tr_usr2.className = "task u" + usr_id;
+       span_usr1.className = "bolder";
+       span_usr2.className = "bolder";
+       span_usr3.className = "bolder";
+
+       td_usr3.className = "align-right";
+
+       span_usr1.innerHTML = "Asunto";
+       span_usr2.innerHTML = "Descripcion";
+       span_usr3.innerHTML = "Fecha Progreso";
+
+
+
+  // sorting of appending elements to display;
+
+      a_usr.appendChild(img_usr);
+      div_usr2.appendChild(a_usr);
+      div_usr1.appendChild(div_usr2);
+      div_usr1.appendChild(p_usr);
+      td_usr.appendChild(div_usr1);
+      tr_usr.appendChild(td_usr);
+    
+      td_usr1.appendChild(span_usr1);
+      td_usr2.appendChild(span_usr2);
+      td_usr3.appendChild(span_usr3);
+
+      tr_usr2.appendChild(td_usr1);
+      tr_usr2.appendChild(td_usr2);
+      tr_usr2.appendChild(td_usr3);
+    
+
+
+      parent.appendChild(tr_usr);
+      parent.appendChild(tr_usr2);
+      parent.appendChild(tr_av);
+
+
+      parent.insertBefore(tr_usr, tr_usr2);
+      insertAfter(tr_av, tr_usr2);
+      
+    } else {
+        pseudoparent =  document.querySelector("#del-partners .st" + stsk);
+        pseudoparent.appendChild(tr_av);
+    }
 
 }
 
 
-
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 </script>
 
