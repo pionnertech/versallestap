@@ -19,7 +19,7 @@ while( $new = mysqli_fetch_row($news)){
 
 	if($new[0] != $new[1]){
 
-       mysqli_query($datos, "UPDATE TABLE SUBTASKS SET STSK_ANCIENT_PRO = " . $new[0] . " WHERE STSK_ID =" . $new[2]);
+       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $new[0] . " WHERE STSK_ID =" . $new[2]);
 
        $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $new[3] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
        $count   = mysqli_num_rows($handler);
@@ -53,6 +53,7 @@ echo "data :" . $classText .  "\n\n";
 
 
 	}  else {
+
      sleep(1);
      echo "data :" . $new[0] . "\n";
      echo "data :" . $new[1] . "\n";
