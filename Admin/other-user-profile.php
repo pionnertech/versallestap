@@ -317,7 +317,17 @@ color: lightgreen;
     font-weight: bolder;
 }
 
+.group{
+  width: 8%;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+}
+
     </style>    
+
+
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -774,13 +784,14 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                                 <?
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
+  <div class="user-schedule">
     <div class="media" style="display : inline-block">
         <a href="#" class="media-avatar hovertip" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
-            <img src="../img/<? echo $fila_spec[1]; ?>.jpg" style="width: 100%; height: 100%">
+            <img src="../img/<? echo $fila_spec[1]; ?>.jpg" class="group" >
         </a>
         <input type="hidden" value="u<? printf($fila_spec[1])?>">
     </div>
-
+</div>
    
     <?  }  ?>
     
@@ -1545,7 +1556,7 @@ $(".events").on('click', function(){
 
   //get the Classes by ID 
   // cambio de fotos
- var ucla =  $(this).parent().prev().prev().children('div.media').children('input');
+ var ucla =  $(this).parent().prev().prev().children('div.').children('input');
 
    for (i=0; i < ucla.length; i++){
 
@@ -1553,7 +1564,7 @@ $(".events").on('click', function(){
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
 
-   
+
   var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
