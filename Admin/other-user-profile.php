@@ -325,9 +325,9 @@ color: lightgreen;
   border-radius: 50%;
   display: inline-block;    
   vertical-align: top;
-  -webkit-transition: all 800ms ease-in-out;
-  -moz-transition: all 800ms ease-in-out;
-  transition: all 800ms ease-in-out;
+  -webkit-transition: all 100ms ease-in-out;
+  -moz-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
 }
 
 .group:hover{
