@@ -796,7 +796,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
 
         <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
-            <img src="../img/<? echo $fila_spec[1]; ?>.jpg" class="group" >
+            <img src="../img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <input type="hidden" value="u<? printf($fila_spec[1])?>">
         </a>
         
