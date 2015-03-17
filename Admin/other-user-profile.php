@@ -325,6 +325,14 @@ color: lightgreen;
   border-radius: 50%;
   display: inline-block;    
   vertical-align: top;
+  -webkit-transition: all 800ms ease-in-out;
+  -moz-transition: all 800ms ease-in-out;
+  transition: all 800ms ease-in-out;
+}
+
+.group:hover{
+    border: 1px solid orange;
+    width:10%;
 }
 
     </style>    
@@ -1991,6 +1999,7 @@ function updateProgress(){
 
 
 }
+
 
 
 
