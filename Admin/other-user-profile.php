@@ -323,6 +323,8 @@ color: lightgreen;
   padding: 6px;
   border: 1px solid lightgrey;
   border-radius: 50%;
+  display: inline-block;    
+  vertical-align: top;
 }
 
     </style>    
@@ -784,8 +786,8 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  B.CTZ_
                                                 <?
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
-    <div style="display : inline-block">
-        <a href="#" class="hovertip" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
+    <div class="group">
+        <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../img/<? echo $fila_spec[1]; ?>.jpg" class="group" >
         </a>
         <input type="hidden" value="u<? printf($fila_spec[1])?>">
