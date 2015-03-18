@@ -17,7 +17,7 @@ if (mysqli_num_rows($news) == 0){
 
      sleep(1);
 
-$user_out1 = "";
+$user_out1 = "Pleasant";
 $user_out2 = "";
 $user_out3 = "";
 $user_out4 = "";

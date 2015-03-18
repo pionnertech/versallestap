@@ -1692,8 +1692,8 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 if(typeof(EventSource) !== "undefined") {
 
-    var source   = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    var progress = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
+    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
 
@@ -1701,32 +1701,28 @@ if(typeof(EventSource) !== "undefined") {
 
        if (eventMessage[0] !== previuosData){
           
-   console.info( eventMessage[0] + "/" + previuosData);
+        console.info( eventMessage[0] + "/" + previuosData);
 
         showAlert(eventMessage[0], 'req');
+
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
-
         previuosData = eventMessage[0];
-
-    } else {
-        
-    }
+    } 
 }
 
-progress.onmessage =  function (event){
+     proAdvance.onmessage =  function (event){
        
-progressMessage = event.data.split('\n');
+      var progressMessage = event.data.split('\n');
 
-             console.info("1");
+         console.info("1");
 
         if (progressMessage[0] != ""  || progressMessage[0] != " ") {
 
-  showAlert(progressMessage[2], "pro", progressMessage[0]);
- updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], ind, progressMessage[5]);
+        showAlert(progressMessage[2], "pro", progressMessage[0]);
+
+        updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], "3", progressMessage[5]);
 
             }
-
-
    }
 
 
