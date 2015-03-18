@@ -1713,11 +1713,12 @@ if(typeof(EventSource) !== "undefined") {
     }
 }
 
-    progress.onmessage =  function (event){
+progress.onmessage =  function (event){
        
-        progressMessage = event.data.split('\n');
+progressMessage = event.data.split('\n');
+console.info(progressMessage[3]);
+        if (progressMessage[0] != ""  || progressMessage[0] != " ") {
 
-            if (progressMessage[0] != "" ) {
   showAlert(progressMessage[2], "pro", progressMessage[0]);
  updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], ind, progressMessage[5]);
 
