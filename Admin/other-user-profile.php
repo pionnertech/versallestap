@@ -18,6 +18,7 @@ $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS 
 if(mysqli_num_rows($quntum) == 0){
 
     $contador = 0;
+
 } else {
 
     $cont = mysqli_fetch_assoc($quntum);
@@ -724,7 +725,7 @@ $handler2 = mysqli_query($datos, $matrix2);
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                             <td class="cell-title">Accion</td>
-                                            <td class="cell-time align-right">Fecha</td>
+                                            <td class="cell-time align-right">Fecha máxima de entrega</td>
 
                                         </tr>
                                         <? 
