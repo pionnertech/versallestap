@@ -13,7 +13,7 @@ while (true) {
 
 $news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)");
 
-if (mysqli_num_rows($news) < 1){
+if (mysqli_num_rows($news) == 0){
 
      sleep(1);
 
@@ -31,9 +31,12 @@ flush();
 
 } else {
 
-       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $new[0] . " WHERE STSK_ID =" . $new[2]);
 
-       $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $new[3] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
+   $outcome = mysqli_fetch_assoc($news);
+
+       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
+
+       $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
        $count   = mysqli_num_rows($handler);
 
        while ($fila = mysqli_fetch_row($handler)){
@@ -50,7 +53,7 @@ flush();
 
           }
 
-$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $new[2] . " ORDER BY TRF_ID DESC LIMIT 1" );
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $outcome['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
 sleep(1);
