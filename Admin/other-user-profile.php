@@ -1693,7 +1693,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 if(typeof(EventSource) !== "undefined") {
 
     var source   = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    var progress = new EventSource("../backend/time-pro-event.php?usr=" + mainuser);
+    var progress = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
 
