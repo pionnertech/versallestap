@@ -344,7 +344,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                           if (!is_dir("../" . $_SESSION['TxtFacility'] . "/reply/")){
 
-                          	   mkdir("../" . $_SESSION['TxtFacility'] . "/reply/", 0775, true)
+                          	   mkdir("../" . $_SESSION['TxtFacility'] . "/reply/", 0775, true);
                           }
                       
 
@@ -357,6 +357,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                              $extension = substr($archivos, -3);
                                              $cor = "";
                                                  switch (true) {
+
                                                       case ($extension =='pdf'):
                                                       $file_extension = "pdf-";
                                                       $cor = "#FA2E2E";
