@@ -1159,7 +1159,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
     $(document).on('ready', function(){
-  init();
+ 
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
@@ -1167,7 +1167,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     timepicker: false
 });
 
-
+ init();
 
 $(".toggle-attach").on('click', function(){
 
