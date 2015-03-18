@@ -688,7 +688,7 @@ $handler2 = mysqli_query($datos, $matrix2);
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn" id="showtitle" >Todos</button>
+                                        <button class="btn" id="showtitle" >Atrasados</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
@@ -1062,7 +1062,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
-                                                            <button class="btn">Todos</button>
+                                                            <button class="btn">Atrasados</button>
                                                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                             <span class="caret"></span>
                                                             </button>
@@ -1710,6 +1710,7 @@ if(typeof(EventSource) !== "undefined") {
     } 
 }
 
+
     proAdvance.onmessage =  function (event){
        
         console.info("1");
@@ -2157,5 +2158,12 @@ function insertAfter(newNode, referenceNode) {
 
 
 ?>
+
+
+
+
+
+
+
 
 
