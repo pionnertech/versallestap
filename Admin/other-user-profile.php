@@ -13,6 +13,17 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
+$quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
+
+if(mysqli_num_rows($quntum) == 0){
+
+    $contador = 0;
+} else {
+
+    $cont = mysqli_fetch_assoc($quntum);
+    $contador = $cont['CONTADOR'];
+}
+
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
@@ -346,7 +357,7 @@ color: lightgreen;
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                    <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Edmin </a>
+                    <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Eque-e </a>
                 <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav nav-icons">
                         <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
@@ -387,7 +398,7 @@ color: lightgreen;
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
-                                11</b> </a></li>
+                                <? echo $contador; ?></b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
  
