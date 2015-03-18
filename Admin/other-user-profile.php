@@ -1716,7 +1716,9 @@ if(typeof(EventSource) !== "undefined") {
 progress.onmessage =  function (event){
        
 progressMessage = event.data.split('\n');
-console.info(progressMessage[3]);
+
+          console.info("1");
+
         if (progressMessage[0] != ""  || progressMessage[0] != " ") {
 
   showAlert(progressMessage[2], "pro", progressMessage[0]);
