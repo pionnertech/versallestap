@@ -1110,6 +1110,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
             </div>
         </div>
         <!--/.container-->
+        <audio id="successAudio"><source src="../backend/success.mp3" type="audio/mpeg"></audio>
         <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
@@ -1650,12 +1651,21 @@ if (um == 0){
         // console.log(permission);
     });
 
-    function showAlert(message) {
-        var instance = new Notification(
-            "Te ha llegado un nuevo requerimiento:", {
-                body: message,
-                icon: "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png"
+    function showAlert(message, type, usr_name) {
+if(type == "req"){
 
+var title = "Te ha llegado un nuevo requerimiento:";
+var iconShow = "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png";
+
+} else {
+
+var title = usr_name + " ha marcado un progreso :";
+var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Next-icon.png";
+}
+        var instance = new Notification(
+            title , {
+                body: message,
+                icon : iconShow
             }
         );
 
@@ -1666,8 +1676,12 @@ if (um == 0){
             // Something to do
         };
         instance.onshow = function () {
-          $('#chatAudio')[0].play();
-
+            if( type == "req"){
+               $('#chatAudio')[0].play(); 
+           } else {
+               $('#successAudio')[0].play();
+           }
+          
         };
         instance.onclose = function () {
             // Something to do
@@ -1689,7 +1703,7 @@ if(typeof(EventSource) !== "undefined") {
           
    console.info( eventMessage[0] + "/" + previuosData);
 
-        showAlert(eventMessage[0]);
+        showAlert(eventMessage[0], 'req');
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
 
         previuosData = eventMessage[0];
@@ -1703,9 +1717,9 @@ if(typeof(EventSource) !== "undefined") {
        
         progressMessage = event.data.split('\n');
 
-            if (progressMessage[0] != preProgress) {
-              
-
+            if (progressMessage[0] != "" ) {
+  showAlert(progressMessage[2], "pro", progressMessage[0]);
+ updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], ind, progressMessage[5]);
 
             }
 
