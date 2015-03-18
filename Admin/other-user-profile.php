@@ -1159,7 +1159,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     
     $(document).on('ready', function(){
-
+  init();
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
@@ -2160,6 +2160,33 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
+
+function touchHandler(event) {
+    var touch = event.changedTouches[0];
+
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init() {
+    document.querySelectorAll(".files")addEventListener("touchstart", touchHandler, true);
+    document.querySelectorAll(".files")addEventListener("touchmove", touchHandler, true);
+    document.querySelectorAll(".files")addEventListener("touchend", touchHandler, true);
+    document.querySelectorAll(".files")addEventListener("touchcancel", touchHandler, true);
+}
+
+
+
 
 </script>
 
