@@ -1,6 +1,4 @@
 <?php
-
-
 $iss_stsk    = $_GET['st'];
 $percent     = $_GET['per'];
 $stsk_src_id = $_GET['srcid'];
@@ -13,11 +11,25 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 while (true) {
 
-$news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE STSK_MAIN_USR = "  . $usr);
+$news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr " AND STSK_PROGRESS != STSK_ANCIENT_PRO)");
 
-while( $new = mysqli_fetch_row($news)){
+if (mysqli_num_rows($news) == 0){
 
-	if($new[0] !== $new[1]){
+     sleep(1);
+
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" .  "\n";
+echo "data :" . $new[0] . "\n";
+echo "data :" . $new[1] . "\n\n";
+
+ob_end_flush();
+flush();
+
+} else {
 
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $new[0] . " WHERE STSK_ID =" . $new[2]);
 
@@ -51,22 +63,6 @@ echo "data :" . date('d/m/Y', strtotime($user['TRF_ING_DATE'] )) .  "\n";
 echo "data :" . $user['TRF_STSK_SRC_ID'] . "\n";
 echo "data :" . $ctp .  "\n";
 echo "data :" . $classText .  "\n\n";
-ob_end_flush();
-flush();
-
-$sum = 0;
-
-	}  else {
-
-     sleep(1);
-echo "data :" .  "\n";
-echo "data :" .  "\n";
-echo "data :" .  "\n";
-echo "data :" .  "\n";
-echo "data :" .  "\n";
-echo "data :" .  "\n";
-echo "data :" . $new[0] . "\n";
-echo "data :" . $new[1] . "\n\n";
 
 ob_end_flush();
 flush();
@@ -75,7 +71,7 @@ $sum = 0;
 }
 
 //GEt the Last User that grow up his progress
- }
+ 
 
 
 }
