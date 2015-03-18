@@ -246,7 +246,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td class="cell-icon"></td>
 											<td class="cell-title">Requerimiento</td>
 											<td class="cell-status hidden-phone hidden-tablet">Estado</td>
-											<td class="cell-time align-right">Fecha de entrega</td>
+											<td class="cell-time align-right">Fecha de Atención</td>
 										</tr>
 
 						<?
@@ -502,10 +502,19 @@ $(".enviar").on('click', function () {
 
 $(".switcher").on('click', function(){
 
+
+
 	 var all_on = document.querySelectorAll('.switcher');
      var ex = $(this).attr("id");
      var name =  $(this).html();
-      $(".display-progress").css({ display: "none"});
+
+ if(ex == "Pe"){
+    document.querySelectorAll(".heading > td")[3].innerHTML = "Fecha de Atención";
+} else {
+    document.querySelectorAll(".heading > td")[3].innerHTML = "Fecha Máxima de entrega";
+} 
+
+     $(".display-progress").css({ display: "none"});
      $("#filter-title").html(name);
 
      for(i=0; i < all_on.length ; i++){
