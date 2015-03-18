@@ -2179,10 +2179,10 @@ function touchHandler(event) {
 }
 
 function init() {
-    document.querySelectorAll(".files")addEventListener("touchstart", touchHandler, true);
-    document.querySelectorAll(".files")addEventListener("touchmove", touchHandler, true);
-    document.querySelectorAll(".files")addEventListener("touchend", touchHandler, true);
-    document.querySelectorAll(".files")addEventListener("touchcancel", touchHandler, true);
+    document.querySelectorAll(".files").addEventListener("touchstart", touchHandler, true);
+    document.querySelectorAll(".files").addEventListener("touchmove", touchHandler, true);
+    document.querySelectorAll(".files").addEventListener("touchend", touchHandler, true);
+    document.querySelectorAll(".files").addEventListener("touchcancel", touchHandler, true);
 }
 
 

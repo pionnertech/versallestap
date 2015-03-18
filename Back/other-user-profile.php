@@ -1039,8 +1039,14 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
     div3.className  = "bar bar-warning";
 
     
-  getFiles(iss, $("#muser").val()  , function (data){
 
+$.ajax({     
+
+          type: "POST",
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + $("#muser").val() + "&iss_id=" + iss + "&fac=" + fac,
+          success: function(data){
+
+         
    arrayFiles = data.split("|");
  
  for (var i = 0; i < arrayFiles.length; i++){
@@ -1120,7 +1126,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
 
  }
 
-  });
+     }
+ });
+
+// ==== llamada Asincronica fin ====
 
     p1.appendChild(str1);
     p2.appendChild(str2);
@@ -1143,22 +1152,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
 
 
 
-function getFiles(iss_id, usr_id, callback){
-
-var files;
-
-console.info(iss_id + "/" + usr_id + "/" + fac);
-
-   $.ajax({
-          type: "POST",
-          url: "../backend/dynamics_JSON_files.php?usr_id=" + usr_id + "&iss_id=" + iss_id+ "&fac=" + fac,
-          success: function(data){
-          files = data;
-          console.info(data);
-          callback(files);
-          }
-   })
-}
 
 function progressTableUpdate(subject, description, date, object){
 
