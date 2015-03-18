@@ -53,7 +53,11 @@ flush();
 
           }
 
-$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $outcome['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
+
+
+
+$get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR); "));
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
 sleep(1);
@@ -62,7 +66,7 @@ echo "data :" . str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtol
 echo "data :" . $user['TRF_USER'] .  "\n";
 echo "data :" . $user['TRF_SUBJECT'] .  "\n";
 echo "data :" . $user['TRF_DESCRIPT'] .  "\n";
-echo "data :" . date('d/m/Y', strtotime($user['TRF_ING_DATE'] )) .  "\n";
+echo "data :" . date('d/m/Y', strtotime($user['TRF_ING_DATE'])) .  "\n";
 echo "data :" . $user['TRF_STSK_SRC_ID'] . "\n";
 echo "data :" . $ctp .  "\n";
 echo "data :" . $classText .  "\n\n";
