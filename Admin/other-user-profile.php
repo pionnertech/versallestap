@@ -793,8 +793,8 @@ $handler2 = mysqli_query($datos, $matrix2);
 $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ',  B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL   FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
                                             ?>
                               <p class="iss-descript"><strong>Ciudadano</strong> : <? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($shine['NAME'])))); ?></p> 
-                              <p class="iss-descript"><strong>Teléfono</strong> : <? printf($shine['CTZ_ADDRESS']) ?></p> 
-                              <p class="iss-descript"><strong>Dirección</strong> : <? printf($shine['CTZ_DEL']) ?></p> 
+                              <p class="iss-descript"><strong>Teléfono</strong> : <? printf($shine['CTZ_TEL']) ?></p> 
+                              <p class="iss-descript"><strong>Dirección</strong> : <? printf($shine['CTZ_ADDRESS']) ?></p> 
                               <p class="iss-descript"><strong>Descripcion compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>          
                                         </div>
                                             <p>
