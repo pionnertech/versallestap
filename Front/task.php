@@ -341,6 +341,13 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                                 
                                          <? 
 
+
+                          if (!is_dir("../" . $_SESSION['TxtFacility'] . "/reply/")){
+
+                          	   mkdir("../" . $_SESSION['TxtFacility'] . "/reply/", 0775, true)
+                          }
+                      
+
                             if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
                                      
                                          while (false !== ($archivos = readdir($handler))){ 
@@ -386,8 +393,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                                   <? }
                                                      } 
                                                        closedir($handler);
-                                                     }
-                                                     
+                                                     } // fin open dir
+                                                    
 
                                                   ?>
                                                 
@@ -523,7 +530,6 @@ $(".switcher").on('click', function(){
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
            }
-        
      }
 
 })
