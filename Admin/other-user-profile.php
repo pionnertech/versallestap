@@ -1717,7 +1717,7 @@ progress.onmessage =  function (event){
        
 progressMessage = event.data.split('\n');
 
-          console.info("1");
+             console.info("1");
 
         if (progressMessage[0] != ""  || progressMessage[0] != " ") {
 
