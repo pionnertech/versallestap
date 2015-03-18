@@ -1696,7 +1696,8 @@ if(typeof(EventSource) !== "undefined") {
     var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
-
+        
+        console.info("1");
        var eventMessage = event.data.split('\n');
 
        if (eventMessage[0] !== previuosData){
