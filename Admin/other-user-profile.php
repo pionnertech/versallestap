@@ -1585,7 +1585,7 @@ $(".events").on('click', function(){
 
   //get the Classes by ID 
   // cambio de fotos
- var ucla =  $(this).parent().prev().prev().children('div').children('input');
+ var ucla =  $(this).parent().prev().prev().children('a').children('input');
 
    for (i=0; i < ucla.length; i++){
 
