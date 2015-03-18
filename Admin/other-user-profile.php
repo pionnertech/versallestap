@@ -1696,8 +1696,7 @@ if(typeof(EventSource) !== "undefined") {
     var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
-        
-        
+
        var eventMessage = event.data.split('\n');
 
        if (eventMessage[0] !== previuosData){
@@ -1711,14 +1710,12 @@ if(typeof(EventSource) !== "undefined") {
     } 
 }
 
-     proAdvance.onmessage =  function (event){
+    proAdvance.onmessage =  function (event){
        
         console.info("1");
       var progressMessage = event.data.split('\n');
 
-        
-
-        if (progressMessage[0] != ""  || progressMessage[0] != " ") {
+        if (progressMessage[0] != "Pleasant") {
 
         showAlert(progressMessage[2], "pro", progressMessage[0]);
 

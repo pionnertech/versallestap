@@ -5,7 +5,7 @@ $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$query = mysqli_query($datos, "SELECT * FROM CITIZENS WHERE CTZ_RUT = " . $rut);
+$query = mysqli_query($datos, "SELECT * FROM CITIZENS WHERE (CTZ_RUT = " . $rut . " AND CTZ_FAC_ENTER =" . $fac . ")");
 
 if (mysqli_num_rows($query) === 0){
 
