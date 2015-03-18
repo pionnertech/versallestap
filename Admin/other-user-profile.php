@@ -1697,7 +1697,7 @@ if(typeof(EventSource) !== "undefined") {
     
     source.onmessage = function(event) {
         
-        console.info("1");
+        
        var eventMessage = event.data.split('\n');
 
        if (eventMessage[0] !== previuosData){
@@ -1713,9 +1713,10 @@ if(typeof(EventSource) !== "undefined") {
 
      proAdvance.onmessage =  function (event){
        
+        console.info("1");
       var progressMessage = event.data.split('\n');
 
-         console.info("1");
+        
 
         if (progressMessage[0] != ""  || progressMessage[0] != " ") {
 
