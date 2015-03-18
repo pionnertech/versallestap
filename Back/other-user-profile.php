@@ -19,6 +19,19 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
+$quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
+
+if(mysqli_num_rows($quntum) == 0){
+
+    $contador = 0;
+    
+} else {
+
+    $cont = mysqli_fetch_assoc($quntum);
+    $contador = $cont['CONTADOR'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -245,7 +258,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                 <div class="span3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
-                            <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario</a></li>
+                            <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
+                                <? echo $contador; ?></b> </a></li>
                         </ul>
                         <!--/.widget-nav-->
  
