@@ -11,9 +11,9 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 while (true) {
 
-$news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr " AND STSK_PROGRESS != STSK_ANCIENT_PRO)");
+$news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)");
 
-if (mysqli_num_rows($news) == 0){
+if (mysqli_num_rows($news) < 1){
 
      sleep(1);
 
