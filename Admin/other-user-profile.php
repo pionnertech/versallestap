@@ -818,7 +818,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
     
                                             </div>
                                             <p class="golang"><i class="fa fa-paperclip" style="color:darkyellow;"></i></p>
-                                            <p class="wrap-events"><i class="fa fa-history events"></i></p>
+                                            <p class="wrap-events"><i class="fa fa-calendar-o events"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
@@ -1992,7 +1992,7 @@ getFiles(function (data){
 
     i1.className = "fa fa-group spac";
     i2.className = "fa fa-paperclip";
-    i3.className = "fa fa-history events";
+    i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
 
 
