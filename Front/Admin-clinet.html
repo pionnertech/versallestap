@@ -48,7 +48,7 @@ var map;
 var LatLnginit = new google.maps.LatLng(-23.538512299999997, -46.705220399999995);
 
     var options = {
-        zoom: 12,
+        zoom: 16,
         zoomControl: true,
         zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
@@ -58,24 +58,29 @@ var LatLnginit = new google.maps.LatLng(-23.538512299999997, -46.705220399999995
     };
 
 	    map = new google.maps.Map(document.getElementById("map"), options);
-	    map.setCenter(LatLnginit);
 
-}
 
-if(!navigator.geolocation){
-	alert('GPS nao e suportado neste dispositivo');
-} else {
+	    if(!navigator.geolocation){
+
+	  alert('GPS nao e suportado neste dispositivo');
+
+       } else {
 
    navigator.geolocation.getCurrentPosition(function (position){
-
+   
+     map.setCenter(position.coords.latitude + "," + position.coords.longitude);
    	document.querySelectorAll("p")[0].innerHTML = "Latitude: " + position.coords.latitude;
    	document.querySelectorAll("p")[1].innerHTML = "Longitude: " + position.coords.longitude;
    	document.querySelectorAll("p")[2].innerHTML = "Altitude: " + position.coords.altitude;
    	document.querySelectorAll("p")[3].innerHTML = "hora exata: " + timeConverter(position.timestamp);
 
-
    });
 }
+	   
+
+}
+
+
 
 
 function timeConverter(UNIX_timestamp){
