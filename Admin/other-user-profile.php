@@ -1707,7 +1707,6 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
 
@@ -1724,7 +1723,17 @@ if(typeof(EventSource) !== "undefined") {
     } 
 }
 
+} else {
 
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
+
+
+if(typeof(EventSource) !== "undefined") {
+
+    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
+    
     proAdvance.onmessage =  function (event){
        
         console.info("1");
@@ -1739,15 +1748,7 @@ if(typeof(EventSource) !== "undefined") {
             }
    }
 
-
-
-} else {
-
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
 }
-
-
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
@@ -2179,10 +2180,10 @@ function touchHandler(event) {
 }
 
 function init() {
-    document.querySelectorAll(".files").addEventListener("touchstart", touchHandler, true);
-    document.querySelectorAll(".files").addEventListener("touchmove", touchHandler, true);
-    document.querySelectorAll(".files").addEventListener("touchend", touchHandler, true);
-    document.querySelectorAll(".files").addEventListener("touchcancel", touchHandler, true);
+   window.addEventListener("touchstart", touchHandler, true);
+   window.addEventListener("touchmove", touchHandler, true);
+   window.addEventListener("touchend", touchHandler, true);
+   window.addEventListener("touchcancel", touchHandler, true);
 }
 
 
