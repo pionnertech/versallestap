@@ -14,17 +14,20 @@
 <script type="text/javascript">
 	
 
+    IntializeGMaps();
+
 $(document).on('ready', function(){
 
-    IntializeGMaps();
 
 });
 
 function IntializeGMaps(){
 
 geocoder = new google.maps.Geocoder();
+var map;
 
 var LatLnginit = new google.maps.LatLng(-23.538512299999997, -46.705220399999995);
+
     var options = {
         zoom: 12,
         zoomControl: true,
@@ -44,12 +47,10 @@ if(!navigator.geolocation){
 	alert('GPS nao e suportado neste dispositivo');
 } else {
 
-   navigator.geolocation.getCurrentPosition
+   navigator.geolocation.getCurrentPosition(function (position){
+   	
+   });
 }
-
-
-
-
 
 
 </script>
