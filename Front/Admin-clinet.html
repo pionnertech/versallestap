@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+		border:0;
+	}
+	body, html {
+		width:100%;
+		height: 100%;
+	}
+</style>
 </head>
     <body>
-    	<div id="wrap-map" style="width: 100%; height: 100%;">
+    	<div id="wrap-map" style="width: 100%; height: 75%;">
     		  <div id="map" style="width: 100%; height: 100%"></div>
+    	</div>
+    	<div id="statics">
+    		<p></p><br />
+    		<p></p><br />
+    		<p></p><br />
+    		<p></p><br />
+    		<p></p><br />
     	</div>
     </body>
 </html>
@@ -48,7 +67,13 @@ if(!navigator.geolocation){
 } else {
 
    navigator.geolocation.getCurrentPosition(function (position){
-   	
+
+   	document.querySelectorAll("p")[0].innerHTML = "Latitude: " + position.coords.latitude;
+   	document.querySelectorAll("p")[1].innerHTML = "Longitude: " + position.coords.longitude;
+   	document.querySelectorAll("p")[2].innerHTML = "Altitude: " + position.coords.altitude;
+   	document.querySelectorAll("p")[3].innerHTML = "hora exata: " + position.coords.timestamp;
+
+
    });
 }
 
