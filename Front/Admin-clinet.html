@@ -1,8 +1,10 @@
-<!doctype: HTML>
-
+<!DOCTYPE html>
 <html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
     <body>
-    	<div id="wrap-map">
+    	<div id="wrap-map" style="width: 100%; height: 100%;">
     		  <div id="map" style="width: 100%; height: 100%"></div>
     	</div>
     </body>
@@ -22,6 +24,7 @@ function IntializeGMaps(){
 
 geocoder = new google.maps.Geocoder();
 
+var LatLnginit = new google.maps.LatLng(-23.538512299999997, -46.705220399999995);
     var options = {
         zoom: 12,
         zoomControl: true,
@@ -33,7 +36,15 @@ geocoder = new google.maps.Geocoder();
     };
 
 	    map = new google.maps.Map(document.getElementById("map"), options);
+	    map.setCenter(LatLnginit);
 
+}
+
+if(!navigator.geolocation){
+	alert('GPS nao e suportado neste dispositivo');
+} else {
+
+   navigator.geolocation.getCurrentPosition
 }
 
 
