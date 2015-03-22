@@ -327,7 +327,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                     </div>
                                 </div>
                                 <ul class="profile-tab nav nav-tabs">
-                                    <li class="active"><a href="#require" data-toggle="tab">Control cumplimientos</a></li>
+                                    <li class="active"><a href="#require" data-toggle="tab">Compromisos Externos</a></li>
+                                    <li><a href="#require-int" data-toggle="tab">Compromisos Internos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                    <div class="tab-pane fade active in" id="require">
@@ -426,8 +427,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[8]) ?>%;"></div>
                                             </div>
-                                            <div class="file-contents">
-                                             
+                                            <div class="file-contents">       
                               <?   
                                           
 
@@ -562,6 +562,50 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                               </div>
                           </div>
                         </div>
+                                                               <div class="tab-pane fade" id="int-require">
+                                            <div class="module message">
+                                                   <div class="module-head">
+                                                       <h3>Compromisos Internos</h3>
+                                                   </div>
+                                            <div class="module-option clearfix">
+                                                    <div class="pull-left">
+                                                        Filtro : &nbsp;
+                                                        <div class="btn-group">
+                                                            <button class="btn">Atrasados</button>
+                                                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                            <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="#"></a></li>
+                                                                <li><a href="#">En Curso</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                            <div class="pull-right"></div>
+                                            </div>
+                                            <div class="module-body table">
+                                                   <table class="table table-message">
+                                                      <tbody>
+                                                          <tr class="heading">
+                                                              <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                              <td class="cell-title">Requerimiento</td>
+                                                              <td class="cell-status hidden-phone hidden-tablet">Status</td>
+                                                              <td class="cell-title">Responsable</td>
+                                                              <td class="cell-time align-right">Fecha</td>
+                                                            </tr>
+                                                            <tr class="task">
+                                                                <td class="cell-icon"><i class="icon-checker high"></i></td>
+                                                                <td class="cell-title"><div>Enviar personal tecnico en terreno para verificar y reparar las fallas</div></td>
+                                                                <td class="cell-status hidden-phone hidden-tablet"><b class="due done">Hecho</b></td>
+                                                                <td class="cell-title">juanito perez</td>
+                                                                <td class="cell-time align-right"><div>19/04/2013</div></td>
+                                                            </tr>
+                                                           </tbody>
+                                                    </table> 
+                                            </div>
+                                         </div> 
+                                     </div> 
+                                
                             </div>
                             <!--/.module-body-->
                         </div>
