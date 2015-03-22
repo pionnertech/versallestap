@@ -1941,6 +1941,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
       }
 
 
+}
 });
     
     tr1.appendChild(td1);
