@@ -1875,7 +1875,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
       
          elem[n]           = document.createElement('p');
          elem[n].className = "ifile iss" + iss;
-         elem[n].id        = files[i];
+         elem[n].id        = files[n];
          elem[n].setAttribute("draggable", true);
 
          elem[n].ondragstart = function(event){
