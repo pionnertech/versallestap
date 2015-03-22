@@ -68,7 +68,7 @@ var LatLnginit = new google.maps.LatLng(-23.538512299999997, -46.705220399999995
 
    navigator.geolocation.getCurrentPosition(function (position){
    
-     latlnginit = new google.mpas.LatLng(position.coords.latitude ,  position.coords.longitude)
+     latlnginit = new google.maps.LatLng(position.coords.latitude ,  position.coords.longitude)
      map.setCenter( latlnginit);
      
    	document.querySelectorAll("p")[0].innerHTML = "Latitude: " + position.coords.latitude;
@@ -95,7 +95,7 @@ function timeConverter(UNIX_timestamp){
   var a = new Date(UNIX_timestamp);
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var year = a.getFullYear();
-  var month = months[("0" + a.getMonth()+1).slice(-2)];
+  var month = months[a.getMonth()];
   var date = a.getDate();
   var hour = a.getHours();
   var min = ("0" + a.getMinutes() + 1).slice(-2);

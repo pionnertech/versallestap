@@ -1390,8 +1390,11 @@ $(".cell-icon").on('click', function(){
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
  
-   unlock(stsk, iss_id, $(this).children('i'));
-
+  bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+    if (confirmation){
+           unlock(stsk, iss_id, $(this).children('i'));
+    }
+  })
 });
 
 
@@ -1808,7 +1811,13 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
           var stsk   = $(this).parent().parent().children('input').eq(0).val();
           var iss_id = $(this).parent().parent().children('input').eq(1).val();
  
-          unlock(stsk, iss_id, $(this));
+
+       bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+        if(confirmation){
+            unlock(stsk, iss_id, $(this)); 
+        }
+       })
+          
 
     }
 
