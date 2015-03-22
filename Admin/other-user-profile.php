@@ -1862,7 +1862,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
 // callback function
 
-getFiles(function (data){
+   $.ajax({
+          type: "POST",
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac,
+          success: function(data){
     
       var files =  data.split("|");
       var elem = [];
@@ -1938,7 +1941,7 @@ getFiles(function (data){
       }
 
 
-})
+});
     
     tr1.appendChild(td1);
     tr1.appendChild(td2);

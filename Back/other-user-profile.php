@@ -328,7 +328,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5335', end
                                 </div>
                                 <ul class="profile-tab nav nav-tabs">
                                     <li class="active"><a href="#require" data-toggle="tab">Compromisos Externos</a></li>
-                                    <li><a href="#require-int" data-toggle="tab">Compromisos Internos</a></li>
+                                    <li><a href="#int-require" data-toggle="tab">Compromisos Internos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                    <div class="tab-pane fade active in" id="require">
@@ -562,7 +562,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                               </div>
                           </div>
                         </div>
-                                                               <div class="tab-pane fade" id="int-require">
+                                    <div class="tab-pane fade" id="int-require">
                                             <div class="module message">
                                                    <div class="module-head">
                                                        <h3>Compromisos Internos</h3>
