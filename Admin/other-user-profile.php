@@ -1067,6 +1067,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                  ?>
                                        </div>
                                     </div>
+                                 </div>
                                        <div class="tab-pane fade" id="int-require">
                                             <div class="module message">
                                                    <div class="module-head">
@@ -1086,10 +1087,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </ul>
                                                         </div>
                                                     </div>
-                                <div class="pull-right">
-                                </div>
-                            </div>
-                         <div class="module-body table">
+                                            <div class="pull-right"></div>
+                                            </div>
+                                            <div class="module-body table">
                                                    <table class="table table-message">
                                                       <tbody>
                                                           <tr class="heading">
@@ -1111,7 +1111,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             </div>
                                          </div> 
                                      </div> 
-                                 </div>
+                                
                             <!--/.module-body-->
 
 
