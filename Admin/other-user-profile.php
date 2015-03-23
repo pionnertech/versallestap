@@ -1252,7 +1252,6 @@ $(".golang").on('click', function(){
 
 function unlock(stsk_id, iss_id, object){
 
-objecto = object;
 $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
