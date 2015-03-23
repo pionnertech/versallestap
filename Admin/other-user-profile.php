@@ -1091,6 +1091,7 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 });
 
+
 $("#send-int").on('click', function(){
 
 intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"));
