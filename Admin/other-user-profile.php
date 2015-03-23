@@ -13,6 +13,12 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
+// internal requirements
+
+$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
+$internal =  mysqli_query($datos, $query_internal);
+
+
 $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
 
 if(mysqli_num_rows($quntum) == 0){
@@ -804,23 +810,50 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       <tbody>
                                                           <tr class="heading">
                                                               <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
-                                                              <td class="cell-title">Requerimiento</td>
+                                                              <td class="cell-title">Descripción requerimiento</td>
                                                               <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                                              <td class="cell-title">Responsable</td>
-                                                              <td class="cell-time align-right">Fecha</td>
+                                                              <td class="cell-title">Asignar</td>
+                                                              <td class="cell-time align-right">Fecha maxima respuesta</td>
                                                             </tr>
+                                                <? while ($fila5 = mysqli_fetch_row($internal)) {?>
                                                             <tr class="task">
+                                                                <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
                                                                 <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                                                <td class="cell-title"><div>Enviar personal tecnico en terreno para verificar y reparar las fallas</div></td>
-                                                                <td class="cell-status hidden-phone hidden-tablet"><b class="due done">Hecho</b></td>
-                                                                <td class="cell-title">juanito perez</td>
-                                                                <td class="cell-time align-right"><div>19/04/2013</div></td>
+                                                                <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
+                                                                <td class="cell-status hidden-phone hidden-tablet"><b class="due done"><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-title"><i class="fa fa-chevron-circle-right del-int"></i></td>
+                                                                <td class="cell-time align-right"><div></div></td>
                                                             </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                   <p>
+                                                                        <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
+                                                                    </p>
+                                                                    <div class="progress tight">
+                                                                        <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+
+                                                            <? } ?>
                                                            </tbody>
                                                     </table> 
                                             </div>
                                          </div> 
                                      </div> 
+                                     <div class="tab-pane fade" id="del-int-req">
+                                          <div id="wrap-controls">
+                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto">
+                                              <select id="int-del">
+                                              <? while($fila4 = mysqli_fetch_row($Query_team)) { ?>
+                                                  <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
+                                              </select>
+                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento"></textarea>
+                                          <div id="up-int"></div>
+                                          </div>
+
+                                     </div>
                                 
                             <!--/.module-body-->
 
@@ -878,6 +911,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 });
 
  init();
+ uploaderInt($("#up-int"));
 
 $(".toggle-attach").on('click', function(){
 
@@ -1016,7 +1050,8 @@ console.info();
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
-        "&fac=" + $("#facility").val(), 
+        "&fac=" + $("#facility").val()
+        "&type=" + , 
         success : function(data){
 
            bootbox.alert("Requerimiento delegado existosamente");
