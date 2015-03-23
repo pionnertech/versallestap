@@ -1665,8 +1665,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     inp1.value = stsk;
     inp2.value = iss;
 
-    inp1.id = "st";
-    inp2.id = "iss_id";
+    inp1.className = "st";
+    inp2.className = "iss_id";
     
     b.className = "due";
     b.style.backgroundColor = "#178FD0";
@@ -1743,7 +1743,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
           success: function(data){
     
       var files  =  data.split("|");
-      console.info(files[0] + "/--/" + files[1]);
+
       var elem   = [];
       var elem_i = [];
       var elem_s = [];
@@ -1757,13 +1757,13 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
          elem[n].className = "ifile iss" + iss;
          elem[n].id        = files[n];
          elem[n].setAttribute("draggable", true);
-
+ 
          elem[n].ondragstart = function(event){
                  drag(event);
           }
+
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
-
                 case "pdf": 
             setClass = "pdf-o";
             cor = "#FA2E2E";    
