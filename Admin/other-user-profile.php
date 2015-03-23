@@ -876,13 +876,10 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                         <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
                                                                     </div>
                                                                     <div class="coll-int" style="width: 100%">
-                                                                    <!-- 
                                                                         <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila5[2]))))) ?>">
                                                                             <img src="../img/<? echo $fila5[1]; ?>_opt.jpg" class="group" >
                                                                             <input type="hidden" value="u<? printf($fila5[1])?>">
                                                                         </a>
-                                                                        -->
-        
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1221,7 +1218,8 @@ obj = $(this).children('i');
 
 $(".int-lock").on('click', function(){
     var obj = $(this).children('i');
-    var stsk_int= $(this).parent().children('input').val();
+    var stsk_int = $(this).parent().children('input').val();
+   
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, "" , obj);
@@ -1255,11 +1253,16 @@ $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
+
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
-           object.addClass("fa-lock");
+           if(object.parent().hasClass("int-lock")){
+              object.addClass("fa-check");
+           } else {
+              object.addClass("fa-lock");
+           }
+           
            object.css({color:"#44D933"});
-           console.info("llegue");
            object.parent().parent().children('td.cell-title').children('button').attr('disabled', true);
            object.parent().parent().children('td.cell-title').children('button').unbind('click');
            object.fadeIn(400);
