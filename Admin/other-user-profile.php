@@ -1,5 +1,23 @@
 <?php session_start();
 
+  // initialize ob_gzhandler function to send and compress data
+   ob_start ("ob_gzhandler");
+ 
+   // send the requisite header information and character set
+   header ("content-type: text/javascript; charset: UTF-8");
+ 
+   // check cached credentials and reprocess accordingly
+   header ("cache-control: must-revalidate");
+ 
+   // set variable for duration of cached content
+   $offset = 60 * 60;
+ 
+   // set variable specifying format of expiration header
+   $expire = "expires: " . gmdate ("D, d M Y H:i:s", time() + $offset) . " GMT";
+ 
+   // send cache expiration header to the client broswer
+   header ($expire);
+
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
@@ -1419,6 +1437,26 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 if(typeof(EventSource) !== "undefined") {
 
+    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
+    
+    proAdvance.onmessage =  function (event){
+       
+        console.info("1");
+      var progressMessage = event.data.split('\n');
+
+        if (progressMessage[0] != "Pleasant") {
+
+        showAlert(progressMessage[2], "pro", progressMessage[0]);
+
+        updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], "3", progressMessage[5]);
+
+            }
+   }
+
+}
+
+if(typeof(EventSource) !== "undefined") {
+
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
@@ -1443,25 +1481,6 @@ if(typeof(EventSource) !== "undefined") {
 }
 
 
-if(typeof(EventSource) !== "undefined") {
-
-    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
-    
-    proAdvance.onmessage =  function (event){
-       
-        console.info("1");
-      var progressMessage = event.data.split('\n');
-
-        if (progressMessage[0] != "Pleasant") {
-
-        showAlert(progressMessage[2], "pro", progressMessage[0]);
-
-        updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], "3", progressMessage[5]);
-
-            }
-   }
-
-}
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
