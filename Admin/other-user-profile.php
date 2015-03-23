@@ -1436,9 +1436,12 @@ if(typeof(EventSource) !== "undefined") {
             }
    }
 
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
 }
 */
-
+/*
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
@@ -1464,7 +1467,7 @@ if(typeof(EventSource) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
-
+*/
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
