@@ -13,6 +13,7 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
+$Query_team_int = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
 // internal requirements
 
 $query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
@@ -251,7 +252,7 @@ if(!$notify){
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left stusr"  >
-                                                            <img src="../images/ejecutivo3.jpg">
+                                                            <img src="../img/<? echo $fila_per[0] ?>.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -324,7 +325,7 @@ $handler = mysqli_query($datos, $matrix);
                                                 <div class="span6">
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left stusr">
-                                                            <img src="../images/ejecutivo3.jpg">
+                                                            <img src="../img/<? echo $fila_per[0] ?>.jpg">
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
@@ -843,13 +844,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      </div> 
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
-                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 49%; display: inline-block; vertical-align: top;">
+                                          <div><i class="fa fa-chevron-circle-left fa-2x int-back"></i></div>
+                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 45%; display: inline-block; vertical-align: top;">
                                               <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
-                                              <? while($fila4 = mysqli_fetch_row($Query_team)) { ?>
+                                              <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
                                                   <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
                                               </select>
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento"></textarea>
                                           <div id="up-int"></div>
+                                          <div style="width:100%" align="center"><button id="send-int" class="btn btn-info"></button></div>
                                           </div>
                                      </div>
                                 
@@ -898,7 +901,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var previuosData = <? printf("\"" . $manu . "\"")  ?>;
     var um = 0;
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
-    
+    var intPointer= 0;
     $(document).on('ready', function(){
  
  dateTime = $('.datetimepicker').datetimepicker({
@@ -1013,6 +1016,30 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 
+$(".del-int").on('click', function(){
+
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+
+});
+
+
+$("#int-back").on('click', function(){
+
+$("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+
+});
+
+$("#send-int").on('click', function(){
+
+$("#subj-int").val();
+$("#int-del").val();
+$("#descript-int").val();
+
+
+    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+        $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+    });
+})
 
 $("#delegates").on('change', function(){
 
@@ -1451,9 +1478,9 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 if(typeof(EventSource) !== "undefined") {
 
-    var source = new EventSource("../backend/time.php?usr="+mainuser);
+    var proincoming = new EventSource("../backend/time.php?usr="+mainuser);
     
-    source.onmessage = function(event){
+    proincoming.onmessage = function(event){
        
         console.info("1");
 
@@ -1473,7 +1500,7 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
-/*
+
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
@@ -1499,7 +1526,7 @@ if(typeof(EventSource) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
-*/
+
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
