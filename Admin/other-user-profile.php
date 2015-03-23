@@ -792,7 +792,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                        <h3>Compromisos Internos</h3>
                                                    </div>
                                             <div class="module-option clearfix">
-                                            <button class="align-right btn btn-info del-int">Crear Requerimiento</button>
+                                            <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
@@ -877,6 +877,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                     <div class="progress tight">
                                                                         <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
                                                                     </div>
+                                                                    <div class="coll-int" style="width: 100%">
+                                                                    <!-- 
+                                                                        <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila5[2]))))) ?>">
+                                                                            <img src="../img/<? echo $fila5[1]; ?>_opt.jpg" class="group" >
+                                                                            <input type="hidden" value="u<? printf($fila5[1])?>">
+                                                                        </a>
+                                                                        -->
+        
+                                                                    </div>
                                                                 </td>
                                                             </tr>
 
@@ -889,14 +898,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
                                           <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
-                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 45%; display: inline-block; vertical-align: top;">
-                                              <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
+                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 95%;">
+                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:95%"></textarea>
+                                          <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
                                               <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
                                                   <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
                                               </select>
-                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento"></textarea>
+                                          <input type="text" class="date-int-finish" style="display: inline-block;vertical-align: top; float: right">
                                           <div id="up-int"></div>
-                                          <div style="width:100%" align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
+                                          <div  align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
                                      </div>
                                 
@@ -949,6 +959,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     $(document).on('ready', function(){
  
  dateTime = $('.datetimepicker').datetimepicker({
+    step:5,
+    lang:'es',
+    format:'d/m/Y',
+    timepicker: false
+});
+
+ $(".date-int-finish")datetimepicker({
     step:5,
     lang:'es',
     format:'d/m/Y',
@@ -1075,14 +1092,15 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 $("#send-int").on('click', function(){
 
-$("#subj-int").val();
-$("#int-del").val();
-$("#descript-int").val();
 
-    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
-        $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-    });
+
+
+
+intDel($("#int-del").val() , $("#subj-int").val();, $("#descript-int").val() , date)
+
 })
+
+
 
 $("#delegates").on('change', function(){
 
@@ -1411,6 +1429,33 @@ uploader =  $(object).pluploadQueue({
 
 };
 
+
+function intDel(user, sub, des, date){
+
+var pre_fecha  = new Date();
+var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
+ ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
+
+  $.ajax({
+          type: "POST",
+          url: "../backend/delegate_internal.php?muser=" + muser + 
+          "&user=" + user + 
+          "&fechaF=" + date + 
+          "&subject=" + sub + 
+          "&descript=" + des + 
+          "&startD=" + fecha  + 
+          "&fac=" fac  +   , 
+          success : function (data){
+
+                   bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+                         $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+                     });
+          }
+  })
+
+
+
+}
 
 //historial de eventos 
 
