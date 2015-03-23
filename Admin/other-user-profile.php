@@ -1209,7 +1209,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $(".cell-icon").on('click', function(){
 
-obj = $(this);
+obj = $(this).children('i');
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
   bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
@@ -1221,7 +1221,7 @@ obj = $(this);
 
 
 $(".int-lock").on('click', function(){
-    var obj = $(this);
+    var obj = $(this).children('i');
     var stsk_int= $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
