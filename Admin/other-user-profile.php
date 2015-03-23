@@ -1437,7 +1437,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&subject=" + sub + 
           "&descript=" + des + 
           "&startD=" + fecha  + 
-          "&fac=" fac  +   , 
+          "&fac="+ fac    , 
           success : function (data){
 
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
@@ -1565,7 +1565,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
     setInterval(function(){
         consol.info("escucha");
         $ajax({
-            type. "POST",
+            type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
                 packets = data.split("|");
