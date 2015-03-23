@@ -501,8 +501,8 @@ $handler2 = mysqli_query($datos, $matrix2);
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button></td>
                                             <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
-                                            <input type="hidden" id="st" value="<? printf($stsk[0]) ?>">
-                                            <input type="hidden" id="iss_id" value="<? printf($stsk[1]) ?>">
+                                            <input type="hidden" class="st" value="<? printf($stsk[0]) ?>">
+                                            <input type="hidden" class="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
                                         <tr class="display-progress">
                                             <td colspan="5">
@@ -1045,8 +1045,8 @@ $(".toggle-attach").on('click', function(){
 
 $(".forward").on("click", function(){
                                     
-var stsk_id = $(this).parent().parent().children('input#st').val();
-var iss_ident = $(this).parent().parent().children('input#iss_id').val();
+var stsk_id = $(this).parent().parent().children('input.st').val();
+var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
 
@@ -1572,6 +1572,8 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                 console.log( parseInt(packets[0]) );
                  if(parseInt(packets[0]) !== 0 ){
                        showAlert(packets[2], "pro", packets[0]);
+                       collection = $(".input.st");
+                       indice = $("input.st[value=" + packets[5]+ "]").index(collection);
                        updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], 3, packets[5]);
                  }
             }
@@ -1690,8 +1692,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     btn.onclick = function(){
 
-            var stsk_id = $(this).parent().parent().children('input#st').val();
-            var iss_ident = $(this).parent().parent().children('input#iss_id').val();
+            var stsk_id = $(this).parent().parent().children('input.st').val();
+            var iss_ident = $(this).parent().parent().children('input.iss_id').val();
             var subject = $(this).parent().parent().children('td').eq(1).text();
             var index_current = parseInt($(this).index());
 
