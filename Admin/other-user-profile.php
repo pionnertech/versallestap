@@ -357,7 +357,7 @@ $handler2 = mysqli_query($datos, $matrix2);
                                                              <? while( $uI2 = mysqli_fetch_row($handler2)) {?>
                                                                     <li>
                                                                         <p>
-                                                                         <strong>Compromisos <? printf($uI2[2]) ?></strong> <span class="pull-right small muted"><? printf($uI[0]) ?> / <? printf($uI[3]) ?>%</span>
+                                                                         <strong>Compromisos <? printf($uI2[2]) ?></strong> <span class="pull-right small muted"><? printf($uI2[0]) ?> / <? printf($uI2[3]) ?>%</span>
                                                                         </p>
                                                                         <div class="progress tight" style="height: 5px;">
                                                                         <? 
