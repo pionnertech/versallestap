@@ -1437,6 +1437,13 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
+console.info("../backend/delegate_internal.php?muser=" + muser + 
+          "&user=" + user + 
+          "&fechaF=" + date + 
+          "&subject=" + sub + 
+          "&descript=" + des + 
+          "&startD=" + fecha  + 
+          "&fac="+ fac );
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal.php?muser=" + muser + 
