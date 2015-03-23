@@ -953,6 +953,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var um = 0;
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     var intPointer= 0;
+    var objeto;
+
     $(document).on('ready', function(){
  
  dateTime = $('.datetimepicker').datetimepicker({
@@ -1253,10 +1255,12 @@ $.ajax({
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
         console.log(data);
+        
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
            object.addClass("fa-lock");
            object.css({color:"#44D933"});
+           console.info("llegue");
            object.parent().parent().children('td.cell-title').children('button').attr('disabled', true);
            object.parent().parent().children('td.cell-title').children('button').unbind('click');
            object.fadeIn(400);
