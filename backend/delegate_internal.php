@@ -16,9 +16,10 @@ $query .= "VALUES (" . $iss_id . ", '" . $subject . "', '" . $descript . "', '" 
 
 if(!mysqli_query($datos, $query)){
 
-echo 0;
+echo mysqli_errno($datos);
 
 } else {
+
 echo "just works";
 }
 
