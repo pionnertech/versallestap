@@ -8,14 +8,15 @@ header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
+$query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
 
 while (true) {
 
-$news = mysqli_query($datos, "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)");
+$news = mysqli_query($datos, $query);
 
 if (mysqli_num_rows($news) == 0){
 
-     sleep(1);
+     sleep(0.5);
 
 $user_out1 = "Pleasant";
 $user_out2 = "0";
@@ -31,7 +32,7 @@ $user_out8 = "0";
 
    $outcome = mysqli_fetch_assoc($news);
 
-       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
+       
 
        $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
        $count   = mysqli_num_rows($handler);
@@ -66,6 +67,8 @@ $user_out5 = date('d/m/Y', strtotime($user['TRF_ING_DATE']));
 $user_out6 = $user['TRF_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
+
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
 
 }
 
