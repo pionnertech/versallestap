@@ -16,9 +16,9 @@ $news = mysqli_query($datos, $query);
 
 if (mysqli_num_rows($news) == 0){
 
-     sleep(0.5);
+     sleep(2);
 
-$user_out1 = "Pleasant";
+$user_out1 = "0";
 $user_out2 = "0";
 $user_out3 = "0";
 $user_out4 = "0";
@@ -31,8 +31,6 @@ $user_out8 = "0";
 
 
    $outcome = mysqli_fetch_assoc($news);
-
-       
 
        $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
        $count   = mysqli_num_rows($handler);

@@ -1421,13 +1421,13 @@ if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/time-progress-event.php?usr="+mainuser);
     
-    source.onmessage = function (event){
+    source.onmessage = function(event){
        
         console.info("1");
 
       var msg = event.data.split('\n');
 
-        if (msg[0] != "0") {
+        if (msg[0] !== "0") {
 
         showAlert(msg[2], "pro", msg[0]);
 
