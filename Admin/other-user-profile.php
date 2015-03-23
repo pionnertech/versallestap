@@ -822,8 +822,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </tr>
                                                 <? while ($fila5 = mysqli_fetch_row($internal)) {
 
-
-                                         
                                          if($fila5[9] == 0 || $fila5[9] == '0'){
 
                                             $situation = "exclamation";
@@ -1432,18 +1430,10 @@ uploader =  $(object).pluploadQueue({
 
 function intDel(user, sub, des, date, ind){
 
-
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
-console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
-          "&fechaF=" + date + 
-          "&subject=" + sub + 
-          "&descript=" + des + 
-          "&startD=" + fecha  + 
-          "&fac="+ fac );
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal.php?muser=" + $("#muser").val() + 
@@ -1498,8 +1488,6 @@ $(".events").on('click', function(){
 
            }          
 });
-
-
 
 $("#back-to-main").click(function(){
     $(".st" + $(this).data("val") ).css({display: "none"});
@@ -1585,7 +1573,6 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
                 packets = data.split("|");
-                console.log( parseInt(packets[0]) );
                  if(parseInt(packets[0]) !== 0 ){
                        showAlert(packets[2], "pro", packets[0]);
                        collection = $(".input.st");
@@ -1602,16 +1589,10 @@ if(typeof(EventSource) !== "undefined") {
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
-        console.info("1");
-
        var eventMessage = event.data.split('\n');
-
        if (eventMessage[0] !== previuosData){
-          
         console.info( eventMessage[0] + "/" + previuosData);
-
         showAlert(eventMessage[0], 'req');
-
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
         previuosData = eventMessage[0];
     } 
