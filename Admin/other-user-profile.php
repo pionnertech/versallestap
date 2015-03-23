@@ -1213,7 +1213,7 @@ $(".cell-icon").on('click', function(){
   var iss_id = $(this).parent().children('input').eq(1).val();
   bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk, iss_id, $(this).children('i'));
+           unlock(stsk, iss_id, $(this));
     }
   })
 });
@@ -1223,7 +1223,7 @@ $(".int-lock").on('click', function(){
     var stsk_int= $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk_int, "" , $(this).children('i'));
+           unlock(stsk_int, "" , $(this));
     }
   })
 })
@@ -1254,7 +1254,7 @@ $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
-        console.log(data + "/--/");
+       
            objecto = object;
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
