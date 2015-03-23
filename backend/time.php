@@ -1,8 +1,6 @@
 <?php
-$iss_stsk    = $_GET['st'];
-$percent     = $_GET['per'];
-$stsk_src_id = $_GET['srcid'];
-$usr         = $_GET['usr'];
+
+$usr = $_GET['usr'];
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');

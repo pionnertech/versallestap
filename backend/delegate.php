@@ -18,8 +18,8 @@ mysqli_query($datos, "UPDATE ISSUES SET ISS_STATE = 2 WHERE ISS_ID = " . $iss_id
 mysqli_query($datos, "UPDATE ISSUES SET ISS_FINISH_DATE = '" . $dataF . "' WHERE ISS_ID = " . $iss_id   . ";");
 
 
-$query_insert = "INSERT INTO SUBTASKS(STSK_ISS_ID, STSK_DESCRIP, STSK_CHARGE_USR , STSK_STATE, STSK_FINISH_DATE , STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_LOCK) ";
-$query_insert .= "VALUES (" . $iss_id  . " , '" . $msg . "', '" . $usr_id  . "', 2, '" . $dataF . "','" . $dataS . "', '" . $usr_id  . "', " . $fac  . ", 0 , 0)";
+$query_insert = "INSERT INTO SUBTASKS(STSK_ISS_ID, STSK_DESCRIP, STSK_CHARGE_USR , STSK_STATE, STSK_FINISH_DATE , STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_LOCK, STSK_TYPE) ";
+$query_insert .= "VALUES (" . $iss_id  . " , '" . $msg . "', '" . $usr_id  . "', 2, '" . $dataF . "','" . $dataS . "', '" . $usr_id  . "', " . $fac  . ", 0 , 0, 1)";
 
 
 
@@ -41,7 +41,6 @@ $targetdir = $basedir . "temporary/";
 if(!is_dir($basedir . $usr_id . "/")){
 	mkdir($basedir . $usr_id . "/", 0775, true);
 }
-
 //retive all file matching rut 
  if ($file_array = opendir("../" . $fac . "/temporary/" )){
        while (false !== ($archivos = readdir($file_array))){
