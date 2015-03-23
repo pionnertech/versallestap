@@ -1621,7 +1621,7 @@ var parent = document.querySelctorAll('.coll-int')[ind];
         '<input type="hidden" value="u'  + usr + '>">';
     '</a>';
               
-parent.innerHTML =  parent.innerHTML + string  ;                                                      -->
+parent.innerHTML =  parent.innerHTML + string  ;                                               
 }
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
