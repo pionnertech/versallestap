@@ -1563,7 +1563,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
     setInterval(function(){
-        consol.info("escucha");
+        console.info("escucha");
         $ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
