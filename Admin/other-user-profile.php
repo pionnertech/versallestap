@@ -1431,6 +1431,8 @@ uploader =  $(object).pluploadQueue({
 
 function intDel(user, sub, des, date, ind){
 
+console.info(ind);
+
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
@@ -1618,7 +1620,7 @@ if(typeof(EventSource) !== "undefined") {
 
 function assoc_collar_int(usr, ind){
 
-var parent = document.querySelctorAll('.coll-int')[ind];
+var parent = document.querySelectorAll('.coll-int')[ind];
 
   var string =  '<a href="#" class="hovertip" title="">';
         '<img src="../img/'  + usr + '_opt.jpg" class="group" >';
