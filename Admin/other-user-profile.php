@@ -1424,6 +1424,7 @@ if(typeof(EventSource) !== "undefined") {
     proAdvance.onmessage =  function (event){
        
         console.info("1");
+
       var progressMessage = event.data.split('\n');
 
         if (progressMessage[0] != "Pleasant") {
@@ -1436,7 +1437,7 @@ if(typeof(EventSource) !== "undefined") {
    }
 
 }
-
+/*
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
@@ -1462,7 +1463,7 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
-
+*/
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
