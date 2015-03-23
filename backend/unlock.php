@@ -12,8 +12,9 @@ if(!mysqli_query($datos,"UPDATE SUBTASKS SET STSK_LOCK = 1 WHERE STSK_ID= " . $s
 
 } else {
 
-mysqli_query($datos,"UPDATE SUBTASKS SET STSK_LOCK = 1 WHERE STSK_ISS_ID = " . $iss_id);
-
+if($iss_id){
+     mysqli_query($datos,"UPDATE SUBTASKS SET STSK_LOCK = 1 WHERE STSK_ISS_ID = " . $iss_id);
+}
 	echo 1;
 
 }

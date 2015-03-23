@@ -791,6 +791,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                        <h3>Compromisos Internos</h3>
                                                    </div>
                                             <div class="module-option clearfix">
+                                            <button class="align-right btn btn-info del-int">Crear Requerimiento</button>
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
@@ -822,7 +823,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-icon"><i class="icon-checker high"></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right del-int"></i></td>
+                                                                <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><div></div></td>
                                                             </tr>
                                                             <tr style="display: none;">
