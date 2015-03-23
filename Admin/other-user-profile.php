@@ -824,9 +824,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-title"><i class="fa fa-chevron-circle-right del-int"></i></td>
                                                                 <td class="cell-time align-right"><div></div></td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr style="display: none;">
                                                                 <td colspan="5">
-                                                                <div class="info-content">
                                                                    <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
                                                                     </p>
@@ -834,7 +833,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                         <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
                                                                     </div>
                                                                 </td>
-                                                                </div>
                                                             </tr>
 
                                                             <? } ?>
