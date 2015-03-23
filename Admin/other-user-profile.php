@@ -1746,6 +1746,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
       var elem   = [];
       var elem_i = [];
       var elem_s = [];
+      var setClass ="";
+      var cor= "";
       var fileParent = document.querySelector('.incoming-files');
 
       for (n=0; n < files.length ; n++){
