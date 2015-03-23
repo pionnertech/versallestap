@@ -1743,6 +1743,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
           success: function(data){
     
       var files  =  data.split("|");
+      console.info(files[0] + "/--/" + files[1]);
       var elem   = [];
       var elem_i = [];
       var elem_s = [];
@@ -1760,7 +1761,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
          elem[n].ondragstart = function(event){
                  drag(event);
           }
-        var extension = files[i].substring(files[n].length -3 , files[n].length);
+        var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
 
                 case "pdf": 
