@@ -1447,10 +1447,10 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&startD=" + fecha  + 
           "&fac="+ fac , 
           success : function (data){
-           
+            console.log(data);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-                          assoc_collar_int(user, ind);
+                          //assoc_collar_int(user, ind);
                      });
           }
   })
