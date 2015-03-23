@@ -1751,7 +1751,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
       var cor= "";
       var fileParent = document.querySelector('.incoming-files');
 
-      for (n=0; n < files.length ; n++){
+      for (n=0; n < files.length-1 ; n++){
       
          elem[n]           = document.createElement('p');
          elem[n].className = "ifile iss" + iss;
