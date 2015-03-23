@@ -822,7 +822,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-icon"><i class="icon-checker high"></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title"><i class="fa fa-chevron-circle-right del-int"></i></td>
+                                                                <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right del-int"></i></td>
                                                                 <td class="cell-time align-right"><div></div></td>
                                                             </tr>
                                                             <tr style="display: none;">
@@ -844,7 +844,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      </div> 
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
-                                          <div><i class="fa fa-chevron-circle-left fa-2x int-back"></i></div>
+                                          <div style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x int-back"></i></div>
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 45%; display: inline-block; vertical-align: top;">
                                               <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
                                               <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
@@ -852,7 +852,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                               </select>
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento"></textarea>
                                           <div id="up-int"></div>
-                                          <div style="width:100%" align="center"><button id="send-int" class="btn btn-info"></button></div>
+                                          <div style="width:100%" align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
                                      </div>
                                 
@@ -1034,7 +1034,6 @@ $("#send-int").on('click', function(){
 $("#subj-int").val();
 $("#int-del").val();
 $("#descript-int").val();
-
 
     bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
         $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
