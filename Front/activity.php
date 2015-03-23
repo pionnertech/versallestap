@@ -448,10 +448,18 @@ uploader.bind('BeforeUpload', function (up, file) {
 });
 
 
+var f_i = new Date();
+var fi  = "-" + ('0' + f_i.getDate()).slice(-2) + "/" + ('0' + (f_i.getMonth()+1)).slice(-2)  + "/" + f_i.getFullYear()
+var f_f = new Date();
+var ff  = "+" + ('0' + f_f.getDate()).slice(-2) + "/" + ('0' + (f_f.getMonth()+1)).slice(-2)  + "/" + f_f.getFullYear()
+
+
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
 	format:'d/m/Y',
+	minDate: fi,
+	maxDate ff,
 	timepicker: false
 });
 
@@ -459,6 +467,8 @@ uploader.bind('BeforeUpload', function (up, file) {
 	step:5,
 	lang:'es',
 	format:'d/m/Y',
+	minDate: fi,
+	maxDate ff,
 	timepicker: false
 });
 	
@@ -1283,7 +1293,7 @@ $("input.ctz_data").on('change keypress keydown input paste', function (){
 	}
 });
 
-$("#mkur").on('click', function(){3
+$("#mkur").on('click', function(){
 	var st = $(this).data("val");
 	if(st != 0 || st != ""){
 	   $(this).css({ color : "orange"});
