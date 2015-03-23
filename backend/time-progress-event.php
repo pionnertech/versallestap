@@ -18,13 +18,13 @@ if (mysqli_num_rows($news) == 0){
      sleep(1);
 
 $user_out1 = "Pleasant";
-$user_out2 = "";
-$user_out3 = "";
-$user_out4 = "";
-$user_out5 = "";
-$user_out6 = "";
-$user_out7 = "";
-$user_out8 = "";
+$user_out2 = "0";
+$user_out3 = "0";
+$user_out4 = "0";
+$user_out5 = "0";
+$user_out6 = "0";
+$user_out7 = "0";
+$user_out8 = "0";
 
 } else {
 
@@ -58,7 +58,7 @@ sleep(1);
 
 
 
-$user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))))
+$user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
 $user_out2 = $user['TRF_USER'];
 $user_out3 = $user['TRF_SUBJECT'];
 $user_out4 = $user['TRF_DESCRIPT'];
