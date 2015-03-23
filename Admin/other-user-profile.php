@@ -1076,6 +1076,8 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $(".del-int").on('click', function(){
 
+$("#del-int-req").data("val", $(this).index());
+
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 });
@@ -1089,7 +1091,7 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 $("#send-int").on('click', function(){
 
-intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val());
+intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $(".del-int").data("val"));
 
 })
 
@@ -1437,11 +1439,12 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&subject=" + sub + 
           "&descript=" + des + 
           "&startD=" + fecha  + 
-          "&fac="+ fac    , 
+          "&fac="+ fac , 
           success : function (data){
-
+           
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+                          assoc_collar_int(user, ind);
                      });
           }
   })
@@ -1563,7 +1566,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
     setInterval(function(){
-        console.info("escucha");
+
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
@@ -1607,6 +1610,19 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
+
+
+function assoc_collar_int(usr, ind){
+
+var parent = document.querySelctorAll('.coll-int')[ind];
+
+  var string =  '<a href="#" class="hovertip" title="">';
+        '<img src="../img/'  + usr + '_opt.jpg" class="group" >';
+        '<input type="hidden" value="u'  + usr + '>">';
+    '</a>';
+              
+parent.innerHTML =  parent.innerHTML + string  ;                                                      -->
+}
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
