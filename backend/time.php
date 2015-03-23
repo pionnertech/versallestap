@@ -1,20 +1,15 @@
 <?php
 
 $usr = $_GET['usr'];
-
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
+$fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
 
-while (true) {
 
 $news = mysqli_query($datos, $query);
 
 if (mysqli_num_rows($news) == 0){
-
-     sleep(2);
 
 $user_out1 = "0";
 $user_out2 = "0";
@@ -51,10 +46,6 @@ $get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTAS
 $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 
-sleep(1);
-
-
-
 $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
 $user_out2 = $user['TRF_USER'];
 $user_out3 = $user['TRF_SUBJECT'];
@@ -71,12 +62,12 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_
 
 echo "data :" . $user_out1 .  "\n";
 echo "data :" . $user_out2 .  "\n";
-echo "data :" . $user_out3 .  "\n\n";
-//echo "data :" . $user_out4 .  "\n";
-//echo "data :" . $user_out5 .  "\n";
-//echo "data :" . $user_out6 .  "\n";
-//echo "data :" . $user_out7 .  "\n";
-//echo "data :" . $user_out8 .  "\n\n";
+echo "data :" . $user_out3 .  "\n";
+echo "data :" . $user_out4 .  "\n";
+echo "data :" . $user_out5 .  "\n";
+echo "data :" . $user_out6 .  "\n";
+echo "data :" . $user_out7 .  "\n";
+echo "data :" . $user_out8 .  "\n\n";
 
 ob_end_flush();
 flush();
@@ -88,7 +79,7 @@ $sum = 0;
  
 
 
-}
+
 
 
 

@@ -863,7 +863,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer;"><i class="fa fa-<? echo ?> "></i></td>
+                                                                <td class="cell-icon int-lock" style="cursor: pointer;"><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
@@ -1537,7 +1537,7 @@ if(typeof(EventSource) !== "undefined") {
 
         showAlert(msg[2], "pro", msg[0]);
 
-        updateProgress(msg[2], msg[3], msg[6], msg[4], msg[1], msg[0], "3", msg[5]);
+      //  updateProgress(msg[2], msg[3], msg[6], msg[4], msg[1], msg[0], "3", msg[5]);
 
             }
    }
