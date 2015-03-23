@@ -1419,9 +1419,9 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 if(typeof(EventSource) !== "undefined") {
 
-    var proAdvance = new EventSource("../backend/time-progress-event.php?usr=" + mainuser);
+    var source = new EventSource("../backend/time-progress-event.php?usr="+mainuser);
     
-    proAdvance.onmessage =  function (event){
+    source.onmessage =  function (event){
        
         console.info("1");
 
