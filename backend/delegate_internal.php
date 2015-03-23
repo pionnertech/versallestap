@@ -19,7 +19,7 @@ if(!mysqli_query($datos, $query)){
 echo 0;
 
 } else {
-echo 1;
+echo "just works";
 }
 
 
