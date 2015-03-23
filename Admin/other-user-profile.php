@@ -1416,7 +1416,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
         return false;
     }
-
+/*
 if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/time.php?usr="+mainuser);
@@ -1437,12 +1437,14 @@ if(typeof(EventSource) !== "undefined") {
    }
 
 }
-/*
+*/
+
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     
     source.onmessage = function(event) {
+        console.info("1");
 
        var eventMessage = event.data.split('\n');
 
@@ -1463,7 +1465,6 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
-*/
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
