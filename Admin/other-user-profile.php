@@ -1421,17 +1421,17 @@ if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/time-progress-event.php?usr="+mainuser);
     
-    source.onmessage =  function (event){
+    source.onmessage = function (event){
        
         console.info("1");
 
-      var progressMessage = event.data.split('\n');
+      var msg = event.data.split('\n');
 
-        if (progressMessage[0] != "Pleasant") {
+        if (msg[0] != "0") {
 
-        showAlert(progressMessage[2], "pro", progressMessage[0]);
+        showAlert(msg[2], "pro", msg[0]);
 
-        updateProgress(progressMessage[2], progressMessage[3], progressMessage[6], progressMessage[4], progressMessage[1], progressMessage[0], "3", progressMessage[5]);
+        updateProgress(msg[2], msg[3], msg[6], msg[4], msg[1], msg[0], "3", msg[5]);
 
             }
    }
