@@ -1523,31 +1523,22 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-if(typeof(EventSource) !== "undefined") {
 
-    var proincoming = new EventSource("../backend/time.php?usr="+mainuser);
-    
-    proincoming.onmessage = function(event){
-       
-        console.info("1");
-
-      var msg = event.data.split('\n');
-
-        if (msg[0] !== "0") {
-
-        showAlert(msg[2], "pro", msg[0]);
-
-      //  updateProgress(msg[2], msg[3], msg[6], msg[4], msg[1], msg[0], "3", msg[5]);
-
+    setInterval(function(){
+        $ajax({
+            type. "POST",
+            url: "../backend/time.php?usr="+mainuser,
+            success: function(data){
+                packets = data.split("|");
+                 if(packets[0] !== 0 || packets !== "0"){
+                       showAlert(packets[2], "pro", packets[0]);
+                       updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], "3", packets[5]);
+                 }
             }
-   }
+        })
+    }, 3000);
 
-} else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
-}
-
-
+    
 if(typeof(EventSource) !== "undefined") {
 
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
