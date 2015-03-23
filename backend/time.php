@@ -71,12 +71,12 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_
 
 echo "data :" . $user_out1 .  "\n";
 echo "data :" . $user_out2 .  "\n";
-echo "data :" . $user_out3 .  "\n";
-echo "data :" . $user_out4 .  "\n";
-echo "data :" . $user_out5 .  "\n";
-echo "data :" . $user_out6 .  "\n";
-echo "data :" . $user_out7 .  "\n";
-echo "data :" . $user_out8 .  "\n\n";
+echo "data :" . $user_out3 .  "\n\n";
+//echo "data :" . $user_out4 .  "\n";
+//echo "data :" . $user_out5 .  "\n";
+//echo "data :" . $user_out6 .  "\n";
+//echo "data :" . $user_out7 .  "\n";
+//echo "data :" . $user_out8 .  "\n\n";
 
 ob_end_flush();
 flush();

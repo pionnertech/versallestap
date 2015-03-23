@@ -10,13 +10,14 @@ $Query_team = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM US
 $Query_subtask = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
+
 $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
 $Query_team_int = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
 // internal requirements
 
-$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
+$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
 
 
@@ -800,8 +801,10 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             <span class="caret"></span>
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="#"></a></li>
-                                                                <li><a href="#">En Curso</a></li>
+                                                                <li class="swt-int" id="Ec-int"><a href="#">En Curso</a></li>
+                                                                <li class="swt-int" id="Pv-int"><a href="#">Por Vercer</a></li>
+                                                                <li class="swt-int" id="At-int"><a href="#">Atrasados</a></li>
+                                                                <li class="swt-int" id="Hc-int"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -817,10 +820,50 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                               <td class="cell-title">Asignar</td>
                                                               <td class="cell-time align-right">Fecha maxima respuesta</td>
                                                             </tr>
-                                                <? while ($fila5 = mysqli_fetch_row($internal)) {?>
-                                                            <tr class="task">
+                                                <? while ($fila5 = mysqli_fetch_row($internal)) {
+
+
+                                         
+                                         if($fila5[9] == 0 || $fila5[9] == '0'){
+
+                                            $situation = "exclamation";
+                                            $color = "color:#EE8817;";
+                                            $lock = "";
+
+                                         } else {
+
+                                            $situation = "check";
+                                            $color = "color: #44D933;";
+                                            $lock = "disabled";
+                                         }
+
+
+                                          switch ($fila5[6]){
+                                              case 'Pendiente':
+                                              $class = "Pe-int";
+                                              break;
+                                              case 'En Curso':
+                                               $class = "Ec-int";
+
+                                              break;
+
+                                              case 'Finalizada':
+                                               $class = "Hc-int";
+                                              break;
+
+                                              case 'Atrasada':
+                                               $class = "At-int";
+                                              break;
+
+                                              case 'Por Vencer':
+                                              $class = "Pv-int";
+                                              break;
+                                          }
+                                                    ?>
+
+                                                            <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-                                                                <td class="cell-icon"><i class="icon-checker high"></i></td>
+                                                                <td class="cell-icon int-lock" style="cursor: pointer;"><i class="fa fa-<? echo ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
@@ -1132,13 +1175,7 @@ $(".switcher").on('click', function(){
            }
         
      }
-
-
 });
-
-
-
-
 
 
 $(".due").on('click', function(){
@@ -1165,6 +1202,16 @@ $(".cell-icon").on('click', function(){
     }
   })
 });
+
+$(".int-lock").on('click', function(){
+    var stsk_int= $(this).parent().children('input').val();
+    bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+    if (confirmation){
+           unlock(stsk_int, "" , $(this).children('i'));
+    }
+  })
+})
+
 
 
 $(".golang").on('click', function(){
