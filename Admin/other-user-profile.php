@@ -1564,13 +1564,13 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
     setInterval(function(){
         console.info("escucha");
-        $ajax({
+        $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
                 packets = data.split("|");
                 console.log(data);
-                 if(packets[0] !== 0 || packets !== "0"){
+                 if(packets[0] !== 0 || packets[0] !== "0"){
                        showAlert(packets[2], "pro", packets[0]);
                        updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], "3", packets[5]);
                  }
