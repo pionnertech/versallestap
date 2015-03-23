@@ -448,20 +448,13 @@ uploader.bind('BeforeUpload', function (up, file) {
 });
 
 
-var f_i = new Date();
-f_i.setDate(f_i.getDate() -1);
-var fi  = "-" + ('0' + f_i.getDate()).slice(-2) + "/" + ('0' + (f_i.getMonth()+1)).slice(-2)  + "/" + f_i.getFullYear()
-var f_f = new Date();
-f_f.setDate(f_f.getDate() +1);
-var ff  = "+" + ('0' + f_f.getDate()).slice(-2) + "/" + ('0' + (f_f.getMonth()+1)).slice(-2)  + "/" + f_f.getFullYear()
-
 
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
 	format:'d/m/Y',
-	minDate: fi,
-	maxDate: ff,
+	minDate: '-02/01/1970',
+	maxDate: '+02/01/1970',
 	timepicker: false
 });
 
@@ -469,8 +462,8 @@ var ff  = "+" + ('0' + f_f.getDate()).slice(-2) + "/" + ('0' + (f_f.getMonth()+1
 	step:5,
 	lang:'es',
 	format:'d/m/Y',
-	minDate: fi,
-	maxDate: ff,
+	minDate: '-03/01/1970',
+	maxDate: '+03/01/1970',
 	timepicker: false
 });
 	
