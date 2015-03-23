@@ -1209,21 +1209,23 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $(".cell-icon").on('click', function(){
 
+obj = $(this);
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
   bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk, iss_id, $(this));
+           unlock(stsk, iss_id, obj);
     }
   })
 });
 
 
 $(".int-lock").on('click', function(){
+    var obj = $(this);
     var stsk_int= $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk_int, "" , $(this));
+           unlock(stsk_int, "" , obj);
     }
   })
 })
