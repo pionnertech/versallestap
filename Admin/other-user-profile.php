@@ -900,7 +900,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 95%;">
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:95%"></textarea>
-                                          <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
+                                          <select id="int-del" style="width: 55%; display: inline-block; vertical-align: top;">
                                               <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
                                                   <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
                                               </select>
@@ -909,10 +909,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           <div  align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
                                      </div>
-                                
                             <!--/.module-body-->
-
-
                         </div>
                         <!--/.module-->
                     </div>
@@ -1092,11 +1089,7 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 $("#send-int").on('click', function(){
 
-
-
-
-
-intDel($("#int-del").val() , $("#subj-int").val();, $("#descript-int").val() , date)
+intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val());
 
 })
 
