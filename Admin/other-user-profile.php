@@ -1416,7 +1416,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
         return false;
     }
-/*
+
 if(typeof(EventSource) !== "undefined") {
 
     var source = new EventSource("../backend/time.php?usr="+mainuser);
@@ -1440,7 +1440,7 @@ if(typeof(EventSource) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
-*/
+
 /*
 if(typeof(EventSource) !== "undefined") {
 
