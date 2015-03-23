@@ -962,7 +962,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     timepicker: false
 });
 
- $(".date-int-finish")datetimepicker({
+ $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
     format:'d/m/Y',
@@ -1563,7 +1563,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
     setInterval(function(){
-        console.info("escucha");
+        consol.info("escucha");
         $ajax({
             type. "POST",
             url: "../backend/time.php?usr="+mainuser,
