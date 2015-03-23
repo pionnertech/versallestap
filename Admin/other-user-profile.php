@@ -1135,7 +1135,7 @@ console.info();
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
-      console.info(data);
+
            bootbox.alert("Requerimiento delegado existosamente");
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
@@ -1742,8 +1742,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
           url: "../backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac,
           success: function(data){
     
-      var files =  data.split("|");
-      var elem = [];
+      var files  =  data.split("|");
+      var elem   = [];
+      var elem_i = [];
+      var elem_s = [];
       var fileParent = document.querySelector('.incoming-files');
 
       for (n=0; n < files.length ; n++){
