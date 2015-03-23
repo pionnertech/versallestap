@@ -15,7 +15,7 @@ $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 
 // internal requirements
 
-$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
+$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
 
 
@@ -806,7 +806,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <div class="pull-right"></div>
                                             </div>
                                             <div class="module-body table">
-                                                   <table class="table table-message">
+                                                   <table class="table table-message" id="int-table">
                                                       <tbody>
                                                           <tr class="heading">
                                                               <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
@@ -820,12 +820,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
                                                                 <td class="cell-icon"><i class="icon-checker high"></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
-                                                                <td class="cell-status hidden-phone hidden-tablet"><b class="due done"><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title"><i class="fa fa-chevron-circle-right del-int"></i></td>
                                                                 <td class="cell-time align-right"><div></div></td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="5">
+                                                                <div class="info-content">
                                                                    <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
                                                                     </p>
@@ -833,7 +834,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                         <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
                                                                     </div>
                                                                 </td>
-
+                                                                </div>
                                                             </tr>
 
                                                             <? } ?>
@@ -1049,8 +1050,7 @@ console.info();
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
-        "&fac=" + $("#facility").val()
-        "&type=" + , 
+        "&fac=" + $("#facility").val(), 
         success : function(data){
 
            bootbox.alert("Requerimiento delegado existosamente");
