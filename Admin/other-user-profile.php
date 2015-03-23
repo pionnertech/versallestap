@@ -844,7 +844,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      </div> 
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
-                                          <div style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x int-back"></i></div>
+                                          <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 45%; display: inline-block; vertical-align: top;">
                                               <select id="int-del" style="width: 49%; display: inline-block; vertical-align: top;">
                                               <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
