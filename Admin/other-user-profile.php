@@ -1625,9 +1625,10 @@ var parent = document.querySelectorAll('.coll-int')[ind];
   var string =  '<a href="#" class="hovertip" title="">';
         '<img src="../img/'  + usr + '_opt.jpg" class="group" >';
         '<input type="hidden" value="u'  + usr + '>">';
-    '</a>';
-              
-parent.innerHTML =  parent.innerHTML + string  ;                                               
+        '</a>';
+  var stringAl   = parent.innerHTML + string;   
+parent.innerHTML = stringAl;   
+
 }
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc){
