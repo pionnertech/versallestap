@@ -1254,7 +1254,7 @@ $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
-        console.log(data);
+        console.log(data + "/--/");
            objecto = object;
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
