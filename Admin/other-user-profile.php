@@ -1093,7 +1093,7 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 $("#send-int").on('click', function(){
 
-intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $(".del-int").data("val"));
+intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"));
 
 })
 
@@ -1431,7 +1431,6 @@ uploader =  $(object).pluploadQueue({
 
 function intDel(user, sub, des, date, ind){
 
-console.info(ind);
 
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
