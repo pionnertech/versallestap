@@ -1205,6 +1205,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $(".cell-icon").on('click', function(){
 
+if(!$(this).hasClass('int-lock')){
 obj = $(this).children('i');
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
@@ -1213,18 +1214,20 @@ obj = $(this).children('i');
            unlock(stsk, iss_id, obj);
     }
   })
+
+}
 });
 
 
 $(".int-lock").on('click', function(){
+
     var obj = $(this).children('i');
     var stsk_int = $(this).parent().children('input').val();
-   
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, "" , obj);
     }
-  })
+  });
 })
 
 
@@ -1256,6 +1259,7 @@ $.ajax({
 
            object.fadeOut(400, function(){
            object.removeClass("fa-warning");
+
            if(object.parent().hasClass("int-lock")){
               object.addClass("fa-check");
            } else {
