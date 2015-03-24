@@ -975,6 +975,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
 
 
+
+
  init();
  uploaderInt($("#up-int"));
 
