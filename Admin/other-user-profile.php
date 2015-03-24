@@ -940,16 +940,18 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
 <script type="text/javascript">
     
-    var st = 0;
-    var fac = <? printf($_SESSION['TxtFacility'] ) ?>;
-    var dateTime;
+    var st           = 0;
+    var fac          = <? printf($_SESSION['TxtFacility'] ) ?>;
     var previuosData = <? printf("\"" . $manu . "\"")  ?>;
-    var um = 0;
-    var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
-    var intPointer= 0;
+    var um           = 0;
+    var mainuser     = <? printf($_SESSION['TxtCode'])  ?>;
+    var intPointer   = 0;
+    var mode         = "";
+    var user_send    = "";
+    var stsk_send    = "";
+    var dateTime
     var objeto;
     var dateTime;
-    var mode = "";
 
 
     $(document).on('ready', function(){
@@ -992,12 +994,16 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 });
 
  init();
- uploaderInt($("#up-int"));
+ uploaderInt($("#up-int") );
 
 $(".int-forward").click(function(){
+
        mode = "del";
  var indice = $(this).index();
  var ids    = $(this).parent().children('input').val();
+
+stsk_send = ids;
+
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
@@ -1381,7 +1387,17 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
     })
 }
 
-var uploaderInt = function(object, iss_id){
+var uploaderInt = function(object, iss_id, kind){
+
+if(kind == "internal" ){
+
+var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
+
+} else {
+
+var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk + "&user=" + user;
+
+}
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
@@ -1403,7 +1419,7 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id);
+                up.setOption("url", url);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
@@ -2268,7 +2284,6 @@ inp2.value = "u" + user_id;
 
 td_i1.colSpan = "5";
 
-
 p.appendChild(strong);
 p.appendChild(span);
 
@@ -2288,12 +2303,16 @@ tr2.appendChild(td_i1);
 
 }
 
+
 function AmericanDate(date){
   var subs = date.substring(6) + "/"  + date.substring(3, 5) + "/" + date.substring(0, 2);
 return subs;
 }
 
-
+document.getElementById("int-del").addEventListener("change" , function(){
+       stsk_send = this.value;
+       console.info(stsk_send);
+})
 
 </script>
 
