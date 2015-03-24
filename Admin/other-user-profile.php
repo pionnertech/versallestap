@@ -1062,12 +1062,8 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
 
-var proc = AmericanDate($(this).parent().next().children().html());
-console.info(proc);
-var dm = new Date(proc);
-console.info(dm);
-dateTime   = dm.getFullYear() + "/"  + ("0" + dm.getDate()).slice(-2) + "/" + ("0" + (dm.getMonth() + 1)).slice(-2);
-console.info(dateTime);
+dateTime = AmericanDate($(this).parent().next().children().html());
+
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
