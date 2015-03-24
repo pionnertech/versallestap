@@ -2105,7 +2105,7 @@ function init() {
 
 function AmericanDate(date){
 
-  var subs = date.substring(6) + "/" date.substring(3, 5) + "/" + date.substring(0, 2);
+  var subs = date.substring(6) + "/" +  date.substring(0, 2) + "/" + date.substring(3, 5);
 
 return subs
 }
