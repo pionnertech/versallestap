@@ -1401,6 +1401,7 @@ var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_send + "&u
 var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
 
+
 console.info(url);
 
 uploader =  $(object).pluploadQueue({
