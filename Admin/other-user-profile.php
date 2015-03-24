@@ -955,8 +955,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
-    format:'d/m/Y',
-    timepicker: false
+    format:'Y/m/d',
+    timepicker: false,
+    minDate: '-1970/01/02',
+    maxDate: '+1970/01/02',
+    onshow = function (ct){
+        this.setOptions({
+            format:'d/m/Y'
+        })
+    }
 });
 
  $(".date-int-finish").datetimepicker({
@@ -2082,6 +2089,9 @@ function init() {
    window.addEventListener("touchend", touchHandler, true);
    window.addEventListener("touchcancel", touchHandler, true);
 }
+
+
+
 
 
 
