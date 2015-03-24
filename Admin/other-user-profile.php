@@ -1217,6 +1217,8 @@ obj = $(this).children('i');
 }
 });
 
+
+
 $(".int-lock").on('click', function(){
 
     var obj = $(this).children('i');
@@ -1256,11 +1258,15 @@ $.ajax({
        success : function(data){
 
            object.fadeOut(400, function(){
+            
            object.removeClass("fa-warning");
 
            if(object.parent().hasClass("int-lock")){
+
               object.addClass("fa-check");
+
            } else {
+
               object.addClass("fa-lock");
            }
            
