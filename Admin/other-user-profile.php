@@ -957,11 +957,11 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     lang:'es',
     format:'Y/m/d',
     timepicker: false,
-    minDate: '-1970/01/02',
-    maxDate: '+1970/01/02',
+    minDate: '-1970/01/19',
+    maxDate: '+1970/01/19',
     onShow: function (ct){
         this.setOptions({
-            format:'d/m/Y';
+            format:'d/m/Y'
         })
     }
 });
