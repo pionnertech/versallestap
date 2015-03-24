@@ -796,7 +796,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
-                                                            <button class="btn">Atrasados</button>
+                                                            <button class="btn title-int">Atrasados</button>
                                                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                             <span class="caret"></span>
                                                             </button>
@@ -1235,6 +1235,29 @@ $(".switcher").on('click', function(){
 });
 
 
+$(".swt-int").on('click', function(){
+
+    var all_on = document.querySelectorAll('.swt-int');
+
+    var ex = $(this).attr("id");
+    var title_in = $(this).html();
+    $(".display-progress").css({ display: "none"});
+    $(".title-int").html(title_in);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+});
+
+
+
+
+
+
 $(".due").on('click', function(){
 
 if(!$(this).data("val") || !$(this).data("val") === 0 ){
@@ -1509,7 +1532,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                          if (mode != "first"){
                               assoc_collar_int(user, ind);
                          } else {
-                            
+
                             intFirst(result[0], des, result[1] , date, user);
                          }
                      });
