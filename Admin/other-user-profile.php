@@ -812,7 +812,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             </div>
                                             <div class="module-body table">
                                                    <table class="table table-message" id="int-table">
-                                                      <tbody>
+                                                      <tbody id="int-body">
                                                           <tr class="heading">
                                                               <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
                                                               <td class="cell-title">Descripción requerimiento</td>
@@ -2155,7 +2155,7 @@ function init() {
 
 function firstTask(stsk_id, descript, user_name, date, user_id){
 
-    var parent_int =  document.querySelectorAll("#int-table tbody");
+    var parent_int =  document.getElementById("int-body");
 
     var tr1 = document.createElement('tr');
     tr1.className = "task Ec";
