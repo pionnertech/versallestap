@@ -17,7 +17,7 @@ $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 $Query_team_int = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
 // internal requirements
 
-$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
+$query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
 
 
@@ -820,7 +820,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                               <td class="cell-title">Asignar</td>
                                                               <td class="cell-time align-right">Fecha maxima respuesta</td>
                                                             </tr>
-                                                <? while ($fila5 = mysqli_fetch_row($internal)) {
+                         <? while ($fila5 = mysqli_fetch_row($internal)) {
 
                                          if($fila5[9] == 0 || $fila5[9] == '0'){
 
@@ -864,8 +864,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
-                                                                <td class="cell-time align-right"><div></div></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-time align-right"><div><? echo $file5[10] ?></div></td>
                                                             </tr>
                                                             <tr style="display: none;">
                                                                 <td colspan="5">
@@ -883,7 +883,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                     </div>
                                                                 </td>
                                                             </tr>
-
                                                             <? } ?>
                                                            </tbody>
                                                     </table> 
@@ -937,7 +936,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
     <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
     <script type="text/javascript" src="../scripts/es.js"></script>
-    <script type="text/javascript" src="../scripts/datehandler.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -951,6 +949,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var intPointer= 0;
     var objeto;
     var dateTime;
+    var mode = "";
 
 
     $(document).on('ready', function(){
@@ -973,16 +972,33 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
-    format:'d/m/Y',
-    timepicker: false
+    format:'Y/m/d',
+    timepicker: false,
+   onshow : function (oct){
+    if(mode == "delegate"){
+            this.setOptions({
+                minDate : '1970/01/02',  
+                maxDate : dateTime,
+                format:'d/m/Y' 
+            });
+        } else {
+            this.setOptions({
+                minDate : '1970/01/02',  
+                maxDate : '2036/12/29',
+                format:'d/m/Y' 
+            });
+        }
+    }
 });
-
-
-
-
 
  init();
  uploaderInt($("#up-int"));
+
+$(".int-forward").click(function(){
+    mode = "del";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+})
 
 $(".toggle-attach").on('click', function(){
 
@@ -1071,7 +1087,6 @@ $("#current-task").val(index_current);
 $(".ifile").css({display : "none"});
 $(".iss" + iss_ident).css({ display : "inline-block"});
 
-console.info(index_current);
 
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
@@ -1090,6 +1105,8 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $(".del-int").on('click', function(){
 
+     mode = "first";
+
 $("#del-int-req").data("val", $(this).index());
 
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
@@ -1098,9 +1115,7 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 
 
 $("#int-back").on('click', function(){
-
 $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-
 });
 
 
@@ -1128,6 +1143,14 @@ $("#delegates").on('change', function(){
 });
 
 
+$("")
+
+
+$(".int-forward").on('click', function(){
+
+   dateTime = AmericanDate($(this).next().html());
+
+});
 
 $("#del-subtask").on('click', function(){
     //check type.
@@ -1176,10 +1199,7 @@ console.info();
                 key_main.appendChild(a_del);
 
                // nueva delegacia 
-
                     $("#upload ul").empty();
-    
-
         }
     })
 });
@@ -2106,7 +2126,7 @@ function AmericanDate(date){
 
   var subs = date.substring(6) + "/"  + date.substring(3, 5) + "/" + date.substring(0, 2);
 
-return subs
+return subs;
 }
 
 
