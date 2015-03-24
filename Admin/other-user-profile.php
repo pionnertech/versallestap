@@ -865,7 +865,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
-                                                                <td class="cell-time align-right"><div><? echo $file5[10] ?></div></td>
+                                                                <td class="cell-time align-right"><? echo $file5[10] ?></td>
                                                             </tr>
                                                             <tr style="display: none;">
                                                                 <td colspan="5">
