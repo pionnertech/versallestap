@@ -1392,8 +1392,6 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 var uploaderInt = function(object, iss_id, kind){
 
 if(kind == "internal" ){
-
-
 var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_send + "&user=" + user_send;
 } else {
 
