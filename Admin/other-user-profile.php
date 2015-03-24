@@ -937,6 +937,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
     <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
     <script type="text/javascript" src="../scripts/es.js"></script>
+    <script type="text/javascript" src="../scripts/datehandler.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -949,6 +950,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var mainuser = <? printf($_SESSION['TxtCode'])  ?>;
     var intPointer= 0;
     var objeto;
+    var dateTime;
+
 
     $(document).on('ready', function(){
  
@@ -957,11 +960,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     lang:'es',
     format:'Y/m/d',
     timepicker: false,
-    minDate: '2015/03/31',
-    maxDate: '2015/04/04',
     onShow: function (ct){
+
         this.setOptions({
             format:'d/m/Y'
+            minDate : '1970/01/02' 
+            maxDate : dateTime;
         })
     }
 });
@@ -1057,6 +1061,8 @@ var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
+dateTime = $(this).parent().next().children().html();
+
 
 
 $("#audititle").html("\"" + subject + "\"");
