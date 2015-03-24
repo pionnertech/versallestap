@@ -965,7 +965,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
         this.setOptions({
             format:'d/m/Y',
             minDate : '1970/01/02',  
-            maxDate : dateTime.getYear() + "/" + ("0" + (dateTime.getMonth() + 1 )).slice(-2)"/" + ("0" + dateTime.getDate()).slice(-2)
+            maxDate : dateTime
         })
     }
 });
@@ -1062,10 +1062,10 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
 
-proc = $(this).parent().next().children().html();
+var proc = $(this).parent().next().children().html();
 
-dateTime =new Date(proc);
-
+var dm = new Date(proc);
+dateTime   = dm.getYear() + "/" + ("0" + (dm.getMonth() + 1 )).slice(-2)"/" + ("0" + dm.getDate()).slice(-2);
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
