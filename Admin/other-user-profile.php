@@ -995,9 +995,10 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
  init();
 
- uploaderInt($("#up-int") , "", "internal");
+
 
 $(".int-forward").click(function(){
+
 
        mode = "del";
  var indice = $(this).index();
@@ -1005,11 +1006,14 @@ $(".int-forward").click(function(){
 
 stsk_send = ids;
 console.log("stsk_send is :" + ids);
+uploaderInt($("#up-int"), "", user_send, stsk_send , "internal"); 
 
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+
+
 })
 
 $(".toggle-attach").on('click', function(){
@@ -1125,9 +1129,10 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 
 });
 
-
 $("#int-back").on('click', function(){
 $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+$("#up-int").empty();
+
 });
 
 
@@ -1389,20 +1394,14 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
     })
 }
 
-var uploaderInt = function(object, iss_id, kind){
-console.info(stsk_send);
-console.info(user_send);
+var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
-if(kind == "internal" ){
-var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_send + "&user=" + user_send;
+if(kind == "internal"){
+   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id;
 } else {
+    var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 
-
-var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
-
-
-console.info(url);
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
