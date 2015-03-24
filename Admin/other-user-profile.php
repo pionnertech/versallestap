@@ -1121,8 +1121,11 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 
 $("#send-int").on('click', function(){
 
-     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"));
-
+if (mode == "first"){
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"));
+ 
+}
+    
 })
 
 
@@ -1476,7 +1479,7 @@ uploader =  $(object).pluploadQueue({
 };
 
 
-function intDel(user, sub, des, date, ind){
+function intDel(user, sub, des, date, ind, mst){
 
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
@@ -1490,7 +1493,8 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&subject=" + sub + 
           "&descript=" + des + 
           "&startD=" + fecha  + 
-          "&fac="+ fac , 
+          "&fac="+ fac +
+          "&main_stsk=" + mst, 
           success : function (data){
             console.log(data);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
