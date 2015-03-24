@@ -2311,7 +2311,7 @@ return subs;
 
 document.getElementById("int-del").addEventListener("change" , function(){
        user_send = this.value;
-       console.info(send_send);
+       console.info(user_send);
 })
 
 </script>
