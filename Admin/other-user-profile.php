@@ -1218,7 +1218,6 @@ obj = $(this).children('i');
 }
 });
 
-
 $(".int-lock").on('click', function(){
 
     var obj = $(this).children('i');
