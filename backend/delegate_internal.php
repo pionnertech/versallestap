@@ -29,7 +29,9 @@ echo mysqli_error($datos);
 
 } else {
 
-echo "just works";
+  $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
+
+ mysqli_insert_id() . "|" . $name['NAME'];
 }
 
 

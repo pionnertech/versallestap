@@ -995,8 +995,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
  uploaderInt($("#up-int"));
 
 $(".int-forward").click(function(){
-    mode = "del";
-$("#del-int-req").data("val", $(this).index());
+       mode = "del";
+ var indice = $(this).index();
+ var ids    = $(this).parent().children('input').val();
+
+$("#del-int-req").data("val",indice );
+$("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 })
 
@@ -1122,8 +1126,10 @@ $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in
 $("#send-int").on('click', function(){
 
 if (mode == "first"){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"));
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0 );
  
+} else {
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("send-int").data("val") );
 }
     
 })
@@ -1496,15 +1502,19 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&fac="+ fac +
           "&main_stsk=" + mst, 
           success : function (data){
-            console.log(data);
+           result = data.split("|");
+          console.log(data);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-                          //assoc_collar_int(user, ind);
+                         if (mode != "first"){
+                              assoc_collar_int(user, ind);
+                         } else {
+                            
+                            intFirst(result[0], des, result[1] , date, user);
+                         }
                      });
           }
   })
-
-
 
 }
 
@@ -2124,12 +2134,151 @@ function init() {
    window.addEventListener("touchcancel", touchHandler, true);
 }
 
+function intFirst(stsk_id, descript, user_name, date, user_id){
 
+    var parent =  document.querySelector("#int-table tbody");
+
+    var tr1 = document.createElement('tr');
+    tr1.className = "task Ec" ;
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+    var i1  = document.createElement('i');
+    var i2  = document.createElement('i');
+    var b1  = document.createElement('b');
+    var inp1 = document.createElement('input');
+
+
+
+
+    td1.className = "cell-icon int-lock";
+
+    td2.innerHTML = descript;
+    td5.innerHTML = date;
+    inp1.value    = stsk_id;
+    inp1.type     = "hidden";
+    td4.className = "int-forward";
+    b1.className  = "due int-desglo"; 
+    b1.style.backgroundColor = "#178FD0";
+
+    i1.className = "fa fa-exclamation";
+    i1.style.color = "orange";
+    i2.className = "fa fa-chevron-circle-right";
+    
+    td1.appendChild(i1);
+    td4.appendChild(i2);
+    td3.appendChild(b1);
+
+
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+    tr1.appendChild(td5);
+    tr1.appendChild(inp1);
+
+   //events
+
+i2.onclick = function(){
+
+ mode = "del";
+ var indice = $(this).index();
+ var ids    = $(this).parent().children('input').val();
+
+$("#del-int-req").data("val",indice );
+$("#send-int").data("val", ids);
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+}
+
+b1.onclick = function (){
+
+if(!$(this).data("val") || !$(this).data("val") === 0 ){
+
+   $(this).parent().parent().next().css({ display: "table-row"});
+     $(this).data("val", 1);
+} else  {
+
+  $(this).parent().parent().next().css({ display: "none"});
+   $(this).data("val", 0);
+}
+}
+
+td1.onclick = function (){
+if(!$(this).hasClass('int-lock')){
+obj = $(this).children('i');
+  var stsk =  $(this).parent().children('input').eq(0).val();
+  var iss_id = $(this).parent().children('input').eq(1).val();
+  bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+    if (confirmation){
+           unlock(stsk, iss_id, obj);
+    }
+  })
+}
+}
+
+
+var tr2 = document.createElement('tr');
+var td_i1 = document.createElement('td');
+var p = document.createElement('p');
+var strong = document.createElement('strong');
+var span = document.createElement('span');
+var div1 = document.createElement('div');
+var div2 = document.createElement('div');
+var div3 = document.createElement('div');
+var a    = document.createElement('a');
+var img  = document.createElement('img');
+var inp2 = document.createElement('input');
+
+
+tr2.style.display = "none";
+span.className = "pull-right small muted";
+div1.className = "progress tight";
+div2.className = "bar bar-warning";
+div3.className = "coll-int";
+div3.style.width = "100%";
+strong.innerHTML = "Grado de progreso";
+
+
+
+a.href = "#";
+a.className = "hovertip";
+a.title = user_name;
+
+img.src ="../img/" + user_id + "_opt.jpg";
+img.className ="group";
+
+inp2.type= "hidden";
+inp2.value = "u" + user_id;
+
+td_i1.colSpan = "5";
+
+
+p.appendChild(strong);
+p.appendChild(span);
+
+div1.appendChild(div2);
+a.appendChild(img);
+a.appendChild(inp2);
+
+div3.appendChild(a);
+
+td_i1.appendChild(p);
+td_i1.appendChild(div1);
+td_i1.appendChild(div3);
+tr2.appendChild(td_i1);
+
+  parent.appendChild(tr2);
+  parent.appendChild(tr1);
+
+
+
+}
 
 function AmericanDate(date){
-
   var subs = date.substring(6) + "/"  + date.substring(3, 5) + "/" + date.substring(0, 2);
-
 return subs;
 }
 
