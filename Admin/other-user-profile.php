@@ -994,7 +994,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 });
 
  init();
- uploaderInt($("#up-int") );
+
+ uploaderInt($("#up-int") , "", "internal");
 
 $(".int-forward").click(function(){
 
@@ -1003,6 +1004,7 @@ $(".int-forward").click(function(){
  var ids    = $(this).parent().children('input').val();
 
 stsk_send = ids;
+console.log("stsk_send is :" + ids);
 
 
 $("#del-int-req").data("val",indice );
