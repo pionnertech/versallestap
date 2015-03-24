@@ -1006,8 +1006,6 @@ $(".int-forward").click(function(){
 
 stsk_send = ids;
 console.log("stsk_send is :" + ids);
-uploaderInt($("#up-int"), "", user_send, stsk_send , "internal"); 
-
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
@@ -2316,6 +2314,7 @@ return subs;
 document.getElementById("int-del").addEventListener("change" , function(){
        user_send = this.value;
        console.info(user_send);
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal"); 
 })
 
 </script>
