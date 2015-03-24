@@ -2310,8 +2310,8 @@ return subs;
 }
 
 document.getElementById("int-del").addEventListener("change" , function(){
-       stsk_send = this.value;
-       console.info(stsk_send);
+       user_send = this.value;
+       console.info(send_send);
 })
 
 </script>
