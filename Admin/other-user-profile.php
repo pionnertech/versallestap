@@ -973,6 +973,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     timepicker: false
 });
 
+
+
  init();
  uploaderInt($("#up-int"));
 
