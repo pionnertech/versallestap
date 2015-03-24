@@ -1066,7 +1066,7 @@ var proc = $(this).parent().next().children().html();
 
 var dm = new Date(proc);
 
-dateTime   = dm.getFullYear() + "/" +  "/" + ("0" + dm.getDate()).slice(-2) + ("0" + (dm.getMonth() + 1 )).slice(-2);
+dateTime   = dm.getFullYear() + "/"  + ("0" + dm.getDate()).slice(-2) + "/" + ("0" + (dm.getMonth() + 1 )).slice(-2);
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
