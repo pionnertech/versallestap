@@ -31,7 +31,7 @@ echo mysqli_error($datos);
 
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
 
- mysqli_insert_id() . "|" . $name['NAME'];
+ echo mysqli_insert_id($datos) . "|" . $name['NAME'];
 }
 
 
