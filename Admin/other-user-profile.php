@@ -2155,7 +2155,7 @@ function init() {
 
 function firstTask(stsk_id, descript, user_name, date, user_id){
 
-    var parent =  document.querySelector("#int-table tbody");
+    var parent_int =  document.querySelectorAll("#int-table tbody");
 
     var tr1 = document.createElement('tr');
     tr1.className = "task Ec";
@@ -2248,7 +2248,6 @@ var a    = document.createElement('a');
 var img  = document.createElement('img');
 var inp2 = document.createElement('input');
 
-
 tr2.style.display = "none";
 span.className = "pull-right small muted";
 div1.className = "progress tight";
@@ -2256,8 +2255,6 @@ div2.className = "bar bar-warning";
 div3.className = "coll-int";
 div3.style.width = "100%";
 strong.innerHTML = "Grado de progreso";
-
-
 
 a.href = "#";
 a.className = "hovertip";
@@ -2286,8 +2283,8 @@ td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 tr2.appendChild(td_i1);
 
-  parent.appendChild(tr2);
-  parent.appendChild(tr1);
+  parent_int.appendChild(tr2);
+  parent_int.appendChild(tr1);
 
 }
 
