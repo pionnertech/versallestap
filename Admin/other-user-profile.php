@@ -1214,7 +1214,6 @@ obj = $(this).children('i');
            unlock(stsk, iss_id, obj);
     }
   })
-
 }
 });
 
