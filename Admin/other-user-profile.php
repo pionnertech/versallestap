@@ -1062,10 +1062,8 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
 
-var proc = $(this).parent().next().children().html();
-console.info(proc +  "    /win");
+var proc = AmericanDate($(this).parent().next().children().html());
 var dm = new Date(proc);
-console.info(dm  + "   / win")
 dateTime   = dm.getFullYear() + "/"  + ("0" + dm.getDate()).slice(-2) + "/" + ("0" + (dm.getMonth() + 1)).slice(-2);
 
 $("#audititle").html("\"" + subject + "\"");
@@ -2105,7 +2103,12 @@ function init() {
 
 
 
+function AmericanDate(date){
 
+  var subs = date.substring(6) + "/" date.substring(3, 5) + "/" + date.substring(0, 2);
+
+return subs
+}
 
 
 
