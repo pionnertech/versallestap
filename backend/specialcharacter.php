@@ -164,7 +164,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot($("#placeholder2"), array_set, {
+ $.plot($("#placeholder2"), array_set, {
            series: {
             pie: {
                 innerRadius: 0.5,

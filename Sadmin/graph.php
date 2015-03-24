@@ -124,7 +124,7 @@ $lastone= "";
                         <div class="content">
                             <div class="module">
                                 <div class="module-head">
-                                    <h3>Gráfico Dinamico</h3>
+                                    <h3>Análisis de trabajo</h3>
                                 </div>
                                 <div class="module-body">
                                     <div  style="width: 350px; height: 350px; display: inline-block;">
