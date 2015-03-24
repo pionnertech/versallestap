@@ -1529,7 +1529,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                               assoc_collar_int(user, ind);
                          } else {
 
-                            intFirst(result[0], des, result[1] , date, user);
+                            firstTask(result[0], des, result[1] , date, user);
                          }
                      });
           }
@@ -2153,12 +2153,12 @@ function init() {
    window.addEventListener("touchcancel", touchHandler, true);
 }
 
-function intFirst(stsk_id, descript, user_name, date, user_id){
+function firstTask(stsk_id, descript, user_name, date, user_id){
 
     var parent =  document.querySelector("#int-table tbody");
 
     var tr1 = document.createElement('tr');
-    tr1.className = "task Ec" ;
+    tr1.className = "task Ec";
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -2169,9 +2169,6 @@ function intFirst(stsk_id, descript, user_name, date, user_id){
     var i2  = document.createElement('i');
     var b1  = document.createElement('b');
     var inp1 = document.createElement('input');
-
-
-
 
     td1.className = "cell-icon int-lock";
 
@@ -2291,8 +2288,6 @@ tr2.appendChild(td_i1);
 
   parent.appendChild(tr2);
   parent.appendChild(tr1);
-
-
 
 }
 
