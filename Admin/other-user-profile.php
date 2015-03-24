@@ -963,9 +963,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     onShow: function (ct){
 
         this.setOptions({
-            format:'d/m/Y',
             minDate : '1970/01/02',  
-            maxDate : dateTime
+            maxDate : dateTime,
+            format:'d/m/Y'
         })
     }
 });
