@@ -2225,11 +2225,11 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 td1.onclick = function (){
 if(!$(this).hasClass('int-lock')){
 obj = $(this).children('i');
-  var stsk =  $(this).parent().children('input').eq(0).val();
-  var iss_id = $(this).parent().children('input').eq(1).val();
+  var stsk_int =  $(this).parent().children('input').eq(0).val();
+  var iss_id_int = $(this).parent().children('input').eq(1).val();
   bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk, iss_id, obj);
+           unlock(stsk_int, iss_id_int, obj);
     }
   })
 }
