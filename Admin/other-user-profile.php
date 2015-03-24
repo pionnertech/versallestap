@@ -861,7 +861,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer;"><i class="fa fa-<? echo $situation; ?> "></i></td>
+                                                                <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
@@ -1258,7 +1258,7 @@ $.ajax({
        success : function(data){
 
            object.fadeOut(400, function(){
-            
+
            object.removeClass("fa-warning");
 
            if(object.parent().hasClass("int-lock")){
