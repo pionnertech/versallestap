@@ -2197,7 +2197,7 @@ function firstTask(stsk_id, descript, user_name, date, user_id){
     tr1.appendChild(inp1);
 
    //events
-
+/*
 i2.onclick = function(){
 
  mode = "del";
@@ -2234,7 +2234,7 @@ obj = $(this).children('i');
   })
 }
 }
-
+*/
 
 var tr2 = document.createElement('tr');
 var td_i1 = document.createElement('td');
