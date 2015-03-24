@@ -959,9 +959,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     timepicker: false,
     minDate: '-1970/01/02',
     maxDate: '+1970/01/02',
-    onshow = function (ct){
+    onShow: function (ct){
         this.setOptions({
-            format:'d/m/Y'
+            format:'d/m/Y';
         })
     }
 });
