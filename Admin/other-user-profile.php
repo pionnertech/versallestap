@@ -1063,8 +1063,11 @@ var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index());
 
 var proc = AmericanDate($(this).parent().next().children().html());
+console.info(proc);
 var dm = new Date(proc);
+console.info(dm);
 dateTime   = dm.getFullYear() + "/"  + ("0" + dm.getDate()).slice(-2) + "/" + ("0" + (dm.getMonth() + 1)).slice(-2);
+console.info(dateTime);
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
@@ -2105,7 +2108,7 @@ function init() {
 
 function AmericanDate(date){
 
-  var subs = date.substring(6) + "/" +  date.substring(0, 2) + "/" + date.substring(3, 5);
+  var subs = date.substring(6) + "/"  + date.substring(3, 5) + "/" + date.substring(0, 2);
 
 return subs
 }
