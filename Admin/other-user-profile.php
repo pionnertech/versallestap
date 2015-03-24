@@ -1393,12 +1393,12 @@ var uploaderInt = function(object, iss_id, kind){
 
 if(kind == "internal" ){
 
-var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
-
-} else {
 
 var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_send + "&user=" + user_send;
+} else {
 
+
+var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
 
 uploader =  $(object).pluploadQueue({
