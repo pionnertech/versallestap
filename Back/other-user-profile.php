@@ -897,7 +897,7 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-       console.info(eventMessage[2]  + " /--/" + previuosDataInt );
+       console.info(eventMessage[2] === previuosDataInt );
 
     if(eventMessage[2] == "" ){
         previuosDataInt = "";
