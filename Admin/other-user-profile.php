@@ -2166,11 +2166,12 @@ function init() {
    window.addEventListener("touchcancel", touchHandler, true);
 }
 
-function firstTask(stsk_id, descript, user_name, date, user_id){
+function firstTask(stsk_ident, descript, user_name, date, user_id){
 
     var parent_int =  document.getElementById("int-body");
 
     var tr1 = document.createElement('tr');
+    
     tr1.className = "task Ec";
 
     var td1 = document.createElement('td');
@@ -2187,7 +2188,7 @@ function firstTask(stsk_id, descript, user_name, date, user_id){
 
     td2.innerHTML = descript;
     td5.innerHTML = date;
-    inp1.value    = stsk_id;
+    inp1.value    = stsk_ident;
     inp1.type     = "hidden";
     td4.className = "int-forward";
     b1.className  = "due int-desglo"; 
@@ -2295,8 +2296,8 @@ td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 tr2.appendChild(td_i1);
 */
-  parent_int.appendChild(tr2);
-  //parent_int.appendChild(tr1);
+  //parent_int.appendChild(tr2);
+  parent_int.appendChild(tr1);
 
 }
 
