@@ -1536,7 +1536,8 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&descript=" + des + 
           "&startD=" + fecha  + 
           "&fac="+ fac +
-          "&main_stsk=" + mst, 
+          "&main_stsk=" + mst + 
+          "&keyfile=" + keyFile, 
           success : function (data){
            result = data.split("|");
           console.log(data);
@@ -1702,7 +1703,6 @@ if(typeof(EventSource) !== "undefined") {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
 
 }
-
 
 
 function assoc_collar_int(usr, ind){
