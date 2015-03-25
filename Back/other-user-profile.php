@@ -1096,7 +1096,7 @@ $.ajax({
           type: "POST",
           url: specialUrl,
           success: function(data){
-
+    console.info(data);
          
    arrayFiles = data.split("|");
  
