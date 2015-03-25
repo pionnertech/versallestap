@@ -1097,7 +1097,8 @@ $.ajax({
           url: specialUrl,
           success: function(data){
     console.info(data);
-         
+    console.info(specialUrl);
+             
    arrayFiles = data.split("|");
  
  for (var i = 0; i < arrayFiles.length; i++){
