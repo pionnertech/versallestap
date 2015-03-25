@@ -949,6 +949,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var mode         = "";
     var user_send    = "";
     var stsk_send    = "";
+    var keyFile      = "";
     var dateTime
     var objeto;
     var dateTime;
@@ -1120,9 +1121,8 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".del-int").on('click', function(){
 
      mode = "first";
-
+     
 $("#del-int-req").data("val", $(this).index());
-
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 });
@@ -1395,10 +1395,9 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
 if(kind == "internal"){
-   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id;
+   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
 } else {
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
-
 }
 
 uploader =  $(object).pluploadQueue({
@@ -1545,6 +1544,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
                          if (mode != "first"){
                               assoc_collar_int(user, ind);
+
                          } else {
 
                             firstTask(result[0], des, result[1] , date, user);
@@ -2314,8 +2314,22 @@ return subs;
 document.getElementById("int-del").addEventListener("change" , function(){
        user_send = this.value;
        console.info(user_send);
-       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal"); 
+
+       if ( mode == "first"){
+
+           keyFile = RandomString(8);
+       }
+
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
+
 })
+
+function RandomString(length) {
+    
+    var str = '';
+    for ( ; str.length < length; str += Math.random().toString(36).substr(2) );
+    return str.substr(0, length);
+}
 
 </script>
 
