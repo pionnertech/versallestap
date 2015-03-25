@@ -436,7 +436,8 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                               <td class="cell-title">Responsable</td>
                                                               <td class="cell-time align-right">Fecha</td>
                                                             </tr>
-                               <? while($fila_int = mysqli_fetch_row($internal)){ 
+                               <? while($fila_int = mysqli_fetch_row($internal)) { 
+
                                         switch ($fila_int[4] ){
                                               case 'Pendiente':
                                               $class = "Pe-int";
@@ -528,8 +529,10 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                </a>
                                                     <? }
                                                             }
-                                                            closedir($handler);
-                                                    } ?>
+                                                            
+                                                    } 
+                                                    closedir($handler);
+                                                    ?>
                                                                     </div>
                                                                 </td>
                                                             </tr>
