@@ -596,7 +596,7 @@ var current_iss;
 var inner = 0;
 var progressbar;
 var previuosData =  <?  printf("\"" . $manu . "\"")  ?>  ;
-var previuosDataInt = 
+var previuosDataInt = <?  printf("\"" . $manu_int . "\"")  ?>  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 
 
