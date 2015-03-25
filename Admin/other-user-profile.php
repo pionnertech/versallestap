@@ -1545,9 +1545,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
                          if (mode != "first"){
                               assoc_collar_int(user, ind);
-
                          } else {
-
                             firstTask(result[0], des, result[1] , date, user);
                          }
                      });
@@ -2183,7 +2181,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
 
 
     td1.className = "cell-icon int-lock";
-    tr1.className = "task Ec";
+    tr1.className = "task Ec-int";
     td2.innerHTML = descript;
     td5.innerHTML = date;
     inp1.value    = stsk_ident;
@@ -2209,7 +2207,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     tr1.appendChild(inp1);
 
    //events
-/*
+
 i2.onclick = function(){
 
  mode = "del";
@@ -2246,8 +2244,8 @@ obj = $(this).children('i');
   })
 }
 }
-*/
-/*
+
+
 var tr2 = document.createElement('tr');
 var td_i1 = document.createElement('td');
 var p = document.createElement('p');
@@ -2293,8 +2291,8 @@ td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 tr2.appendChild(td_i1);
-*/
-  //parent_int.appendChild(tr2);
+
+  parent_int.appendChild(tr2);
   parent_int.appendChild(tr1);
 
 }
