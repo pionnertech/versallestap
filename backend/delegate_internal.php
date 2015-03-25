@@ -48,10 +48,14 @@ echo mysqli_error($datos);
      	 }
      }
   }
-  closedir($hdir);
+  
+}
+
+closedir($hdir);
 }
 
  echo mysqli_insert_id($datos) . "|" . $name['NAME'] . "|" . $outcome;
+
 
 
 }
