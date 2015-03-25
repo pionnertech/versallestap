@@ -4,9 +4,10 @@ $fac    = $_REQUEST['fac_id'];
 $user   = $_REQUEST['user'];
 $keyfile = $_REQUEST['keyfile'];
 
-if(!isset($keyfile)){
+if(!isset($keyfile) || $keyfile == "" || is_null($keyfile)){
 	$dir = "/var/www/html/" . $fac . "/" . $user . "_alt/";
 	$iss_id = $_REQUEST['stsk'];
+
 } else {
 	$dir = "/var/www/html/" . $fac . "/_tmp/";
 	$iss_id = $keyfile;

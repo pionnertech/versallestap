@@ -1782,13 +1782,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
             unlock(stsk, iss_id, $(this)); 
         }
        })
-          
-
     }
-
-
-
-
+    
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
              $(this).parent().parent().next().css({ display: "table-row"});
@@ -2318,6 +2313,8 @@ document.getElementById("int-del").addEventListener("change" , function(){
        if ( mode == "first"){
 
            keyFile = RandomString(8);
+       } else {
+          keyFile = "";
        }
 
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
