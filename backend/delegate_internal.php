@@ -33,8 +33,6 @@ echo mysqli_error($datos);
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
   if(isset($keyfile)){
-  	$stsk  = $keyfile;
-  }
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
@@ -44,6 +42,8 @@ echo mysqli_error($datos);
      	 	   move_uploaded_file($files, $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension);
      	 }
      }
+  }
+  closedir($hdir);
 }
 
  echo mysqli_insert_id($datos) . "|" . $name['NAME'];
