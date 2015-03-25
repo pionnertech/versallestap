@@ -11,6 +11,7 @@ $fac = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile = $_GET['keyfile'];
 $dir = "/var/www/html/" . $fac . "/" . $user . "_in/";
+$outcome = $keyfile . "|";
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -38,7 +39,7 @@ echo mysqli_error($datos);
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
-
+   $outcome .= $files . "|";
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
      	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);
      	 	   move_uploaded_file($files, $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension);
@@ -48,7 +49,7 @@ echo mysqli_error($datos);
   closedir($hdir);
 }
 
- echo mysqli_insert_id($datos) . "|" . $name['NAME'];
+ echo mysqli_insert_id($datos) . "|" . $name['NAME'] "|" . $outcome;
 
 
 }
