@@ -2181,7 +2181,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     var b1  = document.createElement('b');
     var inp1 = document.createElement('input');
 
-/*
+
     td1.className = "cell-icon int-lock";
     tr1.className = "task Ec";
     td2.innerHTML = descript;
@@ -2195,7 +2195,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     i1.className = "fa fa-exclamation";
     i1.style.color = "orange";
     i2.className = "fa fa-chevron-circle-right";
-    */
+    
     td1.appendChild(i1);
     td4.appendChild(i2);
     td3.appendChild(b1);
