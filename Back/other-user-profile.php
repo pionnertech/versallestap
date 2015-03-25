@@ -9,8 +9,11 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
 
-$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 ) ORDER BY STSK_ID DESC LIMIT 1";
+$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE= 0) ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+
+$str_query_int = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) ORDER BY STSK_ID DESC LIMIT 1";
+$notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
 $query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
@@ -20,6 +23,13 @@ if(!$notify){
 } else {
     
     $manu = $notify['STSK_DESCRIP'];
+}
+
+if(!$notify_int){
+     $manu_int = "";
+} else {
+    
+    $manu_int = $notify_int['STSK_DESCRIP'];
 }
 
 $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
@@ -586,6 +596,7 @@ var current_iss;
 var inner = 0;
 var progressbar;
 var previuosData =  <?  printf("\"" . $manu . "\"")  ?>  ;
+var previuosDataInt = 
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 
 
@@ -855,7 +866,7 @@ if(typeof(EventSource) !== "undefined") {
     var source = new EventSource("../backend/sse-event-back.php?usr=" + mainuser);
 
     source.onmessage = function(event) {
-      console.info("heartping");
+      console.info("internalheartping");
        var eventMessage = event.data.split('\n');
        console.info(eventMessage[2]);
     if(eventMessage[2] == "" ){
@@ -876,6 +887,35 @@ if(typeof(EventSource) !== "undefined") {
 } else {
 
 
+
+}
+
+if(typeof(EventSource) !== "undefined") {
+
+    var sourceInt = new EventSource("../backend/sse-int-back.php?usr=" + mainuser);
+
+    sourceInt.onmessage = function(event) {
+
+      console.info("heartping");
+       var eventMessage = event.data.split('\n');
+       console.info(eventMessage[2]);
+
+    if(eventMessage[2] == "" ){
+        previuosDataInt = "";
+    }
+   
+        if (eventMessage[2] !== previuosDataInt || eventMessage[2] !== ""){
+
+            previuosDataInt = eventMessage[2];
+
+                showAlert(eventMessage[2]);
+
+inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] );
+        }
+    }
+
+
+} else {
 
 }
 
