@@ -34,15 +34,17 @@ echo mysqli_error($datos);
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
   if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
+
   	$stsk_id = mysqli_insert_id($datos);
 
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
-   $outcome .= $files . "|";
+  
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
      	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);
-     	 	   move_uploaded_file($files, $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension);
+     	 	   if(move_uploaded_file($files,  . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
+     	 	   	    $outcome .= $files . "|";
      	 }
      }
   }
