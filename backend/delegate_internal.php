@@ -42,11 +42,12 @@ echo mysqli_error($datos);
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
-         $outcome .= $files . "-" . preg_match_all("/_\[" . $keyfile . "\]_/", $files) . "|";
+        
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
-     	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);                                            
-     	 	   if(move_uploaded_file($files,  $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
-     	 	   	    
+     	 	 $extension = pathinfo($files, PATHINFO_EXTENSION); 
+     	 	 $outcome .= $files . $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension) "|";                                 
+    if(move_uploaded_file("/var/www/html/" . $fac . "/_tmp/" . $files,  $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
+     	 	   	    $outcome = "yes" . "|";
      	 }
      }
   }
