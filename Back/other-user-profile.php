@@ -490,7 +490,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                             
                                             echo "<script>console.info('" . $fila_int[0] . "' + /---/ + '" . $archivos . "')</script>";
 
-                                         if(preg_match_all("/_[" . $fila_int[0] . "]_/", $archivos) == 1){
+                                         if(preg_match_all("/_\[" . $fila_int[0] . "\]_/", $archivos) == 1){
                                              
                                              $extension = substr($archivos, -3);
                                               $cor = "";
