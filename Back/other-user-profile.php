@@ -924,8 +924,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind){
 
 if(parseInt(kind) == 0){
    var parent =  document.querySelector("#ext-tasks-table tbody");
+   var specialUrl = "../backend/dynamics_JSON_files.php?usr_id=" + $("#muser").val() + "&iss_id=" + iss + "&fac=" + fac;
 } else {
    var parent =  document.querySelector("#int-table tbody");
+   var specialUrl = "../backend/files-int.php?usr_id=" + $("#muser").val() + "&iss_id=" + stsk + "&fac=" + fac;
 }
 
     var tr1 = document.createElement('tr');
@@ -1092,7 +1094,7 @@ if(parseInt(kind) == 0){
 $.ajax({     
 
           type: "POST",
-          url: "../backend/dynamics_JSON_files.php?usr_id=" + $("#muser").val() + "&iss_id=" + iss + "&fac=" + fac,
+          url: specialUrl,
           success: function(data){
 
          
