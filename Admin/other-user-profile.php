@@ -2294,8 +2294,12 @@ td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 tr2.appendChild(td_i1);
 
-  parent_int.appendChild(tr2);
-  parent_int.appendChild(tr1);
+parent_int.appendChild(tr1);
+parent_int.appendChild(tr2);
+
+insertAfter(tr2, tr1);
+  
+  
 
 }
 
