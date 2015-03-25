@@ -529,9 +529,9 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                </a>
                                                     <? }
                                                             }
-                                                            
+                                                        closedir($handler);    
                                                     } 
-                                                    closedir($handler);
+                                                    
                                                     ?>
                                                                     </div>
                                                                 </td>
