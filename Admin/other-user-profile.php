@@ -1783,7 +1783,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
         }
        })
     }
-    
+
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
              $(this).parent().parent().next().css({ display: "table-row"});
@@ -2248,7 +2248,7 @@ obj = $(this).children('i');
 }
 }
 */
-
+/*
 var tr2 = document.createElement('tr');
 var td_i1 = document.createElement('td');
 var p = document.createElement('p');
@@ -2294,7 +2294,7 @@ td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 tr2.appendChild(td_i1);
-
+*/
   parent_int.appendChild(tr2);
   parent_int.appendChild(tr1);
 
