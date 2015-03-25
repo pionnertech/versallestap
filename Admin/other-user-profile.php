@@ -2182,13 +2182,13 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
 
     td1.className = "cell-icon int-lock";
     tr1.className = "task Ec-int";
-
+    td3.className = "cell-status";
     td2.innerHTML = descript;
     td5.innerHTML = date;
     inp1.value    = stsk_ident;
     inp1.type     = "hidden";
     td4.className = "int-forward";
-    b.innerHTML = "En Curso";
+    b1.innerHTML = "En Curso";
     b1.className  = "due int-desglo"; 
     b1.style.backgroundColor = "#178FD0";
 
