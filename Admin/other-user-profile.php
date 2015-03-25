@@ -2171,9 +2171,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     var parent_int =  document.getElementById("int-body");
 
     var tr1 = document.createElement('tr');
-    
-    tr1.className = "task Ec";
-
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
@@ -2184,8 +2181,9 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     var b1  = document.createElement('b');
     var inp1 = document.createElement('input');
 
+/*
     td1.className = "cell-icon int-lock";
-
+    tr1.className = "task Ec";
     td2.innerHTML = descript;
     td5.innerHTML = date;
     inp1.value    = stsk_ident;
@@ -2197,7 +2195,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
     i1.className = "fa fa-exclamation";
     i1.style.color = "orange";
     i2.className = "fa fa-chevron-circle-right";
-    
+    */
     td1.appendChild(i1);
     td4.appendChild(i2);
     td3.appendChild(b1);
