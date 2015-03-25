@@ -855,9 +855,9 @@ if(typeof(EventSource) !== "undefined") {
     var source = new EventSource("../backend/sse-event-back.php?usr=" + mainuser);
 
     source.onmessage = function(event) {
-   
+      console.info("heartping");
        var eventMessage = event.data.split('\n');
-
+       console.info(eventMessage[2]);
     if(eventMessage[2] == "" ){
         previuosData = "";
     }
