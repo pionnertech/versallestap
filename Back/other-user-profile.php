@@ -12,6 +12,9 @@ $Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUB
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 ) ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
+$query_internal= "SELECT A.STSK_ID,  CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";
+$internal =  mysqli_query($datos, $query_internal);
+
 if(!$notify){
      $manu = "";
 } else {
@@ -408,13 +411,16 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
-                                                            <button class="btn">Atrasados</button>
+                                                            <button class="btn title-int">Atrasados</button>
                                                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                                             <span class="caret"></span>
                                                             </button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="#"></a></li>
-                                                                <li><a href="#">En Curso</a></li>
+                                                                <li class="swt-int" id="Pe-int"><a href="#">Pendientes</a></li>
+                                                                <li class="swt-int" id="Ec-int"><a href="#">En Curso</a></li>
+                                                                <li class="swt-int" id="Pv-int"><a href="#">Por Vencer</a></li>
+                                                                <li class="swt-int" id="At-int"><a href="#">Atrasados</a></li>
+                                                                <li class="swt-int" id="Hc-int"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -430,13 +436,104 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                               <td class="cell-title">Responsable</td>
                                                               <td class="cell-time align-right">Fecha</td>
                                                             </tr>
-                                                            <tr class="task">
-                                                                <td class="cell-icon"><i class="icon-checker high"></i></td>
-                                                                <td class="cell-title"><div>Enviar personal tecnico en terreno para verificar y reparar las fallas</div></td>
-                                                                <td class="cell-status hidden-phone hidden-tablet"><b class="due done">Hecho</b></td>
-                                                                <td class="cell-title">juanito perez</td>
-                                                                <td class="cell-time align-right"><div>19/04/2013</div></td>
+                               <? while($fila_int = mysqli_fetch_row($internal)){ 
+
+A.STSK_ID , A.STSK_ISS_ID,   A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE 
+
+
+                                        switch ($fila_int[4] ){
+                                              case 'Pendiente':
+                                              $class = "Pe-int";
+                                              break;
+                                              case 'En Curso':
+                                               $class = "Ec-int";
+                                              break;
+                                              case 'Finalizada':
+                                               $class = "Hc-int";
+                                              break;
+                                              case 'Atrasada':
+                                               $class = "At-int";
+                                              break;
+                                              case 'Por Vencer':
+                                              $class = "Pv-int";
+                                              break;
+                                          }
+
+                                ?>
+                                                            <tr class="task <? echo $class ?>">
+                                                            <input type="hidden" value="<? echo $fila_int[0] ?>" class="int-st">
+                                                            <input type="hidden" value="<? echo $fila_int[1] ?>" class="int-st-src">
+                                                                <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                                <td class="cell-title"><? echo $fila_int[3] ?></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila_int[6] ?> ; "><? echo $fila_int[4] ?></b></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila_int[8], 0, 10))) ?></td>
                                                             </tr>
+                                                        <tr style="display: none;">
+                                                                <td colspan="5">
+                                                                   <p>
+                                                                        <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
+                                                                    </p>
+                                                                    <div class="progress tight">
+                                                                        <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
+                                                                    </div>
+                                                                    <div class="file-contents">
+<?
+                              if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/")) {
+                                  
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/", 0775, true); 
+   
+                              } 
+
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos = readdir($handler))){
+                                            
+                                         if(preg_match_all("/_" . $fila_int[0] . "_/", $archivos) == 1){
+                                             
+                                             $extension = substr($archivos, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>_alt/<? printf($archivos)?>" class="down" download> 
+                                                                <p class="ifile" title="<? printf($archivos) ?>">
+                                                                   <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                                   <span class="iname" ></span>
+                                                                  </p>
+                                                               </a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <? } ?>
                                                            </tbody>
                                                     </table> 
                                             </div>
@@ -629,6 +726,23 @@ $(".switcher").on('click', function(){
 });
 
 
+$(".swt-int").on('click', function(){
+
+    var all_on = document.querySelectorAll('.swt-int');
+
+    var ex = $(this).attr("id");
+    var title_in = $(this).html();
+    $(".display-progress").css({ display: "none"});
+    $(".title-int").html(title_in);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+});
 
 
 function upprogress(val, user, stsk_id, iss_id, des, subject, index){
