@@ -873,7 +873,7 @@ if(typeof(EventSource) !== "undefined") {
         previuosData = "";
     }
    
-        if (eventMessage[2] !== previuosData || eventMessage[2] !== ""){
+        if (eventMessage[2] !== previuosData && eventMessage[2] !== ""){
 
             previuosData = eventMessage[2];
 
