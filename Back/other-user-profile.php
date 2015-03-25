@@ -858,7 +858,7 @@ if(typeof(EventSource) !== "undefined") {
    
        var eventMessage = event.data.split('\n');
 
-        if (eventMessage[2] !== previuosData || eventMessage[2] !== " "){
+        if (eventMessage[2] !== previuosData || eventMessage[2] !== ""){
 
             previuosData = eventMessage[2];
 
