@@ -10,6 +10,8 @@ $startD = $_GET['startD'];
 $fac = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile = $_GET['keyfile'];
+
+
 $dir = "/var/www/html/" . $fac . "/" . $user . "_in/";
 $outcome = $keyfile . "|";
 
@@ -40,11 +42,11 @@ echo mysqli_error($datos);
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
-  
+         $outcome .= $files . "-" . preg_match_all("/_\[" . $keyfile . "\]_/", $files) . "|";
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
-     	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);
+     	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);                                            
      	 	   if(move_uploaded_file($files,  $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
-     	 	   	    $outcome .= $files . "|";
+     	 	   	    
      	 }
      }
   }
