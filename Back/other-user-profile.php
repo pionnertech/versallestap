@@ -526,10 +526,14 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                    <span class="iname" ></span>
                                                                   </p>
                                                                </a>
+                                                    <? }
+                                                            }
+                                                            closedir($handler);
+                                                    } ?>
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <? } ?>
+                                                    <? } ?>
                                                            </tbody>
                                                     </table> 
                                             </div>
