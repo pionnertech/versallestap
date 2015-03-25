@@ -427,7 +427,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                             <div class="pull-right"></div>
                                             </div>
                                             <div class="module-body table">
-                                                   <table class="table table-message">
+                                                   <table class="table table-message" id="int-table">
                                                       <tbody>
                                                           <tr class="heading">
                                                               <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
@@ -868,7 +868,7 @@ if(typeof(EventSource) !== "undefined") {
 
                 showAlert(eventMessage[2]);
      
-                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3], eventMessage[6], eventMessage[5] );
+                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3], eventMessage[6], eventMessage[5] , eventMessage[7] );
         }
     }
 
@@ -879,9 +879,14 @@ if(typeof(EventSource) !== "undefined") {
 }
 
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind){
 
-    var parent =  document.querySelector("#ext-tasks-table tbody");
+
+if(parseInt(kind) == 0){
+   var parent =  document.querySelector("#ext-tasks-table tbody");
+} else {
+   var parent =  document.querySelector("#int-table tbody");
+}
 
     var tr1 = document.createElement('tr');
     tr1.className = "task";
