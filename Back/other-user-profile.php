@@ -857,8 +857,7 @@ if(typeof(EventSource) !== "undefined") {
     source.onmessage = function(event) {
    
        var eventMessage = event.data.split('\n');
-       console.info(eventMessage[2] == "" + " es vacio");
-       console.info(eventMessage[2] == " " + " es espacio");
+
     if(eventMessage[2] == "" ){
         previuosData = "";
     }
