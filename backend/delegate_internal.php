@@ -43,7 +43,7 @@ echo mysqli_error($datos);
   
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
      	 	   $extension = pathinfo($files, PATHINFO_EXTENSION);
-     	 	   if(move_uploaded_file($files,  . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
+     	 	   if(move_uploaded_file($files,  $dir . basename($files, "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
      	 	   	    $outcome .= $files . "|";
      	 }
      }
