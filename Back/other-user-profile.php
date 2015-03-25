@@ -927,7 +927,7 @@ if(parseInt(kind) == 0){
    var specialUrl = "../backend/dynamics_JSON_files.php?usr_id=" + $("#muser").val() + "&iss_id=" + iss + "&fac=" + fac;
 } else {
    var parent =  document.querySelector("#int-table tbody");
-   var specialUrl = "../backend/files-int.php?usr_id=" + $("#muser").val() + "&iss_id=" + stsk + "&fac=" + fac;
+   var specialUrl = "../backend/files_int.php?usr_id=" + $("#muser").val() + "&iss_id=" + stsk + "&fac=" + fac;
 }
 
     var tr1 = document.createElement('tr');
