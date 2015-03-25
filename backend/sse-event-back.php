@@ -26,6 +26,7 @@ $manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
 sleep(1);
 
+
 echo "data:" . $manu['STSK_ID'] . "\n";
 echo "data:" . $manu['STSK_ISS_ID'] . "\n";
 echo "data:" . $manu['STSK_DESCRIP'] . "\n";
