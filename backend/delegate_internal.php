@@ -33,6 +33,8 @@ echo mysqli_error($datos);
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
   if(isset($keyfile)){
+  	$stsk_id = mysqli_insert_id($datos);
+
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
 
         while (false !== ($files = readdir($hdir))){
