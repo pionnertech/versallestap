@@ -466,7 +466,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila_int[8], 0, 10))) ?></td>
                                                             </tr>
-                                                        <tr style="display: none;">
+                                                        <tr class="display-progress" style="display: none;">
                                                                 <td colspan="5">
                                                                    <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
@@ -855,9 +855,9 @@ if(typeof(EventSource) !== "undefined") {
     var source = new EventSource("../backend/sse-event-back.php?usr=" + mainuser);
 
     source.onmessage = function(event) {
-
+   
        var eventMessage = event.data.split('\n');
-     
+       console.info(eventMessage[2]);
         if (eventMessage[2] !== previuosData){
 
             previuosData = eventMessage[2];
@@ -1054,7 +1054,7 @@ $.ajax({
     a           = document.createElement('a');
     a.href      = "../" + fac + "/" + $("#muser").val() + "/" + arrayFiles[i];
     a.className = "down";
-    a.setAttribute('download');
+    a.setAttribute('download', true);
    
     pS = document.createElement('p');
     pS.className = "ifile";
