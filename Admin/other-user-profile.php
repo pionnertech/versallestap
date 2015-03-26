@@ -1996,7 +1996,7 @@ function updateProgress(subject, descript, percent, date, userId, usr_name, ind,
 
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk);
 
-document.querySelector("#ext-tasks-table .bar")[ind].style.width = percent + "%";
+document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 
 var parent = document.querySelector("#del-partners");
 
