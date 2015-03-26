@@ -2,9 +2,6 @@
 
 $a = $_GET['usr'];
 
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $str_query = "SELECT A.STSK_ID, " .
@@ -19,26 +16,17 @@ $str_query = "SELECT A.STSK_ID, " .
 " FROM SUBTASKS A INNER JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) INNER JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
 
-
-while(true){
-
 $manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+echo $manu['STSK_ID'] . "|";
+echo $manu['STSK_ISS_ID'] . "|";
+echo $manu['STSK_DESCRIP'] . "|";
+echo $manu['ISS_DESCRIP'] . "|";
+echo $manu['NAME'] . "|";
+echo date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "|";
+echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
+echo $manu['STSK_TYPE'];
 
-sleep(1);
 
-
-echo "data:" . $manu['STSK_ID'] . "\n";
-echo "data:" . $manu['STSK_ISS_ID'] . "\n";
-echo "data:" . $manu['STSK_DESCRIP'] . "\n";
-echo "data:" . $manu['ISS_DESCRIP'] . "\n";
-echo "data:" . $manu['NAME'] . "\n";
-echo "data:" . date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "\n";
-echo "data:" . date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "\n";
-echo "data:" . $manu['STSK_TYPE'] . "\n\n";
-
-ob_end_flush();
-flush();
-}
 
 ?>
 
