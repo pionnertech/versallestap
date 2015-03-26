@@ -11,14 +11,14 @@ $news = mysqli_query($datos, $query);
 
 if (mysqli_num_rows($news) == 0){
 
-$user_out1 = "0";
-$user_out2 = "0";
-$user_out3 = "0";
-$user_out4 = "0";
-$user_out5 = "0";
-$user_out6 = "0";
-$user_out7 = "0";
-$user_out8 = "0";
+$user_out1 = 0;
+$user_out2 = 0;
+$user_out3 = 0;
+$user_out4 = 0;
+$user_out5 = 0;
+$user_out6 = 0;
+$user_out7 = 0;
+$user_out8 = 0;
 
 } else {
 
@@ -59,7 +59,6 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_
 
 }
 
-
 echo  $user_out1 ;
 echo "|" . $user_out2 ;
 echo "|" . $user_out3 ;
@@ -69,18 +68,12 @@ echo "|" . $user_out6 ;
 echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 
-ob_end_flush();
-flush();
 
 $sum = 0;
 
 
 //GEt the Last User that grow up his progress
  
-
-
-
-
 
 
 ?>
