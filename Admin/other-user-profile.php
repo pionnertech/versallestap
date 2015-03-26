@@ -1136,15 +1136,12 @@ $("#up-int").empty();
 
 
 $("#send-int").on('click', function(){
-
 if (mode == "first"){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0 );
- 
 } else {
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
-}
-    
-})
+}  
+});
 
 
 
@@ -1514,6 +1511,7 @@ uploader =  $(object).pluploadQueue({
 
 function intDel(user, sub, des, date, ind, mst){
 
+console.info(ind);
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
