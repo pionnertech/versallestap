@@ -1643,7 +1643,6 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
     setInterval(function(){
-
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
@@ -1658,12 +1657,9 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             }
         })
     }, 3000);
-
     
 if(typeof(EventSource) !== "undefined") {
-
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    
     source.onmessage = function(event) {
        var eventMessage = event.data.split('\n');
        if (eventMessage[0] !== previuosData){
@@ -1673,7 +1669,6 @@ if(typeof(EventSource) !== "undefined") {
         previuosData = eventMessage[0];
     } 
 }
-
 } else {
 
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
@@ -2001,7 +1996,7 @@ function updateProgress(subject, descript, percent, date, userId, usr_name, ind,
 
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk);
 
-document.querySelector(".ext-tasks-table .bar")[ind].style.width = percent + "%";
+document.querySelector("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 
 var parent = document.querySelector("#del-partners");
 
