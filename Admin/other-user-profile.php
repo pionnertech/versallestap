@@ -2041,7 +2041,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
 
   // style and attr assigments
 
-       tr_usr.className = "u" + user + " utrf";
+       tr_usr.className = "u" + userId + " utrf";
        td_usr.colSpan = 3;
        div_usr1.className = "user-schedule";
        div_usr2.className = "media";
@@ -2050,7 +2050,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        a_usr.style.width = "4em";
        a_usr.style.height = "4em";
        a_usr.title = usr_name;
-       img_usr.src = "../img/" + usr_id + ".jpg";
+       img_usr.src = "../img/" + usrId + ".jpg";
        img_usr.style.width = "100%";
        img_usr.style.height = "100%";
 
@@ -2061,7 +2061,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + usr_id;
+       tr_usr2.className = "task u" + usrId;
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
