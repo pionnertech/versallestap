@@ -861,37 +861,25 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
         return false;
     }
 
-if(typeof(EventSource) !== "undefined") {
+setInterval(function(){
+    $.ajax({ type: "POST", 
+            url: "../backend/sse-event-back.php?usr=" + mainuser,
+            success : function(data){
+                     var msgExt = data.split('\n');
+                         if(msgExt[2] == "" ){
+                                previuosData = "";
+                            } 
+                         if (msgExt[2] !== previuosData && msgExt[2] !== ""){
+                                previuosData = msgExt[2];
+                                     showAlert(msgExt[2]);
+                                        inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] );
+                            }
 
-    var source = new EventSource("../backend/sse-event-back.php?usr=" + mainuser);
-
-    source.onmessage = function(event) {
- 
-       var eventMessage = event.data.split('\n');
-        
-        console.info(eventMessage[2]);
-
-    if(eventMessage[2] == "" ){
-
-        previuosData = "";
-    }
-   
-        if (eventMessage[2] !== previuosData && eventMessage[2] !== ""){
-
-            previuosData = eventMessage[2];
-
-                showAlert(eventMessage[2]);
-     
-                    inputTask(eventMessage[2], eventMessage[0], eventMessage[1], eventMessage[4], eventMessage[3], eventMessage[6], eventMessage[5] , eventMessage[7] );
-        }
-    }
+                    }
+        })
+}, 3000);
 
 
-} else {
-
-
-
-}
 
 if(typeof(EventSource) !== "undefined") {
 
