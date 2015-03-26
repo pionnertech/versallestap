@@ -1650,7 +1650,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             success: function(data){
                 packets = data.split("|");
 
-                console.info(parseInt(packets[0]);
+                console.info(parseInt(packets[0]));
 
                  if(parseInt(packets[0]) !== 0 ){
                        showAlert(packets[2], "pro", packets[0]);
