@@ -1000,8 +1000,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
 $(".int-forward").click(function(){
 
+dateTime = AmericanDate($(this).next().html());
 
-       mode = "del";
+       mode = "delegate";
  var indice = $(this).index();
  var ids    = $(this).parent().children('input').val();
 
@@ -1159,16 +1160,6 @@ $("#delegates").on('change', function(){
     $("#stsk-user").val($("#delegates").val());
 
 });
-
-});
-
-
-$("")
-
-
-$(".int-forward").on('click', function(){
-
-   dateTime = AmericanDate($(this).next().html());
 
 });
 
@@ -2212,7 +2203,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id){
 
 i2.onclick = function(){
 
- mode = "del";
+ mode = "delegate";
  var indice = $(this).index();
  var ids    = $(this).parent().children('input').val();
 
@@ -2235,7 +2226,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 td1.onclick = function (){
-    
+
     var obj = $(this).children('i');
     var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
