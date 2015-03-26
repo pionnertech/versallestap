@@ -868,8 +868,11 @@ if(typeof(EventSource) !== "undefined") {
     source.onmessage = function(event) {
  
        var eventMessage = event.data.split('\n');
-       
+        
+        console.info(eventMessage[2]);
+
     if(eventMessage[2] == "" ){
+
         previuosData = "";
     }
    
@@ -897,7 +900,7 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-       console.info(eventMessage[2] === previuosDataInt );
+       console.info(eventMessage[2]);
 
     if(eventMessage[2] == "" ){
 
@@ -1096,6 +1099,7 @@ $.ajax({
           type: "POST",
           url: specialUrl,
           success: function(data){
+            
     console.info(data);
     console.info(specialUrl);
 

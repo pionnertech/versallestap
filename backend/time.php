@@ -60,14 +60,14 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_
 }
 
 
-echo "data :" . $user_out1 .  "\n";
-echo "data :" . $user_out2 .  "\n";
-echo "data :" . $user_out3 .  "\n";
-echo "data :" . $user_out4 .  "\n";
-echo "data :" . $user_out5 .  "\n";
-echo "data :" . $user_out6 .  "\n";
-echo "data :" . $user_out7 .  "\n";
-echo "data :" . $user_out8 .  "\n\n";
+echo  $user_out1 ;
+echo "|" . $user_out2 ;
+echo "|" . $user_out3 ;
+echo "|" . $user_out4 ;
+echo "|" . $user_out5 ;
+echo "|" . $user_out6 ;
+echo "|" . $user_out7 ;
+echo "|" . $user_out8 ;
 
 ob_end_flush();
 flush();

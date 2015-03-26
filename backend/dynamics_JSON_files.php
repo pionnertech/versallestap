@@ -4,7 +4,6 @@ $a = $_GET['usr_id'],
 $iss_id = $_GET['iss_id'];
 $fac = $_GET['fac'];
 
-
 if($hdir = opendir("/var/www/html/" . $fac . "/" . $a . "/")){
 
      while (false !== ($files = readdir($hdir))){

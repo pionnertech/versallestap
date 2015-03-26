@@ -367,8 +367,6 @@ vertical-align: top;
                                                 <div class="bar forward"></div>
                                             </div>
                                         <div class="files">
-                                            
-
                                         </div>
                                         <i class="fa fa-chevron-down fa-2x" id="table-show"></i>
                                         <div class="itinerario">
@@ -380,7 +378,6 @@ vertical-align: top;
                                                     <td>Fecha</td>
                                                 </tr>
                                                 <tbody id="black-belt">
-
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
@@ -390,7 +387,6 @@ vertical-align: top;
                                                 </tbody>
                                             </table>
                                         </div>
-
                                         <pre class="pre">
 
                                         </pre>
