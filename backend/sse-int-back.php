@@ -1,10 +1,6 @@
 <?php
 
 $a = $_GET['usr'];
-
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $str_query = "SELECT STSK_ID, " .
@@ -17,22 +13,16 @@ $str_query = "SELECT STSK_ID, " .
 " FROM SUBTASKS  " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
 
-while(true){
-
 $manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
-sleep(1);
 
-echo "data:" . $manu['STSK_ID'] . "\n";
-echo "data:" . $manu['STSK_ISS_ID'] . "\n";
-echo "data:" . $manu['STSK_DESCRIP'] . "\n";
-echo "data:" . date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "\n";
-echo "data:" . date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "\n";
-echo "data:" . $manu['STSK_TYPE'] . "\n\n";
+echo $manu['STSK_ID'] . "|";
+echo $manu['STSK_ISS_ID'] . "|";
+echo $manu['STSK_DESCRIP'] . "|";
+echo date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "|";
+echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
+echo $manu['STSK_TYPE'];
 
-ob_end_flush();
-flush();
-}
 
 ?>
 

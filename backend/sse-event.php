@@ -18,11 +18,11 @@ $manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
 sleep(1);
 
-echo "data:" . $manu['STSK_DESCRIP'] . "\n";
-echo "data:" . $manu['STSK_ID'] . "\n";
-echo "data:" . $manu['ISS_DESCRIP'] . "\n";
-echo "data:" . $manu['ISS_ID'] . "\n";
-echo "data:" . $manu['NAME'] . "\n\n";
+echo $manu['STSK_DESCRIP'] . "|";
+echo $manu['STSK_ID'] . "|";
+echo $manu['ISS_DESCRIP'] . "|";
+echo $manu['ISS_ID'] . "|";
+echo $manu['NAME'];
 
 ob_end_flush();
 flush();
