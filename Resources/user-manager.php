@@ -351,7 +351,7 @@ $.ajax({
         $(".in-controls input").val('');
         bootbox.alert("Usuario ingresado con exito");
 
-        createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(),  )
+        createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() )
     }
 })
 
