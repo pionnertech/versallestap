@@ -282,7 +282,7 @@ $(this).children().first().keypress(function (e) {
 
 $("input[type=password]").on('input paste keydown keypress', function(){
 
-if ($("input[type=password]")).eq(0) !== $("input[type=password]")).eq(1)){
+if($("input[type=password]").eq(0) !== $("input[type=password]").eq(1)) {
     $("#signal").removeClass("fa-check-circle");
     $("#signal").addClass("fa-times-circle").css({ color: "red"});
 } else {
