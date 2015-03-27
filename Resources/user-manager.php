@@ -32,7 +32,10 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
      .in-controls input {
         width:100%;
      }
-
+     .user-pic{
+        max-width:8em;
+        border-radius: 50%;
+     }
 
        </style>
     </head>
@@ -117,8 +120,8 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                          <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 0 0 .5em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
                                       </div>
                                     </div>
-                                 <div style="display: inline-block; vertical-align: top;">
-                                   <div class="user-box">
+                                 <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
+                                   <div class="user-box" style="display">
                                        <div class="user-pic-box">
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
