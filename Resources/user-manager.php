@@ -37,6 +37,10 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         max-width:8em;
         border-radius: 50%;
      }
+     #signal{
+        webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out
+     }
+     
 
        </style>
     </head>
@@ -113,7 +117,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                         <span class="add-on">@</span>
                                            <input style="width: 93%" type="text" placeholder="Correo electronico" id="uEma" >
                                       </div>
-                                      <div class="in-controls input-prepend" align="left">
+                                      <div class="in-controls input-prepend" align="left" style="border: 8px solid white">
                                         <span class="add-on"><i class="fa fa-building"></i></span>
                                            <input style="width: 93%" type="text" placeholder="Departamento" id="uDep" >
                                       </div>
@@ -121,7 +125,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                       <div class="in-controls" align="left">
-                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8">
+                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8" style="max-width: 104%;">
                                                   <option value="admin">Administrador</option>
                                                   <option value="front-user">Atención a Público</option>
                                                   <option value="back-user">Administrativo</option>
@@ -130,6 +134,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                     <div class="in-controls" align="left">
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
+                                         <span><i id="signal" class="fa fa-2x"></i></span>
                                       </div>
                                     </div>
                                  <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
@@ -273,6 +278,20 @@ $(this).children().first().keypress(function (e) {
 */
 
 //colletion of data 
+
+
+$("input[type=password]").on('input paste keydown keypress', function(){
+
+if ($("input[type=password]")).eq(0) !== $("input[type=password]")).eq(1)){
+    $("#signal").removeClass("fa-check-circle");
+    $("#signal").addClass("fa-times-circle").css({ color: "red"});
+} else {
+    $("#signal").removeClass("fa-times-circle")
+    $("#signal").addClass("fa-check-circle").css({ color: "green"});
+}
+  
+});
+
 $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
            if(check()){
@@ -310,6 +329,9 @@ var reg = /^\ /g;
    if( $(".in-controls input").eq(i).val() == "" || $(".in-controls input").eq(i).val().test(reg) == true){
       return $(".in-controls input").eq(i).attr("placeholder");
    }
+   if($("input[type=password]")).eq(0) !== $("input[type=password]")).eq(1)){
+    return "claves no coinciden";
+}
    return true;
 }
 }
