@@ -18,13 +18,14 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="../css/theme.css" rel="stylesheet">
         <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
             rel='stylesheet'>
 
        <style type="text/css">
 
      .in-controls{
-        width:50%;
+        width:90%;
         display: block;
         margin: 1em 0;
      }
@@ -112,12 +113,16 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                         <span class="add-on">@</span>
                                            <input style="width: 93%" type="text" placeholder="Correo electronico" id="uEma" >
                                       </div>
+                                      <div class="in-controls input-prepend" align="left">
+                                        <span class="add-on"><i class="fa fa-building"></i></span>
+                                           <input style="width: 93%" type="text" placeholder="Departamento" id="uEma" >
+                                      </div>
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                     <div class="in-controls" align="left">
-                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 .5em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
-                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 0 0 .5em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
+                                         <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
+                                         <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
                                       </div>
                                     </div>
                                  <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
@@ -130,6 +135,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        </form>
                                    </div>
                                   </div>
+                                  <button id="enter-user" class="btn btn-success">Ingresar usuario</button>
                                  </div>
                              <div class="module-head">
                                     <h3>
@@ -259,6 +265,20 @@ $(this).children().first().keypress(function (e) {
   });    
 */
 
+//colletion of data 
+$("#enter-user").on('click', function(){
+      bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
+           if(check()){
+            
+           } else {
+             bootbox.alert("Falto el siguiente campo: " + check() );
+           }
+
+      })
+})
+$(".in-controls").eq()
+
+
 $("uEma").on("input paste keydown keypress", function (){
     if(!IsEmail($(this).val())){
         $(this).css({ color : "red"});
@@ -271,6 +291,47 @@ $("uEma").on("input paste keydown keypress", function (){
 function IsEmail(email){
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return regex.test(email);
+}
+
+//check if everything its ok...
+
+function check(){
+
+
+for (var i = 0; i < $(".in-controls input").length; i++) {
+var reg = /^\ /g;
+   if( $(".in-controls input").eq(i).val() == "" || $(".in-controls input").eq(i).val().test(reg) == true){
+      return $(".in-controls input").eq(i).attr("placeholder");
+   }
+   return true;
+}
+}
+
+function recordUser(){
+
+$.ajax({
+    type: "POST", 
+    url: "../backend/setUser.php?uNam=" + $("#uNam").val() +
+    "&uSur=" + $("#uSur").val() + 
+    "&uEma" + $("#uEma").val() +
+    "&uNic=" + $("#uNic").val() +
+    "&uPas=" + $("#uPas").val(), 
+    success : function (reply) {
+        $(".in-controls input").val('');
+        bootbox.alert("Usuario ingresado con exito");
+    }
+})
+
+
+
+}
+
+
+function createRow(usr, dept){
+
+
+
+
 }
 
 </script>
