@@ -97,7 +97,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                       <div class="span9">
                          <div class="content">
                              <div class="module">
-                                  <div class="module-body">
+                                  <div class="module-body" style="display: inline-block: vertical-align: top;">
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder= "Nombres" id="uNam">
                                       </div>
