@@ -102,7 +102,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                          <div class="content">
                              <div class="module">
                                   <div class="module-body" >
-                                    <div style="display: inline-block; vertical-align: top;">
+                                    <div style="display: inline-block; vertical-align: top; width: 50%">
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder= "Nombres" id="uNam">
                                       </div>
@@ -121,7 +121,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                       <div class="in-controls" align="left">
-                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8 uRan">
+                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8">
                                                   <option value="admin">Administrador</option>
                                                   <option value="front-user">Atención a Público</option>
                                                   <option value="back-user">Administrativo</option>
