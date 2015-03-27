@@ -329,7 +329,7 @@ var reg = /^\ /g;
    if( $(".in-controls input").eq(i).val() == "" || $(".in-controls input").eq(i).val().test(reg) == true){
       return $(".in-controls input").eq(i).attr("placeholder");
    }
-   if($("input[type=password]")).eq(0) !== $("input[type=password]")).eq(1)){
+   if($("input[type=password]").eq(0) !== $("input[type=password]").eq(1)){
     return "claves no coinciden";
 }
    return true;
