@@ -97,7 +97,8 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                       <div class="span9">
                          <div class="content">
                              <div class="module">
-                                  <div class="module-body" style="display: inline-block: vertical-align: top;">
+                                  <div class="module-body" >
+                                    <div style="display: inline-block; vertical-align: top;">
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder= "Nombres" id="uNam">
                                       </div>
@@ -115,7 +116,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                          <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 .5em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 0 0 .5em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
                                       </div>
-                                  </div>
+                                    </div>
                                  <div style="display: inline-block; vertical-align: top;">
                                    <div class="user-box">
                                        <div class="user-pic-box">
@@ -125,8 +126,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input type="file" id="user-pic-url">
                                        </form>
                                    </div>
-
-
+                                  </div>
                                  </div>
                              <div class="module-head">
                                     <h3>
