@@ -120,11 +120,13 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
-                                     <select tabindex="1" data-placeholder="Jerarquia" class="span8 uRan">
-                                           <option value="admin">Administrador</option>
-                                           <option value="front-user">Atención a Público</option>
-                                           <option value="back-user">Administrativo</option>
-                                      </select>
+                                      <div class="in-controls" align="left">
+                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8 uRan">
+                                                  <option value="admin">Administrador</option>
+                                                  <option value="front-user">Atención a Público</option>
+                                                  <option value="back-user">Administrativo</option>
+                                             </select>
+                                      </div>
                                     <div class="in-controls" align="left">
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
