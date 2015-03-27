@@ -53,6 +53,9 @@ switch ($outcome['USR_RANGE']) {
 	case "back-user":
 	     echo "<script language='javascript'>window.location='../Back/other-user-profile.php'</script>";
 	break;
+	case "rrhh":
+	     echo "<script language='javascript'>window.location='../Resources/user-manager.php'</script>";
+	break;
 
 }
 

@@ -145,7 +145,6 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                         </thead>
                                         <tbody>
                                         <? 
-                                   SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT 
                                         while ($users = mysqli_fetch_row( $all_users)){ ?>
                                             <tr class="gradeA">
                                             <input type="hidden" value="<? printf ($users[0]) ?>" id="iss_id">
@@ -209,14 +208,11 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="../scripts/bootbox.min.js" type="text/javascript" ></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../scripts/common.js" type="text/javascript"></script>
     </body>
 </html>
 <script type="text/javascript">
     
-
-
-
-
 
 function IsEmail(email){
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
