@@ -132,9 +132,9 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                              </select>
                                       </div>
                                     <div class="in-controls" align="left">
-                                         <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
-                                         <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
-                                         <span ><i style="display: inline-block; vertical-align: top; " id="signal" class="fa fa-2x"></i></span>
+                                         <div style="width:43%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
+                                         <div style="width:43%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
+                                         <span style="display: inline-block; vertical-align: top; " ><i  id="signal" class="fa fa-2x"></i></span>
                                       </div>
                                     </div>
                                  <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
@@ -282,7 +282,7 @@ $(this).children().first().keypress(function (e) {
 
 $("input[type=password]").on('input paste keydown keypress', function(){
 
-if($("input[type=password]").eq(0) !== $("input[type=password]").eq(1)) {
+if($("input[type=password]").eq(0).val() != $("input[type=password]").eq(1).val()) {
     $("#signal").removeClass("fa-check-circle");
     $("#signal").addClass("fa-times-circle").css({ color: "red"});
 } else {
@@ -329,7 +329,7 @@ var reg = /^\ /g;
    if( $(".in-controls input").eq(i).val() == "" || $(".in-controls input").eq(i).val().test(reg) == true){
       return $(".in-controls input").eq(i).attr("placeholder");
    }
-   if($("input[type=password]").eq(0) !== $("input[type=password]").eq(1)){
+   if($("input[type=password]").eq(0).val() !== $("input[type=password]").eq(1).val()){
     return "claves no coinciden";
 }
    return true;
