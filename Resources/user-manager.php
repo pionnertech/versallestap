@@ -134,7 +134,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                     <div class="in-controls" align="left">
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
-                                         <span><i id="signal" class="fa fa-2x"></i></span>
+                                         <span ><i style="display: inline-block; vertical-align: top; " id="signal" class="fa fa-2x"></i></span>
                                       </div>
                                     </div>
                                  <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
@@ -286,7 +286,7 @@ if($("input[type=password]").eq(0) !== $("input[type=password]").eq(1)) {
     $("#signal").removeClass("fa-check-circle");
     $("#signal").addClass("fa-times-circle").css({ color: "red"});
 } else {
-    $("#signal").removeClass("fa-times-circle")
+    $("#signal").removeClass("fa-times-circle");
     $("#signal").addClass("fa-check-circle").css({ color: "green"});
 }
   
