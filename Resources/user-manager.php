@@ -115,11 +115,16 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                       </div>
                                       <div class="in-controls input-prepend" align="left">
                                         <span class="add-on"><i class="fa fa-building"></i></span>
-                                           <input style="width: 93%" type="text" placeholder="Departamento" id="uEma" >
+                                           <input style="width: 93%" type="text" placeholder="Departamento" id="uDep" >
                                       </div>
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
+                                     <select tabindex="1" data-placeholder="Jerarquia" class="span8 uRan">
+                                           <option value="admin">Administrador</option>
+                                           <option value="front-user">Atención a Público</option>
+                                           <option value="back-user">Administrativo</option>
+                                      </select>
                                     <div class="in-controls" align="left">
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:45%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
@@ -163,7 +168,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="user-table">
                                         <? 
                                         while ($users = mysqli_fetch_row( $all_users)){ ?>
                                             <tr class="gradeA">
@@ -313,12 +318,16 @@ $.ajax({
     type: "POST", 
     url: "../backend/setUser.php?uNam=" + $("#uNam").val() +
     "&uSur=" + $("#uSur").val() + 
+    "&uDep=" + $("#uDep").val() + 
     "&uEma" + $("#uEma").val() +
+    "&uRan=" + $("#uRan").val() +
     "&uNic=" + $("#uNic").val() +
     "&uPas=" + $("#uPas").val(), 
     success : function (reply) {
         $(".in-controls input").val('');
         bootbox.alert("Usuario ingresado con exito");
+
+        createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(),  )
     }
 })
 
@@ -327,13 +336,51 @@ $.ajax({
 }
 
 
-function createRow(usr, dept){
+function createRow(usrId, usr_name, dept, range, nic,  pass ){
+
+var parent = document.querySelector("#user-table");
+
+var tr = document.createElement('tr');
+var inp = document.createElement('input');
+var td1 = document.createElement('td');
+var td2 = document.createElement('td');
+var td3 = document.createElement('td');
+var td4 = document.createElement('td');
+var td5 = document.createElement('td');
+
+ino.value = usrId;
+td1.innerHTML = usr_name;
+td2.innerHTML = dept;
+td3.innerHTML = range;
+td4.innerHTML = nic;
+td5.innerHTML = pass;
 
 
+td1.ondbclick = function(){ changeVal() }
+td2.ondbclick = function(){ changeVal() }
+td3.ondbclick = function(){ changeVal() }
+td4.ondbclick = function(){ changeVal() }
+td5.ondbclick = function(){ changeVal() }
+
+tr.appendChild(td1);
+tr.appendChild(td2);
+tr.appendChild(td3);
+tr.appendChild(td4);
+tr.appendChild(td5);
+//attach event
+
+parent.appendChild(tr);
 
 
 }
 
+function changeVal(){
+
+    var OriginalContent = this.innerHTML;
+    this.innerHTML = '<input type="text" value="' + OriginalContent + '">"';
+
+
+}
 </script>
 
 <?
