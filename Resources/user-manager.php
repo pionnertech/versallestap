@@ -1,9 +1,9 @@
 <?php session_start();
 
-if(isset($_SESSION['TxtCode']) && $_SEESION['TxtRange'] == "rrhh"){
+if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == "rrhh"){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT FROM USERS WHERE USR_FAC_CODE = " . $_SESSION['TxtFacility'] );
+$all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility'] );
 
 ?>
 
@@ -13,7 +13,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Task!</title>
+        <title>Gestión de Personas</title>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="../css/theme.css" rel="stylesheet">
@@ -112,11 +112,22 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                     <div class="in-controls" align="left">
-                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 .5em 0 0"><input type="text" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
-                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 0 0 .5em"><input type="text" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
+                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 .5em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
+                                         <div style="width:auto; display: inline-block; vertical-align: top; margin: 0 0 0 .5em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
                                       </div>
                                   </div>
-                             </div>
+                                 <div style="display: inline-block; vertical-align: top;">
+                                   <div class="user-box">
+                                       <div class="user-pic-box">
+                                           <img src="../images/user.png" class="user-pic">
+                                       </div>
+                                       <form>
+                                           <input type="file" id="user-pic-url">
+                                       </form>
+                                   </div>
+
+
+                                 </div>
                              <div class="module-head">
                                     <h3>
                                         DataTables</h3>
@@ -170,19 +181,19 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                         <tfoot>
                                             <tr>
                                                 <th>
-                                                    Asunto
+                                                    Nombre
                                                 </th>
                                                 <th>
-                                                    Ciudadano
+                                                    Depto
                                                 </th>
                                                 <th>
-                                                    Encargado
+                                                    Rango
                                                 </th>
                                                 <th>
-                                                    Situación
+                                                    Usuario
                                                 </th>
                                                 <th>
-                                                    Fecha Finalización
+                                                    Contraseña
                                                 </th>
                                             </tr>
                                         </tfoot>
@@ -212,7 +223,47 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
     </body>
 </html>
 <script type="text/javascript">
-    
+   
+/*
+ $("span.promo-table").dblclick( function() { 
+
+  var OriginalContent = $(this).text();
+  var row = $(this).parent().parent().children('input').val();
+  var field =  $(this).parent().index();
+if (field !== 2){
+$(this).addClass("cellEditing"); 
+    $(this).html("<input type='text' value='" + OriginalContent + "' />");
+        $(this).children().first().focus(); 
+
+$(this).children().first().keypress(function (e) { 
+        if (e.which == 13) { 
+            console.info('llega');
+            var newContent = $(this).val();
+            console.info(row + "/" + newContent + "/" + field);
+                promoPanel(row, newContent, field)
+                     $(this).parent().text(newContent); 
+                         $(this).parent().removeClass("cellEditing"); 
+                     }
+                 });
+
+      $(this).children().first().blur(function(){
+          $(this).parent().text(OriginalContent); 
+              $(this).parent().removeClass("cellEditing");
+        //$(this).parent('tr').children('').attr()
+      }); 
+}
+
+  });    
+*/
+
+$("uEma").on("input paste keydown keypress", function (){
+    if(!IsEmail($(this).val())){
+        $(this).css({ color : "red"});
+    } else {
+        $(this).css({ color : "green"});
+    }
+}); 
+
 
 function IsEmail(email){
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
