@@ -125,7 +125,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                       <div class="in-controls" align="left">
-                                            <select tabindex="1" data-placeholder="Jerarquia" class="span8" style="max-width: 104%;">
+                                            <select tabindex="1" data-placeholder="Jerarquia" id="uRan" class="span8" style="max-width: 104%;">
                                                   <option value="admin">Administrador</option>
                                                   <option value="front-user">Atención a Público</option>
                                                   <option value="back-user">Administrativo</option>
@@ -335,6 +335,15 @@ var reg = new RegExp(" ");
 }
 
 function recordUser(){
+
+console.info("../backend/setUser.php?uNam=" + $("#uNam").val() +
+    "&uSur=" + $("#uSur").val() + 
+    "&uDep=" + $("#uDep").val() + 
+    "&uEma=" + $("#uEma").val() +
+    "&uRan=" + $("#uRan").val() +
+    "&uNic=" + $("#uNic").val() +
+    "&uTim=" + uTim + 
+    "&uPas=" + $("#uPas").val())
 
 var _fS = new Date();
 var uTim = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
