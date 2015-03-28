@@ -268,11 +268,12 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
 
 
   function previewFile(selector, input_id) {
-console.info(selector + " / " + input_id);
+
     var preview = document.querySelector(selector); 
     var reader  = new FileReader();
-    var file    = document.querySelector(input_id).files[0];
-
+    var file    = document.querySelector("#" + input_id).files[0];
+    
+    consol.info(file);
   reader.onloadend = function () {
     preview.src = reader.result;
 
