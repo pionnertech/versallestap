@@ -7,7 +7,7 @@
     $uRan = $_GET["uRan"];
     $uNic = $_GET["uNic"];
     $uPas = $_GET["uPas"];
-    $uPas = $_GET["uTim"];
+    $uTim = $_GET["uTim"];
 
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
