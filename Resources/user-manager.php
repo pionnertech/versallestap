@@ -302,10 +302,10 @@ $("#enter-user").on('click', function(){
 
       })
 })
-$(".in-controls").eq()
 
 
-$("uEma").on("input paste keydown keypress", function (){
+
+$("#uEma").on("input paste keydown keypress", function (){
     if(!IsEmail($(this).val())){
         $(this).css({ color : "red"});
     } else {
@@ -322,11 +322,9 @@ function IsEmail(email){
 //check if everything its ok...
 
 function check(){
-
-
 for (var i = 0; i < $(".in-controls input").length; i++) {
-var reg = /^\ /g;
-   if( $(".in-controls input").eq(i).val() == "" || $(".in-controls input").eq(i).val().test(reg) == true){
+var reg = new RegExp(" ");
+   if( $(".in-controls input").eq(i).val() == "" ){
       return $(".in-controls input").eq(i).attr("placeholder");
    }
    if($("input[type=password]").eq(0).val() !== $("input[type=password]").eq(1).val()){
