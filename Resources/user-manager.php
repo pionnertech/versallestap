@@ -254,7 +254,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
             target:'#tarjet',   
             resetForm: true, 
             success: function (){
-                console.info("se subio"),
+                console.info("se subio");
             }
 
         }; 
