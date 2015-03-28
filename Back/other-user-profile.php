@@ -88,7 +88,7 @@ if(mysqli_num_rows($quntum) == 0){
                     <ul class="nav pull-right">
                      
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../img/<? printf($_SESSION['TxtCode']) ?>.jpg" class="nav-avatar" />
+                            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? printf($_SESSION['TxtCode']) ?>.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="../backend/close.php">Logout</a></li>
@@ -125,7 +125,7 @@ if(mysqli_num_rows($quntum) == 0){
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left">
-                                        <img src="../img/<? printf($_SESSION['TxtCode']) ?>.jpg">
+                                        <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? printf($_SESSION['TxtCode']) ?>.jpg">
                                     </a>
                                     <div class="media-body">
                                         <h4>
