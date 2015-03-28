@@ -117,7 +117,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                         <span class="add-on">@</span>
                                            <input style="width: 93%" type="text" placeholder="Correo electronico" id="uEma" >
                                       </div>
-                                      <div class="in-controls input-prepend" align="left" style="border: 8px solid white">
+                                      <div class="in-controls input-prepend" align="left" style="border-top: 8px solid white">
                                         <span class="add-on"><i class="fa fa-building"></i></span>
                                            <input style="width: 93%" type="text" placeholder="Departamento" id="uDep" >
                                       </div>
@@ -134,11 +134,11 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                     <div class="in-controls" align="left">
                                          <div style="width:43%; display: inline-block; vertical-align: top; margin: 0 .6em 0 0"><input type="password" style="width: 100%" placeholder="Contraseña" id="uPas"></div> 
                                          <div style="width:43%; display: inline-block; vertical-align: top; margin: 0 0 0 .6em"><input type="password" style="width: 100%" placeholder="Repita la contraseña" id="uRpa"></div> 
-                                         <span style="display: inline-block; vertical-align: top; " ><i  id="signal" class="fa fa-2x"></i></span>
+                                         <span style="position: relative; left: 1em;display: inline-block; vertical-align: top; " ><i  id="signal" class="fa fa-2x"></i></span>
                                       </div>
                                     </div>
                                  <div style="display: inline-block; vertical-align: top; padding: 3em 0 0 0 ">
-                                   <div class="user-box" style="display">
+                                   <div class="user-box" style="text-align: center;">
                                        <div class="user-pic-box">
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
@@ -338,14 +338,17 @@ var reg = /^\ /g;
 
 function recordUser(){
 
+var _fS = new Date();
+var uTim = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 $.ajax({
     type: "POST", 
     url: "../backend/setUser.php?uNam=" + $("#uNam").val() +
     "&uSur=" + $("#uSur").val() + 
     "&uDep=" + $("#uDep").val() + 
-    "&uEma" + $("#uEma").val() +
+    "&uEma=" + $("#uEma").val() +
     "&uRan=" + $("#uRan").val() +
     "&uNic=" + $("#uNic").val() +
+    "&uTim=" + uTim + 
     "&uPas=" + $("#uPas").val(), 
     success : function (reply) {
         $(".in-controls input").val('');
