@@ -263,7 +263,6 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         var options = { 
             target:'#tarjet',   
             resetForm: true,
-            data: { entity: fac , usr: user },
             success: function (data){
                 console.info("se subio :" + data);
             }
