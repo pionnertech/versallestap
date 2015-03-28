@@ -144,7 +144,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
                                        <form id="wrap-uploads" action="usr-pic-up.php" method="POST" enctype="multipart/form-data">
-                                           <input type="file" class="btn btn-info" accept="image/*" onclick="previewFile('.user-pic',  this.id)" id="user-pic-url">
+                                           <input type="file" class="btn btn-info" accept="image/*" onclick="previewFile('.user-pic',  '#' + this.id)" id="user-pic-url">
                                        </form>
                                    </div>
                                   </div>
@@ -271,9 +271,9 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
 
     var preview = document.querySelector(selector); 
     var reader  = new FileReader();
-    var file    = document.querySelector("#" + input_id).files[0];
-    
-    consol.info(file);
+    var file    = document.querySelector(input_id).files[0];
+
+    console.info(file);
   reader.onloadend = function () {
     preview.src = reader.result;
 
