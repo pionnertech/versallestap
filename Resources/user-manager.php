@@ -6,7 +6,6 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility'] );
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -405,6 +404,7 @@ $.ajax({
         $("input[name=usr]").val(reply);
         $("input[name=entity]").val(fac);
         $("#second_submit").trigger('click');
+        document.querySelector(".user-pic").src = "../images/user.png";
         bootbox.alert("Usuario ingresado con exito");
         createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() );
         $(".in-controls input").val('');
