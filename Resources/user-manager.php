@@ -350,9 +350,9 @@ $.ajax({
     "&uPas=" + $("#uPas").val(), 
     success : function (reply) {
         console.info(reply);
-        $(".in-controls input").val('');
         bootbox.alert("Usuario ingresado con exito");
-        createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() )
+        createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() );
+        $(".in-controls input").val('');
     }
 })
 
