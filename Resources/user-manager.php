@@ -295,7 +295,7 @@ if($("input[type=password]").eq(0).val() != $("input[type=password]").eq(1).val(
 $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
            if(check()){
-            
+            recordUser();
            } else {
              bootbox.alert("Falto el siguiente campo: " + check() );
            }
@@ -349,6 +349,7 @@ $.ajax({
     "&uTim=" + uTim + 
     "&uPas=" + $("#uPas").val(), 
     success : function (reply) {
+        console.info(reply);
         $(".in-controls input").val('');
         bootbox.alert("Usuario ingresado con exito");
         createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() )
@@ -372,7 +373,7 @@ var td3 = document.createElement('td');
 var td4 = document.createElement('td');
 var td5 = document.createElement('td');
 
-ino.value = usrId;
+inp.value = usrId;
 td1.innerHTML = usr_name;
 td2.innerHTML = dept;
 td3.innerHTML = range;
