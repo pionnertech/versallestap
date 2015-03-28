@@ -45,6 +45,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
        </style>
     </head>
     <body>
+    <input type="hidden" value="" id="tarjet">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -142,8 +143,8 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        <div class="user-pic-box">
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
-                                       <form>
-                                           <input type="file" id="user-pic-url">
+                                       <form id="wrap-uploads" action="usr-pic-up.php" method="POST" enctype="multipart/form-data">
+                                           <input type="file" class="btn btn-info" accept="image/*" onclick="previewFile('.user-pic',  this.id)" id="user-pic-url">
                                        </form>
                                    </div>
                                   </div>
@@ -241,10 +242,48 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         <script src="../scripts/bootbox.min.js" type="text/javascript" ></script>
         <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="../scripts/common.js" type="text/javascript"></script>
+        <script src="../scripts/jquery-form-plugin.js" type="text/javascript" ></script>
     </body>
 </html>
 <script type="text/javascript">
  var fac = <? echo $_SESSION['TxtFacility'] ?>  
+
+
+ $(document).on('ready', function(){
+        var options = { 
+            target:'#tarjet',   
+            resetForm: true, 
+            success: aviso   
+
+        }; 
+
+     $('form').submit(function() { 
+            $(this).ajaxSubmit(options);            
+            return false; 
+        });
+ });
+
+
+
+  function previewFile(selector, input_id) {
+
+    var preview = document.querySelector(selector); 
+    var reader  = new FileReader();
+    var file    = document.querySelector(input_id).files[0];
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+
+     }
+
+    if (preview) {
+         reader.readAsDataURL(file); 
+     } 
+   else {
+        preview.src = "";
+      }
+    }
+
 /*
  $("span.promo-table").dblclick( function() { 
 
