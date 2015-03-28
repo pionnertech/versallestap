@@ -2,8 +2,8 @@
 
 
 $file = $_FILES['img']['tmp_name'];
-$user = $_GET['usr'];
-$fac  = $_GET['entity'];
+$user = $_POST['usr'];
+$fac  = $_POST['entity'];
 
 
 $dir  = "/var/www/html/" . $fac . "/img/";
