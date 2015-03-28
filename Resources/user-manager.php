@@ -404,10 +404,10 @@ $.ajax({
         $("input[name=usr]").val(reply);
         $("input[name=entity]").val(fac);
         $("#second_submit").trigger('click');
-        document.querySelector(".user-pic").src = "../images/user.png";
         bootbox.alert("Usuario ingresado con exito");
         createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() );
         $(".in-controls input").val('');
+        document.querySelector(".user-pic").src = "../images/user.png";
     }
 })
 
