@@ -244,7 +244,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
     </body>
 </html>
 <script type="text/javascript">
-   
+ var fac = <? echo $_SESSION['TxtFacility'] ?>  
 /*
  $("span.promo-table").dblclick( function() { 
 
@@ -356,7 +356,8 @@ $.ajax({
     "&uRan=" + $("#uRan").val() +
     "&uNic=" + $("#uNic").val() +
     "&uTim=" + uTim + 
-    "&uPas=" + $("#uPas").val(), 
+    "&uPas=" + $("#uPas").val() + 
+    "&uFac=" + fac, 
     success : function (reply) {
         console.info(reply);
         bootbox.alert("Usuario ingresado con exito");
