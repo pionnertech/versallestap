@@ -252,15 +252,18 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
     </body>
 </html>
 <script type="text/javascript">
- var fac = <? echo $_SESSION['TxtFacility'] ?>  
+ var fac = <? echo $_SESSION['TxtFacility'] ?>;
+ var user = "";
 
 
  $(document).on('ready', function(){
+
         var options = { 
             target:'#tarjet',   
-            resetForm: true, 
-            success: function (){
-                console.info("se subio");
+            resetForm: true,
+            data: { entity: fac , usr: user },
+            success: function (data){
+                console.info("se subio :" + data);
             }
 
         }; 
@@ -344,7 +347,6 @@ $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
            if(check()){
             recordUser();
-            $("#second_submit").trigger('click');
            } else {
              bootbox.alert("Falto el siguiente campo: " + check() );
            }
@@ -385,15 +387,6 @@ var reg = new RegExp(" ");
 
 function recordUser(){
 
-console.info("../backend/setUser.php?uNam=" + $("#uNam").val() +
-    "&uSur=" + $("#uSur").val() + 
-    "&uDep=" + $("#uDep").val() + 
-    "&uEma=" + $("#uEma").val() +
-    "&uRan=" + $("#uRan").val() +
-    "&uNic=" + $("#uNic").val() +
-    "&uTim=" + uTim + 
-    "&uPas=" + $("#uPas").val())
-
 var _fS = new Date();
 var uTim = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 $.ajax({
@@ -408,7 +401,8 @@ $.ajax({
     "&uPas=" + $("#uPas").val() + 
     "&uFac=" + fac, 
     success : function (reply) {
-        console.info(reply);
+        user = reply;
+        $("#second_submit").trigger('click');
         bootbox.alert("Usuario ingresado con exito");
         createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() );
         $(".in-controls input").val('');
