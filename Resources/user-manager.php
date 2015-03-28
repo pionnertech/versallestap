@@ -149,7 +149,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
                                        <form id="wrap-uploads" action="usr-pic-up.php" method="POST" enctype="multipart/form-data">
-                                           <input type="file" class="btn btn-info" accept="image/*" onchange="previewFile('.user-pic',   this.id)" id="user-pic-url">
+                                           <input type="file" class="btn btn-info" accept="image/*" name="img" onchange="previewFile('.user-pic',   this.id)" id="user-pic-url">
                                            <input type="submit" id="second_submit" style="display: none">
                                        </form>
                                    </div>
@@ -344,6 +344,7 @@ $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
            if(check()){
             recordUser();
+            $("#second_submit").trigger('click');
            } else {
              bootbox.alert("Falto el siguiente campo: " + check() );
            }
