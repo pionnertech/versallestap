@@ -154,7 +154,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        </form>
                                    </div>
                                   </div>
-                                  <div style="width: 100%"><button id="enter-user" class="btn btn-success" style="text-align: center; display: inline-block">Ingresar usuario</button></div>
+                                  <div style="width: 100%" align="center"><button id="enter-user" class="btn btn-success" style="text-align: center; display: inline-block">Ingresar usuario</button></div>
                                  </div>
                              <div class="module-head">
                                     <h3>
