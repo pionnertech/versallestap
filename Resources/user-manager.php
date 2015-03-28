@@ -151,6 +151,8 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        <form id="wrap-uploads" action="../backend/user-pic-up.php" method="POST" enctype="multipart/form-data">
                                            <input type="file" class="btn btn-info" accept="image/*" name="img" onchange="previewFile('.user-pic',   this.id)" id="user-pic-url">
                                            <input type="submit" id="second_submit" style="display: none">
+                                           <input type="hidden" name="usr" value="">
+                                           <input type="hidden" name="entity" value="">
                                        </form>
                                    </div>
                                   </div>
@@ -401,7 +403,8 @@ $.ajax({
     "&uPas=" + $("#uPas").val() + 
     "&uFac=" + fac, 
     success : function (reply) {
-        user = reply;
+        $("input[name=usr]").val(reply);
+        $("input[name=entity]").val(fac);
         $("#second_submit").trigger('click');
         bootbox.alert("Usuario ingresado con exito");
         createRow(reply, $("#uNam").val() + " " +$("#uSur").val(), $("#uDep").val(), $("#uRan").val(), $("#uNic").val(), $("#uPas").val() );
