@@ -8,7 +8,7 @@
     $uNic = $_GET["uNic"];
     $uPas = $_GET["uPas"];
     $uTim = $_GET["uTim"];
-mysqli_real_escape_string()
+
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
