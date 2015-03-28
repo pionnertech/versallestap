@@ -8,7 +8,7 @@
     $uNic = $_GET["uNic"];
     $uPas = $_GET["uPas"];
     $uTim = $_GET["uTim"];
-
+mysqli_real_escape_string()
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -22,8 +22,5 @@ echo mysqli_insert_id($datos);
 } else {
    echo mysqli_error($datos);
 }
-
-
-
 
 ?>
