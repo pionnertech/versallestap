@@ -253,7 +253,9 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         var options = { 
             target:'#tarjet',   
             resetForm: true, 
-            success: aviso   
+            success: function (){
+                console.info("se subio"),
+            }
 
         }; 
 
@@ -265,8 +267,10 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
 
 
 
-  function previewFile(selector, input_id) {
 
+
+  function previewFile(selector, input_id) {
+console.info(selector + " / " + input_id);
     var preview = document.querySelector(selector); 
     var reader  = new FileReader();
     var file    = document.querySelector(input_id).files[0];
