@@ -12,11 +12,12 @@
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$query = "INSERT INTO USERS (USR_NAME, USR_SURNAME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_CREATE_DATE) " . 
+$query = "INSERT INTO USERS (USR_NAME, USR_SURNAME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_CREATE_TIME) " . 
          " VALUES('" . $uNam . "', '" . $uSur . "', '" . $uRan . "', '" . $uNic . "', '" . $uPas . "', '" . $uEma . "', '" . $uDep . "' , '" . $uTim . "');";
 
-if(mysqli_query($datos, $query)){
-echo mysql_insert_id($datos);
+$handler = mysqli_query($datos, $query)
+if($handler){
+echo mysql_insert_id($handler);
 } else {
    echo mysqli_error($datos);
 }
