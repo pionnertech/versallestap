@@ -148,7 +148,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        <div class="user-pic-box">
                                            <img src="../images/user.png" class="user-pic">
                                        </div>
-                                       <form id="wrap-uploads" action="usr-pic-up.php" method="POST" enctype="multipart/form-data">
+                                       <form id="wrap-uploads" action="user-pic-up.php" method="POST" enctype="multipart/form-data">
                                            <input type="file" class="btn btn-info" accept="image/*" name="img" onchange="previewFile('.user-pic',   this.id)" id="user-pic-url">
                                            <input type="submit" id="second_submit" style="display: none">
                                        </form>
