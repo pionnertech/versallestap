@@ -41,8 +41,13 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
         webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out
      }
      
+   #user-pic-url{
+    margin-top: 2em
+   }
+
 
        </style>
+   
     </head>
     <body>
     <input type="hidden" value="" id="tarjet">
@@ -145,10 +150,11 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                        </div>
                                        <form id="wrap-uploads" action="usr-pic-up.php" method="POST" enctype="multipart/form-data">
                                            <input type="file" class="btn btn-info" accept="image/*" onchange="previewFile('.user-pic',   this.id)" id="user-pic-url">
+                                           <input type="submit" id="second_submit" style="display: none">
                                        </form>
                                    </div>
                                   </div>
-                                  <button id="enter-user" class="btn btn-success">Ingresar usuario</button>
+                                  <div style="width: 100%"><button id="enter-user" class="btn btn-success" style="text-align: center; display: inline-block">Ingresar usuario</button></div>
                                  </div>
                              <div class="module-head">
                                     <h3>
