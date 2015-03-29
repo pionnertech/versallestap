@@ -2008,6 +2008,72 @@ tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
 
+$.ajax({ type:"POST",
+         url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk,
+         success : function (data){
+
+            files = data.split("|");
+
+        for (n=0; n < files.length-1 ; n++){
+
+        var extension = files[n].substring(files[n].length -3 , files[n].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+        
+      var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
+      strHtml   =  sshot + "<a href='../" + fac + "/" + userId + "_in/" + files[n] +" download>" +
+      "<p class='ifile' title='" + files[n] + "'><i class='fa fa-file-" + setClass + "o fa-2x' style='color:" + cor+ ";'></i>"
+      "<span class='iname'></span></p></a>";
+      document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
+
+      }
+
+    }
+})
+
+
+
+
 // search the user;
 
 var search1 = document.querySelectorAll(".u" + userId)[0];
@@ -2055,12 +2121,12 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + usrId;
+       tr_usr2.className = "task u" + usrId + "chrono";
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
 
-       td_usr3.className = "align-right";
+       td_usr3.className = "cell-time align-right";
 
        span_usr1.innerHTML = "Asunto";
        span_usr2.innerHTML = "Descripcion";
