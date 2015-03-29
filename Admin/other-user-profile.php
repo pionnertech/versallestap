@@ -2056,12 +2056,16 @@ $.ajax({ type:"POST",
                 case "bmp" : 
             setClass = "picture-o";
             cor = "#338B93";
-        break;     
+        break;
+                case "ppt" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
 
     }
 
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../"' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
+      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
       '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + 'o fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
