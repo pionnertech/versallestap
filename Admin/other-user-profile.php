@@ -256,8 +256,8 @@ if(!$notify){
                                            <div class="row-fluid">
                                                 <div class="span6">
                                                     <div class="media user">
-                                                        <a class="media-avatar pull-left stusr"  >
-                                                            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_per[0] ?>.jpg" class="finished">
+                                                        <a class="media-avatar pull-left stusr"  class="finished">
+                                                            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_per[0] ?>.jpg" >
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
