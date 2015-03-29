@@ -55,6 +55,7 @@ $user_out6 = $user['TRF_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
 
+
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
 
 }
@@ -67,6 +68,7 @@ echo "|" . $user_out5 ;
 echo "|" . $user_out6 ;
 echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
+echo "|" . $outcome['STSK_PROGRESS'] ;
 
 
 $sum = 0;
