@@ -613,7 +613,7 @@ var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
         min: 1,
         max:100
       });
-      
+
         $("#Urgent").on('click', function(){
          
          if (!$(this).data("val")  ||  $(this).data("val") === 0){
