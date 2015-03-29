@@ -609,10 +609,7 @@ var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
     
        //progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
-      var slider = $('.span2').CircularSlider({
-        min: 1,
-        max:100
-      });
+      var slider = $('.span2').CircularSlider();
 
         $("#Urgent").on('click', function(){
          
