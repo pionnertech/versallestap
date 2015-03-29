@@ -513,7 +513,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
 
         <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
-            <img src="../<? echo $_SESSION['TxtFacility'] ?>//img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
+            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <input type="hidden" value="u<? printf($fila_spec[1])?>">
         </a>
     <?  }  ?>
@@ -1990,6 +1990,7 @@ function updateProgress(subject, descript, percent, date, userId, usr_name, ind,
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk);
 
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
+document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
 
 var parent = document.querySelector("#del-partners");
 
@@ -2095,7 +2096,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       insertAfter(tr_av, tr_usr2);
       
     } else {
-        pseudoparent =  document.querySelector("#del-partners .st" + stsk);
+        pseudoparent =  document.querySelector("#del-partners");
         pseudoparent.appendChild(tr_av);
     }
 
