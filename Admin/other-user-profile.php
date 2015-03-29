@@ -252,7 +252,7 @@ if(!$notify){
                                                     <div class="media user">
                                                         <a class="media-avatar pull-left stusr finished" >
                                                             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_per[0] ?>.jpg" >
-                                                            <i class="fa fa-check-circle finished" style="position: relative;"></i>
+                                                            
                                                         </a>
                                                         <div class="media-body">
                                                             <h3 class="media-title">
