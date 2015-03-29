@@ -2057,8 +2057,8 @@ $.ajax({ type:"POST",
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ppt" : 
-            setClass = "powerpoint-o";
+                case "ptx" : 
+            setClass = "powerpoisnt-o";
             cor = "#A80B9C";
         break;
 
