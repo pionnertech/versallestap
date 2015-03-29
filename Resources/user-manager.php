@@ -345,7 +345,7 @@ if($("input[type=password]").eq(0).val() != $("input[type=password]").eq(1).val(
 
 $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
-           if(check()){
+           if(check() === true){
             recordUser();
            } else {
              bootbox.alert("Falto el siguiente campo: " + check() );
@@ -429,6 +429,7 @@ var td4 = document.createElement('td');
 var td5 = document.createElement('td');
 
 inp.value = usrId;
+tr.className = "gradeA odd";
 td1.innerHTML = usr_name;
 td2.innerHTML = dept;
 td3.innerHTML = range;
