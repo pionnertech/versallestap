@@ -122,7 +122,7 @@ $depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FAC
                                       </div>
                                       <div class="in-controls input-prepend" align="left" style="border-top: 8px solid white">
                                       <select tabindex="1" data-placeholder="Departamento" id="uDep" class="span8" style="max-width: 104%;">
-                                       <? while ($dep = mysqli_fetch_row($dept)) {?>
+                                       <? while ($dep = mysqli_fetch_row($depts)) {?>
                                                   <option value="<? echo $dep[0] ?>"><? echo $dep[0] ?></option>
                                         <? } ?>
                                              </select> 
