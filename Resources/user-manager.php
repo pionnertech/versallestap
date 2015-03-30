@@ -4,7 +4,7 @@ if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == "rrhh"){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility'] );
-
+$depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,11 +83,7 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                 <img src="images/user.png" class="nav-avatar" />
                                 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Your Profile</a></li>
-                                    <li><a href="#">Edit Profile</a></li>
-                                    <li><a href="#">Account Settings</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="../backend/close.php">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -123,8 +119,12 @@ $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SUR
                                            <input style="width: 93%" type="text" placeholder="Correo electronico" id="uEma" >
                                       </div>
                                       <div class="in-controls input-prepend" align="left" style="border-top: 8px solid white">
-                                        <span class="add-on"><i class="fa fa-building"></i></span>
-                                           <input style="width: 93%" type="text" placeholder="Departamento" id="uDep" >
+                                    <select tabindex="1" data-placeholder="Departamento" id="uDep" class="span8" style="max-width: 104%;">
+                                       <? mysqli_query ?>
+                                                  <option value="">Administrador</option>
+                                                  <option value="">Atención a Público</option>
+                                                  <option value="">Administrativo</option>
+                                             </select> 
                                       </div>
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">

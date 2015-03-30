@@ -9,12 +9,13 @@
     $uPas = $_GET["uPas"];
     $uTim = $_GET["uTim"];
     $uFac = $_GET["uFac"];
+    $uChr = $_GET["uChr"];
 
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$query = "INSERT INTO USERS (USR_NAME, USR_SURNAME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_CREATE_TIME, USR_FACILITY) " . 
-         " VALUES('" . $uNam . "', '" . $uSur . "', '" . $uRan . "', '" . $uNic . "', '" . $uPas . "', '" . $uEma . "', '" . $uDep . "' , '" . $uTim . "' , " . $uFac .");";
+$query = "INSERT INTO USERS (USR_NAME, USR_SURNAME, USR_RANGE, USR_NICK, USR_PASS, USR_MAIL, USR_DEPT, USR_CREATE_TIME, USR_FACILITY, USR_CHARGE) " . 
+         " VALUES('" . $uNam . "', '" . $uSur . "', '" . $uRan . "', '" . $uNic . "', '" . $uPas . "', '" . $uEma . "', '" . $uDep . "' , '" . $uTim . "' , " . $uFac .", '" . $uChr . "');";
 
 $handler = mysqli_query($datos, $query);
 
