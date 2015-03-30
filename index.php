@@ -4,7 +4,24 @@ session_start();
 
 if(isset($_SESSION['TxtCode'])){
 
-echo "<script language='javascript'>window.location='Front/activity.php'</script>";
+switch ($_SESSION['TxtRange']){
+	case "sadmin":
+	echo "<script language='javascript'>window.location='../Sadmin/index.php'</script>";
+	break;
+	case "admin":
+		 echo "<script language='javascript'>window.location='../Admin/other-user-profile.php'</script>";
+		break;
+	case "front-user":
+	    echo "<script language='javascript'>window.location='../Front/activity.php'</script>";
+		break;
+	case "back-user":
+	     echo "<script language='javascript'>window.location='../Back/other-user-profile.php'</script>";
+	break;
+	case "rrhh":
+	     echo "<script language='javascript'>window.location='../Resources/user-manager.php'</script>";
+	break;
+}
+
 
 } else {
 
