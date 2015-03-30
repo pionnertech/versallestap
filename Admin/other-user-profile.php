@@ -712,7 +712,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                 </div>
                                 <div class="attach">
-                                    <form class="upload-black" method="post" action="../backend/upload.php" enctype="multipart/form-data">
+                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastra Aqui
                                                <a>Buscar</a>
@@ -901,8 +901,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           <div  align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
                                      </div>
-                                     <div class="tab-pane-fade" id="set-pro-int">
-                                                                    <div class="media-stream">
+                         <div class="tab-pane fade" id="set-pro-int">
+                            <div class="media-stream">
                                 <div class="sub-del">
                                 <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
@@ -918,7 +918,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
                                 <div class="attach">
-                                    <form class="upload-black" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
+                                    <form id="upload2" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
@@ -964,6 +964,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     <script src="../scripts/jquery.iframe-transport.js"></script>
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
+    <script src="../scripts/script-int.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
     <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
