@@ -126,7 +126,6 @@ $depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FAC
                                                   <option value="<? echo $dep[0] ?>"><? echo $dep[0] ?></option>
                                         <? } ?>
                                              </select> 
-
                                       </div>
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Cargo" id="uChr">
