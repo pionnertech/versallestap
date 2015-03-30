@@ -42,7 +42,7 @@ if($stsk_src_id == 0){
       echo mysqli_error($datos);
   }
 } else {
-  mysqli_error($hds);
+ echo mysqli_error($hds);
 }
 }
 
