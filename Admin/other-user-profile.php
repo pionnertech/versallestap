@@ -989,7 +989,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                     <h3>Subir Cumplimientos</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
                                     <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
-                                    <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
+                                    <textarea id="st-description" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
                                     <div class="progress-go">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
@@ -1051,6 +1051,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
     <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
     <script type="text/javascript" src="../scripts/es.js"></script>
+    <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+    <script src="../scripts/bootstrap-slider.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -1071,7 +1073,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
 
     $(document).on('ready', function(){
- 
+
+  progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
+  
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
