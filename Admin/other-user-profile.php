@@ -52,7 +52,6 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CON
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
-        <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
     <link type="text/css" href="../css/slider.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
     <style type="text/css">
@@ -1000,6 +999,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                     </div>
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
+
                                 <div class="attach">
                                     <form id="upload2" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
                                          <div id="drop">
