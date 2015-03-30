@@ -29,18 +29,21 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "',
 $query  = "INSERT INTO SUBTASKS (STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE) ";
 $query .= "VALUES ( '" . $subject . "', '" . $descript . "', '" . $user . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1)";
 
-
 }
 
 // cuando es el prime stsk 
 if($stsk_src_id == 0){
-  $hds = mysqli_query($datos, $query_es);
+ $hds = mysqli_query($datos, $query_es);
+   if($hds){
   $number = mysqli_insert_id($hds);
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number ."")){
         $outcome .= "yes|";
   } else {
       echo mysqli_error($datos);
   }
+} else {
+  mysqli_error($hds);
+}
 }
 
 
