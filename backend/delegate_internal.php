@@ -29,7 +29,7 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "',
 }
 
 // cuando es el prime stsk 
-if(!isset($stsk_src_id)){
+if($stsk_src_id == 0){
   $hds = mysqli_query($datos, $query_es);
   $number = mysqli_insert_id($hds);
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number ."")){
@@ -39,13 +39,11 @@ if(!isset($stsk_src_id)){
   }
 }
 
-
 if(!mysqli_query($datos, $query)){
 
 echo mysqli_error($datos);
 
 } else {
-
 
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
