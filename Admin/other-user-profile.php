@@ -712,7 +712,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                 </div>
                                 <div class="attach">
-                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
+                                    <form class="upload-black" method="post" action="../backend/upload.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastra Aqui
                                                <a>Buscar</a>
@@ -890,8 +890,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
                                           <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
-                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 95%;">
-                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:95%"></textarea>
+                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 98%;">
+                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:98%"></textarea>
                                           <select id="int-del" style="width: 55%; display: inline-block; vertical-align: top;">
                                               <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
                                                   <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
@@ -900,6 +900,41 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           <div id="up-int"></div>
                                           <div  align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
+                                     </div>
+                                     <div class="tab-pane-fade" id="set-pro-int">
+                                                                    <div class="media-stream">
+                                <div class="sub-del">
+                                <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
+                                    <h3>Subir Cumplimientos</h3>
+                                    <strong id="wrapaudi"><small id="audititle"></small></strong>
+                                    <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
+                                    <textarea id="st-description" placeholder="Descripcion cumplimmiento" style="margin: 1.5em .5em"></textarea>
+                                    <div class="progress-go">
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                            </p>
+                                             <input type="text" class="span2" />
+                                    </div>
+                                    <button class="btn btn-info" id="upgrade">Subir Progreso</button>
+                                </div>
+                                <div class="attach">
+                                    <form class="upload-black" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
+                                         <div id="drop">
+                                             Arrastre aqui sus archivos
+                                               <a>Buscar</a>
+                                               <input type="file" name="upl" multiple />
+                                               <input type="hidden" value="" name="code" id="stsk-code">
+                                               <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
+                                               <input type="hidden" value="" name="user" id="stsk-user">
+                                               <input type="hidden" value="" name="">  
+                                        </div>
+                                         <ul>
+                <!-- The file uploads will be shown here -->
+                                         </ul>
+                                    </form>
+                              </div>
+                          </div>
+
                                      </div>
                             <!--/.module-body-->
                         </div>
@@ -1348,7 +1383,6 @@ $.ajax({
 }
 
 function drop (event) {
-
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
@@ -1357,9 +1391,6 @@ function drop (event) {
     var chargeuser = $("#delegates :selected").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
-
-
-
 }
 
 function allowDrop (event) {
@@ -1893,8 +1924,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
          fileParent.appendChild(elem[n]);
       }
-
-
 }
 });
     
@@ -1907,8 +1936,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr1.appendChild(inp2);
 
     parent.appendChild(tr1);
-
-
 // second tr
 
     var tr2  = document.createElement('tr');
@@ -1933,24 +1960,18 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var str1 = document.createElement('strong');
     var str2 = document.createElement('strong');
 
-  
-
-
     tr2.className = "display-progress";
     td6.colSpan = "5";
     div1.className = "info-content";
 
-  
     p1.className = "iss-descript";
     p2.className = "iss-descript";
 
     str1.innerHTML = "Ciudadano : " + ctz;
     str2.innerHTML = "Descripción: " + desc;
 
-    
     var str3  = document.createElement('strong');
     var span1 = document.createElement('span');
-
 
     str3.innerHTML  = "Grado de progreso";
     span1.innerHTML = "0%";
@@ -1976,8 +1997,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     p4.appendChild(i2);
     p5.appendChild(i3);
     div4.appendChild(i4);
-
-
 
     div1.appendChild(p1);
     div1.appendChild(p2);

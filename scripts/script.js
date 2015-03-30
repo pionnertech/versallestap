@@ -9,7 +9,7 @@ $(function(){
     });
 
     // Initialize the jQuery File Upload plugin
-    $('#upload').fileupload({
+    $('.upload-black').fileupload({
 
         // This element will accept file drag/drop uploading
         dropZone: $('#drop'),
