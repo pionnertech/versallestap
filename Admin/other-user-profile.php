@@ -974,21 +974,24 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     step:5,
     lang:'es',
     format:'Y/m/d',
+    minDate: '1970/01/02',
     timepicker: false,
-   onshow : function (oct){
+    onShow : function (oct){
     if(mode == "delegate"){
             this.setOptions({
-                minDate : '-1970/01/02',  
-                maxDate : dateTime,
-                format:'d/m/Y' 
+                format:'Y/m/d',
+                maxDate : dateTime
             });
         } else {
             this.setOptions({
-                minDate : '-1970/01/02',  
-                maxDate : '2036/12/29',
-                format:'d/m/Y' 
+                format:'Y/m/d',
+                maxDate : '2036/12/29'
+                 
             });
         }
+    }, 
+    onSelectDate : function (ct){
+       this.setOptions({ format : "d/m/Y" });
     }
 });
 
