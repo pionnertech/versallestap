@@ -958,8 +958,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <input type="hidden" value="<? echo $ii[0]; ?>" class="hi-int-id">
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
-                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
-                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
+                                                                <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
                                                             </tr>
                                                          <? } //fin  while incoming ?>
@@ -985,7 +985,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                          <div class="tab-pane fade" id="set-pro-int">
                             <div class="media-stream">
                                 <div class="sub-del">
-                                <div id="back"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
+                                <div id="back-ii"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
                                     <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
@@ -1136,7 +1136,30 @@ $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 
+});
+
+$(".ii-forward").click(function(){
+
+dateTime = AmericanDate($(this).next().html());
+
+       mode = "delegate";
+ var indice = $(this).index();
+ var ids    = $(this).parent().children('input').val();
+
+stsk_send = ids;
+console.log("stsk_send is :" + ids);
+
+$("#del-int-req").data("val",indice );
+$("#send-int").data("val", ids);
+$("#int-require").removeClass('active in');$("#set-pro-int").addClass('active in');
+
+
+});
+
+$("#back-ii").click(function(){
+    $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
 })
+
 
 $(".toggle-attach").on('click', function(){
 
