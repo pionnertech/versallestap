@@ -32,7 +32,9 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "',
 if(!isset($stsk_src_id)){
   $hds = mysqli_query($datos, $query_es);
   $number = mysqli_insert_id($hds);
-  mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number ."");
+  if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number ."")){
+        $outcome .= "yes|";
+  }
 }
 
 
