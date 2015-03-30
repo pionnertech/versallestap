@@ -43,8 +43,8 @@ if($stsk_src_id == 0){
   }
 } else {
 
- echo mysqli_error($hds);
- exit $query_es;
+ echo mysqli_error($hds) . "  /--/  " . $query_es;
+ exit ;
 }
 }
 
