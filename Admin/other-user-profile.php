@@ -888,7 +888,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                            </tbody>
                                                     </table>   
                                             </div>
-                                        <div class="module-option clearfix">
+                                        <div class="module-option clearfix" style="display:none">
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
                                                         <div class="btn-group">
@@ -906,7 +906,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                     </div>
                                             <div class="pull-right"></div>
                                             </div>
-                                            <div class="module-body table">
+                                            <div class="module-body table" style="display:none">
                                                 <table class="table table-message" id="income-ing">
                                                     <tbody id="income-int-body">
                                                           <tr class="heading" >
@@ -1075,7 +1075,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     $(document).on('ready', function(){
 
   progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
-  
+
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
@@ -1464,7 +1464,11 @@ $("#sw-int-in-out").on('click', function(){
      $("#int-table").fadeOut(400, function(){
          $("#income-ing").fadeIn(400, function(){
             $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(0).fadeOut(100, function(){
-                 $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(1).fadeIn(100);
+                 $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(1).fadeIn(100, function(){
+                    $("#sw-int-in-out").parent().parent().children("div.module-body").eq(0).fadeOut(100, function(){
+                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(1).fadeIn(100);
+                    });
+                 });
             });
          });
          
@@ -1479,7 +1483,11 @@ $("#sw-int-in-out").on('click', function(){
       $("#income-ing").fadeOut(400, function(){
          $("#int-table").fadeIn(400, function(){
             $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(1).fadeOut(100, function(){
-                 $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(0).fadeIn(100);
+                 $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(0).fadeIn(100, function(){
+                    $("#sw-int-in-out").parent().parent().children("div.module-body").eq(1).fadeOut(100, function(){
+                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(0).fadeIn(100);
+                    })
+                 });
             });
          });
      });
