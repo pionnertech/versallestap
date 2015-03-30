@@ -973,25 +973,24 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
-    format:'Y/m/d',
-    minDate: '1970/01/02',
+    formatDate:'Y/m/d',
+    minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
     if(mode == "delegate"){
             this.setOptions({
-                format:'Y/m/d',
+                formatDate:'Y/m/d',
                 maxDate : dateTime
             });
         } else {
             this.setOptions({
-                format:'Y/m/d',
+                formatDate:'Y/m/d',
                 maxDate : '2036/12/29'
-                 
             });
         }
     }, 
     onSelectDate : function (ct){
-       this.setOptions({ format : "d/m/Y" });
+       this.setOptions({ formatDate : 'd/m/Y' });
     }
 });
 
