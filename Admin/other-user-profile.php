@@ -978,13 +978,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
    onshow : function (oct){
     if(mode == "delegate"){
             this.setOptions({
-                minDate : '1970/01/02',  
+                minDate : '-1970/01/02',  
                 maxDate : dateTime,
                 format:'d/m/Y' 
             });
         } else {
             this.setOptions({
-                minDate : '1970/01/02',  
+                minDate : '-1970/01/02',  
                 maxDate : '2036/12/29',
                 format:'d/m/Y' 
             });
@@ -1536,6 +1536,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                             firstTask(result[0], des, result[1] , date, user);
                          }
                      });
+                   $("#del-int-req input, #del-int-req textarea").val('');
           }
   })
 
