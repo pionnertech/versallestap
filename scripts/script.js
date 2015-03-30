@@ -1,6 +1,6 @@
 $(function(){
 
-    var ul = $('#upload ul');
+    var ul = $('.upload-black ul');
 
     $('#drop a').click(function(){
         // Simulate a click on the file input button
