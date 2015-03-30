@@ -35,6 +35,8 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
+$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";)
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -413,6 +415,7 @@ $handler2 = mysqli_query($datos, $matrix2);
                     <div class="module message">
                             <div class="module-head">
                                 <h3>Control de cumplimientos</h3>
+                                <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer" id="sw-int-in-out"></i>
                             </div>
                             <div class="module-option clearfix">
                                 <div class="pull-left">
@@ -788,6 +791,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <div class="module message">
                                                    <div class="module-head">
                                                        <h3>Compromisos Internos</h3>
+                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer" id="sw-int-in-out"></i>
                                                    </div>
                                             <div class="module-option clearfix">
                                             <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
@@ -883,7 +887,67 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </tr>
                                                             <? } ?>
                                                            </tbody>
-                                                    </table> 
+                                                    </table>   
+                                            </div>
+                                            <div class="module-body table">
+                                                <table class="table table-message" id="income-ing">
+                                                    <tbody id="income-int-body">
+                                                        <tr class="heading">
+                                                              <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                              <td class="cell-title">Descripción requerimiento</td>
+                                                              <td class="cell-status hidden-phone hidden-tablet">Status</td>
+                                                              <td class="cell-title">Asignar</td>
+                                                              <td class="cell-time align-right">Fecha maxima respuesta</td>
+                                                        </tr>
+                                                        <? while ($ii = mysqli_fetch_row($query_incoming)) { 
+                                                                  if($ii[9] == 0 || $ii[9] == '0'){
+
+                                                                          $situation = "exclamation";
+                                                                          $color = "color:#EE8817;";
+                                                                          $lock = "";
+
+                                                                       } else {
+                              
+                                                                          $situation = "check";
+                                                                          $color = "color: #44D933;";
+                                                                          $lock = "disabled";
+                                                                       }
+
+
+                                                                        switch ($ii[6]){
+                                                                            case 'Pendiente':
+                                                                            $class = "Pe-int-ii";
+                                                                            break;
+                                                                            case 'En Curso':
+                                                                             $class = "Ec-int-ii";
+
+                                                                            break;
+
+                                                                            case 'Finalizada':
+                                                                             $class = "Hc-int-ii";
+                                                                            break;
+                              
+                                                                            case 'Atrasada':
+                                                                             $class = "At-int-ii";
+                                                                            break;
+
+                                                                            case 'Por Vencer':
+                                                                            $class = "Pv-int-ii";
+                                                                            break;
+                                                                       }
+
+                                                            ?>
+                                                            <tr class="task <? echo $class; ?>">
+                                                                <input type="hidden" value="<? echo $ii[0]; ?>" class="hi-int-id">
+                                                                <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
+                                                                <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
+                                                            </tr>
+                                                         <? } //fin  while incoming ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                          </div> 
                                      </div> 
@@ -898,7 +962,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                               </select>
                                           <input type="text" class="date-int-finish" style="display: inline-block;vertical-align: top; float: right">
                                           <div id="up-int"></div>
-                                          <div  align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
+                                          <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
                                      </div>
                          <div class="tab-pane fade" id="set-pro-int">
@@ -927,7 +991,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user">
                                                <input type="hidden" value="" name="">  
-                                        </div>
+                                          </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
                                          </ul>
@@ -1348,7 +1412,32 @@ $(".golang").on('click', function(){
 
 });
 
+$("#sw-int-in-out").on('click', function(){
 
+  if($(this).data("val") == 0 || $(this).data("val") == undefined){
+
+    $(this).removeClass("fa-sign-out");
+    $(this).addClass("fa-sign-in");
+    $(this).css({ color: "orange"});
+    $(this).data("val", 1);
+ 
+     $("#int-table").fadeOut(400, function(){
+         $("#income-ing").fadeIn(400);
+     });
+
+     } else {
+   
+    $(this).removeClass("fa-sign-in");
+    $(this).addClass("fa-sign-out");
+    $(this).css({ color: "blue"});
+    $(this).data("val", 0);
+      $("#income-ing").fadeOut(400, function(){
+         $("#int-table").fadeIn(400);
+     });
+
+     }
+
+})
 
 
 function unlock(stsk_id, iss_id, object){
