@@ -12,7 +12,7 @@ $stsk_src_id = $_GET['main_stsk'];
 $keyfile     = $_GET['keyfile'];
 
 $dir = "/var/www/html/" . $fac . "/" . $user . "_alt/";
-$outcome = $keyfile . "|";
+$outcome = $keyfile . "|" . $stsk_src_id . "|";
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
