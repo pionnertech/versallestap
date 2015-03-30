@@ -991,7 +991,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     }, 
     onSelectDate : function (ct){
        this.setOptions({ formatDate : 'd/m/Y' });
-       this.('hide');
+       this('hide');
     }
 });
 
