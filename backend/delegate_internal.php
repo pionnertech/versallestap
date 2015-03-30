@@ -36,18 +36,17 @@ if($stsk_src_id == 0){
  $hds = mysqli_query($datos, $query_es);
    if($hds){
   $number = mysqli_insert_id($hds);
-
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
         $outcome .= "yes|";
   } else {
       echo mysqli_error($datos);
   }
 } else {
- echo mysqli_error($hds);
- exit;
-}
-}
 
+ echo mysqli_error($hds);
+ exit $query_es;
+}
+}
 
 if(!mysqli_query($datos, $query)){
 
