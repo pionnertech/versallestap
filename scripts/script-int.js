@@ -1,6 +1,6 @@
 $(function(){
 
-    var ul = $('#upload ul');
+    var ul = $('#upload2 ul');
 
     $('#drop a').click(function(){
         // Simulate a click on the file input button
@@ -9,7 +9,7 @@ $(function(){
     });
 
     // Initialize the jQuery File Upload plugin
-    $('#upload').fileupload({
+    $('#upload2').fileupload({
 
         // This element will accept file drag/drop uploading
         dropZone: $('#drop'),
