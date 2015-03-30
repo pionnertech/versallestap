@@ -3,8 +3,10 @@
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] == "rrhh"){
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
+
 $all_users = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME , ' ', USR_SURNAME) , USR_RANGE, USR_NICK, USR_PASS, USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility'] );
 $depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " . $_SESSION['TxtFacility']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,18 +121,21 @@ $depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FAC
                                            <input style="width: 93%" type="text" placeholder="Correo electronico" id="uEma" >
                                       </div>
                                       <div class="in-controls input-prepend" align="left" style="border-top: 8px solid white">
-                                    <select tabindex="1" data-placeholder="Departamento" id="uDep" class="span8" style="max-width: 104%;">
-                                       <? mysqli_query ?>
-                                                  <option value="">Administrador</option>
-                                                  <option value="">Atención a Público</option>
-                                                  <option value="">Administrativo</option>
+                                      <select tabindex="1" data-placeholder="Departamento" id="uDep" class="span8" style="max-width: 104%;">
+                                       <? while ($dep = mysqli_fetch_row($dept)) {?>
+                                                  <option value="<? echo $dep[0] ?>"><? echo $dep[0] ?></option>
+                                        <? } ?>
                                              </select> 
+
                                       </div>
+                                      <div class="in-controls" align="left">
+                                           <input type="text" placeholder="Cargo" id="uChr">
+                                      </div>                                      
                                       <div class="in-controls" align="left">
                                            <input type="text" placeholder="Nombre de Usuario" id="uNic">
                                       </div>
                                       <div class="in-controls" align="left">
-                                            <select tabindex="1" data-placeholder="Jerarquia" id="uRan" class="span8" style="max-width: 104%;">
+                                            <select tabindex="1" data-placeholder="Perfil" id="uRan" class="span8" style="max-width: 104%;">
                                                   <option value="admin">Administrador</option>
                                                   <option value="front-user">Atención a Público</option>
                                                   <option value="back-user">Administrativo</option>
@@ -345,11 +350,13 @@ if($("input[type=password]").eq(0).val() != $("input[type=password]").eq(1).val(
 
 $("#enter-user").on('click', function(){
       bootbox.confirm("Confirma ingreso de usuario?", function (confirmation){
+        if(confirmation){
            if(check() === true){
             recordUser();
            } else {
              bootbox.alert("Falto el siguiente campo: " + check() );
            }
+       }
 
       })
 })
@@ -378,11 +385,12 @@ var reg = new RegExp(" ");
    if( $(".in-controls input").eq(i).val() == "" ){
       return $(".in-controls input").eq(i).attr("placeholder");
    }
-   if($("input[type=password]").eq(0).val() !== $("input[type=password]").eq(1).val()){
+
+   if($("input[type=password]").eq(0).val() !== $("input[type=password]").eq(1).val() || $("input[type=password]").eq(0).val() == ""){
     return "claves no coinciden";
 }
-   return true;
 }
+ return true;
 }
 
 function recordUser(){
@@ -399,6 +407,7 @@ $.ajax({
     "&uNic=" + $("#uNic").val() +
     "&uTim=" + uTim + 
     "&uPas=" + $("#uPas").val() + 
+    "&uChr=" + $("#uChr").val() +
     "&uFac=" + fac, 
     success : function (reply) {
         $("input[name=usr]").val(reply);
