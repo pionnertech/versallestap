@@ -789,8 +789,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                        <div class="tab-pane fade" id="int-require">
                                             <div class="module message">
                                                    <div class="module-head">
-                                                       <h3>Compromisos Internos</h3>
-                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer; display: inline-block; float: right" id="sw-int-in-out"></i>
+                                                       <h3 style="display:inline-block">Compromisos Internos</h3>
+                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer; float: right" id="sw-int-in-out"></i>
                                                    </div>
                                             <div class="module-option clearfix">
                                             <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
@@ -891,13 +891,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <div class="module-body table">
                                                 <table class="table table-message" id="income-ing">
                                                     <tbody id="income-int-body">
-                                                        <tr class="heading">
-                                                              <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
-                                                              <td class="cell-title">Descripción requerimiento</td>
-                                                              <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                                              <td class="cell-title">Asignar</td>
-                                                              <td class="cell-time align-right">Fecha maxima respuesta</td>
-                                                        </tr>
                                                         <? while ($ii = mysqli_fetch_row($query_incoming)) { 
                                                                   if($ii[9] == 0 || $ii[9] == '0'){
 
