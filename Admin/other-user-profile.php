@@ -35,7 +35,7 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
-$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";)
+$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
 
 ?>
 <!DOCTYPE html>
@@ -415,7 +415,6 @@ $handler2 = mysqli_query($datos, $matrix2);
                     <div class="module message">
                             <div class="module-head">
                                 <h3>Control de cumplimientos</h3>
-                                <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer" id="sw-int-in-out"></i>
                             </div>
                             <div class="module-option clearfix">
                                 <div class="pull-left">
@@ -791,7 +790,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <div class="module message">
                                                    <div class="module-head">
                                                        <h3>Compromisos Internos</h3>
-                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer" id="sw-int-in-out"></i>
+                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer; display: inline-block; float: right" id="sw-int-in-out"></i>
                                                    </div>
                                             <div class="module-option clearfix">
                                             <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
