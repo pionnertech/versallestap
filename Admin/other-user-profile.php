@@ -13,6 +13,7 @@ $str_trf_usr = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SUR
 $Query_trf_usr = mysqli_query($datos, $str_trf_usr);
 $Query_team_int = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
 // internal requirements
+
 $query_internal= "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
 $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
@@ -35,7 +36,7 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
-$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
+$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CON
     <link type="text/css" href="../css/slider.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/jquery.plupload.queue.css" type="text/css" media="screen" />
     <style type="text/css">
-.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:50%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:95%}.attach{display:none;vertical-align:top}.file-contents{width:100%}.file-contents,.file-contents p{display:inline-block;vertical-align:top}.display-progress{display:none}.At-int-ii{display:table-row}.Ec-int-ii,.Hc-int-ii,.Pe-int-ii,.Pv-int-ii{display:none}.At-int{display:table-row}.Ec-int,.Hc-int,.Pe-int,.Pv-int{display:none}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}.ifile{margin:.5em;display:inline-block;vertical-align:top;cursor:pointer}.iname{display:block;text-align:left}#wrap-D{display:inline-block;max-height:20em}.toggle-attach{float:right;background-color:gray;border-radius:15px}.toggle-attach i{color:#fff;padding:.2em}#D-drop{height:20em;width:20em;float:right;background-color:#fff;border-radius:20px;border:1px orange solid;overflow-y:auto;overflow-x:hidden}#D-drop:after{content:"Arrastre aqui sus archivos";color:gray;position:relative;top:8em;left:2em;font-style:italic;font-size:1.3em}.attach,#wrap-D{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.after:after{content:"Arrastre aqui sus archivos"}.no-after:after{content:""}.collaborates{width:80%}.collaborates,.collaborates p{display:inline-block;vertical-align:top;font-size:.8em;font-style:italic}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.incoming-files{display:none}#froback{position:relative;float:right;color:#a9a9a9;font-style:italic}.spac{margin-right:.8em;color:#1e5799;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799',endColorstr='#207cca',GradientType=0)}.golang i,.spac{font-size:1.5em}.golang,.collaborates,.wrap-events{display:inline-block;vertical-align:top}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}.events{color:#24B56C;font-size:1.5em}.wrap-events{width:auto;margin:0 .5em}.chrono{display:none}#back-to-main i{cursor:pointer}#back-to-main i:hover{color:#90ee90}.user-schedule{width:100%;height:auto}.wrap-charts{display:none}strong{font-size:.8em}.progressDisplay li{padding:5px}.utrf{display:none}.bolder{font-weight:bolder}.group{width:8%;border-radius:50%;padding:6px;border:1px solid #d3d3d3;border-radius:50%;display:inline-block;vertical-align:top;-webkit-transition:all 100ms ease-in-out;-moz-transition:all 100ms ease-in-out;transition:all 100ms ease-in-out}.group:hover{border:1px solid orange;width:10%}#descript-int{width:100%;}
+.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:50%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:95%}.attach{display:none;vertical-align:top}.file-contents{width:100%}.file-contents,.file-contents p{display:inline-block;vertical-align:top}.display-progress{display:none}.At-int-ii{display:table-row}.Ec-int-ii,.Hc-int-ii,.Pe-int-ii,.Pv-int-ii{display:none}.At-int{display:table-row}.Ec-int,.Hc-int,.Pe-int,.Pv-int{display:none}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}.ifile, .ifile-ii{margin:.5em;display:inline-block;vertical-align:top;cursor:pointer}.iname{display:block;text-align:left}#wrap-D{display:inline-block;max-height:20em}.toggle-attach{float:right;background-color:gray;border-radius:15px}.toggle-attach i{color:#fff;padding:.2em}#D-drop{height:20em;width:20em;float:right;background-color:#fff;border-radius:20px;border:1px orange solid;overflow-y:auto;overflow-x:hidden}#D-drop:after{content:"Arrastre aqui sus archivos";color:gray;position:relative;top:8em;left:2em;font-style:italic;font-size:1.3em}.attach,#wrap-D{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.after:after{content:"Arrastre aqui sus archivos"}.no-after:after{content:""}.collaborates{width:80%}.collaborates,.collaborates p{display:inline-block;vertical-align:top;font-size:.8em;font-style:italic}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.incoming-files{display:none}#froback{position:relative;float:right;color:#a9a9a9;font-style:italic}.spac{margin-right:.8em;color:#1e5799;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799',endColorstr='#207cca',GradientType=0)}.golang i,.spac{font-size:1.5em}.golang,.collaborates,.wrap-events{display:inline-block;vertical-align:top}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}.events{color:#24B56C;font-size:1.5em}.wrap-events{width:auto;margin:0 .5em}.chrono{display:none}#back-to-main i{cursor:pointer}#back-to-main i:hover{color:#90ee90}.user-schedule{width:100%;height:auto}.wrap-charts{display:none}strong{font-size:.8em}.progressDisplay li{padding:5px}.utrf{display:none}.bolder{font-weight:bolder}.group{width:8%;border-radius:50%;padding:6px;border:1px solid #d3d3d3;border-radius:50%;display:inline-block;vertical-align:top;-webkit-transition:all 100ms ease-in-out;-moz-transition:all 100ms ease-in-out;transition:all 100ms ease-in-out}.group:hover{border:1px solid orange;width:10%}#descript-int{width:100%;}
 
 .finished{
   color: #17D221;
@@ -885,7 +886,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <? } ?>
+                                                    <? } ?>
                                                            </tbody>
                                                     </table>   
                                             </div>
@@ -956,12 +957,74 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                             ?>
                                                             <tr class="task <? echo $class; ?>">
-                                                                <input type="hidden" value="<? echo $ii[0]; ?>" class="hi-int-id">
+                                                                <input type="hidden" value="<? echo $ii[0] ?>" class="hi-int-id">
+                                                                <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
                                                                 <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <div class="ii-files">
+
+                          <?    if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/")) {
+                                  
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/", 0775, true); 
+   
+                              } 
+
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                    
+
+                                         if(preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) == 1){
+                                             
+                                             $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                                                            <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                                                <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                                                <span class="iname"></span>
+                                                                            </p>
+                                                                        </a>
+
+
+                                                                    </div>
+                                                                </td>
                                                             </tr>
                                                          <? } //fin  while incoming ?>
                                                     </tbody>
@@ -995,20 +1058,20 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
-                                             <input type="text" class="span2" />
+                                             <input type="text" class="span2" style="width: 100%"/>
                                     </div>
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
 
-                                <div class="attach">
+                                <div class="attach" style="display:inline-block">
                                     <form id="upload2" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
-                                               <input type="hidden" value="" name="code" id="stsk-code">
+                                               <input type="hidden" value="" name="code" id="stsk-code-ii">
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
-                                               <input type="hidden" value="" name="user" id="stsk-user">
+                                               <input type="hidden" value="" name="user" id="stsk-user-ii">
                                                <input type="hidden" value="" name="">  
                                           </div>
                                          <ul>
@@ -1154,6 +1217,8 @@ console.log("stsk_send is :" + ids);
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#set-pro-int").addClass('active in');
+
+
 
 
 });
