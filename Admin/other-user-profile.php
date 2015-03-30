@@ -957,7 +957,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                             ?>
                                                             <tr class="task <? echo $class; ?>">
-                                                                <input type="hidden" value="<? echo $ii[0] ?>" class="hi-int-id">
+                                                                <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
@@ -1209,19 +1209,19 @@ dateTime = AmericanDate($(this).next().html());
 
        mode = "delegate";
  var indice = $(this).index();
- var ids    = $(this).parent().children('input').val();
+ var ids    = $(this).parent().children('.ii-stsk').val();
 
 stsk_send = ids;
 console.log("stsk_send is :" + ids);
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
-$("#int-require").removeClass('active in');$("#set-pro-int").addClass('active in');
-
-
-
+$("#int-require").removeClass('active in');
+$("#set-pro-int").addClass('active in');
 
 });
+
+
 
 $("#back-ii").click(function(){
     $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
@@ -1349,7 +1349,7 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
 if (mode == "first"){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0 );
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
 } else {
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
 }  
@@ -1784,6 +1784,8 @@ console.info(ind);
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
+
+console.info(mst);
 
   $.ajax({
           type: "POST",
