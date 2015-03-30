@@ -1786,7 +1786,6 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
 console.info(mst);
-
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal.php?muser=" + $("#muser").val() + 
