@@ -888,9 +888,35 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                            </tbody>
                                                     </table>   
                                             </div>
+                                        <div class="module-option clearfix">
+                                            <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
+                                                    <div class="pull-left">
+                                                        Filtro : &nbsp;
+                                                        <div class="btn-group">
+                                                            <button class="btn title-int-ii">Atrasados</button>
+                                                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                                            <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <li class="swt-int-ii" id="Ec-int-ii"><a href="#">En Curso</a></li>
+                                                                <li class="swt-int-ii" id="Pv-int-ii"><a href="#">Por Vercer</a></li>
+                                                                <li class="swt-int-ii" id="At-int-ii"><a href="#">Atrasados</a></li>
+                                                                <li class="swt-int-ii" id="Hc-int-ii"><a href="#">Finalizados</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                            <div class="pull-right"></div>
+                                            </div>
                                             <div class="module-body table">
                                                 <table class="table table-message" id="income-ing">
                                                     <tbody id="income-int-body">
+                                                          <tr class="heading" >
+                                                              <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                              <td class="cell-title">Descripción requerimiento</td>
+                                                              <td class="cell-status hidden-phone hidden-tablet">Status</td>
+                                                              <td class="cell-title">Asignar</td>
+                                                              <td class="cell-time align-right">Fecha maxima respuesta</td>
+                                                            </tr>
                                                         <? while ($ii = mysqli_fetch_row($query_incoming)) { 
                                                                   if($ii[9] == 0 || $ii[9] == '0'){
 
@@ -1335,6 +1361,25 @@ $(".swt-int").on('click', function(){
     var title_in = $(this).html();
     $(".display-progress").css({ display: "none"});
     $(".title-int").html(title_in);
+     for(i=0; i < all_on.length ; i++){
+           if(all_on[i].id !== ex){
+              $('.' + all_on[i].id).css({ display : "none"});
+           } else {
+              $('.' + all_on[i].id).css({ display: "table-row"});
+           }
+        
+     }
+});
+
+
+$(".swt-int-ii").on('click', function(){
+
+    var all_on = document.querySelectorAll('.swt-int-ii');
+
+    var ex = $(this).attr("id");
+    var title_in = $(this).html();
+    $(".display-progress").css({ display: "none"});
+    $(".title-int-ii").html(title_in);
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
