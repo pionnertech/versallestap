@@ -1374,7 +1374,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
  
 
  console.info("../backend/progress-ii.php?val=" + $("#value-progress").val() + 
-          "&id=" + st_ii+ 
+          "&stsk_id=" + st_ii+ 
           "&iss_id=" + ii_iss + 
           "&muser=" + remoteUser + 
           "&subject=" + $("#pro-subject").val() + 
@@ -1383,7 +1383,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&fac=" + fac );
  $.ajax({ type: "POST", 
           url : "../backend/progress-ii.php?val=" + $("#value-progress").val() + 
-          "&id=" + st_ii+ 
+          "&stsk_id=" + st_ii+ 
           "&iss_id=" + ii_iss + 
           "&muser=" + remoteUser + 
           "&subject=" + $("#pro-subject").val() + 
