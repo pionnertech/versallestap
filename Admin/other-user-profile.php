@@ -1226,13 +1226,8 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = $(this).parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
 
-
-
-$("#del-int-req").data("val",indice );
-$("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
-
 
 
 });
