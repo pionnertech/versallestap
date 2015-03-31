@@ -2598,12 +2598,11 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 td1.onclick = function (){
-
     var obj = $(this).children('i');
     var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk_int, "" , obj);
+           unlock(stsk_int, stsk_int , obj);
     }
   });
 }
