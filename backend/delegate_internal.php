@@ -36,14 +36,14 @@ if($stsk_src_id == 0){
  $hds = mysqli_query($datos, $query_es);
    if($hds){
   $number = mysqli_insert_id($datos);
-     mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number + 1 );
+      $walk = "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number + 1;
+      $variable = mysqli_query($datos , $walk);
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
-        $outcome .= "yes|";
+        $outcome .= "yes|" . $walk . "|";
   } else {
       echo mysqli_error($datos);
   }
 } else {
-
  echo mysqli_error($hds) . "  /--/  " . $query_es;
  exit ;
 }
