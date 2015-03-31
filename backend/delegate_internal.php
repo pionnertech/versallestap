@@ -36,9 +36,7 @@ if($stsk_src_id == 0){
  $hds = mysqli_query($datos, $query_es);
    if($hds){
   $number = mysqli_insert_id($datos);
-      $walk = "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . (int)$number + 1;
-      echo $walk;
-      $variable = mysqli_query($datos , $walk);
+
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
         $outcome .= "yes|";
   } else {
@@ -56,6 +54,10 @@ echo mysqli_error($datos);
 
 } else {
 
+     if($stsk_src_id == 0) {
+         $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . (int)$number + 1);
+     }    
+       
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
   if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
