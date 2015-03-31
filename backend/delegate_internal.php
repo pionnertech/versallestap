@@ -38,7 +38,6 @@ if($stsk_src_id == 0){
   $number = mysqli_insert_id($datos);
      mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number + 1 );
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
-
         $outcome .= "yes|";
   } else {
       echo mysqli_error($datos);
