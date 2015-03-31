@@ -42,14 +42,13 @@ if($stsk_src_id == 0){
   $number = mysqli_insert_id($datos);
 
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
-        $outcome .= "yes|";
-
+        
   } else {
-    
+
       echo mysqli_error($datos);
   }
 } else {
- echo mysqli_error($hds) . "  /--/  " . $query_es;
+ echo mysqli_error($hds);
  exit ;
 }
 }
@@ -88,7 +87,7 @@ echo mysqli_error($datos);
 closedir($hdir);
 }
 
- echo mysqli_insert_id($datos) . "|" . $name['NAME'] . "|" . $outcome . "|" . $walk;
+ echo mysqli_insert_id($datos) . "|" . $name['NAME'] . "|" . $outcome;
 
 
 
