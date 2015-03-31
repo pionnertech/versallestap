@@ -1060,7 +1060,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
-                                             <input type="text" class="span2" style="width: 24em"/>
+                                             <input type="text" class="span2" style="width: 28em"/>
                                     </div>
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
@@ -1082,7 +1082,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                     </form>
                               </div>
                           </div>
-
                                      </div>
                             <!--/.module-body-->
                         </div>
