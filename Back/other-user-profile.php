@@ -63,7 +63,7 @@ if(mysqli_num_rows($quntum) == 0){
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
     
     <style type="text/css">
-.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:50%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:80%}.attach{display:inline-block;vertical-align:top}.display-progress{display:none;-webkit-transition:all 800ms ease-in-out;-moz-transition:all 800ms ease-in-out;transition:all 800ms ease-in-out}.wrap-progress{width:100%;background-color:#FFF}.progress-go{width:85%;text-align:left}.slider-horizontal{width:100%!important}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}#back{width:auto;cursor:pointer}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.down{display:inline-block;vertical-align:top;margin:0 .8em}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}@media screen and (max-width: 1024px){.sub-del{width:100%}#upgrade{position:relative;margin:3em 0;left:35%}#upload{width:100%}#drop a{display:block}}
+.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:50%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:80%}.attach{display:inline-block;vertical-align:top}.display-progress{display:none;-webkit-transition:all 800ms ease-in-out;-moz-transition:all 800ms ease-in-out;transition:all 800ms ease-in-out}.wrap-progress{width:100%;background-color:#FFF}.progress-go{width:85%;text-align:left}.slider-horizontal{width:100%!important}.At-int{display:table-row}.Ec-int,.Hc-int,.Pe-int,.Pv-int{display:none}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}#back{width:auto;cursor:pointer}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.down{display:inline-block;vertical-align:top;margin:0 .8em}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}@media screen and (max-width: 1024px){.sub-del{width:100%}#upgrade{position:relative;margin:3em 0;left:35%}#upload{width:100%}#drop a{display:block}}
 </style>    
 </head>
 <body>
@@ -600,6 +600,7 @@ var progressbar;
 var previuosData =  <?  printf("\"" . $manu . "\"")  ?>  ;
 var previuosDataInt = <?  printf("\"" . $manu_int . "\"")  ?>  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
+var argument = 0;
 
 
     $(document).on('ready', function(){
@@ -662,6 +663,7 @@ var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
  
 
 $(".forward").on('click', function(){
+   argument = 0;
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
@@ -687,6 +689,30 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 });
 
+
+$(".int-forward").on('click', function(){
+   argument = 1;
+
+
+   var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
+   current_iss =  $(this).parent().parent().children('input').eq(1).val();
+   inner = $(this).parent().parent().index();
+   subject = $(this).parent().parent().children('td').eq(1).text();
+   $("#audititle").html("\"" + subject + "\"");
+
+   var user = $("#muser").val();
+
+   $(".span2").slider('setValue', parseInt(percent));
+
+   $("#stsk-code").val(subtask_id);
+$("#stsk-user").val(user);
+
+
+$("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+})
+
 $(".due").on('click', function(){
 
 if(!$(this).data("val") || !$(this).data("val") === 0 ){
@@ -707,7 +733,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $("#upgrade").on('click', function(){
 
-    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner);
+    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner, argument);
     current_iss = 0;
 
     $("#subject").val('');
@@ -763,7 +789,7 @@ $(".swt-int").on('click', function(){
 });
 
 
-function upprogress(val, user, stsk_id, iss_id, des, subject, index){
+function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar){
 
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
@@ -773,11 +799,12 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
            url: "../backend/upgrade.php?val=" + val +
             "&stsk_id=" +  stsk_id + 
             "&iss_id=" + iss_id + 
-            "&mmx=" + user + 
+            "&user=" + user + 
             "&subject=" + subject + 
             "&des=" + des + 
             "&date=" + date +
-            "&fac=" + fac 
+            "&fac=" + fac + 
+            "&argument=" + ar
             , 
             success : function (data){
           
