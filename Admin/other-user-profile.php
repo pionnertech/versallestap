@@ -1564,7 +1564,7 @@ $(".int-lock").on('click', function(){
     var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
-           unlock(stsk_int, "" , obj);
+           unlock(stsk_int, stsk_int , obj);
     }
   });
 })
