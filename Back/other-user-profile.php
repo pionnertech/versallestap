@@ -701,7 +701,7 @@ $(".int-forward").on('click', function(){
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-
+   var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
    $(".span2").slider('setValue', parseInt(percent));
 
    $("#stsk-code").val(subtask_id);
