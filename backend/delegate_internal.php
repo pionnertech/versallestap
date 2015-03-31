@@ -10,6 +10,7 @@ $startD      = $_GET['startD'];
 $fac         = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile     = $_GET['keyfile'];
+$number      = 0;
 
 $dir = "/var/www/html/" . $fac . "/" . $user . "_alt/";
 $outcome = $keyfile . "|" . $stsk_src_id . "|";
@@ -33,13 +34,18 @@ $query .= "VALUES ( '" . $subject . "', '" . $descript . "', '" . $user . "', '"
 
 // cuando es el prime stsk 
 if($stsk_src_id == 0){
+
  $hds = mysqli_query($datos, $query_es);
+
    if($hds){
+
   $number = mysqli_insert_id($datos);
 
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
         $outcome .= "yes|";
+
   } else {
+    
       echo mysqli_error($datos);
   }
 } else {
@@ -55,7 +61,7 @@ echo mysqli_error($datos);
 } else {
 
      if($stsk_src_id == 0) {
-         $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . (int)$number + 1);
+         $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
      }    
        
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
