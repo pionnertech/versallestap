@@ -1385,7 +1385,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&subject=" + $("#pro-subject").val() + 
           "&des=" +  $("#pro-subject").val() + 
           "&date=" + fp + 
-          "&fac=" + fac+ );
+          "&fac=" + fac );
  $.ajax({ type: "POST", 
           url : "../backend/progress-ii.php?val=" + $("#value-progress").val() + 
           "&id=" + st_ii+ 
@@ -1394,7 +1394,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&subject=" + $("#pro-subject").val() + 
           "&des=" +  $("#pro-subject").val() + 
           "&date=" + fp + 
-          "&fac=" + fac+ , 
+          "&fac=" + fac , 
           success : function(data){
            bootbox.alert("progreso ingresado", function(){
                 $("#income-int-body tr").eq(ii_ind + 1).children("td").children();
