@@ -43,49 +43,21 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ISS_ID = " 
 
 //seek the original admin-admin subtask 
 
-$var1 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM `SUBTASKS` WHERE STSK_ID = " . $id));
-$var2 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM `SUBTASKS` WHERE (STSK_ISS_ID = " . $var1['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR)"));
+$var1 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM `SUBTASKS` WHERE (STSK_ID = " . $id . " AND STSK_TYPE = 1"));
+$var2 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM `SUBTASKS` WHERE (STSK_ISS_ID = " . $var1['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1)"));
 
 
-$insertar = "INSERT INTO `TRAFFIC` (TRF_STSK_ID, TRF_STSK_SRC_ID, TRF_DESCRIPT, TRF_SUBJECT, TRF_FAC_CODE, TRF_ING_DATE, TRF_USER) ";
+$insertar = "INSERT INTO `TRAFFIC_II` (TII_STSK_ID, TII_STSK_SRC_ID, TII_DESCRIPT, TII_SUBJECT, TII_FAC_CODE, TII_ING_DATE, TII_USER) ";
 $insertar .= "VALUES (" . $id . ", " . $var2['STSK_ID'] . " , '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', '" . $user . "');";
 
 if(!mysqli_query($datos, $insertar)){
-	echo "status failed";
+	echo mysqli_error($datos);
 	exit;
-}
-
-//añadir progreso a la audiencia
-$query = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_TYPE = 1);");
-
-
-$suma = 0;
-$count = mysqli_num_rows($query);
-
-while ( $fila5 = mysqli_fetch_row($query) ){
-
-       $suma += $fila5[0];
-}
-
-$upgrade = ($suma / $count);
-
-if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$upgrade . " WHERE ISS_ID = " . $iss_id . ";")){
-    
- echo 0;
-
 } else {
-  
-  if ($upgrade > 99.5){
-  	    if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_STATE = 5 WHERE ISS_ID = " . $iss_id . ";")){
-         	echo 0;
-   }
-
-  }
-
-echo 1;
-
-   
+  echo 1;
 }
+
+
 
 
 ?>

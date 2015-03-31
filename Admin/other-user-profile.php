@@ -36,7 +36,7 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
-$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
+$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
 
 ?>
 <!DOCTYPE html>
@@ -959,6 +959,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
+                                                                <input type="hidden" value="<? echo $ii[11] ?>" class="ii-iss">
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
@@ -967,6 +968,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="5">
+                                                                    <p>
+                                                                        <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($ii[7]) ?>%</span>
+                                                                    </p>
+                                                                    <div class="progress tight">
+                                                                        <div class="bar bar-warning" style="width: <? printf($ii[7]) ?>%;"></div>
+                                                                    </div>
                                                                     <div class="ii-files">
 
                           <?    if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/")) {
@@ -1054,13 +1061,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                 <div id="back-ii"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
-                                    <input type="text" id="subject" class="require-subtasks" value="" placeholder="asunto">
-                                    <textarea id="st-description" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input  id="pro-subject" type="text" class="int-ii-subtasks" value="" placeholder="asunto">
+                                    <textarea id="pro-descript" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
                                     <div class="progress-go">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
-                                             <input type="text" class="span2" style="width: 28em"/>
+                                             <input type="text" id="value-progress" class="span2" style="width: 28em"/>
                                     </div>
                                     <button class="btn btn-info" id="upgrade">Subir Progreso</button>
                                 </div>
@@ -1133,9 +1140,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     var user_send    = "";
     var stsk_send    = "";
     var keyFile      = "";
-    var dateTime
+    var dateTime;
     var objeto;
     var dateTime;
+    //ii variables 
+    var remoteUser= 0;
+    var st_ii     = 0;
+    var ii_ind    = 0;
+    var ii_iss    = 0;
+
 
 
     $(document).on('ready', function(){
@@ -1208,17 +1221,19 @@ $(".ii-forward").click(function(){
 
 dateTime = AmericanDate($(this).next().html());
 
-       mode = "delegate";
- var indice = $(this).index();
- var ids    = $(this).parent().children('.ii-stsk').val();
+ remoteUser = $(this).parent().children("input").eq(1).val();
+ st_ii      = $(this).parent().children("input").eq(0).val();
+ ii_iss     = $(this).parent().children("input").eq(2).val();
+ ii_ind     = $(this).index(".ii-forward");
 
-stsk_send = ids;
-console.log("stsk_send is :" + ids);
+
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
+
+
 
 });
 
@@ -1357,6 +1372,38 @@ if (mode == "first"){
 });
 
 
+$("#upgrade").on('click', function (){
+ 
+var da  = new Date();
+var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('0' + da.getDate()).slice(-2) + " " + ('0' + da.getHours()).slice(-2) + ":" + ('0' + da.getMinutes()).slice(-2)  + ":" + ('0' + da.getSeconds()).slice(-2) ;
+ 
+
+ console.info("../backend/progress-ii.php?val=" + $("#value-progress").val() + 
+          "&id=" + st_ii+ 
+          "&iss_id=" + ii_iss + 
+          "&muser=" + remoteUser + 
+          "&subject=" + $("#pro-subject").val() + 
+          "&des=" +  $("#pro-subject").val() + 
+          "&date=" + fp + 
+          "&fac=" + fac+ );
+ $.ajax({ type: "POST", 
+          url : "../backend/progress-ii.php?val=" + $("#value-progress").val() + 
+          "&id=" + st_ii+ 
+          "&iss_id=" + ii_iss + 
+          "&muser=" + remoteUser + 
+          "&subject=" + $("#pro-subject").val() + 
+          "&des=" +  $("#pro-subject").val() + 
+          "&date=" + fp + 
+          "&fac=" + fac+ , 
+          success : function(data){
+           bootbox.alert("progreso ingresado", function(){
+                $("#income-int-body tr").eq(ii_ind + 1).children("td").children();
+           })
+          }
+      })
+
+    
+});
 
 $("#delegates").on('change', function(){
 
