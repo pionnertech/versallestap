@@ -59,6 +59,8 @@ echo mysqli_error($datos);
 
 } else {
 
+$ret_id = mysqli_insert_id($datos);
+
      if($stsk_src_id == 0) {
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
      }    
@@ -87,7 +89,7 @@ echo mysqli_error($datos);
 closedir($hdir);
 }
 
- echo mysqli_insert_id($datos) . "|" . $name['NAME'] . "|" . $outcome;
+ echo $ret_id . "|" . $name['NAME'] . "|" . $outcome;
 
 
 
