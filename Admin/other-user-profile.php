@@ -1021,7 +1021,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                                 <span class="iname"></span>
                                                                             </p>
                                                                         </a>
-
+                                                  <? }
+                                                  } 
+                                                } ?>
 
                                                                     </div>
                                                                 </td>
