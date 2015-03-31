@@ -1391,6 +1391,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&date=" + fp + 
           "&fac=" + fac , 
           success : function(data){
+            console.info(data);
            bootbox.alert("progreso ingresado", function(){
                 $("#income-int-body tr").eq(ii_ind + 1).children("td").children();
            })
