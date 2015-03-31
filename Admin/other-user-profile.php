@@ -884,9 +884,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
              <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . ")"); 
                                while($prt = mysqli_fetch_row($part)){
              ?>
-                                                                        <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($part[1]))))) ?>">
-                                                                            <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $part[0]; ?>_opt.jpg" class="group" >
-                                                                            <input type="hidden" value="u<? printf($part[0])?>">
+                                                                        <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
+                                                                            <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
+                                                                            <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
                                                                         <? } ?>
                                                                     </div>
