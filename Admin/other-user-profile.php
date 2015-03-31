@@ -966,7 +966,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr style="display:none;">
                                                                 <td colspan="5">
                                                                     <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($ii[7]) ?>%</span>
