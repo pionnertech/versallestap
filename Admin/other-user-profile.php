@@ -1393,7 +1393,9 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           success : function(data){
             console.info(data);
            bootbox.alert("progreso ingresado", function(){
-                $("#income-int-body tr").eq(ii_ind + 1).children("td").children();
+               $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
+                $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
+                $("#income-int-body tr.task").eq(1).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
            })
           }
       })
