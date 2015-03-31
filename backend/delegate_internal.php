@@ -49,7 +49,6 @@ if($stsk_src_id == 0){
 }
 }
 
-
 if(!mysqli_query($datos, $query)){
 
 echo mysqli_error($datos);
