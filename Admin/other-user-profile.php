@@ -1040,6 +1040,26 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                                     </div>
                                                                 </td>
+                                                            <table class="table table-message">
+                                                                <tbody>
+                                                                    <tr class="heading">
+                                                                        <td class="cell-title">Asunto</td>
+                                                                        <td class="cell-title">Descripcion</td>
+                                                                        <td class="cell-time align-right">Fecha progreso</td>
+                                                                    </tr>
+                                                    <?   
+              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" $ii[0]);
+                                       
+                                    while ($ii_trf = mysqli_fetch_row($TII)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="cell-title"><? echo $ii_trf[0]?></td>
+                                                            <td class="cell-title"><? echo $ii_trf[1]?></td>
+                                                            <td class="cell-time align-right"><? echo $ii_trf[3]?></td>
+                                                        </tr>
+                                                    <? } ?>
+                                                                </tbody>
+                                                            </table>
                                                             </tr>
                                                          <? } //fin  while incoming ?>
                                                     </tbody>
