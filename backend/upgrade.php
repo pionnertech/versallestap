@@ -10,11 +10,7 @@ $descript = $_GET['des'];
 $date = $_GET['date'];
 $fac = $_GET['fac'];
 
-//
-
-$argument = $_GET['ar'];
-
-
+$argument = $_GET['argument'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
