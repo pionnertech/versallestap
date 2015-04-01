@@ -546,7 +546,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                      closedir($handler);  
                                                     ?>
                                                                     </div>
-                                                         <table>
+                                                         <table style="width:100%">
                                                                 <tbody class="ii-events">
                                                                     <tr >
                                                                         <td><span style="font-weight: bolder">Asunto</span></td>
@@ -561,7 +561,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                         <tr>
                                                             <td class="cell-title"><? echo $ii_trf[0]?></td>
                                                             <td class="cell-title"><? echo $ii_trf[1]?></td>
-                                                            <td class="cell-time align-right"><? echo $ii_trf[2]?></td>
+                                                            <td class="align-right"><? echo $ii_trf[2]?></td>
                                                         </tr>
                                                     <? } ?>
                                                                 </tbody>
