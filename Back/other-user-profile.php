@@ -546,8 +546,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                      closedir($handler);  
                                                     ?>
                                                                     </div>
-                                                                </td>
-                                                    <table class="table table-message">
+                                                         <table class="table table-message">
                                                                 <tbody>
                                                                     <tr class="heading">
                                                                         <td class="cell-title">Asunto</td>
@@ -572,6 +571,8 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                            </tbody>
                                                     </table> 
                                             </div>
+                                                                </td>
+
                                          </div> 
                                      </div> 
                                 
