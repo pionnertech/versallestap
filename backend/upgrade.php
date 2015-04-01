@@ -18,8 +18,6 @@ $argument = $_GET['ar'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
-
 if($argument == 0){
 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE STSK_ID = " . $id . " ;");
@@ -96,6 +94,9 @@ echo 1;
 
    
 }
+
+// break 
+
 
 } else {
 
