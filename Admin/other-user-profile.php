@@ -528,12 +528,12 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <div class="collaborates">
                                             <i class="fa fa-group spac"></i>
                                                 <?
-$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
 
         <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
-            <i class="fa fa-check-circle finished"></i>
+            <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="u<? printf($fila_spec[1])?>">
         </a>
     <?  }  ?>
@@ -1999,6 +1999,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                        updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5] );
                        if(parseInt(packets[8]) >= 99.5){
                            $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[4] +"]").prev().css({ opacity : "1"});
+                            $(".finished").eq(indice).css({opacity : "1"});
 
                        }
 
