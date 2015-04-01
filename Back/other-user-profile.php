@@ -480,10 +480,10 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                         <tr class="display-progress" style="display: none;">
                                                                 <td colspan="5">
                                                                    <p>
-                                                                        <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
+                                                                        <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila_int[5]) ?>%</span>
                                                                     </p>
                                                                     <div class="progress tight">
-                                                                        <div class="bar bar-warning" style="width: <? printf($fila5[7]) ?>%;"></div>
+                                                                        <div class="bar bar-warning" style="width: <? printf($fila5[5]) ?>%;"></div>
                                                                     </div>
                                                                     <div class="file-contents">
 <?
