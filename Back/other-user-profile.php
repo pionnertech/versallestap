@@ -862,7 +862,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
              } else {
             $("#int-table > tbody > tr").eq(4).children("td").children('p').children('span').html(val + "%");
             $("#int-table > tbody > tr").eq(4).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
-            progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index+1]);
+            progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
 
              }
 
