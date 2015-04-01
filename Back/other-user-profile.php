@@ -559,9 +559,9 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                     while ($ii_trf = mysqli_fetch_row($TII)) {
                                                     ?>
                                                         <tr>
-                                                            <td class="cell-title"><? echo $ii_trf[0]?></td>
-                                                            <td class="cell-title"><? echo $ii_trf[1]?></td>
-                                                            <td class="cell-time align-right"><? echo $ii_trf[2]?></td>
+                                                            <td><? echo $ii_trf[0]?></td>
+                                                            <td><? echo $ii_trf[1]?></td>
+                                                            <td><? echo $ii_trf[2]?></td>
                                                         </tr>
                                                     <? } ?>
                                                                 </tbody>
