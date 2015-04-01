@@ -547,6 +547,26 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                     ?>
                                                                     </div>
                                                                 </td>
+                                                    <table class="table table-message">
+                                                                <tbody>
+                                                                    <tr class="heading">
+                                                                        <td class="cell-title">Asunto</td>
+                                                                        <td class="cell-title">Descripcion</td>
+                                                                        <td class="cell-time align-right">Fecha progreso</td>
+                                                                    </tr>
+                                                    <?   
+              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" $fila_int[0]);
+                                       
+                                    while ($ii_trf = mysqli_fetch_row($TII)) {
+                                                    ?>
+                                                        <tr>
+                                                            <td class="cell-title"><? echo $ii_trf[0]?></td>
+                                                            <td class="cell-title"><? echo $ii_trf[1]?></td>
+                                                            <td class="cell-time align-right"><? echo $ii_trf[3]?></td>
+                                                        </tr>
+                                                    <? } ?>
+                                                                </tbody>
+                                                            </table>
                                                             </tr>
                                                     <? } ?>
                                                            </tbody>
@@ -788,8 +808,6 @@ $(".swt-int").on('click', function(){
 
 function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar){
 
-
-
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
@@ -839,7 +857,11 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
                 }
 
+             } else {
+
+progressTableUpdate(subject, des, date, document.querySelectorAll("#int-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
              }
+
              });
 
             } else {
@@ -1245,7 +1267,6 @@ $.ajax({
 function progressTableUpdate(subject, description, date, object){
 
 var tr  = document.createElement('tr');
-
 var td1 = document.createElement('td');
 var td2 = document.createElement('td');
 var td3 = document.createElement('td');
