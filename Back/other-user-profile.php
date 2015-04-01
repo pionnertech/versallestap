@@ -549,9 +549,9 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                          <table class="table table-message">
                                                                 <tbody>
                                                                     <tr class="heading">
-                                                                        <td class="cell-title">Asunto</td>
-                                                                        <td class="cell-title">Descripcion</td>
-                                                                        <td class="cell-time align-right">Fecha progreso</td>
+                                                                        <td><span style="font-weight: bolder">Asunto</span></td>
+                                                                        <td><span style="font-weight: bolder">Descripcion</span></td>
+                                                                        <td><span style="font-weight: bolder">Fecha progreso</span></td>
                                                                     </tr>
                                                     <?   
               $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $fila_int[0]);
@@ -561,7 +561,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                         <tr>
                                                             <td class="cell-title"><? echo $ii_trf[0]?></td>
                                                             <td class="cell-title"><? echo $ii_trf[1]?></td>
-                                                            <td class="cell-time align-right"><? echo $ii_trf[3]?></td>
+                                                            <td class="cell-time align-right"><? echo $ii_trf[2]?></td>
                                                         </tr>
                                                     <? } ?>
                                                                 </tbody>
