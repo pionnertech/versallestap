@@ -139,7 +139,7 @@ if(!mysqli_query($datos, $insertar)){
   echo mysqli_error($datos);
   exit;
 } else {
-  echo 1;
+  echo $insertar;
 }
 
 

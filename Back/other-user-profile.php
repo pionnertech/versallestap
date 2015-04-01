@@ -701,12 +701,12 @@ $(".int-forward").on('click', function(){
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-   var percent = $(this).parent().next().children('td').children('div').children('p').children('span').html();
+   var percent = $(this).parent().next().children('td').children('p').children('span').html()
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
 
-$("#int-require").removeClass('active ');$("#tasks-own").addClass('active in');
+$("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
 
 })
 
@@ -793,17 +793,6 @@ function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar){
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
-console.info("../backend/upgrade.php?val=" + val +
-            "&stsk_id=" +  stsk_id + 
-            "&iss_id=" + iss_id + 
-            "&user=" + user + 
-            "&subject=" + subject + 
-            "&des=" + des + 
-            "&date=" + date +
-            "&fac=" + fac + 
-            "&argument=" + ar)
-
-
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade.php?val=" + val +
@@ -825,9 +814,10 @@ console.info("../backend/upgrade.php?val=" + val +
 
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
-            
+     
+//para comopromisos externos
+     if(argument == 0) {  
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
-            
             if(val == 100){
 
                $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html("FINALIZADA");
@@ -849,8 +839,7 @@ console.info("../backend/upgrade.php?val=" + val +
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
                 }
 
-
-   
+             }
              });
 
             } else {
