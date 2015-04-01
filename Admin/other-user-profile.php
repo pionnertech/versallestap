@@ -1046,7 +1046,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                         <td class="cell-time align-right">Fecha progreso</td>
                                                                     </tr>
                                                     <?   
-              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" $ii[0]);
+              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $ii[0]);
                                        
                                     while ($ii_trf = mysqli_fetch_row($TII)) {
                                                     ?>
