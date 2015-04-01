@@ -551,11 +551,10 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                     <tr >
                                                                         <td><span style="font-weight: bolder">Asunto</span></td>
                                                                         <td><span style="font-weight: bolder">Descripcion</span></td>
-                                                                        <td><span style="font-weight: bolder">Fecha progreso</span></td>
+                                                                        <td><span style="font-weight: bolder" class="align-right">Fecha progreso</span></td>
                                                                     </tr>
                                                     <?   
-              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $fila_int[0]);
-                                       
+              $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $fila_int[0]);  
                                     while ($ii_trf = mysqli_fetch_row($TII)) {
                                                     ?>
                                                         <tr>
@@ -831,11 +830,13 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
 
-            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
-            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
+
      
 //para comopromisos externos
      if(argument == 0) {  
+            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
+            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
+
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
             if(val == 100){
 
@@ -859,8 +860,10 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
                 }
 
              } else {
+            $("#int-table > tbody > tr").eq(4).children("td").children('p').children('span').html(val + "%");
+            $("#int-table > tbody > tr").eq(4).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
+            progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index+1]);
 
-progressTableUpdate(subject, des, date, document.querySelectorAll("#int-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
              }
 
              });
