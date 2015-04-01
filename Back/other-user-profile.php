@@ -854,7 +854,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
 $("#back").on('click', function(){
    $("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
-$("#tasks-own").removeClass('active in');$("#require").addClass('active in'); 
+$("#tasks-own").removeClass('active in');$("#int-equire").addClass('active in'); 
 });
 
     var Notification = window.Notification || window.mozNotification || window.webkitNotification;
