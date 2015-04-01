@@ -694,16 +694,15 @@ $(".int-forward").on('click', function(){
    argument = 1;
 
 
-   var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
-   current_iss =  $(this).parent().parent().children('input').eq(1).val();
-   inner = $(this).parent().parent().index();
-   subject = $(this).parent().parent().children('td').eq(1).text();
+   var subtask_id =  $(this).parent().children('input').eq(0).val();
+   current_iss =  $(this).parent().children('input').eq(1).val();
+   inner = $(this).parent().index();
+   subject = $(this).parent().children('td').eq(1).text();
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-   var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
+   var percent = $(this).parent().next().children('td').children('div').children('p').children('span').html();
    $(".span2").slider('setValue', parseInt(percent));
-
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
 
