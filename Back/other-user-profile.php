@@ -805,7 +805,7 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
             "&argument=" + ar
             , 
             success : function (data){
-          
+                console.info(data);
          if( parseInt(data) == 1){
 
              bootbox.alert("Progreso grabado existosamente", function(){
