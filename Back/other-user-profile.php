@@ -707,8 +707,7 @@ $(".int-forward").on('click', function(){
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
 
-$("#require").removeClass('active in');$("#int-require").addClass('active in');
-$("#int-require").removeClass('active');$("#tasks-own").addClass('active');
+$("#int-require").removeClass('active ');$("#tasks-own").addClass('active in');
 
 })
 
