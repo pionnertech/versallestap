@@ -483,7 +483,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila_int[5]) ?>%</span>
                                                                     </p>
                                                                     <div class="progress tight">
-                                                                        <div class="bar bar-warning" style="width: <? printf($fila5[5]) ?>%;"></div>
+                                                                        <div class="bar bar-warning" style="width: <? printf($fila_int[5]) ?>%;"></div>
                                                                     </div>
                                                                     <div class="file-contents">
 <?
@@ -497,12 +497,12 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                         
                                           $file_extension = "";
 
-                                           while (false !== ($archivos = readdir($handler))){
+                                           while (false !== ($archivos2 = readdir($handler))){
                                     
 
-                                         if(preg_match_all("/_\[" . $fila_int[0] . "\]_/", $archivos) == 1){
+                                         if(preg_match_all("/_\[" . $fila_int[0] . "\]_/", $archivos2) == 1){
                                              
-                                             $extension = substr($archivos, -3);
+                                             $extension = substr($archivos2, -3);
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
@@ -533,8 +533,8 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
 
 
                                           ?>
-                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>_alt/<? printf($archivos)?>" class="down" download> 
-                                                                <p class="ifile" title="<? printf($archivos) ?>">
+                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>_alt/<? printf($archivos2)?>" class="down" download> 
+                                                                <p class="ifile" title="<? printf($archivos2) ?>">
                                                                    <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                                    <span class="iname" ></span>
                                                                   </p>
