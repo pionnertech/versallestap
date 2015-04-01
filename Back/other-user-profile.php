@@ -218,7 +218,7 @@ if(mysqli_num_rows($quntum) == 0){
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                             <td class="cell-title">Marcar Avance</td>
                                             <td class="cell-title">Inicio</td>
-                                            <td class="cell-time align-right">Fecha máxima de entrega</td>
+                                            <td class="align-right">Fecha máxima de entrega</td>
                                         </tr>
                                     <? 
                                      $class = "";
@@ -247,7 +247,7 @@ if(mysqli_num_rows($quntum) == 0){
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
-                                            <td class="cell-status hidden-phone hidden-tablet"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
+                                            <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
                                              <? if($class == "Hc"){
                                                   $enable = "disabled";
                                               } else {
@@ -560,7 +560,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                         <tr>
                                                             <td class="cell-title"><? echo $ii_trf[0]?></td>
                                                             <td class="cell-title"><? echo $ii_trf[1]?></td>
-                                                            <td class="align-right"><? echo $ii_trf[2]?></td>
+                                                            <td class="align-right"><? echo date("d/m/Y", strtotime(substr($ii_trf[2], 0, 10))) ?></td>
                                                         </tr>
                                                     <? } ?>
                                                                 </tbody>
