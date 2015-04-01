@@ -1025,8 +1025,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       $cor = "#8E9193";
                                                       break;
                                                  }
-
-
                                           ?>
                                                                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_alt/<? printf($archivos2) ?>" download>
                                                                             <p class="ifile-ii" title="<? printf($archivos2) ?>">
