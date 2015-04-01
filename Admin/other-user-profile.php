@@ -447,7 +447,7 @@ $handler2 = mysqli_query($datos, $matrix2);
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                             <td class="cell-title">Accion</td>
-                                            <td class="cell-time align-right">Fecha máxima de entrega</td>
+                                            <td class="align-right">Fecha máxima de entrega</td>
 
                                         </tr>
                                         <? 
