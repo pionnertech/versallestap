@@ -705,11 +705,10 @@ $(".int-forward").on('click', function(){
    $(".span2").slider('setValue', parseInt(percent));
 
    $("#stsk-code").val(subtask_id);
-$("#stsk-user").val(user);
+   $("#stsk-user").val(user);
 
-
-$("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
-$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+$("#require").removeClass('active in');$("#int-require").addClass('active in');
+$("#int-require").removeClass('active');$("#tasks-own").addClass('active');
 
 })
 
