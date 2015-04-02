@@ -1271,19 +1271,15 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     onShow : function (oct){
     if(mode == "delegate"){
             this.setOptions({
-                format:'Y/m/d',
-                maxDate : dateTime
+                maxDate : dateTime,
+                format:'d/m/Y'
             });
         } else {
             this.setOptions({
-                format:'Y/m/d',
-                maxDate : '2036/12/29'
+                maxDate : '2036/12/29',
+                format:"'d/m/Y"
             });
         }
-    }, 
-    onSelectDate : function (ct){
-       this.setOptions({ format : 'd/m/Y' });
-       this('hide');
     }
 });
 
