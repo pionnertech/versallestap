@@ -2082,7 +2082,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                     }
                 }
         });
-    }, 3000);
+    }, 5000);
     
 if(typeof(EventSource) !== "undefined") {
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
