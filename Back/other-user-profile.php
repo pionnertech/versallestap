@@ -1033,7 +1033,7 @@ if(parseInt(kind) == 0){
     td1.className = "cell-icon";
     td2.className = "cell-title";
     td3.className = "cell-status";
-    td4.className = "cell-title";
+
     td7.className = "cell-time align-right";
 
 
@@ -1044,11 +1044,11 @@ if(parseInt(kind) == 0){
 
      if(kind == 0){
 
-        btn.className   = "btn btn-small forward";
+         td4.className = "cell-title forward";
 
      } else {
        
-       btn.className   = "btn btn-small int-forward";
+         td4.className = "cell-title int-forward";
      }
      td4.appendChild(btn);  
    
@@ -1088,10 +1088,10 @@ console.info($("#upload").attr("action"));
 $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
 console.info($("#upload").attr("action"));
 
-   var subtask_id =  $(this).parent().children('input').eq(0).val();
-   current_iss    =  $(this).parent().children('input').eq(1).val();
-   inner          =  $(this).parent().index();
-   subject        =  $(this).parent().children('td').eq(1).text();
+   var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
+   current_iss    =  $(this).parent().parent().children('input').eq(1).val();
+   inner          =  $(this).parent().parent().index();
+   subject        =  $(this).parent().parent().children('td').eq(1).text();
 
    $("#audititle").html("\"" + subject + "\"");
 
