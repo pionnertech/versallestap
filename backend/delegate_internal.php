@@ -65,18 +65,14 @@ echo mysqli_error($datos);
 
 } else {
 
-
-
-
      if($stsk_src_id == 0) {
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
+         $stsk_id = mysqli_insert_id($datos);
      }    
        
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
   if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
-
-  	$stsk_id = mysqli_insert_id($datos);
 
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
