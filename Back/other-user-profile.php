@@ -715,9 +715,9 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
 console.info($("#upload").attr("action"));
 
    var subtask_id =  $(this).parent().children('input').eq(0).val();
-   current_iss =  $(this).parent().children('input').eq(1).val();
-   inner = $(this).parent().index();
-   subject = $(this).parent().children('td').eq(1).text();
+   current_iss    =  $(this).parent().children('input').eq(1).val();
+   inner          =  $(this).parent().index();
+   subject        =  $(this).parent().children('td').eq(1).text();
 
    $("#audititle").html("\"" + subject + "\"");
 
@@ -876,7 +876,7 @@ console.info("../backend/upgrade.php?val=" + val +
             $("#int-table > tbody > tr").eq(4).children("td").children('p').children('span').html(val + "%");
             $("#int-table > tbody > tr").eq(4).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
             console.info(index);
-            progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
+            progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[(index-1)/2]);
 
              }
 
@@ -1033,7 +1033,7 @@ if(parseInt(kind) == 0){
     td1.className = "cell-icon";
     td2.className = "cell-title";
     td3.className = "cell-status";
-
+    btn.className = "btn btn-default";
     td7.className = "cell-time align-right";
 
 
@@ -1097,7 +1097,7 @@ console.info($("#upload").attr("action"));
 
    var user = $("#muser").val();
 
-   var percent = $(this).parent().next().children('td').children('p').children('span').html();
+   var percent = $(this).parent().parent().next().children('td').children('p').children('span').html();
 
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
