@@ -34,8 +34,6 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
 
 }
 
-      
-
        $count   = mysqli_num_rows($handler);
 
        while ($fila = mysqli_fetch_row($handler)){
@@ -53,10 +51,12 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
           }
 
 $get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR); "));
-$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
-$user      = mysqli_fetch_assoc($query_usr);
 
-$user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
+if($kind == 0 || $kind == "0"){
+  
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
+  $user      = mysqli_fetch_assoc($query_usr);
+  $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
 $user_out2 = $user['TRF_USER'];
 $user_out3 = $user['TRF_SUBJECT'];
 $user_out4 = $user['TRF_DESCRIPT'];
@@ -64,6 +64,18 @@ $user_out5 = date('d/m/Y', strtotime($user['TRF_ING_DATE']));
 $user_out6 = $user['TRF_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
+
+} else {
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
+$user_out2 = $user['TII_USER'];
+$user_out3 = $user['TII_SUBJECT'];
+$user_out4 = $user['TII_DESCRIPT'];
+$user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
+$user_out6 = $user['TII_STSK_SRC_ID'];
+$user_out7 = $ctp;
+$user_out8 = $classText;
+}
 
 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
