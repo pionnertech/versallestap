@@ -2059,14 +2059,13 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-var previan = "";
+
     setInterval(function(){
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
                 packets = data.split("|");
-                if( previan !== packets[2]){
                  if(parseInt(packets[0]) !== 0 ){
                     previan = packets[2];
                        showAlert(packets[2], "pro", packets[0]);
@@ -2079,7 +2078,6 @@ var previan = "";
                        }
                     }
                 }
-            }
         });
     }, 3000);
     
