@@ -2405,8 +2405,8 @@ var files;
 
 function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind){
 
-console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
-
+console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind
+    ,,30,31/12/1969,,,16,,1
 if(parseInt(kind) == 0){
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
@@ -2547,7 +2547,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        a_usr.style.width = "4em";
        a_usr.style.height = "4em";
        a_usr.title = usr_name;
-       img_usr.src = "../" + fac + "/img/" + usrId + ".jpg";
+       img_usr.src = "../" + fac + "/img/" + userId + ".jpg";
        img_usr.style.width = "100%";
        img_usr.style.height = "100%";
 
@@ -2558,7 +2558,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + usrId + "chrono";
+       tr_usr2.className = "task u" + userId + "chrono";
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
