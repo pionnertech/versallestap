@@ -904,7 +904,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
    
                               } 
 
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
                                         
                                           $file_extension = "";
 
