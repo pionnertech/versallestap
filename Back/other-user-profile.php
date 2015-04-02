@@ -1049,7 +1049,6 @@ if(parseInt(kind) == 0){
        
        btn.className   = "btn btn-small int-forward";
      }
-     
      td4.appendChild(btn);  
    
     td2.innerHTML = stsk_descript;
