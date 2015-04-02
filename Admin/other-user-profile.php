@@ -1790,10 +1790,10 @@ if(kind == "internal"){
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_for_front.php?'  ,
-        chunk_size : '1mb',
+        chunk_size : '3mb',
         unique_names : true,
   filters : {
-            max_file_size : '10mb',
+            max_file_size : '3mb',
             mime_types: [
                 {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
                 {title : "Zip files", extensions : "zip" }
