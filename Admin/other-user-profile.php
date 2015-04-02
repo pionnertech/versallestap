@@ -2065,8 +2065,10 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
+
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 ){
+
                     previan = packets[2];
                        showAlert(packets[2], "pro", packets[0]);
                        if(parseInt(packets[9]) == 0){
@@ -2080,9 +2082,13 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                             $(".finished").eq(indice).css({opacity : "1"});
                        }
                     }
+                    setTimeout(function(){}, 3000);
                 }
         });
-    }, 5000);
+    }, 3000);
+
+
+
     
 if(typeof(EventSource) !== "undefined") {
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
