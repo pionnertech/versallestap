@@ -1272,6 +1272,39 @@ $.ajax({
 
 // ==== llamada Asincronica fin ====
 
+ //inside table 
+
+
+  var tbl  = document.createElement('table');
+  var tbo  = document.createElement('tbody');
+  var trt  = document.createElement('tr');
+  var tdt1 = document.createElement('td');
+  var tdt2 = document.createElement('td');
+  var tdt3 = document.createElement('td');
+  var spnt1 = document.createElement('span');
+  var spnt2 = document.createElement('span');
+  var spnt3 = document.createElement('span');
+
+  tbl.style.width = "100%";
+  tbo.className   = "ii-events";
+
+  spnt1.innerHTML = "Asunto";
+  spnt2.innerHTML = "Descripcion";
+  spnt3.innerHTML = "Fecha Progreso";
+   
+   tdt1.appendChild(spnt1);
+   tdt2.appendChild(spnt2);
+   tdt3.appendChild(spnt3);
+
+  tbo.appendChild(tdt1);
+  tbo.appendChild(tdt2);
+  tbo.appendChild(tdt3);
+   
+   tbl.appendChild(tbo);
+   td6.appendChild(tbl);
+
+//table 
+
     p1.appendChild(str1);
     p2.appendChild(str2);
     p3.appendChild(str3);
