@@ -876,6 +876,7 @@ console.info("../backend/upgrade.php?val=" + val +
             $("#int-table > tbody > tr").eq(4).children("td").children('p').children('span').html(val + "%");
             $("#int-table > tbody > tr").eq(4).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
             index = (index-1)/2;
+            console.info(index);
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
 
              }
