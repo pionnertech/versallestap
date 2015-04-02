@@ -1302,7 +1302,7 @@ $.ajax({
    
    tbl.appendChild(tbo);
    td6.appendChild(tbl);
-
+   insertAfter(div4, tbl);
 //table 
 
     p1.appendChild(str1);
