@@ -622,15 +622,9 @@ var previuosDataInt = <?  printf("\"" . $manu_int . "\"")  ?>  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
 
-
     $(document).on('ready', function(){
 
-
-    
        progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
-
-      
-
         $("#Urgent").on('click', function(){
          
          if (!$(this).data("val")  ||  $(this).data("val") === 0){
@@ -713,15 +707,22 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".int-forward").on('click', function(){
    argument = 1;
 
+//change form action to the back to admin internal 
+console.info($("#upload").attr("action"));
+$("#upload").attr("action", "../backend/in_files_back_to_admin.php");
+console.info($("#upload").attr("action"));
 
    var subtask_id =  $(this).parent().children('input').eq(0).val();
    current_iss =  $(this).parent().children('input').eq(1).val();
    inner = $(this).parent().index();
    subject = $(this).parent().children('td').eq(1).text();
+
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-   var percent = $(this).parent().next().children('td').children('p').children('span').html()
+
+   var percent = $(this).parent().next().children('td').children('p').children('span').html();
+
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
