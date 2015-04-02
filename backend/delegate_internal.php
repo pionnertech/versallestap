@@ -57,15 +57,16 @@ if($stsk_src_id == 0){
 }}
 
 
+ $real = mysqli_query($datos, $query);
 
-
-if(!mysqli_query($datos, $query)){
+if(!$real){
 
 echo mysqli_error($datos);
 
 } else {
 
 $ret_id = mysqli_insert_id($datos);
+$ret_id2 = mysqli_insert_id($real);
 
      if($stsk_src_id == 0) {
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
@@ -75,14 +76,16 @@ $ret_id = mysqli_insert_id($datos);
   
   if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
 
-  	$stsk_id = mysqli_insert_id($datos);
+  	$stsk_id = mysqli_insert_id();
 
-      if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")){
+      if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
-        while (false !== ($files = readdir($hdir))){
+        while (false !== ($files = readdir($hdir))) {
         
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
+
      	 	 $extension = pathinfo($files, PATHINFO_EXTENSION);   
+
          $outcome .= $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension . "|";
     if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
      	 	   	    unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
@@ -95,9 +98,7 @@ $ret_id = mysqli_insert_id($datos);
 closedir($hdir);
 }
 
- echo $ret_id . "|" . $name['NAME'] . "|" . $outcome;
-
-
+ echo $ret_id . "|" . $name['NAME'] . "|" . $outcome . "|" . $ret_id2;
 
 }
 
