@@ -894,7 +894,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
                                                                     </div>
-                                                <div class="incoming-files">
+                                                <div class="int-files">
                           <?    
                       while($fint = mysqli_fetch_row($part)){
 
@@ -909,11 +909,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                      echo "<script>console.info('" . $archivos2 . "' + '/' + '" . $fint[0] . "' + '/' + '" . $fila5[0] . "' )</script>";
-                                      echo "<script>console.info('" .  preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) . "')</script>";
+
                                          if(preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) == 1){
 
-                                             echo "<script>console.info('" +  $archivos2 + "')</script>";
 
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
