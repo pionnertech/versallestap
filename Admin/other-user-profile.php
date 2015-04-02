@@ -2059,25 +2059,26 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-
+var previan = "";
     setInterval(function(){
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
                 packets = data.split("|");
+                if( previan !== packets[2]){
                  if(parseInt(packets[0]) !== 0 ){
+                    previan = packets[2];
                        showAlert(packets[2], "pro", packets[0]);
                        collection = $("input.st");
                        indice = $("input.st[value=" + packets[5] + "]").index(".st");
-                       updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5] );
+                       updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
                        if(parseInt(packets[8]) >= 99.5){
                            $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[4] +"]").prev().css({ opacity : "1"});
                             $(".finished").eq(indice).css({opacity : "1"});
-
                        }
-
-                 }
+                    }
+                }
             }
         });
     }, 3000);
@@ -2404,12 +2405,17 @@ var files;
 };
 
 
-function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk){
+function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind){
 
-console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk);
+console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
 
+if(parseInt(kind) == 0){
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
+} else {
+document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
+document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
+}
 
 var parent = document.querySelector("#del-partners");
 
@@ -2428,7 +2434,7 @@ tr_av.appendChild(td3_av);
 
 
 $.ajax({ type:"POST",
-         url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk,
+         url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
          success : function (data){
 
             files = data.split("|");
@@ -2482,12 +2488,22 @@ $.ajax({ type:"POST",
         break;
 
     }
-
+       if(parseInt(kind) == 0){
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
       strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
       '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
+       } else {
+         
+               var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
+      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
+      '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
+      '<span class="iname"></span></p></a>';
+      document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
+
+       }
+
 
       }
 
