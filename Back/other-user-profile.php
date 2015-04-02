@@ -1263,16 +1263,7 @@ $.ajax({
     divFile.appendChild(a);
     div4.appendChild(divFile);
 
-    insertAfter(div2, div4);
-
- }
-
-     }
- });
-
-// ==== llamada Asincronica fin ====
-
- //inside table 
+     //inside table 
 
 
   var tbl  = document.createElement('table');
@@ -1302,8 +1293,20 @@ $.ajax({
    
    tbl.appendChild(tbo);
    td6.appendChild(tbl);
-   insertAfter(div4, tbl);
+   
 //table 
+
+    insertAfter(div2, div4);
+    insertAfter(div4, tbl);
+
+ }
+
+     }
+ });
+
+// ==== llamada Asincronica fin ====
+
+
 
     p1.appendChild(str1);
     p2.appendChild(str2);
