@@ -2405,8 +2405,8 @@ var files;
 
 function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind){
 
-console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind
-    ,,30,31/12/1969,,,16,,1
+console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
+    
 if(parseInt(kind) == 0){
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
