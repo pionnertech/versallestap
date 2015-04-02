@@ -499,7 +499,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
 
                                            while (false !== ($archivos2 = readdir($handler))){
 
- echo "<script>console.info('"  . $archivos2 . "' + '/' + '" . $fila_int[1]  . "/' + '" . preg_match_all("/_\[" . $fila_int[0] . "\]_/", $archivos2) . "')</script>";
+ echo "<script>console.info('"  . $archivos2 . "' + '/' + '" . $fila_int[1]  . "/' + '" . preg_match_all("/_\[" . $fila_int[1] . "\]_/", $archivos2) . "')</script>";
 
                                          if(preg_match_all("/_\[" . $fila_int[1] . "\]_/", $archivos2) == 1){
                                              
@@ -945,6 +945,8 @@ $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in')
         return false;
     }
 
+
+// externos
 setInterval(function(){
     $.ajax({ type: "POST", 
             url: "../backend/sse-event-back.php?usr=" + mainuser,
@@ -964,6 +966,7 @@ setInterval(function(){
 }, 3000);
 
 
+//interno
 
 if(typeof(EventSource) !== "undefined") {
 
@@ -1012,7 +1015,6 @@ if(parseInt(kind) == 0){
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
     var td4 = document.createElement('td');
-    var td5 = document.createElement('td');
     var td7 = document.createElement('td');
 
 
@@ -1031,10 +1033,9 @@ if(parseInt(kind) == 0){
     td2.className = "cell-title";
     td3.className = "cell-status";
     td4.className = "cell-title";
-    td5.className = "cell-time align-right";
     td7.className = "cell-time align-right";
 
-    td5.innerHTML = dateIn;
+
     td7.innerHTML = dateOut;
 
      i0.className   = "fa fa-chevron-circle-right";
@@ -1107,7 +1108,6 @@ if(parseInt(kind) == 0){
     tr1.appendChild(td2);
     tr1.appendChild(td3);
     tr1.appendChild(td4);
-    tr1.appendChild(td5);
     tr1.appendChild(td7);
     tr1.appendChild(inp1);
     tr1.appendChild(inp2);
