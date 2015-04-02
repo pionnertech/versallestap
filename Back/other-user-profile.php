@@ -1040,7 +1040,16 @@ if(parseInt(kind) == 0){
 
      i0.className   = "fa fa-chevron-circle-right";
      btn.appendChild(i0);
-     btn.className   = "btn btn-small forward";
+
+     if(kind == 0){
+
+        btn.className   = "btn btn-small forward";
+
+     } else {
+       
+       btn.className   = "btn btn-small int-forward";
+     }
+     
      td4.appendChild(btn);  
    
     td2.innerHTML = stsk_descript;
