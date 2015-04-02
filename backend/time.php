@@ -3,6 +3,7 @@
 $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
 
@@ -52,7 +53,7 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
 
 $get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR); "));
 
-if($kind == 0 || $kind == "0"){
+if($outcome["STSK_TYPE"] == 0 || $outcome["STSK_TYPE"] == "0"){
   
   $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
