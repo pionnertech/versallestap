@@ -894,7 +894,11 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
                                                                     </div>
-                                                <div class="int-files">
+
+                                                <div class="int-files-for">
+                                                    
+                                                </div>
+                                                <div class="int-files-to" style="display: inline-block; vertical-align:top;">
                           <?    
                       while($fint = mysqli_fetch_row($part)){
 
@@ -2757,7 +2761,6 @@ document.getElementById("int-del").addEventListener("change" , function(){
        console.info(user_send);
 
        if ( mode == "first"){
-
            keyFile = RandomString(8);
        } else {
           keyFile = "";
