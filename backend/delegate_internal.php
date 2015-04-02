@@ -57,16 +57,16 @@ if($stsk_src_id == 0){
 }}
 
 
- $real = mysqli_query($datos, $query);
+  
 
-if(!$real){
+if(!mysqli_query($datos, $query)){
 
 echo mysqli_error($datos);
 
 } else {
 
-$ret_id = mysqli_insert_id($datos);
-$ret_id2 = mysqli_insert_id($real);
+
+
 
      if($stsk_src_id == 0) {
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
@@ -76,7 +76,7 @@ $ret_id2 = mysqli_insert_id($real);
   
   if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
 
-  	$stsk_id = mysqli_insert_id();
+  	$stsk_id = mysqli_insert_id($datos);
 
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
@@ -98,7 +98,7 @@ $ret_id2 = mysqli_insert_id($real);
 closedir($hdir);
 }
 
- echo $ret_id . "|" . $name['NAME'] . "|" . $outcome . "|" . $ret_id2;
+ echo $stsk_id . "|" . $name['NAME'] . "|" . $outcome . "|" ;
 
 }
 
