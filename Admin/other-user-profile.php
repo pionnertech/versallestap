@@ -888,11 +888,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
+
                                                                         <? 
                                                                     }
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
                                                                     </div>
+                                                <div class="incoming-files">
                           <?    
                       while($fint = mysqli_fetch_row($part)){
 
@@ -951,6 +953,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                 } 
                                                }
                                                 ?>
+                                                </div>
                                                                 </td>
                                                             </tr>
                                                     <? } ?>
