@@ -1277,15 +1277,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
         } else {
             this.setOptions({
                 maxDate : '2036/12/29',
-                format:"'d/m/Y"
+                format:"d/m/Y"
             });
         }
     }
 });
 
  init();
-
-
 
 $(".int-forward").click(function(){
 
@@ -1943,7 +1941,10 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, user);
                          }
                      });
-                   $("#del-int-req input, #del-int-req textarea").val('');
+
+                  $("#del-int-req input, #del-int-req textarea").val('');
+                  $("#up-int").empty();
+                  $("#int-del").val(1);
                 }
   })
 

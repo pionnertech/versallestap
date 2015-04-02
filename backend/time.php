@@ -4,7 +4,7 @@ $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
+$query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
 
 
 $news = mysqli_query($datos, $query);
@@ -25,7 +25,17 @@ $user_out8 = 0;
 
    $outcome = mysqli_fetch_assoc($news);
 
-       $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR) GROUP BY STSK_CHARGE_USR ");
+if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
+
+$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_CHARGE_USR ");
+
+} else {
+$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0) GROUP BY STSK_CHARGE_USR ");
+
+}
+
+      
+
        $count   = mysqli_num_rows($handler);
 
        while ($fila = mysqli_fetch_row($handler)){
@@ -69,6 +79,7 @@ echo "|" . $user_out6 ;
 echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
+echo "|" . $outcome['STSK_TYPE'];
 
 
 $sum = 0;
