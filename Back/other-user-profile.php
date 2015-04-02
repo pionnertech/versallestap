@@ -709,7 +709,7 @@ $(".int-forward").on('click', function(){
 
 //change form action to the back to admin internal 
 console.info($("#upload").attr("action"));
-$("#upload").attr("action", "../backend/in_files_back_to_admin.php");
+$("#upload").attr("action", "../backend/int_files_back_to_admin.php");
 console.info($("#upload").attr("action"));
 
    var subtask_id =  $(this).parent().children('input').eq(0).val();
