@@ -2069,8 +2069,11 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                  if(parseInt(packets[0]) !== 0 ){
                     previan = packets[2];
                        showAlert(packets[2], "pro", packets[0]);
-                       collection = $("input.st");
-                       indice = $("input.st[value=" + packets[5] + "]").index(".st");
+                       if(parseInt(packets[9]) == 0){
+                             indice = $("input.st[value=" + packets[5] + "]").index(".st");
+                       } else {
+                        indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
+                       }
                        updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
                        if(parseInt(packets[8]) >= 99.5){
                            $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[4] +"]").prev().css({ opacity : "1"});
