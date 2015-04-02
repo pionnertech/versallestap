@@ -909,7 +909,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                    
+                                      echo "<script>console.info('" . $archivos2 . "' + '/' + '" . $fint[0] . "' )</script>";
 
                                          if(preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) == 1){
                                              
