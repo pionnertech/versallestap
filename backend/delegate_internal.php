@@ -83,6 +83,7 @@ $ret_id = mysqli_insert_id($datos);
         
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
      	 	 $extension = pathinfo($files, PATHINFO_EXTENSION);   
+         $outcome .= $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension . "|";
     if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
      	 	   	    unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
      	 }
