@@ -17,6 +17,8 @@ $outcome = $keyfile . "|" . $stsk_src_id . "|";
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
+
+//stsk_
 if ($stsk_src_id == 0){
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE) ";
@@ -32,26 +34,30 @@ $query .= "VALUES ( '" . $subject . "', '" . $descript . "', '" . $user . "', '"
 
 }
 
+
+
+
 // cuando es el prime stsk 
 if($stsk_src_id == 0){
 
  $hds = mysqli_query($datos, $query_es);
 
-   if($hds){
+  if($hds){
 
   $number = mysqli_insert_id($datos);
 
   if(mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . $number )){
         
-  } else {
-
-      echo mysqli_error($datos);
+      } else {
+        echo mysqli_error($datos);
   }
 } else {
  echo mysqli_error($hds);
  exit ;
-}
-}
+}}
+
+
+
 
 if(!mysqli_query($datos, $query)){
 
@@ -76,8 +82,7 @@ $ret_id = mysqli_insert_id($datos);
         while (false !== ($files = readdir($hdir))){
         
      	 if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
-     	 	 $extension = pathinfo($files, PATHINFO_EXTENSION); 
-     	 	// $outcome .=  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension . "|";   
+     	 	 $extension = pathinfo($files, PATHINFO_EXTENSION);   
     if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
      	 	   	    unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
      	 }
