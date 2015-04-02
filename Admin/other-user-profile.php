@@ -888,8 +888,69 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
-                                                                        <? } ?>
+                                                                        <? 
+                                                                    }
+                                                                    mysqli_data_seek($part, 0);
+                                                                 ?>
                                                                     </div>
+                          <?    
+                      while($fint = mysqli_fetch_row($part)){
+
+                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/")) {
+                                  
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
+   
+                              } 
+
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                    
+
+                                         if(preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) == 1){
+                                             
+                                             $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+                                          ?>
+                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                                                            <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                                                <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                                                <span class="iname"></span>
+                                                                            </p>
+                                                                        </a>
+                                                  <? }
+                                                  } 
+                                                } 
+                                               }
+                                                ?>
                                                                 </td>
                                                             </tr>
                                                     <? } ?>
