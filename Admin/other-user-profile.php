@@ -1467,16 +1467,20 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&fac=" + fac , 
           success : function(data){
             console.info(data);
-           bootbox.alert("progreso ingresado", function(){
+            bootbox.alert("progreso ingresado", function(){
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
-           })
-          }
-      })
+                incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
+           });
 
-    
+          }
+      })  
 });
+
+
+
+
 
 $("#delegates").on('change', function(){
 
@@ -2827,6 +2831,31 @@ function RandomString(length) {
     var str = '';
     for ( ; str.length < length; str += Math.random().toString(36).substr(2) );
     return str.substr(0, length);
+}
+
+
+function incoInt(sub, des, date, ind){
+
+      var parent =  document.querySelectorAll(".ii-body-table")[ind];
+      var tr_ii  =  document.createElement('tr');
+      var td_ii1 =  document.createElement('td'); 
+      var td_ii2 =  document.createElement('td');
+      var td_ii3 =  document.createElement('td');
+
+      td_ii1.className = "cell-title";
+      td_ii2.className = "cell-title";
+      td_ii3.className = "align-right";
+
+      td_ii1.innerHTML = sub;
+      td_ii2.innerHTML = des;
+      td_ii3.innerHTML = date;
+
+      tr_ii.appendChild(td_ii1);
+      tr_ii.appendChild(td_ii2);
+      tr_ii.appendChild(td_ii3);
+
+      parent.appendChild(tr_ii);
+
 }
 
 </script>
