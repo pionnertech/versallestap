@@ -1108,7 +1108,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 </td>
                                                             <table class="table table-message">
                                                                 <tbody>
-                                                                    <tr class="heading">
+                                                                    <tr>
                                                                         <td class="cell-title">Asunto</td>
                                                                         <td class="cell-title">Descripcion</td>
                                                                         <td class="cell-time align-right">Fecha progreso</td>
@@ -1253,7 +1253,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
     format:'Y/m/d',
     timepicker: false,
     onShow: function (ct){
-
         this.setOptions({
             minDate : '1970/01/02',  
             maxDate : dateTime,
@@ -1668,6 +1667,27 @@ $(".golang").on('click', function(){
 
 $("#sw-int-in-out").on('click', function(){
 
+
+$manu['STSK_ID'];
+$manu['STSK_ISS_ID'];
+$manu['STSK_DESCRIP'];
+date('d/m/Y', strtotime($manu['FECHA_FINAL']));
+date('d/m/Y', strtotime($manu['FECHA_INICIAL']));
+$manu['STSK_TYPE'];
+
+
+     $.ajax({ type: "POST",
+              url:"../backend/incoming-ii.php?usr=" + muser,
+              success : function (data){
+                    var alpha = "";
+                    var delta = data.split("\n");
+                        for(i=0; i < delta.length ; i++){
+                            alpha = delta[i].split("|");
+                               
+                       }
+                  }
+            });
+
   if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
     $(this).removeClass("fa-sign-out");
@@ -1706,9 +1726,14 @@ $("#sw-int-in-out").on('click', function(){
          });
      });
 
-     }
+    }
+});
 
-})
+
+
+
+
+
 
 
 function unlock(stsk_id, iss_id, object){
