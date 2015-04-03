@@ -1104,8 +1104,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                       } 
                                                                     } ?>
                                                                     </div>
-                                                            <table>
-                                                                <tbody>
+                                                            <table style="width: 100%;">
+                                                                <tbody class="ii-body-table">
                                                                     <tr>
                                                                         <td><span style="font-weight: bolder;">Asunto</span></td>
                                                                         <td><span style="font-weight: bolder;">Descripcion</span></td>
