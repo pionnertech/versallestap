@@ -12,16 +12,16 @@ $str_query = "SELECT STSK_ID, " .
 "STSK_START_DATE AS FECHA_INICIAL,  " .
 "STSK_TYPE " . 
 " FROM SUBTASKS  " . 
-"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR) ORDER BY STSK_ID DESC LIMIT 1 ";	
+"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR) ORDER BY STSK_ID DESC";	
 
-$manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
+$hand = mysqli_query($datos, $str_query);
 
-echo $manu['STSK_ID'] . "|";
-echo $manu['STSK_ISS_ID'] . "|";
-echo $manu['STSK_DESCRIP'] . "|";
-echo date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "|";
-echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
-echo $manu['STSK_TYPE'] . "|";
+while ($manu = mysqli_fetch_row($hand)){
+
+echo $manu[0] . "|" . $manu[1] . "|" . $manu[3] . "|" . date('d/m/Y', strtotime($manu[4])) . "|" . date('d/m/Y', strtotime($manu[5])) . "|" . $manu[6] . "|\n";
+
+}
+
 
 
 
