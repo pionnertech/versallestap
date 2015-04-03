@@ -1104,12 +1104,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                       } 
                                                                     } ?>
                                                                     </div>
-                                                            <table class="table table-message">
+                                                            <table>
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td class="cell-title">Asunto</td>
-                                                                        <td class="cell-title">Descripcion</td>
-                                                                        <td class="cell-time align-right">Fecha progreso</td>
+                                                                        <td><span style="font-weight: bolder;">Asunto</span></td>
+                                                                        <td><span style="font-weight: bolder;">Descripcion</span></td>
+                                                                        <td class="align-right"><span style="font-weight: bolder;">Fecha progreso</span></td>
                                                                     </tr>
                                                                       <?   
                                   $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $ii[0]);
