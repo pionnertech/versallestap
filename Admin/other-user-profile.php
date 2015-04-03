@@ -2091,25 +2091,28 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
+
             success: function(data){
 
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 ){
 
                     previan = packets[2];
+
                        showAlert(packets[2], "pro", packets[0]);
+
                        if(parseInt(packets[9]) == 0){
-                             indice = $("input.st[value=" + packets[5] + "]").index(".st");
-                       } else {
-                        indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
-                       }
-                       updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
-                       if(parseInt(packets[8]) >= 99.5){
-                           $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[4] +"]").prev().css({ opacity : "1"});
-                            $(".finished").eq(indice).css({opacity : "1"});
-                       }
+                                indice = $("input.st[value=" + packets[5] + "]").index(".st");
+                            } else {
+                                indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
+                            }
+                            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
+
+                           if(parseInt(packets[8]) >= 99.5){
+                                $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[4] +"]").prev().css({ opacity : "1"});
+                                $(".finished").eq(indice).css({opacity : "1"});
+                        }
                     }
-                    setTimeout(function(){}, 3000);
                 }
         });
     }, 3000);
@@ -2470,7 +2473,7 @@ tr_av.appendChild(td3_av);
 $.ajax({ type:"POST",
          url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
          success : function (data){
-
+        console.info(data);
             files = data.split("|");
 
         for (n=0; n < files.length-1 ; n++){
@@ -2836,11 +2839,11 @@ function RandomString(length) {
 
 function incoInt(sub, des, date, ind){
 
-      var parent =  document.querySelectorAll(".ii-body-table")[ind];
-      var tr_ii  =  document.createElement('tr');
-      var td_ii1 =  document.createElement('td'); 
-      var td_ii2 =  document.createElement('td');
-      var td_ii3 =  document.createElement('td');
+      var parent = document.querySelectorAll(".ii-body-table")[ind];
+      var tr_ii  = document.createElement('tr');
+      var td_ii1 = document.createElement('td'); 
+      var td_ii2 = document.createElement('td');
+      var td_ii3 = document.createElement('td');
 
       td_ii1.className = "cell-title";
       td_ii2.className = "cell-title";
@@ -2855,7 +2858,6 @@ function incoInt(sub, des, date, ind){
       tr_ii.appendChild(td_ii3);
 
       parent.appendChild(tr_ii);
-
 }
 
 </script>
@@ -2866,15 +2868,4 @@ function incoInt(sub, des, date, ind){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
-
-
 ?>
-
-
-
-
-
-
-
-
-
