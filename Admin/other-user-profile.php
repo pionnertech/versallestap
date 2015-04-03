@@ -1118,7 +1118,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                      <tr>
                                                                          <td class="cell-title"><? echo $ii_trf[0] ?></td>
                                                                          <td class="cell-title"><? echo $ii_trf[1] ?></td>
-                                                                         <td class="cell-time align-right"><? echo $ii_trf[2] ?></td>
+                                                                         <td class="align-right"><? echo date("d/m/Y", strtotime(substr($ii_trf[2], 0, 10))) ?></td>
                                                                      </tr>
                                                                  <? } ?>
                                                                         </tbody>
