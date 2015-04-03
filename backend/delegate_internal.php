@@ -2,7 +2,7 @@
 
 $muser       = $_GET['muser'];
 $user        = $_GET['user'];
-$fechaF      = date('Y-m-d h:i:s', strtotime(substr($_GET['fechaF'], 0, 10)));
+$fechaF      = date('Y-m-d h:i:s', strtotime(str_replace("/","-",$_GET['fechaF'])));
 $stsk_id     = $_GET['stsk'];
 $subject     = $_GET['subject'];
 $descript    = $_GET['descript'];
