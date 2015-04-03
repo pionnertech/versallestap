@@ -1308,6 +1308,11 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = $(this).parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
 
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(muser);
+
+console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
 
