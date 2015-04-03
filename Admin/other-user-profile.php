@@ -1100,10 +1100,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                                 <span class="iname"></span>
                                                                             </p>
                                                                         </a>
-                                                  <? }
-                                                  } 
-                                                } ?>
-
+                                                                      <? }
+                                                                      } 
+                                                                    } ?>
                                                                     </div>
                                                             <table class="table table-message">
                                                                 <tbody>
@@ -1112,10 +1111,10 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                         <td class="cell-title">Descripcion</td>
                                                                         <td class="cell-time align-right">Fecha progreso</td>
                                                                     </tr>
-                                                    <?   
+                                                                      <?   
                                   $TII = mysqli_query($datos, "SELECT TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE TII_STSK_ID =" . $ii[0]);
                                                         while ($ii_trf = mysqli_fetch_row($TII)) {
-                                                    ?>
+                                                                      ?>
                                                                      <tr>
                                                                          <td class="cell-title"><? echo $ii_trf[0]?></td>
                                                                          <td class="cell-title"><? echo $ii_trf[1]?></td>
@@ -1469,9 +1468,9 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           success : function(data){
             console.info(data);
            bootbox.alert("progreso ingresado", function(){
-               $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
+                $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
-                $("#income-int-body tr.task").eq(1).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
+                $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
            })
           }
       })
