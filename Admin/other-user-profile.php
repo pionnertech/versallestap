@@ -1667,14 +1667,14 @@ $(".golang").on('click', function(){
 
 $("#sw-int-in-out").on('click', function(){
 
-
+/*
 $manu['STSK_ID'];
 $manu['STSK_ISS_ID'];
 $manu['STSK_DESCRIP'];
 date('d/m/Y', strtotime($manu['FECHA_FINAL']));
 date('d/m/Y', strtotime($manu['FECHA_INICIAL']));
 $manu['STSK_TYPE'];
-
+*/
 
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii.php?usr=" + muser,
