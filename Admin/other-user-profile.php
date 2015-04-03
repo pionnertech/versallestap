@@ -1116,9 +1116,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                         while ($ii_trf = mysqli_fetch_row($TII)) {
                                                                       ?>
                                                                      <tr>
-                                                                         <td class="cell-title"><? echo $ii_trf[0]?></td>
-                                                                         <td class="cell-title"><? echo $ii_trf[1]?></td>
-                                                                         <td class="cell-time align-right"><? echo $ii_trf[3]?></td>
+                                                                         <td class="cell-title"><? echo $ii_trf[0] ?></td>
+                                                                         <td class="cell-title"><? echo $ii_trf[1] ?></td>
+                                                                         <td class="cell-time align-right"><? echo $ii_trf[2] ?></td>
                                                                      </tr>
                                                                  <? } ?>
                                                                         </tbody>
@@ -1462,7 +1462,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&iss_id=" + ii_iss + 
           "&muser=" + remoteUser + 
           "&subject=" + $("#pro-subject").val() + 
-          "&des=" +  $("#pro-subject").val() + 
+          "&des=" +  $("#pro-descript").val() + 
           "&date=" + fp + 
           "&fac=" + fac , 
           success : function(data){
