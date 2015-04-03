@@ -913,7 +913,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-
+echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
                                          if(preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) == 1){
 
 
@@ -1062,7 +1062,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                             
                                          while (false !== ($archivos2 = readdir($handler2))){
                                     
-echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) . "' + '/' + '" . $ii[0] . "' )</script>";
                                          if(preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) == 1){
                                              
                                              $extension = substr($archivos2, -3);
