@@ -1059,10 +1059,10 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
                                         
                                           $file_extension = "";
-
-                                           while (false !== ($archivos2 = readdir($handler2))){
+                            
+                                         while (false !== ($archivos2 = readdir($handler2))){
                                     
-
+echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) . "' + '/' + '" . $ii[0] . "' )</script>";
                                          if(preg_match_all("/_\[" . $ii[0] . "\]_/", $archivos2) == 1){
                                              
                                              $extension = substr($archivos2, -3);
@@ -2093,7 +2093,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             url: "../backend/time.php?usr="+mainuser,
 
             success: function(data){
-
+                console.info(data);
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 ){
 
@@ -2106,6 +2106,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                             } else {
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
                             }
+
                             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
 
                            if(parseInt(packets[8]) >= 99.5){
