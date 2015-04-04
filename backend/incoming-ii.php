@@ -16,7 +16,9 @@ $str_query = "SELECT STSK_ID, " .
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_ANCIENT_PRO <> STSK_PROGRESS) ORDER BY STSK_ID DESC";	
 
 $hand = mysqli_query($datos, $str_query);
-echo  mysqli_num_rows($hand);
+
+echo mysqli_num_rows($hand);
+
 if(mysqli_num_rows($hand) !== 0){
 
 while ($manu = mysqli_fetch_row($hand)){
