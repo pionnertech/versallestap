@@ -1690,7 +1690,7 @@ $manu['STSK_TYPE'];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
-                                console.info(alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] + + "/" + alpha[4]);
+                                console.info(alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                        }
                   }
             });
@@ -2096,24 +2096,18 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
-
             success: function(data){
                 console.info(data);
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 ){
-
                     previan = packets[2];
-
                        showAlert(packets[2], "pro", packets[0]);
-
-                       if(parseInt(packets[9]) == 0){
+                            if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
-                            } else {
+                                    } else {
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
-                            }
-
-                            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
-
+                                    }
+            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
                            if(parseInt(packets[8]) >= 99.5){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
@@ -2123,9 +2117,6 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         });
     }, 3000);
 
-
-
-    
 if(typeof(EventSource) !== "undefined") {
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     source.onmessage = function(event) {
