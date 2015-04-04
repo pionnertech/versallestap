@@ -1683,13 +1683,13 @@ $manu['STSK_TYPE'];
 */
 
      $.ajax({ type: "POST",
-              url:"../backend/incoming-ii.php?usr=" + muser,
+              url:"../backend/incoming-ii.php?usr=" + mainuser,
               success : function (data){
                     var alpha = "";
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
-                    console.info(alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] + + "/" + alpha[4]);
+                                console.info(alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] + + "/" + alpha[4]);
                        }
                   }
             });
