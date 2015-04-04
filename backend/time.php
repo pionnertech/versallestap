@@ -81,7 +81,7 @@ $user_out8 = $classText;
 }
 
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " (WHERE STSK_ID =" . $outcome['STSK_ID'] . " AND STSK_CHARGE_USR = " . $usr  . ")");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE (STSK_ID =" . $outcome['STSK_ID'] . " AND STSK_CHARGE_USR = " . $usr  . ")");
 
 }
 
