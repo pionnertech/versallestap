@@ -1685,6 +1685,7 @@ $manu['STSK_TYPE'];
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii.php?usr=" + mainuser,
               success : function (data){
+                console.info(data);
                     var alpha = "";
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
