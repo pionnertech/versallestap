@@ -2729,7 +2729,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
       var parent_int =  document.getElementById("income-int-body");
   }
     
-
     var tr1 = document.createElement('tr');
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -2823,6 +2822,7 @@ var div3 = document.createElement('div');
 var a    = document.createElement('a');
 var img  = document.createElement('img');
 var inp2 = document.createElement('input');
+var div4 = document.createElement('div');
 
 tr2.style.display = "none";
 span.className = "pull-right small muted";
@@ -2831,6 +2831,8 @@ div2.className = "bar bar-warning";
 div3.className = "coll-int";
 div3.style.width = "100%";
 strong.innerHTML = "Grado de progreso";
+div4.className ="ii-files";
+div4.style.width = "100%";
 
 a.href = "#";
 a.className = "hovertip";
@@ -2843,6 +2845,85 @@ inp2.type= "hidden";
 inp2.value = "u" + user_id;
 
 td_i1.colSpan = "5";
+
+if(kind == 0){
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=1"
+} else {
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+}
+
+$.ajax({ type:"POST",
+         url: url_files,
+         success : function (data){
+            console.info(data);
+            files = data.split("|");
+           var str_file = "";
+        for (n=0; n < files.length-1 ; n++){
+
+        var extension = files[n].substring(files[n].length -3 , files[n].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+
+        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>";
+            "<p class='ifile-ii' title='" + files[n]+ "'>";
+                "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>";
+                "<span class='" + iname + "'></span>";
+            "</p>";
+        "</a>";
+        
+    
+}
+div4.innerHTML = str_file;
+
+}
+});
+
+
+
 
 p.appendChild(strong);
 p.appendChild(span);
