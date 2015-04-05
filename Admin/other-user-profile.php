@@ -1729,6 +1729,7 @@ $manu['STSK_TYPE'];
                             if(alpha[1] !== undefined || alpha[1] !== "undefined"){
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                                   showAlert(alpha[2], "ii" , usr_name);
                             }
                        }
                   }
@@ -2097,11 +2098,20 @@ if(type == "req"){
 var title = "Te ha llegado un nuevo requerimiento:";
 var iconShow = "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png";
 
+
+} else if(type == "ii"){
+
+var title = usr_name + " te envió un requerimiento :";
+var iconShow = "http://mckenzietrading.co.uk/images/icon1.jpg";
+
 } else {
 
 var title = usr_name + " ha marcado un progreso :";
 var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Next-icon.png";
 }
+
+
+
         var instance = new Notification(
             title , {
                 body: message,
@@ -2116,7 +2126,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             // Something to do
         };
         instance.onshow = function () {
-            if( type == "req"){
+            if( type == "req" || type == "ii"){
                $('#chatAudio')[0].play(); 
            } else {
                $('#successAudio')[0].play();
