@@ -24,7 +24,6 @@ $user_out8 = 0;
 
    $outcome = mysqli_fetch_assoc($news);
 
-
    $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
 
  if($hoax['HELP'] == 1){
