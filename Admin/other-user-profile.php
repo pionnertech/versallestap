@@ -1726,8 +1726,10 @@ $manu['STSK_TYPE'];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
+                            if(alpha[1] !== undefined || alpha[1] !== "undefined"){
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                            }
                        }
                   }
             });
@@ -2729,7 +2731,12 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
 
 
     td1.className = "cell-icon int-lock";
-    tr1.className = "task Ec-int";
+    if(kind == 0){
+         tr1.className = "task Ec-int-ii";
+    } else {
+          tr1.className = "task Ec-int";
+    }
+    
     td3.className = "cell-status";
     td2.innerHTML = descript;
     td5.innerHTML = date;
