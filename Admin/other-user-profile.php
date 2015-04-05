@@ -1726,8 +1726,8 @@ $manu['STSK_TYPE'];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
-                            console.info(alpha == undefined);
-                            console.info(alpha == "undefined");
+                            console.info(alpha[1] == undefined);
+                            console.info(alpha[1] == "undefined");
                             if(alpha[1] !== undefined || alpha[1] !== "undefined"){
 
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
