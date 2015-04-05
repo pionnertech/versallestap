@@ -3,10 +3,8 @@
 $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS != STSK_ANCIENT_PRO)";
-
 
 $news = mysqli_query($datos, $query);
 
@@ -25,6 +23,13 @@ $user_out8 = 0;
 
 
    $outcome = mysqli_fetch_assoc($news);
+
+
+ if(is_null($outcome['STSK_PROGRESS'])){
+     
+     mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " $outcome['STSK_ID']);
+ }
+
 
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 
