@@ -9,7 +9,9 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 0) GROUP BY STSK_STATE");
-$Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
+$Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_MAIN_USR   = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
+$Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
+
 $str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr    = mysqli_query($datos, $str_trf_usr);
 $Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
@@ -431,7 +433,7 @@ $handler2 = mysqli_query($datos, $matrix2);
 
                                     ?>
                                       
-<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<a class="btn Qext" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
 <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
 </a> 
 
@@ -842,7 +844,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                     ?>
                                       
-<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<a class="btn Qint" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
 <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
 </a> 
 
@@ -1016,7 +1018,42 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                             </ul>
                                                         </div>
                                                     </div>
-                                            <div class="pull-right"></div>
+                                            <div class="pull-right">
+                                <?  while($fi = mysqli_fetch_row($Query_alerts_ii)){ 
+                                       
+                                       switch((int)$fi[1]){
+                                          case 2:
+                                            $type = "fa-angle-double-right";
+                                            $taint = "#178FD0";
+                                            $tuba =  "En Curso";
+                                          break;
+                                          case 4:
+                                            $type = "fa-clock-o";
+                                            $taint = "#EDB405";
+                                            $tuba = "Por Vencer";
+                                          break;
+                                          case 3:
+                                            $type = "fa-exclamation-triangle";
+                                            $taint = "#E70101";
+                                            $Tuba = "Atrasados";
+                                          break;
+                                          case 5:
+                                             $type = "fa-check-circle";
+                                             $taint = "#1CC131";
+                                             $tuba = "Finalizados";
+                                          break;
+                                       }
+
+                                    ?>
+                                      
+<a class="btn Qiii" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+</a> 
+
+<? } ?>
+
+
+                                            </div>
                                             </div>
                                             <div class="module-body table" style="display:none">
                                                 <table class="table table-message" id="income-ing">
@@ -1732,6 +1769,7 @@ $manu['STSK_TYPE'];
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[7], "ii" , alpha[1]);
+                                   thum(1, "ii", "En Curso");
                             }
                        }
                   }
@@ -1777,13 +1815,6 @@ $manu['STSK_TYPE'];
 
     }
 });
-
-
-
-
-
-
-
 
 function unlock(stsk_id, iss_id, object){
 
@@ -2015,7 +2046,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, user, 1);
                          }
                      });
-
+                   thum(1, "int", "En Curso");
                   $("#del-int-req input, #del-int-req textarea").val('');
                   $("#up-int").empty();
                   $("#int-del").val(1);
@@ -3005,7 +3036,19 @@ function incoInt(sub, des, date, ind){
 
 
 
-function thum(val, kind){
+function thum(val, kind, type){
+
+if(kind == "int"){
+   var thum = $("a.Qint[title='" + type + "']");
+} else if (kind == "ii"){
+   var thum = $("a.Qiii[title='" + type + "']");
+} else { 
+   var thum = $("a.Qext[title='" + type + "']"); 
+}
+
+var current = parseInt(thum.children('p').html()) + val ;
+
+thum.children('p').html(current);
 
 }
 
