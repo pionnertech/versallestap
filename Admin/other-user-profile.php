@@ -3084,9 +3084,10 @@ if(thum.length == 0 ){
     break;
 
 }
-
+    prevHtml = $("div.pull-right").eq(ght).html();
+    
     $("div.pull-right").eq(ght).html(
-           $(this).html() + 
+           prevHtml + 
     "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
     "<i class='fa " + design + " fa-2x' style='display: inline-block; vertical-align: top;color: " + taint + "'></i></a>"
 
