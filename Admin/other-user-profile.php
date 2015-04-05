@@ -498,9 +498,6 @@ $handler2 = mysqli_query($datos, $matrix2);
                                               break;
                                           }
 
-
-        //archivos adjuntos
-
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
@@ -863,7 +860,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </tr>
                          <? while ($fila5 = mysqli_fetch_row($internal)) {
 
-                                         if($fila5[9] == 0 || $fila5[9] == '0'){
+                                         if(((int)$fila5[9] ) == 0 ){
 
                                             $situation = "exclamation";
                                             $color = "color:#EE8817;";
@@ -2939,11 +2936,11 @@ $.ajax({ type:"POST",
 
     }
 
-        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>";
-            "<p class='ifile-ii' title='" + files[n]+ "'>";
-                "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>";
-                "<span class='iname '></span>";
-            "</p>";
+        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
+            "<p class='ifile-ii' title='" + files[n]+ "'>" +
+                "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
+                "<span class='iname '></span>" +
+            "</p>" +
         "</a>";
         
     
