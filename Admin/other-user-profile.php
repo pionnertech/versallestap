@@ -2847,9 +2847,9 @@ inp2.value = "u" + user_id;
 td_i1.colSpan = "5";
 
 if(kind == 0){
-   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=1"
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1"
 } else {
-   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + user_id + "&stsk=" + stsk_ident + "&kind=" + kind;
 }
 
 $.ajax({ type:"POST",
