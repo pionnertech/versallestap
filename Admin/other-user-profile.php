@@ -1726,7 +1726,8 @@ $manu['STSK_TYPE'];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
-                                console.info(alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                            firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
+                                console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                        }
                   }
             });
@@ -2006,7 +2007,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                          } else {
-                            firstTask(result[0], des, result[1] , date, user);
+                            firstTask(result[0], des, result[1] , date, user, 1);
                          }
                      });
 
@@ -2705,9 +2706,15 @@ function init() {
    window.addEventListener("touchcancel", touchHandler, true);
 }
 
-function firstTask(stsk_ident, descript, user_name, date, user_id){
+function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
 
-    var parent_int =  document.getElementById("int-body");
+  // si el lo envia
+  if (kind == 1){
+      var parent_int =  document.getElementById("int-body");
+  } else { // si el lo recibe
+      var parent_int =  document.getElementById("income-int-body");
+  }
+    
 
     var tr1 = document.createElement('tr');
     var td1 = document.createElement('td');
