@@ -30,7 +30,9 @@ $user_out8 = 0;
  if($hoax['HELP'] == 1){
       $black = mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
  }
+
  $hoax['HELP']; 
+ 
  exit;
 
 
