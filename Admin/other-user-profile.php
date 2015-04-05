@@ -3036,15 +3036,58 @@ function thum(val, kind, type){
 
 if(kind == "int"){
    var thum = $("a.Qint[title='" + type + "']");
+   var ght = 1;
+   var change = "Qint";
 } else if (kind == "ii"){
    var thum = $("a.Qiii[title='" + type + "']");
+   var ght = 2;
+   var change = "Qiii"; 
 } else { 
-   var thum = $("a.Qext[title='" + type + "']"); 
+   var thum = $("a.Qext[title='" + type + "']");
+   var ght = 0;
+   var change = "Qext";
 }
+
 
 var current = parseInt(thum.children('p').html()) + val ;
 
 thum.children('p').html(current);
+
+//si no está 
+
+if(thum.length == 0 ){
+    switch (type){
+
+    case "En Curso":
+      var design = "fa-angle-double-right";
+      var taint = "#178FD0";
+    break;
+
+    case "Por Vencer":
+      var design = "fa-clock-o";
+      var taint = "#EDB405";
+    break;
+
+    case "Atrasado":
+      var design = "fa-exclamation-triangle";
+      var taint = "#E70101";
+    break;
+    case "Finalizado":
+      var design = "fa-check-circle";
+      var taint = "#1CC131";
+    break;
+
+}
+
+    $("div.pull-right").eq(gth).html(
+           $(this).html() + 
+    "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
+    "<i class='fa " + design + " fa-2x' style='display: inline-block; vertical-align: top;color: " + taint + "'></i></a>";
+
+
+        )
+}
+
 
 }
 
