@@ -25,7 +25,7 @@ $user_out8 = 0;
    $outcome = mysqli_fetch_assoc($news);
 
 
- if($outcome['STSK_PROGRESS']) === NULL ){
+ if($outcome['STSK_PROGRESS'] === NULL ){
      
      mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
  }
