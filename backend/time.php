@@ -26,9 +26,13 @@ $user_out8 = 0;
 
    $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
 
+
  if($hoax['HELP'] == 1){
-     mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
+      $black = mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
  }
+ $hoax['HELP']; 
+ exit;
+
 
 
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
