@@ -1728,7 +1728,7 @@ $manu['STSK_TYPE'];
                             alpha = delta[i].split("|");
                             console.info(alpha[1] == undefined);
                             console.info(alpha[1] == "undefined");
-                            if(alpha[1] !== undefined || alpha[1] !== "undefined"){
+                            if(alpha[1] !== undefined){
 
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
