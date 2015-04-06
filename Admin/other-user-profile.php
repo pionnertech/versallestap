@@ -74,6 +74,19 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     transition:all 600ms ease-in-out
 }
 
+.trf-int-usr{
+    -webkit-transition:all 600ms ease-in-out;
+    -moz-transition:all 600ms ease-in-out;
+    transition:all 600ms ease-in-out
+}
+.trf-int-usr:hover{
+    background-color: lightgrey;
+    -webkit-transition:all 600ms ease-in-out;
+    -moz-transition:all 600ms ease-in-out;
+    transition:all 600ms ease-in-out
+
+}
+
     </style>    
 </head>
 <body>
@@ -981,12 +994,12 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                       break;
                                                  }
                                           ?>
-                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" download>
-                                                                            <p class="ifile-ii" title="<? printf($archivos2) ?>">
-                                                                                <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                                                <span class="iname"></span>
-                                                                            </p>
-                                                                        </a>
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                         <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                         <span class="iname"></span>
+                                                     </p>
+                                                 </a>
                                                   <? }
                                                   } 
                                                 } 
@@ -1005,7 +1018,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
                                  while($fut = mysqli_fetch_row($tr_ii)){
                                                 ?>
-                                                        <tr class="trf-int-usr ust<? echo $fut[0] ?>">
+                                                        <tr class="trf-int-usr ust<? echo $fut[0] ?>" style="display: none">
                                                             <td><? echo $fut[3] ?></td>
                                                             <td><? echo $fut[4] ?></td>
                                                             <td><? echo $fut[5] ?></td>
@@ -3144,6 +3157,19 @@ $(".span2").on("change", function(){
         alert("fuera de rango")
     }
 });
+
+
+$(".hovertip").on("click", function(){
+
+    $(".trf-int-usr").css({display :"none"});
+
+ var val = parseInt($(this).children("input").val().replace("u" ,""));
+   $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+
+});
+
+
+
 
 </script>
 
