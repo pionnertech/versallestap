@@ -626,52 +626,7 @@ var argument = 0;
     $(document).on('ready', function(){
 
        progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
-        $("#Urgent").on('click', function(){
-         
-         if (!$(this).data("val")  ||  $(this).data("val") === 0){
-                $("#Urgent-Display").css({ height: "250px"});
-                   $("#Urgent-Display").css({ visibility: "visible"});
-               $(this).data("val", 1);
-         }  else {
 
-      $("#Urgent-Display").css({ height: "0px"});
-               $("#Urgent-Display").css({ visibility: "hidden"});
-                 $(this).data("val", 0);
-         }
-
-
-
-        })
-            $("#Audi").on('click', function(){
-
-             if(!$(this).data("val") || $(this).data("val") === 0 ){
-                $("#Audi-Display").css({ visibility : "visible"});
-                $("#Audi-Display").css({ height: "250px"});
-                    
-                    $(this).data("val", 1);
-             } else {
-                $("#Audi-Display").css({ visibility : "hidden"});
-                $("#Audi-Display").css({ height: "0px"});
-                    $(this).data("val", 0);
-             }
-            })
-
-
-        $("#Com").on('click', function(){
-
-             if(!$(this).data("val") || $(this).data("val") === 0 ){
-                    $("#Com-Display").css({ height: "250px"});
-                       $("#Com-Display").css({ visibility: "visible"});
-                          $(this).data("val" , 1); 
-             }  else {
-                $("#Com-Display").css({ visibility: "hidden"});
-                 $("#Com-Display").css({ height: "0px"});
-                       
-                          $(this).data("val" , 0);
-
-             }
-
-                });
     });
 
 
@@ -935,12 +890,6 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in'); 
 }
-
-
-
-
-
-
 
 });
 
