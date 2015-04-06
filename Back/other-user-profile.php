@@ -649,7 +649,8 @@ $(".forward").on('click', function(){
 var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
 $(".span2").slider('setValue', parseInt(percent));
-$(".span2").data("val",parseInt(percent));
+console.info(parseInt(percent));
+$(".span2").data("val", parseInt(percent));
 
 $("#stsk-code").val(subtask_id);
 $("#stsk-user").val(user);
