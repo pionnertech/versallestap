@@ -761,7 +761,7 @@ $("#upgrade").on('click', function(){
 
     $(".span2").slider('setValue', 0);
 
-if(argument == 1){
+if(argument === 1){
 
 $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in');
 } else {
