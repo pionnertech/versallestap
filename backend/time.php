@@ -21,7 +21,7 @@ $user_out8 = 0;
 
 } else {
 
-   $outcome = mysqli_fetch_assoc($news);
+$outcome = mysqli_fetch_assoc($news);
 
    $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
 
@@ -34,6 +34,7 @@ if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_CHARGE_USR ");
 
 } else {
+
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0) GROUP BY STSK_CHARGE_USR ");
 
 }
@@ -84,7 +85,7 @@ $user_out8 = $classText;
 }
 
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE (STSK_ID =" . $outcome['STSK_ID'] . " AND STSK_CHARGE_USR = " . $usr  . ")");
+  = mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE (STSK_ID =" . $outcome['STSK_ID'] . " AND STSK_CHARGE_USR = " . $usr  . ")");
 
 }
 
@@ -98,6 +99,7 @@ echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
 echo "|" . $outcome['STSK_TYPE'];
+echo "|" . "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE (STSK_ID =" . $outcome['STSK_ID'] . " AND STSK_CHARGE_USR = " . $usr  . ")";
 
 
 $sum = 0;
