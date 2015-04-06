@@ -2170,13 +2170,14 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-setInterval("changeListener()", 4000);
+
+
 
 //=========== testing 
 
 
 function changeListener() {
-            // ... your code, but no do nothing with interval here ...
+           // ... your code, but no do nothing with interval here ...
      $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
@@ -2202,22 +2203,12 @@ function changeListener() {
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                     }
-                    
+                    setTimeout(changeListener, 3000);
                 }
         });
 }
 
-
-
-
-
-
-
-
-
-
-
-
+setTimeout(changeListener(), 3000);
 
 //===========000
 
