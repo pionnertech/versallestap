@@ -2960,7 +2960,7 @@ $.ajax({ type:"POST",
 
     }
 
-        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
+        str_file  += "<a href='../" + fac + "/" + user_id + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
                 "<span class='iname '></span>" +
