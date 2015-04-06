@@ -761,9 +761,13 @@ $("#upgrade").on('click', function(){
 
     $(".span2").slider('setValue', 0);
 
-$("#kitkat li").eq(1).removeClass('active');$("#kitkat li").eq(0).addClass('active');
-$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+if(argument == 1){
 
+$("#tasks-own").removeClass('active in');$("#int-require").addClass('active in');
+} else {
+
+$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+}
 
 
 });
@@ -834,17 +838,13 @@ console.info("../backend/upgrade.php?val=" + val +
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac + 
-            "&argument=" + ar
-            , 
+            "&argument=" + ar, 
             success : function (data){
+
                 console.info(data);
          if( parseInt(data) == 1){
-
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
-
-
-     
 //para comopromisos externos
      if(argument == 0) {  
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
