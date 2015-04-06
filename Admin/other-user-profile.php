@@ -2170,17 +2170,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-function myFn() {
-    changeListener();
-}
-
-var myTimer = setInterval(myFn, 4000);
-
-// Then, later at some future time, 
-// to restart a new 4 second interval starting at this exact moment in time
-clearInterval(myTimer);
-myTimer = setInterval(myFn, 4000);
-
+setInterval("changeListener()", 4000);
 
 //=========== testing 
 
@@ -3102,7 +3092,6 @@ if(thum.length == 0 ){
       var design = "fa-angle-double-right";
       var taint = "#178FD0";
     break;
-
     case "Por Vencer":
       var design = "fa-clock-o";
       var taint = "#EDB405";
