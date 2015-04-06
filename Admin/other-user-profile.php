@@ -2172,17 +2172,15 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
     }
 
 
-setInterval(function(){
-changeListener();
-}, 3000)
+
 
 function changeListener(){
             $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
-            timeout: 3000,
             success: function(data){
                 packets = data.split("|");
+             if(previan !== packets[2]){
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
 
                        showAlert(packets[2], "pro", packets[0]);
@@ -2201,12 +2199,13 @@ function changeListener(){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
-
                     }
+                    previan = packets[2];
                 }
+            }
         })
 
-}
+    }
 
 
 if(typeof(EventSource) !== "undefined") {
