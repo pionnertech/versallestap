@@ -866,6 +866,9 @@ console.info("../backend/upgrade.php?val=" + val +
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pe"):
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pe");
                         break;
+                        case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Ec"):
+                                 $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Ec");
+                        break;
                     }
 
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
@@ -894,6 +897,9 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                         case $("#int-table > tbody > tr").eq(index).hasClass("Pe-int"):
                                  $("#int-table > tbody > tr").eq(index).removeClass("Pe-int");
+                        break;
+                       case $("#int-table > tbody > tr").eq(index).hasClass("Ec-int"):
+                                 $("#int-table > tbody > tr").eq(index).removeClass("Ec-int");
                         break;
                     }
 
