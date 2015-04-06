@@ -2171,7 +2171,8 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
     }
 
 
-    setInterval(changeListener(), 3000);
+setInterval(function(){
+    cList()}, 3000);
 
 
 //=========== testing 
