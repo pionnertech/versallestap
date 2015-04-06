@@ -2046,6 +2046,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                   $("#del-int-req input, #del-int-req textarea").val('');
                   $("#up-int").empty();
                   $("#int-del").val(1);
+                 
                 }
   })
 
@@ -2190,7 +2191,6 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                             if(packets[7] == "FINALIZADO"){
                                  thum(1, kilo ,"Finalizado");
                                } 
-
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
                            if(parseInt(packets[8]) >= 99.5){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
@@ -3085,7 +3085,7 @@ if(thum.length == 0 ){
 
 }
     prevHtml = $("div.pull-right").eq(ght).html();
-    
+
     $("div.pull-right").eq(ght).html(
            prevHtml + 
     "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
