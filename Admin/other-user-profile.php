@@ -993,12 +993,12 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                }
                                                 ?>
                                                 </div>
-                                                <table>
+                                                <table style="width: 100%">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Asunto</td>
-                                                            <td>Descripcion</td>
-                                                            <td>Fecha</td>
+                                                            <td><span style="font-weight: bolder; font-style: italic">Asunto</span></td>
+                                                            <td><span style="font-weight: bolder; font-style: italic">Descripcion</span></td>
+                                                            <td><span style="font-weight: bolder; font-style: italic">Fecha</span></td>
                                                         </tr>
                                                 <?
 $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE (TII_STSK_SRC_ID = " . $fila5[11] . " AND TII_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
