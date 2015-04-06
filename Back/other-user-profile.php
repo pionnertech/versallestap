@@ -868,7 +868,7 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                     }
 
-                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc-int");    
+                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
                 }
 
              } else {
@@ -897,7 +897,7 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                     }
 
-                 $("#int-table > tbody > tr").eq(holindex).addClass("Hc");    
+                 $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int");    
                 }
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
 
