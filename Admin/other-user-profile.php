@@ -981,7 +981,7 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                       break;
                                                  }
                                           ?>
-                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" download>
                                                                             <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                                                 <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                                                 <span class="iname"></span>
