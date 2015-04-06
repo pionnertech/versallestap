@@ -2208,7 +2208,7 @@ function changeListener() {
         });
 }
 
-setTimeout(function(){changeListener()}, 5000);
+setTimeout(changeListener(), 5000);
 
 //===========000
 
