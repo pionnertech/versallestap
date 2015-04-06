@@ -2171,6 +2171,11 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
+
+setInterval(function(){
+changeListener();
+}, 3000)
+
 function changeListener(){
             $.ajax({
             type: "POST",
