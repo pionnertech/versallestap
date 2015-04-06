@@ -2203,10 +2203,10 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                     }
-                    loopsiloop(); 
+                    loopsiloop()
                 }
-        });
-   , 5000);
+        })
+   , 5000)
 })();
 
 
