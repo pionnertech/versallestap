@@ -879,7 +879,6 @@ console.info("../backend/upgrade.php?val=" + val +
             holindex = index;
             index = (index-1)/2;
            
-
             if(val == 100){
 
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("FINALIZADA");
@@ -898,7 +897,7 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                     }
 
-                 $("#int-table > tbody > tr").eq(index).addClass("Hc");    
+                 $("#int-table > tbody > tr").eq(holindex).addClass("Hc");    
                 }
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
 
