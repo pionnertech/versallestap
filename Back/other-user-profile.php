@@ -681,6 +681,8 @@ console.info($("#upload").attr("action"));
    var user = $("#muser").val();
 
    var percent = $(this).parent().next().children('td').children('p').children('span').html();
+   console.info(parseInt(percent));
+$(".span2").data("val", parseInt(percent));
 
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
