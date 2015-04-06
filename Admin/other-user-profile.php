@@ -2203,12 +2203,12 @@ function changeListener() {
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                     }
-                    setTimeout(changeListener, 3000);
+                    setTimeout(changeListener, 5000);
                 }
         });
 }
 
-setTimeout(changeListener(), 3000);
+setTimeout(changeListener(), 5000);
 
 //===========000
 
