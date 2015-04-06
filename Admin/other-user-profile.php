@@ -2176,9 +2176,10 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 //=========== testing 
 
 
-function changeListener() {
-           // ... your code, but no do nothing with interval here ...
-     $.ajax({
+
+(function loopsiloop(){
+   setTimeout(function(){
+            $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
@@ -2203,12 +2204,26 @@ function changeListener() {
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                     }
-                    setTimeout(function(){changeListener}, 5000);
+                    loopsiloop(); 
                 }
         });
-}
+   }, 5000);
+})();
 
-setTimeout(changeListener(), 5000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //===========000
 
