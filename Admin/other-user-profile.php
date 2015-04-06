@@ -2046,7 +2046,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                   $("#del-int-req input, #del-int-req textarea").val('');
                   $("#up-int").empty();
                   $("#int-del").val(1);
-                 
+
                 }
   })
 
@@ -2178,7 +2178,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
             success: function(data){
                 console.info(data);
                 packets = data.split("|");
-                 if(parseInt(packets[0]) !== 0 ){
+                 if(parseInt(packets[0]) !== 0 || packets[0] !== "" ){
                     previan = packets[2];
                        showAlert(packets[2], "pro", packets[0]);
                             if(parseInt(packets[9]) == 0){
