@@ -2539,8 +2539,10 @@ function updateProgress(subject, descript, percent, date, userId, usr_name, ind,
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
     
 if(parseInt(kind) == 0){
+
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
+
 } else {
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
@@ -2797,6 +2799,12 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
     td5.innerHTML = date;
     inp1.value    = stsk_ident;
     inp1.type     = "hidden";
+
+    if(kind == 1){
+       inp1.className = "hi-int-id"
+    } else {
+       inp1.className = "";
+    }
     td4.className = "int-forward";
     b1.innerHTML = "En Curso";
     b1.className  = "due int-desglo"; 
