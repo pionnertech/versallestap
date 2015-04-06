@@ -878,7 +878,28 @@ console.info("../backend/upgrade.php?val=" + val +
 
             index = (index-1)/2;
             console.info(index);
+            if(val == 100){
+
+               $("#int-table > tbody > tr").eq(index).children().eq(2).children().html("FINALIZADA");
+               $("#int-table > tbody > tr").eq(index).children().eq(2).children().removeAttr("style");
+               $("#int-table > tbody > tr").eq(index).children().eq(2).children().css({backgroundColor : "#00BF00 !important"});
+
+                    switch(true){
+                        case $("#int-table > tbody > tr").eq(index).hasClass("Pv"): 
+                                 $("#int-table > tbody > tr").eq(index).removeClass("Pv");
+                        break;
+                        case $("#int-table > tbody > tr").eq(index).hasClass("At"):
+                                 $("#int-table > tbody > tr").eq(index).removeClass("At");
+                        break;
+                        case $("#int-table > tbody > tr").eq(index).hasClass("Pe"):
+                                 $("#int-table > tbody > tr").eq(index).removeClass("Pe");
+                        break;
+                    }
+
+                 $("#int-table > tbody > tr").eq(index).addClass("Hc");    
+                }
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
+
 
              }
 
