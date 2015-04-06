@@ -649,6 +649,7 @@ $(".forward").on('click', function(){
 var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
 $(".span2").slider('setValue', parseInt(percent));
+$(".span2").data("val",parseInt(percent));
 
 $("#stsk-code").val(subtask_id);
 $("#stsk-user").val(user);
@@ -1331,6 +1332,11 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+$(".span2").on("change", function(){
+    if ($(this).val() < $(this).data("val")) { 
+        alert("fuera de rango");
+    }
+});
 </script>
 <?
 
