@@ -650,7 +650,8 @@ var percent = $(this).parent().parent().next().children('td').children('div').ch
 
 $(".span2").slider('setValue', parseInt(percent));
 console.info(parseInt(percent));
-$(".span2").data("val", parseInt(percent));
+$("div.slider-selection").data("val", parseInt(percent));
+
 
 $("#stsk-code").val(subtask_id);
 $("#stsk-user").val(user);
@@ -1335,12 +1336,15 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-$(".span2").on("change input paste", function(){
-console.log($(this).val() + " vs " + $(this).data("val") );
-    if ($(this).val() < $(this).data("val")) { 
+
+document.querySelector("div.slider-selection").addEventListener("mousedown mouseup", function(){
+
+var valor = this.style.width;
+
+    if (parseInt(valor) < $(this).data("val")) { 
         alert("fuera de rango");
     }
-});
+})
 </script>
 <?
 
