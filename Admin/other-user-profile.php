@@ -993,9 +993,32 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                }
                                                 ?>
                                                 </div>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Asunto</td>
+                                                            <td>Descripcion</td>
+                                                            <td>Fecha</td>
+                                                        </tr>
+                                                <?
+$tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE (TII_STSK_SRC_ID = " . $fila5[11] . " AND TII_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
+
+                                 while($fut = mysqli_fetch_row($tr_ii)){
+                                                ?>
+                                                        <tr class="trf-int-usr ust<? echo $fut[0] ?>">
+                                                            <td><? echo $fut[3] ?></td>
+                                                            <td><? echo $fut[4] ?></td>
+                                                            <td><? echo $fut[5] ?></td>
+                                                        </tr>
+
+                                                <? } ?>
+                                                    </tbody>
+                                                </table>
                                                                 </td>
                                                             </tr>
-                                                    <? } ?>
+                                                    <? } 
+                                                
+                                                    ?>
                                                            </tbody>
                                                     </table>   
                                             </div>
