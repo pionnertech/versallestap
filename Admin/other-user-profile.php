@@ -2171,8 +2171,29 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
     }
 
 
-    setInterval(function(){
-        $.ajax({
+    setInterval(changeListener(), 3000);
+
+if(typeof(EventSource) !== "undefined") {
+    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    source.onmessage = function(event) {
+       var eventMessage = event.data.split('\n');
+       if (eventMessage[0] !== previuosData){
+        console.info( eventMessage[0] + "/" + previuosData);
+        showAlert(eventMessage[0], 'req');
+        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
+        previuosData = eventMessage[0];
+    } 
+}
+} else {
+
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
+
+
+
+function changeListener(){
+       $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
@@ -2199,26 +2220,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                     }
                 }
         });
-    }, 3000);
-
-if(typeof(EventSource) !== "undefined") {
-    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    source.onmessage = function(event) {
-       var eventMessage = event.data.split('\n');
-       if (eventMessage[0] !== previuosData){
-        console.info( eventMessage[0] + "/" + previuosData);
-        showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
-        previuosData = eventMessage[0];
-    } 
 }
-} else {
-
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
-}
-
-
 function assoc_collar_int(usr, ind){
 
 var parent = document.querySelectorAll('.coll-int')[ind];
