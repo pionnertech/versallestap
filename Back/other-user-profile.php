@@ -758,7 +758,6 @@ $("#upgrade").on('click', function(){
 
     $("#subject").val('');
     $("#st-description").val('');
-
     $(".span2").slider('setValue', 0);
 
 if(argument === 1){
@@ -875,7 +874,7 @@ console.info("../backend/upgrade.php?val=" + val +
              } else {
 
             $("#int-table > tbody > tr").eq(index + 1).children("td").children('p').children('span').html(val + "%");
-            $("#int-table > tbody > tr").eq(index + 1).children("td").children('div').eq(1).children(".bar").css({ width: val + "%"});
+            $("#int-table > tbody > tr").eq(index + 1).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
 
             index = (index-1)/2;
             console.info(index);
