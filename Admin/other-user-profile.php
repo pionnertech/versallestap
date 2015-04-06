@@ -2178,12 +2178,11 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
 (function loopsiloop(){
-   setTimeout(function(){
+   setTimeout(
             $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
-                console.info(data);
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                     previan = packets[2];
@@ -2207,7 +2206,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                     loopsiloop(); 
                 }
         });
-   }, 5000);
+   , 5000);
 })();
 
 
