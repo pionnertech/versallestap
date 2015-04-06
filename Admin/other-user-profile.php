@@ -1307,6 +1307,7 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
     var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
+    var previan   = "";
 
 
 
@@ -2170,22 +2171,15 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
-
-
-
-//=========== testing 
-
-
-
-(function loopsiloop(){
-   setTimeout(
+function changeListener(){
             $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
+            timeout: 3000,
             success: function(data){
                 packets = data.split("|");
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
-                    previan = packets[2];
+
                        showAlert(packets[2], "pro", packets[0]);
                             if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
@@ -2202,30 +2196,12 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
+
                     }
-                    loopsiloop()
                 }
         })
-   , 5000)
-})();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//===========000
-
+}
 
 
 if(typeof(EventSource) !== "undefined") {
