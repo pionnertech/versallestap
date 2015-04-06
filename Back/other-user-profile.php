@@ -1337,14 +1337,16 @@ function insertAfter(referenceNode, newNode) {
 }
 
 
-document.querySelector("div.slider-selection").addEventListener("mousedown mouseup", function(){
+$("div.slider-selection").on("mousedown mouseup", function(){
 
-var valor = this.style.width;
-
+var valor = $(this).width() / $(this).parent().width() * 100;
     if (parseInt(valor) < $(this).data("val")) { 
         alert("fuera de rango");
     }
-})
+});
+
+
+
 </script>
 <?
 
