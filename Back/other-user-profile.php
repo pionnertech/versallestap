@@ -868,7 +868,7 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                     }
 
-                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
+                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc-int");    
                 }
 
              } else {
