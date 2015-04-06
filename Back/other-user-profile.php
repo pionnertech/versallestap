@@ -1332,7 +1332,7 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-$(".span2").on("change", function(){
+$(".span2").on("change input", function(){
     if ($(this).val() < $(this).data("val")) { 
         alert("fuera de rango");
     }
