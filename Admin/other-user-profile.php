@@ -2627,7 +2627,7 @@ $.ajax({ type:"POST",
        } else {
          
                var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
+      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_alt/' + files[n] + '" download>' +
       '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
