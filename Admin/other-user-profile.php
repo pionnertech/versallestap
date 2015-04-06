@@ -2170,31 +2170,22 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
         return false;
     }
 
+function myFn() {
+    changeListener();
+}
 
-setInterval(function(){
-    cList()}, 3000);
+var myTimer = setInterval(myFn, 4000);
+
+// Then, later at some future time, 
+// to restart a new 4 second interval starting at this exact moment in time
+clearInterval(myTimer);
+myTimer = setInterval(myFn, 4000);
 
 
 //=========== testing 
 
-function cList() {
-    // We use a trick to make our 'interval' var kinda static inside the function.
-    // Its value will not change between calls to loadChart().
-    var interval = null;
 
-    // This is the core of a trick: replace outer function with inner helper 
-    // that remembers 'interval' in its scope.
-    cList = realcList;
-    return realcList();
-
-    function realcList() {
-        var speed = 3000;
-
-        // Remove old interval if it exists, then set up a new one
-        interval && clearInterval(interval);
-        interval = setInterval(changeListener, speed);
-
-        function changeListener() {
+function changeListener() {
             // ... your code, but no do nothing with interval here ...
      $.ajax({
             type: "POST",
@@ -2221,11 +2212,11 @@ function cList() {
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                     }
+                    
                 }
         });
-        }
-    }
 }
+
 
 
 
