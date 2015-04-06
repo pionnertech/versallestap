@@ -2173,27 +2173,29 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
     setInterval(changeListener(), 3000);
 
-if(typeof(EventSource) !== "undefined") {
-    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
-    source.onmessage = function(event) {
-       var eventMessage = event.data.split('\n');
-       if (eventMessage[0] !== previuosData){
-        console.info( eventMessage[0] + "/" + previuosData);
-        showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
-        previuosData = eventMessage[0];
-    } 
-}
-} else {
 
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+//=========== testing 
 
-}
+function cList() {
+    // We use a trick to make our 'interval' var kinda static inside the function.
+    // Its value will not change between calls to loadChart().
+    var interval = null;
 
+    // This is the core of a trick: replace outer function with inner helper 
+    // that remembers 'interval' in its scope.
+    cList = realcList;
+    return realcList();
 
+    function realcList() {
+        var speed = 3000;
 
-function changeListener(){
-       $.ajax({
+        // Remove old interval if it exists, then set up a new one
+        interval && clearInterval(interval);
+        interval = setInterval(changeListener, speed);
+
+        function changeListener() {
+            // ... your code, but no do nothing with interval here ...
+     $.ajax({
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
@@ -2220,7 +2222,45 @@ function changeListener(){
                     }
                 }
         });
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//===========000
+
+
+
+if(typeof(EventSource) !== "undefined") {
+    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    source.onmessage = function(event) {
+       var eventMessage = event.data.split('\n');
+       if (eventMessage[0] !== previuosData){
+        console.info( eventMessage[0] + "/" + previuosData);
+        showAlert(eventMessage[0], 'req');
+        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
+        previuosData = eventMessage[0];
+    } 
+}
+} else {
+
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
+
+
+
+
 function assoc_collar_int(usr, ind){
 
 var parent = document.querySelectorAll('.coll-int')[ind];
