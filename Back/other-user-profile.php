@@ -876,13 +876,17 @@ console.info("../backend/upgrade.php?val=" + val +
             $("#int-table > tbody > tr").eq(index + 1).children("td").children('p').children('span').html(val + "%");
             $("#int-table > tbody > tr").eq(index + 1).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
 
+            console.info("before : " + index);
+
             index = (index-1)/2;
-            console.info(index);
+
+            console.info("after : " + index);
+
             if(val == 100){
 
-               $("#int-table > tbody > tr").eq(  (index+1)*2  ).children("td").eq(2).children().html("FINALIZADA");
-               $("#int-table > tbody > tr").eq(  (index+1)*2 ).children("td").eq(2).children().removeAttr("style");
-               $("#int-table > tbody > tr").eq(  (index+1)*2 ).children("td").eq(2).children().css({backgroundColor : "#00BF00 !important"});
+               $("#int-table > tbody > tr").eq(index).children("td").eq(2).children().html("FINALIZADA");
+               $("#int-table > tbody > tr").eq(index).children("td").eq(2).children().removeAttr("style");
+               $("#int-table > tbody > tr").eq(index).children("td").eq(2).children().css({backgroundColor : "#00BF00 !important"});
 
                     switch(true){
                         case $("#int-table > tbody > tr").eq(index).hasClass("Pv-int"): 
