@@ -2610,10 +2610,28 @@ tr_av.appendChild(td3_av);
 $.ajax({ type:"POST",
          url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
          success : function (data){
+            var cf_array = [];
+
             console.info(data);
             files = data.split("|");
+            
+       //build the files array
+    for(y=0; y < $(".int-files-to").eq(ind).children("a").length ; y++){
+        
+        var hit = $(".int-files-to").eq(ind).children("a").eq(y).attr("href");
+        var black = hit.match(/\b\/\w+[a-z][0-9].*/g);
+             cf_array[y] = black;
+
+    }
+
+
 
         for (n=0; n < files.length-1 ; n++){
+             
+              if( jQuery.inArray("/" + files[n] , cf_array) !== -1){
+                continue;
+              }
+
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
@@ -2662,6 +2680,7 @@ $.ajax({ type:"POST",
         break;
 
     }
+
        if(parseInt(kind) == 0){
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
       strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
@@ -2677,6 +2696,9 @@ $.ajax({ type:"POST",
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
 
        }
+
+
+
 
 
       }
