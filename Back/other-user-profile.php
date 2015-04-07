@@ -682,8 +682,7 @@ console.info($("#upload").attr("action"));
 
    var percent = $(this).parent().next().children('td').children('p').children('span').html();
   
-    $(".span2").data("val", parseInt(percent));
-
+   $(".span2").data("val", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
@@ -908,10 +907,8 @@ $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in')
             "Te ha llegado un nuevo requerimiento:", {
                 body: message,
                 icon: "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png"
-
             }
         );
-
         instance.onclick = function () {
             // Something to do
         };
@@ -920,12 +917,10 @@ $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in')
         };
         instance.onshow = function () {
           $('#chatAudio')[0].play();
-             
         };
         instance.onclose = function () {
             // Something to do
         };
-
         return false;
     }
 
@@ -1067,9 +1062,9 @@ if(parseInt(kind) == 0){
    argument = 1;
 
 //change form action to the back to admin internal 
-console.info($("#upload").attr("action"));
+
 $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
-console.info($("#upload").attr("action"));
+
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss    =  $(this).parent().parent().children('input').eq(1).val();
@@ -1079,9 +1074,8 @@ console.info($("#upload").attr("action"));
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-
    var percent = $(this).parent().parent().next().children('td').children('p').children('span').html();
-
+   $(".span2").data("val", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
