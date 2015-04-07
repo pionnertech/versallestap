@@ -1320,7 +1320,6 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
     <script type="text/javascript" src="../scripts/es.js"></script>
     <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
-    <script type="text/javascript" src="../scripts/thumbs.js"></script>
     <script src="../scripts/bootstrap-slider.js"></script>
 </body>
 
