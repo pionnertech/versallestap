@@ -2946,8 +2946,19 @@ div2.className = "bar bar-warning";
 div3.className = "coll-int";
 div3.style.width = "100%";
 strong.innerHTML = "Grado de progreso";
-div4.className ="ii-files";
+
+
 div4.style.width = "100%";
+
+if(kind == 1){
+
+  div4.className ="int-files-for";
+
+} else {
+
+    div4.className ="ii-files";
+
+}
 
 a.href = "#";
 a.className = "hovertip";
