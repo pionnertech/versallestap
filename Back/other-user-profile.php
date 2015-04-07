@@ -649,8 +649,7 @@ $(".forward").on('click', function(){
 var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
 $(".span2").slider('setValue', parseInt(percent));
-console.info(parseInt(percent));
-$("div.slider-selection").data("val", parseInt(percent));
+$(".span2").data("val", parseInt(percent));
 
 
 $("#stsk-code").val(subtask_id);
@@ -1336,15 +1335,14 @@ function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-
-$("div.slider-handle").eq(0).on("touchstart touchend", function(){
-console.info("wallet wallet");
-var valor = $("div.slider-selection").width() / $("div.slider-selection").parent().width() * 100;
-console.info(valor)
-    if (parseInt(valor) < $("div.slider-selection").data("val")) { 
+$(".span2").on("slide", function (slideEvt) {
+   if (slideEvt.value < $(this).data("val")){
         alert("fuera de rango");
-    }
+        $(".span2").slider('setValue', $(this).data("val"));
+   }
 });
+
+
 
 
 
