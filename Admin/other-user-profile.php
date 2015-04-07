@@ -3161,7 +3161,7 @@ $(".span2").on("change", function(){
 });
 
 
-$(".hovertip").on("click", function(){
+$(".hovertip").on("click ", function(){
 
     $(".trf-int-usr").css({display :"none"});
 
@@ -3194,6 +3194,17 @@ parent.appendChild(tr_av);
 
 }
 
+
+  var draggable = document.querySelectorAll('ifile');
+
+  draggable.addEventListener('touchmove', function (event) {
+    var touch = event.targetTouches[0];
+ 
+    // Place element where the finger is
+    draggable.style.left = touch.pageX-25 + 'px';
+    draggable.style.top = touch.pageY-25 + 'px';
+    event.preventDefault();
+  }, false);
 
 </script>
 
