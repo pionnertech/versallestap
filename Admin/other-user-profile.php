@@ -2237,6 +2237,9 @@ function changeListener(){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
+                        if(parseInt(packets[6]) >= 99){
+                            console.info($(".int-desglo").eq(indice));
+                        }
                     }
                     previan = packets[2];
                 }
@@ -2580,8 +2583,10 @@ document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + 
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
 
 } else {
+
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
+
 }
 
 insertScheduleTraffic(subject, descript ,date, userId, ind);
@@ -3208,16 +3213,6 @@ parent.appendChild(tr_av);
 }
 
 
-
-  $('.ifile').on('touchmove', function (event) {
-    var touch = event.targetTouches[0];
- 
-    // Place element where the finger is
-    $(this).css({ left : touch.pageX-25 + 'px' });
-    $(this).css({ top : touch.pageX-25 + 'px' });
-
-    event.preventDefault();
-  }, false);
 
 </script>
 
