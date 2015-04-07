@@ -1006,7 +1006,7 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                }
                                                 ?>
                                                 </div>
-                                                <table style="width: 100%">
+                                                <table style="width: 100%" class="int-trf-descript">
                                                     <tbody>
                                                         <tr>
                                                             <td><span style="font-weight: bolder; font-style: italic">Asunto</span></td>
@@ -1386,7 +1386,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     }
 });
 
- init();
+
 
 $(".int-forward").click(function(){
 
@@ -2584,6 +2584,8 @@ document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
 }
 
+insertScheduleTraffic(subject, descript ,date, userId, ind);
+
 var parent = document.querySelector("#del-partners");
 
 var tr_av  = document.createElement('tr');
@@ -3163,12 +3165,34 @@ $(".hovertip").on("click", function(){
 
     $(".trf-int-usr").css({display :"none"});
 
- var val = parseInt($(this).children("input").val().replace("u" ,""));
+   var val = parseInt($(this).children("input").val().replace("u" ,""));
+
    $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
 });
 
 
+function insertScheduleTraffic(subject, descript ,date, user, ind){
+
+var parent = querySelectorAll(".int-trf-descript")[ind];
+
+var tr_av  = document.createElement('tr');
+var td1_av = document.createElement('td');
+var td2_av = document.createElement('td');
+var td3_av = document.createElement('td');
+
+
+tr_av.className = "trf-int-usr ust" + user;
+td1_av.innerHTML = subject;
+td2_av.innerHTML = descript;
+td3_av.innerHTML = date;
+
+tr_av.appendChild(td1_av);
+tr_av.appendChild(td2_av);
+tr_av.appendChild(td3_av);
+parent.appendChild(tr_av);
+
+}
 
 
 </script>
