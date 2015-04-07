@@ -1021,7 +1021,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                         <tr class="trf-int-usr ust<? echo $fut[0] ?>" style="display: none">
                                                             <td><? echo $fut[3] ?></td>
                                                             <td><? echo $fut[4] ?></td>
-                                                            <td><? echo $fut[5] ?></td>
+                                                            <td><? echo  date("d/m/Y", strtotime(substr($fut[5], 0, 10))) ?></td>
                                                         </tr>
 
                                                 <? } ?>
