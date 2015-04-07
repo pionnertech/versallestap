@@ -660,7 +660,7 @@ $Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.US
                                     <td colspan="3" >
                                         <div class="user-schedule">
                                             <div class="media" style="display : inline-block">
-                                                <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?>">
+                                                <a class="media-avatar pull-left" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?>">
                                                     <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? printf($trf[0]) ?>.jpg" style="width: 100%; height: 100%">
                                                 </a>
                                             </div>
@@ -932,7 +932,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
              <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
                                while($prt = mysqli_fetch_row($part)){
              ?>
-                                                                        <a href="#" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
+                                                                        <a  class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
