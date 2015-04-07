@@ -1337,7 +1337,7 @@ function insertAfter(referenceNode, newNode) {
 }
 
 
-$("div.slider-handle").eq(0).on("mousedown mouseup", function(){
+$("div.slider-handle").eq(0).on("mousedown mouseup mousemove", function(){
 console.info("wallet wallet");
 var valor = $("div.slider-selection").width() / $("div.slider-selection").parent().width() * 100;
 console.info(valor)
