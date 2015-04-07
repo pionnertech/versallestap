@@ -1175,7 +1175,7 @@ $.ajax({
  for (var i = 0; i < arrayFiles.length; i++){
     
     a           = document.createElement('a');
-    a.href      = "../" + fac + "/" + $("#muser").val() + "/" + arrayFiles[i];
+    a.href      = "../" + fac + "/" + $("#muser").val() + "_alt/" + arrayFiles[i];
     a.className = "down";
     a.setAttribute('download', true);
    
@@ -1341,10 +1341,6 @@ $(".span2").on("slide", function (slideEvt) {
         $(".span2").slider('setValue', $(this).data("val"));
    }
 });
-
-
-
-
 
 </script>
 <?
