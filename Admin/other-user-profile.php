@@ -914,7 +914,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
                                                                 <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
-                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
@@ -3163,11 +3163,24 @@ $(".span2").on("change", function(){
 
 $(".hovertip").on("click ", function(){
 
+
+if($(this).data("val") == 0 || $(this).data("val") == undefined){
+
     $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(this).children("input").val().replace("u" ,""));
 
    $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+
+     $(this).data("val", 1);
+
+} else {
+
+   var val = parseInt($(this).children("input").val().replace("u" ,""));
+   $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
+   $(this).data("val", 0);
+}
+
 
 });
 
