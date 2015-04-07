@@ -2970,7 +2970,7 @@ var table_string = '<table style="width: 100%" class="int-trf-descript">' +
 '</table>';
 
 td_i1.colSpan = "5";
-td_i1.innerHTML = table_string;
+
 
 if(kind == 0){
    var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1"
@@ -3050,6 +3050,7 @@ div4.innerHTML = str_file;
 
 
 
+
 p.appendChild(strong);
 p.appendChild(span);
 
@@ -3064,6 +3065,7 @@ td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 td_i1.appendChild(div4)
 
+td_i1.insertAdjacentHTML("beforeend",table_string);
 
 tr2.appendChild(td_i1);
 
