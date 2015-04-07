@@ -1338,8 +1338,9 @@ function insertAfter(referenceNode, newNode) {
 
 
 $("div.slider-selection").on("mousedown mouseup", function(){
-
+console.info("wallet wallet");
 var valor = $(this).width() / $(this).parent().width() * 100;
+console.info(valor)
     if (parseInt(valor) < $(this).data("val")) { 
         alert("fuera de rango");
     }
