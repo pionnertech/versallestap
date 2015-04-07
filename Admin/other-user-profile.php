@@ -2626,7 +2626,6 @@ $.ajax({ type:"POST",
         for (n=0; n < files.length-1 ; n++){
             console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
               if( jQuery.inArray( files[n] , cf_array ) !== -1){
-
                 continue;
               }
 
@@ -3255,6 +3254,8 @@ var match, matches = [];
 while ((match = regexp.exec(name)) != null) {
   matches.push(match.index);
 }
+
+console.info(matches[2]+1 + " -/- " + name.length);
 
 return name.substring(matches[2]+1, name.length);
 
