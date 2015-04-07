@@ -1337,11 +1337,11 @@ function insertAfter(referenceNode, newNode) {
 }
 
 
-$("div.slider-selection").on("mousedown mouseup", function(){
+$("div.slider-handle").eq(0).on("mousedown mouseup", function(){
 console.info("wallet wallet");
-var valor = $(this).width() / $(this).parent().width() * 100;
+var valor = $("div.slider-selection").width() / $("div.slider-selection").parent().width() * 100;
 console.info(valor)
-    if (parseInt(valor) < $(this).data("val")) { 
+    if (parseInt(valor) < $("div.slider-selection").data("val")) { 
         alert("fuera de rango");
     }
 });
