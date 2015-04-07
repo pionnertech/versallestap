@@ -3209,14 +3209,14 @@ parent.appendChild(tr_av);
 }
 
 
-  var draggable = document.getElementsByClassName('.ifile');
 
-  draggable.addEventListener('touchmove', function (event) {
+  $('.ifile').on('touchmove', function (event) {
     var touch = event.targetTouches[0];
  
     // Place element where the finger is
-    draggable.style.left = touch.pageX-25 + 'px';
-    draggable.style.top = touch.pageY-25 + 'px';
+    $(this).css({ left : touch.pageX-25 + 'px' });
+    $(this).css({ top : touch.pageX-25 + 'px' });
+
     event.preventDefault();
   }, false);
 
