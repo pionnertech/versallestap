@@ -95,7 +95,7 @@ echo mysqli_error($datos);
 closedir($hdir);
 }
 
- echo $stsk_id . "|" . $name['NAME'] . "|" . $outcome . "|" ;
+ echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
 
 }
 
