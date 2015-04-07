@@ -3209,7 +3209,7 @@ parent.appendChild(tr_av);
 }
 
 
-  var draggable = document.querySelectorAll('ifile');
+  var draggable = document.querySelectorAll('.ifile');
 
   draggable.addEventListener('touchmove', function (event) {
     var touch = event.targetTouches[0];
