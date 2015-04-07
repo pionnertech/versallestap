@@ -2617,7 +2617,8 @@ $.ajax({ type:"POST",
             
        //build the files array
     for(y=0; y < $(".int-files-to").eq(ind).children("a").length ; y++){
-        var hit = filename($(".int-files-to").eq(ind).children("a").eq(y).attr("href"));
+
+        var hit = filename($(".int-files-to").eq(ind-1).children("a").eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
     }
