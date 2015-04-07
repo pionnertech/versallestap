@@ -3174,7 +3174,7 @@ $(".hovertip").on("click", function(){
 
 function insertScheduleTraffic(subject, descript ,date, user, ind){
 
-var parent = querySelectorAll(".int-trf-descript")[ind];
+var parent = document.querySelectorAll(".int-trf-descript")[ind];
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
