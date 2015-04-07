@@ -2238,7 +2238,8 @@ function changeListener(){
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
                         if(parseInt(packets[6]) >= 99){
-                            console.info($(".int-desglo").eq(indice));
+                            $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
+                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
                         }
                     }
                     previan = packets[2];
