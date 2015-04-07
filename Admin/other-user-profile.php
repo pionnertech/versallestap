@@ -2959,7 +2959,18 @@ img.className ="group";
 inp2.type= "hidden";
 inp2.value = "u" + user_id;
 
+var table_string = '<table style="width: 100%" class="int-trf-descript">' +
+       '<tbody>' +
+           '<tr>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Asunto</span></td>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Descripcion</span></td>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Fecha</span></td>' +
+          '</tr>' +
+     '</tbody>' +
+'</table>';
+
 td_i1.colSpan = "5";
+td_i1.innerHTML = table_string;
 
 if(kind == 0){
    var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1"
@@ -3039,7 +3050,6 @@ div4.innerHTML = str_file;
 
 
 
-
 p.appendChild(strong);
 p.appendChild(span);
 
@@ -3062,8 +3072,7 @@ parent_int.appendChild(tr1);
 parent_int.appendChild(tr2);
 
 insertAfter(tr2, tr1);
-  
-  
+
 
 }
 
@@ -3239,7 +3248,7 @@ while ((match = regexp.exec(name)) != null) {
   matches.push(match.index);
 }
 
-return foo.substring(matches[2]+1, foo.length);
+return name.substring(matches[2]+1, name.length);
 
 }
 
