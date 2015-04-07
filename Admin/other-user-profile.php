@@ -2619,13 +2619,13 @@ $.ajax({ type:"POST",
     for(y=0; y < $(".int-files-to").eq(ind).children("a").length ; y++){
         var hit = filename($(".int-files-to").eq(ind).children("a").eq(y).attr("href"));
              cf_array[y] = hit;
+             console.info("archivos encontrados : " +  hit);
     }
 
-
-
         for (n=0; n < files.length-1 ; n++){
-             
+            console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
               if( jQuery.inArray( files[n] , cf_array ) !== -1){
+
                 continue;
               }
 
@@ -2822,12 +2822,6 @@ function touchHandler(event) {
     event.preventDefault();
 }
 
-function init() {
-   window.addEventListener("touchstart", touchHandler, true);
-   window.addEventListener("touchmove", touchHandler, true);
-   window.addEventListener("touchend", touchHandler, true);
-   window.addEventListener("touchcancel", touchHandler, true);
-}
 
 function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
 
