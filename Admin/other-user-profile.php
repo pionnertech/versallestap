@@ -2617,18 +2617,15 @@ $.ajax({ type:"POST",
             
        //build the files array
     for(y=0; y < $(".int-files-to").eq(ind).children("a").length ; y++){
-        
-        var hit = $(".int-files-to").eq(ind).children("a").eq(y).attr("href");
-        var black = hit.match(/\b\/\w+[a-z][0-9].*/g);
-             cf_array[y] = black;
-
+        var hit = filename($(".int-files-to").eq(ind).children("a").eq(y).attr("href"));
+             cf_array[y] = hit;
     }
 
 
 
         for (n=0; n < files.length-1 ; n++){
              
-              if( jQuery.inArray("/" + files[n] , cf_array) !== -1){
+              if( jQuery.inArray( files[n] , cf_array ) !== -1){
                 continue;
               }
 
@@ -3235,6 +3232,16 @@ parent.appendChild(tr_av);
 
 }
 
+function filename(name){
+var regexp = /\//g;
+var match, matches = [];
+while ((match = regexp.exec(name)) != null) {
+  matches.push(match.index);
+}
+
+return foo.substring(matches[2]+1, foo.length);
+
+}
 
 
 </script>
