@@ -2616,9 +2616,9 @@ $.ajax({ type:"POST",
             files = data.split("|");
             
        //build the files array
-    for(y=0; y < $(".int-files-to").eq(ind-1).children("a").length ; y++){
+    for(y=0; y < $(".int-files-for").eq(ind-1).children("a").length ; y++){
 
-        var hit = filename($(".int-files-to").eq(ind-1).children("a").eq(y).attr("href"));
+        var hit = filename($(".int-files-for").eq(ind-1).children("a").eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
     }
@@ -2693,10 +2693,6 @@ $.ajax({ type:"POST",
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
 
        }
-
-
-
-
 
       }
 
@@ -2862,6 +2858,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
     } else {
        inp1.className = "";
     }
+
     td4.className            = "int-forward";
     b1.innerHTML             = "En Curso";
     b1.className             = "due int-desglo"; 
@@ -2952,9 +2949,7 @@ if(kind == 1){
   div5.style.width = "100%";
 
 } else {
-
     div4.className ="ii-files";
-
 }
 
 a.href = "#";
