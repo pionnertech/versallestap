@@ -988,7 +988,7 @@ if(parseInt(kind) == 0){
 }
 
     var tr1 = document.createElement('tr');
-    tr1.className = "task";
+    tr1.className = "task Ec-int";
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
