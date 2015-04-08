@@ -2951,7 +2951,6 @@ if(kind == 1){
   div5.className = "int-files-to";
   div5.style.width = "100%";
 
-
 } else {
 
     div4.className ="ii-files";
