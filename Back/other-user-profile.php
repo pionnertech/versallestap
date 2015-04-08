@@ -7,8 +7,8 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 $Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
-$Query_alerts = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " GROUP BY STSK_STATE");
-
+$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
+$Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1 ) GROUP BY STSK_STATE");
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE= 0) ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
@@ -136,8 +136,38 @@ if(mysqli_num_rows($quntum) == 0){
                                          <? printf($_SESSION['TxtPosition']) ?> en SERVIU.
                                         </p>
                                         <div class="profile-details muted" id="kitkat">
-
-                                  <?  while($fi = mysqli_fetch_row($Query_alerts)){ 
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="profile-tab nav nav-tabs">
+                                    <li class="active"><a href="#require" data-toggle="tab">Compromisos Externos</a></li>
+                                    <li><a href="#int-require" data-toggle="tab">Compromisos Internos</a></li>
+                                </ul>
+                                <div class="profile-tab-content tab-content">
+                   <div class="tab-pane fade active in" id="require">
+                    <div class="module message">
+                            <div class="module-head">
+                                <h3>Control de cumplimientos</h3>
+                            </div>
+                            <div class="module-option clearfix">
+                                <div class="pull-left">
+                                    Filtro : &nbsp;
+                                    <div class="btn-group">
+                                        <button class="btn" id="titlen">Pendientes</button>
+                                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li class="switcher" id="Pe"><a href="#">Pendientes</a></li>
+                                            <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
+                                            <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
+                                            <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
+                                            <li class="switcher" id="At"><a href="#">Atrasados</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pull-right">
+                            <?  while($fi = mysqli_fetch_row($Query_alerts_ext)){ 
                                        
                                        switch((int)$fi[1]){
                                           case 2:
@@ -174,37 +204,10 @@ if(mysqli_num_rows($quntum) == 0){
 </a>
 
     <? } ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="profile-tab nav nav-tabs">
-                                    <li class="active"><a href="#require" data-toggle="tab">Compromisos Externos</a></li>
-                                    <li><a href="#int-require" data-toggle="tab">Compromisos Internos</a></li>
-                                </ul>
-                                <div class="profile-tab-content tab-content">
-                   <div class="tab-pane fade active in" id="require">
-                    <div class="module message">
-                            <div class="module-head">
-                                <h3>Control de cumplimientos</h3>
-                            </div>
-                            <div class="module-option clearfix">
-                                <div class="pull-left">
-                                    Filtro : &nbsp;
-                                    <div class="btn-group">
-                                        <button class="btn" id="titlen">Pendientes</button>
-                                        <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li class="switcher" id="Pe"><a href="#">Pendientes</a></li>
-                                            <li class="switcher" id="Ec"><a href="#">En Curso</a></li>
-                                            <li class="switcher" id="Hc"><a href="#">Finalizados</a></li>
-                                            <li class="switcher" id="Pv"><a href="#">Por vencer</a></li>
-                                            <li class="switcher" id="At"><a href="#">Atrasados</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="pull-right">
+
+
+
+
                                     <a href="#" class="btn btn-primary">Crear Requerimiento</a>
                                 </div>
                             </div>
@@ -435,7 +438,46 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                             </ul>
                                                         </div>
                                                     </div>
-                                            <div class="pull-right"></div>
+                                            <div class="pull-right">
+                                                
+                             <?  while($fi = mysqli_fetch_row($Query_alerts_int)){ 
+                                       
+                                       switch((int)$fi[1]){
+                                          case 2:
+                                            $type = "fa-angle-double-right";
+                                            $taint = "#178FD0";
+                                            $tuba =  "En Curso";
+                                          break;
+                                          case 4:
+                                            $type = "fa-clock-o";
+                                            $taint = "#EDB405";
+                                            $tuba = "Por Vencer";
+                                          break;
+                                          case 3:
+                                            $type = "fa-exclamation-triangle";
+                                            $taint = "#E70101";
+                                            $Tuba = "Atrasadas";
+                                          break;
+                                          case 5:
+                                             $type = "fa-check-circle";
+                                             $taint = "#1CC131";
+                                             $tuba = "Finalizadas";
+                                          break;
+                                          case 1:
+                                             $type = "fa-flag";
+                                             $taint = "#DED901";
+                                             $tuba = "Pendientes";
+                                          break;
+
+                                       }
+
+                                    ?>
+<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+</a>
+
+    <? } ?>
+                                            </div>
                                             </div>
                                             <div class="module-body table">
                                                    <table class="table table-message" id="int-table">
@@ -1242,6 +1284,12 @@ $.ajax({
      //inside table 
 
 
+ }
+
+     }
+ });
+
+// ==== llamada Asincronica fin ====
   var tbl  = document.createElement('table');
   var tbo  = document.createElement('tbody');
   var trt  = document.createElement('tr');
@@ -1274,13 +1322,6 @@ $.ajax({
 
     insertAfter(div2, div4);
     insertAfter(div4, tbl);
-
- }
-
-     }
- });
-
-// ==== llamada Asincronica fin ====
 
 
 
