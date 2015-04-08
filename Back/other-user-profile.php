@@ -183,17 +183,17 @@ if(mysqli_num_rows($quntum) == 0){
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasadas";
+                                            $Tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizadas";
+                                             $tuba = "Finalizado";
                                           break;
                                           case 1:
                                              $type = "fa-flag";
                                              $taint = "#DED901";
-                                             $tuba = "Pendientes";
+                                             $tuba = "Pendiente";
                                           break;
 
                                        }
@@ -1376,6 +1376,65 @@ $(".span2").on("slide", function (slideEvt) {
         $(".span2").slider('setValue', $(this).data("val"));
    }
 });
+
+function thum(val, kind, type){
+
+if(kind == "int"){
+   var thum = $("a.Qint[title='" + type + "']");
+   var ght = 1;
+   var change = "Qint";
+} else if (kind == "ii"){
+   var thum = $("a.Qiii[title='" + type + "']");
+   var ght = 2;
+   var change = "Qiii"; 
+} else { 
+   var thum = $("a.Qext[title='" + type + "']");
+   var ght = 0;
+   var change = "Qext";
+}
+
+
+var current = parseInt(thum.children('p').html()) + val ;
+
+thum.children('p').html(current);
+
+//si no está 
+
+if(thum.length == 0 ){
+    switch (type){
+
+    case "En Curso":
+      var design = "fa-angle-double-right";
+      var taint = "#178FD0";
+    break;
+    case "Por Vencer":
+      var design = "fa-clock-o";
+      var taint = "#EDB405";
+    break;
+
+    case "Atrasado":
+      var design = "fa-exclamation-triangle";
+      var taint = "#E70101";
+    break;
+    case "Finalizado":
+      var design = "fa-check-circle";
+      var taint = "#1CC131";
+    break;
+
+}
+    prevHtml = $("div.pull-right").eq(ght).html();
+
+    $("div.pull-right").eq(ght).html(
+           prevHtml + 
+    "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
+    "<i class='fa " + design + " fa-2x' style='display: inline-block; vertical-align: top;color: " + taint + "'></i></a>"
+
+
+        )
+}
+
+
+}
 
 </script>
 <?

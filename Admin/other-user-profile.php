@@ -87,6 +87,54 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
 }
 
+#outer-dropzone {
+  height: 140px;
+}
+
+#inner-dropzone {
+  height: 80px;
+}
+
+.dropzone {
+  background-color: #ccc;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: #29e;
+  border-color: #fff;
+  border-style: solid;
+}
+
+.drag-drop {
+  display: inline-block;
+  min-width: 40px;
+  padding: 2em 0.5em;
+
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
+}
+
     </style>    
 </head>
 <body>
@@ -873,7 +921,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             </tr>
                          <? while ($fila5 = mysqli_fetch_row($internal)) {
 
-                                         if(((int)$fila5[9] ) == 0 ){
+                                         if(((int)$fila5[9]) == 0 ){
 
                                             $situation = "exclamation";
                                             $color = "color:#EE8817;";
@@ -912,7 +960,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
+                                                                <td class="cell-icon int-lock" style="cursor: pointer;  color: <? echo $color; ?>" ><i class="fa fa-<? echo $situation ?>"></i></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
@@ -1140,7 +1188,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <input type="hidden" value="<? echo $ii[11] ?>" class="ii-iss">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer;  <? echo $color; ?>" ><i class="fa fa-<? echo $situation; ?> "></i></td>
+                                                                <td class="cell-icon int-lock" style="cursor: pointer; <? echo $color ?>;" ><i class="fa fa-<? echo $situation ?>"></i></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
                                                                 <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
@@ -3260,6 +3308,41 @@ return name.substring(matches[2]+1, name.length);
 
 }
 
+/*
+
+  function dragMoveListener (event) {
+    var target = event.target,
+        // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    // translate the element
+    target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x);
+    }
+
+interact(".files")
+  .on('dragstart', listener)
+  .on('dragmove dragend', listener)
+  .on(['resizemove', 'resizeend'], listener)
+  .on({
+    gesturestart: listener,
+    gestureend: listener
+  });
+
+
+
+interact(".files").draggable({
+  inertia :true,
+  onstart: listener,
+  onmove: dragMoveListener,
+  onend: listener
+});
+*/
 
 </script>
 
