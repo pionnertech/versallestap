@@ -2832,15 +2832,15 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
       var parent_int =  document.getElementById("income-int-body");
   }
     
-    var tr1 = document.createElement('tr');
-    var td1 = document.createElement('td');
-    var td2 = document.createElement('td');
-    var td3 = document.createElement('td');
-    var td4 = document.createElement('td');
-    var td5 = document.createElement('td');
-    var i1  = document.createElement('i');
-    var i2  = document.createElement('i');
-    var b1  = document.createElement('b');
+    var tr1  = document.createElement('tr');
+    var td1  = document.createElement('td');
+    var td2  = document.createElement('td');
+    var td3  = document.createElement('td');
+    var td4  = document.createElement('td');
+    var td5  = document.createElement('td');
+    var i1   = document.createElement('i');
+    var i2   = document.createElement('i');
+    var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
 
 
@@ -2862,14 +2862,14 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
     } else {
        inp1.className = "";
     }
-    td4.className = "int-forward";
-    b1.innerHTML = "En Curso";
-    b1.className  = "due int-desglo"; 
+    td4.className            = "int-forward";
+    b1.innerHTML             = "En Curso";
+    b1.className             = "due int-desglo"; 
     b1.style.backgroundColor = "#178FD0";
 
-    i1.className = "fa fa-exclamation";
+    i1.className   = "fa fa-exclamation";
     i1.style.color = "orange";
-    i2.className = "fa fa-chevron-circle-right";
+    i2.className   = "fa fa-chevron-circle-right";
     
     td1.appendChild(i1);
     td4.appendChild(i2);
@@ -2920,26 +2920,26 @@ td1.onclick = function (){
 }
 
 
-var tr2 = document.createElement('tr');
-var td_i1 = document.createElement('td');
-var p = document.createElement('p');
+var tr2    = document.createElement('tr');
+var td_i1  = document.createElement('td');
+var p      = document.createElement('p');
 var strong = document.createElement('strong');
-var span = document.createElement('span');
-var div1 = document.createElement('div');
-var div2 = document.createElement('div');
-var div3 = document.createElement('div');
-var a    = document.createElement('a');
-var img  = document.createElement('img');
-var inp2 = document.createElement('input');
-var div4 = document.createElement('div');
+var span   = document.createElement('span');
+var div1   = document.createElement('div');
+var div2   = document.createElement('div');
+var div3   = document.createElement('div');
+var a      = document.createElement('a');
+var img    = document.createElement('img');
+var inp2   = document.createElement('input');
+var div4   = document.createElement('div');
 
 tr2.style.display = "none";
-span.className = "pull-right small muted";
-div1.className = "progress tight";
-div2.className = "bar bar-warning";
-div3.className = "coll-int";
-div3.style.width = "100%";
-strong.innerHTML = "Grado de progreso";
+span.className    = "pull-right small muted";
+div1.className    = "progress tight";
+div2.className    = "bar bar-warning";
+div3.className    = "coll-int";
+div3.style.width  = "100%";
+strong.innerHTML  = "Grado de progreso";
 
 
 div4.style.width = "100%";
@@ -2947,6 +2947,10 @@ div4.style.width = "100%";
 if(kind == 1){
 
   div4.className ="int-files-for";
+  var div5 = document.createElement('div')
+  div5.className = "int-files-to";
+  div5.style.width = "100%";
+
 
 } else {
 
@@ -3068,7 +3072,11 @@ div3.appendChild(a);
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
-td_i1.appendChild(div4)
+td_i1.appendChild(div4);
+
+if(kind == 1){
+td_i1.appendChild(div5);
+}
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
