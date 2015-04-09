@@ -30,7 +30,10 @@ if(mysqli_num_rows($quntum) == 0){
     $contador = $cont['CONTADOR'];
 }
 
-$str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
+$str_query = "SELECT A.STSK_DESCRIP, A.STSK_ID, B.ISS_DESCRIP, B.ISS_ID , CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ' , C.CTZ_SURNAME2 ) AS NAME " .
+"FROM `SUBTASKS` A " .
+"INNER JOIN `ISSUES` B ON(A.STSK_ISS_ID = B.ISS_ID) " .
+"INNER JOIN `CITIZENS` C ON(B.ISS_CTZ = C.CTZ_RUT ) WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 if(!$notify){
 
@@ -2258,7 +2261,7 @@ var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Nex
 
 
 setInterval(function(){
-    changeListener()
+    changeListener();
 }, 3000);
 
 function changeListener(){
@@ -2302,7 +2305,9 @@ function changeListener(){
 if(typeof(EventSource) !== "undefined") {
     var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     source.onmessage = function(event) {
+
        var eventMessage = event.data.split('\n');
+
        if (eventMessage[0] !== previuosData){
         console.info( eventMessage[0] + "/" + previuosData);
         showAlert(eventMessage[0], 'req');
