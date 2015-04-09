@@ -2955,8 +2955,8 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 td1.onclick = function (){
 
-
     var obj = $(this).children('i');
+    console.info(obj.attr("class"));
     if(obj.hasClass("fa-chevron-circle-right")){
   var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
