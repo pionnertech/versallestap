@@ -2393,6 +2393,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
         if(confirmation){
             unlock(stsk_int, stsk_int , object);
             object.parent().parent().children('td').eq(3).off();
+            console.info("la de la 2396");
             console.info(object.parent().parent().children('td').eq(3).html());
         }
        })
@@ -2959,6 +2960,7 @@ td1.onclick = function (){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
             obj.parent().parent().children('td').eq(3).off();
+            console.info("la de la 20962")
             console.info(obj.parent().parent().children('td').eq(3));
     }
   });
@@ -3348,7 +3350,37 @@ interact(".files").draggable({
 
 
 
+function doSearch(fr,t) {
+var d1 = fr.split("/");
+var d2 = t.split("/");
+var from = new Date(d1[2], d1[1]-1, d1[0]);  
+var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
+
+
+        var targetTable = document.getElementById('dataTable');
+        var targetTableColCount;
+        for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+            var rowData = [];
+            if (rowIndex == 0) {
+                targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+                continue; 
+            }
+
+            for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
+                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex).textContent);
+            }
+        for(var i=0;i<rowData.length;i++){
+                var c = rowData[i].split("/");
+                var check = new Date(c[2], c[1]-1, c[0]);
+                if ((check >= from) && (check <= to))
+                    targetTable.rows.item(rowIndex).style.display = 'table-row';
+                else
+                    targetTable.rows.item(rowIndex).style.display = 'none';                    
+        }
+
+        }
+    }
 
 
 </script>
