@@ -540,7 +540,6 @@ $handler2 = mysqli_query($datos, $matrix2);
                                             $lock = "disabled";
                                          }
 
-
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
@@ -559,7 +558,6 @@ $handler2 = mysqli_query($datos, $matrix2);
                                               $class = "Pv";
                                               break;
                                           }
-
                                             ?> 
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
@@ -1010,7 +1008,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
+//echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
                                          if(preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) == 1){
 
 
@@ -1433,6 +1431,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
             });
         }
     }
+
+    $("i.fa-lock").parent().parent().children('td:nth-child(5)').off()
 });
 
 
