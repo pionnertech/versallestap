@@ -2954,17 +2954,18 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 td1.onclick = function (){
+
+
     var obj = $(this).children('i');
-    var stsk_int = $(this).parent().children('input').val();
+    if(obj.hasClass("fa-chevron-circle-right")){
+  var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
-            obj.parent().parent().children('td').eq(3).off();
-            console.info(obj.parent().parent().html());
-            console.info(obj.parent().parent().children('td').html());
-            console.info(obj.parent().parent().children('td').eq(3).html());
+            obj.parent().parent().children('td').eq(3).html('<i class="fa fa-times-circle"></i>');
     }
-  });
+  })
+    } 
 }
 
 var tr2    = document.createElement('tr');
