@@ -2960,7 +2960,6 @@ td1.onclick = function (){
            unlock(stsk_int, stsk_int , obj);
             obj.parent().parent().children('td').eq(3).off();
             console.info(obj.parent().parent().children('td').eq(3).html());
-
     }
   });
 }
