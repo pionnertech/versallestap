@@ -1393,10 +1393,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var previan   = "";
 
 
-
+$("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
     $(document).on('ready', function(){
 
-$("i.fa-lock").parent().parent().children('td:nth-child(3)').off();
 
   progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
