@@ -135,6 +135,10 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
   background-color: #4e4;
 }
 
+.display-pro-int{
+    display:none;
+}
+
     </style>    
 </head>
 <body>
@@ -1733,7 +1737,6 @@ $(".switcher").on('click', function(){
 $(".swt-int").on('click', function(){
 
     var all_on = document.querySelectorAll('.swt-int');
-
     var ex = $(this).attr("id");
     var title_in = $(this).html();
     $(".display-pro-int").css({ display: "none"});
