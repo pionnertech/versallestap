@@ -1397,7 +1397,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
     $(document).on('ready', function(){
 
-
+jin5.off();
+jin5.off();
   progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
  dateTime = $('.datetimepicker').datetimepicker({
@@ -3345,12 +3346,7 @@ interact(".files").draggable({
 });
 */
 
-$("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
-var jin0 = $("i.fa-lock").parent().parent().children('td:nth-child(0)')
-var jin1 = $("i.fa-lock").parent().parent().children('td:nth-child(1)')
-var jin2 = $("i.fa-lock").parent().parent().children('td:nth-child(2)')
-var jin3 = $("i.fa-lock").parent().parent().children('td:nth-child(3)')
-var jin4 = $("i.fa-lock").parent().parent().children('td:nth-child(4)')
+
 var jin5 = $("i.fa-lock").parent().parent().children('td:nth-child(5)')
 
 
