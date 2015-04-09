@@ -1801,7 +1801,6 @@ obj = $(this).children('i');
 
 
 $(".int-lock").on('click', function(){
-
     var obj = $(this).children('i');
     var stsk_int = $(this).parent().children('input').val();
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
@@ -2394,7 +2393,9 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
        bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
         if(confirmation){
+            unlock(stsk_int, stsk_int , $(this));
             $(this).parent().parent().children('td').eq(3).off();
+            console.info($(this).parent().parent().children().html())
         }
        })
     }
