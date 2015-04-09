@@ -1655,7 +1655,7 @@ $("#delegates").on('change', function(){
     }
     $("#stsk-user").val($("#delegates").val());
 
-});
+
 
 });
 
