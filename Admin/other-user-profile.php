@@ -1395,11 +1395,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
 
 
-    $(document).on('ready', function(){
+$(document).on('ready', function(){
 
-jin5.off();
-jin5.off();
-  progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
+progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
+
+$("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
+
 
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
@@ -1434,11 +1435,9 @@ jin5.off();
             });
         }
     }
-
-
 });
 
-
+})
 
 $(".int-forward").click(function(){
 
@@ -3347,7 +3346,7 @@ interact(".files").draggable({
 */
 
 
-var jin5 = $("i.fa-lock").parent().parent().children('td:nth-child(5)')
+
 
 
 
