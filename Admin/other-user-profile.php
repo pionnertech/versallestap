@@ -547,13 +547,10 @@ $handler2 = mysqli_query($datos, $matrix2);
                                               break;
                                               case 'En Curso':
                                                $class = "Ec";
-
                                               break;
-
                                               case 'Finalizada':
                                                $class = "Hc";
                                               break;
-
                                               case 'Atrasada':
                                                $class = "At";
                                               break;
@@ -1159,7 +1156,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
                                                                        } else {
                               
-                                                                          $situation = "check";
+                                                                          $situation = "lock";
                                                                           $color = "color: #44D933;";
                                                                           $lock = "disabled";
                                                                        }
@@ -2395,7 +2392,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
        bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
         if(confirmation){
-            unlock(stsk, iss_id, $(this)); 
+            $(this).parent().parent().children('td').eq(3).off();
         }
        })
     }
@@ -3036,7 +3033,6 @@ $.ajax({ type:"POST",
             files = data.split("|");
            var str_file = "";
         for (n=0; n < files.length-1 ; n++){
-
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
                 case "pdf": 
@@ -3221,11 +3217,11 @@ if(thum.length == 0 ){
       var taint = "#EDB405";
     break;
 
-    case "Atrasado":
+    case "Atrasados":
       var design = "fa-exclamation-triangle";
       var taint = "#E70101";
     break;
-    case "Finalizado":
+    case "Finalizados":
       var design = "fa-check-circle";
       var taint = "#1CC131";
     break;
