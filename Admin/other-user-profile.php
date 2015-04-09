@@ -2960,12 +2960,12 @@ td1.onclick = function (){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
             obj.parent().parent().children('td').eq(3).off();
-            console.info("la de la 20962")
-            console.info(obj.parent().parent().children('td').eq(3));
+            console.info(obj.parent().parent().html());
+            console.info(obj.parent().parent().children('td').html());
+            console.info(obj.parent().parent().children('td').eq(3).html());
     }
   });
 }
-
 
 var tr2    = document.createElement('tr');
 var td_i1  = document.createElement('td');
