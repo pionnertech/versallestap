@@ -2386,14 +2386,14 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
 
     is.onclick = function (){
-
+          var object = $(this);
           var stsk   = $(this).parent().parent().children('input').eq(0).val();
           var iss_id = $(this).parent().parent().children('input').eq(1).val();
        bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
         if(confirmation){
-            unlock(stsk_int, stsk_int , $(this));
-            $(this).parent().parent().children('td').eq(3).off();
-            console.info($(this).parent().parent().children().html())
+            unlock(stsk_int, stsk_int , object);
+            object.parent().parent().children('td').eq(3).off();
+            console.info(object.parent().parent().children('td').eq(3).html());
         }
        })
     }
@@ -2959,7 +2959,7 @@ td1.onclick = function (){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
             obj.parent().parent().children('td').eq(3).off();
-            console.info(obj.parent().parent().children('td').eq(3).html());
+            console.info(obj.parent().parent().children('td').eq(3));
     }
   });
 }
