@@ -199,7 +199,7 @@ if(mysqli_num_rows($quntum) == 0){
                                        }
 
                                     ?>
-<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<a class="btn Qext" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
 <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
 </a>
 
@@ -235,10 +235,10 @@ if(mysqli_num_rows($quntum) == 0){
                                               case 'En Curso':
                                                $class = "Ec";
                                               break;
-                                              case 'Finalizada':
+                                              case 'Finalizado':
                                                $class = "Hc";
                                               break;
-                                              case 'Atrasada':
+                                              case 'Atrasadao':
                                                $class = "At";
                                               break;
                                               case 'Por Vencer':
@@ -472,7 +472,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                        }
 
                                     ?>
-<a class="btn" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+<a class="btn Qint" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
 <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
 </a>
 
@@ -906,6 +906,7 @@ console.info("../backend/upgrade.php?val=" + val +
                  $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int");    
                 }
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
+            thum("int", type)
 
 
              }
@@ -1281,9 +1282,6 @@ $.ajax({
     divFile.appendChild(a);
     div4.appendChild(divFile);
 
-     //inside table 
-
-
  }
 
      }
@@ -1319,12 +1317,6 @@ $.ajax({
    td6.appendChild(tbl);
    
 //table 
-
-    insertAfter(div2, div4);
-    insertAfter(div4, tbl);
-
-
-
     p1.appendChild(str1);
     p2.appendChild(str2);
     p3.appendChild(str3);
@@ -1338,8 +1330,8 @@ $.ajax({
     tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
-
-
+    insertAfter(div2, div4);
+    insertAfter(div4, tbl);
 
     parent.appendChild(tr2);
 }
@@ -1377,7 +1369,7 @@ $(".span2").on("slide", function (slideEvt) {
    }
 });
 
-function thum(val, kind, type){
+function thum(kind, type){
 
 if(kind == "int"){
    var thum = $("a.Qint[title='" + type + "']");
@@ -1394,7 +1386,7 @@ if(kind == "int"){
 }
 
 
-var current = parseInt(thum.children('p').html()) + val ;
+var current = parseInt(thum.children('p').html()) + 1 ;
 
 thum.children('p').html(current);
 
