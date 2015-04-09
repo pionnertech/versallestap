@@ -2389,8 +2389,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
           var stsk   = $(this).parent().parent().children('input').eq(0).val();
           var iss_id = $(this).parent().parent().children('input').eq(1).val();
- 
-
        bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
         if(confirmation){
             unlock(stsk_int, stsk_int , $(this));
@@ -2960,6 +2958,9 @@ td1.onclick = function (){
     bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
+            obj.parent().parent().children('td').eq(3).off();
+            console.info(obj.parent().parent().children().html())
+
     }
   });
 }
