@@ -18,7 +18,7 @@ $Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME F
 // internal requirements
 
 $query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR )";
-$internal       =  mysqli_query($datos, $query_internal);
+$internal       = mysqli_query($datos, $query_internal);
 $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
 
 
@@ -966,7 +966,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
-                                                            <tr style="display: none;">
+                                                            <tr class"display-pro-int"style="display: none;">
                                                                 <td colspan="5">
                                                                    <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila5[7]) ?>%</span>
@@ -1736,7 +1736,7 @@ $(".swt-int").on('click', function(){
 
     var ex = $(this).attr("id");
     var title_in = $(this).html();
-    $(".display-progress").css({ display: "none"});
+    $(".display-pro-int").css({ display: "none"});
     $(".title-int").html(title_in);
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
