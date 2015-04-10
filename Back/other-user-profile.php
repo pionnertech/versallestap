@@ -915,22 +915,17 @@ console.info("../backend/upgrade.php?val=" + val +
                      thum("int", "Finalizado");
                  $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int");    
                 }
+
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
-            thum("int", "En Curso")
-
-
+            thum("int", "En Curso");
+            
              }
-
              });
-
             } else {
-
             bootbox.alert("Falla en la conexion al servidor");
-
                };
                  $("#upload ul").empty();
                 }
-                
             });
 }
 

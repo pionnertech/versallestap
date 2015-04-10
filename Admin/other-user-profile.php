@@ -1363,11 +1363,11 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     <script src="../scripts/jquery.fileupload.js"></script>
     <script src="../scripts/script.js"></script>
     <script src="../scripts/script-int.js"></script>
-    <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+    <script src="../scripts/bootbox.min.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
-    <script type="text/javascript" src="../scripts/plupload.full.min.js"></script>  
-    <script type="text/javascript" src="../scripts/jquery.plupload.queue.js"></script>
-    <script type="text/javascript" src="../scripts/es.js"></script>
+    <script src="../scripts/plupload.full.min.js"></script>  
+    <script src="../scripts/jquery.plupload.queue.js"></script>
+    <script src="../scripts/es.js"></script>
     <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
     <script src="../scripts/bootstrap-slider.js"></script>
 </body>
