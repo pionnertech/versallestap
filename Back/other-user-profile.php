@@ -918,7 +918,6 @@ console.info("../backend/upgrade.php?val=" + val +
 
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
             thum("int", "En Curso");
-            
              }
              });
             } else {
@@ -928,8 +927,6 @@ console.info("../backend/upgrade.php?val=" + val +
                 }
             });
 }
-
-
 
 $("#back").on('click', function(){
 
