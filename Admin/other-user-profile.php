@@ -891,7 +891,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasados";
+                                            $tuba = "Atrasados";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
