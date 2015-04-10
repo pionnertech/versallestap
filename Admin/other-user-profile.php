@@ -2936,7 +2936,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
 i2.onclick = function(){
 
  mode = "delegate";
- var indice = $(this).index("fa-chevron-circle-right");
+ var indice = $(this).parent().index(".int-forward");
  var ids    = $(this).parent().parent().children('input').val();
 
 console.info(ids);
