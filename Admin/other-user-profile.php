@@ -2111,6 +2111,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
           "&fac="+ fac +
           "&main_stsk=" + mst + 
           "&keyfile=" + keyFile);
+
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal.php?muser=" + $("#muser").val() + 
@@ -2432,7 +2433,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
              $("#stsk-code").val(stsk_id);
 
                 $('#delegates option:first-child').attr("selected", "selected");
-
                 var current = $("#delegates").val();
 
                     $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
@@ -2937,7 +2937,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
 i2.onclick = function(){
 
  mode = "delegate";
- var indice = $(this).index();
+ var indice = $(this).index("fa-chevron-circle-right");
  var ids    = $(this).parent().parent().children('input').val();
 
 console.info(ids);
