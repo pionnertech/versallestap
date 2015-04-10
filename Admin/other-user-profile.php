@@ -1455,6 +1455,8 @@ console.log("stsk_send is :" + ids);
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
+
+
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 
@@ -2938,7 +2940,7 @@ i2.onclick = function(){
 
  mode = "delegate";
  var indice = $(this).index();
- var ids    = $(this).parent().children('input').val();
+ var ids    = $(this).parent().parent().children('input').val();
 
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
