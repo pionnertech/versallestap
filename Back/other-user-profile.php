@@ -12,16 +12,15 @@ $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM
 $str_query = "SELECT STSK_DESCRIP FROM `SUBTASKS` WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE= 0) ORDER BY STSK_ID DESC LIMIT 1";
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 
-$str_query_int = "SELECT A.STSK_DESCRIP, " .
-"A.STSK_ISS_ID, " .
-"A.STSK_SUBJECT, " .
-"B.ISS_DESCRIP, " .
-"CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ', C.CTZ_SURNAME2) AS NAME , " .
-"A.STSK_FINISH_DATE AS FECHA_FINAL,  " .
-"A.STSK_START_DATE AS FECHA_INICIAL,  " .
-"A.STSK_TYPE " . 
-" FROM SUBTASKS A INNER JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) INNER JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
-"WHERE ( STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) ORDER BY STSK_ID DESC LIMIT 1 ";
+$str_query_int = "SELECT STSK_ID, " .
+"STSK_ISS_ID, " .
+"STSK_SUBJECT, " .
+"STSK_DESCRIP, " .
+"STSK_FINISH_DATE AS FECHA_FINAL, " . 
+"STSK_START_DATE AS FECHA_INICIAL, " . 
+"STSK_TYPE " .
+" FROM SUBTASKS " .  
+"WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) ORDER BY STSK_ID DESC LIMIT 1";
 
 $notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
@@ -255,7 +254,6 @@ if(mysqli_num_rows($quntum) == 0){
                                               $class = "Pv";
                                               break;
                                           }
-
                                         ?>
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><i class="icon-checker high"></i></td>
