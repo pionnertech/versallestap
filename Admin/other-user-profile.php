@@ -2323,16 +2323,14 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
-
-
-
 function assoc_collar_int(usr, ind){
+    console.info("indice quele llega a las fotos internas es : " + ind);
 
 var parent = document.querySelectorAll('.coll-int')[ind];
 
   var string =  '<a href="#" class="hovertip" title="">' +
         '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" >' +
-        '<input type="hidden" value="u'  + usr + '>">' +
+        '<input type="hidden" value="u'  + usr + '>' +
         '</a>';
   var stringAl   = parent.innerHTML + string;   
 parent.innerHTML = stringAl;   
@@ -3109,9 +3107,6 @@ div4.innerHTML = str_file;
 }
 });
 
-
-
-
 p.appendChild(strong);
 p.appendChild(span);
 
@@ -3127,19 +3122,18 @@ td_i1.appendChild(div3);
 td_i1.appendChild(div4);
 
 if(kind == 1){
+
 td_i1.appendChild(div5);
+
 }
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
 tr2.appendChild(td_i1);
-
-
 parent_int.appendChild(tr1);
 parent_int.appendChild(tr2);
 
 insertAfter(tr2, tr1);
-
 
 }
 
@@ -3241,19 +3235,17 @@ if(thum.length == 0 ){
     break;
 
 }
-    prevHtml = $("div.pull-right").eq(ght).html();
 
+    prevHtml = $("div.pull-right").eq(ght).html();
     $("div.pull-right").eq(ght).html(
            prevHtml + 
     "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
     "<i class='fa " + design + " fa-2x' style='display: inline-block; vertical-align: top;color: " + taint + "'></i></a>"
+    )
+
+}}
 
 
-        )
-}
-
-
-}
 
 $(".span2").on("change", function(){
     if ($(this).val() < $(this).data("val")) { 
