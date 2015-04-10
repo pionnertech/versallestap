@@ -885,7 +885,7 @@ console.info("../backend/upgrade.php?val=" + val +
                 }
 
              } else {
-
+              console.info("index + 1 : " + (index +1))
             $("#int-table > tbody > tr").eq(index + 1).children("td").children('p').children('span').html(val + "%");
             $("#int-table > tbody > tr").eq(index + 1).children("td").children('div').eq(0).children(".bar").css({ width: val + "%"});
 
