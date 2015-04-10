@@ -2942,7 +2942,8 @@ i2.onclick = function(){
  var indice = $(this).index();
  var ids    = $(this).parent().parent().children('input').val();
 
-$("#del-int-req").data("val",indice );
+console.info(ids);
+$("#del-int-req").data("val",indice);
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 }
