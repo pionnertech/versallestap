@@ -385,13 +385,12 @@ $handler = mysqli_query($datos, $matrix);
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    <?
-$matrix2= "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
-          "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per2[0]. ")) * 100) AS percentage  " .
-          "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per2[0]. ")  " .
-          "GROUP BY B.EST_DESCRIPT";
-$handler2 = mysqli_query($datos, $matrix2);
-
+                                                        <?
+                                                       $matrix2= "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
+                                                                 "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per2[0]. ")) * 100) AS percentage  " .
+                                                                 "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per2[0]. ")  " .
+                                                                 "GROUP BY B.EST_DESCRIPT";
+                                                       $handler2 = mysqli_query($datos, $matrix2);
                                                         ?>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
@@ -1922,7 +1921,6 @@ $.ajax({
 
               object.addClass("fa-lock");
            }
-           
            object.css({color:"#44D933"});
            object.parent().parent().children('td.cell-title').children('button').attr('disabled', true);
            object.parent().parent().children('td.cell-title').children('button').unbind('click');
@@ -2325,6 +2323,7 @@ if(typeof(EventSource) !== "undefined") {
 }
 
 function assoc_collar_int(usr, ind){
+
     console.info("indice quele llega a las fotos internas es : " + ind);
 
 var parent = document.querySelectorAll('.coll-int')[ind];
@@ -2941,6 +2940,7 @@ i2.onclick = function(){
  var ids    = $(this).parent().parent().children('input').val();
 
 console.info(ids);
+console.info(indice);
 $("#del-int-req").data("val",indice);
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
