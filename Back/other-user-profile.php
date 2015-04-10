@@ -466,12 +466,12 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasadas";
+                                            $Tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizadas";
+                                             $tuba = "Finalizado";
                                           break;
                                           case 1:
                                              $type = "fa-flag";
@@ -912,11 +912,11 @@ console.info("../backend/upgrade.php?val=" + val +
                                  $("#int-table > tbody > tr").eq(index).removeClass("Ec-int");
                         break;
                     }
-
+                     thum("int", "Finalizado");
                  $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int");    
                 }
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
-            thum("int", type)
+            thum("int", "En Curso")
 
 
              }
