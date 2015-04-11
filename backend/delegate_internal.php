@@ -73,7 +73,7 @@ echo mysqli_error($datos);
        
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
-  if(isset($keyfile) || $keyfile !== "" || !is_null($keyfile)){
+  if(isset($keyfile) || !is_null($keyfile)){
 
       if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
@@ -98,8 +98,6 @@ closedir($hdir);
   if($stsk_src_id != 0){
          $pre_id2  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
          $keyfile  = $pre_id2['IND'];
-         echo $keyfile;
-         exit;
   }
 
     if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
