@@ -86,8 +86,8 @@ if(!mysqli_query($datos, $query)){
      //======
   //enviar el nombre hacia el cliente
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
+  
   //si no está  la llave  es por que  tiene  un stsk_src_id 
-  if(!is_null($keyfile)){
 
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
@@ -106,22 +106,7 @@ if(!mysqli_query($datos, $query)){
         }
       }
     }
-
     closedir($hdir);
-
-//si no tiene  llave es por que tiene un
-
-  } else {
-
-    $pre_id2  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
-    $keyfile  = $pre_id2['IND'];
-
-    if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
-
-      unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
-    }
-
-   }  
 
  echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
 
