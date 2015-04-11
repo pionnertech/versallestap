@@ -81,13 +81,16 @@ if(!mysqli_query($datos, $query)){
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
          $pre_id   = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
          $stsk_id  = $pre_id['IND'];
-  }  
+  }  else {
+ 
+         $pre_id   = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
+         $stsk_id  = $pre_id['IND'];
+  }
 
      //======
   //enviar el nombre hacia el cliente
   $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
-  //si no está  la llave  es por que  tiene  un stsk_src_id 
 
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
