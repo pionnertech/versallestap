@@ -105,9 +105,8 @@ closedir($hdir);
 
 }
 
- echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
 
 }
-
-
+ echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
+}
 ?>
