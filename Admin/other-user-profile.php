@@ -333,7 +333,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                                case 'Pendiente':
                                                                                    $ix = " bar-warning";
                                                                                    break;
-                                                                                case 'En curso':                                                                             
+                                                                                case 'En Curso':                                                                             
                                                                                    $ix = " bar-info";
                                                                                    break;
                                                                                 case  'Atrasada':                                                                                                                                                               case 'Pendiente':

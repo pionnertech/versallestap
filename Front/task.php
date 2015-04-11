@@ -510,16 +510,18 @@ $(".enviar").on('click', function () {
 
 $(".switcher").on('click', function(){
 
-
-
 	 var all_on = document.querySelectorAll('.switcher');
      var ex = $(this).attr("id");
      var name =  $(this).html();
 
  if(ex == "Pe"){
+
     document.querySelectorAll(".heading > td")[3].innerHTML = "Fecha de Atención";
+
 } else {
+
     document.querySelectorAll(".heading > td")[3].innerHTML = "Fecha Máxima de entrega";
+    
 } 
 
      $(".display-progress").css({ display: "none"});
