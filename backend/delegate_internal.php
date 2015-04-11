@@ -18,6 +18,10 @@ $outcome = $keyfile . "|" . $stsk_src_id . "|";
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
+
+//prematching()
+
+
 //stsk_
 if ($stsk_src_id == 0){
 
@@ -88,6 +92,15 @@ echo mysqli_error($datos);
 }
 
 closedir($hdir);
+} else {
+
+  if($stsk_src_id != 0){
+      $keyfile = $stsk_id;
+  }
+
+    if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
+       unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
+
 }
 
  echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
