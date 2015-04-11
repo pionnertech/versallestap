@@ -406,7 +406,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                                case 'Pendiente':
                                                                                    $ix = " bar-warning";
                                                                                    break;
-                                                                                case 'En curso':                                                                             
+                                                                                case 'En Curso':                                                                             
                                                                                    $ix = " bar-info";
                                                                                    break;
                                                                                 case  'Atrasada':                                                                                                                                                               case 'Pendiente':
@@ -2030,6 +2030,8 @@ uploader =  $(object).pluploadQueue({
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
                 $("#SendRequest-free").attr("disabled", true);
+                  // when finish , enabe button 
+                $("#send-int").attr("disabled", true);
             },
   
             UploadProgress: function(up, file) {
@@ -2054,7 +2056,7 @@ uploader =  $(object).pluploadQueue({
             FilesRemoved: function(up, files) {
                 // Called when files are removed from queue
                 console.log('[FilesRemoved]');
-  
+                console.info("se removió sobre la marcha");
                 plupload.each(files, function(file) {
                     console.log('  File:', file);
                 });
@@ -2063,6 +2065,7 @@ uploader =  $(object).pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
+              
 
             },
   
@@ -2074,6 +2077,10 @@ uploader =  $(object).pluploadQueue({
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                    console.log("reponse", files);
+                // when finish , enabe button 
+                $("#send-int").attr("disabled", false)
+                $("#SendRequest-free").attr("disabled", false);
+
             },
  
             Destroy: function(up) {
@@ -2093,6 +2100,8 @@ uploader =  $(object).pluploadQueue({
 
 
 function intDel(user, sub, des, date, ind, mst){
+
+
 
 console.info(ind);
 var pre_fecha  = new Date();
@@ -2121,10 +2130,14 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
           "&fac="+ fac +
           "&main_stsk=" + mst + 
           "&keyfile=" + keyFile, 
+          beforeSend: function(){
+                $("#send-int").attr("disabled", true);
+          },
           success : function (data){
            result = data.split("|");
            console.log(data);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+                         $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
