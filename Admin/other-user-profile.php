@@ -1451,7 +1451,6 @@ dateTime = AmericanDate($(this).next().html());
 
 stsk_send = ids;
 console.log("stsk_send is :" + ids);
-
 $("#del-int-req").data("val",indice );
 $("#send-int").data("val", ids);
 
@@ -2145,7 +2144,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, user, 1);
                          }
                      });
-                   thum(1, "int", "En Curso");
+                  thum(1, "int", "En Curso");
                   $("#del-int-req input, #del-int-req textarea").val('');
                   $("#up-int").empty();
                   $("#int-del").val(1);
@@ -3161,15 +3160,8 @@ return subs;
 document.getElementById("int-del").addEventListener("change" , function(){
        user_send = this.value;
        console.info(user_send);
-
-       if ( mode == "first"){
-           keyFile = RandomString(8);
-       } else {
-          keyFile = "";
-       }
-
+       keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
-
 })
 
 function RandomString(length) {
@@ -3220,7 +3212,6 @@ if(kind == "int"){
    var ght = 0;
    var change = "Qext";
 }
-
 
 var current = parseInt(thum.children('p').html()) + val ;
 
