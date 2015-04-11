@@ -2954,6 +2954,8 @@ i2.onclick = function(){
 
 console.info(ids);
 console.info(indice);
+stsk_send = ids;
+
 $("#del-int-req").data("val",indice);
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
