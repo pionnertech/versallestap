@@ -1242,7 +1242,7 @@ if($("#subject").val() == ""){
 	})
 }
 
-if($("input[type=rdio]:checked").length == 0){
+if($("input[type=radio]:checked").length == 0){
 	bootbox.alert("Seleccione origen del requerimiento");
 	return false;
 }
