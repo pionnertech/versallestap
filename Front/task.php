@@ -466,7 +466,7 @@ $('.datetimepicker').datetimepicker({
     timepicker: false,
     onShow: function (ct){
         this.setOptions({
-            minDate : '1970/01/02',
+            minDate : '-1970/01/02',
             format:'d/m/Y'
         })
     }
