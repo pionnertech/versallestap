@@ -1101,6 +1101,38 @@ if(parseInt(kind) == 0){
     }
 
 
+
+if(kind == 0){
+
+    btn.onclick = function(){
+
+   argument = 0;
+
+   var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
+   current_iss =  $(this).parent().parent().children('input').eq(1).val();
+   inner = $(this).parent().parent().index();
+   subject = $(this).parent().parent().children('td').eq(1).text();
+   $("#audititle").html("\"" + subject + "\"");
+
+   var user = $("#muser").val();
+
+//obten el porcentaje
+var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
+
+$(".span2").slider('setValue', parseInt(percent));
+$(".span2").data("val", parseInt(percent));
+
+
+$("#stsk-code").val(subtask_id);
+$("#stsk-user").val(user);
+
+$("#kitkat li").eq(0).removeClass('active');$("#kitkat li").eq(1).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+}
+
+} else {
+
     btn.onclick = function(){
 
    argument = 1;
@@ -1126,7 +1158,20 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
 
 $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
 
-};
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 //callback function
 
