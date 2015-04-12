@@ -1242,6 +1242,11 @@ if($("#subject").val() == ""){
 	})
 }
 
+if($("input[type=rdio]:checked").length == 0){
+	bootbox.alert("Seleccione origen del requerimiento");
+	return false;
+}
+
 //segunda fase
 if($("textarea").val() === "") {
   bootbox.alert("Por Favor ingrese la descripcion del compromiso");
@@ -1274,6 +1279,7 @@ if($("#SendRequest").data("val") == 1){
 		return false;
 	}
 }
+
 
 
 return true;
