@@ -2408,7 +2408,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
           var iss_id = $(this).parent().parent().children('input').eq(1).val();
        bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
         if(confirmation){
-            unlock(stsk_int, stsk_int , object);
+            unlock(stsk, iss_id , object);
             object.parent().parent().children('td').eq(3).off();
             console.info("la de la 2396");
             console.info(object.parent().parent().children('td').eq(3).html());
