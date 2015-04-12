@@ -456,8 +456,15 @@ $(document).on('ready', function(){
 $('.datetimepicker').datetimepicker({
 	step:5,
 	lang:'es',
-	format:'d/m/Y',
-	timepicker: false
+    format:'Y/m/d',
+    timepicker: false,
+    onShow: function (ct){
+        this.setOptions({
+            minDate : '1970/01/02',  
+            maxDate : dateTime,
+            format:'d/m/Y'
+        })
+    }
 });
 
 
