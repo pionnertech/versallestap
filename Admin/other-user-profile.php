@@ -3002,7 +3002,7 @@ td4.className = "ii-forward";
 td4.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
- remoteUser = $(this).parent().children("input").eq(1).val();
+ remoteUser = mainuser;
  st_ii      = stsk_ident;
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
@@ -3015,13 +3015,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
 }
-
-
-
 }
-
-
-
 
 var tr2    = document.createElement('tr');
 var td_i1  = document.createElement('td');
