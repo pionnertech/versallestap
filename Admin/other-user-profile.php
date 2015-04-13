@@ -1654,10 +1654,6 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
       })  
 });
 
-
-
-
-
 $("#delegates").on('change', function(){
 
     if ($(this).val() == 0 ){
@@ -1668,9 +1664,6 @@ $("#delegates").on('change', function(){
         } 
     }
     $("#stsk-user").val($("#delegates").val());
-
-
-
 });
 
 $("#del-subtask").on('click', function(){
@@ -2293,6 +2286,7 @@ function changeListener(){
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
+              console.info(data);
                 packets = data.split("|");
              if(previan !== packets[2]){
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
