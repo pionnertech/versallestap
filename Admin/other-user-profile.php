@@ -3002,7 +3002,7 @@ td4.className = "ii-forward";
 td4.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
- remoteUser = mainuser;
+ remoteUser = user_id;
  st_ii      = stsk_ident;
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
