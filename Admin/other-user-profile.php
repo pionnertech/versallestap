@@ -1862,7 +1862,7 @@ $manu['STSK_TYPE'];
                             alpha = delta[i].split("|");
                              console.info(delta[i]);
                             if(alpha[1] !== undefined){
-                            firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0);
+                            firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    thum(1, "ii", "En Curso");
@@ -2892,7 +2892,7 @@ function touchHandler(event) {
 }
 
 
-function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
+function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
 
   // si el lo envia
   if (kind == 1){
@@ -2972,8 +2972,6 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 }
 
 
-
-
 b1.onclick = function (){
 
 if(!$(this).data("val") || !$(this).data("val") === 0 ){
@@ -3011,8 +3009,8 @@ td4.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = $(this).parent().children("input").eq(1).val();
- st_ii      = $(this).parent().children("input").eq(0).val();
- ii_iss     = $(this).parent().children("input").eq(2).val();
+ st_ii      = stsk_ident;
+ ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
@@ -3023,6 +3021,8 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
 }
+
+
 
 }
 
