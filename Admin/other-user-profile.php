@@ -2324,8 +2324,8 @@ function changeListener(){
                             if(packets[7] == "FINALIZADO"){
                                  thum(1, kilo ,"Finalizado");
                                } 
-
-                            if(packets[10]){
+                            console.info(packets.length);
+                            if(packets.length == 11){
                               nest = packets[10];
                             }   
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
