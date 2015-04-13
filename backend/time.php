@@ -91,7 +91,7 @@ $user_out8 = $classText;
 //detect if task admin = admin and Progress is null
 
 if(!$hoax){
-$blaster =  mysqli_fetch_assoc(mysql_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 5 ELSE 0 END AS FIELD FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
+$blaster =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 5 ELSE 0 END AS FIELD FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
 if((int)$blaster['FIELD'] == 0){
     mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID = " . $outcome['STSK_ID'] . ";");
  } 
