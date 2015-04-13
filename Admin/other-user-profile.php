@@ -2676,7 +2676,8 @@ td3_av.innerHTML = date;
 tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
-console.info("../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind);
+
+
 $.ajax({ type:"POST",
          url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
          success : function (data){
@@ -3008,7 +3009,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
-$("#stsk-user-ii").val(muser);
+$("#stsk-user-ii").val(user_id);
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
@@ -3149,7 +3150,7 @@ $.ajax({ type:"POST",
 
     }
 
-        str_file  += "<a href='../" + fac + "/" + user_id + "_alt/" + files[n] +"' download>" +
+        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
                 "<span class='iname '></span>" +
