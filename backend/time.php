@@ -4,7 +4,7 @@ $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$query = "SELECT STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
+$query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
 
 $news = mysqli_query($datos, $query);
 
@@ -60,7 +60,7 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
 $get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR); "));
 
 if($outcome["STSK_TYPE"] == 0 || $outcome["STSK_TYPE"] == "0"){
-  
+
 $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
@@ -72,18 +72,40 @@ $user_out6 = $user['TRF_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
 
-} else {
 
-$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
-$user      = mysqli_fetch_assoc($query_usr);
-$user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
-$user_out2 = $user['TII_USER'];
-$user_out3 = $user['TII_SUBJECT'];
-$user_out4 = $user['TII_DESCRIPT'];
-$user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
-$user_out6 = $user['TII_STSK_SRC_ID'];
-$user_out7 = $ctp;
-$user_out8 = $classText;
+
+} else  {
+
+  if($outcome['USR_RANGE'] == 'admin'){
+
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $user      = mysqli_fetch_assoc($query_usr);
+  $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
+  $user_out2 = $user['TII_USER'];
+  $user_out3 = $user['TII_SUBJECT'];
+  $user_out4 = $user['TII_DESCRIPT'];
+  $user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
+  $user_out6 = $user['TII_STSK_ID'];
+  $user_out7 = $ctp;
+  $user_out8 = $classText;    
+
+  } else {
+
+
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $user      = mysqli_fetch_assoc($query_usr);
+  $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
+  $user_out2 = $user['TII_USER'];
+  $user_out3 = $user['TII_SUBJECT'];
+  $user_out4 = $user['TII_DESCRIPT'];
+  $user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
+  $user_out6 = $user['TII_STSK_SRC_ID'];
+  $user_out7 = $ctp;
+  $user_out8 = $classText;
+
+
+  }
+
 
 }
 
