@@ -4,7 +4,7 @@ $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$query = "SELECT STSK_PROGRESS , STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
+$query = "SELECT STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_ID, STSK_ISS_ID, STSK_TYPE FROM SUBTASKS WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
 
 $news = mysqli_query($datos, $query);
 
@@ -22,11 +22,13 @@ $user_out8 = 0;
 } else {
 
 $outcome = mysqli_fetch_assoc($news);
+                                                   
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' )"));
 
-   $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
+  if($hoax['HELP'] == 1){
 
- if($hoax['HELP'] == 1){
-      $black = mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
+    $black = mysqli_query($datos,"UPDATE SUBTASKS SET STSK_PROGRESS = 0 WHERE STSK_ID = " . $outcome['STSK_ID']);
+    
  }
 
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
@@ -59,9 +61,9 @@ $get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTAS
 
 if($outcome["STSK_TYPE"] == 0 || $outcome["STSK_TYPE"] == "0"){
   
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
-  $user      = mysqli_fetch_assoc($query_usr);
-  $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
+$user      = mysqli_fetch_assoc($query_usr);
+$user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
 $user_out2 = $user['TRF_USER'];
 $user_out3 = $user['TRF_SUBJECT'];
 $user_out4 = $user['TRF_DESCRIPT'];
@@ -71,8 +73,8 @@ $user_out7 = $ctp;
 $user_out8 = $classText;
 
 } else {
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
 
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
 $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
 $user_out2 = $user['TII_USER'];
@@ -82,10 +84,20 @@ $user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
 $user_out6 = $user['TII_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
+
 }
 
 
-  mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID =" . $outcome['STSK_ID']);
+//detect if task admin = admin and Progress is null
+
+if(!$hoax){
+$blaster =  mysqli_fetch_assoc(mysql_query($datos, "SELECT CASE WHEN STSK_PROGRESS IS NULL THEN 5 ELSE 0 END AS FIELD FROM SUBTASKS WHERE STSK_ID = " . $outcome['STSK_ID']));
+if((int)$blaster['FIELD'] == 0){
+    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID = " . $outcome['STSK_ID'] . ";");
+ } 
+} else {
+    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $outcome['STSK_PROGRESS'] . " WHERE STSK_ID = " . $outcome['STSK_ID'] . ";");
+}
 
 }
 
@@ -100,13 +112,8 @@ echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
 echo "|" . $outcome['STSK_TYPE'];
 
-
-
 $sum = 0;
 
-
 //GEt the Last User that grow up his progress
- 
-
 
 ?>
