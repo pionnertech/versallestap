@@ -3074,12 +3074,9 @@ img.className ="group";
 inp2.type= "hidden";
 inp2.value = "u" + user_id;
 
-var table_string = '<table style="width: 100%" class="int-trf-descript">' +
 if(kind == 0){
+  var table_string = '<table style="width: 100%" class="int-trf-descript">' +
        '<tbody class="ii-body-table">' +
-     } else {
-       '<tbody >' +
-     }
            '<tr>' +
                '<td><span style="font-weight: bolder; font-style: italic">Asunto</span></td>' +
                '<td><span style="font-weight: bolder; font-style: italic">Descripcion</span></td>' +
@@ -3087,6 +3084,18 @@ if(kind == 0){
           '</tr>' +
      '</tbody>' +
 '</table>';
+} else {
+  var table_string = '<table style="width: 100%" class="int-trf-descript">' +
+       '<tbody>' +
+           '<tr>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Asunto</span></td>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Descripcion</span></td>' +
+               '<td><span style="font-weight: bolder; font-style: italic">Fecha</span></td>' +
+          '</tr>' +
+     '</tbody>' +
+'</table>';
+}
+
 
 td_i1.colSpan = "5";
 
