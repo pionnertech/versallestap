@@ -2677,7 +2677,7 @@ var files;
 
 function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk){
 
-console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
+console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind + "//admin??"+ aux_task);
     
 if(parseInt(kind) == 0){
 
