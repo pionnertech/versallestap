@@ -784,7 +784,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                 </div>
                        
                                 <div id="wrap-D">
-                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div id="D-drop" <? if($click_at_once == 1){ ?> ondrop="drop(event)" ondragover="allowDrop(event)" <? } ?>>
                                     </div>
 
                                 </div>
@@ -846,7 +846,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" <? if($click_at_once == 1){ ?> draggable="true" ondragstart="drag(event)" <? } ?>id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
                                                   <? 
@@ -1936,6 +1936,8 @@ $.ajax({
 
 }
 
+<? if($click_at_once == 0) {?>
+
 function drop (event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
@@ -1954,6 +1956,21 @@ function allowDrop (event) {
 function drag (event) {
     event.dataTransfer.setData("text", event.target.id);
 }
+
+
+<? } else {?>
+
+$(".ifile").on('click', function(){
+  var chargeuser = $("#delegates :selected").val();
+  var insert     = $(this).html();
+  var data       = $(this).children('span').text();
+  $("#D-drop").html( $("#D-drop").html() + insert);
+  console.info("archivos dinamicos :" data + "," + mainuser + "," + chargeuser );
+  moveAtDragDropfiles(data , mainuser, chargeuser);
+  $(this).html('');
+})
+
+  <? } ?>
 
 function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
