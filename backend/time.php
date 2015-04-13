@@ -78,16 +78,17 @@ $user_out8 = $classText;
 
   if($outcome['USR_RANGE'] == 'admin'){
 
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
   $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
   $user_out2 = $user['TII_USER'];
   $user_out3 = $user['TII_SUBJECT'];
   $user_out4 = $user['TII_DESCRIPT'];
   $user_out5 = date('d/m/Y', strtotime($user['TII_ING_DATE']));
-  $user_out6 = $user['TII_STSK_ID'];
+  $user_out6 = $user['TII_STSK_SRC_ID'];
   $user_out7 = $ctp;
-  $user_out8 = $classText;    
+  $user_out8 = $classText;
+  $user_out9 = $user['TII_STSK_ID'];    
 
   } else {
 
