@@ -2954,7 +2954,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind){
     tr1.appendChild(inp1);
 
    //events
-
+if(kind == 1){
 i2.onclick = function(){
 
  mode = "delegate";
@@ -2969,6 +2969,10 @@ $("#del-int-req").data("val",indice);
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 }
+}
+
+
+
 
 b1.onclick = function (){
 
