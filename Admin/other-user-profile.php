@@ -2711,7 +2711,7 @@ tr_av.appendChild(td3_av);
 if(aux_stsk !== 0){
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + aux_stsk + "&kind=" + kind;
 } else {
-var file_url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
 }
 
 $.ajax({ type:"POST",
