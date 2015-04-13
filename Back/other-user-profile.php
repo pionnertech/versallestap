@@ -1116,7 +1116,7 @@ if(kind == 0){
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
-   inner = $(this).parent().parent().index();
+   inner = $(this).parent().parent().index("");
    subject = $(this).parent().parent().children('td').eq(1).text();
    $("#audititle").html("\"" + subject + "\"");
 
@@ -1351,7 +1351,13 @@ $.ajax({
   var spnt3 = document.createElement('span');
 
   tbl.style.width = "100%";
-  tbo.className   = "ii-events";
+
+  if(kind == 1){
+   tbl.className = "table";
+  } else {
+   tbo.className   = "ii-events";
+  }
+  
 
   spnt1.innerHTML = "Asunto";
   spnt2.innerHTML = "Descripcion";
