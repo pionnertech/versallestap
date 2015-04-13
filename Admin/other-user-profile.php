@@ -2303,11 +2303,15 @@ function changeListener(){
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
-              console.info(data);
+                console.info(data);
                 packets = data.split("|");
+           // si esta el asunto repetido...
+                var nest = 0
              if(previan !== packets[2]){
+               //si no está vacio
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                        showAlert(packets[2], "pro", packets[0]);
+                       //si es de tipo externo ==*.*==
                             if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
                                 var kilo = "ext";
@@ -2315,10 +2319,18 @@ function changeListener(){
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
                                 var kilo = "int";
                                     }
+                             //==*.*==
+                             //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
                                  thum(1, kilo ,"Finalizado");
                                } 
-            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
+
+                            if(packets[10]){
+                              nest = packets[10];
+                            }   
+            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
+                          //aqui si es de tipo externo \./\./
+
                            if(parseInt(packets[8]) >= 99.5){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
@@ -2327,6 +2339,8 @@ function changeListener(){
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
                         }
+                      // \./\./
+
                     }
                     previan = packets[2];
                 }
@@ -2661,7 +2675,7 @@ var files;
 };
 
 
-function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind){
+function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk){
 
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
     
@@ -2694,9 +2708,14 @@ tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
+if(aux_stsk !== 0){
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + aux_stsk + "&kind=" + kind;
+} else {
+var file_url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+}
 
 $.ajax({ type:"POST",
-         url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
+         url: file_url,
          success : function (data){
             var cf_array = [];
 
