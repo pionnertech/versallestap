@@ -2165,10 +2165,11 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, user, 1);
                          }
                      });
+
                   thum(1, "int", "En Curso");
-                  $("#del-int-req input, #del-int-req textarea").val('');
-                  $("#up-int").empty();
-                  $("#int-del").val(1);
+                    $("#del-int-req input, #del-int-req textarea").val('');
+                      $("#up-int").empty();
+                        $("#int-del").val(1);
 
                 }
   })
@@ -3047,6 +3048,7 @@ dateTime = AmericanDate($(this).next().html());
 
 $("#stsk-code-ii").val(st_ii);
 $("#stsk-user-ii").val(user_id);
+$("#stsk-user-ii").attr("name", "muser");
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
