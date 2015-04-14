@@ -1480,8 +1480,8 @@ dateTime = AmericanDate($(this).next().html());
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
-$("#stsk-user-ii").val(muser);
-
+$("#stsk-user-ii").val(mainuser);
+$("#stsk-user-ii").attr("name", "muser");
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
 $("#int-require").removeClass('active in');
