@@ -134,6 +134,10 @@ echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
 echo "|" . $outcome['STSK_TYPE'];
+if(!is_null($user_out9)){
+echo "|" . $user_out9;
+}
+ 
 
 $sum = 0;
 
