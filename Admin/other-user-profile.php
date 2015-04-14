@@ -1482,11 +1482,15 @@ dateTime = AmericanDate($(this).next().html());
 $("#stsk-code-ii").val(st_ii);
 $("#stsk-user-ii").val(mainuser);
 $("#stsk-user-ii").attr("name", "muser");
+
+percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
 
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
-
 
 });
 
@@ -3060,6 +3064,11 @@ $("#stsk-user-ii").attr("name", "muser");
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
+var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
+
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
 }
@@ -3342,12 +3351,14 @@ if(thum.length == 0 ){
 }}
 
 
-
-$(".span2").on("change", function(){
-    if ($(this).val() < $(this).data("val")) { 
-        alert("fuera de rango")
-    }
+$(".span2").on("slide", function (slideEvt) {
+   if (slideEvt.value < $(this).data("val")){
+        alert("fuera de rango");
+        $(".span2").slider('setValue', $(this).data("val"));
+   }
 });
+
+
 
 
 $(".hovertip").on("click ", function(){
