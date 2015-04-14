@@ -1643,6 +1643,8 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&fac=" + fac , 
           success : function(data){
             console.info(data);
+            $("#pro-subject").val('');
+            $("#pro-descript").val('');
             bootbox.alert("progreso ingresado", function(){
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
