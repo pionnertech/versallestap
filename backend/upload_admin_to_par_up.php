@@ -29,7 +29,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		echo '{"status":"error"}';
 		exit;
 	}
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $muser . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_" . $user . "." . strtolower($extension) )){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $muser . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		exit;
 	}
