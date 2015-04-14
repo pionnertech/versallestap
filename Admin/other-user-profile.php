@@ -1088,14 +1088,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                 <? } ?>
                                                     </tbody>
                                                 </table>
-                                                                </td>
-                                                            </tr>
-                                                    <? } 
-                                                
-                                                    ?>
-                                                           </tbody>
-                                                    </table>   
-                                            </div>
+                                              </td>
+                                           </tr>
+                                                    <? } ?>
+                                      </tbody>
+                              </table>   
+                        </div>
                                         <div class="module-option clearfix" style="display:none">
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
@@ -1644,14 +1642,14 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&fac=" + fac , 
           success : function(data){
             console.info(data);
-            $("#pro-subject").val('');
-            $("#pro-descript").val('');
-            $("#upload2 ul").empty();
             bootbox.alert("progreso ingresado", function(){
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
+            $("#pro-subject").val('');
+            $("#pro-descript").val('');
+            $("#upload2 ul").empty();
            });
 
           }
