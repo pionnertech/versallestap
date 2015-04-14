@@ -2714,6 +2714,7 @@ var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + use
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
 }
 
+console.info(file_url);
 $.ajax({ type:"POST",
          url: file_url,
          success : function (data){
