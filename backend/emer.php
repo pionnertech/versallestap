@@ -8,7 +8,11 @@ $handler = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE USR_RANGE = 'adm
 
 while ($file = mysqli_fetch_row($handler)){
 	mkdir($dir . $file[0] . "/");
+	mkdir($dir . $file[0] . "_in/");
+	mkdir($dir . $file[0] . "_alt/");
 	chmod($dir . $file[0] . "/", 0777, true);
+	chmod($dir . $file[0] . "_in/", 0777, true);
+	chmod($dir . $file[0] . "_alt/", 0777, true);
 
 }
 
