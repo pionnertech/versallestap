@@ -2360,7 +2360,8 @@ function changeListener(){
 
 
 if(typeof(EventSource) !== "undefined") {
-    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+
+    var source       = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
@@ -2368,7 +2369,7 @@ if(typeof(EventSource) !== "undefined") {
        if (eventMessage[0] !== previuosData){
         console.info( eventMessage[0] + "/" + previuosData);
         showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] ,eventMessage[6] );
+        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
         previuosData = eventMessage[0];
     } 
 }
@@ -2393,7 +2394,7 @@ parent.innerHTML = stringAl;
 
 }
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -2417,6 +2418,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address){
     td3.className = "cell-status";
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
+    td5.innerHTML = date_fin;
 
     btn.className   = "btn btn-small forward";
     btn.innerHTML   = "Delegar";
@@ -2570,9 +2572,9 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address){
          elem_i[n].className   = "fa fa-file-" + setClass + " fa-2x";
          elem_i[n].style.color = cor;
          
-         elem_s[n]           = document.createElement('span');
-         elem_s[n].className = "iname";
-         elem_s[n].innerHTML = files[n];
+         elem_s[n]             = document.createElement('span');
+         elem_s[n].className   = "iname";
+         elem_s[n].innerHTML   = files[n];
 
          elem[n].appendChild(elem_i[n]);
          elem[n].appendChild(elem_s[n]);
@@ -2612,30 +2614,30 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address){
     var p4   = document.createElement('p');
     var p5   = document.createElement('p');
    
-    var str1 = document.createElement('strong');
-    var str2 = document.createElement('strong');
+    var str1  = document.createElement('strong');
+    var str2  = document.createElement('strong');
     var str10 = document.createElement('strong');
     var str11 = document.createElement('strong');
 
-str1.style.margin = "0 .5em"; 
- str2.style.margin = "0 .5em"; 
-str10.style.margin = "0 .5em"; 
-str11.style.margin = "0 .5em"; 
+     str1.style.margin = "0 .5em"; 
+     str2.style.margin = "0 .5em"; 
+    str10.style.margin = "0 .5em"; 
+    str11.style.margin = "0 .5em"; 
 
- str1.style.fontWeight = "bolder";
- str2.style.fontWeight = "bolder";
-str10.style.fontWeight = "bolder";
-str11.style.fontWeight = "bolder";
+     str1.style.fontWeight = "bolder";
+     str2.style.fontWeight = "bolder";
+    str10.style.fontWeight = "bolder";
+    str11.style.fontWeight = "bolder";
 
-    tr2.className = "display-progress";
-    td6.colSpan = "5";
+    tr2.className  = "display-progress";
+    td6.colSpan    = "5";
     div1.className = "info-content";
 
     p1.className = "iss-descript";
     p2.className = "iss-descript";
 
-        str1.innerHTML = "Ciudadano : " + ctz;
-    str2.innerHTML = "Telefono Ciudadano: " + ctz_tel;
+    str1.innerHTML  = "Ciudadano : " + ctz;
+    str2.innerHTML  = "Telefono Ciudadano: " + ctz_tel;
     str10.innerHTML = "Direcion: " + ctz_address;
     str11.innerHTML = "Descripción: " + desc;
 
@@ -2649,7 +2651,6 @@ str11.style.fontWeight = "bolder";
     div3.className  = "bar bar-warning";
     div4.className  = "collaborates";
     
-
     i1.className = "fa fa-group spac";
     i2.className = "fa fa-paperclip";
     i3.className = "fa fa-calendar-o events";
