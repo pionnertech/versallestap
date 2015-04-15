@@ -10,6 +10,9 @@ $click_at_once = 1;
 $click_at_once = 0;
 }
 
+
+
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
@@ -22,7 +25,7 @@ $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM
 
 $str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr    = mysqli_query($datos, $str_trf_usr);
-$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin');");
+$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin');");
 // internal requirements
 
 $query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR )";
@@ -31,7 +34,6 @@ $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM S
 
 
 if(mysqli_num_rows($quntum) == 0){
-
     $contador = 0;
 } else {
     $cont = mysqli_fetch_assoc($quntum);
@@ -781,7 +783,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                 </div>
                        
                                 <div id="wrap-D">
-                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div id="D-drop" <? if($click_at_once == 1){ ?> ondrop="drop(event)" ondragover="allowDrop(event)" <? } ?>>
                                     </div>
 
                                 </div>
@@ -843,7 +845,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" <? if($click_at_once == 1){ ?> draggable="true" ondragstart="drag(event)" <? } ?>id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
                                                   <? 
@@ -1071,6 +1073,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                             <td><span style="font-weight: bolder; font-style: italic">Fecha</span></td>
                                                         </tr>
                                                 <?
+                                          echo "<script>console.info('" . $fila5[11] . "')</script>";
 $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE (TII_STSK_SRC_ID = " . $fila5[11] . " AND TII_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
 
                                  while($fut = mysqli_fetch_row($tr_ii)){
@@ -1084,14 +1087,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                 <? } ?>
                                                     </tbody>
                                                 </table>
-                                                                </td>
-                                                            </tr>
-                                                    <? } 
-                                                
-                                                    ?>
-                                                           </tbody>
-                                                    </table>   
-                                            </div>
+                                              </td>
+                                           </tr>
+                                                    <? } ?>
+                                      </tbody>
+                              </table>   
+                        </div>
                                         <div class="module-option clearfix" style="display:none">
                                                     <div class="pull-left">
                                                         Filtro : &nbsp;
@@ -1478,13 +1479,17 @@ dateTime = AmericanDate($(this).next().html());
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
-$("#stsk-user-ii").val(muser);
+$("#stsk-user-ii").val(mainuser);
+$("#stsk-user-ii").attr("name", "muser");
 
+percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
 
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
-
 
 });
 
@@ -1499,11 +1504,13 @@ $(".toggle-attach").on('click', function(){
 
     if (st == 0){
 
- $("#wrap-D").css({ display: "none"});
- $(".attach").css({ display : "inline-block" });
- $("#froback").html('Para Front office');
- $(".incoming-files").css({display : "none"});
+        $("#wrap-D").css({ display: "none"});
+        $(".attach").css({ display : "inline-block" });
+        $("#froback").html('Para Front office');
+        $(".incoming-files").css({display : "none"});
+
  st = 1;
+
     } else {
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
@@ -1645,6 +1652,9 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
+            $("#pro-subject").val('');
+            $("#pro-descript").val('');
+            $("#upload2 ul").empty();
            });
 
           }
@@ -1933,6 +1943,8 @@ $.ajax({
 
 }
 
+<? if($click_at_once == 0) {?>
+
 function drop (event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
@@ -1951,6 +1963,21 @@ function allowDrop (event) {
 function drag (event) {
     event.dataTransfer.setData("text", event.target.id);
 }
+
+
+<? } else {?>
+
+$(".ifile").on('click', function(){
+  var chargeuser = $("#delegates :selected").val();
+  var insert     = $(this).html();
+  var data       = $(this).children('span').text();
+  $("#D-drop").html( $("#D-drop").html() + insert);
+  console.info("archivos dinamicos :" data + "," + mainuser + "," + chargeuser );
+  moveAtDragDropfiles(data , mainuser, chargeuser);
+  $(this).html('');
+})
+
+  <? } ?>
 
 function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
@@ -2145,10 +2172,11 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, user, 1);
                          }
                      });
+
                   thum(1, "int", "En Curso");
-                  $("#del-int-req input, #del-int-req textarea").val('');
-                  $("#up-int").empty();
-                  $("#int-del").val(1);
+                    $("#del-int-req input, #del-int-req textarea").val('');
+                      $("#up-int").empty();
+                        $("#int-del").val(1);
 
                 }
   })
@@ -2283,11 +2311,15 @@ function changeListener(){
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
-              console.info(data);
+                console.info(data);
                 packets = data.split("|");
+           // si esta el asunto repetido...
+                var nest = 0
              if(previan !== packets[2]){
+               //si no está vacio
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                        showAlert(packets[2], "pro", packets[0]);
+                       //si es de tipo externo ==*.*==
                             if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
                                 var kilo = "ext";
@@ -2295,10 +2327,18 @@ function changeListener(){
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
                                 var kilo = "int";
                                     }
+                             //==*.*==
+                             //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
                                  thum(1, kilo ,"Finalizado");
                                } 
-            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9]);
+                            console.info(packets.length);
+                            if(packets.length == 11){
+                              nest = packets[10];
+                            }   
+            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
+                          //aqui si es de tipo externo \./\./
+
                            if(parseInt(packets[8]) >= 99.5){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
@@ -2307,6 +2347,8 @@ function changeListener(){
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
                         }
+                      // \./\./
+
                     }
                     previan = packets[2];
                 }
@@ -2641,9 +2683,9 @@ var files;
 };
 
 
-function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind){
+function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk){
 
-console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind);
+console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind + "//admin??"+ aux_stsk);
     
 if(parseInt(kind) == 0){
 
@@ -2673,9 +2715,16 @@ td3_av.innerHTML = date;
 tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
-console.info("../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind);
+
+if(aux_stsk !== 0){
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind;
+} else {
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+}
+
+console.info(file_url);
 $.ajax({ type:"POST",
-         url: "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind,
+         url: file_url,
          success : function (data){
             var cf_array = [];
 
@@ -2745,20 +2794,26 @@ $.ajax({ type:"POST",
 
     }
 
-       if(parseInt(kind) == 0){
+       if(parseInt(kind) == 0 && aux_stsk == 0){
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
       strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
       '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
-       } else {
+       } else if(aux_stsk !== 0) {
          
-               var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_alt/' + files[n] + '" download>' +
+                     var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
+      strHtml   =  sshot + '<a href="../' + fac + '/' + mainuser + '_alt/' + files[n] + '" download>' +
       '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
 
+       } else{
+                       var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
+      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_alt/' + files[n] + '" download>' +
+      '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
+      '<span class="iname"></span></p></a>';
+      document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
        }
 
       }
@@ -3005,9 +3060,15 @@ dateTime = AmericanDate($(this).next().html());
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
-$("#stsk-user-ii").val(muser);
+$("#stsk-user-ii").val(user_id);
+$("#stsk-user-ii").attr("name", "muser");
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
 
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
@@ -3146,7 +3207,7 @@ $.ajax({ type:"POST",
 
     }
 
-        str_file  += "<a href='../" + fac + "/" + user_id + "_alt/" + files[n] +"' download>" +
+        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
                 "<span class='iname '></span>" +
@@ -3291,12 +3352,14 @@ if(thum.length == 0 ){
 }}
 
 
-
-$(".span2").on("change", function(){
-    if ($(this).val() < $(this).data("val")) { 
-        alert("fuera de rango")
-    }
+$(".span2").on("slide", function (slideEvt) {
+   if (slideEvt.value < $(this).data("val")){
+        alert("fuera de rango");
+        $(".span2").slider('setValue', $(this).data("val"));
+   }
 });
+
+
 
 
 $(".hovertip").on("click ", function(){
@@ -3357,44 +3420,6 @@ console.info(matches[2]+1 + " -/- " + name.length);
 return name.substring(matches[2]+1, name.length);
 
 }
-
-/*
-
-  function dragMoveListener (event) {
-    var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
-        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    // translate the element
-    target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)';
-
-    // update the posiion attributes
-    target.setAttribute('data-x', x);
-    }
-
-interact(".files")
-  .on('dragstart', listener)
-  .on('dragmove dragend', listener)
-  .on(['resizemove', 'resizeend'], listener)
-  .on({
-    gesturestart: listener,
-    gestureend: listener
-  });
-
-
-
-interact(".files").draggable({
-  inertia :true,
-  onstart: listener,
-  onmove: dragMoveListener,
-  onend: listener
-});
-*/
-
-
 
 function doSearch(fr,t) {
 var d1 = fr.split("/");
