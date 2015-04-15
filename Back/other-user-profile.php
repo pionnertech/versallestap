@@ -978,7 +978,6 @@ setInterval(function(){
             success : function(data){
                      var msgExt = data.split('|');
                      console.info("tipo:" + msgExt[7] + "    /   " +  msgExt[6] + "    /    " + msgExt[8] );
-
                          if(msgExt[2] == "" ){
                                 previuosData = "";
                             } 
@@ -1223,10 +1222,7 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     str2.style.fontWeight = "bolder";
    str10.style.fontWeight = "bolder";
    str11.style.fontWeight = "bolder";
-    str1.style.fontSize  = ".8em";
-    str2.style.fontSize  = ".8em";
-   str10.style.fontSize  = ".8em";
-   str11.style.fontSize  = ".8em";
+
    // div 4
 
    div4.className = "wrap-progress";
