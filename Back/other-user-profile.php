@@ -977,7 +977,8 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
                      var msgExt = data.split('|');
-                     console.info("tipo:" + msgExt[7]);
+                     console.info("tipo:" + msgExt[7] + "    /   " +  msgExt[6] + "    /    " + msgExt[8] );
+
                          if(msgExt[2] == "" ){
                                 previuosData = "";
                             } 
