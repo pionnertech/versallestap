@@ -13,9 +13,6 @@ $click_at_once = 1;
 $click_at_once = 0;
 }
 
-
-
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
@@ -849,7 +846,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" <? if($click_at_once == 1){ ?> draggable="true" ondragstart="drag(event)" <? } ?>id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>"  draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
                                                   <? 
@@ -2371,7 +2368,7 @@ if(typeof(EventSource) !== "undefined") {
        if (eventMessage[0] !== previuosData){
         console.info( eventMessage[0] + "/" + previuosData);
         showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
+        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] ,eventMessage[6] );
         previuosData = eventMessage[0];
     } 
 }
@@ -2396,7 +2393,7 @@ parent.innerHTML = stringAl;
 
 }
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -2617,6 +2614,18 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
    
     var str1 = document.createElement('strong');
     var str2 = document.createElement('strong');
+    var str10 = document.createElement('strong');
+    var str11 = document.createElement('strong');
+
+str1.style.margin = "0 .5em"; 
+ str2.style.margin = "0 .5em"; 
+str10.style.margin = "0 .5em"; 
+str11.style.margin = "0 .5em"; 
+
+ str1.style.fontWeight = "bolder";
+ str2.style.fontWeight = "bolder";
+str10.style.fontWeight = "bolder";
+str11.style.fontWeight = "bolder";
 
     tr2.className = "display-progress";
     td6.colSpan = "5";
@@ -2625,8 +2634,10 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     p1.className = "iss-descript";
     p2.className = "iss-descript";
 
-    str1.innerHTML = "Ciudadano : " + ctz;
-    str2.innerHTML = "Descripción: " + desc;
+        str1.innerHTML = "Ciudadano : " + ctz;
+    str2.innerHTML = "Telefono Ciudadano: " + ctz_tel;
+    str10.innerHTML = "Direcion: " + ctz_address;
+    str11.innerHTML = "Descripción: " + desc;
 
     var str3  = document.createElement('strong');
     var span1 = document.createElement('span');
@@ -2650,6 +2661,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     p1.appendChild(str1);
     p2.appendChild(str2);
+    p2.appendChild(str10);
+    p2.appendChild(str11);
     p3.appendChild(str3);
     p3.appendChild(span1);
     p4.appendChild(i2);
