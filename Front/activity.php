@@ -462,9 +462,13 @@ uploader.bind('BeforeUpload', function (up, file) {
 	step:5,
 	lang:'es',
 	format:'d/m/Y',
-	minDate: '0',
-	maxDate: '5',
-	timepicker: false
+	minDate: '-1970/01/02',
+	timepicker: false,
+	onShow :function(ctn){
+		this.setOptions({
+            format: 'Y/m/d'
+		})
+	}
 });
 	
 
