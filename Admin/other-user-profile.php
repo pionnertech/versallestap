@@ -1944,7 +1944,7 @@ $.ajax({
 
 }
 
-<? if($click_at_once == 0) {?>
+
 
 function drop (event) {
     event.preventDefault();
@@ -1966,8 +1966,9 @@ function drag (event) {
 }
 
 
-<? } else {?>
 
+
+/*
 $(".ifile").on('click', function(){
   var chargeuser = $("#delegates :selected").val();
   var insert     = $(this).html();
@@ -1977,8 +1978,7 @@ $(".ifile").on('click', function(){
   moveAtDragDropfiles(data , mainuser, chargeuser);
   $(this).html('');
 })
-
-  <? } ?>
+*/
 
 function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
@@ -2479,6 +2479,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
             var iss_ident = $(this).parent().parent().children('input.iss_id').val();
             var subject = $(this).parent().parent().children('td').eq(1).text();
             var index_current = parseInt($(this).index());
+
+            dateTime = AmericanDate(date_fin);
 
             $("#audititle").html("\"" + stsk_descript + "\"");
             $("#current-task").val(index_current);
