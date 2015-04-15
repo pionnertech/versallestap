@@ -1011,7 +1011,7 @@ if(typeof(EventSource) !== "undefined") {
             previuosDataInt = eventMessage[2];
 
                 showAlert(eventMessage[2]);
-
+             console.info(eventMessage[5]);
 inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "");
         }
     }
@@ -1041,13 +1041,11 @@ if(parseInt(kind) == 0){
         tr1.className = "task Ec-int";
     }
     
-
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
     var td4 = document.createElement('td');
     var td7 = document.createElement('td');
-
 
     var inp1 = document.createElement('input');
     var inp2 = document.createElement('input');
@@ -1214,15 +1212,19 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     var str10 = document.createElement('strong');
     var str11 = document.createElement('strong');
 
- str1.style.margin = "0 .5em"; 
- str2.style.margin = "0 .5em"; 
-str10.style.margin = "0 .5em"; 
-str11.style.margin = "0 .5em"; 
+    str1.style.margin = "0 .5em"; 
+    str2.style.margin = "0 .5em"; 
+   str10.style.margin = "0 .5em"; 
+   str11.style.margin = "0 .5em"; 
 
- str1.style.fontWeight = "bolder";
- str2.style.fontWeight = "bolder";
-str10.style.fontWeight = "bolder";
-str11.style.fontWeight = "bolder";
+    str1.style.fontWeight = "bolder";
+    str2.style.fontWeight = "bolder";
+   str10.style.fontWeight = "bolder";
+   str11.style.fontWeight = "bolder";
+    str1.style.fontSize  = ".8em";
+    str2.style.fontSize  = ".8em";
+   str10.style.fontSize  = ".8em";
+   str11.style.fontSize  = ".8em";
    // div 4
 
    div4.className = "wrap-progress";
@@ -1241,10 +1243,8 @@ str11.style.fontWeight = "bolder";
     str10.innerHTML = "Direcion: " + ctz_address;
     str11.innerHTML = "Descripción: " + desc;
 
-    
     var str3  = document.createElement('strong');
     var span1 = document.createElement('span');
-
 
     str3.innerHTML  = "Grado de progreso";
     span1.innerHTML = "0%";
@@ -1252,10 +1252,7 @@ str11.style.fontWeight = "bolder";
     div2.className  = "progress tight";
     div3.className  = "bar bar-warning";
 
-    
-
 $.ajax({     
-
           type: "POST",
           url: specialUrl,
           success: function(data){
