@@ -1,4 +1,7 @@
-<?php session_start();
+<?php ini_set('session.gc_maxlifetime', 3600);
+// each client should remember their session id for EXACTLY 1 hour
+session_set_cookie_params(3600);
+session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
@@ -1505,11 +1508,13 @@ $(".toggle-attach").on('click', function(){
 
     if (st == 0){
 
- $("#wrap-D").css({ display: "none"});
- $(".attach").css({ display : "inline-block" });
- $("#froback").html('Para Front office');
- $(".incoming-files").css({display : "none"});
+        $("#wrap-D").css({ display: "none"});
+        $(".attach").css({ display : "inline-block" });
+        $("#froback").html('Para Front office');
+        $(".incoming-files").css({display : "none"});
+
  st = 1;
+
     } else {
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
@@ -3419,44 +3424,6 @@ console.info(matches[2]+1 + " -/- " + name.length);
 return name.substring(matches[2]+1, name.length);
 
 }
-
-/*
-
-  function dragMoveListener (event) {
-    var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
-        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    // translate the element
-    target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)';
-
-    // update the posiion attributes
-    target.setAttribute('data-x', x);
-    }
-
-interact(".files")
-  .on('dragstart', listener)
-  .on('dragmove dragend', listener)
-  .on(['resizemove', 'resizeend'], listener)
-  .on({
-    gesturestart: listener,
-    gestureend: listener
-  });
-
-
-
-interact(".files").draggable({
-  inertia :true,
-  onstart: listener,
-  onmove: dragMoveListener,
-  onend: listener
-});
-*/
-
-
 
 function doSearch(fr,t) {
 var d1 = fr.split("/");
