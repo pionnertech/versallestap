@@ -1047,6 +1047,7 @@ if(parseInt(kind) == 0){
     var td3 = document.createElement('td');
     var td4 = document.createElement('td');
     var td7 = document.createElement('td');
+    var td8 = document.createElement('td');
 
     var inp1 = document.createElement('input');
     var inp2 = document.createElement('input');
@@ -1065,8 +1066,12 @@ if(parseInt(kind) == 0){
     btn.className = "btn btn-default";
     td7.className = "cell-time align-right";
 
+   // create date
+   var todayDate = new Date();
+   var today = ('0' + todayDate.getDate()).slice(-2) + "/" + ('0' + (todayDate.getMonth() + 1)).slice(-2) + "/" +  ('0' + todayDate.getFullYear()).slice(-2);
 
-    td7.innerHTML = dateOut;
+    td7.innerHTML = today;
+    td8.innerHTML = dateOut;
 
      i0.className   = "fa fa-chevron-circle-right";
      btn.appendChild(i0);
@@ -1184,6 +1189,7 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     tr1.appendChild(td3);
     tr1.appendChild(td4);
     tr1.appendChild(td7);
+    tr1.appendChild(td8);
     tr1.appendChild(inp1);
     tr1.appendChild(inp2);
 
@@ -1377,8 +1383,8 @@ $.ajax({
     p1.appendChild(str1);
     p2.appendChild(str2);
     p3.appendChild(str3);
-    p3.appendChild(str10);
-    p3.appendChild(str11);
+    p2.appendChild(str10);
+    p2.appendChild(str11);
     p3.appendChild(span1);
 
     div1.appendChild(p1);
