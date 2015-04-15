@@ -26,7 +26,7 @@ echo "data:" . $manu['ISS_ID'] . "\n";
 echo "data:" . $manu['NAME'] . "\n";
 echo "data:" . $manu['CTZ_TEL'] . "\n";
 echo "data:" . $manu['CTZ_ADDRESS'] . "\n";
-echo "data:" . $manu['STSK_FINISH_DATE'] . "\n\n";
+echo "data:" . date("d/m/Y", strtotime(substr($manu['STSK_FINISH_DATE'], 0, 10))) . "\n\n";
 
 
 ob_end_flush();
