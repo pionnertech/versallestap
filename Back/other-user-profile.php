@@ -1001,7 +1001,7 @@ if(typeof(EventSource) !== "undefined") {
 
        var eventMessage = event.data.split('\n');
        console.info(eventMessage[2]);
-
+       console.info("tipo de requerimiento : " + eventMessage[5]);
     if(eventMessage[2] == "" ){
 
         previuosDataInt = "";
@@ -1011,7 +1011,7 @@ if(typeof(EventSource) !== "undefined") {
             previuosDataInt = eventMessage[2];
 
                 showAlert(eventMessage[2]);
-             console.info(eventMessage[5]);
+             
 inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "");
         }
     }
