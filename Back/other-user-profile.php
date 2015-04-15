@@ -363,7 +363,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
       
 ?>
                                         <table class="table">
-                                            <tbody>
+                                            <tbody class="body-int-tra">
                                                 <tr>
                                                     <td>Asunto</td>
                                                     <td>Descripcion</td>
@@ -856,8 +856,9 @@ console.info("../backend/upgrade.php?val=" + val +
      if(argument == 0) {  
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
+    console.info("indice pasado a la tabla :" + (index+1));
+    progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[index+1]);
 
-    progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table > tbody > tr")[index+1].childNodes[1].childNodes[5].childNodes[1]);
             if(val == 100){
 
                $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html("FINALIZADA");
@@ -865,6 +866,7 @@ console.info("../backend/upgrade.php?val=" + val +
                $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().css({backgroundColor : "#00BF00 !important"});
 
                     switch(true){
+
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pv"): 
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pv");
                         break;
@@ -981,7 +983,7 @@ setInterval(function(){
                          if (msgExt[2] !== previuosData && msgExt[2] !== ""){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[2]);
-                                        inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] );
+                                        inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
                             }
 
                     }
@@ -1010,7 +1012,7 @@ if(typeof(EventSource) !== "undefined") {
 
                 showAlert(eventMessage[2]);
 
-inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] );
+inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "");
         }
     }
 
@@ -1020,7 +1022,7 @@ inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessag
 }
 
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind, ctz_tel, ctz_address){
 
 
 if(parseInt(kind) == 0){
@@ -1169,16 +1171,6 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
 }
 
 
-
-
-
-
-
-
-
-
-
-
 //callback function
 
     var  divFile = document.createElement('div');
@@ -1219,8 +1211,18 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
    
     var str1 = document.createElement('strong');
     var str2 = document.createElement('strong');
+    var str10 = document.createElement('strong');
+    var str11 = document.createElement('strong');
 
+ str1.style.margin = "0 .5em"; 
+ str2.style.margin = "0 .5em"; 
+str10.style.margin = "0 .5em"; 
+str11.style.margin = "0 .5em"; 
 
+ str1.style.fontWeight = "bolder";
+ str2.style.fontWeight = "bolder";
+str10.style.fontWeight = "bolder";
+str11.style.fontWeight = "bolder";
    // div 4
 
    div4.className = "wrap-progress";
@@ -1235,7 +1237,9 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     p2.className = "iss-descript";
 
     str1.innerHTML = "Ciudadano : " + ctz;
-    str2.innerHTML = "Descripción: " + desc;
+    str2.innerHTML = "Telefono Ciudadano: " + ctz_tel;
+    str10.innerHTML = "Direcion: " + ctz_address;
+    str11.innerHTML = "Descripción: " + desc;
 
     
     var str3  = document.createElement('strong');
@@ -1378,6 +1382,8 @@ $.ajax({
     p1.appendChild(str1);
     p2.appendChild(str2);
     p3.appendChild(str3);
+    p3.appendChild(str10);
+    p3.appendChild(str11);
     p3.appendChild(span1);
 
     div1.appendChild(p1);

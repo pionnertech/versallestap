@@ -12,7 +12,9 @@ $str_query = "SELECT A.STSK_ID, " .
 "CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ', C.CTZ_SURNAME2) AS NAME , " .
 "A.STSK_FINISH_DATE AS FECHA_FINAL,  " .
 "A.STSK_START_DATE AS FECHA_INICIAL,  " .
-"A.STSK_TYPE " . 
+"A.STSK_TYPE, " . 
+"C.CTZ_TEL, " .
+"C.CTZ_ADDRESS " .
 " FROM SUBTASKS A INNER JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) INNER JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
 
@@ -25,8 +27,10 @@ echo $manu['NAME'] . "|";
 echo date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "|";
 echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
 echo $manu['STSK_TYPE'];
-
+echo $manu['CTZ_TEL'];
+echo $manu['CTZ_ADDRESS'];
 
 
 ?>
 
+1
