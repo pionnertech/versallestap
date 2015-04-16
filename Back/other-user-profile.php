@@ -854,6 +854,7 @@ console.info("../backend/upgrade.php?val=" + val +
              console.info(index);
 //para comopromisos externos
      if(argument == 0) {  
+
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('p').children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children().css({ width: val +"%"});
 
@@ -1338,7 +1339,7 @@ $.ajax({
 
     a.appendChild(pS);
     divFile.appendChild(a);
-    div4.appendChild(divFile);
+    td6.appendChild(divFile);
 
  }
 
@@ -1401,7 +1402,7 @@ $.ajax({
     td6.appendChild(div1);
     tr2.appendChild(td6);
     td6.appendChild(p3);
-    td6.appendChild(div2);
+    div4.appendChild(div2);
     insertAfter(div2, div4);
     insertAfter(div4, tbl);
 
