@@ -22,9 +22,9 @@ echo 0;
 
 } else {
 
- $handler = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, '', B.USR_SURNAME) FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR != STSK_MAIN_USR )");
+ $handler = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, '', B.USR_SURNAME) AS NAME FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_FAC_CODE = " . $fac . ")");
  while ($fila1v = mysqli_fetch_row($handler)){
- 	echo $fila1v[0] . ",";
+ 	echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila1v['NAME']))));
  }
 
 }
