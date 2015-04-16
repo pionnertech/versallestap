@@ -1571,7 +1571,7 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = parseInt($(this).index());
+var index_current = parseInt($(this).index(".forward"));
 
 dateTime = AmericanDate($(this).parent().next().children().html());
 
@@ -2470,7 +2470,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
             var stsk_id = $(this).parent().parent().children('input.st').val();
             var iss_ident = $(this).parent().parent().children('input.iss_id').val();
             var subject = $(this).parent().parent().children('td').eq(1).text();
-            var index_current = parseInt($(this).index());
+            var index_current = parseInt($(this).index(".forward"));
 
             dateTime = AmericanDate(date_fin);
 

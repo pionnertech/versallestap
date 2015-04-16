@@ -244,10 +244,10 @@ if(mysqli_num_rows($quntum) == 0){
                                               case 'En Curso':
                                                $class = "Ec";
                                               break;
-                                              case 'Finalizado':
+                                              case 'Finalizada':
                                                $class = "Hc";
                                               break;
-                                              case 'Atrasadao':
+                                              case 'Atrasada':
                                                $class = "At";
                                               break;
                                               case 'Por Vencer':
