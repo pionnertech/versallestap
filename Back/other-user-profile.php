@@ -1113,8 +1113,6 @@ if(parseInt(kind) == 0){
         }
     }
 
-
-
 if(kind == 0){
 
     btn.onclick = function(){
