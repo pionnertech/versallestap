@@ -1691,10 +1691,7 @@ console.info();
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
-       
                 var target =  $("#current-task").val();
-                var ancient = $(".collaborates").eq(target).html();
-               
                 var key_main    = document.querySelectorAll(".collaborates")[target];
 
                 var a_del       = document.createElement('a');
