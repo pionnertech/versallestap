@@ -978,7 +978,6 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
                      var msgExt = data.split('|');
-                     console.info("tipo:" + msgExt[7] + "    /   " +  msgExt[6] + "    /    " + msgExt[8] );
                          if(msgExt[2] == "" ){
                                 previuosData = "";
                             } 
@@ -1002,7 +1001,7 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-       console.info(eventMessage[2]);
+ 
        console.info("tipo de requerimiento : " + eventMessage[5]);
     if(eventMessage[2] == "" ){
 
