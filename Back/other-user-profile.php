@@ -856,7 +856,8 @@ console.info("../backend/upgrade.php?val=" + val +
      if(argument == 0) {  
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(0).children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children().eq(1).children().eq(1).children().css({ width : val + "%"});
-    var indexVal = (index -1)/2;
+
+    var indexVal = (index-1)/2;
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[indexVal]);
 
             if(val == 100){
@@ -1359,8 +1360,14 @@ $.ajax({
 
   if(kind == 1){
    tbl.className = "table";
+
   } else {
-   tbo.className   = "ii-events";
+        if(kind == 0){
+        tbo.className = "body-int-tra";
+     }  else {
+        tbo.className   = "ii-events";
+     }
+ 
   }
   
 
