@@ -502,8 +502,8 @@ $handler = mysqli_query($datos, $matrix);
 
                                     ?>
                                       
-<a class="btn Qext" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
-<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+<a class="btn Qext" title="<? echo $tuba ?>"><p style="display: inline-block; vertical-align: top;color: <? echo $taint ?>; font-size: 1.5em; font-weight: 800;" ><? echo $fi[0] ?></p>
+<i class="fa <? echo $type ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? echo $taint ?>"></i>
 </a> 
 
 <? } ?>
