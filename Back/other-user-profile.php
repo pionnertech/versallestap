@@ -1404,8 +1404,9 @@ $.ajax({
     div4.appendChild(p3);
     div4.appendChild(div2);
     td6.insertBefore(div4, div1);
-
+    insertAfter(tbl, div4);
     parent.appendChild(tr2);
+
 }
 
 
