@@ -860,6 +860,8 @@ console.info("../backend/upgrade.php?val=" + val +
     var indexVal = (index-1)/2;
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[indexVal]);
 
+    thum("ext", "En Curso");
+
             if(val == 100){
 
                $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html("FINALIZADA");
@@ -882,7 +884,8 @@ console.info("../backend/upgrade.php?val=" + val +
                         break;
                     }
 
-                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");    
+                 $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");   
+                 thum("ext", "Finalizado");
                 }
 
              } else {
@@ -1438,7 +1441,7 @@ $(".span2").on("slide", function (slideEvt) {
    }
 });
 
-function thum(kind, type){
+function thum(kind, type, ancient ){
 
 if(kind == "int"){
    var thum = $("a.Qint[title='" + type + "']");
@@ -1454,8 +1457,13 @@ if(kind == "int"){
    var change = "Qext";
 }
 
+if(ancient !== '' && type == 'Finalizado'){
 
-var current = parseInt(thum.children('p').html()) + 1 ;
+  $("a." + change + "[title='" + ancient + "']").children('p').html(parseInt(   $("a." + change + "[title='" + ancient + "']").children('p').html()) - 1   );
+
+}
+
+var current = parseInt(thum.children('p').html()) + 1;
 
 thum.children('p').html(current);
 

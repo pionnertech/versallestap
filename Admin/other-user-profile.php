@@ -11,7 +11,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
-$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 0 AND STSK_TYPE = 0) GROUP BY STSK_STATE");
+$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 
@@ -497,7 +497,6 @@ $handler = mysqli_query($datos, $matrix);
                                              $taint = "#1CC131";
                                              $tuba = "Finalizados";
                                           break;
-
 
                                        }
 
@@ -1856,7 +1855,7 @@ $manu['STSK_TYPE'];
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
-                                   thum(1, "ii", "En Curso");
+                                   thum("ii", "En Curso", '');
                             }
                        }
                   }
@@ -2164,7 +2163,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                          }
                      });
 
-                  thum(1, "int", "En Curso");
+                  thum("int", "En Curso", '');
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
@@ -2302,7 +2301,7 @@ function changeListener(){
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
-                console.info(data);
+                
                 packets = data.split("|");
            // si esta el asunto repetido...
                 var nest = 0
@@ -2321,7 +2320,8 @@ function changeListener(){
                              //==*.*==
                              //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
-                                 thum(1, kilo ,"Finalizado");
+                                 indice
+                                 thum(kilo ,"Finalizado", ancient);
                                } 
                             console.info(packets.length);
                             if(packets.length == 11){
@@ -2357,7 +2357,7 @@ if(typeof(EventSource) !== "undefined") {
        var eventMessage = event.data.split('\n');
 
        if (eventMessage[0] !== previuosData){
-        console.info( eventMessage[0] + "/" + previuosData);
+        
         showAlert(eventMessage[0], 'req');
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
         previuosData = eventMessage[0];
@@ -2708,8 +2708,6 @@ document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
 insertScheduleTraffic(subject, descript ,date, userId, ind);
 }
-
-
 
 var parent = document.querySelector("#del-partners");
 
@@ -3307,7 +3305,7 @@ function incoInt(sub, des, date, ind){
 
 
 
-function thum(val, kind, type){
+function thum(kind, type, ancient){
 
 if(kind == "int"){
    var thum = $("a.Qint[title='" + type + "']");
@@ -3323,7 +3321,13 @@ if(kind == "int"){
    var change = "Qext";
 }
 
-var current = parseInt(thum.children('p').html()) + val ;
+if(ancient !== '' && type == 'Finalizado'){
+
+  $("a." + change + "[title='" + ancient + "']").children('p').html(parseInt(   $("a." + change + "[title='" + ancient + "']").children('p').html()) - 1 );
+
+}
+
+var current = parseInt(thum.children('p').html()) + 1 ;
 
 thum.children('p').html(current);
 
