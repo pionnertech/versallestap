@@ -2708,10 +2708,10 @@ document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = pe
 
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
-
+insertScheduleTraffic(subject, descript ,date, userId, ind);
 }
 
-insertScheduleTraffic(subject, descript ,date, userId, ind);
+
 
 var parent = document.querySelector("#del-partners");
 
