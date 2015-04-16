@@ -1699,9 +1699,10 @@ console.info();
 
                 var a_del       = document.createElement('a');
                 a_del.className = "hovertip";
-                a_del.title     = ancient + data;
+                a_del.title     = data;
 
                 var img_del =  document.createElement('img');
+                img_del.className = "group";
                 img_del.src = "../" + fac + "/img/" + $("#stsk-user").val() + "_opt.jpg";
 
                 var inp_del   = document.createElement('input');
