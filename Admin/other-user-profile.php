@@ -2350,7 +2350,6 @@ function changeListener(){
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
                         }
                       // \./\./
-
                     }
                     previan = packets[2];
                 }
