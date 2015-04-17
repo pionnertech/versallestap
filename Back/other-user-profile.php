@@ -1234,7 +1234,7 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
    // div 4
 
    div4.className = "wrap-progress";
-   td6.appendChild(div4);
+   
 
     tr2.className = "display-progress";
     td6.colSpan = "6";
@@ -1385,7 +1385,7 @@ $.ajax({
   tbo.appendChild(tdt3);
    
    tbl.appendChild(tbo);
-   td6.appendChild(tbl);
+   
    
 //table 
     p1.appendChild(str1);
@@ -1400,11 +1400,16 @@ $.ajax({
     div2.appendChild(div3);
 
     td6.appendChild(div1);
+    td6.appendChild(div4);
+    td6.appendChild(tbl);
+
     tr2.appendChild(td6);
     div4.appendChild(p3);
     div4.appendChild(div2);
-    td6.insertBefore(div4, div1);
-    insertAfter(tbl, div4);
+  
+   // td6.insertBefore(div4, div1);
+   // insertAfter(tbl, div4);
+
     parent.appendChild(tr2);
 
 }
