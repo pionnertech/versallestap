@@ -855,8 +855,9 @@ console.info("../backend/upgrade.php?val=" + val +
 //para comopromisos externos
      if(argument == 0) {  
 
-            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('p').children('span').html(val + "%");
-            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children().css({ width: val +"%"});
+            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('p').children('span').html(val + "%");
+            $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('div').children('div').css({ width: val +"%"});
+
 
     var indexVal = (index-1)/2;
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[indexVal]);
