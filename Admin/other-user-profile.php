@@ -2321,7 +2321,7 @@ function changeListener(){
                              //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
                                  indice
-                                 thum(kilo ,"Finalizado", ancient);
+                                 thum(kilo ,"Finalizado", "En Curso");
                                } 
                             console.info(packets.length);
                             if(packets.length == 11){
