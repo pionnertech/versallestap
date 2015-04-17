@@ -1409,9 +1409,6 @@ $.ajax({
 
 }
 
-
-
-
 function progressTableUpdate(subject, description, date, object){
 
 var tr  = document.createElement('tr');
