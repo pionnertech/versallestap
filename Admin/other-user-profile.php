@@ -490,12 +490,12 @@ $handler = mysqli_query($datos, $matrix);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasados";
+                                            $Tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizados";
+                                             $tuba = "Finalizado";
                                           break;
 
                                        }
@@ -892,12 +892,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $tuba = "Atrasados";
+                                            $tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizados";
+                                             $tuba = "Finalizado";
                                           break;
 
 
@@ -3328,7 +3328,6 @@ if(ancient !== '' && type == 'Finalizado'){
 }
 
 var current = parseInt(thum.children('p').html()) + 1 ;
-
 thum.children('p').html(current);
 
 //si no está 
