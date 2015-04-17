@@ -1272,7 +1272,12 @@ $.ajax({
  for (var i = 0; i < arrayFiles.length; i++){
     
     a           = document.createElement('a');
-    a.href      = "../" + fac + "/" + $("#muser").val() + "_alt/" + arrayFiles[i];
+    if(kind == 0){
+        a.href      = "../" + fac + "/" + $("#muser").val() + "/" + arrayFiles[i];
+    } else {
+        a.href      = "../" + fac + "/" + $("#muser").val() + "_alt/" + arrayFiles[i];
+    }
+    
     a.className = "down";
     a.setAttribute('download', true);
    

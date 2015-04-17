@@ -1704,7 +1704,12 @@ console.info();
                 var inp_del   = document.createElement('input');
                 inp_del.type  = "hidden";
                 inp_del.value = "u" + $("#stsk-user").val();
+              
+                var icom       = document.createElement('i');
+                icom.className = "fa fa-check-circle finished";
+                icom.style.opacity = "0";
 
+                a_del.appendChild(icom);
                 a_del.appendChild(img_del);
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
@@ -2320,7 +2325,7 @@ function changeListener(){
                              //==*.*==
                              //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
-                                 thum(kilo ,"Finalizado", "En Curso");
+                                 thum(kilo , "Finalizado" , "En Curso");
                                } 
                             console.info(packets.length);
                             if(packets.length == 11){
@@ -2333,10 +2338,16 @@ function changeListener(){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
-                        if(parseInt(packets[6]) >= 99){
+                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
+                        }
+
+                       if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
+                            console.info(indice);
+                            $("#ext-tasks-table -due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
+                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
                         }
                       // \./\./
 
@@ -3125,6 +3136,10 @@ a.title = user_name;
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
 img.className ="group";
 
+icom = document.createElement('i');
+icom.className = " fa fa-check finished";
+icom.style.opacity = "0";
+
 inp2.type= "hidden";
 inp2.value = "u" + user_id;
 
@@ -3235,6 +3250,7 @@ p.appendChild(span);
 div1.appendChild(div2);
 a.appendChild(img);
 a.appendChild(inp2);
+a.appendChild(icom);
 
 div3.appendChild(a);
 
