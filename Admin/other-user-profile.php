@@ -2335,26 +2335,17 @@ function changeListener(){
                           //aqui si es de tipo externo \./\./
                              console.info(indice);
                            if(parseInt(packets[8]) >= 99.5){
-
-                                $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
-                                if( packets[9] == 0 ) {
-                                     $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
-                                } else {
-                                     $(".finished").eq(indice).css({opacity : "1"});
-                                }
-                        }
-
+                                    $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
+                              }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
-                        }
-
+                          }
                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
-                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
-                            
+                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc"); 
                         }
                       // \./\./
                     }
