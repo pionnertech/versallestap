@@ -139,7 +139,7 @@ echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
 echo "|" . $outcome['STSK_TYPE'];
-echo "|" . $pro_user['STSK_ID'];
+echo "|" . $pro_user['STSK_PROGRESS'];
 if(!is_null($user_out9)){
 echo "|" . $user_out9;
 }
