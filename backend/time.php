@@ -19,11 +19,12 @@ $user_out6 = 0;
 $user_out7 = 0;
 $user_out8 = 0;
 
+
 } else {
 
 $outcome = mysqli_fetch_assoc($news);
                                                    
-  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' )"));
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP, A.STSK_PROGRESS AS PRO_USR FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' )"));
 
   if($hoax['HELP'] == 1){
 
@@ -72,8 +73,6 @@ $user_out6 = $user['TRF_STSK_SRC_ID'];
 $user_out7 = $ctp;
 $user_out8 = $classText;
 
-
-
 } else  {
 
   if($outcome['USR_RANGE'] == 'admin'){
@@ -104,12 +103,9 @@ $user_out8 = $classText;
   $user_out7 = $ctp;
   $user_out8 = $classText;
 
-
   }
 
-
 }
-
 
 //detect if task admin = admin and Progress is null
 
@@ -134,6 +130,7 @@ echo "|" . $user_out7 ;
 echo "|" . $user_out8 ;
 echo "|" . $outcome['STSK_PROGRESS'] ;
 echo "|" . $outcome['STSK_TYPE'];
+echo "|" . $hoax['PRO_USR'];
 if(!is_null($user_out9)){
 echo "|" . $user_out9;
 }

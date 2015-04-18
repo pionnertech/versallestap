@@ -2328,14 +2328,14 @@ function changeListener(){
                                  thum(kilo , "Finalizado" , "En Curso");
                                } 
                             console.info(packets.length);
-                            if(packets.length == 11){
-                              nest = packets[10];
+                            if(packets.length == 12){
+                              nest = packets[11];
                             }   
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
                           //aqui si es de tipo externo \./\./
                              console.info(indice);
-                             console.info("progreso del usuario : " + parseInt(packets[8]));
-                        if(parseInt(packets[8]) >= 99.5){
+                             console.info("progreso del usuario : " + parseInt(packets[10]));
+                        if(parseInt(packets[10]) >= 99.5){
                             $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
                           }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
