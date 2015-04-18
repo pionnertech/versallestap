@@ -2333,10 +2333,11 @@ function changeListener(){
                             }   
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
                           //aqui si es de tipo externo \./\./
-
+                             console.info(indice)
                            if(parseInt(packets[8]) >= 99.5){
+
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
-                                if( packets[9]==0 ) {
+                                if( packets[9] == 0 ) {
                                      $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
                                 } else {
                                      $(".finished").eq(indice).css({opacity : "1"});
