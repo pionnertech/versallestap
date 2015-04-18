@@ -1369,16 +1369,11 @@ $.ajax({
 
   tbl.style.width = "100%";
 
-  if(kind == 1){
+  if(kind == 0){
    tbl.className = "table";
   } else {
-        if(kind == 0){
-        tbo.className = "body-int-tra";
-     }  else {
-        tbo.className   = "ii-events";
-     }
- 
-  }
+    tbo.className   = "ii-events";
+}
   
 
   spnt1.innerHTML = "Asunto";
