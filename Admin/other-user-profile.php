@@ -2346,7 +2346,7 @@ function changeListener(){
 
                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
                             console.info(indice);
-                            $("#ext-tasks-table -due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
+                            $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
                         }
                       // \./\./
