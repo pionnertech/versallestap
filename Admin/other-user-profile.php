@@ -2349,7 +2349,7 @@ function changeListener(){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
-                            $(".finished").eq(indice-1).css({opacity : "1"});
+$("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
                         }
                       // \./\./
                     }
