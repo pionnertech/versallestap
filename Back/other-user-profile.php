@@ -1245,10 +1245,14 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     p1.className = "iss-descript";
     p2.className = "iss-descript";
 
+    if(kind == 0){
+    
     str1.innerHTML = "Ciudadano : " + ctz;
     str2.innerHTML = "Telefono Ciudadano: " + ctz_tel;
     str10.innerHTML = "Direcion: " + ctz_address;
     str11.innerHTML = "Descripción: " + desc;
+    } 
+
 
     var str3  = document.createElement('strong');
     var span1 = document.createElement('span');
@@ -1367,7 +1371,6 @@ $.ajax({
 
   if(kind == 1){
    tbl.className = "table";
-
   } else {
         if(kind == 0){
         tbo.className = "body-int-tra";
