@@ -1709,8 +1709,8 @@ console.info();
                 icom.className = "fa fa-check-circle finished";
                 icom.style.opacity = "0";
 
-                a_del.appendChild(icom);
                 a_del.appendChild(img_del);
+                a_del.appendChild(icom);
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
 
@@ -2338,6 +2338,7 @@ function changeListener(){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
                                 $(".finished").eq(indice).css({opacity : "1"});
                         }
+
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
@@ -2348,6 +2349,7 @@ function changeListener(){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
+                            $(".finished").eq(indice-1).css({opacity : "1"});
                         }
                       // \./\./
                     }
