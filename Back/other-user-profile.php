@@ -495,6 +495,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                               <td class="cell-title">Requerimiento</td>
                                                               <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                                               <td class="cell-title">Responsable</td>
+                                                              <td class="cell-title"></td>
                                                               <td class="cell-time align-right">Fecha</td>
                                                             </tr>
                                <? while($fila_int = mysqli_fetch_row($internal)) { 
@@ -1073,7 +1074,7 @@ if(parseInt(kind) == 0){
 
    // create date
    var todayDate = new Date();
-   var today = ('0' + todayDate.getDate()).slice(-2) + "/" + ('0' + (todayDate.getMonth() + 1)).slice(-2) + "/" +  ('0' + todayDate.getFullYear()).slice(-2);
+   var today = ('0' + todayDate.getDate()).slice(-2) + "/" + ('0' + (todayDate.getMonth() + 1)).slice(-2) + "/" +  todayDate.getFullYear();
 
     td7.innerHTML = today;
     td8.innerHTML = dateOut;
