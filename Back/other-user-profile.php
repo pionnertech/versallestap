@@ -24,7 +24,7 @@ $str_query_int = "SELECT STSK_ID, " .
 
 $notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
-$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";
+$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ING_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";
 $internal =  mysqli_query($datos, $query_internal);
 
 if(!$notify){
@@ -495,8 +495,8 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                               <td class="cell-title">Requerimiento</td>
                                                               <td class="cell-status hidden-phone hidden-tablet">Status</td>
                                                               <td class="cell-title">Responsable</td>
-                                                              <td class="cell-title"></td>
-                                                              <td class="cell-time align-right">Fecha</td>
+                                                              <td class="cell-title">Fecha inicio</td>
+                                                              <td class="cell-time align-right">Fecha maxima entrega</td>
                                                             </tr>
                                <? while($fila_int = mysqli_fetch_row($internal)) { 
 
@@ -526,6 +526,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                 <td class="cell-title"><? echo $fila_int[3] ?></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila_int[6] ?> ; "><? echo $fila_int[4] ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-title"><? echo date("d/m/Y", strtotime(substr($fila_int[9], 0, 10)))?></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila_int[8], 0, 10))) ?></td>
                                                             </tr>
                                                         <tr class="display-progress" style="display: none;">
@@ -894,7 +895,7 @@ console.info("../backend/upgrade.php?val=" + val +
              } else {
               var weirdIndex =  (index-1)/2;
 
-            $("#int-table > tbody > tr").eq(index + 1).children("td").children('p').children('span').html(val + "%");
+            $("#int-table > tbody > tr").eq(index + 1).find('p > span').eq(0).html(val + "%");
             $("#int-table .bar").eq(weirdIndex).css({ width: val + "%"});
 
             holindex = index;
