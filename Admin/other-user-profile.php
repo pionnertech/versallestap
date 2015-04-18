@@ -2336,7 +2336,11 @@ function changeListener(){
 
                            if(parseInt(packets[8]) >= 99.5){
                                 $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
-                                $(".finished").eq(indice).css({opacity : "1"});
+                                if( packets[9]==0 ) {
+                                     $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
+                                } else {
+                                     $(".finished").eq(indice).css({opacity : "1"});
+                                }
                         }
 
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
@@ -2349,7 +2353,7 @@ function changeListener(){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc");
-$("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev.css({ opacity : "1"});
+                            
                         }
                       // \./\./
                     }
