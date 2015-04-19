@@ -2719,7 +2719,6 @@ i3.onclick = function (){
     parent.appendChild(tr2);
 }
 
-
 function getFiles(iss_id, usr_id, callback){
 var files;
    $.ajax({
