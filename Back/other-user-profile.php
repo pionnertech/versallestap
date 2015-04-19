@@ -1372,8 +1372,11 @@ $.ajax({
   tbl.style.width = "100%";
 
   if(kind == 0){
+
    tbl.className = "table";
+   tbo.className = "body-int-tra";
   } else {
+
     tbo.className   = "ii-events";
 }
   
@@ -1510,8 +1513,6 @@ if(thum.length == 0 ){
 
         )
 }
-
-
 }
 
 </script>

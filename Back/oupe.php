@@ -1355,6 +1355,16 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+            <script type="text/javascript">
+jQuery.extend(
+    jQuery.expr[':'].containsCI = function (a, i, m) {
+        //-- faster than jQuery(a).text()
+        var sText   = (a.textContent || a.innerText || "");     
+        var zRegExp = new RegExp (m[3], 'i');
+        return zRegExp.test (sText);
+    }
+);
+        </script>
     <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
@@ -2656,37 +2666,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     i2.className = "fa fa-paperclip";
     i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
-
-
-
-i3.onclick = function (){
-
- var ucla =  $(this).parent().prev().prev().children('a').children('input');
-
-   for (i=0; i < ucla.length; i++){
-
-    console.info(ucla.eq(i).val());
-       $("." + ucla.eq(i).val()).css({ display: "table-row"});
-   }
-
-
-  var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
-
-    $("#require").removeClass("active in");
-        $("#events").addClass("active in");
-
-        if($(".st" + primary).length == 0){
-          
-             $("#events .task").css({display : 'none'});
-        }
-           else {
-
-                $(".htd" + primary).css({display: "table-row"});
-                $(".st" + primary).css({display: "table-row"});
-                $("#back-to-main").data("val", primary);
-
-           }          
-}
 
 
     p4.className = "golang";
