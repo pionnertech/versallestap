@@ -2595,7 +2595,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
 
     parent.appendChild(tr1);
 // second tr
-
     var tr2  = document.createElement('tr');
     var td6  = document.createElement('td');
 
