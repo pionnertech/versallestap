@@ -2778,9 +2778,17 @@ $.ajax({ type:"POST",
 
             console.info(data);
             files = data.split("|");
-            
+             
+
+              if(kind == 0 ){
+                var arp = $(".file-contents").eq(ind).children("a").length;
+              } else {
+                var arp = $(".int-files-for").eq(ind).children("a").length;
+              }
+
+
        //build the files array
-    for(y=0; y < $(".int-files-for").eq(ind).children("a").length ; y++){
+    for(y=0; y < arp ; y++){
 
         var hit = filename($(".int-files-for").eq(ind).children("a").eq(y).attr("href"));
              cf_array[y] = hit;
@@ -3006,6 +3014,11 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
 
+    if(kind == 0 ){
+    var divFil = document.createElement('div');
+    divFil.className = "file-contents";
+    }
+
 
     td1.className = "cell-icon int-lock";
     if(kind == 0){
@@ -3021,7 +3034,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     inp1.type     = "hidden";
 
     if(kind == 1){
-       inp1.className = "hi-int-id"
+       inp1.className = "hi-int-id";
     } else {
        inp1.className = "";
     }
@@ -3273,6 +3286,7 @@ div4.innerHTML = str_file;
 }
 });
 
+
 p.appendChild(strong);
 p.appendChild(span);
 
@@ -3287,12 +3301,18 @@ td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 td_i1.appendChild(div4);
+if(kind == 0){
+td_i1.appendChild(divFil);
+    
+}
 
 if(kind == 1){
 
 td_i1.appendChild(div5);
 
 }
+
+
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
