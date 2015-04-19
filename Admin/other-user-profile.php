@@ -2603,6 +2603,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var div2 = document.createElement('div');
     var div3 = document.createElement('div');
     var div4 = document.createElement('div');
+    var divFil = document.createElement('div');
 
     var i1   = document.createElement('i');
     var i2   = document.createElement('i');
@@ -2656,7 +2657,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     i2.className = "fa fa-paperclip";
     i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
-
+    divFil.className = "file-contents";
 
 
 i3.onclick = function (){
@@ -2710,7 +2711,7 @@ i3.onclick = function (){
     tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
-
+    td6.appendChild(divFil);
     td6.appendChild(div4);
     td6.appendChild(i2);
     td6.appendChild(i3);
@@ -3014,10 +3015,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
 
-    if(kind == 0 ){
-    var divFil = document.createElement('div');
-    divFil.className = "file-contents";
-    }
 
 
     td1.className = "cell-icon int-lock";
@@ -3281,7 +3278,8 @@ $.ajax({ type:"POST",
         
     
 }
-div4.innerHTML = str_file;
+
+  div4.innerHTML = str_file;
 
 }
 });
@@ -3301,18 +3299,10 @@ td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
 td_i1.appendChild(div4);
-if(kind == 0){
-td_i1.appendChild(divFil);
-    
-}
 
 if(kind == 1){
-
 td_i1.appendChild(div5);
-
-}
-
-
+} 
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
