@@ -3648,11 +3648,11 @@ function testUpdate(userId, stsk, usr_name){
 
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
-      parent.appendChild(tr_av);
+     
 
 
       parent.insertBefore(tr_usr, tr_usr2);
-      insertAfter(tr_av, tr_usr2);
+    
 }
 
 </script>
