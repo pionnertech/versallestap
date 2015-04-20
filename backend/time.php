@@ -6,7 +6,20 @@ $fac = $_GET['fac'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
 
+
 $news = mysqli_query($datos, $query);
+$ran  = mysqli_query($datos, $query);
+
+$sp = "" ;
+$i = 0;
+
+ while ($fila = mysqli_fetch_row($ran)) {
+  if($i == 1){
+    $sp = $fila[5];
+  }
+  $i = $i + 1;
+ }
+
 
 if (mysqli_num_rows($news) == 0){
 
@@ -81,7 +94,7 @@ $user_out8 = $classText;
 
 } else  {
 
-  if($outcome['USR_RANGE'] == 'admin'){
+  if($sp == 'admin'){
 
   $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
