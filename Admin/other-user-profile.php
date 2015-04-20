@@ -2201,14 +2201,14 @@ $(".events").on('click', function(){
   // cambio de fotos
  var ucla =  $(this).parent().prev().prev().children('a').children('input');
 
+$("#events [class*='task u']").css({display : 'none'});
+
    for (i=0; i < ucla.length; i++){
 
-      console.info(ucla.eq(i).val());
+        $("#events [class='task " + ucla.eq(i).val() + "']").css({display : 'table-row'});
         $("." + ucla.eq(i).val()).css({ display: "table-row"});
 
    }
-
-$("#events [class*='task u']").css({display : 'none'});
 
 var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
@@ -2218,11 +2218,13 @@ var primary = $(this).parent().parent().parent().prev().children('input').eq(0).
         if($(".st" + primary).length == 0){
           
              $("#events .task").css({display : 'none'});
+
         }
            else {
 
                 $(".htd" + primary).css({display: "table-row"});
                 $(".st" + primary).css({display: "table-row"});
+                $("#events .task u").css({display : 'none'});
                 $("#back-to-main").data("val", primary);
 
            }          
