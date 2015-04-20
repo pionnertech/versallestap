@@ -3554,18 +3554,17 @@ return true;
 function checkIntDel(){
 
 if($("#subj-int").val() == ""){
-  return $(this).attr("placeholder");
+  return "Asunto";
 }
 if($("#descript-int").val() == ""){
-  return $(this).attr("placeholder");
+  return "Descripcion");
 }
 if($("#int-del").val() == ""){
-  return $(this).attr("placeholder");
+  return "Usuario";
 }
 if($(".date-int-finish").val() == ""){
-  return $(this).attr("placeholder");
+  return "Fecha fecha de termino";
 }
-
 return true;
 }
 
