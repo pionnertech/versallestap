@@ -3537,14 +3537,14 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 function checkDelExt(){
 
 if($("#subject").val() == ""){
-  return $(this).attr("placeholder");
+  return "Asunto";
 }
 
 if($("#end-data").val() == ""){
-  return $(this).attr("placeholder");
+  return "Fecha Final";
 }
 if($("#st-description").val() == "" ){
-  return $(this).attr("placeholder");
+   return "Descripcion";
 }
 
 return true;
