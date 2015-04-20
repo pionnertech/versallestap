@@ -3614,7 +3614,7 @@ function testUpdate(userId, stsk, usr_name){
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + userId + "chrono";
+       tr_usr2.className = "task u" + userId + " chrono";
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
@@ -3643,14 +3643,10 @@ function testUpdate(userId, stsk, usr_name){
       tr_usr2.appendChild(td_usr1);
       tr_usr2.appendChild(td_usr2);
       tr_usr2.appendChild(td_usr3);
-    
-
 
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
      
-
-
       parent.insertBefore(tr_usr, tr_usr2);
     
 }
