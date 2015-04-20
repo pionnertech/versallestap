@@ -21,6 +21,7 @@ if(!is_dir($target_dir)){
 }
 
 if(!is_dir($target_dir . $user . "_in/")){
+
 	chmod($target_dir . $user . "_in/", 0775);
 	mkdir($target_dir . $user . "_in/", 0775, true);
 }

@@ -2203,12 +2203,14 @@ $(".events").on('click', function(){
 
    for (i=0; i < ucla.length; i++){
 
-    console.info(ucla.eq(i).val());
-       $("." + ucla.eq(i).val()).css({ display: "table-row"});
+      console.info(ucla.eq(i).val());
+        $("." + ucla.eq(i).val()).css({ display: "table-row"});
+
    }
 
+$("#events [class*='task u']").css({display : 'none'});
 
-  var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
+var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
         $("#events").addClass("active in");

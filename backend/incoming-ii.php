@@ -17,7 +17,6 @@ $str_query = "SELECT A.STSK_ID, " .
 "FROM SUBTASKS  A INNER JOIN USERS B ON(B.USR_ID = A.STSK_MAIN_USR) " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_PROGRESS IS NULL ) ORDER BY STSK_ID DESC";	
 
-
 $hand = mysqli_query($datos, $str_query);
 
 if(mysqli_num_rows($hand) !== 0){
@@ -33,4 +32,7 @@ echo $manu[0] . "|" . $manu[1] . "|" . $manu[3] . "|" . date('d/m/Y', strtotime(
 
 
 ?>
+
+
+
 

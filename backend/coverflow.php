@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if(isset($_POST["U"]))
 
 {
@@ -41,6 +40,7 @@ else {
  $_SESSION["TxtPosition"] = $outcome['USR_CHARGE'];
 
 switch ($outcome['USR_RANGE']) {
+	
 	case "sadmin":
 	echo "<script language='javascript'>window.location='../Sadmin/index.php'</script>";
 	break;
