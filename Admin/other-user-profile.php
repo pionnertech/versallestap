@@ -769,7 +769,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
                                     <input type="hidden" value="" id="current-task"> 
-                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
@@ -1615,9 +1615,18 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
 if (mode == "first"){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
+    if(checkIntDel() == true){
+       intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
+    } else {
+      bootbox.alert("Falta el siguiente campo :" + checkIntDel());
+    }
+    
 } else {
+ if(checkIntDel() == true){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
+   } else {
+    bootbox.alert("Falta el siguiente campo :" + checkIntDel());
+   }
 }  
 });
 
@@ -1667,11 +1676,12 @@ $("#delegates").on('change', function(){
 
 $("#del-subtask").on('click', function(){
     //check type.
+if(checkDelExt() == true) {
 
 var _fS = new Date();
 var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.info();
+
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
@@ -1717,7 +1727,13 @@ console.info();
                // nueva delegacia 
                     $("#upload ul").empty();
         }
-    })
+    });
+
+} else {
+
+  bootbox.alert("Falta el siguiente campo :" + checkDelExt());
+}
+
 });
 
 
@@ -1737,7 +1753,6 @@ $(".switcher").on('click', function(){
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
            }
-        
      }
 });
 
@@ -3519,6 +3534,40 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         }
     }
 
+function checkDelExt(){
+
+if($("#subject").val() == ""){
+  return $(this).attr("placeholder");
+}
+
+if($("#end-data").val() == ""){
+  return $(this).attr("placeholder");
+}
+if($("#st-description").val() == "" ){
+  return $(this).attr("placeholder");
+}
+
+return true;
+
+}
+
+function checkIntDel(){
+
+if($("#subj-int").val() == ""){
+  return $(this).attr("placeholder");
+}
+if($("#descript-int").val() == ""){
+  return $(this).attr("placeholder");
+}
+if($("#int-del").val() == ""){
+  return $(this).attr("placeholder");
+}
+if($(".date-int-finish").val() == ""){
+  return $(this).attr("placeholder");
+}
+
+return true;
+}
 
 </script>
 
