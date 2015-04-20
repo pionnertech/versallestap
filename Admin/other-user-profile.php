@@ -3557,7 +3557,7 @@ if($("#subj-int").val() == ""){
   return "Asunto";
 }
 if($("#descript-int").val() == ""){
-  return "Descripcion");
+  return "Descripcion";
 }
 if($("#int-del").val() == ""){
   return "Usuario";
