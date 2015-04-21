@@ -2897,7 +2897,7 @@ $.ajax({ type:"POST",
 
 // search the user;
 
-var search1 = document.querySelectorAll(".u" + userId)[0];
+var search1 = document.querySelectorAll("task .u" + userId)[0];
 
     if(!search1){
     // create user .. pfffff... no comments.
@@ -2973,8 +2973,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
       tr_av.className = "task st" + stsk + " chrono";
-      parent.appendChild(tr_av);
-
+      document.querySelectorAll("task .u" + userId)[0].appendChild(tr_av);
 
       parent.insertBefore(tr_usr, tr_usr2);
       insertAfter(tr_av, tr_usr2);
