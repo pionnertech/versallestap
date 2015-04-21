@@ -3575,7 +3575,7 @@ return true;
 
 function testUpdate(userId, stsk, usr_name){
 
-  var parent = document.querySelector("#del-partners");
+  var parent = document.querySelector("#del-partners tbody");
 
         tr_usr   = document.createElement('tr');
         td_usr   = document.createElement('td');
