@@ -2982,7 +2982,8 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
 
       }
     } else {
-        pseudoparent =  document.querySelector("#del-partners");
+        tr_av.className = "task st" + stsk + " chrono";
+        pseudoparent =  document.querySelector("#del-partners tbody");
         pseudoparent.appendChild(tr_av);
     }
 
