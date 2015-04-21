@@ -3614,7 +3614,7 @@ function testUpdate(userId, stsk, usr_name){
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + userId + " chrono";
+       tr_usr2.className = "task u" + userId ;
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
