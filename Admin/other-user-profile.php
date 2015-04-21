@@ -2325,7 +2325,6 @@ function changeListener(){
             type: "POST",
             url: "../backend/time.php?usr="+mainuser,
             success: function(data){
-                
                 packets = data.split("|");
            // si esta el asunto repetido...
                 var nest = 0
