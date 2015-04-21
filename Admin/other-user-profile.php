@@ -2327,7 +2327,7 @@ function changeListener(){
             success: function(data){
                 packets = data.split("|");
            // si esta el asunto repetido...
-           console.info(packets);
+           console.info(data);
                 var nest = 0
              if(previan !== packets[2]){
                //si no está vacio
