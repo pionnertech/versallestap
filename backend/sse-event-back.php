@@ -15,8 +15,8 @@ $str_query = "SELECT A.STSK_ID, " .
 "A.STSK_TYPE, " . 
 "C.CTZ_TEL, " .
 "C.CTZ_ADDRESS " .
-" FROM SUBTASKS A INNER JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) INNER JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
-"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
+" FROM SUBTASKS A LEFT JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) LEFT JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
+"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_STATE = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
 
 $manu = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 echo $manu['STSK_ID'] . "|";
@@ -32,5 +32,3 @@ echo $manu['CTZ_ADDRESS'];
 
 
 ?>
-
-1
