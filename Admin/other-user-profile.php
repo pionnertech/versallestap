@@ -2334,9 +2334,8 @@ function changeListener(){
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                        showAlert(packets[2], "pro", packets[0]);
                        //si es de tipo externo ==*.*==
-                       // 21/04/2015 cambie de .st a .iss_id por indices para externos
                             if(parseInt(packets[9]) == 0){
-                                indice = $("input.iss_id[value=" + packets[5] + "]").index(".st");
+                                indice = $("input.st[value=" + packets[5] + "]").index(".st");
                                 var kilo = "ext";
                                     } else {
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
