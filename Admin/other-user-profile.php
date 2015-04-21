@@ -2682,9 +2682,12 @@ i3.onclick = function (){
 
  var ucla =  $(this).parent().prev().prev().children('a').children('input');
 
+ $("#events [class*='task u']").css({display : 'none'});
+
    for (i=0; i < ucla.length; i++){
 
     console.info(ucla.eq(i).val());
+       $("#events [class='task " + ucla.eq(i).val() + "']").css({display : 'table-row'});
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
 
