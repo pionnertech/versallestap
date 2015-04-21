@@ -4,18 +4,20 @@ $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS != STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
+$query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS <> STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
 
 
 $news = mysqli_query($datos, $query);
 $ran  = mysqli_query($datos, $query);
 
 $sp = "" ;
+$larx_id = "";
 $i = 0;
 
  while ($fila = mysqli_fetch_row($ran)) {
   if($i == 1){
     $sp = $fila[5];
+    $larx_id = $fila[2];
   }
   $i = $i + 1;
  }
@@ -73,7 +75,7 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
 
           }
 
-$get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR); "));
+$get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TYPE = " . $outcome['STSK_TYPE'] . "); "));
 
 if($outcome["STSK_TYPE"] == 0 || $outcome["STSK_TYPE"] == "0"){
 
@@ -172,3 +174,4 @@ $sum = 0;
 //GEt the Last User that grow up his progress
 
 ?>
+
