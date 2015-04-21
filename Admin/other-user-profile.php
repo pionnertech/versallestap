@@ -2767,7 +2767,7 @@ document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent 
 insertScheduleTraffic(subject, descript ,date, userId, ind);
 }
 
-var parent = document.querySelector("#del-partners");
+var parent = document.querySelector("#del-partners tbody");
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
@@ -2901,7 +2901,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
 
     if(!search1){
     // create user .. pfffff... no comments.
-
+     if(kind == 0){
 
         tr_usr   = document.createElement('tr');
         td_usr   = document.createElement('td');
@@ -2953,8 +2953,6 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        span_usr2.innerHTML = "Descripcion";
        span_usr3.innerHTML = "Fecha Progreso";
 
-
-
   // sorting of appending elements to display;
 
       a_usr.appendChild(img_usr);
@@ -2972,16 +2970,16 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       tr_usr2.appendChild(td_usr2);
       tr_usr2.appendChild(td_usr3);
     
-
-
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
+      tr_av.className = "task st" + stsk + " chrono";
       parent.appendChild(tr_av);
 
 
       parent.insertBefore(tr_usr, tr_usr2);
       insertAfter(tr_av, tr_usr2);
-      
+
+      }
     } else {
         pseudoparent =  document.querySelector("#del-partners");
         pseudoparent.appendChild(tr_av);
