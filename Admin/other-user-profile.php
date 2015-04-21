@@ -2896,8 +2896,8 @@ $.ajax({ type:"POST",
 })
 
 // search the user;
-
-var search1 = document.querySelectorAll("task .u" + userId)[0];
+console.info(userId);
+var search1 = document.querySelectorAll(".u" + userId)[0];
 
     if(!search1){
     // create user .. pfffff... no comments.
