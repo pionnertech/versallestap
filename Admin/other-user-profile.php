@@ -2681,7 +2681,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
 
 i3.onclick = function (){
 
- var ucla =  $(this).parent().prev().prev().children('a').children('input');
+ var ucla =  $(this).prev().prev().children('a').children('input');
 
  $("#events [class*='task u']").css({display : 'none'});
 
@@ -2693,7 +2693,7 @@ i3.onclick = function (){
    }
 
 
-  var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
+  var primary = $(this).parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
