@@ -8,8 +8,12 @@ $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 //reuseable port
 socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
 
+if (!socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1)) { 
+    echo socket_strerror(socket_last_error($socket)); 
+    exit; 
+} 
 //bind socket to specified host
-socket_bind($socket, 0, $port);
+socket_bind($socket, $host, $port);
 
 //listen to port
 socket_listen($socket);
@@ -144,7 +148,7 @@ function perform_handshaking($receved_header,$client_conn, $host, $port)
 	"Upgrade: websocket\r\n" .
 	"Connection: Upgrade\r\n" .
 	"WebSocket-Origin: $host\r\n" .
-	"WebSocket-Location: ws://$host:$port/demo/shout.php\r\n".
+	"WebSocket-Location: ws://$host:$port/websocket-example/server.php\r\n".
 	"Sec-WebSocket-Accept:$secAccept\r\n\r\n";
 	socket_write($client_conn,$upgrade,strlen($upgrade));
 }
