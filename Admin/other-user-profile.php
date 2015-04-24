@@ -2285,8 +2285,6 @@ var title = usr_name + " ha marcado un progreso :";
 var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Next-icon.png";
 }
 
-
-
         var instance = new Notification(
             title , {
                 body: message,
@@ -2323,7 +2321,7 @@ setInterval(function(){
 function changeListener(){
             $.ajax({
             type: "POST",
-            url: "../backend/time.php?usr="+mainuser,
+            url: "../backend/time.php?usr="+mainuser+"&fac="+fac,
             success: function(data){
                 packets = data.split("|");
            // si esta el asunto repetido...
