@@ -6,7 +6,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) ORDER BY STSK_FINISH_DATE GROUP BY EST_DESCRIPT");
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1 ) GROUP BY STSK_STATE");
  
@@ -56,7 +56,7 @@ if(!$notify_int){
     $manu_int = $notify_int['STSK_DESCRIP'];
 }
 
-$quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
+$quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
 
 if(mysqli_num_rows($quntum) == 0){
 
@@ -852,6 +852,7 @@ console.info("../backend/upgrade.php?val=" + val +
             "&date=" + date +
             "&fac=" + fac + 
             "&argument=" + ar);
+if (check() == true){
 
     $.ajax({
            type: "POST", 
@@ -870,6 +871,7 @@ console.info("../backend/upgrade.php?val=" + val +
          if( parseInt(data) == 1){
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
+
 //para comopromisos externos
      if(argument == 0) {  
 
@@ -951,6 +953,7 @@ console.info("../backend/upgrade.php?val=" + val +
                  $("#upload ul").empty();
                 }
             });
+   }
 }
 
 $("#back").on('click', function(){
@@ -972,9 +975,9 @@ $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in')
         // console.log(permission);
     });
 
-    function showAlert(message) {
+    function showAlert(message, kind) {
         var instance = new Notification(
-            "Te ha llegado un nuevo requerimiento:", {
+            "Nuevo requerimiento "  + kind + ":", {
                 body: message,
                 icon: "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png"
             }
@@ -1006,7 +1009,7 @@ setInterval(function(){
                             } 
                          if (msgExt[2] !== previuosData && msgExt[2] !== ""){
                                 previuosData = msgExt[2];
-                                     showAlert(msgExt[2]);
+                                     showAlert(msgExt[10], "externo");
                                         inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
                             }
 
@@ -1034,7 +1037,7 @@ if(typeof(EventSource) !== "undefined") {
 
             previuosDataInt = eventMessage[2];
 
-                showAlert(eventMessage[2]);
+                showAlert(eventMessage[6], "interno");
              
 inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "");
         }
@@ -1529,6 +1532,20 @@ if(thum.length == 0 ){
 
         )
 }
+}
+
+
+function checkValues(){
+
+if($("#subject").val() == "") {
+    bootbox.alert("Falta ingresar asunto");
+    return false;
+}
+if($("#st-description").val() == "") {
+    bootbox.alert("Falta ingresar descripción");
+    return false;
+}
+ return true;
 }
 
 </script>

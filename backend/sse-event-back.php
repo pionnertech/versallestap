@@ -28,7 +28,8 @@ echo date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "|";
 echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
 echo $manu['STSK_TYPE'] . "|" ;
 echo $manu['CTZ_TEL'] . "|";
-echo $manu['CTZ_ADDRESS'];
+echo $manu['CTZ_ADDRESS'] . "|";
+echo $manu['STSK_SUBJECT'];
 
 
 ?>

@@ -28,7 +28,8 @@ echo "data:" . $manu['STSK_ISS_ID'] . "\n";
 echo "data:" . $manu['STSK_DESCRIP'] . "\n";
 echo "data:" . date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "\n";
 echo "data:" . date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "\n";
-echo "data:" . $manu['STSK_TYPE'] . "\n\n";
+echo "data:" . $manu['STSK_TYPE'] . "\n";
+echo "data:" . $manu['STSK_SUBJECT'] . "\n\n"; 
 
 ob_end_flush();
 flush();
