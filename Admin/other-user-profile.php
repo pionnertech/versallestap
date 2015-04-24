@@ -1875,7 +1875,7 @@ $manu['STSK_TYPE'];
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
-                                   thum(3);
+                                   newthum(2);
                             }
                        }
                   }
@@ -2183,7 +2183,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                          }
                      });
 
-                  thum("int", "En Curso", '');
+                  newthum(1);
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
@@ -2334,15 +2334,15 @@ function changeListener(){
                        //si es de tipo externo ==*.*==
                             if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
-                                var kilo = "ext";
+                                var kilo =0 ;
                                     } else {
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
-                                var kilo = "int";
+                                var kilo = 1;
                                     }
                              //==*.*==
                              //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
-                                 thum(kilo , "Finalizado" , "En Curso");
+                                 newthum(kilo);
                                } 
                             console.info(packets.length);
                             if(packets.length == 12){
@@ -2810,7 +2810,7 @@ $.ajax({ type:"POST",
        //build the files array
     for(y=0; y < arp.length ; y++){
           console.info(arp.eq(y).attr("href"));
-          
+
         var hit = filename(arp.eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
