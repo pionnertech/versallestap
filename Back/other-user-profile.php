@@ -891,7 +891,7 @@ console.info("../backend/upgrade.php?val=" + val +
     var indexVal = (index-1)/2;
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[indexVal]);
 
-    thum("ext", "En Curso");
+    newthum(0);
 
             if(val == 100){
 
@@ -916,7 +916,7 @@ console.info("../backend/upgrade.php?val=" + val +
                     }
 
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");   
-                 thum("ext", "Finalizado");
+                 newthum(0)
                 }
 
              } else {
@@ -948,12 +948,13 @@ console.info("../backend/upgrade.php?val=" + val +
                                  $("#int-table > tbody > tr").eq(index).removeClass("Ec-int");
                         break;
                     }
-                     thum("int", "Finalizado");
-                 $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int");    
+                     
+                 $("#int-table > tbody > tr").eq(holindex).addClass("Hc-int"); 
+                 newthum(1);   
                 }
 
             progressTableUpdate(subject, des, date, document.querySelectorAll(".ii-events")[index]);
-            thum("int", "En Curso");
+            newthum(1);
              }
              });
             } else {
@@ -1481,68 +1482,55 @@ $(".span2").on("slide", function (slideEvt) {
    }
 });
 
-function thum(kind, type, ancient ){
 
-if(kind == "int"){
-   var thum = $("a.Qint[title='" + type + "']");
-   var ght = 1;
-   var change = "Qint";
-} else if (kind == "ii"){
-   var thum = $("a.Qiii[title='" + type + "']");
-   var ght = 2;
-   var change = "Qiii"; 
-} else { 
-   var thum = $("a.Qext[title='" + type + "']");
-   var ght = 0;
-   var change = "Qext";
+function newthum(kind){
+
+$("div.pull-right").eq(kind).html('');
+
+var gitString = "";
+
+if(kind == 0){
+var Hc = $(".Hc").length;
+var At = $(".At").length;
+var Pe = $(".Pe").length;
+var Ec = $(".Ec").length;
+var Pv = $(".Pv").length;
+} else {
+var Hc = $(".Hc-int").length;
+var At = $(".At-int").length;
+var Pe = $(".Pe-int").length;
+var Ec = $(".Ec-int").length;
+var Pv = $(".Pv-int").length;
 }
 
-if(ancient !== '' && type == 'Finalizado'){
-
-  $("a." + change + "[title='" + ancient + "']").children('p').html(parseInt(   $("a." + change + "[title='" + ancient + "']").children('p').html()) - 1   );
-
+if(Hc != 0){
+gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block; vertical-align: top;color:#1CC131; font-size: 1.5em; font-weight: 800;' >" + Hc+ "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#1CC131'></i></a>" ;
+}
+   
+if(Ec != 0){
+gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; vertical-align: top;color:#178FD0; font-size: 1.5em; font-weight: 800;' >" + Ec + "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:178FD0'></i></a>";
+}
+        
+if(Pe != 0){
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB40; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#EDB40'></i></a>";
+}
+   
+if(Pv != 0){
+gitString += "<a class='btn' title='Por Vencer'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pv + "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+    
+if(At != 0){
+    gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
 }
 
-var current = parseInt(thum.children('p').html()) + 1;
-
-thum.children('p').html(current);
-
-//si no está 
-
-if(thum.length == 0 ){
-    switch (type){
-
-    case "En Curso":
-      var design = "fa-angle-double-right";
-      var taint = "#178FD0";
-    break;
-    case "Por Vencer":
-      var design = "fa-clock-o";
-      var taint = "#EDB405";
-    break;
-
-    case "Atrasado":
-      var design = "fa-exclamation-triangle";
-      var taint = "#E70101";
-    break;
-    case "Finalizado":
-      var design = "fa-check-circle";
-      var taint = "#1CC131";
-    break;
+$("div.pull-right").eq(kind).html(gitString);
 
 }
-    prevHtml = $("div.pull-right").eq(ght).html();
-
-    $("div.pull-right").eq(ght).html(
-           prevHtml + 
-    "<a class='btn " + change + "' title='" + type + "'><p style='display: inline-block; vertical-align: top;color:" + taint + "; font-size: 1.5em; font-weight: 800;' >1</p>" +
-    "<i class='fa " + design + " fa-2x' style='display: inline-block; vertical-align: top;color: " + taint + "'></i></a>"
-
-
-        )
-}
-}
-
 
 function checkValues(){
 
