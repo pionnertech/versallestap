@@ -1875,7 +1875,7 @@ $manu['STSK_TYPE'];
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
-                                   thum("ii", "En Curso", '');
+                                   thum(3);
                             }
                        }
                   }
@@ -2360,6 +2360,7 @@ function changeListener(){
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
                           }
+
                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
@@ -2800,19 +2801,21 @@ $.ajax({ type:"POST",
              
 
               if(kind == 0 ){
-                var arp = $(".file-contents").eq(ind).children("a").length;
+                var arp = $(".file-contents").eq(ind).children("a");
               } else {
-                var arp = $(".int-files-for").eq(ind).children("a").length;
+                var arp = $(".int-files-for").eq(ind).children("a");
               }
 
 
        //build the files array
-    for(y=0; y < arp ; y++){
-
-        var hit = filename($(".int-files-for").eq(ind).children("a").eq(y).attr("href"));
+    for(y=0; y < arp.length ; y++){
+          console.info(arp.eq(y).attr("href"));
+          
+        var hit = filename(arp.eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
     }
+
 
         for (n=0; n < files.length-1 ; n++){
             console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
@@ -3494,7 +3497,9 @@ parent.appendChild(tr_av);
 
 function filename(name){
 var regexp = /\//g;
+
 var match, matches = [];
+
 while ((match = regexp.exec(name)) != null) {
   matches.push(match.index);
 }
@@ -3537,6 +3542,63 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         }
     }
 
+
+
+function newthum(kind){
+
+$("div.pull-right").eq(kind).html('');
+
+var gitString = "";
+
+if(kind == 0){
+var Hc = $(".Hc").length;
+var At = $(".At").length;
+var Pe = $(".Pe").length;
+var Ec = $(".Ec").length;
+var Pv = $(".Pv").length;
+} else if(kind == 1) {
+var Hc = $(".Hc-int").length;
+var At = $(".At-int").length;
+var Pe = $(".Pe-int").length;
+var Ec = $(".Ec-int").length;
+var Pv = $(".Pv-int").length;
+} else {
+var Hc = $(".Hc-int-ii").length;
+var At = $(".At-int-ii").length;
+var Pe = $(".Pe-int-ii").length;
+var Ec = $(".Ec-int-ii").length;
+var Pv = $(".Pv-int-ii").length;
+
+}
+
+if(Hc != 0){
+gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block; vertical-align: top;color:#1CC131; font-size: 1.5em; font-weight: 800;' >" + Hc+ "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#1CC131'></i></a>" ;
+}
+   
+if(Ec != 0){
+gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; vertical-align: top;color:#178FD0; font-size: 1.5em; font-weight: 800;' >" + Ec + "</p>" +
+    "<i class='fa fa-angle-double-right fa-2x' style='display: inline-block; vertical-align: top;color:#178FD0'></i></a>";
+}
+        
+if(Pe != 0){
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+   
+if(Pv != 0){
+gitString += "<a class='btn' title='Por Vencer'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pv + "</p>" +
+    "<i class='fa fa-clock-o fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+    
+if(At != 0){
+    gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
+    "<i class='fa fa-exclamation-triangle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
+}
+
+$("div.pull-right").eq(kind).html(gitString);
+
+}
 function checkDelExt(){
 
 if($("#subject").val() == ""){
@@ -3572,83 +3634,7 @@ return true;
 }
 
 
-function testUpdate(userId, stsk, usr_name){
 
-  var parent = document.querySelector("#del-partners tbody");
-
-        tr_usr   = document.createElement('tr');
-        td_usr   = document.createElement('td');
-        div_usr1 = document.createElement('div');
-        div_usr2 = document.createElement('div');
-        a_usr    = document.createElement('a');
-        img_usr  = document.createElement('img');
-        p_usr    = document.createElement('p');
-
-        tr_usr2   = document.createElement('tr');
-        td_usr1   = document.createElement('td');
-        td_usr2   = document.createElement('td');
-        td_usr3   = document.createElement('td');
-
-        span_usr1 = document.createElement('span');
-        span_usr2 = document.createElement('span');
-        span_usr3 = document.createElement('span');
-
-       tr_usr.className = "u" + userId + " utrf";
-       td_usr.colSpan = 3;
-       div_usr1.className = "user-schedule";
-       div_usr2.className = "media";
-       div_usr2.style.display = "inline-block";
-       a_usr.className = "media-avatar pull-left";
-       a_usr.style.width = "4em";
-       a_usr.style.height = "4em";
-       a_usr.title = usr_name;
-       img_usr.src = "../" + fac + "/img/" + userId + ".jpg";
-       img_usr.style.width = "100%";
-       img_usr.style.height = "100%";
-
-       p_usr.style.fontSize = "2em";
-       p_usr.style.fontStyle = "italic";
-       p_usr.style.color = "gray";
-       p_usr.style.display = "inline-block";
-       p_usr.style.verticalAlign = "bottom";
-       p_usr.innerHTML = usr_name;
-
-       tr_usr2.className = "task u" + userId ;
-       span_usr1.className = "bolder";
-       span_usr2.className = "bolder";
-       span_usr3.className = "bolder";
-
-       td_usr3.className = "cell-time align-right";
-
-       span_usr1.innerHTML = "Asunto";
-       span_usr2.innerHTML = "Descripcion";
-       span_usr3.innerHTML = "Fecha Progreso";
-
-
-
-  // sorting of appending elements to display;
-
-      a_usr.appendChild(img_usr);
-      div_usr2.appendChild(a_usr);
-      div_usr1.appendChild(div_usr2);
-      div_usr1.appendChild(p_usr);
-      td_usr.appendChild(div_usr1);
-      tr_usr.appendChild(td_usr);
-    
-      td_usr1.appendChild(span_usr1);
-      td_usr2.appendChild(span_usr2);
-      td_usr3.appendChild(span_usr3);
-
-      tr_usr2.appendChild(td_usr1);
-      tr_usr2.appendChild(td_usr2);
-      tr_usr2.appendChild(td_usr3);
-
-      parent.appendChild(tr_usr);
-      parent.appendChild(tr_usr2);
-     
-      parent.insertBefore(tr_usr, tr_usr2);
-    
-}
 
 </script>
 
