@@ -856,7 +856,7 @@ console.info("../backend/upgrade.php?val=" + val +
             "&date=" + date +
             "&fac=" + fac + 
             "&argument=" + ar);
-if (check() == true){
+if (checkValues() == true){
 
     $.ajax({
            type: "POST", 
