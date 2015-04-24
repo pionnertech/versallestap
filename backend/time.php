@@ -4,7 +4,7 @@ $usr = $_GET['usr'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-$query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS <> STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
+$query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND (STSK_PROGRESS <> STSK_ANCIENT_PRO OR STSK_PROGRESS IS NULL))";
 
 
 $news = mysqli_query($datos, $query);
@@ -39,7 +39,7 @@ $user_out8 = 0;
 
 $outcome = mysqli_fetch_assoc($news);
                                                    
-  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' )"));
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' AND STSK_FAC_CODE= " . $fac . " )"));
 
   if($hoax['HELP'] == 1){
 
@@ -49,11 +49,11 @@ $outcome = mysqli_fetch_assoc($news);
 
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 
-$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_CHARGE_USR ");
+$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
 
 } else {
 
-$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0) GROUP BY STSK_CHARGE_USR ");
+$handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
 
 }
 
@@ -75,11 +75,11 @@ $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (
 
           }
 
-$get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TYPE = " . $outcome['STSK_TYPE'] . "); "));
+$get_main  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TYPE = " . $outcome['STSK_TYPE'] . " AND STSK_FAC_CODE = " . $fac . "); "));
 
 if($outcome["STSK_TYPE"] == 0 || $outcome["STSK_TYPE"] == "0"){
 
-$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID, A.TRF_STSK_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TRF_ID DESC LIMIT 1" );
+$query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TRF_USER,  A.TRF_SUBJECT, A.TRF_DESCRIPT, A.TRF_ING_DATE, A.TRF_STSK_SRC_ID, A.TRF_STSK_ID FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (A.TRF_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TRF_FAC_CODE = " . $fac . ") ORDER BY TRF_ID DESC LIMIT 1" );
 $user      = mysqli_fetch_assoc($query_usr);
   $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TRF_STSK_ID']);
   if($pre_prog){
@@ -98,7 +98,7 @@ $user_out8 = $classText;
 
   if($sp == 'admin'){
 
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
   $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TII_STSK_ID']);
   if($pre_prog){
@@ -119,7 +119,7 @@ $user_out8 = $classText;
   } else {
 
 
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " ORDER BY TII_ID DESC LIMIT 1" );
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
   $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
     $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TII_STSK_ID']);
