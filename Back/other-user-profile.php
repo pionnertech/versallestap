@@ -1554,6 +1554,10 @@ if($("#st-description").val() == "") {
     bootbox.alert("Falta ingresar descripción");
     return false;
 }
+if($(".span2").slider('getValue') <= $(".span2").data("val")){
+    bootbox.alert("Falta Añadir progreso");
+    return false;
+}
  return true;
 }
 
