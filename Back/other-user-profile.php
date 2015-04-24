@@ -790,12 +790,16 @@ $("#upgrade").on('click', function(){
     $("#st-description").val('');
     $(".span2").slider('setValue', 0);
 
+if(checkValues() == true){
+
 if(argument === 1){
 
 $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in');
 } else {
 
 $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+
+}
 }
 
 
