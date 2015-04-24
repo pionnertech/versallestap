@@ -1514,8 +1514,8 @@ gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; v
 }
         
 if(Pe != 0){
- gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB40; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
-    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB40'></i></a>";
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
 }
    
 if(Pv != 0){
