@@ -3288,6 +3288,7 @@ $.ajax({ type:"POST",
 
     }
 
+
         str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
@@ -3496,7 +3497,7 @@ parent.appendChild(tr_av);
 }
 
 function filename(name){
-var regexp = /\//g;
+var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
 
 var match, matches = [];
 
