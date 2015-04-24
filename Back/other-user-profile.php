@@ -237,7 +237,7 @@ if(mysqli_num_rows($quntum) == 0){
 
 
 
-                                    <a href="#" class="btn btn-primary">Crear Requerimiento</a>
+
                                 </div>
                             </div>
                         <div>
@@ -1510,22 +1510,22 @@ gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block
    
 if(Ec != 0){
 gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; vertical-align: top;color:#178FD0; font-size: 1.5em; font-weight: 800;' >" + Ec + "</p>" +
-    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:178FD0'></i></a>";
+    "<i class='fa fa-angle-double-right fa-2x' style='display: inline-block; vertical-align: top;color:#178FD0'></i></a>";
 }
         
 if(Pe != 0){
  gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB40; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
-    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#EDB40'></i></a>";
+    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB40'></i></a>";
 }
    
 if(Pv != 0){
 gitString += "<a class='btn' title='Por Vencer'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pv + "</p>" +
-    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+    "<i class='fa fa-clock-o fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
 }
     
 if(At != 0){
     gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
-    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
+    "<i class='fa fa-exclamation-triangle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
 }
 
 $("div.pull-right").eq(kind).html(gitString);
