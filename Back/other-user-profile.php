@@ -1,4 +1,8 @@
-<?php session_start(); header('Content-Type: text/html; charset=utf-8');
+<?php ini_set('session.gc_maxlifetime', 27000);
+// each client should remember their session id for EXACTLY 1 hour
+session_set_cookie_params(27000);
+session_start(); header('Content-Type: text/html; charset=utf-8');
+
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'back-user'){
 
@@ -6,7 +10,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) ORDER BY STSK_FINISH_DATE GROUP BY EST_DESCRIPT");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) GROUP BY EST_DESCRIPT ORDER BY STSK_FINISH_DATE");
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1 ) GROUP BY STSK_STATE");
  
@@ -39,7 +43,7 @@ $str_query_int = "SELECT STSK_ID, " .
 
 $notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
-$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_START_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")";
+$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_START_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ") GROUP BY EST_DESCRIPT ORDER BY STSK_FINISH_DATE";
 $internal =  mysqli_query($datos, $query_internal);
 
 if(!$notify){
