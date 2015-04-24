@@ -783,6 +783,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 
 $("#upgrade").on('click', function(){
 
+if(checkValues() == true){
     upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner, argument);
     current_iss = 0;
 
@@ -790,7 +791,7 @@ $("#upgrade").on('click', function(){
     $("#st-description").val('');
     $(".span2").slider('setValue', 0);
 
-if(checkValues() == true){
+
 
 if(argument === 1){
 
@@ -860,7 +861,7 @@ console.info("../backend/upgrade.php?val=" + val +
             "&date=" + date +
             "&fac=" + fac + 
             "&argument=" + ar);
-if (checkValues() == true){
+
 
     $.ajax({
            type: "POST", 
@@ -961,7 +962,7 @@ if (checkValues() == true){
                  $("#upload ul").empty();
                 }
             });
-   }
+ 
 }
 
 $("#back").on('click', function(){
