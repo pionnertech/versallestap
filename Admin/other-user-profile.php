@@ -2807,15 +2807,12 @@ $.ajax({ type:"POST",
                 var arp = $(".int-files-for").eq(ind).children("a");
               }
 
-
        //build the files array
     for(y=0; y < arp.length ; y++){
-          
         var hit = filename(arp.eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
     }
-
 
         for (n=0; n < files.length-1 ; n++){
             console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
@@ -3500,8 +3497,8 @@ function filename(name){
 var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
 
 matches = regexp.exec(name);
-console.info("regex matches : " + matches[1]);
-return matches[1];
+console.info("regex matches : " + matches[2]);
+return matches[2];
 
 }
 
