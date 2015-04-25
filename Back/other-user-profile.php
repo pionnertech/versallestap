@@ -1038,7 +1038,7 @@ if(typeof(EventSource) !== "undefined") {
 
        var eventMessage = event.data.split('\n');
 
-    if(eventMessage[2] == "" ){
+    if(eventMessage[0] == "" ){
 
         previuosDataInt = "";
     }
