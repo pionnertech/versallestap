@@ -1503,6 +1503,7 @@ var Ec = $(".Ec-int").length;
 var Pv = $(".Pv-int").length;
 }
 
+
 if(Hc != 0){
 gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block; vertical-align: top;color:#1CC131; font-size: 1.5em; font-weight: 800;' >" + Hc+ "</p>" +
     "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#1CC131'></i></a>" ;
