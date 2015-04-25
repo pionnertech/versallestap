@@ -3495,9 +3495,8 @@ parent.appendChild(tr_av);
 function filename(name){
 
 var regexp = new RegExp("/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g");
-
 matches = regexp.exec(name);
-console.info("regex matches : " + matches[1]);
+console.info("regex matches : " + matches);
 return matches[1];
 
 }
