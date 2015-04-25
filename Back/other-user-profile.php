@@ -1013,11 +1013,8 @@ setInterval(function(){
     $.ajax({ type: "POST", 
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
-                     var msgExt = data.split('|');
-                         if(msgExt[2] == "" ){
-                                previuosData = "";
-                            } 
-                         if (parseInt(msgExt[2]) !== parseInt(previuosData)){
+                     var msgExt = data.split('|'); 
+                         if(msgExt[2] !== previuosData){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
                                         inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
@@ -1038,11 +1035,7 @@ if(typeof(EventSource) !== "undefined") {
 
        var eventMessage = event.data.split('\n');
 
-    if(eventMessage[0] == "" ){
-
-        previuosDataInt = "";
-    }
-        if (eventMessage[2] !== previuosDataInt){
+        if(eventMessage[2] !== previuosDataInt){
 
             previuosDataInt = eventMessage[2];
 
