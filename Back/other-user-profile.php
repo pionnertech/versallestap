@@ -1043,6 +1043,10 @@ if(typeof(EventSource) !== "undefined") {
         previuosDataInt = "";
     }
  
+      console.info(eventMessage[2] + " / " + eventMessage[2].length );
+      console.info(previuosDataInt + " / " + previuosDataInt.length );
+      console.info(previuosDataInt === eventMessage[2]);
+
         if (eventMessage[2] !== previuosDataInt){
 
             previuosDataInt = eventMessage[2];
