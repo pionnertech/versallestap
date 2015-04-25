@@ -1014,11 +1014,11 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
                      var msgExt = data.split('|');
-                         if(msgExt[0] == "" ){
+                         if(msgExt[2] == "" ){
                                 previuosData = "";
                             } 
-                         if (parseInt(msgExt[0]) !== parseInt(previuosData)){
-                                previuosData = msgExt[0];
+                         if (parseInt(msgExt[2]) !== parseInt(previuosData)){
+                                previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
                                         inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
                             }
@@ -1032,7 +1032,7 @@ setInterval(function(){
 
 if(typeof(EventSource) !== "undefined") {
 
-    var sourceInt = new EventSource("../backend/sse-int-back.php?usr=" + mainuser+"&fac=" + fac);
+    var sourceInt = new EventSource("../backend/sse-int-back.php?usr=" + mainuser+ "&fac=" + fac);
 
     sourceInt.onmessage = function(event) {
 
@@ -1042,9 +1042,9 @@ if(typeof(EventSource) !== "undefined") {
 
         previuosDataInt = "";
     }
-        if (parseInt(eventMessage[0]) !== parseInt(previuosDataInt)){
+        if (eventMessage[2] !== previuosDataInt){
 
-            previuosDataInt = eventMessage[0];
+            previuosDataInt = eventMessage[2];
 
                 showAlert(eventMessage[6], "interno");
              
