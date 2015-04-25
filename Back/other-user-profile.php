@@ -1044,6 +1044,7 @@ if(typeof(EventSource) !== "undefined") {
         previuosDataInt = "";
     }
 
+console.info(eventMessage[2] === previuosDataInt);
         if (eventMessage[2] !== previuosDataInt && eventMessage[2] !== ""){
 
             previuosDataInt = eventMessage[2];
