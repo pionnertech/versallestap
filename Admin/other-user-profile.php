@@ -2801,7 +2801,6 @@ $.ajax({ type:"POST",
             console.info(data);
             files = data.split("|");
              
-
               if(kind == 0 ){
                 var arp = $(".file-contents").eq(ind).children("a");
               } else {
@@ -3501,8 +3500,8 @@ function filename(name){
 var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
 
 matches = regexp.exec(name);
-console.info("regex matches : " + matches[1]);
-return matches[1];
+console.info("regex matches : " + matches[0]);
+return matches[0];
 
 }
 
