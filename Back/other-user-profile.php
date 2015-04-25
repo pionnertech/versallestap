@@ -50,7 +50,7 @@ if(!$notify){
      $manu = "";
 } else {
     
-    $manu = $notify['STSK_DESCRIP'];
+    $manu = $notify['STSK_ID'];
 }
 
 if(!$notify_int){
@@ -690,7 +690,7 @@ var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
 var progressbar;
-var previuosData =  <?  printf("\"" . $manu . "\"")  ?>  ;
+var previuosData =  <?  printf( $manu )  ?>  ;
 var previuosDataInt = <?  printf( $manu_int )  ?>  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
@@ -1014,11 +1014,11 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
                      var msgExt = data.split('|');
-                         if(msgExt[2] == "" ){
+                         if(msgExt[0] == "" ){
                                 previuosData = "";
                             } 
-                         if (msgExt[2] !== previuosData && msgExt[2] !== ""){
-                                previuosData = msgExt[2];
+                         if (parseInt(msgExt[0]) !== parseInt(previuosData)){
+                                previuosData = msgExt[0];
                                      showAlert(msgExt[10], "externo");
                                         inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
                             }
@@ -1044,7 +1044,7 @@ if(typeof(EventSource) !== "undefined") {
     }
         if (parseInt(eventMessage[0]) !== parseInt(previuosDataInt)){
 
-            previuosDataInt = eventMessage[2];
+            previuosDataInt = eventMessage[0];
 
                 showAlert(eventMessage[6], "interno");
              
