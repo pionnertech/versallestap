@@ -1032,7 +1032,7 @@ setInterval(function(){
 
 if(typeof(EventSource) !== "undefined") {
 
-    var sourceInt = new EventSource("../backend/sse-int-back.php?usr=" + mainuser);
+    var sourceInt = new EventSource("../backend/sse-int-back.php?usr=" + mainuser+"&fac=" + fac);
 
     sourceInt.onmessage = function(event) {
 
@@ -1043,6 +1043,7 @@ if(typeof(EventSource) !== "undefined") {
 
         previuosDataInt = "";
     }
+    console.info(eventMessage[2] + "  /  " + previuosDataInt );
         if (eventMessage[2] != previuosDataInt && eventMessage[2] !== ""){
 
             previuosDataInt = eventMessage[2];

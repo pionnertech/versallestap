@@ -1,6 +1,7 @@
 <?php
 
 $a = $_GET['usr'];
+$fac = $_GET['fac'];
 
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');
@@ -15,7 +16,7 @@ $str_query = "SELECT STSK_ID, " .
 "STSK_START_DATE AS FECHA_INICIAL,  " .
 "STSK_TYPE " . 
 " FROM SUBTASKS  " . 
-"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) ORDER BY STSK_ID DESC LIMIT 1 ";	
+"WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ") ORDER BY STSK_ID DESC LIMIT 1 ";	
 
 while(true){
 
