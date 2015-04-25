@@ -3494,11 +3494,11 @@ parent.appendChild(tr_av);
 
 function filename(name){
 
-var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
+var regexp = new RegExp("/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g");
 
 matches = regexp.exec(name);
-console.info("regex matches : " + matches[2]);
-return matches[2];
+console.info("regex matches : " + matches[1]);
+return matches[1];
 
 }
 
