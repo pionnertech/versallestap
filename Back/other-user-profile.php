@@ -57,7 +57,7 @@ if(!$notify_int){
      $manu_int = "";
 } else {
     
-    $manu_int = $notify_int['STSK_DESCRIP'];
+    $manu_int = $notify_int['STSK_ID'];
 }
 
 $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
@@ -691,7 +691,7 @@ var current_iss;
 var inner = 0;
 var progressbar;
 var previuosData =  <?  printf("\"" . $manu . "\"")  ?>  ;
-var previuosDataInt = <?  printf("\"" . $manu_int . "\"")  ?>  ;
+var previuosDataInt = <?  printf( $manu_int )  ?>  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
 
@@ -1042,13 +1042,7 @@ if(typeof(EventSource) !== "undefined") {
 
         previuosDataInt = "";
     }
- 
- 
-      console.info(eventMessage[2] + " / " + eventMessage[2].length );
-      console.info(previuosDataInt + " / " + previuosDataInt.length );
-      console.info(previuosDataInt === eventMessage[2]);
-
-        if (eventMessage[2] !== previuosDataInt){
+        if (parseInt(eventMessage[0]) !== parseInt(previuosDataInt)){
 
             previuosDataInt = eventMessage[2];
 
