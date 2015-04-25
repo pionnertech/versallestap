@@ -1037,15 +1037,12 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
- 
-       console.info("tipo de requerimiento : " + eventMessage[5]);
+
     if(eventMessage[2] == "" ){
 
         previuosDataInt = "";
     }
-
-console.info(eventMessage[2] === previuosDataInt);
-
+ console.info(eventMessage[2] !== previuosDataInt + " / "+ eventMessage[2] !== "" );
         if (eventMessage[2] !== previuosDataInt && eventMessage[2] !== ""){
 
             previuosDataInt = eventMessage[2];
