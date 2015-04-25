@@ -2387,6 +2387,7 @@ if(typeof(EventSource) !== "undefined") {
         
         showAlert(eventMessage[0], 'req');
         inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
+        newthum(0);
         previuosData = eventMessage[0];
     } 
 }
@@ -2767,6 +2768,7 @@ document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = pe
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
 insertScheduleTraffic(subject, descript ,date, userId, ind);
+
 }
 
 var parent = document.querySelector("#del-partners tbody");
@@ -2809,8 +2811,7 @@ $.ajax({ type:"POST",
 
        //build the files array
     for(y=0; y < arp.length ; y++){
-          console.info(arp.eq(y).attr("href"));
-
+          
         var hit = filename(arp.eq(y).attr("href"));
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
@@ -2822,7 +2823,6 @@ $.ajax({ type:"POST",
               if( jQuery.inArray( files[n] , cf_array ) !== -1){
                 continue;
               }
-
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
@@ -3497,17 +3497,12 @@ parent.appendChild(tr_av);
 }
 
 function filename(name){
+
 var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
 
-var match, matches = [];
+matches = regexp.exec(name);
 
-while ((match = regexp.exec(name)) != null) {
-  matches.push(match.index);
-}
-
-console.info(matches[2]+1 + " -/- " + name.length);
-
-return name.substring(matches[2]+1, name.length);
+return matches[1];
 
 }
 
