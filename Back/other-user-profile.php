@@ -1014,6 +1014,7 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser,
             success : function(data){
                      var msgExt = data.split('|'); 
+                       console.info(msgExt[2] + " vs. " + previuosData);
                          if(msgExt[2] !== previuosData){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
@@ -1034,7 +1035,7 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-
+    console.info(eventMessage[2] + " vs. " + previuosDataInt);
         if(eventMessage[2] !== previuosDataInt){
 
             previuosDataInt = eventMessage[2];
