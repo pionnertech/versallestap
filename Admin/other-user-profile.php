@@ -3500,8 +3500,8 @@ function filename(name){
 var regexp = /[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g;
 
 matches = regexp.exec(name);
-console.info("regex matches : " + matches[0]);
-return matches[0];
+console.info("regex matches : " + matches[1]);
+return matches[1];
 
 }
 
