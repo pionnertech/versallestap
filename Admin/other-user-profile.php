@@ -2794,17 +2794,17 @@ console.info(file_url);
 $.ajax({ type:"POST",
          url: file_url,
          success : function (data){
-            var cf_array = [];
-
             console.info(data);
             files = data.split("|");
             
               if(kind == 0 ){
-                var arp = $(".file-contents").eq(ind).children("a");
+                var arp = $(".file-contents").eq(ind);
               } else {
-                var arp = $(".int-files-for").eq(ind).children("a");
+                var arp = $(".int-files-for").eq(ind);
               }
 
+                arp.html('');
+/*
        //build the files array
     for(y=0; y < arp.length ; y++){
         var hit = filename(arp.eq(y).attr("href"));
@@ -2817,7 +2817,7 @@ $.ajax({ type:"POST",
               if( jQuery.inArray( files[n] , cf_array ) !== -1){
                 continue;
               }
-
+*/
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
                 case "pdf": 
@@ -2894,7 +2894,6 @@ $.ajax({ type:"POST",
 })
 
 // search the user;
-console.info(userId);
 var search1 = document.querySelectorAll(".u" + userId)[0];
 
     if(!search1){
