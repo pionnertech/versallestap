@@ -26,7 +26,7 @@ $str_query = "SELECT A.STSK_ID, " .
 "C.CTZ_TEL, " .
 "C.CTZ_ADDRESS " .
 " FROM SUBTASKS A LEFT JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) LEFT JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
-"WHERE ( STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 0) ORDER BY STSK_ID DESC LIMIT 1 ";
+"WHERE ( STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") ORDER BY STSK_ID DESC LIMIT 1 ";
 
 
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
@@ -39,7 +39,7 @@ $str_query_int = "SELECT STSK_ID, " .
 "STSK_START_DATE AS FECHA_INICIAL, " . 
 "STSK_TYPE " .
 " FROM SUBTASKS " .  
-"WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1) ORDER BY STSK_ID DESC LIMIT 1";
+"WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") ORDER BY STSK_ID DESC LIMIT 1";
 
 $notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
@@ -1005,7 +1005,7 @@ $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in')
 // externos
 setInterval(function(){
     $.ajax({ type: "POST", 
-            url: "../backend/sse-event-back.php?usr=" + mainuser,
+            url: "../backend/sse-event-back.php?usr=" + mainuser + "&fac=" + fac,
             success : function(data){
                      var msgExt = data.split('|'); 
                        console.info(msgExt[2] + " vs. " + previuosData);
