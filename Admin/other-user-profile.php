@@ -1394,7 +1394,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var ii_ind    = 0;
     var ii_iss    = 0;
     var previan   = "";
-
+      var SpArray = [];
 
 
 
@@ -2382,11 +2382,9 @@ if(typeof(EventSource) !== "undefined") {
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-
        if (eventMessage[0] !== previuosData){
-        
         showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
+          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
         newthum(0);
         previuosData = eventMessage[0];
     } 
@@ -2800,7 +2798,7 @@ $.ajax({ type:"POST",
 
             console.info(data);
             files = data.split("|");
-             
+            
               if(kind == 0 ){
                 var arp = $(".file-contents").eq(ind).children("a");
               } else {
@@ -2813,7 +2811,7 @@ $.ajax({ type:"POST",
              cf_array[y] = hit;
              console.info("archivos encontrados : " +  hit);
     }
-
+              SpArray = cf_array;  
         for (n=0; n < files.length-1 ; n++){
             console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
               if( jQuery.inArray( files[n] , cf_array ) !== -1){
