@@ -690,8 +690,8 @@ var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
 var progressbar;
-var previuosData =  <?  printf( $manu )  ?>  ;
-var previuosDataInt = <?  printf( $manu_int )  ?>  ;
+var previuosData =  "<?  echo $manu   ?>" ;
+var previuosDataInt = "<?  echo $manu_int   ?>"  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
 
@@ -737,12 +737,8 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".int-forward").on('click', function(){
 
    argument = 1;
-
-//change form action to the back to admin internal 
-console.info($("#upload").attr("action"));
+//change form action to the back to admin internal
 $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
-console.info($("#upload").attr("action"));
-
    var subtask_id =  $(this).parent().children('input').eq(0).val();
    current_iss    =  $(this).parent().children('input').eq(1).val();
    inner          =  $(this).parent().index();
