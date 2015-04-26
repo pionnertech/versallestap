@@ -2967,15 +2967,17 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       tr_usr2.appendChild(td_usr1);
       tr_usr2.appendChild(td_usr2);
       tr_usr2.appendChild(td_usr3);
-    
+      
+   
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
       tr_av.className = "task st" + stsk + " chrono";
-      document.querySelectorAll("task .u" + userId)[0].appendChild(tr_av);
+     // document.querySelectorAll("task .u" + userId)[0].appendChild(tr_av);
 
       parent.insertBefore(tr_usr, tr_usr2);
+      parent.appendChild(tr_av);
       insertAfter(tr_av, tr_usr2);
-
+       
       }
     } else {
         tr_av.className = "task st" + stsk + " chrono";
