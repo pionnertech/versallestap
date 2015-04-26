@@ -50,14 +50,14 @@ if(!$notify){
      $manu = "";
 } else {
     
-    $manu = $notify['STSK_ID'];
+    $manu = $notify['STSK_DESCRIP'];
 }
 
 if(!$notify_int){
      $manu_int = "";
 } else {
     
-    $manu_int = $notify_int['STSK_ID'];
+    $manu_int = $notify_int['STSK_DESCRIP'];
 }
 
 $quntum = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1)");
