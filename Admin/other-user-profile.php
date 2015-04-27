@@ -2806,7 +2806,7 @@ $.ajax({ type:"POST",
 
        //build the files array
 
-              SpArray = cf_array;  
+      
         for (n=0; n < files.length-1 ; n++){
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
