@@ -16,6 +16,9 @@ $userId = mysqli_query($datos, "SELECT STSK_CHARGE_USR FROM SUBTASKS WHERE STSK_
 if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_in/";
+    if(!is_dir($rdir)) {
+        mkdir($rdir, 0775, true); 
+     } 
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
      	 if(preg_match_all("/_" . $stsk  . "_/", $files) == 1){
@@ -28,6 +31,9 @@ if($kind == 0 || $kind == "0"){
 } else {
  while( $fila = mysqli_fetch_row($userId) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
+       if(!is_dir($rdir)) {
+        mkdir($rdir, 0775, true); 
+     }
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
      	 if(preg_match_all("/_\[" . $stsk  . "\]_/", $files) == 1){
