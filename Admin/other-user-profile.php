@@ -2829,6 +2829,7 @@ $.ajax({ type:"POST",
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
