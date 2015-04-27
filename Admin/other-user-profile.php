@@ -1393,8 +1393,6 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
-    var previan   = "";
-    var SpArray;
 
 
 
@@ -2804,20 +2802,12 @@ $.ajax({ type:"POST",
               }
 
                 arp.html('');
-/*
+
        //build the files array
-    for(y=0; y < arp.length ; y++){
-        var hit = filename(arp.eq(y).attr("href"));
-             cf_array[y] = hit;
-             console.info("archivos encontrados : " +  hit);
-    }
+
               SpArray = cf_array;  
         for (n=0; n < files.length-1 ; n++){
-            console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
-              if( jQuery.inArray( files[n] , cf_array ) !== -1){
-                continue;
-              }
-*/
+
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
                 case "pdf": 
