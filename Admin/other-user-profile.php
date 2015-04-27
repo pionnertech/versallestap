@@ -1393,6 +1393,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
+    var previan   = "";
 
 
 
