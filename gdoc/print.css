@@ -1,0 +1,11 @@
+/**
+ * Print Styles for Gview plugin
+ */
+
+div.obj_container object,
+div.obj_container_pdf object {
+    display: none;
+}
+div.obj_container_gview iframe {
+    display: none;
+}

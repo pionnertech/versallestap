@@ -1,0 +1,16 @@
+/**
+ * Style sheet for Gview plugin
+ */
+
+div.obj_container,
+div.obj_container_pdf,
+div.obj_container_gview {
+	margin:0;
+	background-color: transparent;
+	/* border: 1px dotted grey; */
+}
+
+div.obj_note {
+	color: grey;
+	font-size: 70%;
+}
