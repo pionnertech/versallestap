@@ -619,8 +619,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
                                     
-                      
-
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
@@ -2802,11 +2800,7 @@ $.ajax({ type:"POST",
                 var arp = $(".int-files-for").eq(ind);
               }
 
-                arp.html('');
-
-       //build the files array
-
-      
+                arp.html('');      
         for (n=0; n < files.length-1 ; n++){
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
@@ -3247,6 +3241,7 @@ $.ajax({ type:"POST",
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
