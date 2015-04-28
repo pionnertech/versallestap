@@ -2559,6 +2559,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
