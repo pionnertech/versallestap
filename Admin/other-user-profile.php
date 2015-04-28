@@ -2962,7 +2962,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
 
       parent.insertBefore(tr_usr, tr_usr2);
       parent.appendChild(tr_av);
-      insertAfter(tr_av, tr_usr2);
+      //insertAfter(tr_av, tr_usr2);
        
       }
     } else {
