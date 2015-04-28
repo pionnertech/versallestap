@@ -12,7 +12,6 @@ $query =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTA
 
 $userId = mysqli_query($datos, "SELECT STSK_CHARGE_USR FROM SUBTASKS WHERE STSK_ISS_ID = " . $query['STSK_ISS_ID']);
 
-
 if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_in/";
