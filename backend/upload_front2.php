@@ -42,7 +42,7 @@ $fname = $_REQUEST['fullnaming'];
 // usleep(5000);
 
 // Settings
-$targetDir = ini_get("/var/www/html/" . $fac ) . DIRECTORY_SEPARATOR . "temporary";
+$targetDir = "/var/www/html/" . $fac . "/temporary/";
 //$targetDir = 'uploads';
 $cleanupTargetDir = true; // Remove old files
 $maxFileAge = 5 * 3600; // Temp file age in second
