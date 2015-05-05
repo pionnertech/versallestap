@@ -480,7 +480,7 @@ var uploaderInt = function(){
 
 uploader =  $("#html5_uploader").pluploadQueue({
 		runtimes : 'html5',
-		url : '../backend/upload_front.php?'  ,
+		url : '../backend/upload_front2.php?'  ,
 		chunk_size : '2mb',
 		unique_names : true,
   filters : {
@@ -498,7 +498,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption("url", '../backend/upload_front.php?fac_id=' + fac + "&rut=" + rut_value + "&fullnaming=" + file.name);
+                up.setOption("url", '../backend/upload_front2.php?fac_id=' + fac + "&rut=" + rut_value + "&fullnaming=" + file.name);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
