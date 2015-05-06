@@ -3464,7 +3464,7 @@ if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
 function insertScheduleTraffic(subject, descript ,date, user, ind){
 
-var parent = document.querySelectorAll(".int-trf-descript")[ind];
+var parent = document.querySelectorAll(".int-trf-descript tbody")[ind];
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
