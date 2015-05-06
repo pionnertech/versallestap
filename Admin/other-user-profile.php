@@ -2970,7 +2970,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
         tr_av.className = "task st" + stsk + " chrono";
         pseudoparent =  document.querySelector("#del-partners tbody");
         pseudoparent.appendChild(tr_av);
-        var element_ref = document.querySelector("#del-partners tbody tr.u" + userId);
+        var element_ref = document.querySelector("#del-partners tbody tr.task.u" + userId);
         insertAfter(tr_av,element_ref);
         console.info("fue por adjuntar al usuario existente");
     }
