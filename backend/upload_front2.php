@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
-$fname = $_REQUEST['fullnaming'];
+$fname = $_REQUEST['name'];
 
 // 5 minutes execution time
 @set_time_limit(5 * 60);
@@ -54,16 +54,8 @@ if (!file_exists($targetDir)) {
 }
 
 // Get a file name
-if (isset($_REQUEST["name"])) {
-	$fileName = $_REQUEST["name"];
-} elseif (!empty($_FILES)) {
-	$fileName = $_FILES["file"]["name"];
-} else {
-	$fileName = uniqid("file_");
-}
 
-
-$filePath = $targetDir  . $_FILES['file']['tmp_name'];
+$filePath = $targetDir . $fname;
 
 // Chunking might be enabled
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
@@ -127,5 +119,5 @@ if (!$chunks || $chunk == $chunks - 1) {
 }
 
 // Return Success JSON-RPC response
-die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $filePath . '}');
 
