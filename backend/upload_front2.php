@@ -117,9 +117,9 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-	rename("{$filePath}.part", $targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
-    copy($targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
-    unlink($targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
+	rename("{$filePath}.part", $targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    copy($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    unlink($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
 
 }
 
