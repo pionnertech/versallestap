@@ -63,7 +63,7 @@ if (isset($_REQUEST["name"])) {
 }
 
 
-$filePath = $targetDir . "/" . $_FILES["file"]["tmp_name"];
+$filePath = $targetDir  . $_FILES['file']['tmp_name'];
 
 // Chunking might be enabled
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
