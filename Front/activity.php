@@ -498,6 +498,8 @@ uploader =  $("#html5_uploader").pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
+                   console.info("file")
+
                 up.setOption("url", '../backend/upload_front2.php?fac_id=' + fac + "&rut=" + rut_value + "&full_name=" + file.name);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
