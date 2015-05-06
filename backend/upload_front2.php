@@ -43,7 +43,7 @@ $fname = $_REQUEST['full_name'];
 // usleep(5000);
 
 // Settings
-$targetDir = "/var/www/html/" . $fac . "/temporary/";
+$targetDir = "/var/www/html/" . $fac . "/plupload/";
 //$targetDir = 'uploads';
 $cleanupTargetDir = true; // Remove old files
 $maxFileAge = 5 * 3600; // Temp file age in second
@@ -118,6 +118,8 @@ if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 	rename("{$filePath}.part", $targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    copy($targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    unlink($targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
 
 }
 
