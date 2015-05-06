@@ -116,9 +116,11 @@ while ($buff = fread($in, 4096)) {
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
-	rename("{$filePath}.part", $targetDir . $readonly);
+	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+	rename("{$filePath}.part", $targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_" . strtolower($extension) );
+
 }
 
 // Return Success JSON-RPC response
-die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $readonly . '}');
+die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $targetDir . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_" . strtolower($extension). '}');
 
