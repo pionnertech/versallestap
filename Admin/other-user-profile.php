@@ -2926,7 +2926,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + userId + "chrono";
+       tr_usr2.className = "task u" + userId + " chrono";
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
@@ -2963,12 +2963,16 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       parent.insertBefore(tr_usr, tr_usr2);
       parent.appendChild(tr_av);
       //insertAfter(tr_av, tr_usr2);
-       
+       console.info("fue por crear el usuario");
       }
     } else {
+
         tr_av.className = "task st" + stsk + " chrono";
         pseudoparent =  document.querySelector("#del-partners tbody");
         pseudoparent.appendChild(tr_av);
+        var element_ref = document.querySelector("#del-partners tbody tr.u" + userId);
+        insertAfter(tr_av,element_ref);
+        console.info("fue por adjuntar al usuario existente");
     }
 
 }
@@ -3015,9 +3019,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     var i2   = document.createElement('i');
     var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
-
-
-
+    
     td1.className = "cell-icon int-lock";
     if(kind == 0){
          tr1.className = "task Ec-int-ii";
