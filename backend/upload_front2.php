@@ -63,7 +63,7 @@ if (isset($_REQUEST["name"])) {
 }
 
 
-$filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
+$filePath = $targetDir . "/" . $_FILES["file"]["tmp_name"];
 
 // Chunking might be enabled
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
@@ -125,6 +125,11 @@ if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
 }
+
+
+
+
+
 
 // Return Success JSON-RPC response
 die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');

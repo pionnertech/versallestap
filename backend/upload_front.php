@@ -115,3 +115,4 @@ if(move_uploaded_file($_FILES['file']['tmp_name'], $targetDir . "/temporary/" . 
 }
 
 // Return Success JSON-RPC response
+?>
