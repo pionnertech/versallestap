@@ -33,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
-$fname = $_REQUEST['name'];
+$readonly = $_REQUEST['full_name'];
+$fname = $_REQUEST['full_name'];
 
 // 5 minutes execution time
 @set_time_limit(5 * 60);
@@ -115,9 +116,9 @@ while ($buff = fread($in, 4096)) {
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
-	rename("{$filePath}.part", $filePath);
+	rename("{$filePath}.part", $targetDir . $readonly);
 }
 
 // Return Success JSON-RPC response
-die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $filePath . '}');
+die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $readonly . '}');
 
