@@ -119,12 +119,12 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	$extension = pathinfo($_FILES['file']['name'][$i], PATHINFO_EXTENSION);
-	rename("{$filePath}.part", $targetDir . basename($_FILES['file']['name'][$i], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
-    copy($targetDir . basename($_FILES['file']['name'][$i], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($_FILES['file']['name'][$i], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
-    unlink($targetDir . basename($_FILES['file']['name'][$i], "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
+	rename("{$filePath}.part", $targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    copy($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
+    unlink($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
   $i = $i + 1;
 }
 
 // Return Success JSON-RPC response
-die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $targetDir . basename($_FILES['file']['name'][$i], "." . strtolower($extension)) . "_" . $rut . "_" . strtolower($extension). '}');
+die('{"jsonrpc" : "2.0", "result" : null, "id" : "id" , "filename" : ' . $targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_" . strtolower($extension). '}');
 
