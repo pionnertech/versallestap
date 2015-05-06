@@ -2398,12 +2398,14 @@ function assoc_collar_int(usr, ind){
 
 var parent = document.querySelectorAll('.coll-int')[ind];
 
-  var string =  '<a href="#" class="hovertip" title="">' +
+  var string =  '<a href="#" class="hovertip" title="" onclick=" hovertip(this)">' +
         '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" >' +
         '<input type="hidden" value="u'  + usr + '>' +
         '</a>';
   var stringAl   = parent.innerHTML + string;   
 parent.innerHTML = stringAl;   
+
+
 
 }
 
@@ -2776,6 +2778,7 @@ var td3_av = document.createElement('td');
 
 if(kind == 1 ){
   tr_av.className = "trf-int-usr ust" + userId;
+  tr_av.style.display =  "none";
 }
 
 td1_av.innerHTML = subject;
@@ -3616,6 +3619,30 @@ return true;
 }
 
 
+
+function hovertip(object){
+
+if($(object).data("val") == 0 || $(object).data("val") == undefined){
+
+    $(".trf-int-usr").css({display :"none"});
+
+   var val = parseInt($(object).children("input").val().replace("u" ,""));
+
+   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+
+     $(object).data("val", 1);
+
+} else {
+
+   var val = parseInt($(object).children("input").val().replace("u" ,""));
+   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
+   $(object).data("val", 0);
+}
+
+
+
+
+}
 
 
 </script>
