@@ -2774,6 +2774,10 @@ var td1_av = document.createElement('td');
 var td2_av = document.createElement('td');
 var td3_av = document.createElement('td');
 
+if(kind == 1 ){
+  tr_av.className = "trf-int-usr ust" + userId;
+}
+
 td1_av.innerHTML = subject;
 td2_av.innerHTML = descript;
 td3_av.innerHTML = date;
@@ -2788,7 +2792,6 @@ var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mai
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
 }
 
-console.info(file_url);
 $.ajax({ type:"POST",
          url: file_url,
          success : function (data){
@@ -2964,7 +2967,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       parent.appendChild(tr_av);
       //insertAfter(tr_av, tr_usr2);
        console.info("fue por crear el usuario");
-      }
+      } 
     } else {
 
         tr_av.className = "task st" + stsk + " chrono";
