@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
-$readonly = $_REQUEST['full_name'];
+$readonly = $_FILES['file']['tmp_name'];
 $fname = $_REQUEST['full_name'];
 
 // 5 minutes execution time
