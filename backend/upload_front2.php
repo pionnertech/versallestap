@@ -118,7 +118,9 @@ while ($buff = fread($in, 4096)) {
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
-	$extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+
+	$extension = pathinfo($readonly, PATHINFO_EXTENSION);
 	rename("{$filePath}.part", $targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
     copy($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension), "/var/www/html/" . $fac . "/temporary/" . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension) );
     unlink($targetDir . basename($readonly, "." . strtolower($extension)) . "_" . $rut . "_." . strtolower($extension));
