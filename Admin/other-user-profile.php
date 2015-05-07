@@ -3174,12 +3174,17 @@ if(kind == 1){
   div5.style.width = "100%";
 
 } else {
+
     div4.className ="ii-files";
 }
 
 a.href = "#";
 a.className = "hovertip";
 a.title = user_name;
+
+a.onclick = function(){
+  hovertip(this);
+}
 
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
 img.className ="group";
@@ -3278,8 +3283,6 @@ $.ajax({ type:"POST",
         break;
 
     }
-
-
         str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
