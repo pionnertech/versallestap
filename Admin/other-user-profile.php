@@ -3179,8 +3179,8 @@ if(kind == 1){
 a.className = "hovertip";
 a.title = user_name;
 
-a.onclick = function(){
-  hovertip($(this));
+a.onclick = function(e){
+  hovertip(e.target);
 }
 
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
