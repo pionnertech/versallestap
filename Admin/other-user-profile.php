@@ -3176,12 +3176,11 @@ if(kind == 1){
     div4.className ="ii-files";
 }
 
-a.href = "#";
 a.className = "hovertip";
 a.title = user_name;
 
 a.onclick = function(){
-  hovertip(a);
+  hovertip($(this));
 }
 
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
