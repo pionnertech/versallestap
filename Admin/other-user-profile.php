@@ -3179,6 +3179,7 @@ amd.className = "hovertip";
 amd.title = user_name;
 
 amd.onclick = function(event){
+  console.info("desde firstTask");
   hovertip(event.target);
 }
 
