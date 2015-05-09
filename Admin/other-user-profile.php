@@ -3311,7 +3311,7 @@ div1.appendChild(div2);
 //amd.appendChild(inp2);// elementos que se le adjuntan
 //amd.appendChild(icom);//
 
-div3.insertAdjacentHTML("beforeend", amd);
+div3.innerHTML = amdString;
 
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
