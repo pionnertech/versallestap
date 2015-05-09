@@ -3148,7 +3148,7 @@ var span   = document.createElement('span');
 var div1   = document.createElement('div');
 var div2   = document.createElement('div');
 var div3   = document.createElement('div');
-var a      = document.createElement('a');
+var amd    = document.createElement('a');
 var img    = document.createElement('img');
 var inp2   = document.createElement('input');
 var div4   = document.createElement('div');
@@ -3165,22 +3165,21 @@ strong.innerHTML  = "Grado de progreso";
 div4.style.width = "100%";
 
 if(kind == 1){
-
-  div4.className ="int-files-for";
   var div5 = document.createElement('div')
-  div5.className = "int-files-to";
-  div5.style.width = "100%";
+      div4.className ="int-files-for";
+      div5.className = "int-files-to";
+      div5.style.width = "100%";
 
 } else {
 
     div4.className ="ii-files";
 }
 
-a.className = "hovertip";
-a.title = user_name;
+amd.className = "hovertip";
+amd.title = user_name;
 
-a.onclick = function(e){
-  hovertip(e.target);
+amd.onclick = function(event){
+  hovertip(event.target);
 }
 
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
@@ -3300,11 +3299,11 @@ p.appendChild(strong);
 p.appendChild(span);
 
 div1.appendChild(div2);
-a.appendChild(img);
-a.appendChild(inp2);
-a.appendChild(icom);
+amd.appendChild(img);
+amd.appendChild(inp2);
+amd.appendChild(icom);
 
-div3.appendChild(a);
+div3.appendChild(amd);
 
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
@@ -3639,10 +3638,6 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
    $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
    $(object).data("val", 0);
 }
-
-
-
-
 }
 
 
