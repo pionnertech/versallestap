@@ -3148,7 +3148,7 @@ var span   = document.createElement('span');
 var div1   = document.createElement('div');
 var div2   = document.createElement('div');
 var div3   = document.createElement('div');
-var amd    = document.createElement('a');
+var amd    = document.createElement('a'); //aqui es donde comienza
 var img    = document.createElement('img');
 var inp2   = document.createElement('input');
 var div4   = document.createElement('div');
@@ -3175,6 +3175,13 @@ if(kind == 1){
     div4.className ="ii-files";
 }
 
+
+var amdString = '<a class="hovertip" title="' + user_name + '" onclick="hovertip(this)">' +
+                   '<img src="../' + fac + '/img/' + user_id + '_opt.jpg" class="group">'
+                   '<i class="fa fa-check finished" style="opacity: 0"></i>' +
+                   '<input type="hidden" value="u' + user_id + '">' +
+                   '</a>';
+/*
 amd.className = "hovertip";
 amd.title = user_name;
 
@@ -3192,7 +3199,7 @@ icom.style.opacity = "0";
 
 inp2.type= "hidden";
 inp2.value = "u" + user_id;
-
+*/
 if(kind == 0){
   var table_string = '<table style="width: 100%" class="int-trf-descript">' +
        '<tbody class="ii-body-table">' +
@@ -3300,11 +3307,11 @@ p.appendChild(strong);
 p.appendChild(span);
 
 div1.appendChild(div2);
-amd.appendChild(img);
-amd.appendChild(inp2);
-amd.appendChild(icom);
+//amd.appendChild(img);// 
+//amd.appendChild(inp2);// elementos que se le adjuntan
+//amd.appendChild(icom);//
 
-div3.appendChild(amd);
+div3.insertAdjacentHTML("beforeend", amd);
 
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
@@ -3312,7 +3319,9 @@ td_i1.appendChild(div3);
 td_i1.appendChild(div4);
 
 if(kind == 1){
-td_i1.appendChild(div5);
+
+    td_i1.appendChild(div5);
+
 } 
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
