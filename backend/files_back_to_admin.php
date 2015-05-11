@@ -29,7 +29,7 @@ if($kind == 0 || $kind == "0"){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";
           } else {
-              if($user !== $fila[0] ){
+              if($user == $fila[0] ){
                 $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";
             } else {
               continue;
@@ -52,7 +52,7 @@ if($kind == 0 || $kind == "0"){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
           } else {
-              if($user !== $fila[0] ){
+              if($user == $fila[0] ){
                 $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
             } else {
               continue;
