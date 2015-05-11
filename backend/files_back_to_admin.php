@@ -21,7 +21,7 @@ if($kind == 0 || $kind == "0"){
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
      	 if(preg_match_all("/_" . $stsk  . "_/", $files) == 1){
-     	 	 $outcome .= "../". $fac . "/" . $fila[0] ."/" . $files . "|";;
+     	 	 $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";;
      	}
     }
   }
@@ -36,7 +36,7 @@ if($kind == 0 || $kind == "0"){
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
      	 if(preg_match_all("/_\[" . $stsk  . "\]_/", $files) == 1){
-     	 	 $outcome .= "../". $fac . "/" . $fila[0] ."/" . $files . "|";
+     	 	 $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
      	 }
      }
    }
