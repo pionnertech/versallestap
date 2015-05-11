@@ -7,7 +7,7 @@ $kind    = $_REQUEST['kind'];
 $current = $_REQUEST['current'];
 $bingo   = false;
 
-if($current === $user){
+if($current !== $user){
   $bingo = true;
 }
 
