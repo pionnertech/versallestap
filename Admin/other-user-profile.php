@@ -2797,8 +2797,10 @@ tr_av.appendChild(td3_av);
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
+console.info("que se está enviando : " + file_url);
 } else {
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
+console.info("que se está enviando : " + file_url);
 }
 
 $.ajax({ type:"POST",
