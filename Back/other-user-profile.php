@@ -1301,7 +1301,7 @@ $.ajax({
     }
     
     a.className = "down";
-    a.setAttribute('download', true);
+    a.setAttribute('download', arrayFiles[i]);
    
     pS = document.createElement('p');
     pS.className = "ifile";
