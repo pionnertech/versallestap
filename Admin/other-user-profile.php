@@ -1646,10 +1646,16 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           success : function(data){
             console.info(data);
             bootbox.alert("progreso ingresado", function(){
+
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
+
+                if( $("#value-progress").val() == 100){
+                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").html('Finalizada');
+                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").css("background-color", "#1CC131");
+                }
             $("#pro-subject").val('');
             $("#pro-descript").val('');
             $("#upload2 ul").empty();
@@ -2789,9 +2795,10 @@ tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
 if(aux_stsk !== 0){
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind;
+  //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
 } else {
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
 }
 
 $.ajax({ type:"POST",
