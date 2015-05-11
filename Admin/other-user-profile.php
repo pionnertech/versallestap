@@ -2776,7 +2776,7 @@ var td3_av = document.createElement('td');
 
 if(kind == 1 ){
   tr_av.className = "trf-int-usr ust" + userId;
-  tr_av.style.display =  "none";
+  tr_av.style.display =  "none !important";
 }
 
 td1_av.innerHTML = subject;
