@@ -1008,7 +1008,7 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser + "&fac=" + fac,
             success : function(data){
                      var msgExt = data.split('|'); 
-                       console.info(msgExt[2] + " vs. " + previuosData);
+                       
                          if(msgExt[2] !== previuosData){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
