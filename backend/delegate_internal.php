@@ -20,7 +20,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //stsk_src_id == 0 means no parent task
 
 //seek the range of both
-$inquiry = mysqli_query($datos, "SELECT USR_RANGE FROM USERS WHERE USR_ID =" . $user . );
+$inquiry = mysqli_query($datos, "SELECT USR_RANGE FROM USERS WHERE USR_ID =" . $user);
 while($val = mysqli_fetch_row($inquiry)){
    $user_range  = $val[0] ;
 }

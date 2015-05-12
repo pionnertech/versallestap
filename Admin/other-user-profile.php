@@ -3333,8 +3333,10 @@ $.ajax({ type:"POST",
         break;
 
     }
-        str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
-            "<p class='ifile-ii' title='" + files[n]+ "'>" +
+    var str_nameFil = filename(files[n]);
+
+        str_file  += "<a href='" + files[n] + "' download>" +
+            "<p class='ifile-ii' title='" + str_nameFil  + "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
                 "<span class='iname '></span>" +
             "</p>" +
