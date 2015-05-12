@@ -12,7 +12,7 @@ $user = $_GET['user'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $val . " WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_ISS_ID = " . $iss_id . ");");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $val . " WHERE (STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $user . " AND  STSK_FAC_CODE = " . $fac . " AND STSK_ISS_ID = " . $iss_id . ");");
 
 
 $handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 1);");
