@@ -3142,7 +3142,7 @@ $("#stsk-user-ii").attr("name", "muser");
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
-var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
+var percent = parseInt($(this).parent().next().children('td').children('div').eq(1).children('p').children('span').html());
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
