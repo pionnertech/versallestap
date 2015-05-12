@@ -52,7 +52,7 @@ section, footer, header, aside{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-#drop{
+#drop, #drop2{
     background-color: #2E3134;
     padding: 40px 50px;
     margin-bottom: 30px;
