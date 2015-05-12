@@ -1654,8 +1654,8 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
 
                 if( $("#value-progress").val() == 100){
-                    $("#income-int-body tr.task").eq(ii_id).children('td').eq(2).children("b").html('Finalizada');
-                    $("#income-int-body tr.task").eq(ii_id).children('td').eq(2).children("b").css("background-color", "#1CC131");
+                    $("#income-int-body tr.task").eq(ii_ind).children('td').eq(2).children("b").html('Finalizada');
+                    $("#income-int-body tr.task").eq(ii_ind).children('td').eq(2).children("b").css("background-color", "#1CC131");
                 }
             $("#pro-subject").val('');
             $("#pro-descript").val('');
