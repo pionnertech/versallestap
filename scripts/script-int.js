@@ -9,6 +9,7 @@ $(function(){
 
     $("#drop2 > a").css({ display: "block"});
     $("#drop2 > input[type=file]").css({ display : "none"});
+    
     // Initialize the jQuery File Upload plugin
     $('#upload2').fileupload({
 
