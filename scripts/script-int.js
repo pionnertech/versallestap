@@ -2,7 +2,7 @@ $(function(){
 
     var ul = $('#upload2 ul');
 
-    $('#drop a').click(function(){
+    $('#drop2 a').click(function(){
         // Simulate a click on the file input button
         // to show the file browser dialog
         $(this).parent().find('input').click();
