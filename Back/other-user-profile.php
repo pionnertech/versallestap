@@ -1150,7 +1150,7 @@ if(kind == 0){
    var user = $("#muser").val();
 
 //obten el porcentaje
-var percent = $(this).parent().parent().next().children('td').children('div').eq(1).children('p').children('span').html();
+var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
 $(".span2").slider('setValue', parseInt(percent));
 $(".span2").data("val", parseInt(percent));
@@ -1183,7 +1183,7 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
-   var percent = $(this).parent().parent().next().children('td').children('p').children('span').html();
+   var percent = $(this).parent().parent().next().children('td').children('div').eq(1).children('p').children('span').html();
    $(".span2").data("val", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
