@@ -16,7 +16,7 @@ $i = 0;
 
  while ($fila = mysqli_fetch_row($ran)) {
   if($i == 1){
-    $sp = $fila[5];
+    $sp = right($fila[5], 5);
     $larx_id = $fila[2];
   }
   $i = $i + 1;
@@ -34,12 +34,16 @@ $user_out6 = 0;
 $user_out7 = 0;
 $user_out8 = 0;
 
+// cambios hechos: 
+// $sp cambiado a right($fila[2], 5) para soportar rango admin-sadmin
+// $hoax  adicion de setencia 'OR' para sadmin
+//incorporacion  de funcion right
 
 } else {
 
 $outcome = mysqli_fetch_assoc($news);
                                                    
-  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  (USR_RANGE <> 'admin' OR USR_RANGE <> 'sadmin') AND STSK_FAC_CODE= " . $fac . " )"));
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] . " AND  (USR_RANGE <> 'admin' OR USR_RANGE <> 'sadmin') AND STSK_FAC_CODE= " . $fac . " )"));
 
   if($hoax['HELP'] == 1){
 

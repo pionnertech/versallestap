@@ -1,43 +1,34 @@
-<?php 
-ini_set('session.gc_maxlifetime', 3600);
+<?php ini_set('session.gc_maxlifetime', 27000);
 // each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params(3600);
+session_set_cookie_params(27000);
 session_start();
 
+//cambios...
+//$query_internal removidos los departamentos para cambiarlos por rango
+
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'sadmin'){
-
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-
-if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))){
-$click_at_once = 1;
-} else {
-$click_at_once = 0;
-}
-
-
-
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin');");
-$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )" );
-$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 0 AND STSK_TYPE = 0) GROUP BY STSK_STATE");
+$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_FINISH_DATE" );
+$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 
-$str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
+$str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin') ORDER BY TRF_USER; ";
 $Query_trf_usr    = mysqli_query($datos, $str_trf_usr);
 $Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin');");
 // internal requirements
 
-$query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR )";
+$query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR )  ORDER BY STSK_FINISH_DATE";
 $internal       = mysqli_query($datos, $query_internal);
 $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
 
-
 if(mysqli_num_rows($quntum) == 0){
+
     $contador = 0;
 } else {
     $cont = mysqli_fetch_assoc($quntum);
@@ -66,6 +57,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eque-e</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
     <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
@@ -185,7 +177,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         </li>
                         <li><a href="#">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg" class="nav-avatar" />
+                            <img src="../images/ejecutivo4.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="../backend/close.php">Logout</a></li>
@@ -207,6 +199,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         <ul class="widget widget-menu unstyled">
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 <? echo $contador; ?></b> </a></li>
+                            <li><a href="other-user-profile.php"><i class="fa fa-navicon"></i>Panel de Control</a></li>
                         </ul>
                         <!--/.widget-nav-->
  
@@ -264,7 +257,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
-                                        <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg" style="width: 100%; height: 100%">
+                                        <img src="../images/ejecutivo4.jpg" style="width: 100%; height: 100%">
                                     </a>
                                     <div class="media-body">
                                         <h4>
@@ -501,21 +494,20 @@ $handler = mysqli_query($datos, $matrix);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $Tuba = "Atrasados";
+                                            $Tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizados";
+                                             $tuba = "Finalizado";
                                           break;
-
 
                                        }
 
                                     ?>
                                       
-<a class="btn Qext" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
-<i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+<a class="btn Qext" title="<? echo $tuba ?>"><p style="display: inline-block; vertical-align: top;color: <? echo $taint ?>; font-size: 1.5em; font-weight: 800;" ><? echo $fi[0] ?></p>
+<i class="fa <? echo $type ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? echo $taint ?>"></i>
 </a> 
 
 <? } ?>
@@ -631,8 +623,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
                                     
-                      
-
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
@@ -781,13 +771,13 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                 </select>
                                     <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
                                     <input type="hidden" value="" id="current-task"> 
-                                    <input type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
                                 </div>
                        
                                 <div id="wrap-D">
-                                    <div id="D-drop" <? if($click_at_once == 1){ ?> ondrop="drop(event)" ondragover="allowDrop(event)" <? } ?>>
+                                    <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
 
                                 </div>
@@ -849,7 +839,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>" <? if($click_at_once == 1){ ?> draggable="true" ondragstart="drag(event)" <? } ?>id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>"  draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"><? printf($archivos2) ?></span>
                                                 </p>
                                                   <? 
@@ -904,12 +894,12 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                           case 3:
                                             $type = "fa-exclamation-triangle";
                                             $taint = "#E70101";
-                                            $tuba = "Atrasados";
+                                            $tuba = "Atrasado";
                                           break;
                                           case 5:
                                              $type = "fa-check-circle";
                                              $taint = "#1CC131";
-                                             $tuba = "Finalizados";
+                                             $tuba = "Finalizado";
                                           break;
 
 
@@ -1331,7 +1321,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
                                 <div class="attach" style="display:inline-block">
                                     <form id="upload2" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
-                                         <div id="drop">
+                                         <div id="drop2">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
@@ -1406,7 +1396,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var ii_ind    = 0;
     var ii_iss    = 0;
     var previan   = "";
-
+    var aa_ii     = "";
 
 
 
@@ -1582,7 +1572,7 @@ $(".forward").on("click", function(){
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = parseInt($(this).index());
+var index_current = parseInt($(this).index(".forward"));
 
 dateTime = AmericanDate($(this).parent().next().children().html());
 
@@ -1627,9 +1617,18 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
 if (mode == "first"){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
+    if(checkIntDel() == true){
+       intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
+    } else {
+      bootbox.alert("Falta el siguiente campo :" + checkIntDel());
+    }
+    
 } else {
+ if(checkIntDel() == true){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
+   } else {
+    bootbox.alert("Falta el siguiente campo :" + checkIntDel());
+   }
 }  
 });
 
@@ -1652,10 +1651,16 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           success : function(data){
             console.info(data);
             bootbox.alert("progreso ingresado", function(){
+
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
+
+                if( $("#value-progress").val() == 100){
+                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").html('Finalizada');
+                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").css("background-color", "#1CC131");
+                }
             $("#pro-subject").val('');
             $("#pro-descript").val('');
             $("#upload2 ul").empty();
@@ -1679,11 +1684,12 @@ $("#delegates").on('change', function(){
 
 $("#del-subtask").on('click', function(){
     //check type.
+if(checkDelExt() == true) {
 
 var _fS = new Date();
 var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-console.info();
+
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
@@ -1702,31 +1708,40 @@ console.info();
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
-       
                 var target =  $("#current-task").val();
-                var ancient = $(".collaborates").eq(target).html();
-               
                 var key_main    = document.querySelectorAll(".collaborates")[target];
 
                 var a_del       = document.createElement('a');
                 a_del.className = "hovertip";
-                a_del.title     = ancient + data;
+                a_del.title     = data;
 
                 var img_del =  document.createElement('img');
+                img_del.className = "group";
                 img_del.src = "../" + fac + "/img/" + $("#stsk-user").val() + "_opt.jpg";
 
                 var inp_del   = document.createElement('input');
                 inp_del.type  = "hidden";
                 inp_del.value = "u" + $("#stsk-user").val();
+              
+                var icom       = document.createElement('i');
+                icom.className = "fa fa-check-circle finished";
+                icom.style.opacity = "0";
 
                 a_del.appendChild(img_del);
+                a_del.appendChild(icom);
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
 
                // nueva delegacia 
                     $("#upload ul").empty();
         }
-    })
+    });
+
+} else {
+
+  bootbox.alert("Falta el siguiente campo :" + checkDelExt());
+}
+
 });
 
 
@@ -1746,7 +1761,6 @@ $(".switcher").on('click', function(){
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
            }
-        
      }
 });
 
@@ -1845,6 +1859,33 @@ $(".golang").on('click', function(){
 
 });
 
+setInterval(function(){
+  thirdPulling();
+}, 5000);
+
+function thirdPulling(){
+     $.ajax({ type: "POST",
+              url:"../backend/incoming-ii.php?usr=" + mainuser,
+              success : function (data){
+                console.info(data);
+                    var alpha = [];
+                    var delta = data.split("\n");
+                        for(i=0; i < delta.length ; i++){
+                            alpha = delta[i].split("|");
+                            if(alpha[1] !== undefined){
+                             if(alpha !== aa_ii){
+                              firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
+                                console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                                   showAlert(alpha[2], "ii" ,  alpha[7]);
+                                   newthum(2);
+                                     alpha[2] = aa_ii;
+                                }
+                            }
+                       }
+                  }
+            });
+   }
+
 $("#sw-int-in-out").on('click', function(){
 
 /*
@@ -1855,7 +1896,7 @@ date('d/m/Y', strtotime($manu['FECHA_FINAL']));
 date('d/m/Y', strtotime($manu['FECHA_INICIAL']));
 $manu['STSK_TYPE'];
 */
-
+/*
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii.php?usr=" + mainuser,
               success : function (data){
@@ -1869,11 +1910,13 @@ $manu['STSK_TYPE'];
                             firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
-                                   thum(1, "ii", "En Curso");
+                                   newthum(2);
                             }
                        }
                   }
             });
+
+*/
 
   if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
@@ -1914,6 +1957,7 @@ $manu['STSK_TYPE'];
      });
 
     }
+    
 });
 
 function unlock(stsk_id, iss_id, object){
@@ -1947,7 +1991,7 @@ $.ajax({
 
 }
 
-<? if($click_at_once == 0) {?>
+
 
 function drop (event) {
     event.preventDefault();
@@ -1969,8 +2013,9 @@ function drag (event) {
 }
 
 
-<? } else {?>
 
+
+/*
 $(".ifile").on('click', function(){
   var chargeuser = $("#delegates :selected").val();
   var insert     = $(this).html();
@@ -1980,8 +2025,7 @@ $(".ifile").on('click', function(){
   moveAtDragDropfiles(data , mainuser, chargeuser);
   $(this).html('');
 })
-
-  <? } ?>
+*/
 
 function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
@@ -2177,7 +2221,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() +
                          }
                      });
 
-                  thum(1, "int", "En Curso");
+                  newthum(1);
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
@@ -2195,14 +2239,16 @@ $(".events").on('click', function(){
   // cambio de fotos
  var ucla =  $(this).parent().prev().prev().children('a').children('input');
 
+$("#events [class*='task u']").css({display : 'none'});
+
    for (i=0; i < ucla.length; i++){
 
-    console.info(ucla.eq(i).val());
-       $("." + ucla.eq(i).val()).css({ display: "table-row"});
+        $("#events [class='task " + ucla.eq(i).val() + "']").css({display : 'table-row'});
+        $("." + ucla.eq(i).val()).css({ display: "table-row"});
+
    }
 
-
-  var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
+var primary = $(this).parent().parent().parent().prev().children('input').eq(0).val();
 
     $("#require").removeClass("active in");
         $("#events").addClass("active in");
@@ -2210,11 +2256,13 @@ $(".events").on('click', function(){
         if($(".st" + primary).length == 0){
           
              $("#events .task").css({display : 'none'});
+
         }
            else {
 
                 $(".htd" + primary).css({display: "table-row"});
                 $(".st" + primary).css({display: "table-row"});
+                $("#events .task u").css({display : 'none'});
                 $("#back-to-main").data("val", primary);
 
            }          
@@ -2275,8 +2323,6 @@ var title = usr_name + " ha marcado un progreso :";
 var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Next-icon.png";
 }
 
-
-
         var instance = new Notification(
             title , {
                 body: message,
@@ -2313,11 +2359,11 @@ setInterval(function(){
 function changeListener(){
             $.ajax({
             type: "POST",
-            url: "../backend/time.php?usr="+mainuser,
+            url: "../backend/time.php?usr="+mainuser+"&fac="+fac,
             success: function(data){
-                console.info(data);
                 packets = data.split("|");
            // si esta el asunto repetido...
+           console.info(data);
                 var nest = 0
              if(previan !== packets[2]){
                //si no está vacio
@@ -2326,33 +2372,39 @@ function changeListener(){
                        //si es de tipo externo ==*.*==
                             if(parseInt(packets[9]) == 0){
                                 indice = $("input.st[value=" + packets[5] + "]").index(".st");
-                                var kilo = "ext";
+                                var kilo =0 ;
                                     } else {
                                 indice = $("input.hi-int-id[value=" + packets[5] + "]").index(".hi-int-id");
-                                var kilo = "int";
+                                var kilo = 1;
                                     }
                              //==*.*==
                              //ponga fin si es final
                             if(packets[7] == "FINALIZADO"){
-                                 thum(1, kilo ,"Finalizado");
+                                 newthum(kilo);
                                } 
                             console.info(packets.length);
-                            if(packets.length == 11){
-                              nest = packets[10];
+                            if(packets.length == 12){
+                              nest = packets[11];
                             }   
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
                           //aqui si es de tipo externo \./\./
-
-                           if(parseInt(packets[8]) >= 99.5){
-                                $(".collaborates").eq(indice).children(".hovetip").children("input[value=u" + packets[5] +"]").prev().css({ opacity : "1"});
-                                $(".finished").eq(indice).css({opacity : "1"});
-                        }
-                        if(parseInt(packets[6]) >= 99){
+                             console.info(indice);
+                             console.info("progreso del usuario : " + packets[10]);
+                        if(parseInt(packets[10]) >= 99.5){
+                            $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev().css({ opacity : "1"});
+                          }
+                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
+                            console.info(indice);
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
-                        }
-                      // \./\./
+                          }
 
+                       if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
+                            console.info(indice);
+                            $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
+                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc"); 
+                          }
+                      // \./\./
                     }
                     previan = packets[2];
                 }
@@ -2363,15 +2415,15 @@ function changeListener(){
 
 
 if(typeof(EventSource) !== "undefined") {
-    var source     = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+
+    var source       = new EventSource("../backend/sse-event.php?usr=" + mainuser);
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-
        if (eventMessage[0] !== previuosData){
-        console.info( eventMessage[0] + "/" + previuosData);
         showAlert(eventMessage[0], 'req');
-        inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2]);
+          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
+        newthum(0);
         previuosData = eventMessage[0];
     } 
 }
@@ -2387,16 +2439,16 @@ function assoc_collar_int(usr, ind){
 
 var parent = document.querySelectorAll('.coll-int')[ind];
 
-  var string =  '<a href="#" class="hovertip" title="">' +
-        '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" >' +
-        '<input type="hidden" value="u'  + usr + '>' +
+  var string =  '<a class="hovertip" title="" onclick="hovertip(this)">' +
+        '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" ><input type="hidden" value="u'  + usr + '">' +
         '</a>';
+
   var stringAl   = parent.innerHTML + string;   
 parent.innerHTML = stringAl;   
 
 }
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -2420,6 +2472,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td3.className = "cell-status";
     td4.className = "cell-title";
     td5.className = "cell-time align-right";
+    td5.innerHTML = date_fin;
 
     btn.className   = "btn btn-small forward";
     btn.innerHTML   = "Delegar";
@@ -2479,7 +2532,9 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
             var stsk_id = $(this).parent().parent().children('input.st').val();
             var iss_ident = $(this).parent().parent().children('input.iss_id').val();
             var subject = $(this).parent().parent().children('td').eq(1).text();
-            var index_current = parseInt($(this).index());
+            var index_current = parseInt($(this).index(".forward"));
+
+            dateTime = AmericanDate(date_fin);
 
             $("#audititle").html("\"" + stsk_descript + "\"");
             $("#current-task").val(index_current);
@@ -2545,6 +2600,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
@@ -2573,9 +2629,9 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
          elem_i[n].className   = "fa fa-file-" + setClass + " fa-2x";
          elem_i[n].style.color = cor;
          
-         elem_s[n]           = document.createElement('span');
-         elem_s[n].className = "iname";
-         elem_s[n].innerHTML = files[n];
+         elem_s[n]             = document.createElement('span');
+         elem_s[n].className   = "iname";
+         elem_s[n].innerHTML   = files[n];
 
          elem[n].appendChild(elem_i[n]);
          elem[n].appendChild(elem_s[n]);
@@ -2595,7 +2651,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     parent.appendChild(tr1);
 // second tr
-
     var tr2  = document.createElement('tr');
     var td6  = document.createElement('td');
 
@@ -2603,6 +2658,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var div2 = document.createElement('div');
     var div3 = document.createElement('div');
     var div4 = document.createElement('div');
+    var divFil = document.createElement('div');
 
     var i1   = document.createElement('i');
     var i2   = document.createElement('i');
@@ -2615,18 +2671,32 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     var p4   = document.createElement('p');
     var p5   = document.createElement('p');
    
-    var str1 = document.createElement('strong');
-    var str2 = document.createElement('strong');
+    var str1  = document.createElement('strong');
+    var str2  = document.createElement('strong');
+    var str10 = document.createElement('strong');
+    var str11 = document.createElement('strong');
 
-    tr2.className = "display-progress";
-    td6.colSpan = "5";
+     str1.style.margin = "0 .5em"; 
+     str2.style.margin = "0 .5em"; 
+    str10.style.margin = "0 .5em"; 
+    str11.style.margin = "0 .5em"; 
+
+     str1.style.fontWeight = "bolder";
+     str2.style.fontWeight = "bolder";
+    str10.style.fontWeight = "bolder";
+    str11.style.fontWeight = "bolder";
+
+    tr2.className  = "display-progress";
+    td6.colSpan    = "5";
     div1.className = "info-content";
 
     p1.className = "iss-descript";
     p2.className = "iss-descript";
 
-    str1.innerHTML = "Ciudadano : " + ctz;
-    str2.innerHTML = "Descripción: " + desc;
+    str1.innerHTML  = "Ciudadano : " + ctz;
+    str2.innerHTML  = "Telefono Ciudadano: " + ctz_tel;
+    str10.innerHTML = "Direcion: " + ctz_address;
+    str11.innerHTML = "Descripción: " + desc;
 
     var str3  = document.createElement('strong');
     var span1 = document.createElement('span');
@@ -2638,11 +2708,44 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     div3.className  = "bar bar-warning";
     div4.className  = "collaborates";
     
-
     i1.className = "fa fa-group spac";
     i2.className = "fa fa-paperclip";
     i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
+    divFil.className = "file-contents";
+
+
+i3.onclick = function (){
+
+ var ucla =  $(this).prev().prev().children('a').children('input');
+
+ $("#events [class*='task u']").css({display : 'none'});
+
+   for (i=0; i < ucla.length; i++){
+
+    console.info(ucla.eq(i).val());
+       $("#events [class='task " + ucla.eq(i).val() + "']").css({display : 'table-row'});
+       $("." + ucla.eq(i).val()).css({ display: "table-row"});
+   }
+
+
+  var primary = $(this).parent().parent().prev().children('input').eq(0).val();
+
+    $("#require").removeClass("active in");
+        $("#events").addClass("active in");
+
+        if($(".st" + primary).length == 0){
+          
+             $("#events .task").css({display : 'none'});
+        }
+           else {
+
+                $(".htd" + primary).css({display: "table-row"});
+                $(".st" + primary).css({display: "table-row"});
+                $("#back-to-main").data("val", primary);
+
+           }          
+}
 
 
     p4.className = "golang";
@@ -2650,6 +2753,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
 
     p1.appendChild(str1);
     p2.appendChild(str2);
+    p2.appendChild(str10);
+    p2.appendChild(str11);
     p3.appendChild(str3);
     p3.appendChild(span1);
     p4.appendChild(i2);
@@ -2664,7 +2769,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
-
+    td6.appendChild(divFil);
     td6.appendChild(div4);
     td6.appendChild(i2);
     td6.appendChild(i3);
@@ -2672,7 +2777,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc){
     td6.appendChild(p5);
     parent.appendChild(tr2);
 }
-
 
 function getFiles(iss_id, usr_id, callback){
 var files;
@@ -2700,17 +2804,22 @@ document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = pe
 
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
+insertScheduleTraffic(subject, descript ,date, userId, ind);
 
 }
 
-insertScheduleTraffic(subject, descript ,date, userId, ind);
-
-var parent = document.querySelector("#del-partners");
+var parent = document.querySelector("#del-partners tbody");
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
 var td2_av = document.createElement('td');
 var td3_av = document.createElement('td');
+
+if(kind == 1 ){
+  tr_av.style.display =  "none !important";
+  tr_av.className = "trf-int-usr ust" + userId;
+
+}
 
 td1_av.innerHTML = subject;
 td2_av.innerHTML = descript;
@@ -2721,34 +2830,28 @@ tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
 if(aux_stsk !== 0){
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind;
+  //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
+console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
 } else {
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
+console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
 }
 
-console.info(file_url);
 $.ajax({ type:"POST",
          url: file_url,
          success : function (data){
-            var cf_array = [];
-
             console.info(data);
             files = data.split("|");
             
-       //build the files array
-    for(y=0; y < $(".int-files-for").eq(ind).children("a").length ; y++){
-
-        var hit = filename($(".int-files-for").eq(ind).children("a").eq(y).attr("href"));
-             cf_array[y] = hit;
-             console.info("archivos encontrados : " +  hit);
-    }
-
-        for (n=0; n < files.length-1 ; n++){
-            console.info("resultado : " + jQuery.inArray( files[n] , cf_array ));
-              if( jQuery.inArray( files[n] , cf_array ) !== -1){
-                continue;
+              if(kind == 0 ){
+                var arp = $(".file-contents").eq(ind);
+              } else {
+                var arp = $(".int-files-for").eq(ind);
               }
 
+                arp.html('');      
+        for (n=0; n < files.length-1 ; n++){
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
@@ -2770,6 +2873,7 @@ $.ajax({ type:"POST",
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
@@ -2798,24 +2902,26 @@ $.ajax({ type:"POST",
 
     }
 
+var fileN = filename(files[n]);
+
        if(parseInt(kind) == 0 && aux_stsk == 0){
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_in/' + files[n] + '" download>' +
-      '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
+      strHtml   =  sshot + '<a href="'+ files[n] + '" download>' +
+      '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
        } else if(aux_stsk !== 0) {
          
                      var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../' + fac + '/' + mainuser + '_alt/' + files[n] + '" download>' +
-      '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
+      strHtml   =  sshot + '<a href="' + files[n] + '" download="' + fileN +'">' +
+      '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
 
        } else{
                        var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
-      strHtml   =  sshot + '<a href="../' + fac + '/' + userId + '_alt/' + files[n] + '" download>' +
-      '<p class="ifile" title="' + files[n] + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
+      strHtml   =  sshot + '<a href="' + files[n] + '" download>' +
+      '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
        }
@@ -2826,12 +2932,11 @@ $.ajax({ type:"POST",
 })
 
 // search the user;
-
 var search1 = document.querySelectorAll(".u" + userId)[0];
 
     if(!search1){
     // create user .. pfffff... no comments.
-
+     if(kind == 0){
 
         tr_usr   = document.createElement('tr');
         td_usr   = document.createElement('td');
@@ -2872,7 +2977,7 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        p_usr.style.verticalAlign = "bottom";
        p_usr.innerHTML = usr_name;
 
-       tr_usr2.className = "task u" + userId + "chrono";
+       tr_usr2.className = "task u" + userId + " chrono";
        span_usr1.className = "bolder";
        span_usr2.className = "bolder";
        span_usr3.className = "bolder";
@@ -2882,8 +2987,6 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
        span_usr1.innerHTML = "Asunto";
        span_usr2.innerHTML = "Descripcion";
        span_usr3.innerHTML = "Fecha Progreso";
-
-
 
   // sorting of appending elements to display;
 
@@ -2901,20 +3004,26 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
       tr_usr2.appendChild(td_usr1);
       tr_usr2.appendChild(td_usr2);
       tr_usr2.appendChild(td_usr3);
-    
-
-
+      
+   
       parent.appendChild(tr_usr);
       parent.appendChild(tr_usr2);
-      parent.appendChild(tr_av);
-
+      tr_av.className = "task st" + stsk + " chrono";
+     // document.querySelectorAll("task .u" + userId)[0].appendChild(tr_av);
 
       parent.insertBefore(tr_usr, tr_usr2);
-      insertAfter(tr_av, tr_usr2);
-      
+      parent.appendChild(tr_av);
+      //insertAfter(tr_av, tr_usr2);
+       console.info("fue por crear el usuario");
+      } 
     } else {
-        pseudoparent =  document.querySelector("#del-partners");
+
+        tr_av.className = "task st" + stsk + " chrono";
+        pseudoparent =  document.querySelector("#del-partners tbody");
         pseudoparent.appendChild(tr_av);
+        var element_ref = document.querySelector("#del-partners tbody tr.task.u" + userId);
+        insertAfter(tr_av,element_ref);
+        console.info("fue por adjuntar al usuario existente");
     }
 
 }
@@ -2961,8 +3070,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     var i2   = document.createElement('i');
     var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
-
-
+    
     td1.className = "cell-icon int-lock";
     if(kind == 0){
          tr1.className = "task Ec-int-ii";
@@ -2977,7 +3085,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
     inp1.type     = "hidden";
 
     if(kind == 1){
-       inp1.className = "hi-int-id"
+       inp1.className = "hi-int-id";
     } else {
        inp1.className = "";
     }
@@ -3087,7 +3195,7 @@ var span   = document.createElement('span');
 var div1   = document.createElement('div');
 var div2   = document.createElement('div');
 var div3   = document.createElement('div');
-var a      = document.createElement('a');
+var amd    = document.createElement('a'); //aqui es donde comienza
 var img    = document.createElement('img');
 var inp2   = document.createElement('input');
 var div4   = document.createElement('div');
@@ -3104,26 +3212,41 @@ strong.innerHTML  = "Grado de progreso";
 div4.style.width = "100%";
 
 if(kind == 1){
-
-  div4.className ="int-files-for";
   var div5 = document.createElement('div')
-  div5.className = "int-files-to";
-  div5.style.width = "100%";
+      div4.className ="int-files-for";
+      div5.className = "int-files-to";
+      div5.style.width = "100%";
 
 } else {
+
     div4.className ="ii-files";
 }
 
-a.href = "#";
-a.className = "hovertip";
-a.title = user_name;
+
+var amdString = '<a class="hovertip" title="' + user_name + '" onclick="hovertip(this)">' +
+                   '<img src="../' + fac + '/img/' + user_id + '_opt.jpg" class="group">' +
+                   '<i class="fa fa-check finished" style="opacity: 0"></i>' +
+                   '<input type="hidden" value="u' + user_id + '">' +
+                   '</a>';
+/*
+amd.className = "hovertip";
+amd.title = user_name;
+
+amd.onclick = function(event){
+  console.info("desde firstTask");
+  hovertip(event.target);
+}
 
 img.src ="../" + fac + "/img/" + user_id + "_opt.jpg";
 img.className ="group";
 
+icom = document.createElement('i');
+icom.className = " fa fa-check finished";
+icom.style.opacity = "0";
+
 inp2.type= "hidden";
 inp2.value = "u" + user_id;
-
+*/
 if(kind == 0){
   var table_string = '<table style="width: 100%" class="int-trf-descript">' +
        '<tbody class="ii-body-table">' +
@@ -3183,6 +3306,7 @@ $.ajax({ type:"POST",
         break;
                 case "xls":
             setClass = "excel-o";
+            cor = "#44D933";
         break;
                 case "zip":
             setClass = "zip-o";
@@ -3210,7 +3334,6 @@ $.ajax({ type:"POST",
         break;
 
     }
-
         str_file  += "<a href='../" + fac + "/" + mainuser + "_alt/" + files[n] +"' download>" +
             "<p class='ifile-ii' title='" + files[n]+ "'>" +
                 "<i class='fa fa-file-" + setClass + " fa-2x' style='color: " + cor + "'></i>" +
@@ -3221,19 +3344,21 @@ $.ajax({ type:"POST",
     
 }
 
-div4.innerHTML = str_file;
+  div4.innerHTML = str_file;
 
 }
 });
+
 
 p.appendChild(strong);
 p.appendChild(span);
 
 div1.appendChild(div2);
-a.appendChild(img);
-a.appendChild(inp2);
+//amd.appendChild(img);// 
+//amd.appendChild(inp2);// elementos que se le adjuntan
+//amd.appendChild(icom);//
 
-div3.appendChild(a);
+div3.innerHTML = amdString;
 
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
@@ -3242,9 +3367,9 @@ td_i1.appendChild(div4);
 
 if(kind == 1){
 
-td_i1.appendChild(div5);
+    td_i1.appendChild(div5);
 
-}
+} 
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
@@ -3302,7 +3427,7 @@ function incoInt(sub, des, date, ind){
 
 
 
-function thum(val, kind, type){
+function thum(kind, type, ancient){
 
 if(kind == "int"){
    var thum = $("a.Qint[title='" + type + "']");
@@ -3318,8 +3443,13 @@ if(kind == "int"){
    var change = "Qext";
 }
 
-var current = parseInt(thum.children('p').html()) + val ;
+if(ancient !== '' && type == 'Finalizado'){
 
+  $("a." + change + "[title='" + ancient + "']").children('p').html(parseInt(   $("a." + change + "[title='" + ancient + "']").children('p').html()) - 1 );
+
+}
+
+var current = parseInt(thum.children('p').html()) + 1 ;
 thum.children('p').html(current);
 
 //si no está 
@@ -3393,7 +3523,7 @@ if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
 function insertScheduleTraffic(subject, descript ,date, user, ind){
 
-var parent = document.querySelectorAll(".int-trf-descript")[ind];
+var parent = document.querySelectorAll(".int-trf-descript tbody")[ind];
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
@@ -3414,15 +3544,10 @@ parent.appendChild(tr_av);
 }
 
 function filename(name){
-var regexp = /\//g;
-var match, matches = [];
-while ((match = regexp.exec(name)) != null) {
-  matches.push(match.index);
-}
 
-console.info(matches[2]+1 + " -/- " + name.length);
-
-return name.substring(matches[2]+1, name.length);
+var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
+matches = regexp.exec(name);
+return matches;
 
 }
 
@@ -3457,6 +3582,120 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
         }
     }
+
+
+
+function newthum(kind){
+
+$("div.pull-right").eq(kind).html('');
+
+var gitString = "";
+
+if(kind == 0){
+var Hc = $(".Hc").length;
+var At = $(".At").length;
+var Pe = $(".Pe").length;
+var Ec = $(".Ec").length;
+var Pv = $(".Pv").length;
+} else if(kind == 1) {
+var Hc = $(".Hc-int").length;
+var At = $(".At-int").length;
+var Pe = $(".Pe-int").length;
+var Ec = $(".Ec-int").length;
+var Pv = $(".Pv-int").length;
+} else {
+var Hc = $(".Hc-int-ii").length;
+var At = $(".At-int-ii").length;
+var Pe = $(".Pe-int-ii").length;
+var Ec = $(".Ec-int-ii").length;
+var Pv = $(".Pv-int-ii").length;
+
+}
+
+if(Hc != 0){
+gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block; vertical-align: top;color:#1CC131; font-size: 1.5em; font-weight: 800;' >" + Hc+ "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#1CC131'></i></a>" ;
+}
+   
+if(Ec != 0){
+gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; vertical-align: top;color:#178FD0; font-size: 1.5em; font-weight: 800;' >" + Ec + "</p>" +
+    "<i class='fa fa-angle-double-right fa-2x' style='display: inline-block; vertical-align: top;color:#178FD0'></i></a>";
+}
+        
+if(Pe != 0){
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+   
+if(Pv != 0){
+gitString += "<a class='btn' title='Por Vencer'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pv + "</p>" +
+    "<i class='fa fa-clock-o fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+    
+if(At != 0){
+    gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
+    "<i class='fa fa-exclamation-triangle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
+}
+
+$("div.pull-right").eq(kind).html(gitString);
+
+}
+function checkDelExt(){
+
+if($("#subject").val() == ""){
+  return "Asunto";
+}
+
+if($("#end-data").val() == ""){
+  return "Fecha Final";
+}
+if($("#st-description").val() == "" ){
+   return "Descripcion";
+}
+
+return true;
+
+}
+
+function checkIntDel(){
+
+if($("#subj-int").val() == ""){
+  return "Asunto";
+}
+if($("#descript-int").val() == ""){
+  return "Descripcion";
+}
+if($("#int-del").val() == ""){
+  return "Usuario";
+}
+if($(".date-int-finish").val() == ""){
+  return "Fecha fecha de termino";
+}
+return true;
+}
+
+
+
+function hovertip(object){
+
+console.info($(object).children('input').val() + " esto era para comp si era vacio");
+if($(object).data("val") == 0 || $(object).data("val") == undefined){
+
+    $(".trf-int-usr").css({display :"none"});
+
+   var val = parseInt($(object).children("input").val().replace("u" ,""));
+
+   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+
+     $(object).data("val", 1);
+
+} else {
+
+   var val = parseInt($(object).children("input").val().replace("u" ,""));
+   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
+   $(object).data("val", 0);
+}
+}
 
 
 </script>
