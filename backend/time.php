@@ -43,7 +43,7 @@ $user_out8 = 0;
 
 $outcome = mysqli_fetch_assoc($news);
                                                    
-  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] . " AND  (USR_RANGE <> 'admin' OR USR_RANGE <> 'sadmin') AND STSK_FAC_CODE= " . $fac . " )"));
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] . " AND B.USR_RANGE NOT LIKE '%admin' AND STSK_FAC_CODE= " . $fac . " )"));
 
   if($hoax['HELP'] == 1){
 
