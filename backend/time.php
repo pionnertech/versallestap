@@ -39,7 +39,7 @@ $user_out8 = 0;
 
 $outcome = mysqli_fetch_assoc($news);
                                                    
-  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  USR_RANGE <> 'admin' AND STSK_FAC_CODE= " . $fac . " )"));
+  $hoax = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CASE WHEN A.STSK_PROGRESS IS NULL THEN 1 ELSE 0 END AS HELP FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_ID = " . $outcome['STSK_ID'] .   " AND  (USR_RANGE <> 'admin' OR USR_RANGE <> 'sadmin') AND STSK_FAC_CODE= " . $fac . " )"));
 
   if($hoax['HELP'] == 1){
 
@@ -101,10 +101,10 @@ $user_out8 = $classText;
   $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
   $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TII_STSK_ID']);
+
   if($pre_prog){
   $pro_user  = mysqli_fetch_assoc($pre_prog);
   }
-  
 
   $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
   $user_out2 = $user['TII_USER'];
@@ -117,7 +117,6 @@ $user_out8 = $classText;
   $user_out9 = $user['TII_STSK_ID'];    
 
   } else {
-
 
   $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
@@ -172,6 +171,10 @@ echo "|" . $user_out9;
 $sum = 0;
 
 //GEt the Last User that grow up his progress
+
+function right($str, $length) {
+     return substr($str, -$length);
+}
 
 ?>
 
