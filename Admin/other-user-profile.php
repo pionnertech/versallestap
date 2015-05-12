@@ -1317,7 +1317,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
                                 <div class="attach" style="display:inline-block">
                                     <form id="upload2" method="post" action="../backend/upload_admin_to_par_up.php" enctype="multipart/form-data">
-                                         <div id="drop">
+                                         <div id="drop2">
                                              Arrastre aqui sus archivos
                                                <a>Buscar</a>
                                                <input type="file" name="upl" multiple />
@@ -3142,7 +3142,7 @@ $("#stsk-user-ii").attr("name", "muser");
 
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
-var percent = parseInt($(this).parent().next().children('td').children('div').eq(1).children('p').children('span').html());
+var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);

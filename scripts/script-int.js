@@ -12,7 +12,7 @@ $(function(){
     $('#upload2').fileupload({
 
         // This element will accept file drag/drop uploading
-        dropZone: $('#drop'),
+        dropZone: $('#drop2'),
 
         // This function is called when a file is added to the queue;
         // either via the browse button, or via drag/drop:
