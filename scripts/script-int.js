@@ -6,6 +6,9 @@ $(function(){
         // to show the file browser dialog
         $(this).parent().find('input').click();
     });
+
+    $("#drop2 > a").css({ display: "block"});
+    $("#drop2 > input[type=file]").css({ display : "none"});
     // Initialize the jQuery File Upload plugin
     $('#upload2').fileupload({
 
