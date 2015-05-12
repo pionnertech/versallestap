@@ -67,7 +67,7 @@ section, footer, header, aside{
     color:#7f858a;
 }
 
-#drop a{
+#drop a, #drop2 a{
     background-color:#007a96;
     padding:12px 26px;
     color:#fff;
@@ -79,11 +79,11 @@ section, footer, header, aside{
     line-height:1;
 }
 
-#drop a:hover{
+#drop a:hover, #drop2 a:hover{
     background-color:#0986a3;
 }
 
-#drop input{
+#drop input, #drop2 a{
     display:none;
 }
 
