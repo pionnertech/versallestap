@@ -3551,7 +3551,7 @@ function filename(name){
 var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
 matches = regexp.exec(name);
 
-return matches.substring(0, matches.length -1) ;
+return matches ;
 }
 
 function doSearch(fr,t) {
