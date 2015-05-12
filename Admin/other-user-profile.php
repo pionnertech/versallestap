@@ -3550,9 +3550,8 @@ function filename(name){
 
 var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
 matches = regexp.exec(name);
-console.info("asi sale de filename() : " +  matches);
-return matches ;
 
+return matches.substring(0, matches.length -1) ;
 }
 
 function doSearch(fr,t) {
