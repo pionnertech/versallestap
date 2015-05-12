@@ -10,7 +10,7 @@ $fac         = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile     = $_GET['keyfile'];
 $number      = 0;
-
+$muser_range = "";
 
 $dir = "/var/www/html/" . $fac . "/" . $user . "_alt/";
 $outcome = $keyfile . "|" . $stsk_src_id . "|";
@@ -18,6 +18,13 @@ $outcome = $keyfile . "|" . $stsk_src_id . "|";
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 //stsk_src_id == 0 means no parent task
+
+//seek the range of both
+$inquiry = mysqli_query($datos, "SELECT USR_RANGE FROM USERS WHERE USR_ID =" . $user . );
+while($val = mysqli_fetch_row($inquiry)){
+   $user_range  = $val[0] ;
+}
+
 
 if ($stsk_src_id == 0){
 
@@ -30,10 +37,14 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "',
 
 } else {
 
+if ($user_range == 'admin'){
 // else just insert children next
-$query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK) ";
-$query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $user . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 0)";
-
+$query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO ,STSK_TYPE, STSK_LOCK) ";
+$query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $user . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 0)";
+   } else {
+    $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK) ";
+    $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $user . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 0)";
+   }
 }
 
 
