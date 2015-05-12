@@ -1654,8 +1654,8 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
 
                 if( $("#value-progress").val() == 100){
-                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").html('Finalizada');
-                    $("#income-int-body tr.task").eq(1).children('td').eq(2).children("b").css("background-color", "#1CC131");
+                    $("#income-int-body tr.task").eq(ii_id).children('td').eq(2).children("b").html('Finalizada');
+                    $("#income-int-body tr.task").eq(ii_id).children('td').eq(2).children("b").css("background-color", "#1CC131");
                 }
             $("#pro-subject").val('');
             $("#pro-descript").val('');
@@ -2180,8 +2180,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
 console.info(mst);
-console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
+console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&user=" + user + 
           "&fechaF=" + date + 
           "&subject=" + sub + 
           "&descript=" + des + 
@@ -3702,4 +3701,7 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
+
+
+//"../backend/delegate_internal.php?muser=118&user=2&fechaF=2015-05-20 10:00:00&subject=manual&descript=manualmente conf&startD=2015-05-10 10:00:00&fac=10000&main_stsk=0&keyfile="
 ?>
