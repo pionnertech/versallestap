@@ -199,7 +199,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         <ul class="widget widget-menu unstyled">
                             <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario<b class="label green pull-right">
                                 <? echo $contador; ?></b> </a></li>
-                            <li><a href="other-user-profile.php"><i class="fa fa-navicon"></i>Panel de Control</a></li>
+                            <li><a href="index.php"><i class="fa fa-navicon"></i>Panel de Control</a></li>
                         </ul>
                         <!--/.widget-nav-->
  
