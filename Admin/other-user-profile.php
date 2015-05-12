@@ -3198,7 +3198,7 @@ var div4   = document.createElement('div');
 
 tr2.style.display = "none";
 if(kind == 1){
-  tr2.className     = "display-pro-int";
+  tr2.className     = "display-progress";
 }
 span.className    = "pull-right small muted";
 div1.className    = "progress tight";
