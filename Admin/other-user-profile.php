@@ -1392,6 +1392,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var ii_ind    = 0;
     var ii_iss    = 0;
     var previan   = "";
+    var aa_ii     = "";
 
 
 
@@ -1854,6 +1855,33 @@ $(".golang").on('click', function(){
 
 });
 
+setInterval(function(){
+  thirdPulling();
+}, 5000);
+
+function thirdPulling(){
+     $.ajax({ type: "POST",
+              url:"../backend/incoming-ii.php?usr=" + mainuser,
+              success : function (data){
+                console.info(data);
+                    var alpha = [];
+                    var delta = data.split("\n");
+                        for(i=0; i < delta.length ; i++){
+                            alpha = delta[i].split("|");
+                            if(alpha[1] !== undefined){
+                             if(alpha !== aa_ii){
+                              firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
+                                console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                                   showAlert(alpha[2], "ii" ,  alpha[7]);
+                                   newthum(2);
+                                     alpha[2] = aa_ii;
+                                }
+                            }
+                       }
+                  }
+            });
+   }
+
 $("#sw-int-in-out").on('click', function(){
 
 /*
@@ -1864,7 +1892,7 @@ date('d/m/Y', strtotime($manu['FECHA_FINAL']));
 date('d/m/Y', strtotime($manu['FECHA_INICIAL']));
 $manu['STSK_TYPE'];
 */
-
+/*
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii.php?usr=" + mainuser,
               success : function (data){
@@ -1883,6 +1911,8 @@ $manu['STSK_TYPE'];
                        }
                   }
             });
+
+*/
 
   if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
@@ -1923,6 +1953,7 @@ $manu['STSK_TYPE'];
      });
 
     }
+    
 });
 
 function unlock(stsk_id, iss_id, object){
