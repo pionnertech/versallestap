@@ -853,7 +853,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                        <div class="tab-pane fade" id="int-require">
                                             <div class="module message">
                                                    <div class="module-head">
-                                                       <h3 style="display:inline-block">Compromisos Internos</h3>
+                                                       <h3 style="display:inline-block">Compromisos Internos salientes</h3>
                                                         <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer; float: right" id="sw-int-in-out"></i>
                                                    </div>
                                             <div class="module-option clearfix">
@@ -1921,6 +1921,7 @@ $manu['STSK_TYPE'];
     $(this).addClass("fa-sign-in");
     $(this).css({ color: "orange"});
     $(this).data("val", 1);
+    $("#int-require h3").html("Compromisos Internos entrantes");
  
      $("#int-table").fadeOut(400, function(){
          $("#income-ing").fadeIn(400, function(){
@@ -1940,6 +1941,7 @@ $manu['STSK_TYPE'];
     $(this).removeClass("fa-sign-in");
     $(this).addClass("fa-sign-out");
     $(this).css({ color: "blue"});
+    $("#int-require h3").html("Compromisos Internos salientes");
     $(this).data("val", 0);
       $("#income-ing").fadeOut(400, function(){
          $("#int-table").fadeIn(400, function(){
@@ -3548,7 +3550,9 @@ function filename(name){
 
 var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
 matches = regexp.exec(name);
-return matches;
+
+var mtVal = matches.replace(",","");
+return mtVal ;
 
 }
 
