@@ -2,6 +2,7 @@
 // each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(27000);
 session_start();
+header("x-frame-options", "ALLOW-FROM http://docs.google.com/gview/");
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
 
