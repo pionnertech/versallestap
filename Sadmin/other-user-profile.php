@@ -2835,7 +2835,7 @@ tr_av.appendChild(td3_av);
 
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser  ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
 } else {
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
@@ -3179,7 +3179,6 @@ $("#stsk-code-ii").val(ii_iss);
 $("#stsk-user-ii").val(user_id);
 $("#stsk-user-ii").attr("name", "muser");
 
-console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
 var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 
