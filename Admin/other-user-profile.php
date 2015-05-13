@@ -1043,7 +1043,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       break;
                                                  }
                                           ?>
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                          <? echo "<script>console.info('el valor pasado es : " . $fint[0] . "')</script>" ?>
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $fint[0] ?>_alt/<? printf($archivos2) ?>" download>
                                                      <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
@@ -1247,7 +1248,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                       break;
                                                  }
                                           ?>
-                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_alt/<? printf($archivos2) ?>" download>
+                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $steam[0] ?>_alt/<? printf($archivos2) ?>" download>
                                                                             <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                                                 <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                                                 <span class="iname"></span>
@@ -1917,11 +1918,11 @@ $manu['STSK_TYPE'];
 
   if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
-    $(this).removeClass("fa-sign-out");
-    $(this).addClass("fa-sign-in");
+    $(this).removeClass("fa-caret-right");
+    $(this).addClass("fa-caret-left");
     $(this).css({ color: "orange"});
     $(this).data("val", 1);
-    $("#int-require h3").html("Compromisos Internos entrantes");
+    $("#int-require h3").html("Compromisos Internos Recibidos");
  
      $("#int-table").fadeOut(400, function(){
          $("#income-ing").fadeIn(400, function(){
@@ -1938,10 +1939,10 @@ $manu['STSK_TYPE'];
 
      } else {
    
-    $(this).removeClass("fa-sign-in");
-    $(this).addClass("fa-sign-out");
+    $(this).removeClass("fa-caret-left");
+    $(this).addClass("fa-caret-right");
     $(this).css({ color: "blue"});
-    $("#int-require h3").html("Compromisos Internos salientes");
+    $("#int-require h3").html("Compromisos Internos Enviados");
     $(this).data("val", 0);
       $("#income-ing").fadeOut(400, function(){
          $("#int-table").fadeIn(400, function(){
