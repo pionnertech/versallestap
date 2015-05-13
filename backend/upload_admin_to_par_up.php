@@ -1,7 +1,7 @@
 <?php
 
-$fac  = $_REQUEST['fac'];
-$code = $_REQUEST['code'];
+$fac   = $_REQUEST['fac'];
+$code  = $_REQUEST['code'];
 $cuser = $_REQUEST['cuser'];
 $muser = $_REQUEST['muser'];
 

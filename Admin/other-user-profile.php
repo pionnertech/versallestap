@@ -1469,7 +1469,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_ind     = $(this).index(".ii-forward");
 
 $("#stsk-code-ii").val(st_ii);
-$("#stsk-user-ii").val(mainuser);
+$("#stsk-user-ii").val(remoteUser);
 $("#stsk-user-ii").attr("name", "muser");
 
 percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
