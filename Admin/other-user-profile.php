@@ -3169,7 +3169,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
 
-$("#stsk-code-ii").val(st_ii);
+$("#stsk-code-ii").val(ii_iss);
 $("#stsk-user-ii").val(user_id);
 $("#stsk-user-ii").attr("name", "muser");
 
