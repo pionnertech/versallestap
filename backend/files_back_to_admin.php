@@ -5,8 +5,12 @@ $user    = $_REQUEST['user'];
 $stsk    = $_REQUEST['stsk'];
 $kind    = $_REQUEST['kind'];
 $current = $_REQUEST['current'];
+$first   = $_REQUEST['first'];
 $bingo   = false;
 
+if($first == 1){
+  exit;
+}
 
 if($current !== $user){
   $bingo = true;
