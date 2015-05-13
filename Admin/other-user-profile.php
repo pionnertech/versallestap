@@ -678,7 +678,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                         <? } 
 
                                     mysqli_data_seek($Query_subtask, 0);
-
+                                    mysqli_data_seek($Query_team, 0);
                                         ?>
                                     </tbody>
                                 </table>
@@ -1014,6 +1014,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                          if(preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) == 1){
 
 
+
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
                                                  switch (true) {
@@ -1248,7 +1249,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                       break;
                                                  }
                                           ?>
-                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $steam[0] ?>_alt/<? printf($archivos2) ?>" download>
+                                            
+                                                                        <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
                                                                             <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                                                 <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                                                 <span class="iname"></span>
