@@ -659,7 +659,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                           ?>
 
-                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" class="embDoc"><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                         <a href="http://docs.google.com/gview?url=http://eque-e.cl/<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" class="embDoc"><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
                                                 </p>
                                                 </a>
@@ -1044,7 +1044,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       break;
                                                  }
                                           ?>
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" class="embDoc">
+  <a href="http://docs.google.com/gview?url=http://eque-e.cl/<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" class="embDoc">
                                                      <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
