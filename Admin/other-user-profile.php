@@ -1003,7 +1003,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                   
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
                               } 
-                           }
+                           
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
                                         
                                           $file_extension = "";
@@ -1051,7 +1051,7 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                   <? }
                                                   } 
                                                 } 
-                                               
+                                               }
                                                 ?>
                                                 </div>
                                                 <table style="width: 100%" class="int-trf-descript">
