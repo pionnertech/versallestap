@@ -2215,7 +2215,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                          } else {
-                            firstTask(result[0], des, result[1] , date, user, 1);
+                            firstTask(result[0], des, result[1] , date, user, 1, 1);
                          }
                      });
 
@@ -3049,7 +3049,7 @@ function touchHandler(event) {
 }
 
 
-function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId){
+function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft){
 
   // si el lo envia
   if (kind == 1){
@@ -3274,10 +3274,10 @@ if(kind == 0){
 td_i1.colSpan = "5";
 
 if(kind == 0){
-   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1&current=" + mainuser ;
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1" ;
    console.info("lo que se manda desde firstTask es url_files : " + url_files);
 } else {
-   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + user_id + "&stsk=" + stsk_ident + "&kind=" + kind;
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + user_id + "&stsk=" + stsk_ident + "&kind=" + kind + "&first=" + Ft;
    console.info("lo que se manda desde firstTask es url_files : " + url_files);
 }
 
