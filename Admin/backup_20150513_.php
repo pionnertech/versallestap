@@ -1003,14 +1003,16 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                   
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
                               } 
-                           }
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
                                         
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
 //echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
                                          if(preg_match_all("/_\[" . $fila5[0] . "\]_/", $archivos2) == 1){
+
+
 
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
@@ -1041,8 +1043,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       break;
                                                  }
                                           ?>
-                                          
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
+                                          <? echo "<script>console.info('el valor pasado es : " . $fint[0] . "')</script>" ?>
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $fint[0] ?>_alt/<? printf($archivos2) ?>" download>
                                                      <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
@@ -1051,7 +1053,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                   <? }
                                                   } 
                                                 } 
-                                               
+                                               }
                                                 ?>
                                                 </div>
                                                 <table style="width: 100%" class="int-trf-descript">
