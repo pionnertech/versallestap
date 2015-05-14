@@ -2833,7 +2833,7 @@ if(aux_stsk !== 0){
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
 } else {
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + userId + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
 }
 
