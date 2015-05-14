@@ -992,10 +992,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                  ?>
                                                                     </div>
 
-                                                <div class="int-files-for">
-                                                    
-                                                </div>
-                                                <div class="int-files-to" style="display: inline-block; vertical-align:top;">
+
+                                                <div class="int-files-for" style="display: inline-block; vertical-align:top;">
                           <?    
                       while($fint = mysqli_fetch_row($part)){
 
@@ -1054,6 +1052,10 @@ echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/
                                                }
                                                 ?>
                                                 </div>
+                                             <div class="int-files-for">
+                                                    
+                                                </div>
+
                                                 <table style="width: 100%" class="int-trf-descript">
                                                     <tbody>
                                                         <tr>
