@@ -67,10 +67,10 @@ $(function(){
             data.context.addClass('error');
         }, 
         submit : function(){
-            $("upgrade").attr("disabled", true);
-        }
+            $("#upgrade").attr("disabled", true);
+        },
         always : function(){
-            $("upgrade").removeAttr("disabled");
+            $("#upgrade").removeAttr("disabled");
         }
 
     });

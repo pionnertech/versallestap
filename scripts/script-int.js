@@ -9,7 +9,7 @@ $(function(){
 
     $("#drop2 > a").css({ display: "block"});
     $("#drop2 > input[type=file]").css({ display : "none"});
-    
+
     // Initialize the jQuery File Upload plugin
     $('#upload2').fileupload({
 
@@ -66,6 +66,11 @@ $(function(){
         fail:function(e, data){
             // Something has gone wrong!
             data.context.addClass('error');
+        },        submit : function(){
+            $("#upgrade").attr("disabled", true);
+        },
+        always : function(){
+            $("#upgrade").removeAttr("disabled");
         }
 
     });
