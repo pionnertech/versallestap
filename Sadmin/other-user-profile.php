@@ -7383,4 +7383,5 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
+
 ?>
