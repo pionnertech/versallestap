@@ -2911,6 +2911,7 @@ var fileN = filename(files[n]);
       '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = strHtml;
+       console.info("indice: " + ind + " aqui es parseInt(kind) == 0 && aux_stsk == 0");
        } else if(aux_stsk !== 0) {
          
                      var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
@@ -2918,6 +2919,7 @@ var fileN = filename(files[n]);
       '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
+       console.info("indice: " + ind + " aqui es si else if(aux_stsk !== 0) ");
 
        } else{
                        var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
@@ -2925,6 +2927,7 @@ var fileN = filename(files[n]);
       '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".int-files-for")[ind].innerHTML = strHtml;
+             console.info("indice: " + ind + " else ");
        }
 
       }
