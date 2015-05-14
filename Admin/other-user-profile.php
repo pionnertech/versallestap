@@ -2215,7 +2215,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                          } else {
-                            firstTask(result[0], des, result[1] , date, user, 1, "", 0);
+                            firstTask(result[0], des, result[1] , date, user, 1, "", 1);
                             
                          }
                      });
