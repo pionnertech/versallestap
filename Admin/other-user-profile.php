@@ -853,8 +853,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                        <div class="tab-pane fade" id="int-require">
                                             <div class="module message">
                                                    <div class="module-head">
-                                                       <h3 style="display:inline-block">Compromisos Internos salientes</h3>
-                                                        <i class="fa fa-sign-in fa-2x" style="color: blue; cursor: pointer; float: right" id="sw-int-in-out"></i>
+                                                       <h3 style="display:inline-block">Compromisos Internos Enviados</h3>
+                                                        <i class="fa fa-caret-right fa-2x" style="color: blue; cursor: pointer; float: right" id="sw-int-in-out"></i>
                                                    </div>
                                             <div class="module-option clearfix">
                                             <button class="btn btn-info del-int" style="float: right">Crear Requerimiento</button>
