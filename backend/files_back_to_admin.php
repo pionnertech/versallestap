@@ -50,11 +50,12 @@ if($kind == 0 || $kind == "0"){
 while( $fila = mysqli_fetch_row($userId) ){
   $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = " . $fila[0] . " AND STSK_FAC_CODE = " . $fac . ")");
   while($kilo = mysqli_fetch_row($usInt) ){
+     echo "iterancia: " . $kilo[0] . "<br />"; 
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
        if(!is_dir($rdir)) {
             mkdir($rdir, 0775, true); 
           }
-   if($hdir = opendiir($rdir)){
+   if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
       echo $files . " [--] " . preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) . "   -- /_\[" . $kilo[0]  . "\]_/  -- " . " <br />";
      	 if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
