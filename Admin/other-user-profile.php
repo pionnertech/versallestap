@@ -1871,7 +1871,7 @@ function thirdPulling(){
                             alpha = delta[i].split("|");
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
-                              firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1]);
+                              firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1], 0);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
@@ -2215,7 +2215,8 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                          } else {
-                            firstTask(result[0], des, result[1] , date, user, 1, 1);
+                            firstTask(result[0], des, result[1] , date, user, 1, "", 0);
+                            
                          }
                      });
 
