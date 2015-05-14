@@ -48,7 +48,7 @@ if($kind == 0 || $kind == "0"){
 } else {
 
 while( $fila = mysqli_fetch_row($userId) ){
-  $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = " . $fila[0] . " AND STSK_FAC_CODE = " . $fac . ")");
+  $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . ")");
   while($kilo = mysqli_fetch_row($usInt) ){
      echo "iterancia: " . $kilo[0] . "<br />"; 
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
