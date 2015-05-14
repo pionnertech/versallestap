@@ -47,14 +47,16 @@ if($kind == 0 || $kind == "0"){
 }
 } else {
 
- while( $fila = mysqli_fetch_row($userId) ){
+while( $fila = mysqli_fetch_row($userId) ){
+  $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = " . $fila[0] . " AND STSK_FAC_CODE = " . $fac . ")");
+  while($kilo = mysqli_fetch_row($usInt) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
        if(!is_dir($rdir)) {
             mkdir($rdir, 0775, true); 
-        }
-   if($hdir = opendir($rdir)){
+          }
+   if($hdir = opendiir($rdir)){
      while (false !== ($files = readdir($hdir))){
-     	 if(preg_match_all("/_\[" . $fila[1]  . "\]_/", $files) == 1){
+     	 if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
           } else {
@@ -62,18 +64,15 @@ if($kind == 0 || $kind == "0"){
                 $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
             } else {
               continue;
-          }
+         }
         }
      	 }
+      }
      }
-   }
    closedir($hdir);
   }
+ }
 }
-
-
 echo $outcome;
-
-
 
 ?>
