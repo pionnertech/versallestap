@@ -3205,9 +3205,7 @@ var inp2   = document.createElement('input');
 var div4   = document.createElement('div');
 
 tr2.style.display = "none";
-if(kind == 1){
-  tr2.className     = "display-progress";
-}
+tr2.className     = "display-progress";
 span.className    = "pull-right small muted";
 div1.className    = "progress tight";
 div2.className    = "bar bar-warning";

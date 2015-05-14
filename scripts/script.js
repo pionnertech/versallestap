@@ -65,6 +65,12 @@ $(function(){
         fail:function(e, data){
             // Something has gone wrong!
             data.context.addClass('error');
+        }, 
+        submit : function(){
+            $("upgrade").attr("disabled", true);
+        }
+        always : function(){
+            $("upgrade").removeAttr("disabled");
         }
 
     });
