@@ -12,7 +12,7 @@ if($first == 1){
   exit;
 }
 
-if($current !== $user){
+if($current !== $user && isset($current)){
   $bingo = true;
 }
 
