@@ -5,11 +5,12 @@ $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-
+//transformacion 1
+//desviar los archivos con su propio task y enviarlos al admin correspondiente
 
 //averiguar el numero de subtask matriz
 $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
-$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FRM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . ")"));
+$main_user = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_MAIN_USR FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . ")"));
 
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
@@ -20,9 +21,9 @@ if(!is_dir($target_dir)){
 	mkdir($target_dir, 0775, true);
 }
 
-if(!is_dir($target_dir . $user . "_in/")){
-	chmod($target_dir . $user . "_in/", 0775);
-	mkdir($target_dir . $user . "_in/", 0775, true);
+if(!is_dir($target_dir . $user . "_alt/")){
+	chmod($target_dir . $user . "_alt/", 0775);
+	mkdir($target_dir . $user . "_alt/", 0775, true);
 }
 
 // A list of permitted file extensions
@@ -37,7 +38,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $user . "_in/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $real_code['STSK_ID'] . "_" . $user . "." . strtolower($extension) )){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . "/" . $main_user . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $code . "]_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		
 	}
