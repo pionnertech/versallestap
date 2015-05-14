@@ -43,8 +43,10 @@ if($kind == 0 || $kind == "0"){
      	}
     }
   }
+  closedir($hdir);
 }
 } else {
+
  while( $fila = mysqli_fetch_row($userId) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
        if(!is_dir($rdir)) {
@@ -65,6 +67,7 @@ if($kind == 0 || $kind == "0"){
      	 }
      }
    }
+   closedir($hdir);
   }
 }
 
