@@ -56,6 +56,7 @@ while( $fila = mysqli_fetch_row($userId) ){
           }
    if($hdir = opendiir($rdir)){
      while (false !== ($files = readdir($hdir))){
+      echo $files . " [--] " . preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) . "   -- /_\[" . $kilo[0]  . "\]_/  -- " . " <br />";
      	 if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
