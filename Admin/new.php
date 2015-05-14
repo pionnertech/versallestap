@@ -1045,7 +1045,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                       break;
                                                  }
                                           ?>
-  <a href="http://docs.google.com/gview?url=http://eque-e.cl/<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>" class="embDoc">
+  <a href="http://docs.google.com/gview?url=http://eque-e.cl/<? printf($_SESSION['TxtFacility']) ?>/<? printf($fint[0]) ?>_alt/<? printf($archivos2) ?>&embedded=true" class="embDoc">
                                                      <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
