@@ -154,7 +154,7 @@ $(document).on('ready', function(){
 array_set = [
 <?
 
-$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( ISS_ID) , B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON ( A.ISS_STATE = B.EST_CODE )  WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY EST_DESCRIPT");
 
 while ( $fila2 = mysqli_fetch_row($pass)) {
 
@@ -187,7 +187,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
 $array_dept = [];
 $i = 0;
 
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY USR_DEPT;");
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.CAT_DESCRIPT FROM CAT B INNER JOIN ISSUES A ON(A.ISS_TYPE = B.CAT_ID) WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY CAT_DESCRIPT;");
 
 while($f1 = mysqli_fetch_row($query_count_departament)){
 $array_dept[$i] = $f1[0];
@@ -199,7 +199,7 @@ $cant_dept = count($array_dept);
 ?>
 
 <?
-$query_dept_global = mysqli_query($datos, "SELECT COUNT(STSK_ID), B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY USR_DEPT;");
+$query_dept_global = mysqli_query($datos, "SELECT COUNT(ISS_ID), B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B ON(A.ISS_TYPE = B.CAT_ID)  WHERE ISS_FAC_CODE = " . $_GET_['TxtFacility'] .  " GROUP BY CAT_DESCRIPT");
 $x = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 ?>
@@ -207,7 +207,7 @@ var array_set_<? printf(str_ireplace(" ", "_" , $filax[1])) ?> = [];
 array_set_<?  printf(str_ireplace(" ", "_" , $filax[1])) ?> = [
 <?
 $handler = "";
-$handler = mysqli_query($datos, "SELECT COUNT( STSK_ID ) , B.USR_DEPT, C.EST_DESCRIPT, C.EST_COLOR FROM SUBTASKS A INNER JOIN USERS B ON ( A.STSK_CHARGE_USR = B.USR_ID ) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (A.STSK_FAC_CODE = " . $_GET['TxtFacility'] . " AND B.USR_DEPT = '" . $array_dept[$x] . "') GROUP BY B.USR_DEPT, A.STSK_STATE ORDER BY B.USR_DEPT" );
+$handler = mysqli_query($datos, "SELECT COUNT( ISS_ID ) , B.CAT_DESCRIPT , C.EST_DESCRIPT, C.EST_COLOR FROM ISSUES A INNER JOIN CAT B ON ( A.ISS_TYPE = B.CAT_ID) INNER JOIN EST C ON(C.EST_CODE = A.ISS_STATE) WHERE (A.ISS_FAC_CODE = " . $_GET['TxtFacility'] . " AND B.CAT_DESCRIPT = '" . $array_dept[$x] . "') GROUP BY B.CAT_DESCRIPT, A.ISS_STATE ORDER BY B.CAT_DESCRIPT");
 
 while($subt = mysqli_fetch_row($handler)){
 ?>
