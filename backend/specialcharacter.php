@@ -193,9 +193,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 $array_dept[$i] = $f1[0];
 $i = $i + 1;
 }
-
 $cant_dept = count($array_dept);
-
 
 ?>
 

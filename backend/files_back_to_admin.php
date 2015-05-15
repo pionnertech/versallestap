@@ -1,5 +1,17 @@
 <?php
+// esto es desde un back
+//backend/files_back_to_admin.php?fac=10000&user=119&stsk=12&kind=1&current=118 cuando aux_stsk == 0
 
+
+//esto es desde un admin o sadmin cuando escucha progreso
+//backend/files_back_to_admin.php?fac=10000&user=1&stsk=16&kind=1&current=1 cuando aux_stsk !== 0
+
+//esto es lo que se manda dee un admin cuando le llega un request de otro admin 
+//backend/files_back_to_admin.php?fac=10000&user=1&stsk=16&kind=1
+
+
+//cuando viende de un progreso de un back hacia admin externo
+//backend/files_back_to_admin.php?fac=10000&user=2&stsk=44&kind=0&current=2 cuando aux_stsk == 0
 $fac     = $_REQUEST['fac'];
 $user    = $_REQUEST['user'];
 $stsk    = $_REQUEST['stsk'];
@@ -26,21 +38,15 @@ if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_in/";
     if(!is_dir($rdir)) {
-        mkdir($rdir, 0775, true); 
-     } 
+        mkdir($rdir, 0775, true);
+     }
+
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
-     	 if(preg_match_all("/_" . $stsk  . "_/", $files) == 1){
-         if($bingo == true){
+//echo "// " . $files . " // " . preg_match_all("/_" . $stsk . "_/", $files) . " [ " . $fila[0] . "]" . "<br />";
+         if(preg_match_all("/_" . $stsk  . "_/", $files) == 1){
             $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";
-          } else {
-              if($user == $fila[0] ){
-                $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";
-            } else {
-              continue;
-          }
         }
-     	}
     }
   }
   closedir($hdir);
@@ -52,11 +58,11 @@ while( $fila = mysqli_fetch_row($userId) ){
   while($kilo = mysqli_fetch_row($usInt) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
        if(!is_dir($rdir)) {
-            mkdir($rdir, 0775, true); 
+            mkdir($rdir, 0775, true);
           }
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
-     	 if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
+         if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
           } else {
@@ -66,7 +72,7 @@ while( $fila = mysqli_fetch_row($userId) ){
               continue;
          }
         }
-     	 }
+         }
       }
      }
    closedir($hdir);
@@ -74,5 +80,4 @@ while( $fila = mysqli_fetch_row($userId) ){
  }
 }
 echo $outcome;
-
 ?>
