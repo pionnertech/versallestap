@@ -196,6 +196,7 @@ $i = $i + 1;
 
 $cant_dept = count($array_dept);
 
+
 ?>
 
 <?
