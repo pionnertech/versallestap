@@ -9,7 +9,7 @@ $qcd = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JO
 //personal
 $data_per = mysqli_query($datos, "SELECT DISTINCT B.USR_NAME , B.USR_DEPT FROM USERS B RIGHT JOIN SUBTASKS A ON(B.STSK_CHARGE_USR = A.USR_ID) WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " ORDER BY USR_DEPT");
 
-$depts = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B  ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY USR_DEPT");
+$depts = mysqli_query($datos, "SELECT DISTINCT B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B  ON(A.ISS_TYPE = B.CAT_ID) WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] ." GROUP BY CAT_DESCRIPT");
 
 $parray = array();
 $darray = array();
