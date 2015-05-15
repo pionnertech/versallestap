@@ -199,7 +199,7 @@ $cant_dept = count($array_dept);
 ?>
 
 <?
-$query_dept_global = mysqli_query($datos, "SELECT COUNT(ISS_ID), B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B ON(A.ISS_TYPE = B.CAT_ID)  WHERE ISS_FAC_CODE = " . $_GET_['TxtFacility'] .  " GROUP BY CAT_DESCRIPT");
+$query_dept_global = mysqli_query($datos, "SELECT COUNT(ISS_ID), B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B ON(A.ISS_TYPE = B.CAT_ID)  WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] .  " GROUP BY CAT_DESCRIPT");
 $x = 0;
 while($filax = mysqli_fetch_row($query_dept_global)){
 ?>
