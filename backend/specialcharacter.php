@@ -101,7 +101,7 @@ while($extra = mysqli_fetch_row($depts)){
                                     </div>
 <?
 $i = 0;
-$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.USR_DEPT FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID)  WHERE STSK_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY USR_DEPT;");
+$query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B ON(A.ISS_TYPE = B.CAT_ID)  WHERE ISS_FAC_CODE= " . $_GET['TxtFacility'] . " GROUP BY CAT_DESCRIPT;");
 while($f1 = mysqli_fetch_row($query_count_departament)){
 ?>
                                    <div class="chart inline-legend grid linerchart" align="center" style="width:30% !important;" >
