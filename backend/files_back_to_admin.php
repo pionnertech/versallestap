@@ -40,11 +40,10 @@ if($kind == 0 || $kind == "0"){
     if(!is_dir($rdir)) {
         mkdir($rdir, 0775, true);
      }
-
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
 //echo "// " . $files . " // " . preg_match_all("/_" . $stsk . "_/", $files) . " [ " . $fila[0] . "]" . "<br />";
-         if(preg_match_all("/_" . $stsk  . "_/", $files) == 1){
+         if(preg_match_all("/_" . $query['STSK_ISS_ID']  . "_/", $files) == 1){
             $outcome .= "../". $fac . "/" . $fila[0] ."_in/" . $files . "|";
         }
     }
