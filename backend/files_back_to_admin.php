@@ -32,7 +32,7 @@ $datos = $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000")
 
 $query =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $stsk ));
 
-$userId = mysqli_query($datos, "SELECT STSK_CHARGE_USR, STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . ");");
+$userId = mysqli_query($datos, "SELECT STSK_CHARGE_USR, STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= " . $kind .");");
 
 if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
