@@ -17,9 +17,9 @@ $graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.ISS_ID ),  ROUND((C
                "RIGHT JOIN EST B ON ( A.ISS_STATE = B.EST_CODE ) " .
                "CROSS JOIN ( " .
                "SELECT COUNT(ISS_ID ) AS total " .
-               "FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . 
+               "FROM ISSUES " .
                " )  x " .
-               "GROUP BY 1 ";
+               " WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY 1 ";
 
 $graph = mysqli_query($datos, $graph_query);
 
