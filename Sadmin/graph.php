@@ -46,9 +46,10 @@ $lastone= "";
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="../css/theme.css" rel="stylesheet">
         <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-            rel='stylesheet'>
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'rel='stylesheet'>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../css/revealing.css">
 
             <style type="text/css">
 
@@ -64,7 +65,7 @@ $lastone= "";
 
         }
         .widget-usage p{
-            line-height: .2;
+            line-height: .2 !important;
         }
 
         </style>
@@ -229,6 +230,7 @@ $lastone= "";
                                             <img src="">
                                         </div>
                                     </div>
+                                    <div id="nam" style="display: inline-block; vertical-align: botom"></div>
                                 </div>
                             </div>
                         </div>
@@ -258,6 +260,7 @@ $lastone= "";
         <script src="../scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
         <script src="../scripts/jlinq.js" type="text/javascript"></script>
         <script src="../scripts/jlinq.jquery.js" type="text/javascript"></script>
+        <script src="../scripts/jquery.revealing.js"></script>
         <script type="text/javascript">
 
 var fac = <? printf($_SESSION['TxtFacility']) ?>;
@@ -267,6 +270,8 @@ var matrix;
 var datax;
 
 $(document).on('ready', function(){
+
+     
 
 array_set = [
 <?
@@ -322,9 +327,11 @@ $("#selection, #personal").on("change" , function (){
         var conte = $(this).children("option:selected").text()
        $("#personal option." + conte.replace(/\ /g, "_")).attr("selected", true);
        }
+       
+
 
 var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text.replace(/\ /g ,"_").toString();
-var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
+var name       = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
 
 $("#personal option").css({ display: "none" });
 $("#personal option." + depto_eval).css({ display: "block" });
@@ -335,6 +342,19 @@ var ind1 = $("#selection").val() - 1;
 var mode = 0;
 var usrId = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].id;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
+
+$('img.class').fadeOut(300, function(){
+      $(this).attr('src','../' + fac + "/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
+         if (this.complete) $(this).fadeIn(300);
+      });
+   });
+
+       $('#nam').revealing('reset');
+       setTimeout(function() { 
+          $('#nam').html(name);
+             $('#nam').revealing('show') }
+        , 100);
+
 setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
 
 });
@@ -447,6 +467,8 @@ $(".wrap-progress li div.bar").css({width : "0%"})
         }
     }
 }
+
+
 
 </script>
     </body>
