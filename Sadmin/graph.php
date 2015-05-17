@@ -230,7 +230,7 @@ $lastone= "";
                                             <img src="" class="user-pic">
                                         </div>
                                     </div>
-                                    <div class="ram nam" style="display: inline-block; vertical-align: botom"></div>
+                                    <blockquote class="ram nam" style="display: inline-block; vertical-align: botom"></blockquote>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +349,7 @@ $('img.user-pic').fadeOut(500, function(){
       });
    });
 
-$('.nam').revealing('reset');
+//$('.nam').revealing('reset');
        
        setTimeout(function() { 
           $('.nam').html(name.replace(/\_/g, " "));
