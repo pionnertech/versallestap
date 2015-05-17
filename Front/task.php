@@ -72,7 +72,12 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 	margin:.4em;
 }
 
-
+.requirement{
+	display:none;
+}
+.display-progress{
+	display:none;
+}
 
 
 	</style>
@@ -474,9 +479,9 @@ $('.datetimepicker').datetimepicker({
 
 
 
-$(".requirement").fadeOut(1);
-$(".display-progress").fadeOut(1);
+/*
 
+*/
 $(".due").on('click', function (){
    $(this).parent().parent().next('tr').fadeToggle('slow');
    iden_iss = $(this).parent().parent().children('input').eq(0).val();
