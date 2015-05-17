@@ -408,16 +408,36 @@ function getValueToBars(usr_id, dept){
 function injectBarVars(idata){
 
   var narray = idata.split("/");
-  var listA = [0,2,4,6,8];
-  var listB = [1,3,5,7,9];
+  var listA = [0,3,6,9,12];
+  var listB = [1,4,7,10,13];
+  var listC = [2,5,8,11,14];
 
-  for (i=0; i < (narray.length)/2 ; i++){
-   
-    document.querySelectorAll(".wrap-progress li p span")[i].innerHTML = narray[listA[i]];
-    document.querySelectorAll(".wrap-progress li div.bar")[i].style.width = narray[listB[i]] + "%";
-   
-  }
 
+  for (i=0; i < (narray.length)/3 ; i++){
+   
+       switch(parseInt(narray[listC[i]]){
+                    case 1:
+                        document.querySelectorAll(".wrap-progress li p span")[0].innerHTML = narray[listA[i]];
+                        document.querySelectorAll(".wrap-progress li div.bar")[0].style.width = narray[listB[i]] + "%";
+          break;
+                    case 2:
+                        document.querySelectorAll(".wrap-progress li p span")[1].innerHTML = narray[listA[i]];
+                        document.querySelectorAll(".wrap-progress li div.bar")[1].style.width = narray[listB[i]] + "%";
+          break;
+                    case 3:
+                        document.querySelectorAll(".wrap-progress li p span")[2].innerHTML = narray[listA[i]];
+                        document.querySelectorAll(".wrap-progress li div.bar")[2].style.width = narray[listB[i]] + "%";
+          break;
+                    case 4:
+                        document.querySelectorAll(".wrap-progress li p span")[3].innerHTML = narray[listA[i]];
+                        document.querySelectorAll(".wrap-progress li div.bar")[3].style.width = narray[listB[i]] + "%";
+          break;
+                    case 5:
+                        document.querySelectorAll(".wrap-progress li p span")[4].innerHTML = narray[listA[i]];
+                        document.querySelectorAll(".wrap-progress li div.bar")[4].style.width = narray[listB[i]] + "%";
+          break;
+        }
+    }
 }
 
 </script>
