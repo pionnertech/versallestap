@@ -184,7 +184,7 @@ $lastone= "";
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Pendientes</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
+                                                    <strong>Compromisos Pendientes</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-warning" style="width:;"></div>
@@ -192,7 +192,7 @@ $lastone= "";
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias En Curso</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
+                                                    <strong>Compromisos En Curso</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar" style="width:;"></div>
@@ -200,7 +200,7 @@ $lastone= "";
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Atrasadas</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
+                                                    <strong>Compromisos Atrasados</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-danger" style="width:;"></div>
@@ -208,7 +208,7 @@ $lastone= "";
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Por vencer</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
+                                                    <strong>Compromisos Por vencer</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-warning" style="width:;"></div>
@@ -216,7 +216,7 @@ $lastone= "";
                                             </li>
                                             <li>
                                                 <p>
-                                                    <strong>Audiencias Finalizadas</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
+                                                    <strong>Compromisos Finalizados</strong><span class="pull-right small muted" style="font-weight: bolder;"></span>
                                                 </p>
                                                 <div class="progress tight">
                                                     <div class="bar bar-success" style="width:;"></div>
@@ -230,7 +230,7 @@ $lastone= "";
                                             <img src="" class="user-pic">
                                         </div>
                                     </div>
-                                    <blockquote class="ram nam" style="display: inline-block; vertical-align: botom"></blockquote>
+                                    <blockquote class="ram nam" style="display: inline-block; vertical-align: top"></blockquote>
                                 </div>
                             </div>
                         </div>

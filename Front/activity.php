@@ -136,10 +136,11 @@ cursor:pointer;
 div.dropdown-menu,  ul.dropdown-menu{
 	max-width: 5em;
 }
+
+select {
+ width: 500px !important;
+}
 	</style>
-
-
-
 
 
 </head>
@@ -370,8 +371,6 @@ div.dropdown-menu,  ul.dropdown-menu{
                                           }
                                         ?>
 								</select>
-                     <i class="icon-warning-sign icon-2x" id="urgent" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
-                     <i class="icon-envelope-alt icon-2x" id="sendEmail" style="display: inline-block; vertical-align: top; margin: 5px; cursor: pointer" ></i>
                                          <input type="text" placeholder="Fecha Máxima Respuesta" value="" id="dtp2" class="datetimepicker" style="vertical-align:top; display: inline-block; position: relative; float: right;"/>
                                 	</div>
                                 	<div style="width: 100%;text-align: center;"><button class="btn-primary" id="SendRequest">Ingresar compromiso delegado</button></div>
