@@ -66,7 +66,7 @@ $(function(){
         fail:function(e, data){
             // Something has gone wrong!
             data.context.addClass('error');
-        },        submit : function(){
+        },        send : function(){
             $("#upgrade").attr("disabled", true);
         },
         always : function(){
