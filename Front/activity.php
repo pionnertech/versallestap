@@ -608,6 +608,20 @@ uploader =  $("#html5_uploader").pluploadQueue({
 };
 
 
+$("#delegate").on('click', function(){
+
+	if($(this).data("val") == 0 || $(this).data("val") == undefined){
+        $("#SendRequest-free").attr("disabled", true);
+        $("#SendRequest").removeAttr("disabled")
+          $(this).data("val", 1);
+	} else {
+		
+      $("#SendRequest").attr("disabled", true);
+      $("#SendRequest-free").removeAttr("disabled");
+      $(this).data("val", 0);
+	}
+})
+
 $(window).scroll(function(){
 
 $(".dropdown-menu").removeClass("show");
