@@ -474,8 +474,8 @@ $('.datetimepicker').datetimepicker({
 
 
 
-$(".requirement").fadeOut('fast');
-$(".display-progress").fadeOut('fast');
+$(".requirement").fadeOut(1);
+$(".display-progress").fadeOut(1);
 
 $(".due").on('click', function (){
    $(this).parent().parent().next('tr').fadeToggle('slow');
@@ -510,7 +510,7 @@ $(".enviar").on('click', function () {
     var usr_id = $(this).parent().children('select').val();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
   
-
+   
    delegate(usr_id, msg, fechaF, iss_id);
    switchTempToAsigned(iss_id, usr_id);
 
