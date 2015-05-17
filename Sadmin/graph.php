@@ -345,8 +345,9 @@ var usrId = document.querySelector("#personal").options[document.querySelectorAl
 
 $('img.user-pic').fadeOut(500, function(){
 
-$.get(url)
-    .done(function() { 
+var con = $.get('../' + fac + "/img/" + usrId + "_opt.jpg");
+
+    con.done(function() { 
     if(name !== "General"){
         var cUrl ='../' + fac + "/img/" + usrId + "_opt.jpg";
     } else if(name == "General"){
@@ -356,12 +357,14 @@ $.get(url)
     $(this).attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
-    }).fail(function() { 
+    })
+    con.fail(function() { 
         var cUrl = '../' + fac + "/img/user.jpg";
     $(this).attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
     })
+
    });
 
 //$('.nam').revealing('reset');
