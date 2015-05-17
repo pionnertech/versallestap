@@ -386,7 +386,7 @@ $.plot($("#dynamics"), matriz, {
         clickable: true
     }
 });
-console.info('getValueToBars(' + usrId + "," + depto))
+console.info('getValueToBars(' + usrId + "," + depto +")");
 getValueToBars(usrId, depto);
 
 }
