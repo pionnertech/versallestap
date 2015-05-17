@@ -411,11 +411,11 @@ function injectBarVars(idata){
   var listA = [0,3,6,9,12];
   var listB = [1,4,7,10,13];
   var listC = [2,5,8,11,14];
-
+$(".wrap-progress li div.bar").css({width : "0%"})
 
   for (i=0; i < (narray.length)/3 ; i++){
    
-       switch(parseInt(narray[listC[i]]){
+       switch(parseInt(narray[listC[i]])){
                     case 1:
                         document.querySelectorAll(".wrap-progress li p span")[0].innerHTML = narray[listA[i]];
                         document.querySelectorAll(".wrap-progress li div.bar")[0].style.width = narray[listB[i]] + "%";
