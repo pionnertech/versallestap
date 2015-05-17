@@ -139,7 +139,7 @@ $lastone= "";
                                         <?  $i = 1;
                                                while($fil22 = mysqli_fetch_row($qcd)) {
                                         ?>
-                                            <option value="<? printf($i) ?>"><? printf(str_replace(" ", "_", $fil22[0]))?></option>
+                                            <option value="<? printf($i) ?>"><? printf( $fil22[0]) ?></option>
 
                                         <? $i = $i + 1; } ?>
 
@@ -169,7 +169,7 @@ $lastone= "";
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf($darray[$y]) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf( $darray[$y]) ?>" value="<? printf($z) ?>"><? printf( $parray[$y]) ?></option>
                                        <?
                                             }
 
@@ -310,8 +310,9 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
-var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text.replace(" ", "_");
-var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(" ", "_");
+var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text..replace(/\ /g ,"_").toString();
+var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text..replace(/\ /g ,"_").toString();
+
 $("#personal option").css({ display: "none" });
 $("#personal option." + depto_eval).css({ display: "block" });
 $("#personal option#general").css({ display: "block" });
