@@ -225,7 +225,7 @@ $lastone= "";
                                          </ul>
                                     </div>
                                     </div>
-                                    <div class="media">
+                                    <div class="media" style="display: inline-block;">
                                         <div class="media-avatar">
                                             <img src="" class="user-pic">
                                         </div>
