@@ -20,7 +20,7 @@ $iarray = array();
 $i = 0;
 
 while($extra = mysqli_fetch_row($depts)){
-    $handup = mysqli_query($datos, "SELECT USR_NAME, USR_ID FROM USERS WHERE (USR_DEPT = '" . $extra[0] . "' AND USR_FACILITY = " . $fac . ");");
+    $handup = mysqli_query($datos, "SELECT USR_NAME, USR_ID FROM USERS WHERE (USR_DEPT = '" . $extra[0] . "' AND USR_FACILITY = " . $_SESSION['TxtFacility'] . ");");
         while( $sub = mysqli_fetch_row($handup)){
                $parray[$i] = $sub[0];
                $darray[$i] = $extra[0];
@@ -158,7 +158,7 @@ $lastone= "";
 
                                                         if($darray[$y] != $darray[$y-1]  ){  
                                  ?>
-                                    <option id="General" class="<? printf(str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
+                                    <option id="General" class="<? printf($darray[$y-1]) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
@@ -169,12 +169,12 @@ $lastone= "";
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf(str_replace(" ", "_", $darray[$y])) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf($darray[$y]) ?>" value="<? printf($z) ?>"><? printf(str_replace(" ", "_", $parray[$y]))?></option>
                                        <?
                                             }
 
                                         ?>
-                                        <option id="General" class="<? printf(str_replace(" ", "_", $darray[$latest])) ?>" value="<? printf($latest+1) ?>">General</option>
+                                        <option id="General" class="<? printf($darray[$latest]) ?>" value="<? printf($latest+1) ?>">General</option>
                                         </select>
                                     <div class="wrap-progress" >
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
@@ -310,8 +310,8 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
-var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text;
-var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text;
+var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text.replace(" ", "_");
+var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(" ", "_");
 $("#personal option").css({ display: "none" });
 $("#personal option." + depto_eval).css({ display: "block" });
 $("#personal option#general").css({ display: "block" });
