@@ -63,6 +63,9 @@ $lastone= "";
             width: auto;
 
         }
+        .widget-usage p{
+            line-height: .2;
+        }
 
         </style>
     </head>
@@ -220,6 +223,11 @@ $lastone= "";
                                             </li>
                                          </ul>
                                     </div>
+                                    </div>
+                                    <div class="media">
+                                        <div class="media-avatar">
+                                            <img src="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
