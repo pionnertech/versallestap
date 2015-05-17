@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 //averiguar el numero de subtask matriz
 $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
-$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FRM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . ")"));
+$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_TYPE = 0)"));
 
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);

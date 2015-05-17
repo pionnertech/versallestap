@@ -2218,7 +2218,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
                             assoc_collar_int(user, ind);
                          } else {
                             firstTask(result[0], des, result[1] , date, user, 1, "", 1);
-                            
+                           // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
                          }
                      });
 
@@ -2365,6 +2365,7 @@ function changeListener(){
                 packets = data.split("|");
            // si esta el asunto repetido...
            console.info(data);
+           //Javier Cisterna Valdes|119|aunt|otro progreso|13/05/2015|13|70||70|1|80
                 var nest = 0
              if(previan !== packets[2]){
                //si no está vacio
@@ -2659,6 +2660,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var div2 = document.createElement('div');
     var div3 = document.createElement('div');
     var div4 = document.createElement('div');
+    var div5 = document.createElement('div');
+
     var divFil = document.createElement('div');
 
     var i1   = document.createElement('i');
@@ -2676,6 +2679,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var str2  = document.createElement('strong');
     var str10 = document.createElement('strong');
     var str11 = document.createElement('strong');
+
 
      str1.style.margin = "0 .5em"; 
      str2.style.margin = "0 .5em"; 
@@ -2708,6 +2712,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     div2.className  = "progress tight";
     div3.className  = "bar bar-warning";
     div4.className  = "collaborates";
+    div5.className  = "toFront";
     
     i1.className = "fa fa-group spac";
     i2.className = "fa fa-paperclip";
@@ -2748,6 +2753,20 @@ i3.onclick = function (){
            }          
 }
 
+
+p4.onclick = function(){
+    if($(this).data("val") === undefined){
+     
+        $(this).data("val", 1);
+            var object = $(this).parent().children('.toFront');
+            var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
+        
+                uploaderInt(object, iss_id);
+    } else {
+
+       $(this).parent().children('.toFront').fadeToggle('slow');
+    }
+}
 
     p4.className = "golang";
     p5.className = "wrap-events";

@@ -3,6 +3,7 @@
 $fac  = $_REQUEST['fac'];
 $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
+$iss  = $_REQUEST['issId'];
 
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
@@ -19,7 +20,7 @@ if(!is_dir($target_dir . $user . "/")){
 }
 
 // A list of permitted file extensions
-$allowed = array('png', 'jpg', 'gif','zip', 'docx', 'xls', 'xlsx', 'pdf', 'doc','ppt' );
+$allowed = array('png', 'jpg', 'gif','zip', 'docx', 'xls', 'xlsx', 'pdf', 'doc','ppt', 'pptx' );
 
 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
@@ -30,7 +31,7 @@ if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 		exit;
 	}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . $user . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $code . "_" . $user . "." . strtolower($extension) )){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $target_dir . $user . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		exit;
 	}
