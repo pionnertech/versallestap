@@ -227,7 +227,7 @@ $lastone= "";
                                     </div>
                                     <div class="media">
                                         <div class="media-avatar">
-                                            <img src="">
+                                            <img src="" class="user-pic">
                                         </div>
                                     </div>
                                     <div id="nam" style="display: inline-block; vertical-align: botom"></div>
@@ -343,7 +343,7 @@ var mode = 0;
 var usrId = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].id;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 
-$('img.class').fadeOut(300, function(){
+$('img.user-pic').fadeOut(300, function(){
       $(this).attr('src','../' + fac + "/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(300);
       });
