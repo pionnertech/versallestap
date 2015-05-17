@@ -271,7 +271,7 @@ var datax;
 
 $(document).on('ready', function(){
 
-     
+     $("#nam").revealing();
 
 array_set = [
 <?
@@ -353,7 +353,7 @@ $('img.user-pic').fadeOut(300, function(){
        setTimeout(function() { 
           $('#nam').html(name.replace(/\_/g, " "));
              $('#nam').revealing('show') }
-        , 100);
+        , 600);
 
 setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
 
