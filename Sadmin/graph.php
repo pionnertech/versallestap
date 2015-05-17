@@ -314,7 +314,7 @@ var depto_eval = document.querySelector("#selection").options[document.querySele
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
 
 $("#personal option").css({ display: "none" });
-$("#personal option." + depto_eval).css({ display: "block" });
+$("#personal option." + depto_eval.replace(/\_/g, " ").toString()).css({ display: "block" });
 $("#personal option#general").css({ display: "block" });
 
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
@@ -347,6 +347,7 @@ datax = newData_eval;
 //make contador
 var conta = eval('newData_eval[' + index_d + '].' + depto );
 var per_conta = eval('newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name );
+console.info('perconta =' + 'newData_eval[' + index_d + '].' + depto + "[" + index_p + "]." + name);
 // clean up the plot chart
 $("#dynamics").html('');
 
