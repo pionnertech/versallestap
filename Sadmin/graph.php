@@ -351,7 +351,7 @@ $('img.user-pic').fadeOut(300, function(){
 
        $('#nam').revealing('reset');
        setTimeout(function() { 
-          $('#nam').html(name);
+          $('#nam').html(name.replace(/\_/g, " "));
              $('#nam').revealing('show') }
         , 100);
 
