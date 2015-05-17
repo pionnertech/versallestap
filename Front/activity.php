@@ -608,19 +608,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
 };
 
 
-$("#delegate").on('click', function(){
 
-	if($(this).data("val") == 0 || $(this).data("val") == undefined){
-        $("#SendRequest-free").attr("disabled", true);
-        $("#SendRequest").removeAttr("disabled")
-          $(this).data("val", 1);
-	} else {
-		
-      $("#SendRequest").attr("disabled", true);
-      $("#SendRequest-free").removeAttr("disabled");
-      $(this).data("val", 0);
-	}
-})
 
 $(window).scroll(function(){
 
@@ -749,6 +737,9 @@ $("#delegate").on('click', function(){
        $("#del-wrap  div , #del-wrap input, #del-wrap h3").removeClass('show');
        $("#del-wrap  div , #del-wrap input, #del-wrap h3").addClass('hidden');
        $("#del-wrap").css({height: "0"});
+       $("#SendRequest").attr("disabled", true);
+       $("#SendRequest-free").removeAttr("disabled");
+
 
        $(this).data("val", 0);
 
@@ -757,6 +748,8 @@ $("#delegate").on('click', function(){
      $("#del-wrap").css({height: "220px"});
      $("#del-wrap  div , #del-wrap input, #del-wrap h3").removeClass('hidden');
      $("#del-wrap  div , #del-wrap input, #del-wrap h3").addClass('show');
+     $("#SendRequest-free").attr("disabled", true);
+     $("#SendRequest").removeAttr("disabled")
      $(this).data("val", 1);
 	}
 
