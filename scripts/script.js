@@ -71,7 +71,8 @@ $(function(){
         },
         always : function(){
             $("#upgrade").removeAttr("disabled");
-        }
+        }, 
+        autoupload: false
 
     });
 
