@@ -351,15 +351,17 @@ $.ajax({
     success : function (data){
        if(name !== "General"){
         var cUrl ='../' + fac + "/img/" + usrId + "_opt.jpg";
-    } else if(name == "General"){
-        var cUrl = '../' + fac + "/img/General.jpg";
-    }
+    } 
         $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
     }, 
     error : function(err){
-        var cUrl = '../' + fac + "/img/user.jpg";
+        if(name == "General"){
+            var cUrl = '../' + fac + "/img/General.jpg";
+        } else {
+            var cUrl = '../' + fac + "/img/user.jpg";
+        }
                 $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
