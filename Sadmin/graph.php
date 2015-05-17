@@ -344,7 +344,14 @@ var usrId = document.querySelector("#personal").options[document.querySelectorAl
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 
 $('img.user-pic').fadeOut(500, function(){
-      $(this).attr('src','../' + fac + "/img/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
+   if(UrlExists('../' + fac + "/img/" + usrId + "_opt.jpg") == 200) {
+        var cUrl ='../' + fac + "/img/" + usrId + "_opt.jpg";
+    } else if(name == "General"){
+        var cUrl = '../' + fac + "/img/General.jpg";
+    } else {
+        var cUrl = '../' + fac + "/img/user.jpg";
+    }
+      $(this).attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
    });
@@ -469,6 +476,14 @@ $(".wrap-progress li div.bar").css({width : "0%"})
     }
 }
 
+
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status == 200;
+}
 
 
 </script>
