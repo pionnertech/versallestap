@@ -344,7 +344,7 @@ var usrId = document.querySelector("#personal").options[document.querySelectorAl
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 
 $('img.user-pic').fadeOut(300, function(){
-      $(this).attr('src','../' + fac + "/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
+      $(this).attr('src','../' + fac + "/img/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(300);
       });
    });
