@@ -310,6 +310,11 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
+       if($(this).attr("id") !== "personal"){
+        var conte = $(this).children("option:selected").text()
+       $("#personal option." + conte.replace(/\ /g, "_")).attr("selected", true);
+       }
+       
 var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text.replace(/\ /g ,"_").toString();
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
 
