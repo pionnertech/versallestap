@@ -310,8 +310,8 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
-var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text..replace(/\ /g ,"_").toString();
-var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text..replace(/\ /g ,"_").toString();
+var depto_eval = document.querySelector("#selection").options[document.querySelector("#selection").selectedIndex].text.replace(/\ /g ,"_").toString();
+var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
 
 $("#personal option").css({ display: "none" });
 $("#personal option." + depto_eval).css({ display: "block" });
