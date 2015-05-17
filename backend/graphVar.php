@@ -8,7 +8,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 if($user_id != "General"){
 
 $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
-               " ROUND((COUNT( A.STSK_ID ) / total) *100) AS percentage " .
+               " ROUND((COUNT( A.STSK_ID ) / total) *100) AS percentage, EST_CODE " .
                " FROM SUBTASKS A RIGHT JOIN EST B ON " .
                " ( A.STSK_STATE = B.EST_CODE AND A.STSK_CHARGE_USR = " . $user_id . ") " .
                " CROSS JOIN ( SELECT COUNT(STSK_ID )" .
@@ -21,7 +21,7 @@ $graph_query = " SELECT B.EST_COLOR, B.EST_DESCRIPT, COUNT( A.STSK_ID ) , " .
                 $graph = mysqli_query($datos, $graph_query);
 
                 while ( $fila = mysqli_fetch_row($graph)){
-                        echo  $fila[2] . "/" . $fila[3] . "/";
+                        echo  $fila[2] . "/" . $fila[3] . "/" . $fila[3] ."/";
                       }
 
 } else {
