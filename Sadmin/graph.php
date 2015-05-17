@@ -345,25 +345,27 @@ var usrId = document.querySelector("#personal").options[document.querySelectorAl
 
 $('img.user-pic').fadeOut(500, function(){
 
-var con = $.get('../' + fac + "/img/" + usrId + "_opt.jpg");
-
-    con.done(function() { 
-    if(name !== "General"){
+$.ajax({
+    type: "POST",
+    url: '../' + fac + "/img/" + usrId + "_opt.jpg",
+    success : function (data){
+       if(name !== "General"){
         var cUrl ='../' + fac + "/img/" + usrId + "_opt.jpg";
     } else if(name == "General"){
         var cUrl = '../' + fac + "/img/General.jpg";
     }
-
-    $(this).attr('src',cUrl).bind('onreadystatechange load', function(){
+        $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
-    })
-    con.fail(function() { 
+    }, 
+    error : function(err){
         var cUrl = '../' + fac + "/img/user.jpg";
-    $(this).attr('src',cUrl).bind('onreadystatechange load', function(){
+                $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
       });
-    })
+    }
+
+    });
 
    });
 
