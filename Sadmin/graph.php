@@ -230,7 +230,7 @@ $lastone= "";
                                             <img src="" class="user-pic">
                                         </div>
                                     </div>
-                                    <div id="nam" style="display: inline-block; vertical-align: botom"></div>
+                                    <div class="ram nam" style="display: inline-block; vertical-align: botom"></div>
                                 </div>
                             </div>
                         </div>
@@ -271,7 +271,7 @@ var datax;
 
 $(document).on('ready', function(){
 
-     $("#nam").revealing();
+     $("#ram").revealing();
 
 array_set = [
 <?
@@ -348,11 +348,12 @@ $('img.user-pic').fadeOut(500, function(){
          if (this.complete) $(this).fadeIn(500);
       });
    });
-$('#nam').revealing('reset');
+
+$('.nam').revealing('reset');
        
        setTimeout(function() { 
-          $('#nam').html(name.replace(/\_/g, " "));
-             $('#nam').revealing('show') }
+          $('.nam').html(name.replace(/\_/g, " "));
+             $('.nam').revealing('show') }
         , 600);
 
 setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
