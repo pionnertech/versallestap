@@ -20,7 +20,7 @@ $iarray = array();
 $i = 0;
 
 while($extra = mysqli_fetch_row($depts)){
-    $handup = mysqli_query($datos, "SELECT USR_NAME, USR_ID FROM USERS WHERE USR_DEPT = '" . $extra[0] . "'" );
+    $handup = mysqli_query($datos, "SELECT USR_NAME, USR_ID FROM USERS WHERE (USR_DEPT = '" . $extra[0] . "' AND USR_FACILITY = " . $fac . ");");
         while( $sub = mysqli_fetch_row($handup)){
                $parray[$i] = $sub[0];
                $darray[$i] = $extra[0];
@@ -29,9 +29,10 @@ while($extra = mysqli_fetch_row($depts)){
         }
 }
 
-$counterId =count($darray);
+$counterId = count($darray);
 $latest = 0;
 $lastone= "";
+
 ?>
 
 <!DOCTYPE html>
