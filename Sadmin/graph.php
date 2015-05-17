@@ -354,7 +354,7 @@ $('.nam').revealing('reset');
        setTimeout(function() { 
           $('.nam').html(name.replace(/\_/g, " "));
              $('.nam').revealing('show') }
-        , 600);
+        , 150);
 
 setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
 
