@@ -158,7 +158,7 @@ $lastone= "";
 
                                                         if($darray[$y] != $darray[$y-1]  ){  
                                  ?>
-                                    <option id="General" class="<? printf($darray[$y-1]) ?>" value="<? printf($z+1) ?>">General</option>
+                                    <option id="General" class="<? printf( str_replace(" ", "_", $darray[$y-1])) ?>" value="<? printf($z+1) ?>">General</option>
                                  <?
                                                              $z = 0;  
 
@@ -169,12 +169,12 @@ $lastone= "";
                                                         }                                          
                                                     }
                                         ?>
-                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf( $darray[$y]) ?>" value="<? printf($z) ?>"><? printf( $parray[$y]) ?></option>
+                                   <option id="<? printf($iarray[$y]) ?>" class="<? printf( str_replace(" ", "_", $darray[$y]))?>" value="<? printf($z) ?>"><? printf( $parray[$y]) ?></option>
                                        <?
                                             }
 
                                         ?>
-                                        <option id="General" class="<? printf($darray[$latest]) ?>" value="<? printf($latest+1) ?>">General</option>
+                                        <option id="General" class="<? printf( str_replace(" ", "_",$darray[$latest])) ?>" value="<? printf($latest+1) ?>">General</option>
                                         </select>
                                     <div class="wrap-progress" >
                                          <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">
@@ -314,7 +314,7 @@ var depto_eval = document.querySelector("#selection").options[document.querySele
 var name = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].text.replace(/\ /g ,"_").toString();
 
 $("#personal option").css({ display: "none" });
-$("#personal option." + depto_eval.replace(/\_/g, " ").toString()).css({ display: "block" });
+$("#personal option." + depto_eval).css({ display: "block" });
 $("#personal option#general").css({ display: "block" });
 
 var ind2 = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].value;
