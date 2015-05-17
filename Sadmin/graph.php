@@ -343,13 +343,13 @@ var mode = 0;
 var usrId = document.querySelector("#personal").options[document.querySelectorAll("#personal")[0].selectedIndex].id;
 // ind1 ve el departamento, ind2 ve la naturaleza, ind3 ve  el personal
 
-$('img.user-pic').fadeOut(300, function(){
+$('img.user-pic').fadeOut(500, function(){
       $(this).attr('src','../' + fac + "/img/" + usrId + "_opt.jpg").bind('onreadystatechange load', function(){
-         if (this.complete) $(this).fadeIn(300);
+         if (this.complete) $(this).fadeIn(500);
       });
    });
-
-       $('#nam').revealing('reset');
+$('#nam').revealing('reset');
+       
        setTimeout(function() { 
           $('#nam').html(name.replace(/\_/g, " "));
              $('#nam').revealing('show') }
