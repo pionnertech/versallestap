@@ -4,7 +4,7 @@ $fac = $_REQUEST['f'];
 $dir = "/var/www/html/10000/";
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$handler = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE USR_RANGE = 'admin' OR USR_RANGE = 'sadmin'");
+$handler = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE USR_FACILITY = " . $fac);
 
 while ($file = mysqli_fetch_row($handler)){
 	mkdir($dir . $file[0] . "/");
