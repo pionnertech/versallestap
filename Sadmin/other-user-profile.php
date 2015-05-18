@@ -2584,6 +2584,12 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
          elem[n].ondragstart = function(event){
                  drag(event);
           }
+         elem[n].ondbclick = function (){
+             var fi = $(this).children('span').html();
+              downloadFile("../" + fac + "/" + mainuser + "/" + files[n]);
+
+         }
+
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
