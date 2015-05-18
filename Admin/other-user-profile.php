@@ -2583,7 +2583,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
                  drag(event);
           }
    
-          elem[n].ondbclick = function () {
+          elem[n].ondblclick = function () {
                  downloadFile("../" + fac + "/" + mainuser + "/" + files[n]);
           }
 
@@ -3736,7 +3736,7 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
 
 
 //funcion prototipo
-$(".ifile").on('dbclick', function(){
+$(".ifile").on('dblclick', function(){
   var fi = $(this).children('span').html();
     downloadFile("../" + fac + "/" + mainuser + "/" + fi);
 });
