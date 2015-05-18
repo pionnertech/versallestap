@@ -3715,7 +3715,7 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
 }
 
 //funcion prototipo
-$(".file").on('dbclick', function(){
+$(".ifile").on('dbclick', function(){
   var fi = $(this).children('span').html();
     downloadFile("../" + fac + "/" + mainuser + "/" + fi);
 });
