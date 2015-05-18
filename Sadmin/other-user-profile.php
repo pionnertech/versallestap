@@ -1374,6 +1374,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     <script src="../scripts/es.js"></script>
     <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
     <script src="../scripts/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="../scripts/download.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -3707,6 +3708,11 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
 }
 }
 
+//funcion prototipo
+$(".file").on('dbclick', function(){
+  var fi = $(this).children('span').html();
+    downloadFile("../" + fac + "/" + mainuser + "/" + fi);
+});
 
 </script>
 
