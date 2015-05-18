@@ -3741,6 +3741,28 @@ $(".ifile").on('dblclick', function(){
     downloadFile("../" + fac + "/" + mainuser + "/" + fi);
 });
 
+
+function rewind(obj){
+
+var  fnam = obj.previousSibling.childNodes[0];
+var  usr = $("input[name=user]").val();
+var stsk = $("input[name=issId]").val();
+if($("form#upload").attr("action") == "../backend/upload.php"){
+   var type = 0;
+} else {
+   var type= 1;
+}
+
+ $.ajax({
+          type: "POST",
+          url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr  + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
+          success : function (data){
+              console.info(data);
+              bootbox.alert("archivo eliminado");
+          }
+ });
+
+}
 </script>
 
 <?
