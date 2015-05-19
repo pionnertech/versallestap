@@ -3422,7 +3422,7 @@ function AmericanDate(date){
 return subs;
 }
 
-document.getElementById("int-del").addEventListener("change" , function(){
+document.getElementById("int-del").addEventListener("change click" , function(){
        user_send = this.value;
        console.info(user_send);
        keyFile = RandomString(8);
