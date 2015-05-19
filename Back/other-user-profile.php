@@ -1535,7 +1535,7 @@ if($("#st-description").val() == "") {
 }
 
 function rewind(obj){
-var  fnam = obj.previousSibling.childNodes[0];
+var  fnam = obj.previousSibling.childNodes[0].nodeValue;
 var  usr = $("input[name=user]").val();
 var stsk = $("input[name=issId]").val();
 if($("form#upload").attr("action") == "../backend/upload.php"){
