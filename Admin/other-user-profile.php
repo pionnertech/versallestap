@@ -3422,12 +3422,22 @@ function AmericanDate(date){
 return subs;
 }
 
-document.getElementById("int-del").addEventListener("change click" , function(){
+document.getElementById("int-del").addEventListener("change" , function(){
        user_send = this.value;
        console.info(user_send);
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 })
+
+document.getElementById("int-del").addEventListener("click" , function(){
+       user_send = this.value;
+       console.info(user_send);
+       keyFile = RandomString(8);
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
+})
+
+
+
 
 function RandomString(length) {
     
