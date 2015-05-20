@@ -228,7 +228,7 @@ $lastone= "";
                                     </div>
                                     <div class="media" style="display: inline-block;">
                                         <div class="media-avatar">
-                                            <img src="" class="user-pic">
+                                            <img src="../<? echo $_SESSION['TxtFacility']?>/img/Global.jpg" class="user-pic">
                                         </div>
                                     </div>
                                     <blockquote class="ram nam" style="display: inline-block; vertical-align: top"></blockquote>
@@ -326,7 +326,7 @@ $flow = "";
 echo "var bars = '" . $flow . "'";
 
 ?>
-
+injectBarVars(bars);
 updateChart();
 
 
@@ -387,7 +387,7 @@ $.ajax({
 }  else{
 
 
-}
+
        if($(this).attr("id") !== "personal"){
         var conte = $(this).children("option:selected").text()
        $("#personal option." + conte.replace(/\ /g, "_")).attr("selected", true);
