@@ -308,13 +308,13 @@ mysqli_data_seek($pass, 0);
 
 <?
 
-
+$x= 0;
 $flow = "";
 
        $graph = mysqli_query($datos, $global_query);
 
        while($cuenta = mysqli_fetch_row($graph)){
-           $x += $cuenta[0];
+           $x += $cuenta[1];
        }  
           
        $inner_query = mysqli_query($datos, $global_query);
