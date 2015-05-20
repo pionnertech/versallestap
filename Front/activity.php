@@ -1208,7 +1208,7 @@ $.ajax({ type: "POST",
 	           "&iss_id=" + iss_id,
 	           success : function (data){
                console.info(data);
-	           bootbox.alert("El compromiso fué ingresado y delegado exitosamente", function(){
+	           bootbox.alert("El compromiso fue ingresado y delegado exitosamente", function(){
 
 	            $("input[type=tel] , input[type=text]").val('');
  			    $("textarea").val('');

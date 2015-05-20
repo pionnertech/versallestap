@@ -1499,7 +1499,7 @@ $(".toggle-attach").on('click', function(){
 
         $("#wrap-D").css({ display: "none"});
         $(".attach").css({ display : "inline-block" });
-        $("#froback").html('Para Front office');
+        $("#froback").html('Documentos Anexos');
         $(".incoming-files").css({display : "none"});
 
  st = 1;
@@ -1507,7 +1507,7 @@ $(".toggle-attach").on('click', function(){
     } else {
          $(".attach").css({ display: "none"});
          $("#wrap-D").css({ display: "inline-block" });
-         $("#froback").html('Para Back Office');
+         $("#froback").html('Documentos desde front');
          if ($("#delegates").val() != 0){
              $(".incoming-files").css({display : "block"});
          }
@@ -1845,14 +1845,14 @@ $(".int-lock").on('click', function(){
 
 
 $(".golang").on('click', function(){
-    if($(this).data("val") === undefined){
+    if($(this).data("val") === undefined || $(this).data("val") == 0){
         $(this).data("val", 1);
             var object = $(this).parent().children('.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
         
                 uploaderInt(object, iss_id);
     } else {
-
+    $(this).data("val", 0);
        $(this).parent().children('.toFront').fadeToggle('slow');
        
     }
@@ -2762,7 +2762,7 @@ i3.onclick = function (){
 
 
 p4.onclick = function(){
-    if($(this).data("val") === undefined){
+    if($(this).data("val") === undefined || $(this).data("val") == 0){
      
         $(this).data("val", 1);
             var object = $(this).parent().children('.toFront');
@@ -2772,6 +2772,7 @@ p4.onclick = function(){
     } else {
 
        $(this).parent().children('.toFront').fadeToggle('slow');
+       $(this).data("val", 0);
     }
 }
 
