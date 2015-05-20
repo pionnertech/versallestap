@@ -2395,7 +2395,7 @@ function changeListener(){
                              console.info("progreso del usuario : " + packets[10]);
                         if(parseInt(packets[10]) >= 99.5){
                             $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev().css({ opacity : "1"});
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
+                            $("#ext-tasks-table .due").eq(indice).parent().parent().removeClass().addClass("task Hc");
                           }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);

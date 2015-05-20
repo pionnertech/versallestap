@@ -514,13 +514,11 @@ $(".enviar").on('click', function () {
 
     var usr_id = $(this).parent().children('select').val();
     var fechaF = $(this).parent().children("input.datetimepicker").val();
-  
+    $("#attach").fadeOut("slow");
    
    delegate(usr_id, msg, fechaF, iss_id);
    switchTempToAsigned(iss_id, usr_id);
-
-
-
+   
    } 
 
 });
