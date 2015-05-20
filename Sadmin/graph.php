@@ -269,7 +269,8 @@ var datas;
 var perplot;
 var matrix;
 var datax;
-var array_set; 
+var array_set;
+var bars= ""; 
 
 $(document).on('ready', function(){
 
@@ -318,12 +319,12 @@ $flow = "";
        }  
           
        $inner_query = mysqli_query($datos, $global_query);
-       echo "var bars = ";
+       echo "bars = '";
         while ( $fila2 = mysqli_fetch_array($inner_query)){
           
         echo  $fila2[1] . "/" . round(($fila2[1]/$x) * 100) . "/" . $fila2[3] . "/"; 
         }
-     echo ";";
+     echo "';";
 
 ?>
 
@@ -349,7 +350,7 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
-if($(this).attr("id") !== "selection" && $(this).children("option:selected").text() == "GLOBAL" ){
+if($(this).attr("id") == "selection" && $(this).children("option:selected").text() == "GLOBAL" ){
 
 $.plot($("#dynamics"), array_set, {
            series: {
