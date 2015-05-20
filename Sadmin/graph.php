@@ -323,9 +323,10 @@ $flow = "";
          $flow +=  $fila2[1] . "/" . round(($fila2[1]/$x) * 100) . "/" . $fila2[3] . "/"; 
         }
 
-echo "var bars = '" . $flow . "'";
+echo "var bars = '" . $flow . "';";
 
 ?>
+
 injectBarVars(bars);
 updateChart();
 
