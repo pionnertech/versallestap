@@ -140,6 +140,7 @@ $lastone= "";
                                     <i class="fa fa-user"></i><span style="margin-right: 27%">Usuario</span>
                                     </p>
                                         <select id="selection">
+                                        <option value="Global">GLOBAL</option>
                                         <?  $i = 1;
                                                while($fil22 = mysqli_fetch_row($qcd)) {
                                         ?>
@@ -268,6 +269,7 @@ var datas;
 var perplot;
 var matrix;
 var datax;
+var array_set; 
 
 $(document).on('ready', function(){
 
@@ -275,14 +277,16 @@ $(document).on('ready', function(){
 
 array_set = [
 <?
-
-$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+$global_query = "SELECT B.EST_DESCRIPT, COUNT( STSK_ID ) , B.EST_COLOR, B.EST_CODE FROM SUBTASKS A INNER JOIN EST B ON ( A.STSK_STATE = B.EST_CODE )  WHERE STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY EST_DESCRIPT";
+$pass = mysqli_query($datos, $global_query);
 
 while ( $fila2 = mysqli_fetch_row($pass)) {
 
 ?>
 { label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
-<? } ?>
+<? } 
+mysqli_data_seek($pass, 0);
+?>
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
@@ -302,6 +306,26 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
     }
 });
 
+<?
+$x =0;
+$cuenta = 0;
+$flow = "";
+
+       $graph = mysqli_query($datos, $global_query);
+
+       while($cuenta = mysqli_fetch_row($graph)){
+           $x += $cuenta[0];
+       }  
+          
+       $inner_query = mysqli_query($datos, $global_query);
+        while ( $fila2 = mysqli_fetch_array($inner_query)){
+          
+         $flow +=  $fila2[1] . "/" . round(($fila2[1]/$x) * 100) . "/" . $fila2[3] . "/"; 
+        }
+
+echo "var bars = '" . $flow . "'";
+
+?>
 updateChart();
 
 
@@ -323,6 +347,31 @@ updateChart();
 
 $("#selection, #personal").on("change" , function (){
 
+if($(this).attr("id") !== "selection" && $(this).children("option:selected").text() == "GLOBAL" ){
+
+$.plot($("#dynamics"), array_set, {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+            
+        hoverable: true,
+        clickable: true
+    }
+});
+      
+      injectBarVars(bars);
+
+}  else{
+
+
+}
        if($(this).attr("id") !== "personal"){
         var conte = $(this).children("option:selected").text()
        $("#personal option." + conte.replace(/\ /g, "_")).attr("selected", true);
@@ -380,6 +429,7 @@ $.ajax({
 
 setDataByJSON(depto_eval, name, ind1, ind2, mode, usrId);
 
+}
 });
 
 // create data.
