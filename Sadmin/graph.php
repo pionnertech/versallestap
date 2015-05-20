@@ -370,6 +370,11 @@ $.plot($("#dynamics"), array_set, {
 });
       $("#personal").attr("disabled", true);
       injectBarVars(bars);
+      
+    setTimeout(function() { 
+          $('.nam').html("GLOBAL");
+             $('.nam').revealing('show') }
+        , 150);
 
 $('img.user-pic').fadeOut(500, function(){
 $.ajax({
@@ -532,6 +537,7 @@ function injectBarVars(idata){
   var listC = [2,5,8,11,14];
 $(".wrap-progress li div.bar").css({width : "0%"});
 $(".wrap-progress li p span").html('0');
+
 
   for (i=0; i < (narray.length)/3 ; i++){
    
