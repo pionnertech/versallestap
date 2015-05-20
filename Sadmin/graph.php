@@ -368,6 +368,21 @@ $.plot($("#dynamics"), array_set, {
       
       injectBarVars(bars);
 
+$('img.user-pic').fadeOut(500, function(){
+$.ajax({
+    type: "POST",
+    url: '../' + fac + "/img/Global.jpg",
+    success : function (data){
+        var cUrl ='../' + fac + "/img/Global.jpg";
+        $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
+         if (this.complete) $(this).fadeIn(500);
+      });
+    }
+    });
+
+   });
+
+
 }  else{
 
 
@@ -408,8 +423,6 @@ $.ajax({
     error : function(err){
         if(name == "General"){
             var cUrl = '../' + fac + "/img/General.jpg";
-        } else if( name == "GLOBAL") {
-             var cUrl = '../' + fac + "/img/Global.jpg";
         } else {
              var cUrl = '../' + fac + "/img/user.jpg";
         }
