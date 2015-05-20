@@ -1582,7 +1582,6 @@ $("#current-task").val(index_current);
 $(".ifile").css({display : "none"});
 $(".iss" + iss_ident).css({ display : "inline-block"});
 
-
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
 
@@ -2309,18 +2308,17 @@ if (um == 0){
 if(type == "req"){
 
 var title = "Te ha llegado un nuevo requerimiento:";
-var iconShow = "https://cdn4.iconfinder.com/data/icons/meBaze-Freebies/512/alert.png";
-
+var iconShow = "../" + fac + "/img/task.jpg" ;
 
 } else if(type == "ii"){
 
 var title = usr_name + " te envió un requerimiento :";
-var iconShow = "http://mckenzietrading.co.uk/images/icon1.jpg";
+var iconShow = "../" + fac + "/img/itask.jpg" ;
 
 } else {
 
 var title = usr_name + " ha marcado un progreso :";
-var iconShow = "http://icons.iconarchive.com/icons/visualpharm/must-have/256/Next-icon.png";
+var iconShow = "../" + fac + "/img/pro.jpg";
 }
 
         var instance = new Notification(
