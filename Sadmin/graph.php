@@ -408,8 +408,10 @@ $.ajax({
     error : function(err){
         if(name == "General"){
             var cUrl = '../' + fac + "/img/General.jpg";
+        } else if( name == "GLOBAL") {
+             var cUrl = '../' + fac + "/img/Global.jpg";
         } else {
-            var cUrl = '../' + fac + "/img/user.jpg";
+             var cUrl = '../' + fac + "/img/user.jpg";
         }
                 $("img.user-pic").attr('src',cUrl).bind('onreadystatechange load', function(){
          if (this.complete) $(this).fadeIn(500);
