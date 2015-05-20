@@ -477,22 +477,20 @@ $('.datetimepicker').datetimepicker({
     }
 });
 
-
-
-/*
-
-*/
 $(".due").on('click', function (){
    $(this).parent().parent().next('tr').fadeToggle('slow');
    iden_iss = $(this).parent().parent().children('input').eq(0).val();
 
    if($(this).data("val") == 0 || $(this).data("val") == "" || $(this).data("val") == undefined){
-   	     $("#attach").fadeIn("slow");
+   	  if($(this).parent().parent().hasClass("Pe")){
+              $("#attach").fadeIn("slow");
    	     $(this).data("val", 1);
+   	  }
    } else {
    	     $("#attach").fadeOut("slow");
               $(this).data("val", 0);
    }
+
 
 });
 
@@ -516,7 +514,7 @@ $(".enviar").on('click', function () {
     var fechaF = $(this).parent().children("input.datetimepicker").val();
 
     $("#attach").fadeOut("slow");
-    
+
    delegate(usr_id, msg, fechaF, iss_id);
    switchTempToAsigned(iss_id, usr_id);
 
