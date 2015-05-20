@@ -1403,8 +1403,8 @@ $(document).on('ready', function(){
 
 progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
+$("i.fa-lock").parent().unbind('click');
 $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
-
 
  dateTime = $('.datetimepicker').datetimepicker({
     step:5,
@@ -1500,7 +1500,7 @@ $(".toggle-attach").on('click', function(){
         $("#wrap-D").css({ display: "none"});
         $(".attach").css({ display : "inline-block" });
         $("#froback").html('Documentos Anexos');
-        $(".incoming-files").css({display : "none"});
+
 
  st = 1;
 
@@ -1593,6 +1593,8 @@ var current = $("#delegates").val();
 //fades
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+$("incoming-files").css({ display : "none"});
 
 });
 
@@ -1842,8 +1844,6 @@ $(".int-lock").on('click', function(){
   });
 })
 
-
-
 $(".golang").on('click', function(){
     if($(this).data("val") === undefined || $(this).data("val") == 0){
         $(this).data("val", 1);
@@ -1854,9 +1854,7 @@ $(".golang").on('click', function(){
     } else {
     $(this).data("val", 0);
        $(this).parent().children('.toFront').fadeToggle('slow');
-       
     }
-
 });
 
 setInterval(function(){
