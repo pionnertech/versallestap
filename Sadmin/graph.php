@@ -149,7 +149,7 @@ $lastone= "";
                                         <? $i = $i + 1; } ?>
 
                                         </select>
-                                        <select id="personal">
+                                        <select id="personal" disabled="true">
                                         <?  
                                             $z = 0;
                        
@@ -318,12 +318,12 @@ $flow = "";
        }  
           
        $inner_query = mysqli_query($datos, $global_query);
+       echo "var bars = ";
         while ( $fila2 = mysqli_fetch_array($inner_query)){
           
-         $flow +=  $fila2[1] . "/" . round(($fila2[1]/$x) * 100) . "/" . $fila2[3] . "/"; 
+        echo  $fila2[1] . "/" . round(($fila2[1]/$x) * 100) . "/" . $fila2[3] . "/"; 
         }
-
-echo "var bars = '" . $flow . "';";
+     echo ";";
 
 ?>
 
@@ -367,7 +367,7 @@ $.plot($("#dynamics"), array_set, {
         clickable: true
     }
 });
-      
+      $("#personal").attr("disabled", true);
       injectBarVars(bars);
 
 $('img.user-pic').fadeOut(500, function(){
@@ -387,7 +387,7 @@ $.ajax({
 
 }  else{
 
-
+ $("#personal").attr("disabled", false);
 
        if($(this).attr("id") !== "personal"){
         var conte = $(this).children("option:selected").text()
