@@ -176,44 +176,6 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 							</li>
 						</ul><!--/.widget-nav-->
 
-
-
-						<ul class="widget widget-menu unstyled">
-							<li>
-								<a class="collapsed" data-toggle="collapse" href="#togglePages">
-									<i class="menu-icon icon-cog"></i>
-									<i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right"></i>
-									More Pages
-								</a>
-								<ul id="togglePages" class="collapse unstyled">
-									<li>
-										<a href="other-login.html">
-											<i class="icon-inbox"></i>
-											Login
-										</a>
-									</li>
-									<li>
-										<a href="other-user-profile.html">
-											<i class="icon-inbox"></i>
-											Profile
-										</a>
-									</li>
-									<li>
-										<a href="other-user-listing.html">
-											<i class="icon-inbox"></i>
-											All Users
-										</a>
-									</li>
-								</ul>
-							</li>
-							
-							<li>
-								<a href="#">
-									<i class="menu-icon icon-signout"></i>
-									Logout
-								</a>
-							</li>
-						</ul>
 					</div><!--/.sidebar-->
 				</div><!--/.span3-->
 				<div class="span9">
@@ -240,7 +202,6 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 									</div>
 								</div>
 								<div class="pull-right">
-									<a href="#" class="btn btn-primary">Crear Requerimiento</a>
 								</div>
 							</div>
 							<div class="module-body table">								
