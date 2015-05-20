@@ -308,7 +308,6 @@ mysqli_data_seek($pass, 0);
 
 <?
 $x =0;
-$cuenta = 0;
 $flow = "";
 
        $graph = mysqli_query($datos, $global_query);
@@ -326,6 +325,7 @@ $flow = "";
 echo "var bars = '" . $flow . "'";
 
 ?>
+
 updateChart();
 
 
