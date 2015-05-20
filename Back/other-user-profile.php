@@ -1535,18 +1535,20 @@ if($("#st-description").val() == "") {
 }
 
 function rewind(obj){
+
 var  fnam = obj.previousSibling.childNodes[0].nodeValue;
 var  usr = $("input[name=user]").val();
 var stsk = $("input[name=issId]").val();
-if($("form#upload").attr("action") == "../backend/upload.php"){
+
+
+if($("form#upload").attr("action") == "../backend/upload_back_to_admin.php"){
    var type = 0;
 } else {
    var type= 1;
 }
-
- $.ajax({
+$.ajax({
           type: "POST",
-          url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr  + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
+          url:"../backend/rewind.php?fac=" + fac + "&usr=" + mainuser + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
@@ -1554,8 +1556,6 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
  });
 
 }
-
-
 </script>
 <?
 
