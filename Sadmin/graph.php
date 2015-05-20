@@ -530,7 +530,8 @@ function injectBarVars(idata){
   var listA = [0,3,6,9,12];
   var listB = [1,4,7,10,13];
   var listC = [2,5,8,11,14];
-$(".wrap-progress li div.bar").css({width : "0%"})
+$(".wrap-progress li div.bar").css({width : "0%"});
+$(".wrap-progress li p span").html('0');
 
   for (i=0; i < (narray.length)/3 ; i++){
    
