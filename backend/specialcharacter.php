@@ -231,22 +231,6 @@ while($subt = mysqli_fetch_row($handler)){
 { label: "n/n",  data: 0, color: "#FFF"}
 ];
 
-    $.plot($("#chart<? printf($x) ?>") , array_set_<? printf(str_replace(" ", "_" , $filax[1])) ?>, {
-           series: {
-            pie: {
-                innerRadius: 0.5,
-                show: true
-            }
-         },
-         legend: {
-            show: false         
-        },
-        grid: {
-        hoverable: true,
-        clickable: true
-    }
-});
-
 <? 
   $x = $x + 1;
 }
