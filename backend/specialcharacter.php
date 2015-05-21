@@ -260,8 +260,8 @@ $("#placeholder2").bind("plotclick", pieClick);
 $("#opt").on('click change', function(){
     var chShow = $(this).children("option:selected").text();
   
- rShow =  chShow.replace(" ", "_");
- $.plot($("#placeholder2"),window["array_set_" + rShow ] , {
+ rShow =  chShow.replace(/\ /g, "_");
+ $.plot($("#placeholder2"), window["array_set_" + rShow ] , {
            series: {
             pie: {
                 innerRadius: 0.5,
