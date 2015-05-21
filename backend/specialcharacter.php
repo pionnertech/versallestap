@@ -257,9 +257,26 @@ $("#placeholder2").bind("plotclick", pieClick);
             alert('' + obj.series.label + ': ' + percent + '%');
         }
 
-$("#opt").on('click', function(){
-    var chShow = $(this).children("option:selected").index("option");
-    $(".graph").eq(chShow).css({ display: "block"});
+$("#opt").on('click change', function(){
+    var chShow = $(this).children("option:selected").text();
+  
+ rShow =  chShow.replace(" ", "_");
+ $.plot($("#placeholder2"),window["array_set_" + rShow ] , {
+           series: {
+            pie: {
+                innerRadius: 0.5,
+                show: true
+            }
+         },
+         legend: {
+            show: false         
+        },
+        grid: {
+        hoverable: true,
+        clickable: true
+    }
+});
+
 
 });
 
