@@ -116,7 +116,7 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
 
  ?>
  <select id="opt" style="display:inline-block; vertical-align: top">
-
+   <option value="chart">Global</option>
  <? 
 $i = 0;
  while ( $fila = mysqli_fetch_row($query_count_departament) ) {
@@ -167,20 +167,7 @@ var matrix;
 
 $(document).on('ready', function(){
 
-array_set = [
-<?
-
-$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( ISS_ID) , B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON ( A.ISS_STATE = B.EST_CODE )  WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY EST_DESCRIPT");
-
-while ( $fila2 = mysqli_fetch_row($pass)) {
-
-?>
-{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
-<? } ?>
-{ label: "n/n",  data: 0, color: "#FFF"}
-];
-
- $.plot($("#placeholder2"), array_set, {
+ $.plot($("#placeholder2"), array_set_Global, {
            series: {
             pie: {
                 innerRadius: 0.5,
@@ -197,6 +184,19 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
 });
 
 });
+
+array_set_Global = [
+<?
+
+$pass = mysqli_query($datos, "SELECT B.EST_DESCRIPT, COUNT( ISS_ID) , B.EST_COLOR FROM ISSUES A INNER JOIN EST B ON ( A.ISS_STATE = B.EST_CODE )  WHERE ISS_FAC_CODE = " . $_GET['TxtFacility'] . " GROUP BY EST_DESCRIPT");
+
+while ( $fila2 = mysqli_fetch_row($pass)) {
+
+?>
+{ label: "<? printf(  $fila2[0] ) ?>",  data: <? printf( $fila2[1] ) ?> , color:"<? printf( $fila2[2] ) ?>"},
+<? } ?>
+{ label: "n/n",  data: 0, color: "#FFF"}
+];
 
 //graficos secundarios por depart
 <?
