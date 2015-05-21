@@ -196,7 +196,7 @@ while ( $fila2 = mysqli_fetch_row($pass)) {
     }
 });
 
-
+});
 
 //graficos secundarios por depart
 <?
@@ -237,7 +237,7 @@ while($subt = mysqli_fetch_row($handler)){
 
  ?>
 
-});
+
 
 
 $("#placeholder2").bind("plothover", pieHover);
