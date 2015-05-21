@@ -274,9 +274,9 @@ $("#placeholder2").bind("plotclick", pieClick);
         }
 
 $("#opt").on('click', function(){
-    var chShow = $(this).children("option:selected").val();
-    $(".graph").css({ display : "none" });
-    $(chShow ).css({display : "block"});
+    var chShow = $(this).children("option:selected").index("option");
+    $(".graph").eq(chShow).css({ display: "block"});
+
 });
 
      </script>
