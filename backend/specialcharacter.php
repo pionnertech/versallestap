@@ -95,7 +95,23 @@ while($extra = mysqli_fetch_row($depts)){
                                     <h3>
                                        Gráfico General</h3>
                                 </div>
-                                <div class="module-body">
+                                <div class="module-body" alig="center">
+                                 <select id="opt" style="display:block;">
+   <option value="chart">Global</option>
+ <? 
+$i = 0;
+ while ( $fila = mysqli_fetch_row($query_count_departament) ) {
+
+     ?>
+<option value="chart<? printf($i)?>"><? printf($fila[0]) ?></option>
+<? 
+  $i = $i + 1;
+} 
+ mysqli_data_seek($query_count_departament, 0);
+
+?>
+     
+ </select>
                                     <div class="chart inline-legend grid" style="width: 100%;">
                                         <div id="placeholder2" style="height: 250px"></div>
                                     </div>
@@ -112,22 +128,10 @@ while($f1 = mysqli_fetch_row($query_count_departament)){
     $i = $i + 1;
 
  } 
- mysqli_data_seek($query_count_departament, 0);
+
 
  ?>
- <select id="opt" style="display:inline-block; vertical-align: top">
-   <option value="chart">Global</option>
- <? 
-$i = 0;
- while ( $fila = mysqli_fetch_row($query_count_departament) ) {
 
-     ?>
-<option value="chart<? printf($i)?>"><? printf($fila[0]) ?></option>
-<? 
-  $i = $i + 1;
-} ?>
-     
- </select>
                                 </div>
                             </div>
 
