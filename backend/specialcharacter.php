@@ -104,14 +104,30 @@ $i = 0;
 $query_count_departament = mysqli_query($datos, "SELECT DISTINCT B.CAT_DESCRIPT FROM ISSUES A INNER JOIN CAT B ON(A.ISS_TYPE = B.CAT_ID)  WHERE ISS_FAC_CODE= " . $_GET['TxtFacility'] . " GROUP BY CAT_DESCRIPT;");
 while($f1 = mysqli_fetch_row($query_count_departament)){
 ?>
-                                   <div class="chart inline-legend grid linerchart" align="center" style="width:30% !important;" >
+                                   <div class="chart inline-legend grid linerchart" align="center" style="width:30% !important; display:none" >
                                         <div id="chart<? printf($i)?>" class="graph" style="height: 200px"></div>
                                         <strong><? printf($f1[0]) ?></strong>
                                     </div>
  <? 
     $i = $i + 1;
 
- } ?>
+ } 
+ mysqli_data_seek($query_count_departament, 0);
+
+ ?>
+ <select id="opt" style="display:inline-block; vertical-align: top">
+
+ <? 
+$i = 0;
+ while ( $fila = mysqli_fetch_row($query_count_departament) ) {
+
+     ?>
+<option value="chart<? printf($i)?>"><? printf($fila[0]) ?></option>
+<? 
+  $i = $i + 1;
+} ?>
+     
+ </select>
                                 </div>
                             </div>
 
@@ -256,6 +272,12 @@ $("#placeholder2").bind("plotclick", pieClick);
             percent = parseFloat(obj.series.percent).toFixed(2);
             alert('' + obj.series.label + ': ' + percent + '%');
         }
+
+$("#opt").on('click', function(){
+    var chShow = $(this).children("option:selected").val();
+    $(".graph").css({ display : "none" });
+    $(chShow ).css({display : "block"});
+});
 
      </script>
 ?>
