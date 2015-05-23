@@ -1392,12 +1392,15 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var objeto;
     var dateTime;
     //ii variables 
-    var remoteUser= 0;
-    var st_ii     = 0;
+    var remoteUser= 0    var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
     var previan   = "";
     var aa_ii     = "";
+
+
+
+$(document).on('ready', function(){
 
 var kenin= $('#delegate').selectize({
 plugins: ['remove_button'],
@@ -1423,8 +1426,6 @@ onItemAdd: function(){
     $("#stsk-user").val($("#delegates").val());
 }
    });
-
-$(document).on('ready', function(){
 
 kenin[0].selectize.clear();
 
@@ -1777,7 +1778,7 @@ $(".switcher").on('click', function(){
            if(all_on[i].id !== ex){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
-              $('.' + all_on[i].id).css({ display: "table-row"});deldegateadd
+              $('.' + all_on[i].id).css({ display: "table-row"});
            }
      }
 });
