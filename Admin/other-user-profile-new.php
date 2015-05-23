@@ -27,7 +27,7 @@ $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM S
 $vlist = "Mi Departamento,";
 
 while ($Qth_list = mysqli_fetch_row( $Query_team)){
-  $vlist += str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_list[1] . " " . $Qth_list[2] )))) . ",";
+  $vlist .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_list[1] . " " . $Qth_list[2] )))) . ",";
 }
 
 mysqli_data_seek($Query_team, 0);
@@ -1398,12 +1398,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
     var ii_iss    = 0;
     var previan   = "";
     var aa_ii     = "";
-
+    var kenin;
 
 
 $(document).on('ready', function(){
 
-var kenin= $('#delegates').selectize({
+kenin = $('#delegates').selectize({
 plugins: ['remove_button'],
 delimiter: ',',
 preload:true,
