@@ -29,7 +29,7 @@ while ($row = mysqli_fetch_row($handler)) {
 
 $setto = ($adition / $n);
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR  AND STSK_TYPE = 0);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 0);");
 
 //set DONE to local;
 if ((int)$val == 100){

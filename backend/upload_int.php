@@ -1,12 +1,11 @@
 <?php
 
-$fac    = $_REQUEST['fac_id'];
-$user   = $_REQUEST['user'];
+$fac     = $_REQUEST['fac_id'];
+$user    = $_REQUEST['user'];
 $keyfile = $_REQUEST['keyfile'];
 
 	$dir = "/var/www/html/" . $fac . "/_tmp/";
 	$iss_id = $keyfile;
-
 
 if(!is_dir($dir)){
 	mkdir($dir, 0775, true);

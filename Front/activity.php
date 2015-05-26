@@ -309,7 +309,6 @@ select {
 										<img src="../images/user.png">
 									</a>
 									<div class="media-body">
-									  <input type="text" placeholder="asunto" id="subject" />
 										<div class="row-fluid">
 											<textarea id="descrip-audi" class="span12" style="height: 70px; resize: none;"></textarea>
 										</div>
@@ -725,7 +724,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls  input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
+setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7], "" );
 
 });
 
@@ -776,7 +775,7 @@ narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
 
-setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
+setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7], "");
 
 
 
@@ -799,7 +798,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
+setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7], "");
 
 	} else  {
 		argument = 1;
@@ -826,7 +825,7 @@ for(i=0;i < cont.length ; i++){
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls input[type=radio]:checked").val();
 
-setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7],$("#subject").val() );
+setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7], "" );
 
 	}
 	
@@ -934,9 +933,10 @@ console.info("../backend/issGn.php?rut=" + rut +
  	"&fecha_limit=" + deadD  + " 10:00:00" +
  	"&days=" + fecha_limit +
  	"&email=" + mail +
- 	"&subject=" + subject +
+ 	"&subject=null" + 
  	"&fac=" + fac +
  	"&argument=" + argument);
+
  $.ajax({
  	type: "POST",
  	url: "../backend/issGn.php?rut=" + rut + 
@@ -952,7 +952,7 @@ console.info("../backend/issGn.php?rut=" + rut +
  	"&fecha_limit=" + deadD  + " 10:00:00" +
  	"&days=" + fecha_limit +
  	"&email=" + mail +
- 	"&subject=" + subject +
+ 	"&subject=null"+
  	"&fac=" + fac +
  	"&argument=" + argument
  	 ,
@@ -1246,11 +1246,6 @@ if(empty.length == 0){
 }
 
 
-if($("#subject").val() == ""){
-	bootbox.alert("Por favor ingrese asunto del compromiso", function(){
-		return false;
-	})
-}
 
 if($("input[type=radio]:checked").length == 0){
 	bootbox.alert("Seleccione origen del requerimiento");
