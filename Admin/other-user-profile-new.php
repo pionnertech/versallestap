@@ -3770,10 +3770,11 @@ return mtObj;
      function doSearch(fr,t, tbl) {
 var d1 = fr.split("/");
 var d2 = t.split("/");
+
+console.info(d1[2] + "  " + d1[1]-1 + " " +  d1[0]);
+
 var from = new Date(d1[2], d1[1]-1, d1[0]);  
 var to   = new Date(d2[2], d2[1]-1, d2[0]);
-
-
 
         var targetTable = document.getElementById(tbl);
         var targetTableColCount;
@@ -3799,7 +3800,6 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
         }
     }
-
 
 
 
