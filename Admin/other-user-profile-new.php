@@ -916,9 +916,11 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             </div>
 
                                             </div>
+                                        <div style="width: 100%">
                                         <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 25em; float: left;">
                                         <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
                                         <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+                                        </div>
                                             <div class="module-body table">
                                                    <table class="table table-message" id="int-table">
                                                       <tbody id="int-body">
@@ -1147,9 +1149,11 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             </div>
 
                                             </div>
-                                        <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 25em; float: left;">
+                                      <div style="width: 100%">
+                                        <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 32em; float: left;">
                                         <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
                                         <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+                                      </div>
                                             <div class="module-body table" style="display:none">
                                                 <table class="table table-message" id="income-ing">
                                                     <tbody id="income-int-body">
