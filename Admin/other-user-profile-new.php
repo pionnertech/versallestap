@@ -3788,7 +3788,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
         var targetTable = document.getElementById(tbl);
         var targetTableColCount;
-        for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex+2) {
+        for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
             var rowData = [];
             if (rowIndex == 1) {
                 targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
@@ -3808,7 +3808,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                     targetTable.rows.item(rowIndex).style.display = 'none'; 
 
         }
-
+          rowIndex = rowIndex + 1;
         }
 
     }
