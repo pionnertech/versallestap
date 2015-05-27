@@ -916,7 +916,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             </div>
 
                                             </div>
-                                        <div style="width: 100%">
+                                        <div style="width: 100%" class="seoEnv">
                                         <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 25em; float: left;">
                                         <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
                                         <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
@@ -1149,7 +1149,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             </div>
 
                                             </div>
-                                      <div style="width: 100%">
+                                      <div style="width: 100%" class="seoRec">
                                         <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 32em; float: left;">
                                         <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
                                         <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
@@ -2032,7 +2032,11 @@ $manu['STSK_TYPE'];
             $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(0).fadeOut(100, function(){
                  $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(1).fadeIn(100, function(){
                     $("#sw-int-in-out").parent().parent().children("div.module-body").eq(0).fadeOut(100, function(){
-                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(1).fadeIn(100);
+                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(1).fadeIn(100, function(){
+                              $(".seoEnv").fadeOut(100, function(){
+                                  $(".seoRec").fadeIn(100);
+                              })
+                         });
                     });
                  });
             });
@@ -2052,7 +2056,11 @@ $manu['STSK_TYPE'];
             $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(1).fadeOut(100, function(){
                  $("#sw-int-in-out").parent().parent().children("div.clearfix").eq(0).fadeIn(100, function(){
                     $("#sw-int-in-out").parent().parent().children("div.module-body").eq(1).fadeOut(100, function(){
-                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(0).fadeIn(100);
+                         $("#sw-int-in-out").parent().parent().children("div.module-body").eq(0).fadeIn(100, function(){
+                              $(".seoRec").fadeOut(100, function(){
+                                  $(".seoEnv").fadeIn(100);
+                              })
+                         });
                     })
                  });
             });
