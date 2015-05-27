@@ -877,9 +877,6 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <li class="swt-int" id="Hc-int"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
-                                        <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 25em; float: left;">
-                                        <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                                     </div>
                                             <div class="pull-right">
                              <?  while($fi = mysqli_fetch_row($Query_alerts_int)){ 
@@ -917,6 +914,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
 <? } ?>
                                             </div>
+                                         <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 25em; float: left;">
+                                        <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                             </div>
                                             <div class="module-body table">
                                                    <table class="table table-message" id="int-table">
@@ -1107,9 +1107,6 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 <li class="swt-int-ii" id="Hc-int-ii"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
-                                        <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 25em; float: left;">
-                                        <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                                     </div>
                                             <div class="pull-right">
                                 <?  while($fi = mysqli_fetch_row($Query_alerts_ii)){ 
@@ -1147,6 +1144,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
 
                                             </div>
+                                         <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 25em; float: left;">
+                                        <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                             </div>
                                             <div class="module-body table" style="display:none">
                                                 <table class="table table-message" id="income-ing">
