@@ -52,7 +52,7 @@ span.twitter-typeahead {
   width: 100%;
 }
 .input-group span.twitter-typeahead {
-  display: block !important;
+  display: inline-block !important;
 }
 .input-group span.twitter-typeahead .tt-dropdown-menu {
   top: 32px !important;
@@ -62,4 +62,14 @@ span.twitter-typeahead {
 }
 .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
   top: 28px !important;
+}
+strong.tt-highlight{
+  background-color: #29b7d3;
+  font-size: 1em !important;
+}
+.tt-dataset-subjects{
+  border-radius: 15px;
+-webkit-box-shadow: -1px 0px 10px 0px rgba(43, 57, 255, 0.58);
+-moz-box-shadow:    -1px 0px 10px 0px rgba(43, 57, 255, 0.58);
+box-shadow:         -1px 0px 10px 0px rgba(43, 57, 255, 0.58);
 }
