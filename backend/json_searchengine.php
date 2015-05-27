@@ -1,4 +1,4 @@
-<?php header('Content-Type: text/html; charset=utf-8');
+<?php 
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -9,8 +9,8 @@ $i = 0;
 $count = mysqli_num_rows($query);
 
 
-echo "<script>
- var subject = [";
+
+echo "var subject = [";
 /*
 while ($fila = mysqli_fetch_row($query)){
 	echo "{ \"f1\":\"" . $fila[0] . "\",";
@@ -35,6 +35,6 @@ while ($fila = mysqli_fetch_row($query)){
 	 $i = $i + 1;
 }
 
-echo "] </script>";
+echo "]";
 
 ?>
