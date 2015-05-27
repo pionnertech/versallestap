@@ -1604,9 +1604,11 @@ switch(true){
   break;
 }
 /*$(".pull-left .btn").eq(x).text()*/
-
+console.info($(".seo").eq(indval).val() + " " + $(".seo").eq(indval).next(".seo").val() + " comparation");
     if($(".seo").eq(indval).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
+
         doSearch($(".seo").eq(indval).val(),$(".seo").eq(indval).next(".seo").val(), objTbl);
+
     } else {
 
         $("#table-mes tr").css({ display : "table-row"});
