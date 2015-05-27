@@ -481,6 +481,9 @@ $handler = mysqli_query($datos, $matrix);
                                             <li class="switcher" id="At"><a href="#">Atrasados</a></li>
                                         </ul>
                                     </div>
+                                        <input type="text" value="" placeholder="Búsqueda" id="search1" style="width: 25em; float: left;">
+                                        <input type="text" id="dfrom" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                 </div>
                                 <div class="pull-right">
                  <?  while($fi = mysqli_fetch_row($Query_alerts_ext)){ 
@@ -873,6 +876,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                                 <li class="swt-int" id="Hc-int"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
+                                        <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 25em; float: left;">
+                                        <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                                     </div>
                                             <div class="pull-right">
                              <?  while($fi = mysqli_fetch_row($Query_alerts_int)){ 
@@ -1100,6 +1106,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 <li class="swt-int-ii" id="Hc-int-ii"><a href="#">Finalizados</a></li>
                                                             </ul>
                                                         </div>
+                                        <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 25em; float: left;">
+                                        <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                                                     </div>
                                             <div class="pull-right">
                                 <?  while($fi = mysqli_fetch_row($Query_alerts_ii)){ 
@@ -1356,6 +1365,16 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
         </div>
     </div>
     <script src="../scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+jQuery.extend(
+    jQuery.expr[':'].containsCI = function (a, i, m) {
+        //-- faster than jQuery(a).text()
+        var sText   = (a.textContent || a.innerText || "");     
+        var zRegExp = new RegExp (m[3], 'i');
+        return zRegExp.test (sText);
+    }
+);
+    </script>
     <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
@@ -1427,6 +1446,7 @@ onItemAdd: function(){
     $("#stsk-user").val($("#delegates").val());
 }
    });
+
 kenin[0].selectize.clear();
 
 progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
@@ -1468,6 +1488,51 @@ $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
         }
     }
 });
+
+$("#search1, #search2, #search3").on('paste keypress keydown input', function(){
+
+var indval = $(this).id;
+
+  switch(true){
+  case (indval == "search1"):
+   var objTbl = "ext-tasks-table";
+  break;
+  case (indval == "search2" ):
+   var objTbl = "int-table";
+  break;
+  case (indval == "search3" ):
+   var objTbl = "income-ing";
+  break;
+}
+    getFuzzyIndex($(this).val(), objTbl);
+
+})
+
+
+$(".seo").on("input paste keypress keydown change", function(){
+
+ var indval = $(this).index(".seo");
+
+switch(true){
+  case (indval == 1 || indval == 0):
+   var objTbl = "ext-tasks-table";
+  break;
+  case (indval == 2 || indval == 3):
+   var objTbl = "int-table";
+  break;
+  case (indval == 4 || indval == 5):
+   var objTbl = "income-ing";
+  break;
+}
+
+    if($(".seo").eq(indval).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
+        doSearch($(".seo").eq(indval).val(),$(".seo").eq(indval).next(".seo").val(), objTbl);
+    } else {
+
+        $("#table-mes tr").css({ display : "table-row"});
+    }
+});
+
 
 })
 
@@ -3614,7 +3679,7 @@ mtObj = matches.toString().replace(",", "");
 return mtObj;
 }
 
-function doSearch(fr,t) {
+     function doSearch(fr,t, tbl) {
 var d1 = fr.split("/");
 var d2 = t.split("/");
 var from = new Date(d1[2], d1[1]-1, d1[0]);  
@@ -3622,11 +3687,11 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
 
 
-        var targetTable = document.getElementById('dataTable');
+        var targetTable = document.getElementById(tbl);
         var targetTableColCount;
-        for (var rowIndex = 0; rowIndex < targetTable.rows.length; rowIndex++) {
+        for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
             var rowData = [];
-            if (rowIndex == 0) {
+            if (rowIndex == 1) {
                 targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
                 continue; 
             }
@@ -3640,11 +3705,13 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                 if ((check >= from) && (check <= to))
                     targetTable.rows.item(rowIndex).style.display = 'table-row';
                 else
-                    targetTable.rows.item(rowIndex).style.display = 'none';                    
+                    targetTable.rows.item(rowIndex).style.display = 'none'; 
+
         }
 
         }
     }
+
 
 
 
@@ -3790,6 +3857,16 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
  });
 
 }
+
+function getFuzzyIndex(string, obj){
+
+$("#" + obj + " tbody > tr.task").hide().filter(":containsCI('" + string + "')").show();
+
+if(string == ""){
+  $("#" + obj + " tbody > tr.task").css({ display : "table-row"});
+}
+}
+
 </script>
 
 <?
