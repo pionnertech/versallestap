@@ -8,8 +8,6 @@ $i = 0;
 
 $count = mysqli_num_rows($query);
 
-
-
 echo "var subject = [";
 /*
 while ($fila = mysqli_fetch_row($query)){
@@ -27,11 +25,14 @@ echo "]";
 */
 
 while ($fila = mysqli_fetch_row($query)){
-	echo "'" . str_replace(","," ", $fila[0]) . "'";
+
+	echo "'" .  $fila[0] . "'";
 
 		 if($i < $count -1){
+
         echo ",";
 	 }
+
 	 $i = $i + 1;
 }
 
