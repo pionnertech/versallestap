@@ -3810,6 +3810,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         }
 
         }
+        rowIndex++;
     }
 
 
