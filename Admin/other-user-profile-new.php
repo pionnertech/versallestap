@@ -3791,16 +3791,16 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
             var rowData = [];
             if (rowIndex == 1) {
-                targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
-                continue; 
+                targetTableColCount = targetTable.rows.item(rowIndex).cells.length -1;
                 rowIndex = rowIndex + 1;
+                continue;   
             }
 
             console.info(rowIndex + " rowIndex");
 
             for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
-                 console.info(colIndex-1 + " colIndex");
-                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex-1).textContent);
+                 console.info(colIndex + " colIndex");
+                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex).textContent);
             }
         for(var i=0;i<rowData.length;i++){
                 var c = rowData[i].split("/");
