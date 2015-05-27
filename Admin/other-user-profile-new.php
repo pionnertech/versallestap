@@ -3793,9 +3793,13 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
             if (rowIndex == 1) {
                 targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
                 continue; 
+                rowIndex = rowIndex + 1;
             }
+
+            console.info(rowIndex + " rowIndex");
+
             for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
-               
+                 console.info(colIndex-1 + " colIndex");
                 rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex-1).textContent);
             }
         for(var i=0;i<rowData.length;i++){
@@ -3808,6 +3812,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
         }
           rowIndex = rowIndex + 1;
+
         }
 
     }
