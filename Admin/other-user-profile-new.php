@@ -3800,9 +3800,10 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
             for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
                  console.info(colIndex + " colIndex");
-                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex).textContent);
+                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex+1).textContent);
             }
         for(var i=0;i<rowData.length;i++){
+          console.info()
                 var c = rowData[i].split("/");
                 var check = new Date(c[2], c[1]-1, c[0]);
                 if ((check >= from) && (check <= to))
