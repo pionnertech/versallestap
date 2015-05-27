@@ -27,7 +27,7 @@ echo "]";
 */
 
 while ($fila = mysqli_fetch_row($query)){
-	echo str_replace(","," ",$fila[0]);
+	echo "'" . str_replace(","," ", $fila[0]) . "'";
 
 		 if($i < $count -1){
         echo ",";
