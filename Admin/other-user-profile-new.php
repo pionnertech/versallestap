@@ -1592,26 +1592,38 @@ $(".seo").on("input paste keypress keydown change", function(){
 
  var indval = $(this).index(".seo");
 
+if(isOdd(indval)){
+   var newVal = indVal -1;
+} else {
+  var newVal = indVal;
+}
+
+
+
 switch(true){
   case (indval == 1 || indval == 0):
    var objTbl = "ext-tasks-table";
+   var def = cc1;
   break;
   case (indval == 2 || indval == 3):
    var objTbl = "int-table";
+   var  def = cc2;
   break;
   case (indval == 4 || indval == 5):
    var objTbl = "income-ing";
+   var  def = cc3;
   break;
 }
 /*$(".pull-left .btn").eq(x).text()*/
-console.info($(".seo").eq(indval).val() + " " + $(".seo").eq(indval).next(".seo").val() + " comparation");
-    if($(".seo").eq(indval).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
 
-        doSearch($(".seo").eq(indval).val(),$(".seo").eq(indval).next(".seo").val(), objTbl);
+    if($(".seo").eq(newVal).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
+
+        doSearch($(".seo").eq(newVal).val(),$(".seo").eq(indval).val(), objTbl);
 
     } else {
 
-        $("#table-mes tr").css({ display : "table-row"});
+        $( "#" + objTbl + " tr.task").css({ display : "none"});
+        $( "#" + def + " tr.task").css({ display : "table-row"});
     }
 });
 
@@ -3773,8 +3785,6 @@ return mtObj;
 var d1 = fr.split("/");
 var d2 = t.split("/");
 
-console.info(d1[2] + "  " + d1[1]-1 + " " +  d1[0]);
-
 var from = new Date(d1[2], d1[1]-1, d1[0]);  
 var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
@@ -3961,6 +3971,7 @@ if(string == ""){
 }
 }
 
+function isOdd(num) { return num % 2;}
 </script>
 
 <?
