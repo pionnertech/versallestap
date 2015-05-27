@@ -1913,7 +1913,7 @@ $(".switcher").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
-              cc1 = all_on[i];
+              cc1 = all_on[i].id;
            }
      }
 
@@ -1930,7 +1930,7 @@ $(".swt-int").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
-                cc2 =  all_on[i];
+                cc2 =  all_on[i].id;
            }
         
      }    
@@ -1949,7 +1949,7 @@ $(".swt-int-ii").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
-              cc3 = all_on[i];
+              cc3 = all_on[i].id;
            }
         
      }
