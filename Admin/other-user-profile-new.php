@@ -1541,7 +1541,7 @@ $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
 },
 {
   name: 'subjects',
-  source: substringMatcher(subjects);
+  source: substringMatcher(subjects)
 })
 
 $("#search1, #search2, #search3").on('paste keypress keydown input', function(){
@@ -3944,9 +3944,6 @@ if(string == ""){
 
 }
 }
-
-
-
 
 </script>
 
