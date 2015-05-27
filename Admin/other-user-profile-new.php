@@ -1570,7 +1570,7 @@ var indval = $(this).attr("id");
 // get the current index of filter   $(".pull-left .btn-group > .btn:first-child").eq().text();
 
 // get class of current visible elements
-
+console.info(def);
     getFuzzyIndex($(this).val(), objTbl, def);
 
 
@@ -3937,13 +3937,13 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
 
 function getFuzzyIndex(string, obj, def){
 
+console.log("#" + obj + " tbody > tr." + def);
 $("#" + obj + " tbody > tr.task").hide().filter(":containsCI('" + string + "')").show();
 
 if(string == ""){
 
   $("#" + obj + " tbody > tr.task").css({ display : "none"});
   $("#" + obj + " tbody > tr." + def).css({ display : "table-row"});
- 
 
 }
 }
