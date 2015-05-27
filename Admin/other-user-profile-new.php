@@ -1491,7 +1491,7 @@ $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
 
 $("#search1, #search2, #search3").on('paste keypress keydown input', function(){
 
-var indval = $(this).id;
+var indval = $(this).attr("id");
 
   switch(true){
   case (indval == "search1"):
@@ -1504,9 +1504,10 @@ var indval = $(this).id;
    var objTbl = "income-ing";
   break;
 }
+console.info($(this).val()  + "   /   "+  objTbl);
     getFuzzyIndex($(this).val(), objTbl);
 
-})
+});
 
 
 $(".seo").on("input paste keypress keydown change", function(){
