@@ -3796,8 +3796,8 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
             }
 
             for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
-               console.info(rowIndex + " " + colIndex);
-                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex).textContent);
+               
+                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex-1).textContent);
             }
         for(var i=0;i<rowData.length;i++){
                 var c = rowData[i].split("/");
