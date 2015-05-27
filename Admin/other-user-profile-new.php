@@ -470,7 +470,7 @@ $handler = mysqli_query($datos, $matrix);
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn" id="showtitle" >Atrasados</button>
+                                        <button class="btn" id="showtitle">Atrasados</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
@@ -481,9 +481,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <li class="switcher" id="At"><a href="#">Atrasados</a></li>
                                         </ul>
                                     </div>
-                                        <input type="text" value="" placeholder="Búsqueda" id="search1" style="width: 25em; float: left;">
-                                        <input type="text" id="dfrom" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+
                                 </div>
                                 <div class="pull-right">
                  <?  while($fi = mysqli_fetch_row($Query_alerts_ext)){ 
@@ -522,6 +520,9 @@ $handler = mysqli_query($datos, $matrix);
                                    
                                 </div>
                             </div>
+                                        <input type="text" value="" placeholder="Búsqueda" id="search1" style="width: 20em; float: left;">
+                                        <input type="text" id="dfrom" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="duntil" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
                         <div>
                             <div class="module-body table">                             
                                 <table class="table table-message" id="ext-tasks-table">
@@ -1407,9 +1408,8 @@ jQuery.extend(
     var user_send    = "";
     var stsk_send    = "";
     var keyFile      = "";
-    var dateTime;
-    var objeto;
-    var dateTime;
+    var dateTime, objeto, dateTime;
+
     //ii variables 
     var remoteUser= 0;
     var st_ii     = 0;
@@ -1418,6 +1418,10 @@ jQuery.extend(
     var previan   = "";
     var aa_ii     = "";
     var kenin;
+    //indexes
+    var cc1 = "At";
+    var cc2 = "At";
+    var cc3 = "At";
 
 
 $(document).on('ready', function(){
@@ -1496,16 +1500,24 @@ var indval = $(this).attr("id");
   switch(true){
   case (indval == "search1"):
    var objTbl = "ext-tasks-table";
+   var def = cc1;
   break;
   case (indval == "search2" ):
    var objTbl = "int-table";
+   var def = cc2;
   break;
   case (indval == "search3" ):
    var objTbl = "income-ing";
+   var def = cc3;
   break;
 }
-console.info($(this).val()  + "   /   "+  objTbl);
-    getFuzzyIndex($(this).val(), objTbl);
+
+// get the current index of filter   $(".pull-left .btn-group > .btn:first-child").eq().text();
+
+// get class of current visible elements
+
+    getFuzzyIndex($(this).val(), objTbl, def);
+
 
 });
 
@@ -1525,6 +1537,7 @@ switch(true){
    var objTbl = "income-ing";
   break;
 }
+/*$(".pull-left .btn").eq(x).text()*/
 
     if($(".seo").eq(indval).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
         doSearch($(".seo").eq(indval).val(),$(".seo").eq(indval).next(".seo").val(), objTbl);
@@ -1845,11 +1858,11 @@ $(".switcher").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
+              cc1 = all_on[i];
            }
      }
+
 });
-
-
 $(".swt-int").on('click', function(){
 
     var all_on = document.querySelectorAll('.swt-int');
@@ -1862,11 +1875,11 @@ $(".swt-int").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
+                cc2 =  all_on[i];
            }
         
-     }
+     }    
 });
-
 
 $(".swt-int-ii").on('click', function(){
 
@@ -1881,6 +1894,7 @@ $(".swt-int-ii").on('click', function(){
               $('.' + all_on[i].id).css({ display : "none"});
            } else {
               $('.' + all_on[i].id).css({ display: "table-row"});
+              cc3 = all_on[i];
            }
         
      }
@@ -3859,13 +3873,18 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
 
 }
 
-function getFuzzyIndex(string, obj){
+function getFuzzyIndex(string, obj, def){
 
 $("#" + obj + " tbody > tr.task").hide().filter(":containsCI('" + string + "')").show();
 
 if(string == ""){
-  $("#" + obj + " tbody > tr.task").css({ display : "table-row"});
+
+  $("#" + obj + " tbody > tr.task").css({ display : "none"});
+  $("#" + obj + " tbody > tr." + def).css({ display : "table-row"});
+ 
+
 }
+
 }
 
 </script>
