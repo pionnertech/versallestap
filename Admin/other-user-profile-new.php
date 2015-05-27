@@ -3794,7 +3794,6 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                 targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
                 continue; 
             }
-
             for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
                
                 rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex-1).textContent);
