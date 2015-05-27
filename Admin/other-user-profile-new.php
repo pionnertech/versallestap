@@ -1593,12 +1593,10 @@ $(".seo").on("input paste keypress keydown change", function(){
  var indval = $(this).index(".seo");
 
 if(isOdd(indval)){
-   var newVal = indVal -1;
+   var newVal = indval -1;
 } else {
-  var newVal = indVal;
+  var newVal = indval;
 }
-
-
 
 switch(true){
   case (indval == 1 || indval == 0):
