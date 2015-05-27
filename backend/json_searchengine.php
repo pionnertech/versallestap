@@ -8,7 +8,7 @@ $i = 0;
 
 $count = mysqli_num_rows($query);
 
-echo "var subject = [";
+echo "var subjects = [";
 /*
 while ($fila = mysqli_fetch_row($query)){
 	echo "{ \"f1\":\"" . $fila[0] . "\",";

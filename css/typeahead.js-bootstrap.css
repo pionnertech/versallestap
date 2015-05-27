@@ -76,5 +76,11 @@ box-shadow:         -1px 0px 10px 0px rgba(43, 57, 255, 0.58);
 
 .tt-dataset{
   background-color: #fff;
-  width: 
+  min-width: 100%;
+}
+
+.twitter-typeahead{
+  width: 60%;
+  vertical-align: bottom;
+  display: inline-block;
 }

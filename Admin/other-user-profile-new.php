@@ -525,8 +525,8 @@ $handler = mysqli_query($datos, $matrix);
                             </div>
                             <div class="starter" style="width:100%;">
                                         <input type="text" value="" placeholder="Búsqueda" id="search1" style="width: 36em; float: left;margin-left: 1em;">
-                                        <input type="text" id="dfrom" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="dfrom" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em; vertical-align:top;">
+                                        <input type="text" id="duntil" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em; vertical-align:top;">
                             </div>
                         <div>
                             <div class="module-body table">                             
@@ -923,8 +923,8 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                             </div>
                                         <div style="width: 100%" class="seoEnv">
                                         <input type="text" value="" placeholder="Búsqueda" id="search2" style="width: 36em; float: left; margin-left: 1em">
-                                        <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="dfrom2" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;vertical-align: top;">
+                                        <input type="text" id="duntil2" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;vertical-align: top;">
                                         </div>
                                             <div class="module-body table">
                                                    <table class="table table-message" id="int-table">
@@ -1156,8 +1156,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             </div>
                                       <div style="width: 100%; display:none" class="seoRec">
                                         <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 36em; float: left; margin-left: 1em">
-                                        <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;">
-                                        <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;">
+                                        <input type="text" id="dfrom3" class="datetimepicker seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;vertical-align: top;">
+                                        <input type="text" id="duntil3" class="datetimepicker seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;vertical-align: top;">
                                       </div>
                                             <div class="module-body table" style="display:none">
                                                 <table class="table table-message" id="income-ing">
@@ -2017,7 +2017,6 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii.php?usr=" + mainuser,
               success : function (data){
-                console.info(data);
                     var alpha = [];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
@@ -2522,7 +2521,7 @@ function changeListener(){
             success: function(data){
                 packets = data.split("|");
            // si esta el asunto repetido...
-           console.info(data);
+          // console.info(data);
            //Javier Cisterna Valdes|119|aunt|otro progreso|13/05/2015|13|70||70|1|80
                 var nest = 0
              if(previan !== packets[2]){
