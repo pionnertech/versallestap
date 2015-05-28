@@ -3804,6 +3804,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         for(var i=0;i<rowData.length;i++){
           
                 var c = rowData[i].split("/");
+                console.info(c[2] + " " + c[1]-1 + " " + c[0]);
                 var check = new Date(c[2], c[1]-1, c[0]);
                 console.info(check >= from);
                 console.info(check >= to);
