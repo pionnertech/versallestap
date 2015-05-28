@@ -3802,20 +3802,21 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                       console.info(targetTable.rows.item(colIndex).cells.item(4).textContent + " nuevo bucle");
                       colIndex = colIndex + 1;
                   }
-                  
+
                 continue;   
             }
 
         for(var i=0 ;i<rowData.length;i++){
+
                 var c = rowData[i].split("/");
                 var check = new Date(c[2], c[1]-1, c[0]);
-
+                console.info(rowIndex + " total");
                 if ((check >= from) && (check <= to)){
                      console.info(rowIndex + " is");
                        targetTable.rows.item(rowIndex).style.display = 'table-row';
 
                 } else {
-                  console.info(rowIndex + " else");
+                       console.info(rowIndex + " else");
                        targetTable.rows.item(rowIndex).style.display = 'none'; 
                 }
                     
