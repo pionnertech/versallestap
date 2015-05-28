@@ -3805,8 +3805,10 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
           
                 var c = rowData[i].split("/");
                 var check = new Date(c[2], c[1]-1, c[0]);
-                console.info(check >= from + "ik");
-                console.info(check >= to + "to");
+                console.info(check >= from);
+                console.info(check >= to);
+                console.log(check);
+                console.log(from);
                 if ((check >= from) && (check <= to)){
                      console.info(rowIndex + " is");
                        targetTable.rows.item(rowIndex).style.display = 'table-row';
