@@ -1435,8 +1435,8 @@ jQuery.extend(
     var kenin;
     //indexes
     var cc1 = "At";
-    var cc2 = "At";
-    var cc3 = "At";
+    var cc2 = "At-int";
+    var cc3 = "At-int-ii";
 
     var keys;
 
@@ -1617,10 +1617,11 @@ switch(true){
     if($(".seo").eq(newVal).val() !== "" && $(".seo").eq(indval).next(".seo").val() !== ""){
 
         doSearch($(".seo").eq(newVal).val(),$(".seo").eq(indval).val(), objTbl);
+
     } else {
 
         $( "#" + objTbl + " tr.task").css({ display : "none"});
-        $( "#" + def + " tr.task").css({ display : "table-row"});
+        $( "#" + objTbl + " tr." + def).css({ display : "table-row"});
     }
 });
 
@@ -3815,7 +3816,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                 console.info(check);
                 console.info(from);
                 console.info(to);
-                
+
                 if ((check >= from) && (check <= to)){
                      console.info(rowIndex + " is");
 
