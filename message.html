@@ -648,8 +648,6 @@ var d2 = t.split("/");
 var from = new Date(d1[2], d1[1]-1, d1[0]);  
 var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
-
-
         var targetTable = document.getElementById('table-mes');
         var targetTableColCount;
         for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
@@ -665,6 +663,10 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         for(var i=0;i<rowData.length;i++){
                 var c = rowData[i].split("/");
                 var check = new Date(c[2], c[1]-1, c[0]);
+                console.info(check);
+                console.info(from);
+                console.info(to);
+
                 if ((check >= from) && (check <= to))
                     targetTable.rows.item(rowIndex).style.display = 'table-row';
                 else
