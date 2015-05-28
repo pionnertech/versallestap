@@ -3805,6 +3805,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
 
                 continue;   
             }
+                  console.log(rowData.length);
 
         for(var i=0 ;i<rowData.length;i++){
 
@@ -3814,6 +3815,7 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
                 console.info(check);
                 console.info(from);
                 console.info(to);
+                
                 if ((check >= from) && (check <= to)){
                      console.info(rowIndex + " is");
 
