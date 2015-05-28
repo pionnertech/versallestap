@@ -3788,30 +3788,23 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         var targetTable = document.getElementById(tbl);
         var targetTableColCount;
         for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
+
             var rowData = [];
+
             if (rowIndex == 1) {
-                targetTableColCount = targetTable.rows.item(rowIndex).cells.length -1;
+                targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
                 rowIndex = rowIndex + 1;
+                  for (var colIndex = 0; colIndex < targetTable.rows.length ; colIndex++) {
+                      rowData.push(targetTable.rows.item(rowIndex).cells.item(4).textContent);
+                      console.info(targetTable.rows.item(rowIndex).cells.item(4).textContent + " nuevo bucle");
+                  }
                 continue;   
             }
 
-            console.info(rowIndex + " rowIndex");
-
-            for (var colIndex = 0; colIndex < targetTableColCount; colIndex++) {
-                console.log(targetTable.rows.item(rowIndex).cells.item(colIndex+1).textContent);
-                rowData.push(targetTable.rows.item(rowIndex).cells.item(colIndex+1).textContent);
-            }
-        for(var i=0;i<rowData.length;i++){
-          
+        for(var i=0 ;i<rowData.length;i++){
                 var c = rowData[i].split("/");
-                console.info(c[2] + " / " + c[1]-1 + " / " + c[0]);
                 var check = new Date(c[2], c[1]-1, c[0]);
-                /*
-                console.info(check >= from);
-                console.info(check >= to);
-                console.log(check);
-                console.log(from);
-                */
+
                 if ((check >= from) && (check <= to)){
                      console.info(rowIndex + " is");
                        targetTable.rows.item(rowIndex).style.display = 'table-row';
