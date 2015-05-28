@@ -3792,12 +3792,17 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
             var rowData = [];
 
             if (rowIndex == 1) {
+
                 targetTableColCount = targetTable.rows.item(rowIndex).cells.length;
+
                 rowIndex = rowIndex + 1;
-                  for (var colIndex = 0; colIndex < targetTable.rows.length ; colIndex++) {
-                      rowData.push(targetTable.rows.item(rowIndex).cells.item(4).textContent);
-                      console.info(targetTable.rows.item(rowIndex).cells.item(4).textContent + " nuevo bucle");
+
+                  for (var colIndex = 3; colIndex < targetTable.rows.length ; colIndex++) {
+                      rowData.push(targetTable.rows.item(colIndex).cells.item(4).textContent);
+                      console.info(targetTable.rows.item(colIndex).cells.item(4).textContent + " nuevo bucle");
+                      colIndex = colIndex + 1;
                   }
+                  
                 continue;   
             }
 
