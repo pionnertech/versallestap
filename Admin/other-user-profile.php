@@ -174,7 +174,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         </li>
                         <li><a href="#">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../images/ejecutivo4.jpg" class="nav-avatar" />
+                            <img src="../<? echo $_SESSION['TxtFacility'] ?> /img<? echo $_SESSION['TxtCode'] ?>.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="../backend/close.php">Logout</a></li>
