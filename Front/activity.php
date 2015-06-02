@@ -1338,7 +1338,7 @@ window.addEventListener('resize', function(){
 
 })
 
-$('#map').on('shown', function () {
+$('#Geo').on('click', function () {
   google.maps.event.trigger(map, 'resize');
 })
 
