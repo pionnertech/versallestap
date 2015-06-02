@@ -1342,7 +1342,9 @@ $('#map').on('shown', function () {
   google.maps.event.trigger(map, 'resize');
 })
 
-
+$('#map').on('click', function () {
+  google.maps.event.trigger(map, 'resize');
+})
 </script>
 <?
 
