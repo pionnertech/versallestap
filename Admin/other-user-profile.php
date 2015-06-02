@@ -253,7 +253,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
-                                        <img src="../images/ejecutivo4.jpg" style="width: 100%; height: 100%">
+                                        <img src="../<? echo $_SESSION['TxtFacility'] ?> /img/<? echo $_SESSION['TxtCode'] ?>.jpg" style="width: 100%; height: 100%">
                                     </a>
                                     <div class="media-body">
                                         <h4>
