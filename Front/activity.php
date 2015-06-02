@@ -678,6 +678,7 @@ $("#ctzmail").on('change keydown paste input keypress', function (){
 
 $('#Geo').on('click', function(){
 
+$("#map").trigger('resize');
 
  if (!$(this).data("val") || $(this).data("val") === 0){
 	setTimeout(function(){
@@ -1337,6 +1338,9 @@ window.addEventListener('resize', function(){
 
 })
 
+$('#map').on('shown', function () {
+  google.maps.event.trigger(map, 'resize');
+})
 
 
 </script>
