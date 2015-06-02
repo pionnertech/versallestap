@@ -260,7 +260,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                                            <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Online</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         <? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($_SESSION['TxtPosition'])))) ?> en .
+                                         <? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($_SESSION['TxtPosition'])))) ?> en <? echo $_SESSION['TxtFacName'] ?>
                                         </p>
                                         <div class="profile-details muted">
                                         </div>
