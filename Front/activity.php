@@ -132,7 +132,9 @@ background-color: rgb(114, 232, 111);
 cursor:pointer;
 }
 
-
+#map {
+	height:calc(100% - 0px);
+}
 div.dropdown-menu,  ul.dropdown-menu{
 	max-width: 5em;
 }
