@@ -303,7 +303,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                                                                 <? printf($fila_per[1]) ?>  <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
-                                                                <small class="muted">Serviu</small></p>
+                                                                <small class="muted"><? echo $_SESSION['TxtFacName'] ?></small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <a class="btn btn-small" href="mailto:<? echo $fila_per[3] ?>">
                                                                     <i class="icon-envelope"></i>
@@ -378,7 +378,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                 <? printf($fila_per2[1]) ?> <? printf($fila_per2[2] ) ?>
                                                             </h3>
                                                             <p>
-                                                                <small class="muted">Serviu</small></p>
+                                                                <small class="muted"><? echo $_SESSION['TxtFacName'] ?></small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <a class="btn btn-small" href="mailto:<? echo $fila_per2[3] ?>">
                                                                     <i class="icon-envelope"></i>
