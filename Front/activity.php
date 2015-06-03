@@ -184,7 +184,7 @@ select {
 						</li>
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="../images/user.png" class="nav-avatar" />
+								<img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg" class="nav-avatar" />
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
@@ -307,7 +307,7 @@ select {
 							 <h3><strong>Detalle del compromiso</strong></h3>
 								<div class="stream-composer media">
 									<a href="#" class="media-avatar medium pull-left">
-										<img src="../images/user.png">
+										<img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg">
 									</a>
 									<div class="media-body">
 										<div class="row-fluid">
