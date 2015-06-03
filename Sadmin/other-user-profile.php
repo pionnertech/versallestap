@@ -177,7 +177,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         </li>
                         <li><a href="#">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../images/ejecutivo4.jpg" class="nav-avatar" />
+                            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg" class="nav-avatar" />
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="../backend/close.php">Logout</a></li>
@@ -258,14 +258,14 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
-                                        <img src="../images/ejecutivo4.jpg" style="width: 100%; height: 100%">
+                                        <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>.jpg" style="width: 100%; height: 100%">
                                     </a>
                                     <div class="media-body">
                                         <h4>
                                            <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Online</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         <? printf($_SESSION['TxtPosition']) ?> En SERVIU.
+                                         <? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($_SESSION['TxtPosition'])))) ?> en <? echo $_SESSION['TxtFacName'] ?>
                                         </p>
                                         <div class="profile-details muted">
                                         </div>

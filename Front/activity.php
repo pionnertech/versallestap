@@ -26,7 +26,6 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <head>
 	<meta charset="utf-8"> 
@@ -1333,10 +1332,6 @@ $("#cleanup").on('click', function(){
 });
 
 
-
-window.addEventListener('resize', function(){
-
-})
 
 $('#Geo').on('click', function () {
   google.maps.event.trigger(map, 'resize');
