@@ -156,6 +156,7 @@ vertical-align: top;
             </div>
             <!-- /navbar-inner -->
         </div>
+        
         <!-- /navbar -->
         <div class="wrapper">
             <div class="container">
