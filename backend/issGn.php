@@ -40,31 +40,31 @@ if(!mysqli_query($datos, $insertar_ciudadano)){
 
 } else if(mysqli_num_rows($checkin) !== 0 && $argument == 1){
 
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE CTZ_RUT= " . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_NAMES = '" . $nombre . "' WHERE (CTZ_RUT= " . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "nombre " .  mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME1 = '" . $apellidoP . "' WHERE CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME1 = '" . $apellidoP . "' WHERE (CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "appp " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME2 = '" . $apellidoM . "' WHERE CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_SURNAME2 = '" . $apellidoM . "' WHERE (CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "appm " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_ADDRESS = '" . $direccion . "' WHERE CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_ADDRESS = '" . $direccion . "' WHERE (CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "direccion " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_GEOLOC = '" . $geo . "' WHERE CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_GEOLOC = '" . $geo . "' WHERE (CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "geo " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE CTZ_RUT = " . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_TEL = " . $tel . " WHERE (CTZ_RUT = " . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "tel " . mysqli_errno($datos);
 	exit;
 }
-if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_MAIL = '" . $mail . "' WHERE CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
+if(!mysqli_query($datos, "UPDATE CITIZENS SET CTZ_MAIL = '" . $mail . "' WHERE (CTZ_RUT=" . $clean_rut . " AND CTZ_FAC_ENTER= " . $fac . ");")){
 	echo "mail " . mysqli_errno($datos);
 	exit;
 }
