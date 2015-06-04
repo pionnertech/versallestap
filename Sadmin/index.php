@@ -510,6 +510,7 @@ getDataTable(iss, $(this), color);
 });
 
 
+
 $("#back").on('click', function(){
     $("#suite").fadeOut("slow", function(){
         $("#DataTables_Table_0_wrapper").fadeIn('slow');
