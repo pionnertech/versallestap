@@ -182,7 +182,7 @@ if(mysqli_num_rows($quntum) == 0){
                                 <div class="pull-left">
                                     Filtro : &nbsp;
                                     <div class="btn-group">
-                                        <button class="btn" id="titlen">Pendientes</button>
+                                        <button class="btn" id="titlen">Atrasados</button>
                                         <button class="btn dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span>
                                         </button>
