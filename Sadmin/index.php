@@ -547,7 +547,7 @@ function getDataTable(iss_id, object, color ){
 
         },
         success : function (data){
-
+      console.info(data);
                var matrix = data.split("|");
                object.children('i').remove();
                for(i=1;i < 5 ; i++){
