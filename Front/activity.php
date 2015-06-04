@@ -141,6 +141,10 @@ div.dropdown-menu,  ul.dropdown-menu{
 select {
  width: 500px !important;
 }
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+    width:50%;
+}
 	</style>
 
 
