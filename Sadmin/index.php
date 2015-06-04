@@ -300,8 +300,9 @@ vertical-align: top;
                                                 <td>
                                                     <? //printf($issues[0]) ?>
                                                 </td>
-                                                <td>
                                                 -->
+                                                <td>
+                                                
                                                     <? printf($issues[1]) ?> <? printf($issues[7]) ?> <? printf($issues[8]) ?>
                                                 </td>
                                                 <td>
@@ -505,11 +506,7 @@ $(".situation").on('click', function(){
 var iss = $(this).parent().children('input').val();
 var color = $(this).css("color");
 getDataTable(iss, $(this), color);
-
-
 });
-
-
 
 $("#back").on('click', function(){
     $("#suite").fadeOut("slow", function(){
@@ -526,6 +523,7 @@ if ($(this).data("val") == "" || $(this).data("val") == 0 || $(this).data("val")
 
     $(".itinerario").css({ height: "17em"});  
      $(this).data("val", 1);
+
 }  else {
 
     $(this).removeClass("fa-chevron-up");
