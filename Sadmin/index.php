@@ -273,9 +273,11 @@ vertical-align: top;
                                         width="100%">
                                         <thead>
                                             <tr>
+                                            <!--
                                                 <th>
                                                     Asunto
                                                 </th>
+                                                -->
                                                 <th>
                                                     Ciudadano
                                                 </th>
@@ -294,11 +296,12 @@ vertical-align: top;
                                         <? while ($issues = mysqli_fetch_row( $Query_task )){ ?>
                                             <tr class="gradeA">
                                             <input type="hidden" value="<?printf($issues[9]) ?>" id="iss_id">
-                                         
+                                         <!--
                                                 <td>
-                                                    <? printf($issues[0]) ?>
+                                                    <? //printf($issues[0]) ?>
                                                 </td>
                                                 <td>
+                                                -->
                                                     <? printf($issues[1]) ?> <? printf($issues[7]) ?> <? printf($issues[8]) ?>
                                                 </td>
                                                 <td>
@@ -315,9 +318,11 @@ vertical-align: top;
                                         </tbody>
                                         <tfoot>
                                             <tr>
+                                            <!--
                                                 <th>
                                                     Asunto
                                                 </th>
+                                            -->
                                                 <th>
                                                     Ciudadano
                                                 </th>
@@ -338,9 +343,9 @@ vertical-align: top;
                                  <div class="docs-example">
                                       <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
                                         <dl class="dl-horizontal">
-                                            <dt>Asunto</dt>
-                                            <dd>
-                                                A description list is perfect for defining terms.</dd>
+                                            <!--<dt>Asunto</dt>-->
+                                            <!--<dd>
+                                                A description list is perfect for defining terms.</dd>-->
                                             <dt>Encargado</dt>
                                             <dd>
                                                 Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
