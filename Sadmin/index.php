@@ -344,9 +344,9 @@ vertical-align: top;
                                  <div class="docs-example">
                                       <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
                                         <dl class="dl-horizontal">
-                                            <!--<dt>Asunto</dt>-->
-                                            <!--<dd>
-                                                A description list is perfect for defining terms.</dd>-->
+                                            <dt>Asunto</dt>
+                                            <dd>
+                                                A description list is perfect for defining terms.</dd>
                                             <dt>Encargado</dt>
                                             <dd>
                                                 Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
