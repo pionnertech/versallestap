@@ -24,7 +24,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
 $clean_rut = substr($rut , 0, (strlen($rut) - 1));
 
-$checkin = mysqli_query($datos, "SELECT CTZ_NAMES FROM CITIZENS WHERE CTZ_RUT = " . $clean_rut );
+$checkin = mysqli_query($datos, "SELECT CTZ_NAMES FROM CITIZENS WHERE (CTZ_RUT = " . $clean_rut . " AND CTZ_FAC_ENTER = " . $fac . ")");
 
 if(mysqli_num_rows($checkin) === 0){
                   
