@@ -10,20 +10,6 @@ $i = 0;
 $count = mysqli_num_rows($query);
 
 echo "var subjects = [";
-/*
-while ($fila = mysqli_fetch_row($query)){
-	echo "{ \"f1\":\"" . $fila[0] . "\",";
-	echo "\"f2\":\"" . $fila[1] . "\",";
-	echo "\"f2\":\"" . $fila[1] . "\"}";
-
-	 if($i < $count -1){
-        echo ",";
-	 }
-	 $i = $i + 1;
-}
-
-echo "]";
-*/
 
 while ($fila = mysqli_fetch_row($query)){
 

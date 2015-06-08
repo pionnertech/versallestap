@@ -113,12 +113,6 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     transition:all 600ms ease-in-out
 }
 
-.tt-selectable:active{
-    background-color:#000F17;
-    -webkit-transition:all 600ms ease-in-out;
-    -moz-transition:all 600ms ease-in-out;
-    transition:all 600ms ease-in-out
-}
 
 #outer-dropzone {
   height: 140px;
@@ -1539,10 +1533,6 @@ var datetime  = $(".seo").datetimepicker({
     format:'d/m/y',
     timepicker: false
 });
-
-
-
-
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
@@ -3907,22 +3897,17 @@ $("div.pull-right").eq(kind).html(gitString);
 
 }
 function checkDelExt(){
-
 if($("#subject").val() == ""){
   return "Asunto";
 }
-
 if($("#end-data").val() == ""){
   return "Fecha Final";
 }
 if($("#st-description").val() == "" ){
    return "Descripcion";
 }
-
 return true;
-
 }
-
 function checkIntDel(){
 
 if($("#subj-int").val() == ""){
@@ -3962,27 +3947,20 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
    $(object).data("val", 0);
 }
 }
-
-
 //funcion prototipo
 $(".ifile").on('dblclick', function(){
   var fi = $(this).children('span').html();
     downloadFile("../" + fac + "/" + mainuser + "/" + fi);
 });
-
-
 function rewind(obj){
-
 var  fnam = obj.previousSibling.childNodes[0].nodeValue;
 var  usr = $("input[name=user]").val();
 var stsk = $("input[name=issId]").val();
-
 if($("form#upload").attr("action") == "../backend/upload.php"){
    var type = 0;
 } else {
    var type= 1;
 }
-
  $.ajax({
           type: "POST",
           url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr  + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
@@ -3991,9 +3969,7 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
               bootbox.alert("archivo eliminado");
           }
  });
-
 }
-
 function getFuzzyIndex(string, obj, def){
 
 console.log("#" + obj + " tbody > tr." + def);
@@ -4006,6 +3982,10 @@ if(string == ""){
 
 }
 }
+
+$(".tt-selectable").on(":focus", function(){
+  console.info($(this).html());
+})
 
 function isOdd(num) { return num % 2;}
 </script>
