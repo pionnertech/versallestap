@@ -3,7 +3,7 @@
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$query = mysqli_query($datos, "SELECT STSK_DESCRIP, STSK_START_DATE, STSK_FINISH_DATE FROM SUBTASKS WHERE (STSK_FAC_CODE = 10000 AND STSK_TYPE = 0 STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
+$query = mysqli_query($datos, "SELECT STSK_DESCRIP, STSK_START_DATE, STSK_FINISH_DATE FROM SUBTASKS WHERE (STSK_FAC_CODE = 10000 AND STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")");
 
 $i = 0;
 
