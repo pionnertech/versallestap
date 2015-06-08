@@ -113,7 +113,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     transition:all 600ms ease-in-out
 }
 
-.tt-selectable:focus{
+.tt-selectable:active{
     background-color:#000F17;
     -webkit-transition:all 600ms ease-in-out;
     -moz-transition:all 600ms ease-in-out;
@@ -1425,7 +1425,7 @@ jQuery.extend(
 
 <script type="text/javascript">
 
-<? include_once "../backend/json_searchengine.php" ?>
+<? include_once "../backend/json_searchengine.php?usr=" . $_SESSION['TxtCode'] ?>
 
 
     var st           = 0;
