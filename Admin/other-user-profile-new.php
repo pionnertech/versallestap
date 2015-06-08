@@ -1425,7 +1425,7 @@ jQuery.extend(
 
 <script type="text/javascript">
 
-<? include_once "../backend/json_searchengine.php?usr=" . $_SESSION['TxtCode'] ?>
+<? include_once "../backend/json_searchengine.php" ?>
 
 
     var st           = 0;
