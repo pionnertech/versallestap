@@ -162,7 +162,7 @@ if(mysqli_num_rows($quntum) == 0){
                                            <? printf($_SESSION['TxtUser'])?> <? printf($_SESSION['TxtPass'])?><small>Offline</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         <? printf($_SESSION['TxtPosition']) ?> en SERVIU.
+                                         <? printf($_SESSION['TxtPosition']) ?> en <? echo $_SESSION['txtFacName'] ?>.
                                         </p>
                                         <div class="profile-details muted" id="kitkat">
                                         </div>
