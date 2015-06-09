@@ -636,7 +636,7 @@ console.info('llega hasta acá');
 
 console.log(setClass + "   " + cor );
 
-            i.className = "fa fa-2x fa-file" + setClass;
+            i.className = "fa fa-2x fa-file-" + setClass;
             i.style.color = cor;
             p.title = name;
             a.className = "in-files";
