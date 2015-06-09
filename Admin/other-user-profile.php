@@ -2068,7 +2068,7 @@ uploader =  $(object).pluploadQueue({
                     } else {
                      up.setOption("url",  '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id)
                   }        
-                          
+
                 //upupp.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
@@ -2109,7 +2109,7 @@ uploader =  $(object).pluploadQueue({
                 $("#SendRequest-free").attr("disabled", true);
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
-                 uploader.setOption("url", url);
+                 
             },
   
             UploadProgress: function(up, file) {
