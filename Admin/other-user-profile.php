@@ -2066,7 +2066,6 @@ uploader =  $(object).pluploadQueue({
             },
  
             UploadFile: function(up, file) {
-
                 console.log('[UploadFile]', file);
                 up.setOption("url", url);
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
@@ -3422,13 +3421,14 @@ function AmericanDate(date){
 return subs;
 }
 
-document.getElementById("int-del").addEventListener("change" , function(){
+$("int-del").on("change" , function(){
        user_send = this.value;
        console.info(user_send);
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 })
 
+/*
 document.getElementById("int-del").addEventListener("click" , function(){
        user_send = this.value;
        console.info(user_send);
@@ -3436,7 +3436,7 @@ document.getElementById("int-del").addEventListener("click" , function(){
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 })
 
-
+*/
 
 
 function RandomString(length) {
