@@ -3429,6 +3429,7 @@ $("int-del").on("change" , function(){
 })
 
 /*
+
 document.getElementById("int-del").addEventListener("click" , function(){
        user_send = this.value;
        console.info(user_send);
