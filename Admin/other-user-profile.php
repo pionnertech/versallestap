@@ -2109,6 +2109,7 @@ uploader =  $(object).pluploadQueue({
                 $("#SendRequest-free").attr("disabled", true);
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
+                up.setOption("url", naUrl);
                  
             },
   
