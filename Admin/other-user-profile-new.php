@@ -1395,6 +1395,16 @@ jQuery.extend(
         return zRegExp.test (sText);
     }
 );
+
+jQuery.fn.justtext = function() {
+   
+    return $(this)  .clone()
+            .children()
+            .remove()
+            .end()
+            .text();
+ 
+};
     </script>
     <script src="../scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -3988,19 +3998,17 @@ document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
     if (e.keyCode == '38') {
-       console.info($(document.activeElement))
+       console.info($(document.activeElement).val());
+       $(".tt-selectable").find("div").contents($(document.activeElement).val()).justtext().css("background-color", "#ACE1F2");
+       console.info($(".tt-selectable").find("div").contents($(document.activeElement).val()).justtext());
     }
     else if (e.keyCode == '40') {
-      console.info($(document.activeElement));
+      console.info($(document.activeElement).val());
+      $(".tt-selectable").find("div").contents($(document.activeElement).val()).justtext().css("background-color", "#ACE1F2");
+       console.info($(".tt-selectable").find("div").contents($(document.activeElement).val()).justtext());
     }
 }
-
 function isOdd(num) { return num % 2;}
-
-$("#search1").on('change keydown keypress paste' , function(){
-   console.info($(this).text());
-});
-
 </script>
 
 <?
