@@ -12,11 +12,11 @@ $query = "SELECT A.ISS_SUBJECT, " .
 "A.ISS_DESCRIP," .
 "A.ISS_FINISH_DATE, " .
 "A.ISS_PROGRESS, " .
-"A.ISS_DATE_ING," .
+"A.ISS_DATE_ING, " .
 "C.EST_DESCRIPT " .
 "FROM  " .
-"ISSUES A INNER JOIN USERS B ON(CASE A.ISS_CHARGE_USR  WHEN 0 THEN B.USR_ID = 999999 ELSE B.USR_ID = A.ISS_CHARGE_USR END)" .
-"INNER JOIN EST C ON(C.EST_CODE =  A.ISS_STATE)" .
+"ISSUES A INNER JOIN USERS B ON(CASE A.ISS_CHARGE_USR  WHEN 0 THEN B.USR_ID = 999999 ELSE B.USR_ID = A.ISS_CHARGE_USR END) " .
+"INNER JOIN EST C ON(C.EST_CODE =  A.ISS_STATE) " .
 "INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ AND D.CTZ_FAC_ENTER = " . $fac . " ) " .
 "WHERE (ISS_FAC_CODE = " . $fac . " AND ISS_ID = " . $iss_id . ")";
 
@@ -31,6 +31,7 @@ while ($fila = mysqli_fetch_row($handler)) {
 	}
    
 }
+
 
 if($hdir = opendir("/var/www/html/" . $fac . "/reply/")){
 
