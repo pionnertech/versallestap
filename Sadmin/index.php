@@ -584,7 +584,7 @@ $(".pre").empty();
 console.info('llega hasta acá');
 
      var p = document.createElement('p');
-     var i = document.createElement('p');
+     var i = document.createElement('i');
      var a = document.createElement('a');
 
      var setClass ="";
