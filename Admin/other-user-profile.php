@@ -2040,11 +2040,7 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
-if(kind == "internal"){
-   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
-} else {
-    var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
-}
+
 console.info(url);
 
 uploader =  $(object).pluploadQueue({
@@ -2067,7 +2063,12 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                uploader.setOption("url", url);
+                if(kind == "internal"){
+                     up.setOption("url",'../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile)
+                    } else {
+                     up.setOption("url",  '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id)
+                  }        
+                          
                 //upupp.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
