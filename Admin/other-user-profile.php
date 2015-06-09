@@ -2041,8 +2041,6 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
 
-console.info(url);
-
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_for_front.php?'  ,
