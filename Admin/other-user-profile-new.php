@@ -3998,8 +3998,12 @@ document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
     if (e.keyCode == '38') {
-       $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
-       $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").next().css("background-color", "#FFF");
+        if ( $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").index(".tt-selectable") == 0){
+              $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#FFF");
+        } else {
+              $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
+        }
+        $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").next().css("background-color", "#FFF");
     }
     else if (e.keyCode == '40') {
       $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
