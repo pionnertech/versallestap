@@ -3999,13 +3999,12 @@ function checkKey(e) {
     e = e || window.event;
     if (e.keyCode == '38') {
        console.info($(document.activeElement).val());
-       $(".tt-selectable").find("div:contains(" + $(document.activeElement).val().justtext() + ")").css("background-color", "#ACE1F2");
-       console.info($(".tt-selectable").find("div:contains(" + $(document.activeElement).val().justtext() + ")"));
+       $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
     }
     else if (e.keyCode == '40') {
       console.info($(document.activeElement).val());
-      $(".tt-selectable").find("div:contains(" + $(document.activeElement).val().justtext() + ")").css("background-color", "#ACE1F2");
-       console.info($(".tt-selectable").find("div:contains(" + $(document.activeElement).val().justtext() + ")"));
+      $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
+    
     }
 }
 function isOdd(num) { return num % 2;}
