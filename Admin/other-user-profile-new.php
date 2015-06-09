@@ -3973,7 +3973,7 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
 function getFuzzyIndex(string, obj, def){
 
 console.log("#" + obj + " tbody > tr." + def);
-console.info($(document.activeElement));
+
 $("#" + obj + " tbody > tr.task").hide().filter(":containsCI('" + string + "')").show();
 
 if(string == ""){
@@ -3984,7 +3984,19 @@ if(string == ""){
 }
 }
 
+document.onkeydown = checkKey;
 
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+       console.info($(document.activeElement))
+    }
+    else if (e.keyCode == '40') {
+      console.info($(document.activeElement));
+    }
+}
 
 function isOdd(num) { return num % 2;}
 </script>
