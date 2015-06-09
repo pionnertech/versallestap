@@ -587,6 +587,7 @@ console.info('llega hasta acá');
      var i = document.createElement('i');
      var a = document.createElement('a');
 
+
      var setClass ="";
      var cor ="";
      switch(extension){
