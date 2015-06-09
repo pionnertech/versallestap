@@ -2044,6 +2044,7 @@ if(kind == "internal"){
 } else {
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
+console.info(url);
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
