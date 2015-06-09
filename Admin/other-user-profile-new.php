@@ -3985,11 +3985,8 @@ if(string == ""){
 }
 
 document.onkeydown = checkKey;
-
 function checkKey(e) {
-
     e = e || window.event;
-
     if (e.keyCode == '38') {
        console.info($(document.activeElement))
     }
@@ -3999,6 +3996,11 @@ function checkKey(e) {
 }
 
 function isOdd(num) { return num % 2;}
+
+$("input#search1.tt-input").on('change keydown keypress paste' , function(){
+   console.info($(this).text());
+});
+
 </script>
 
 <?
