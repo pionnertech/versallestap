@@ -2076,9 +2076,10 @@ uploader =  $(object).pluploadQueue({
             }
         },
   init : {
-            PostInit: function() {
+            PostInit: function(up) {
                 // Called after initialization is finished and internal event handlers bound
                 console.log('[PostInit]');
+                up.setOption("url", url);
             },
  
             Browse: function(up) {
