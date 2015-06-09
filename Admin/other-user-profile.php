@@ -2068,7 +2068,7 @@ uploader =  $(object).pluploadQueue({
 
                 console.log('[UploadFile]', file);
                 up.setOption("url", url);
-               // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+                up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
   init : {
@@ -2108,6 +2108,7 @@ uploader =  $(object).pluploadQueue({
                 $("#SendRequest-free").attr("disabled", true);
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
+                 up.setOption("url", url);
             },
   
             UploadProgress: function(up, file) {
