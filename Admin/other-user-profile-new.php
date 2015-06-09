@@ -3998,13 +3998,12 @@ document.onkeydown = checkKey;
 function checkKey(e) {
     e = e || window.event;
     if (e.keyCode == '38') {
-       $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
-       console.info( $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2"))
+       $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
+       console.info( $(".tt-selectable :contains('" + $(document.activeElement).val() + "')"))
     }
     else if (e.keyCode == '40') {
-      console.info($(document.activeElement).val());
-      $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
-      console.info( $(".tt-selectable :contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2"))
+      $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").css("background-color", "#ACE1F2");
+      console.info( $(".tt-selectable :contains('" + $(document.activeElement).val() + "')"))
     
     }
 }
