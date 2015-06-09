@@ -3997,7 +3997,7 @@ function checkKey(e) {
 
 function isOdd(num) { return num % 2;}
 
-$("input#search1.tt-input").on('change keydown keypress paste' , function(){
+$("#search1").on('change keydown keypress paste' , function(){
    console.info($(this).text());
 });
 
