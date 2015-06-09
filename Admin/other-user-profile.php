@@ -2040,16 +2040,15 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
-          if(kind == "internal"){
-            var naUrl = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
-            } else {
-            var naUrl = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
-            } 
+if(kind == "internal"){
+   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
+} else {
+    var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
+}
 
 uploader =  $(object).pluploadQueue({
-
         runtimes : 'html5',
-        url : '../backend/upload_for_front.php?',
+        url : '../backend/upload_for_front.php?'  ,
         chunk_size : '3mb',
         unique_names : true,
   filters : {
@@ -2065,9 +2064,10 @@ uploader =  $(object).pluploadQueue({
             },
  
             UploadFile: function(up, file) {
+
                 console.log('[UploadFile]', file);
-                up.setOption("url", naUrl);
-                //upupp.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
+                up.setOption("url", url);
+               // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
   init : {
@@ -2099,21 +2099,14 @@ uploader =  $(object).pluploadQueue({
             OptionChanged: function(up, name, value, oldValue) {
                 // Called when one of the configuration options is changed
                 console.log('[OptionChanged]', 'Option Name: ', name, 'Value: ', value, 'Old Value: ', oldValue);
-                console.log(up);
             },
  
             BeforeUpload: function(up, file) {
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
-
                 $("#SendRequest-free").attr("disabled", true);
-                up.settings.multipart_params = {
-                                   filename: file.name
-                               };
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
-                up.setOption("url", naUrl);
-                 
             },
   
             UploadProgress: function(up, file) {
@@ -2175,10 +2168,10 @@ uploader =  $(object).pluploadQueue({
                 console.log('[Error] ', args);
             }
         } // init
+
     });
 
 };
-
 
 function intDel(user, sub, des, date, ind, mst){
 
