@@ -2053,7 +2053,7 @@ if(kind == "internal"){
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
-        url : '../backend/upload_for_front.php?'  ,
+        url : '../backend/upload_for_front.php?',
         chunk_size : '3mb',
         unique_names : true,
   filters : {
@@ -2110,6 +2110,8 @@ uploader =  $(object).pluploadQueue({
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
                 $("#SendRequest-free").attr("disabled", true);
+                up.setOption("url", url);
+                console.log('[BeforeUpload]', 'File: ', up);
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
             },
