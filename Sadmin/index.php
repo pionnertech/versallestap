@@ -581,6 +581,8 @@ var parent = document.querySelector(".pre");
 
 $(".pre").empty();
 
+console.info('llega hasta acá');
+
      var p = document.createElement('p');
      var i = document.createElement('p');
      var a = document.createElement('a');
@@ -631,6 +633,7 @@ $(".pre").empty();
 
     }
 
+console.log(setClass + "   " + cor );
 
             i.className = "fa fa-2x fa-" + setClass;
             i.style.color = cor;
@@ -638,8 +641,6 @@ $(".pre").empty();
             a.className = "in-files";
             a.href = "../" + fac + "/reply/" + name;
             a.setAttribute("download", name);
-           
-
 
             p.appendChild(i);
             a.appendChild(p)

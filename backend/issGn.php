@@ -20,6 +20,7 @@
     $subject = $_GET['subject'];
     $argument = $_GET['argument'];
 
+    //UPDATE SUBTASKS SET STSK_TICKET = CONCAT('IR20', STSK_ISS_ID, SUBSTRING(STSK_START_DATE,9, 2), 100 + STSK_ISS_ID)
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //check usuario
 $clean_rut = substr($rut , 0, (strlen($rut) - 1));
