@@ -2040,17 +2040,16 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
-                if(kind == "internal"){
-                    var naUrl = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
-                     
-                    } else {
-                    
-                    var naUrl = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
-                  } 
+          if(kind == "internal"){
+            var naUrl = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
+            } else {
+            var naUrl = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
+            } 
 
 uploader =  $(object).pluploadQueue({
+
         runtimes : 'html5',
-        url : '../backend/upload_for_front.php?'  ,
+        url : '../backend/upload_for_front.php?',
         chunk_size : '3mb',
         unique_names : true,
   filters : {
@@ -2106,7 +2105,11 @@ uploader =  $(object).pluploadQueue({
             BeforeUpload: function(up, file) {
                 // Called right before the upload for a given file starts, can be used to cancel it if required
                 console.log('[BeforeUpload]', 'File: ', file);
+
                 $("#SendRequest-free").attr("disabled", true);
+                up.settings.multipart_params = {
+                                   filename: file.name
+                               };
                   // when finish , enabe button 
                 $("#send-int").attr("disabled", true);
                 up.setOption("url", naUrl);
