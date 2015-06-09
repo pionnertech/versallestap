@@ -2040,6 +2040,8 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
+console.info(object);
+
 if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
 } else {
@@ -3741,8 +3743,6 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
    $(object).data("val", 0);
 }
 }
-
-
 //funcion prototipo
 $(".ifile").on('dblclick', function(){
   var fi = $(this).children('span').html();
@@ -3761,7 +3761,6 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
 } else {
    var type= 1;
 }
-
  $.ajax({
           type: "POST",
           url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr  + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
