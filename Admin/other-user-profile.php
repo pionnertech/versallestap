@@ -3421,7 +3421,7 @@ function AmericanDate(date){
 return subs;
 }
 
-$("int-del").on("change" , function(){
+$("#int-del").on("change" , function(){
        user_send = this.value;
        console.info(user_send);
        keyFile = RandomString(8);
