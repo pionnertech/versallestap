@@ -7,13 +7,9 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtFacility']);
 
 
-$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID, C.USR_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(C.USR_ID = A.ISS_CHARGE_USR)  INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ) WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ";");
-
+$Query_task = mysqli_query($datos, "SELECT A.ISS_SUBJECT, D.CTZ_NAMES,  C.USR_NAME, B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.ISS_FINISH_DATE, 1, 10) , C.USR_SURNAME, D.CTZ_SURNAME1, D.CTZ_SURNAME2, A.ISS_ID, C.USR_ID FROM ISSUES A INNER JOIN EST B ON(B.EST_CODE = A.ISS_STATE) INNER JOIN USERS C ON(CASE  A.ISS_CHARGE_USR WHEN 0 THEN  C.USR_ID = 999999 ELSE C.USR_ID = A.ISS_CHARGE_USR END) INNER JOIN CITIZENS D ON(D.CTZ_RUT = A.ISS_CTZ AND D.CTZ_FAC_ENTER = " . $_SESSION['TxtFacility'] .") WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']);
 $count_iss = mysqli_fetch_array(mysqli_query($datos, "SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility']));
-
-
 $graph_query = "SELECT B.EST_COLOR, B.EST_DESCRIPT , COUNT(A.ISS_ID), ROUND((COUNT( A.ISS_ID ) / total) *100) AS percentage FROM ISSUES A RIGHT JOIN EST B ON(B.EST_CODE = A.ISS_STATE AND A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ") CROSS JOIN (SELECT COUNT(A.ISS_ID) as total FROm ISSUES A WHERE ISS_FAC_CODE =" . $_SESSION['TxtFacility'] . ") x GROUP BY 1";
-
 $graph = mysqli_query($datos, $graph_query);
 
 
@@ -108,6 +104,7 @@ vertical-align: top;
 
 
 }
+
         </style>
         <link type="text/css" href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
