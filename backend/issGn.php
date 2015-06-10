@@ -103,6 +103,7 @@ $state = 2;
 $insertar_audi1 = "INSERT INTO ISSUES(ISS_DATE_ING, ISS_DESCRIP, ISS_CHARGE_USR, ISS_DEADLINE, ISS_DAYS , ISS_STATE, ISS_FINISH_DATE , ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_SUBJECT, ISS_PROGRESS) ";
 $insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $diff . " , " . $state . ", '" . $date_limit . "', " . $tipo . " , " . $clean_rut . ", " . $fac . " , '" . $subject . "', 0);";
 
+
 $insertar_audi = $insertar_audi1 . $insertar_audi2;
 
 if(!mysqli_query($datos, $insertar_audi)){
@@ -110,6 +111,8 @@ if(!mysqli_query($datos, $insertar_audi)){
 } else {
 
 $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
+
+mysqli_query($datos, "UPDATE ISSUES SET ISS_TICKET = CONCAT('IS16', SUBSTRING(ISS_DATE_ING,9, 2), 100 + ISS_ID) WHERE ISS_ID = " . $iss_call['ISS_ID']);
 
 echo  $iss_call['ISS_ID'];
 }
