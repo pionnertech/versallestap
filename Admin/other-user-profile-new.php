@@ -4071,11 +4071,11 @@ function isOdd(num) { return num % 2;}
 $(".onoffswitch").on('click', function(){
 
     if($(this).parent().next().css("color") == "rgb(30, 87, 153)" ){
-             $(this).parent().prev().css("color", "gray");
-             $(this).parent().next().css("color", "rgb(30, 87, 153)");
-    } else {
              $(this).parent().next().css("color", "gray");
-             $(this).parent().prev().css("color", "rgb(30, 87, 153)"); 
+             $(this).parent().prev().css("color", "rgb(30, 87, 153)");
+    } else {
+             $(this).parent().prev().css("color", "gray");
+             $(this).parent().next().css("color", "rgb(30, 87, 153)"); 
     }
 })
 </script>
