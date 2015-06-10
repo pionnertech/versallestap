@@ -664,11 +664,13 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             </div>
                                             <div class="collaborates">
                                             <i class="fa fa-group spac"></i>
-                              <div class="onoffswitch"> 
-                              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-                              <label class="onoffswitch-label" for="myonoffswitch">
-                                   <span class="onoffswitch-inner"></span>
-                                   <span class="onoffswitch-switch"></span> </label>
+                            <div class="wrp-switch" style="display: inline-block; vertical-align: top;">               
+                                     <div class="onoffswitch"> 
+                                       <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                                       <label class="onoffswitch-label" for="myonoffswitch">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span> </label>
+                                       </div>
                               </div>
                               <i class="fa fa-user spac"></i>
                                                 <?
