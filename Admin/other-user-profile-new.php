@@ -654,12 +654,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                               <p class="iss-descript"><strong>Teléfono</strong> : <? printf($shine['CTZ_TEL']) ?></p> 
                               <p class="iss-descript"><strong>Dirección</strong> : <? printf($shine['CTZ_ADDRESS']) ?></p> 
                               <p class="iss-descript"><strong>Descripcion compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>   
-                              <div class="onoffswitch"> 
-                              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-                              <label class="onoffswitch-label" for="myonoffswitch">
-                                   <span class="onoffswitch-inner"></span>
-                                   <span class="onoffswitch-switch"></span> </label>
-                              </div>
+
                                         </div>
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
@@ -669,6 +664,13 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             </div>
                                             <div class="collaborates">
                                             <i class="fa fa-group spac"></i>
+                              <div class="onoffswitch"> 
+                              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                              <label class="onoffswitch-label" for="myonoffswitch">
+                                   <span class="onoffswitch-inner"></span>
+                                   <span class="onoffswitch-switch"></span> </label>
+                              </div>
+                              <i class="fa fa-user spac"></i>
                                                 <?
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
