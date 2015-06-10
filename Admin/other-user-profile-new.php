@@ -662,7 +662,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
-                                            <div class="collaborates">
+                                        
                         <i class="fa fa-user spac"></i>
                             <div class="wrp-switch" style="display: inline-block; vertical-align: top;">               
                                      <div class="onoffswitch"> 
@@ -672,7 +672,8 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <span class="onoffswitch-switch"></span> </label>
                                        </div>
                               </div>
-                       <i class="fa fa-group spac"></i>
+                       <i class="fa fa-group spac" style="color:gray"></i>
+                       <div class="collaborates">
 
                       <?
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
