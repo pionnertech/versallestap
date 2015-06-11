@@ -639,7 +639,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-icon"><? echo $stsk[8] ?></td>
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> >Delegar</button><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
+                                            <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> ><i class="fa fa-chevron-circle-right"></i></button><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
                                             <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
                                             <input type="hidden" class="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" class="iss_id" value="<? printf($stsk[1]) ?>">
