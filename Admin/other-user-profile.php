@@ -1823,7 +1823,7 @@ if(!$(this).hasClass('int-lock')){
 obj = $(this).children('i');
   var stsk =  $(this).parent().children('input').eq(0).val();
   var iss_id = $(this).parent().children('input').eq(1).val();
-  bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+  bootbox.confirm("Esta seguro de enviar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk, iss_id, obj);
     }
@@ -1836,7 +1836,7 @@ obj = $(this).children('i');
 $(".int-lock").on('click', function(){
     var obj = $(this).children('i');
     var stsk_int = $(this).parent().children('input').val();
-    bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+    bootbox.confirm("Esta seguro de enviar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
     }
@@ -2210,7 +2210,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
           success : function (data){
            result = data.split("|");
            console.log(data);
-                   bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+                   bootbox.alert("Su requerimiento ha sido enviado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
                          if (mode != "first"){
@@ -2507,7 +2507,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
           var object = $(this);
           var stsk   = $(this).parent().parent().children('input').eq(0).val();
           var iss_id = $(this).parent().parent().children('input').eq(1).val();
-       bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+       bootbox.confirm("Esta seguro de enviar este requerimiento?", function (confirmation){
         if(confirmation){
             unlock(stsk, iss_id , object);
             object.parent().parent().children('td').eq(3).off();
@@ -3177,7 +3177,7 @@ td1.onclick = function (){
     console.info(obj.parent().parent().children('td').eq(3).children('i').attr("class"));
     if(obj.parent().parent().children('td').eq(3).children('i').hasClass("fa-chevron-circle-right")){
   var stsk_int = $(this).parent().children('input').val();
-    bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
+    bootbox.confirm("Esta seguro de enviar este requerimiento?", function (confirmation){
     if (confirmation){
            unlock(stsk_int, stsk_int , obj);
             obj.parent().parent().children('td').eq(3).html('<i class="fa fa-times-circle"></i>');
