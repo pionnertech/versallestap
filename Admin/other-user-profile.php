@@ -1848,7 +1848,6 @@ $(".golang").on('click', function(){
         $(this).data("val", 1);
             var object = $(this).parent().children('.toFront');
             var iss_id = $(this).parent().parent().prev().children('input').eq(1).val();
-        
                 uploaderInt(object, iss_id);
     } else {
     $(this).data("val", 0);
@@ -2723,6 +2722,11 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
     divFil.className = "file-contents";
+    
+    p4.className = "golang";
+    p5.className = "wrap-events";
+    p4.appendChild(i2);
+    p5.appendChild(i3);
 
 
 i3.onclick = function (){
@@ -2773,8 +2777,7 @@ p4.onclick = function(){
     }
 }
 
-    p4.className = "golang";
-    p5.className = "wrap-events";
+    
 
     p1.appendChild(str1);
     p2.appendChild(str2);
@@ -2782,8 +2785,7 @@ p4.onclick = function(){
     p2.appendChild(str11);
     p3.appendChild(str3);
     p3.appendChild(span1);
-    p4.appendChild(i2);
-    p5.appendChild(i3);
+
     div4.appendChild(i4);
 
     div1.appendChild(p1);
