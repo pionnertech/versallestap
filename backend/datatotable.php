@@ -39,7 +39,7 @@ if($hdir = opendir("/var/www/html/" . $fac . "/reply/")){
 
      	 if(preg_match_all("/_\[" . $iss_id  . "\]_/", $files) == 1){
 
-     	 	 $outcome .= $files;
+     	 	 $outcome .= $files . "|";
      	 }
      }
 
