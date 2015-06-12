@@ -2795,8 +2795,6 @@ p4.onclick = function(){
     td6.appendChild(div2);
     td6.appendChild(divFil);
     td6.appendChild(div4);
-    td6.appendChild(i2);
-    td6.appendChild(i3);
     td6.appendChild(p4);
     td6.appendChild(p5);
     tr2.appendChild(td6);
