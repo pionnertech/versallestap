@@ -1238,7 +1238,11 @@ var empty = [];
 
 for(i=0 ; i < matrix.length ; i++){
 	if(matrix[i].value == '' ){
-		 empty[empty.length] = $("#intext input").eq(i).attr('placeholder');
+		 if($("#intext input").eq(i).attr('placeholder') == "Correo Electronico"){
+		 	continue;
+		 } else{
+		 	empty[empty.length] = $("#intext input").eq(i).attr('placeholder');
+		 }
 	}
 }
 
@@ -1250,7 +1254,6 @@ if(empty.length == 0){
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;'));
 	return false;
 }
-
 
 
 if($("input[type=radio]:checked").length == 0){
@@ -1265,11 +1268,12 @@ if($("textarea").val() === "") {
 }
 
 // 3era fase ... checkear validez de los datos ingresados
+/*
 if(!IsEmail($("#ctzmail").val())){
     bootbox.alert("E-mail ingresado no es valido");
     return false;
 }
-
+*/
 if(!Valida_Rut(document.getElementById('RUT'))){
     bootbox.alert("el R.U.T ingresado no es valido");
     return false;
