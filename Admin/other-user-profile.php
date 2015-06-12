@@ -2722,12 +2722,11 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     i3.className = "fa fa-calendar-o events";
     i4.className = "fa fa-group spac";
     divFil.className = "file-contents";
-    
+
     p4.className = "golang";
     p5.className = "wrap-events";
     p4.appendChild(i2);
     p5.appendChild(i3);
-
 
 i3.onclick = function (){
 
@@ -2741,7 +2740,6 @@ i3.onclick = function (){
        $("#events [class='task " + ucla.eq(i).val() + "']").css({display : 'table-row'});
        $("." + ucla.eq(i).val()).css({ display: "table-row"});
    }
-
 
   var primary = $(this).parent().parent().prev().children('input').eq(0).val();
 
@@ -2793,7 +2791,6 @@ p4.onclick = function(){
     div2.appendChild(div3);
 
     td6.appendChild(div1);
-    tr2.appendChild(td6);
     td6.appendChild(p3);
     td6.appendChild(div2);
     td6.appendChild(divFil);
@@ -2802,6 +2799,7 @@ p4.onclick = function(){
     td6.appendChild(i3);
     td6.appendChild(p4);
     td6.appendChild(p5);
+    tr2.appendChild(td6);
     parent.appendChild(tr2);
 }
 
