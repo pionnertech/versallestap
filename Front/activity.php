@@ -1240,7 +1240,8 @@ for(i=0 ; i < matrix.length ; i++){
 	if(matrix[i].value == '' ){
 		 if($("#intext input").eq(i).attr('placeholder') == "Correo Electronico"){
 		 	continue;
-		 } else{
+		 } else {
+		 	console.info($("#intext input").eq(i).attr('placeholder'))
 		 	empty[empty.length] = $("#intext input").eq(i).attr('placeholder');
 		 }
 	}
@@ -1254,7 +1255,6 @@ if(empty.length == 0){
 	bootbox.alert("Faltan los siguientes Campos:"  + empty.join('&ensp;/&ensp;'));
 	return false;
 }
-
 
 if($("input[type=radio]:checked").length == 0){
 	bootbox.alert("Seleccione origen del requerimiento");
