@@ -545,6 +545,7 @@ function getDataTable(iss_id, object, color ){
         },
         success : function (data){
       console.info(data);
+      $(".pre").empty();
                var matrix = data.split("|");
                object.children('i').remove();
                for(i=1;i < 5 ; i++){
@@ -579,7 +580,7 @@ var extension = name.substring(name.length -3 , name.length);
 
 var parent = document.querySelector(".pre");
 
-$(".pre").empty();
+
 
 console.info('llega hasta acá');
 
@@ -644,7 +645,7 @@ console.log(setClass + "   " + cor );
             a.setAttribute("download", name);
 
             p.appendChild(i);
-            a.appendChild(p)
+            a.appendChild(p);
             parent.appendChild(a);
 
 }
