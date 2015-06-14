@@ -4060,11 +4060,11 @@ console.info($())
 $(".padlock:first").on('click', function(){
    bootbox.confirm("Desea enviar el requerimiento a las personas designadas?", function (confirm){
      if(confirm){
-        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id="+  $(".sub-del").eq(0).children('input#current-task').val() +"&iss_id=" + iss_id,
+        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id="+$(".sub-del").eq(0).children('input#current-task').val(),
           success : function(data){
             $(this).css({ color: "green"});
         }
-      }) 
+      });
         bootbox.alert("compromiso enviado existosamente", function(){
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
@@ -4072,7 +4072,6 @@ $(".padlock:first").on('click', function(){
             $(".eras").val(''); 
 
         })
-       
      }
    })
 });
