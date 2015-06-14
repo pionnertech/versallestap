@@ -32,7 +32,7 @@ if($user == "Mi Departamento"){
   $uteam_array = explode( "," ,$user);
 
   for($i= 0; $i < count($uteam_array); $i++ ){
-  	  $usr_id_q = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (CONCAT(USR_NAME, " ", USR_SURNAME) = '" . strtoupper($uteam_array[$i]) . "' AND USR_FACILITY = " . $fac .")"));
+  	  $usr_id_q = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (CONCAT(USR_NAME, ' ' , USR_SURNAME) = '" . strtoupper($uteam_array[$i]) . "' AND USR_FACILITY = " . $fac .")"));
       
        $query = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE) ";
        $query .= "VALUES (" . $iss_id . ", '" . $subject . "', '" . $descript . "', '" . $usr_id_q['USR_ID'] . "', '" . $fechaF . "', 1 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0)";
