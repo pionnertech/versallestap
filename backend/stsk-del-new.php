@@ -15,7 +15,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 //processing array 
-  $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = '" . $muser . "' AND USR_FACILITY= " . $fac . ")");
+  $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = '" . $muser . "' AND USR_FACILITY= " . $fac . ")"));
 
 if($user == "Mi Departamento"){
 
