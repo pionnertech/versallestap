@@ -123,9 +123,11 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 .padlock:hover{
   font-size: 2.5em;
   color:#5BE754;
-      -webkit-transition:all 600ms ease-in-out;
-    -moz-transition:all 600ms ease-in-out;
-    transition:all 600ms ease-in-out
+  border:2px solid green;
+  border-radius: 50%;
+    -webkit-transition:all 400ms ease-in-out;
+    -moz-transition:all 400ms ease-in-out;
+    transition:all 400ms ease-in-out
 }
 #outer-dropzone {
   height: 140px;
@@ -1916,12 +1918,6 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
            var users = data.split("|");
            bootbox.alert("Requerimiento delegado existosamente");
 
-            $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
-            $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
-            $("#D-drop").empty();
-            $(".eras").val('');
-
-             
                 var target =  $("#current-task").val();
                 var key_main    = document.querySelectorAll(".collaborates")[target];
 
@@ -4057,7 +4053,14 @@ $(".padlock:first").on('click', function(){
           success : function(data){
             $(this).css({ color: "green"});
         }
-      })          
+      }) 
+        bootbox.alert("compromiso enviado existosamente", function(){
+            $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+            $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+            $("#D-drop").empty();
+            $(".eras").val('');  
+        })
+       
      }
    })
 });
