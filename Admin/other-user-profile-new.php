@@ -1524,15 +1524,11 @@ kenin = $('#delegates').selectize({
 plugins: ['remove_button'],
 delimiter: ',',
 preload:true,
+closeAfterSelect: true,
 hideSelected: true, 
 persist: false,
+create: false,
 openOnFocus: true,
-create: function(input) {
-        return {
-                  value: input,
-                  text: input
-               }
-       },
 onItemAdd: function(){
       if ($("#delegate").val() == 0 ){
             $(".incoming-files").css({display: "none"});
@@ -1931,7 +1927,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 var target =  $("#current-task").val();
                 var key_main    = document.querySelectorAll(".collaborates")[target];
 
-                for (i= 0 ; i < users.length; i++){
+                for (i= 0 ; i < users.length-1; i++){
                 var a_del       = document.createElement('a');
                 a_del.className = "hovertip";
                 a_del.title     = data;
