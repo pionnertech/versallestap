@@ -4055,7 +4055,7 @@ $(".padlock:first").on('click', function(){
      if(confirm){
         $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val(),
           success : function(data){
-            $(this).css({ color: "green"});
+          $(this).css({ color: "green"});
             console.info(data);
         }
       });
@@ -4065,13 +4065,10 @@ $(".padlock:first").on('click', function(){
             $("#D-drop").empty();
             kenin[0].selectize.clear();
             $(".eras").val(''); 
-
         })
      }
    })
 });
-
-
 
 </script>
 
