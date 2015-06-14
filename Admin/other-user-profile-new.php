@@ -115,8 +115,6 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 .padlock{
   cursor:pointer;
   color:gray;
-  position:relative;
-  float:right;
   border: 2px solid white;
       -webkit-transition:all 600ms ease-in-out;
     -moz-transition:all 600ms ease-in-out;
@@ -132,6 +130,15 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     transition:all 400ms ease-in-out;
     padding: 9px 16px;
 }
+
+.wrap-lock{
+  display: inline-block;
+  vertical-align: top;
+  float: right;
+  position: relative;
+  right: 1em;
+}
+
 #outer-dropzone {
   height: 140px;
 }
