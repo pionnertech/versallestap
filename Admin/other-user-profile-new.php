@@ -560,7 +560,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-icon"><i class="fa fa-lock" style="color: white;"></i></td>
                                             <td class="cell-title">Requerimiento</td>
                                             <td class="cell-status hidden-phone hidden-tablet">Status</td>
-                                            <td class="cell-title">Accion</td>
+                                            <td class="cell-title" style="min-width: 80px;">Accion</td>
                                             <td class="align-right">Fecha máxima de entrega</td>
                                         </tr>
                                         <? 
@@ -608,7 +608,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-icon"><? echo $stsk[8] ?></td>
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
+                                            <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
                                             <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
                                             <input type="hidden" class="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" class="iss_id" value="<? printf($stsk[1]) ?>">
@@ -4058,7 +4058,8 @@ $(".padlock:first").on('click', function(){
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
-            $(".eras").val('');  
+            $(".eras").val(''); 
+
         })
        
      }
