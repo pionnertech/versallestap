@@ -1912,7 +1912,6 @@ if(checkDelExt() == true) {
 var _fS = new Date();
 var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
-
     $.ajax({
         type: "POST",
         url: "../backend/stsk-del-new.php?iss_id=" + $("#issId").val() + 
