@@ -4019,13 +4019,13 @@ function isOdd(num) { return num % 2;}
 
 $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
 
-
-    if($(this).parent().parent().parent().next().css("color") == "rgb(30, 87, 153)" ){
-             $(this).parent().parent().parent().next().css("color", "gray");
-             $(this).parent().parent().parent().prev().css("color", "rgb(30, 87, 153)");
+console.info($())
+    if($(this).parent().parent().parent().children('i').eq(0).css("color") == "rgb(30, 87, 153)" ){
+             $(this).parent().parent().parent().children('i').eq(0).css("color", "gray");
+             $(this).parent().parent().parent().children('i').eq(1).css("color", "rgb(30, 87, 153)");
     } else {
-             $(this).parent().parent().parent().prev().css("color", "gray");
-             $(this).parent().parent().parent().next().css("color", "rgb(30, 87, 153)"); 
+             $(this).parent().parent().parent().children('i').eq(1).css("color", "gray");
+             $(this).parent().parent().parent().children('i').eq(0).css("color", "rgb(30, 87, 153)"); 
     }
 })
 </script>
