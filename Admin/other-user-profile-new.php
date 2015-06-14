@@ -4053,19 +4053,19 @@ $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
 $(".padlock:first").on('click', function(){
    bootbox.confirm("Desea enviar el requerimiento a las personas designadas?", function (confirm){
      if(confirm){
-        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val(),
+        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val() + "&type=0&fac=" + fac,
           success : function(data){
           $(this).css({ color: "green"});
             console.info(data);
+            kenin[0].selectize.clear();
         }
       });
-        bootbox.alert("compromiso enviado existosamente", function(){
+
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
-            kenin[0].selectize.clear();
             $(".eras").val(''); 
-        })
+       
      }
    })
 });
