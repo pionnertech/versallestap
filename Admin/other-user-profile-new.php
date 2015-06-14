@@ -1903,9 +1903,9 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
     $.ajax({
         type: "POST",
-        url: "../backend/stsk-del.php?iss_id=" + $("#issId").val() + 
+        url: "../backend/stsk-del-new.php?iss_id=" + $("#issId").val() + 
         "&muser=" + $("#muser").val() +
-        "&user=" + $("#stsk-user").val() +
+        "&user=" + $("#delegates").val() +
         "&stsk=" + $("#stsk-code").val() + 
         "&subject=" + $("#subject").val() +
         "&descript=" + $("#st-description").val() +
@@ -1913,15 +1913,19 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
-
+           var users = data.split("|");
            bootbox.alert("Requerimiento delegado existosamente");
+
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val('');
+
+             
                 var target =  $("#current-task").val();
                 var key_main    = document.querySelectorAll(".collaborates")[target];
 
+                for (i= 0 ; i < users.length; i++){
                 var a_del       = document.createElement('a');
                 a_del.className = "hovertip";
                 a_del.title     = data;
@@ -1944,7 +1948,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 key_main.appendChild(a_del);
 
                // nueva delegacia 
-                    $("#upload ul").empty();
+                 $("#upload ul").empty();
+               }
         }
     });
 

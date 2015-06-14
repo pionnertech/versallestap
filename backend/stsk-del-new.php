@@ -25,8 +25,10 @@ if($user == "Mi Departamento"){
         $query = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE) ";
         $query .= "VALUES (" . $iss_id . ", '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 1 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0)";
          mysqli_query($datos, $query);
+         echo $fila[0] . "|";
 
          }
+
 
 } else {
 //transform user name 
@@ -38,7 +40,7 @@ if($user == "Mi Departamento"){
        $query = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE) ";
        $query .= "VALUES (" . $iss_id . ", '" . $subject . "', '" . $descript . "', '" . $usr_id_q['USR_ID'] . "', '" . $fechaF . "', 1 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0)";
   	   mysqli_query($datos, $query);
-
+  	   echo $usr_id_q['USR_ID'] . "|";
   }
 
 }
