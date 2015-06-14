@@ -617,9 +617,10 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             </div>
                                         
                                 <i class="fa fa-user spac"></i>
-                                    <input type="checkbox" class="swt-boo" checked="true">
+                                    <input type="checkbox" class="swt-boo" checked="true" data-size="mini">
                                 <i class="fa fa-group spac" style="color:gray"></i>
-                        <div class="collaborates">
+
+                                     <div class="collaborates">
 
                       <?
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
