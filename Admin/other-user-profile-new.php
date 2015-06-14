@@ -4055,7 +4055,7 @@ console.info($())
 $(".padlock:first").on('click', function(){
    bootbox.confirm("Desea enviar el requerimiento a las personas designadas?", function (confirm){
      if(confirm){
-        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id="+$(".sub-del").eq(0).children('input#current-task').val(),
+        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val(),
           success : function(data){
             $(this).css({ color: "green"});
         }
