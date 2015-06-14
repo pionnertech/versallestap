@@ -105,14 +105,28 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
 }
 
-.tt-selectable{
+.tt-selectable, .padlock{
   background-color:#FFF;
     -webkit-transition:all 600ms ease-in-out;
     -moz-transition:all 600ms ease-in-out;
     transition:all 600ms ease-in-out
 }
 
-
+.padlock{
+  color:gray;
+  position:relative;
+  float:right;
+      -webkit-transition:all 600ms ease-in-out;
+    -moz-transition:all 600ms ease-in-out;
+    transition:all 600ms ease-in-out
+}
+.padlock:hover{
+  font-size: 2.5em;
+  color:#5BE754;
+      -webkit-transition:all 600ms ease-in-out;
+    -moz-transition:all 600ms ease-in-out;
+    transition:all 600ms ease-in-out
+}
 #outer-dropzone {
   height: 140px;
 }
@@ -790,7 +804,9 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                     <input type="hidden" value="" id="current-task"> 
                                     <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
-                                    <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button></div>
+                                    <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button>
+                                         <div class="wrap-lock"><i class="fa fa-lock fa-2x padlock" style="color: gray"></i></div>
+                                    </div>
                                 </div>
                        
                                 <div id="wrap-D">
