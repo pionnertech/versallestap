@@ -1925,6 +1925,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
+          console.info(data);
            var users = data.split("|");
            bootbox.alert("Requerimiento delegado existosamente");
 
@@ -1938,7 +1939,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
                 var img_del =  document.createElement('img');
                 img_del.className = "group";
-                img_del.src = "../" + fac + "/img/" + $("#stsk-user").val() + "_opt.jpg";
+                img_del.src = "../" + fac + "/img/" + users[i] + "_opt.jpg";
 
                 var inp_del   = document.createElement('input');
                 inp_del.type  = "hidden";
