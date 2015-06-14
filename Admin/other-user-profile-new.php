@@ -4021,11 +4021,11 @@ $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
 
 
     if($(this).parent().parent().parent().next().css("color") == "rgb(30, 87, 153)" ){
-             $(this)..parent().parent().parent().next().css("color", "gray");
-             $(this)..parent().parent().parent().prev().css("color", "rgb(30, 87, 153)");
+             $(this).parent().parent().parent().next().css("color", "gray");
+             $(this).parent().parent().parent().prev().css("color", "rgb(30, 87, 153)");
     } else {
-             $(this)..parent().parent().parent().prev().css("color", "gray");
-             $(this)..parent().parent().parent().next().css("color", "rgb(30, 87, 153)"); 
+             $(this).parent().parent().parent().prev().css("color", "gray");
+             $(this).parent().parent().parent().next().css("color", "rgb(30, 87, 153)"); 
     }
 })
 </script>
