@@ -113,21 +113,24 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 }
 
 .padlock{
+  cursor:pointer;
   color:gray;
   position:relative;
   float:right;
+  border: 2px solid white;
       -webkit-transition:all 600ms ease-in-out;
     -moz-transition:all 600ms ease-in-out;
     transition:all 600ms ease-in-out
 }
 .padlock:hover{
   font-size: 2.5em;
-  color:#5BE754;
-  border:2px solid green;
+  color:#3CF96B;
+  border:2px solid #3CF96B;
   border-radius: 50%;
     -webkit-transition:all 400ms ease-in-out;
     -moz-transition:all 400ms ease-in-out;
-    transition:all 400ms ease-in-out
+    transition:all 400ms ease-in-out;
+    padding: 9px 16px;
 }
 #outer-dropzone {
   height: 140px;
