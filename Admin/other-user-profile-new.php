@@ -1486,7 +1486,7 @@ jQuery.fn.justtext = function() {
     var cc1 = "At";
     var cc2 = "At-int";
     var cc3 = "At-int-ii";
-
+    var kenin;
     var keys;
 
 
@@ -4063,8 +4063,7 @@ $(".padlock:first").on('click', function(){
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
-            var selectize = $select[0].selectize;
-            selectize.clear();
+            kenin[0].selectize.clear();
             $(".eras").val(''); 
 
         })
