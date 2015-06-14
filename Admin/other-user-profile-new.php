@@ -4043,7 +4043,20 @@ console.info($())
              $(this).parent().parent().parent().children('i').eq(1).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(0).css("color", "rgb(30, 87, 153)"); 
     }
-})
+});
+
+$(".padlock:first").on('click', function(){
+   bootbox.confirm("Desea enviar el requerimiento a las personas designadas?", function (confirm){
+     if(confirm){
+        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id="+  $(".sub-del").eq(0).children('input#current-task').val() +"&iss_id=" + iss_id,
+          success : function(data){
+            $(this).css({ color: "green"});
+        }
+      })          
+     }
+   })
+});
+
 </script>
 
 <?
