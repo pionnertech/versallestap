@@ -615,9 +615,8 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
-                                        
                                 <i class="fa fa-user spac"></i>
-                                    <input type="checkbox" class="swt-boo" checked="true" data-size="mini">
+                                    <input type="checkbox" class="swt-boo" checked="true" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
                                 <i class="fa fa-group spac" style="color:gray"></i>
 
                                      <div class="collaborates">
@@ -4018,7 +4017,7 @@ function checkKey(e) {
 }
 function isOdd(num) { return num % 2;}
 
-$(".swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
+$(".swt-boo").on('click', function (event, state){
 
     if($(this).parent().next().css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().next().css("color", "gray");
