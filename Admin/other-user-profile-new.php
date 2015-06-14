@@ -9,7 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-$Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "');");
+$Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_FINISH_DATE " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
@@ -273,14 +273,14 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                             <div class="module-body">
                                 <div class="profile-head media">
                                     <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
-                                        <img src="../images/ejecutivo4.jpg" style="width: 100%; height: 100%">
+                                        <img src="../<? echo $_SESSION['TxtFacility']?>/img/<? echo $_SESSION['TxtCode']?>_opt.jpg" style="width: 100%; height: 100%">
                                     </a>
                                     <div class="media-body">
                                         <h4>
                                            <? printf($_SESSION["TxtUser"]) ?> <? printf($_SESSION["TxtPass"]) ?><small>Online</small>
                                         </h4>
                                         <p class="profile-brief">
-                                         <? printf($_SESSION['TxtPosition']) ?> En SERVIU.
+                                         <? printf($_SESSION['TxtPosition']) ?> En <? echo $_SESSION['TxtFacName'] ?>.
                                         </p>
                                         <div class="profile-details muted">
                                         </div>
@@ -4018,6 +4018,11 @@ function checkKey(e) {
 function isOdd(num) { return num % 2;}
 
 $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
+
+  console.info($(this))
+  console.info($(this).parent());
+  console.info(event);
+  console.info(state);
 
     if($(this).parent().next().css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().next().css("color", "gray");
