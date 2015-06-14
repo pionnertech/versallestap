@@ -4041,8 +4041,6 @@ function checkKey(e) {
 function isOdd(num) { return num % 2;}
 
 $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
-
-console.info($())
     if($(this).parent().parent().parent().children('i').eq(0).css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().parent().parent().children('i').eq(0).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(1).css("color", "rgb(30, 87, 153)");
@@ -4058,12 +4056,15 @@ $(".padlock:first").on('click', function(){
         $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val(),
           success : function(data){
             $(this).css({ color: "green"});
+            console.info(data);
         }
       });
         bootbox.alert("compromiso enviado existosamente", function(){
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
+            var selectize = $select[0].selectize;
+            selectize.clear();
             $(".eras").val(''); 
 
         })
