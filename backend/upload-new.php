@@ -9,7 +9,8 @@ $muser = $_REQUEST['muser'];
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
-echo "executing";
+
+$datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 if($user == "Mi Departamento"){
 
@@ -41,11 +42,11 @@ $users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $d
 
 } else {
 
-echo "se está ejecutando";
+
 	$team = explode(",", $user);
 
 	for($i=0; $i < count($team); $i++){
-    echo strtoupper($team[$i]);
+   
 		 $usr_id_q = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (CONCAT(USR_NAME, ' ' , USR_SURNAME) = '" . strtoupper($team[$i]) . "' AND USR_FACILITY = " . $fac .")"));
 
             if(!is_dir($target_dir . $usr_id_q['USR_ID'] . "/")){
