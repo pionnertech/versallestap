@@ -516,7 +516,15 @@ var _fS = new Date();
 
 fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
+console.info("../backend/delegate-new.php?fac=" + fac + 
+	"&usr_id=" + usr_id + 
+	"&msg=" + msg + 
+	"&dataF=" + fech + 
+	"&dataS=" + fechaS + 
+	"&iss_id=" + iss_id + 
+	"&fac=" + fac);
 var fech = reverseDate(fechaF) + " 10:00:00" ;
+
 $.ajax({
 	type: "POST",
 	url: "../backend/delegate-new.php?fac=" + fac + 
