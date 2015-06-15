@@ -1545,6 +1545,7 @@ onItemAdd: function(){
 }
    });
 
+
 kenin[0].selectize.clear();
 
 $("input[type=checkbox].swt-boo").bootstrapSwitch();
