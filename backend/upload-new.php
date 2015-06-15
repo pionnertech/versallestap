@@ -9,6 +9,7 @@ $muser = $_REQUEST['muser'];
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
 $uploadOk = 1;
+echo "executing";
 
 if($user == "Mi Departamento"){
 
