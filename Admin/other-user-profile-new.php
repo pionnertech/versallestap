@@ -827,7 +827,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
 
                                 </div>
                                 <div class="attach">
-                                    <form id="upload" method="post" action="../backend/upload.php" enctype="multipart/form-data">
+                                    <form id="upload" method="post" action="../backend/upload-new.php" enctype="multipart/form-data">
                                          <div id="drop">
                                              Arrastra Aqui
                                                <a>Buscar</a>
@@ -836,6 +836,7 @@ $Query_traffic =  mysqli_query($datos, $str_traffic);
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user">
                                                <input type="hidden" value="" name="issId" id="issId">
+                                               <input type="hidden" value="<? echo $_SESSION['TxtCode'] ?>" name="muser">
                                         </div>
                                          <ul>
 
@@ -1938,7 +1939,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
                 var inp_del   = document.createElement('input');
                 inp_del.type  = "hidden";
-                inp_del.value = "u" + $("#stsk-user").val();
+                inp_del.value = "u" + users[i];
               
                 var icom       = document.createElement('i');
                 icom.className = "fa fa-check-circle finished";
