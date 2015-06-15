@@ -1538,6 +1538,7 @@ onItemAdd: function(){
              $(".incoming-files").css({display: "block"});
         } 
     }
+    
     $("#stsk-user").val($("#delegates").val());
 }
    });
@@ -1814,7 +1815,7 @@ $(".iss" + iss_ident).css({ display : "inline-block"});
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
 
-$('#delegates option:first-child').attr("selected", "selected");
+//$('#delegates option:first-child').attr("selected", "selected");
 
 var current = $("#delegates").val();
 
@@ -2770,7 +2771,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
              $("#issId").val(iss_ident);
              $("#stsk-code").val(stsk_id);
 
-                $('#delegates option:first-child').attr("selected", "selected");
+               // $('#delegates option:first-child').attr("selected", "selected");
                 var current = $("#delegates").val();
 
                     $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
