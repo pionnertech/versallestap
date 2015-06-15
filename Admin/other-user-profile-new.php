@@ -1812,7 +1812,7 @@ dateTime = AmericanDate($(this).parent().next().children().html());
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
 
-$(".ifile").css({display : "none"});
+$(".ifile[class*='iss']").css({display : "none"});
 $(".iss" + iss_ident).css({ display : "inline-block"});
 
 $("#issId").val(iss_ident);
@@ -2768,7 +2768,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
             $("#audititle").html("\"" + stsk_descript + "\"");
             $("#current-task").val(index_current);
 
-            $(".ifile").css({display : "none"});
+            $(".ifile[class*='iss']").css({display : "none"});
             $(".iss" + iss_ident).css({ display : "inline-block"});
 
              $("#issId").val(iss_ident);
