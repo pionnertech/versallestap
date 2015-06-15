@@ -1530,8 +1530,11 @@ hideSelected: true,
 persist: false,
 create: false,
 openOnFocus: true,
+onBlur : function(){
+ $("#stsk-user").val($("#delegates").val());
+},
 onItemAdd: function(){
-      if ($("#delegate").val() == 0 ){
+      if ($("#delegates").val() == 0 || $("#delegates").val() == ""){
             $(".incoming-files").css({display: "none"});
     } else  {
         if(st == 0){
@@ -1539,7 +1542,6 @@ onItemAdd: function(){
         } 
     }
     
-    $("#stsk-user").val($("#delegates").val());
 }
    });
 
