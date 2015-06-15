@@ -40,7 +40,8 @@ $users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $d
 
 } else {
 
-	$team = explode(",",$user);
+echo "se está ejecutando";
+	$team = explode(",", $user);
 
 	for($i=0; $i < count($team); $i++){
 
