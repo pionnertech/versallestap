@@ -10,7 +10,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
-$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_FINISH_DATE " );
+$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_FINISH_DATE " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
@@ -642,7 +642,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
                                 <i class="fa fa-user spac"></i>
-                                    <input type="checkbox" class="swt-boo" checked="true" data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
+                                    <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> checked="false" <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
                                 <i class="fa fa-group spac" style="color:gray"></i>
 
                                      <div class="collaborates">
@@ -4048,9 +4048,11 @@ $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
     if($(this).parent().parent().parent().children('i').eq(0).css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().parent().parent().children('i').eq(0).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(1).css("color", "rgb(30, 87, 153)");
+             swUsr($(this).parent().parent().parent().parent().prev().children('input.st').val());
     } else {
              $(this).parent().parent().parent().children('i').eq(1).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(0).css("color", "rgb(30, 87, 153)"); 
+             swUsr($(this).parent().parent().parent().parent().prev().children('input.st').val());
     }
 });
 
@@ -4074,6 +4076,17 @@ $(".padlock:first").on('click', function(){
    })
 });
 
+
+function swUsr(stskId){
+  $.ajax({
+       type: "POST",
+       url: "../backend/resp.php?stsk_id=" + stskId +"&fac=" + fac + "&muser="+ document.querySelector('#muser').value,
+       success : function (data){
+        console.info(data);
+         
+       }
+  })
+}
 </script>
 
 <?
