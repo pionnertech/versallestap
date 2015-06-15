@@ -4,7 +4,7 @@ $fac  = $_REQUEST['fac'];
 $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 $iss  = $_REQUEST['issId'];
-$muser = $_REQUEST['']
+$muser = $_REQUEST['muser'];
 
 $target_dir = "/var/www/html/" . $fac . "/";
 $target_file = $target_dir . basename($_FILES["upl"]["name"]);
@@ -56,22 +56,18 @@ $users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $d
              if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
 	               $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
-
+           echo  $target_dir . $usr_id_q['USR_ID'] . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $usr_id_q['USR_ID']  . "." . strtolower($extension) ;
 	                        if(!in_array(strtolower($extension), $allowed)){
 	                        	echo '{"status":"error"}';
 	                        	exit;
 	                        }
-
 	                        if(copy($_FILES['upl']['tmp_name'] , $target_dir . $usr_id_q['USR_ID'] . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $usr_id_q['USR_ID']  . "." . strtolower($extension) )){
 	                        	echo '{"status":"success"}';
 	                        	exit;
 	                        }
                 }
-	}
-
+	    }
 }
-
-
 
 echo '{"status":"error"}';
 exit;
