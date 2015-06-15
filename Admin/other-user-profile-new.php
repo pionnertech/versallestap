@@ -2223,7 +2223,7 @@ function drop (event) {
     event.target.appendChild(document.getElementById(data));
     document.getElementById(data).style.width = "100%";
     $("#" + data + " span").css("text-align", "left");
-    var chargeuser = $("#delegates :selected").val();
+    var chargeuser = $("#delegates").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
 }
@@ -2235,7 +2235,6 @@ function allowDrop (event) {
 function drag (event) {
     event.dataTransfer.setData("text", event.target.id);
 }
-
 
 
 
@@ -2254,7 +2253,7 @@ $(".ifile").on('click', function(){
 function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 
     $.ajax({ type: "POST",
-        url : "../backend/switchfiles.php?fac=" + fac + "&file_name=" + name + "&main_usr_id=" + main_usr_id + "&charge_usr_id=" + charge_usr_id,
+        url : "../backend/switchfiles-new.php?fac=" + fac + "&file_name=" + name + "&main_usr_id=" + main_usr_id + "&charge_usr_id=" + charge_usr_id,
         success : function (data){
           console.info("and..." + data);
         }
