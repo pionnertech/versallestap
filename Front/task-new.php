@@ -519,7 +519,7 @@ fechaS = _fS.getFullYear() + "-" + ('0' + _fS.getMonth()+1).slice(-2) + "-" + ('
 var fech = reverseDate(fechaF) + " 10:00:00" ;
 $.ajax({
 	type: "POST",
-	url: "../backend/delegate.php?fac=" + fac + 
+	url: "../backend/delegate-new.php?fac=" + fac + 
 	"&usr_id=" + usr_id + 
 	"&msg=" + msg + 
 	"&dataF=" + fech + 
