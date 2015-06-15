@@ -45,7 +45,7 @@ echo "se está ejecutando";
 	$team = explode(",", $user);
 
 	for($i=0; $i < count($team); $i++){
-
+    echo strtoupper($team[$i]);
 		 $usr_id_q = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (CONCAT(USR_NAME, ' ' , USR_SURNAME) = '" . strtoupper($team[$i]) . "' AND USR_FACILITY = " . $fac .")"));
 
             if(!is_dir($target_dir . $usr_id_q['USR_ID'] . "/")){
