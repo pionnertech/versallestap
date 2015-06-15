@@ -26,12 +26,12 @@ $users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $d
 
 	                        if(!in_array(strtolower($extension), $allowed)){
 	                        	echo '{"status":"error"}';
-	                        	exit;
+	                        	
 	                        }
 
 	                        if(copy($_FILES['upl']['tmp_name'] , $target_dir . $fila[0] . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $fila[0] . "." . strtolower($extension) )){
 	                        	echo '{"status":"success"}';
-	                        	exit;
+	                        	
 	                        }
                 }
                      
@@ -55,15 +55,15 @@ $users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $d
 
              if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
-	               $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
+	       $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
            echo  $target_dir . $usr_id_q['USR_ID'] . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $usr_id_q['USR_ID']  . "." . strtolower($extension) ;
 	                        if(!in_array(strtolower($extension), $allowed)){
 	                        	echo '{"status":"error"}';
-	                        	exit;
+	                        	
 	                        }
 	                        if(copy($_FILES['upl']['tmp_name'] , $target_dir . $usr_id_q['USR_ID'] . "/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $iss . "_" . $usr_id_q['USR_ID']  . "." . strtolower($extension) )){
 	                        	echo '{"status":"success"}';
-	                        	exit;
+	                        	
 	                        }
                 }
 	    }
