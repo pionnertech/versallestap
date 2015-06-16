@@ -1399,12 +1399,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                   </div> <!-- fin set-pro-int-->
                       <div class="tab-pane fade" id="set-pro-own">
                             <div class="media-stream">
-                                <div class="sub-del">
+                                <div class="sub-del" style="width:100%">
                                 <div id="back-own"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
-                                    <input  id="pro-subject" type="text" class="own-subtasks" value="" placeholder="asunto">
-                                    <textarea id="pro-descript" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input type="text" id="own-subtasks" value="" placeholder="asunto" style="margin: 1em .5em; width: 90%">
+                                    <textarea id="own-descript" placeholder="Descripcion cumplimiento" style="margin: 1em .5em; width: 90%"></textarea>
                                     <div class="progress-go">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
@@ -1414,7 +1414,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                     <button class="btn btn-info" id="upgrade-own">Subir Progreso</button>
                                 </div>
 
-                                <div class="attach" id="up-own"style="display:inline-block">
+                                <div class="attach" id="up-own" style="display:inline-block">
 
                               </div>
                           </div>
