@@ -40,6 +40,15 @@ if(mysqli_num_rows($quntum) == 0){
     $contador = $cont['CONTADOR'];
 }
 
+$intList = "Mi Departamento, Jefaturas,";
+
+while ($Qth_int_list = mysqli_fetch_row( $Query_team_int)){
+  $intList .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_int_list[1] . " " . $Qth_int_list[2] )))) . ",";
+}
+
+mysqli_data_seek($Query_team_int, 0);
+
+
 $str_query = "SELECT A.STSK_DESCRIP, A.STSK_ID, B.ISS_DESCRIP, B.ISS_ID , CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ' , C.CTZ_SURNAME2 ) AS NAME " .
 "FROM `SUBTASKS` A " .
 "INNER JOIN `ISSUES` B ON(A.STSK_ISS_ID = B.ISS_ID) " .
@@ -1351,13 +1360,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
                                           <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
+                                          <input value=" <? echo $intList ?>" id="int-del" style="width: 55%; display: inline-block; vertical-align: top;">
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 98%;">
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:98%"></textarea>
-                                          <select id="int-del" style="width: 55%; display: inline-block; vertical-align: top;">
-                                              <? while($fila4 = mysqli_fetch_row($Query_team_int)) { ?>
-                                                  <option value="<? echo $fila4[0] ?>"><? echo $fila4[1]  ?> <? echo $fila4[2]  ?></option><? } ?>
-                                              </select>
-                                          <input type="text" class="date-int-finish" style="display: inline-block;vertical-align: top; float: right">
                                           <div id="up-int"></div>
                                           <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
@@ -1411,10 +1416,10 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             </p>
                                              <input type="text" id="value-progress" class="span2" style="width: 28em"/>
                                     </div>
-                                    <button class="btn btn-info" id="upgrade-own">Subir Progreso</button>
+                                    <button class="btn btn-info" id="upgrade-own" style="margin: 2em 0; position: relative; left:40%">Subir Progreso</button>
                                 </div>
 
-                                <div class="attach" id="up-own" style="display:inline-block">
+                                <div id="up-own">
 
                               </div>
                           </div>
@@ -1509,7 +1514,7 @@ jQuery.fn.justtext = function() {
     var cc1 = "At";
     var cc2 = "At-int";
     var cc3 = "At-int-ii";
-    var kenin;
+    var kenin, selectInt;
     var keys;
 
 
@@ -1568,7 +1573,27 @@ onItemAdd: function(){
    });
 
 
+selectInt = $('#int-del').selectize({
+plugins: ['remove_button'],
+delimiter: ',',
+preload:true,
+closeAfterSelect: true,
+hideSelected: true, 
+persist: false,
+create: false,
+openOnFocus: true,
+onChange : function(){
+       user_send = this.value;
+       console.info(user_send);
+       keyFile = RandomString(8);
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
+},
+onItemAdd: function(){
+      }
+});
+
 kenin[0].selectize.clear();
+selectInt[0].selectize.clear();
 
 $("input[type=checkbox].swt-boo").bootstrapSwitch();
 
@@ -1853,7 +1878,7 @@ var current = $("#delegates").val();
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
-$("incoming-files").css({ display : "none"});
+$(".incoming-files").css({ display : "none"});
 
 
 } else {
@@ -1892,6 +1917,7 @@ $("#send-int").on('click', function(){
 if (mode == "first"){
     if(checkIntDel() == true){
        intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
+        selectInt[0].selectize.clear();
     } else {
       bootbox.alert("Falta el siguiente campo :" + checkIntDel());
     }
@@ -1899,12 +1925,12 @@ if (mode == "first"){
 } else {
  if(checkIntDel() == true){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
+    selectInt[0].selectize.clear();
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    }
 }  
 });
-
 
 $("#upgrade").on('click', function (){
  
@@ -3688,22 +3714,6 @@ function AmericanDate(date){
   var subs = date.substring(6) + "/"  + date.substring(3, 5) + "/" + date.substring(0, 2);
 return subs;
 }
-
-document.getElementById("int-del").addEventListener("change" , function(){
-       user_send = this.value;
-       console.info(user_send);
-       keyFile = RandomString(8);
-       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
-})
-
-document.getElementById("int-del").addEventListener("click" , function(){
-       user_send = this.value;
-       console.info(user_send);
-       keyFile = RandomString(8);
-       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
-})
-
-
 
 
 function RandomString(length) {
