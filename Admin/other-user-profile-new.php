@@ -641,7 +641,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                             <div class="progress tight">
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
-                                <i class="fa fa-user spac" <? if($stsk[9] == 1){ ?> <? } else {?> style="color: gray;" <? } ?> ></i>
+                                <i class="fa fa-user spac" <? if($stsk[9] == 1){ ?> style="color: gray;" <? } else {?>  <? } ?> ></i>
                                     <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
                                 <i class="fa fa-group spac" <? if($stsk[9] != 1){ ?> style="color:gray" <? } ?> ></i>
 
