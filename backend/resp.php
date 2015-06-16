@@ -1,6 +1,6 @@
 <?php
 $muser = $_GET['muser'];
-$stsk_id = $_GET['stsk'];
+$stsk_id = $_GET['stsk_id'];
 $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
