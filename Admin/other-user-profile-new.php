@@ -642,7 +642,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                                 <div class="bar bar-warning" style="width: <? printf($stsk[6]) ?>%;"></div>
                                             </div>
                                 <i class="fa fa-user spac"></i>
-                                    <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> checked="false" <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
+                                    <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
                                 <i class="fa fa-group spac" style="color:gray"></i>
 
                                      <div class="collaborates">
@@ -1396,7 +1396,29 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                     </form>
                               </div>
                           </div>
-                                     </div>
+                  </div> <!-- fin set-pro-int-->
+                      <div class="tab-pane fade" id="set-pro-own">
+                            <div class="media-stream">
+                                <div class="sub-del">
+                                <div id="back-own"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
+                                    <h3>Subir Cumplimientos</h3>
+                                    <strong id="wrapaudi"><small id="audititle"></small></strong>
+                                    <input  id="pro-subject" type="text" class="own-subtasks" value="" placeholder="asunto">
+                                    <textarea id="pro-descript" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
+                                    <div class="progress-go">
+                                            <p>
+                                                <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                            </p>
+                                             <input type="text" id="value-progress" class="span2" style="width: 28em"/>
+                                    </div>
+                                    <button class="btn btn-info" id="upgrade-own">Subir Progreso</button>
+                                </div>
+
+                                <div class="attach" id="up-own"style="display:inline-block">
+
+                              </div>
+                          </div>
+                  </div>
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
@@ -1723,6 +1745,10 @@ $("#set-pro-int").addClass('active in');
 
 $("#back-ii").click(function(){
     $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
+});
+
+$("#back-own").click(function(){
+  $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
 })
 
 
@@ -1800,14 +1826,15 @@ $(".toggle-attach").on('click', function(){
 
 
 $(".forward").on("click", function(){
-                                    
+                
+if($(this).parent().parent().next().find("input.swt-boo").bootstrapSwitch('state') == false){
+
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
 
 dateTime = AmericanDate($(this).parent().next().children().html());
-
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
@@ -1827,6 +1854,19 @@ $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('acti
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $("incoming-files").css({ display : "none"});
+
+
+} else {
+
+
+var stsk_id = $(this).parent().parent().children('input.st').val();
+var iss_ident = $(this).parent().parent().children('input.iss_id').val();
+
+$("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
+uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
+
+}
+
 
 });
 
