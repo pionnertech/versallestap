@@ -1964,7 +1964,7 @@ $.ajax({
        type: "POST",
        url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
-
+    console.info(data)
            object.fadeOut(400, function(){
 
            object.removeClass("fa-warning");
