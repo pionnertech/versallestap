@@ -200,6 +200,29 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     display:none;
 }
 
+@media screen and (max-width: 1024px) {
+  .slider-horizontal{
+       margin: 0 20%;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+  .slider-horizontal{
+       margin: 0 10%;
+    }
+
+}
+@media screen and (max-width: 500px) {
+  .slider-horizontal{
+       margin: 0 5%;
+    }
+
+}
+
+  .slider-horizontal{
+       margin: 0 25%;
+    }
     </style>    
 </head>
 <body>
