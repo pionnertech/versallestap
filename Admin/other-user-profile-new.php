@@ -1583,7 +1583,7 @@ persist: false,
 create: false,
 openOnFocus: true,
 onChange : function(){
-       user_send = this.value;
+       user_send = $('#int-del').val();
        console.info(user_send);
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
@@ -2259,7 +2259,7 @@ function unlock(stsk_id, iss_id, object){
 
 $.ajax({
        type: "POST",
-       url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
+       url: "../backend/unlock-new.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
        success : function(data){
 
            object.fadeOut(400, function(){
@@ -4109,7 +4109,7 @@ $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
 $(".padlock:first").on('click', function(){
    bootbox.confirm("Desea enviar el requerimiento a las personas designadas?", function (confirm){
      if(confirm){
-        $.ajax({ type: "POST", url:"../backend/unlock.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val() + "&type=0&fac=" + fac,
+        $.ajax({ type: "POST", url:"../backend/unlock-new.php?stsk_id=" + $(".sub-del").eq(0).children('input#current-task').val() + "&iss_id=" + $("#issId").val() + "&type=0&fac=" + fac,
           success : function(data){
           $(this).css({ color: "green"});
             console.info(data);
