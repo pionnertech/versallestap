@@ -1416,14 +1416,11 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             </p>
                                              <input type="text" id="value-progress" class="span2" style="width: 28em"/>
                                     </div>
+                                     <div id="up-own"></div>
                                     <button class="btn btn-info" id="upgrade-own" style="margin: 2em 0; position: relative; left:40%">Subir Progreso</button>
                                 </div>
-
-                                <div id="up-own">
-
-                              </div>
-                          </div>
-                  </div>
+                            </div>
+                       </div>
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
