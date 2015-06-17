@@ -1414,7 +1414,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
-                                             <input type="text" id="value-progress" class="span2" style="width: 28em"/>
+                                             <input type="text" id="value-progress" class="span2" style="width:96%"/>
                                     </div>
                                      <div id="up-own"></div>
                                     <button class="btn btn-info" id="upgrade-own" style="margin: 2em 0; position: relative; left:40%">Subir Progreso</button>
@@ -4113,17 +4113,13 @@ $(".padlock:first").on('click', function(){
             kenin[0].selectize.clear();
         }
       });
-
             $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val(''); 
-       
      }
    })
 });
-
-
 function swUsr(stskId){
   $.ajax({
        type: "POST",
