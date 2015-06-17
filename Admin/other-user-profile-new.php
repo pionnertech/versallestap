@@ -219,6 +219,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     }
 
 }
+
   .slider-horizontal{
        margin: 0 25%;
     }
