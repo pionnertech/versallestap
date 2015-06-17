@@ -1414,7 +1414,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
-                                             <input type="text" id="value-progress" class="span2" style="width:38em"/>
+                                             <input type="text" id="value-progress" class="span2" style="width:48em"/>
                                     </div>
                                      <div id="up-own"></div>
                                     <button class="btn btn-info" id="upgrade-own" style="margin: 2em 0; position: relative; left:40%">Subir Progreso</button>
