@@ -1960,9 +1960,10 @@ $manu['STSK_TYPE'];
 
 function unlock(stsk_id, iss_id, object){
 
+console.info("../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id + "&fac=" + fac);
 $.ajax({
        type: "POST",
-       url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id,
+       url: "../backend/unlock.php?stsk_id=" + stsk_id + "&iss_id=" + iss_id + "&fac=" + fac,
        success : function(data){
     console.info(data)
            object.fadeOut(400, function(){
