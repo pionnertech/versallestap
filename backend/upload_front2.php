@@ -33,9 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 $fac = $_REQUEST['fac_id'];
 $rut = $_REQUEST['rut'];
-$readonly = $_REQUEST['full_name'];
-$fname = $_REQUEST['full_name'];
-
+$readonly = str_replace(" ", "-",$_REQUEST['full_name']);
+$fname = str_replace(" ", "-",$_REQUEST['full_name']);
 
 // 5 minutes execution time
 @set_time_limit(5 * 60);

@@ -4153,6 +4153,12 @@ function swUsr(stskId){
        }
   })
 }
+
+
+$("upgrade-own").on('click', function (){
+
+});
+
 </script>
 
 <?

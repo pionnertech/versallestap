@@ -49,9 +49,9 @@ if(!is_dir($targetDir . "/temporary/")){
 
 // Get a file name
 if (isset($_REQUEST["name"])) {
-	$fileName = $_REQUEST["name"];
+	$fileName = str_replace(" ", "-", $_REQUEST["name"]);
 } elseif (!empty($_FILES)) {
-	$fileName = $_FILES["file"]["name"];
+	$fileName = str_replace(" ", "-", $_FILES["file"]["name"]);
 } else {
 	$fileName = uniqid("file_");
 }
