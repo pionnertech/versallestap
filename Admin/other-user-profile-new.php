@@ -2498,7 +2498,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
 console.info(mst);
-console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&user=" + user + 
+console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() + "&user=" + user + 
           "&fechaF=" + date + 
           "&subject=" + sub + 
           "&descript=" + des + 
@@ -2509,7 +2509,7 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
 
   $.ajax({
           type: "POST",
-          url: "../backend/delegate_internal.php?muser=" + $("#muser").val() + 
+          url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
           "&user=" + user + 
           "&fechaF=" + date + 
           "&subject=" + sub + 
@@ -2529,12 +2529,12 @@ console.info("../backend/delegate_internal.php?muser=" + $("#muser").val() + "&u
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
+                            
                          } else {
                             firstTask(result[0], des, result[1] , date, user, 1, "", 1);
                            // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
                          }
                      });
-
                   newthum(1);
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();

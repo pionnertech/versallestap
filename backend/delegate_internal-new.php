@@ -12,10 +12,8 @@ $keyfile     = $_GET['keyfile'];
 $number      = 0;
 $muser_range = "";
 
-// modificado para recibir internos variables $dir = "/var/www/html/" . $fac . "/" . $user . "_alt/";
+ $dir = "/var/www/html/" . $fac . "/";
 
-
-$outcome = $keyfile . "|" . $stsk_src_id . "|";
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -149,6 +147,11 @@ for ($i=0; $i < count($users);$i++){
 
 
 
+
+
+
+
+
 if(!mysqli_query($datos, $query)){
 
   echo mysqli_error($datos);
@@ -158,7 +161,7 @@ if(!mysqli_query($datos, $query)){
 //esto va para todos
 
   //si es para el primero
-
+/*=======================
   if($stsk_src_id == 0) {
          $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
          $pre_id   = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
@@ -171,9 +174,20 @@ if(!mysqli_query($datos, $query)){
 
      //======
   //enviar el nombre hacia el cliente
-  $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
+  */
+
+
+ // $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
   
 
+
+
+if( $stsk_src_id !== 0 || $stsk_src_id !== "" ){
+     $keyfile = $stsk_src_id;
+  } 
+
+$uteam= mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS INNER JOIN SUBTASKS ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_ISS_ID = " . $number . ") WHERE (STSK_FAC_CODE =" . $fac . " AND STSK_TYPE= 1)");
+ 
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
       while (false !== ($files = readdir($hdir))) {
@@ -182,18 +196,19 @@ if(!mysqli_query($datos, $query)){
 
      	 	  $extension = pathinfo($files, PATHINFO_EXTENSION);   
 
-            $outcome .= $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension . "|";
+              while($uteams = mysqli_fetch_row($uteam)){
+                    
+                if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
+                  // unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
+                  }
 
-              if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $stsk_id . "]_." . $extension)){
-
-     	 	   	    unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
-     	    }
+              }
         }
       }
     }
     closedir($hdir);
 
- echo (int)$stsk_id -1 . "|" . $name['NAME'] . "|" . $outcome . "|" ;
+ echo (int)$number . "|" . $name['NAME'] . "|" . $outcome . "|" ;
 
 }
 
