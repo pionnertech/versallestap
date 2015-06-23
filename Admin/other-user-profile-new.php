@@ -1610,6 +1610,7 @@ onChange : function(){
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 },
 onItemAdd: function(){
+  selectInt[0].selectize.clear();
       }
 });
 
