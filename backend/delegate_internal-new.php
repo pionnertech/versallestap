@@ -106,7 +106,7 @@ for($i=0; $i < count($uq); $i++){
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK)  VALUES";
    for($i=0; $i < count($earray); $i++){
-        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
+        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
          
            if( $i < count($earray)){
                 $query .= ",";
@@ -114,8 +114,6 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
           $outcome .= $earray[$i] . "|";
    }
 
-echo $query;
-exit;
 }
 
 } else {
