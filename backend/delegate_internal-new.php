@@ -12,6 +12,7 @@ $keyfile     = $_GET['keyfile'];
 $number      = 0;
 $muser_range = "";
 
+$outcome = "";
  $dir = "/var/www/html/" . $fac . "/";
 
 
@@ -71,6 +72,7 @@ while( $fila = mysqli_fetch_row($team)){
    if( $i < mysqli_num_rows($team)  ){
     $query .= ",";
    }
+$outcome = $fila[0] . "|";
 
 }
 
@@ -89,6 +91,7 @@ $i = 0;
            if( $i < mysqli_num_rows($team)){
                 $query .= ",";
               }
+              $outcome = $fila[0] . "|";
      }
    
 } else {
@@ -101,6 +104,7 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
            if( $i < count($users)){
                 $query .= ",";
               }
+          $outcome .= $users[$i] . "|";
    }
 
 }
@@ -164,7 +168,7 @@ $uteam= mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS INNER JOIN S
     }
     closedir($hdir);
 
- echo (int)$number . "|" . $name['NAME'] . "|" . $outcome . "|" ;
+ echo (int)$number . "|" . $outcome . "|" ;
 
 }
 

@@ -2491,8 +2491,6 @@ uploader =  $(object).pluploadQueue({
 
 function intDel(user, sub, des, date, ind, mst){
 
-
-
 console.info(ind);
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
@@ -2532,7 +2530,14 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                             assoc_collar_int(user, ind);
                             
                          } else {
-                            firstTask(result[0], des, result[1] , date, user, 1, "", 1);
+
+                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1);
+
+                            for(i=2; i < result.length; i++){
+                                  assoc_collar_int(result[i], ind);
+                            }
+                           
+
                            // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
                          }
                      });
