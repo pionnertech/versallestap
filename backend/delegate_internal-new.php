@@ -98,10 +98,10 @@ $i = 0;
 
 $uq = explode("," , $user);
 $earray = [];
-
+$us="";
 
 for($i=0; $i < count($uq); $i ++){
-     $us .= mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $uq[$i] . " AND USR_FACILITY = " . $fac . ")"));
+     $us = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $uq[$i] . " AND USR_FACILITY = " . $fac . ")"));
      $earray[$i] = $us['USR_ID'];
 }
 
