@@ -17,15 +17,9 @@ $muser_range = "";
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
 $team = mysqli_query($datos, "SELECT USR_ID WHERE (USR_DEPT = " . $dept['USR_DEPT'] . " AND USR_FACILITY = " . $fac . ")");
-
-$inquiry = mysqli_query($datos, "SELECT USR_RANGE FROM USERS WHERE USR_ID =" . $user);
-while($val = mysqli_fetch_row($inquiry)){
-   $user_range  = $val[0] ;
-}
 
 
 if($stsk_src_id == 0){
