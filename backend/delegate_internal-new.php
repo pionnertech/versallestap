@@ -96,7 +96,7 @@ $i = 0;
    
 } else {
 
-$users = explode("," , $user_id);
+$users = explode("," , $user);
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK)  VALUES";
    for ($i=0; $i < count($users); $i++){
         $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
@@ -177,3 +177,6 @@ $uteam= mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS INNER JOIN S
 
 ?>
 
+INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK)
+ VALUES 
+ ( 342 , 'un asunto valioso', 'pluriasunto', '', '2015-06-27 12:00:00', 2 , '2015-06-22 23:02:51' , '118', 10000, NULL, 0, 1, 1)
