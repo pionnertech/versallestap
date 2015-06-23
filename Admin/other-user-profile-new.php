@@ -330,8 +330,8 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         <div class="module">
                             <div class="module-body">
                                 <div class="profile-head media">
-                                    <a href="#" class="media-avatar pull-left" style=" width:4em; height: 4em">
-                                        <img src="../<? echo $_SESSION['TxtFacility']?>/img/<? echo $_SESSION['TxtCode']?>_opt.jpg" style="width: 100%; height: 100%">
+                                    <a href="#" class="media-avatar pull-left" >
+                                        <img src="../<? echo $_SESSION['TxtFacility']?>/img/<? echo $_SESSION['TxtCode']?>_opt.jpg" >
                                     </a>
                                     <div class="media-body">
                                         <h4>
