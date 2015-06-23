@@ -1383,9 +1383,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
                                           <div id="int-back" style="cursor: pointer; width:20px;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
-                                          <input value=" <? echo $intList ?>" id="int-del" style="width: 70%; display: inline-block; vertical-align: top;">
-                                          <input type="text" class="datetimepicker date-int-finish" style="display: inline-block; vertical-align: top;" >
-                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 98%;">
+                                          <input value=" <? echo $intList ?>" id="int-del" style="width: 95%; display: inline-block; vertical-align: top;">
+                                          <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 67%;display: inline-block; vertical-align: top;">
+                                          <input type="text" class="datetimepicker date-int-finish" style=" width: 30%;display: inline-block; vertical-align: top;" >
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:98%"></textarea>
                                           <div id="up-int"></div>
                                           <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
