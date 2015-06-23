@@ -36,7 +36,7 @@ while($val = mysqli_fetch_row($inquiry)){
 if($stsk_src_id == 0){
 
 $query_es  = "INSERT INTO SUBTASKS (STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK) ";
-$query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0,  1, 0)";
+$query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0,  1, 1)";
 
   $hds = mysqli_query($datos, $query_es);
 
@@ -76,7 +76,7 @@ $i = 0;
 
 while( $fila = mysqli_fetch_row($team)){
 
-   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 0) ";
+   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
     $i = $i + 1;
 
    if( $i < mysqli_num_rows($team)  ){
@@ -128,11 +128,11 @@ for ($i=0; $i < count($users);$i++){
 
     if($user_ramge['USR_RANGE'] == 'admin'){
       $query .= "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO ,STSK_TYPE, STSK_LOCK) ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 0);";
+      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1);";
     } else{
 
       $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK) ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 0)";
+      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 1)";
 
     }
 
@@ -141,46 +141,13 @@ for ($i=0; $i < count($users);$i++){
 
 }
 
-
 // cuando es el prime stsk  , no ed
-
-
-
-
-
-
-
-
 
 if(!mysqli_query($datos, $query)){
 
   echo mysqli_error($datos);
 
 } else {
-
-//esto va para todos
-
-  //si es para el primero
-/*=======================
-  if($stsk_src_id == 0) {
-         $variable = mysqli_query($datos , "UPDATE SUBTASKS SET STSK_ISS_ID = " . $number . " WHERE STSK_ID = " . ((int)$number + 1));
-         $pre_id   = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
-         $stsk_id  = $pre_id['IND'];
-  }  else {
- 
-         $pre_id   = mysqli_fetch_assoc(mysqli_query($datos, "SELECT LAST_INSERT_ID(STSK_ID) AS IND FROM SUBTASKS order BY STSK_ID DESC limit 1"));
-         $stsk_id  = $pre_id['IND'];
-  }
-
-     //======
-  //enviar el nombre hacia el cliente
-  */
-
-
- // $name  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $user));
-  
-
-
 
 if( $stsk_src_id !== 0 || $stsk_src_id !== "" ){
      $keyfile = $stsk_src_id;
