@@ -97,17 +97,22 @@ $i = 0;
 } else {
 
 $uq = explode("," , $user);
+$earray = [];
 
-$users = mysqli_query($datos, "SELECT USR_ID WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $users[0] . " AND USR_FACILITY = " . $fac . ")");
+
+for($i=0; $i < count($uq); $i ++){
+     $us .= mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $uq[$i] . " AND USR_FACILITY = " . $fac . ")"));
+     $earray[$i] = $us['USR_ID'];
+}
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK)  VALUES";
-   while($fila = mysqli_fetch_row($users)){
-        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
-         $i = $i +1;
-           if( $i < mysqli_num_rows($users)){
+   for($i=0; $i < count($earray); $i++){
+        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
+         
+           if( $i < count($earray)){
                 $query .= ",";
               }
-          $outcome .= $fila[0] . "|";
+          $outcome .= $earray[$i] . "|";
    }
   echo $query;
   exit;
