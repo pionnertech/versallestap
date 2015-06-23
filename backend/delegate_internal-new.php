@@ -114,6 +114,8 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
           $outcome .= $earray[$i] . "|";
    }
 
+echo $query;
+exit;
 }
 
 } else {
