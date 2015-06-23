@@ -108,14 +108,12 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
    for($i=0; $i < count($earray); $i++){
         $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1) ";
          
-           if( $i < count($earray)){
+           if( $i < count($earray)-1){
                 $query .= ",";
               }
           $outcome .= $earray[$i] . "|";
    }
 
-echo $query;
-exit;
 }
 
 } else {
