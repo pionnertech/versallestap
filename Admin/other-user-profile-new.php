@@ -1383,7 +1383,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                      <div class="tab-pane fade" id="del-int-req">
                                           <div id="wrap-controls">
                                           <div id="int-back" style="cursor: pointer;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
-                                          <input value=" <? echo $intList ?>" id="int-del" style="width: 55%; display: inline-block; vertical-align: top;">
+                                          <input value=" <? echo $intList ?>" id="int-del" style="width: 70%; display: inline-block; vertical-align: top;">
+                                          <input type="text" class="datetimepicker date-int-finish" style="display: inline-block; vertical-align: top;" >
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 98%;">
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:98%"></textarea>
                                           <div id="up-int"></div>
