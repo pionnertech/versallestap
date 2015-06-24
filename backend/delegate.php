@@ -16,10 +16,10 @@ mysqli_query($datos, "UPDATE ISSUES SET ISS_CHARGE_USR = '" . $usr_id  . "' WHER
 mysqli_query($datos, "UPDATE ISSUES SET ISS_STATE = 2 WHERE ISS_ID = " . $iss_id   . ";");
 mysqli_query($datos, "UPDATE ISSUES SET ISS_FINISH_DATE = '" . $dataF . "' WHERE ISS_ID = " . $iss_id   . ";");
 
-$iss_ticket = mysql_fetch_assoc(mysqli_query($datos, "SELECT ISS_TICKET FROM ISSUES WHERE ISS_ID = " . $iss_id));
+//$iss_ticket = mysql_fetch_assoc(mysqli_query($datos, "SELECT ISS_TICKET FROM ISSUES WHERE ISS_ID = " . $iss_id));
 
-$query_insert = "INSERT INTO SUBTASKS(STSK_ISS_ID, STSK_DESCRIP, STSK_CHARGE_USR , STSK_STATE, STSK_FINISH_DATE , STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_LOCK, STSK_TYPE, STSK_TICKET) ";
-$query_insert .= "VALUES (" . $iss_id  . " , '" . $msg . "', '" . $usr_id  . "', 2, '" . $dataF . "','" . $dataS . "', '" . $usr_id  . "', " . $fac  . ", 0 , 0, 0, '" . $iss_ticket['ISS_TICKET'] . "')";
+$query_insert = "INSERT INTO SUBTASKS(STSK_ISS_ID, STSK_DESCRIP, STSK_CHARGE_USR , STSK_STATE, STSK_FINISH_DATE , STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_LOCK, STSK_TYPE) ";
+$query_insert .= "VALUES (" . $iss_id  . " , '" . $msg . "', '" . $usr_id  . "', 2, '" . $dataF . "','" . $dataS . "', '" . $usr_id  . "', " . $fac  . ", 0 , 0, 0)";
 
 if(!mysqli_query($datos, $query_insert)){
 
