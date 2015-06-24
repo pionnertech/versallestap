@@ -153,7 +153,7 @@ if( $stsk_src_id !== 0 || $stsk_src_id !== "" ){
      $keyfile = $stsk_src_id;
   } 
 
-$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_ISS_ID = " . $number . " AND B.STSK_ISS_ID <> B.STSK_ID) WHERE (STSK_FAC_CODE =" . $fac . " AND STSK_TYPE= 1)");
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_ISS_ID = " . $number . " AND B.STSK_ISS_ID <> B.STSK_ID) WHERE (STSK_FAC_CODE =" . $fac . " AND STSK_TYPE= 1)");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
