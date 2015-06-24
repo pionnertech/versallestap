@@ -166,11 +166,11 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
               while($uteams = mysqli_fetch_row($uteam)){
                 if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension)){
                     echo $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension;
-                   unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
-
+                   
                   }
-
+     
               }
+              unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
               mysqli_data_seek($uteam, 0);
         }
       }
