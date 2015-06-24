@@ -5,7 +5,7 @@ $fac = 10000;
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS INNER JOIN SUBTASKS ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_ISS_ID = 369) WHERE (STSK_FAC_CODE =" . $fac . " AND STSK_TYPE= 1)");
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_ISS_ID = 369 AND B.STSK_ISS_ID <> B.STSK_ID) WHERE (STSK_FAC_CODE =" . $fac . " AND STSK_TYPE= 1)");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
