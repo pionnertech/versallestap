@@ -3015,10 +3015,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
      pThe.appendChild(pTth2);
      pThe.appendChild(pTth3);
      
-     pTbo.appendChild(pThe);
+     pTbl.appendChild(pThe);
      pTbl.appendChild(pTbo);
-     
-
     
 
    //===================
