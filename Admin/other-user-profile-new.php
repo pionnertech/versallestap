@@ -2497,16 +2497,6 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
-console.info(mst);
-console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() + "&user=" + user + 
-          "&fechaF=" + date + 
-          "&subject=" + sub + 
-          "&descript=" + des + 
-          "&startD=" + fecha  + 
-          "&fac="+ fac +
-          "&main_stsk=" + mst + 
-          "&keyfile=" + keyFile);
-
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -3004,7 +2994,34 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var str2  = document.createElement('strong');
     var str10 = document.createElement('strong');
     var str11 = document.createElement('strong');
+   //tabla de progreso
+   
+    var pTbl = document.createElement('table');
+    var pTbo = document.createElement('tbody');
+    var pThe = document.createElement('thead');
 
+    var pTth1 = document.createElement('th');
+    var pTth2 = document.createElement('th');
+    var pTth3 = document.createElement('th');
+
+     pTbl.className = "extProTbl";
+     pTbl.style.width = "100%";
+   
+     pTth1.innerHTML = "Asunto";
+     pTth2.innerHTML = "Descripción";
+     pTth3.innerHTML = "Fecha";
+
+     pThe.appendChild(pTth1);
+     pThe.appendChild(pTth2);
+     pThe.appendChild(pTth3);
+     
+     pTbo.appendChild(pThe);
+     pTbl.appendChild(pTbo);
+     
+
+    
+
+   //===================
 
      str1.style.margin = "0 .5em"; 
      str2.style.margin = "0 .5em"; 
@@ -3121,6 +3138,7 @@ p4.onclick = function(){
     td6.appendChild(i3);
     td6.appendChild(p4);
     td6.appendChild(p5);
+    td6.appendChild(pTbl);
     parent.appendChild(tr2);
 }
 
@@ -3462,6 +3480,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
 
    //events
 if(kind == 1){
+
 i2.onclick = function(){
 
  mode = "delegate";
@@ -3476,6 +3495,7 @@ $("#del-int-req").data("val",indice);
 $("#send-int").data("val", ids);
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 }
+
 }
 
 
