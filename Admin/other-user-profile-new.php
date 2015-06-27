@@ -223,7 +223,15 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
   .slider-horizontal{
        margin: 0 25%;
     }
+  .file-contents:after{
+   content:\f054;
+   color: blue;
+
+  }
+
+
     </style>    
+  
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -690,8 +698,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         </a>
     <?  }  ?>
                                             </div>
-                                            <p class="golang"><i class="fa fa-paperclip" style="color:darkyellow;"></i></p>
-                                            <p class="wrap-events"><i class="fa fa-calendar-o events"></i></p>
                                             <div class="file-contents">
                                            
                                             <?   
@@ -2813,7 +2819,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     is.style.cursor =  "pointer"
     td1.appendChild(is);
 
-
+/*
     is.onclick = function (){
           var object = $(this);
           var stsk   = $(this).parent().parent().children('input').eq(0).val();
@@ -2827,7 +2833,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
         }
        })
     }
-
+*/
     b.onclick = function(){
         if(!$(this).data("val") || !$(this).data("val") === 0 ){
              $(this).parent().parent().next().css({ display: "table-row"});
@@ -3018,7 +3024,6 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
      pTbl.appendChild(pThe);
      pTbl.appendChild(pTbo);
     
-
    //===================
 
      str1.style.margin = "0 .5em"; 
