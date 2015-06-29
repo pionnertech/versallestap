@@ -687,7 +687,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
 
-        <a href="#" class="hovertip extUsr" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
+        <a class="hovertip extUsr" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="u<? printf($fila_spec[1])?>">
@@ -4142,19 +4142,17 @@ $("upgrade-own").on('click', function (){
 
 
 $(".extUsr").on('click', function (){
-
   
    var usrId = "_" + $(this).children('input').val() + "_";
 
    var filCont = $(this).parent().next().next();
 
    for (i=0; i < filCont.children('a').length; i++){
-
+     console.info(filCont.children('a').eq(i).attr('href'));
         if (filCont.children('a').eq(i).attr('href').search(usrId) == -1){
             filCont.children('a').eq(i).css({ opacity : "0.3"});
         }
    }
-
 
 });
 
