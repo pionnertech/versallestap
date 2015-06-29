@@ -762,7 +762,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                             </div>
                                             <div class="toFront"></div>
-                                            <table style="width: 100%">
+                                            <table style="width: 100%" class="ex-del-par">
                                               <thead>
                                                 <th>Asunto</th>
                                                 <th>Descripción</th>
@@ -770,7 +770,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                               </thead>
                                               <tbody>
                                                   <?
-  echo "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0];
   $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0]);
                             while($tss = mysqli_fetch_row($trf)){
 
@@ -3135,7 +3134,7 @@ insertScheduleTraffic(subject, descript ,date, userId, ind);
 
 }
 
-var parent = document.querySelector("#del-partners tbody");
+var parent = document.querySelector(".ex-del-par tbody")[ind];
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
@@ -3268,92 +3267,12 @@ var search1 = document.querySelectorAll(".u" + userId)[0];
     // create user .. pfffff... no comments.
      if(kind == 0){
 
-        tr_usr   = document.createElement('tr');
-        td_usr   = document.createElement('td');
-        div_usr1 = document.createElement('div');
-        div_usr2 = document.createElement('div');
-        a_usr    = document.createElement('a');
-        img_usr  = document.createElement('img');
-        p_usr    = document.createElement('p');
-
-        tr_usr2   = document.createElement('tr');
-        td_usr1   = document.createElement('td');
-        td_usr2   = document.createElement('td');
-        td_usr3   = document.createElement('td');
-
-        span_usr1 = document.createElement('span');
-        span_usr2 = document.createElement('span');
-        span_usr3 = document.createElement('span');
-
-  // style and attr assigments
-
-       tr_usr.className = "u" + userId + " utrf";
-       td_usr.colSpan = 3;
-       div_usr1.className = "user-schedule";
-       div_usr2.className = "media";
-       div_usr2.style.display = "inline-block";
-       a_usr.className = "media-avatar pull-left";
-       a_usr.style.width = "4em";
-       a_usr.style.height = "4em";
-       a_usr.title = usr_name;
-       img_usr.src = "../" + fac + "/img/" + userId + ".jpg";
-       img_usr.style.width = "100%";
-       img_usr.style.height = "100%";
-
-       p_usr.style.fontSize = "2em";
-       p_usr.style.fontStyle = "italic";
-       p_usr.style.color = "gray";
-       p_usr.style.display = "inline-block";
-       p_usr.style.verticalAlign = "bottom";
-       p_usr.innerHTML = usr_name;
-
-       tr_usr2.className = "task u" + userId + " chrono";
-       span_usr1.className = "bolder";
-       span_usr2.className = "bolder";
-       span_usr3.className = "bolder";
-
-       td_usr3.className = "cell-time align-right";
-
-       span_usr1.innerHTML = "Asunto";
-       span_usr2.innerHTML = "Descripcion";
-       span_usr3.innerHTML = "Fecha Progreso";
-
-  // sorting of appending elements to display;
-
-      a_usr.appendChild(img_usr);
-      div_usr2.appendChild(a_usr);
-      div_usr1.appendChild(div_usr2);
-      div_usr1.appendChild(p_usr);
-      td_usr.appendChild(div_usr1);
-      tr_usr.appendChild(td_usr);
-    
-      td_usr1.appendChild(span_usr1);
-      td_usr2.appendChild(span_usr2);
-      td_usr3.appendChild(span_usr3);
-
-      tr_usr2.appendChild(td_usr1);
-      tr_usr2.appendChild(td_usr2);
-      tr_usr2.appendChild(td_usr3);
-      
-   
-      parent.appendChild(tr_usr);
-      parent.appendChild(tr_usr2);
-      tr_av.className = "task st" + stsk + " chrono";
-     // document.querySelectorAll("task .u" + userId)[0].appendChild(tr_av);
-
-      parent.insertBefore(tr_usr, tr_usr2);
-      parent.appendChild(tr_av);
-      //insertAfter(tr_av, tr_usr2);
-       console.info("fue por crear el usuario");
       } 
     } else {
 
-        tr_av.className = "task st" + stsk + " chrono";
-        pseudoparent =  document.querySelector("#del-partners tbody");
+        tr_av.className = "eu" + usr_id;
+        pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
-        var element_ref = document.querySelector("#del-partners tbody tr.task.u" + userId);
-        insertAfter(tr_av,element_ref);
-        console.info("fue por adjuntar al usuario existente");
     }
 
 }
