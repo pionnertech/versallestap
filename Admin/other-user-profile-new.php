@@ -4151,7 +4151,7 @@ $("upgrade-own").on('click', function (){
 
 $(".extUsr").on('click', function (){
   
-   var ind = $(this).index(".extUsr");
+   var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
    console.info("indice al click es : " + ind);
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next().next();
