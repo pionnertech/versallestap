@@ -3259,16 +3259,14 @@ var fileN = filename(files[n]);
     }
 })
 
-// search the user;
-    // create user .. pfffff... no comments.
      if(kind == 0){
-        tr_av.className = "eu" + usr_id;
+        tr_av.className = "eu" + userId;
         pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
 
       } else {
 
-        tr_av.className = "eu" + usr_id;
+        tr_av.className = "eu" + userId;
         pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
       }
