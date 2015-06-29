@@ -3260,20 +3260,19 @@ var fileN = filename(files[n]);
 })
 
 // search the user;
-var search1 = document.querySelectorAll(".u" + userId)[0];
-
-    if(!search1){
     // create user .. pfffff... no comments.
      if(kind == 0){
+        tr_av.className = "eu" + usr_id;
+        pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
+        pseudoparent.appendChild(tr_av);
 
-      } 
-    } else {
+      } else {
 
         tr_av.className = "eu" + usr_id;
         pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
-    }
-
+      }
+    
 }
 
 
