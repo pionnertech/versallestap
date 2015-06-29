@@ -235,6 +235,9 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
 .g-wrap{
   width:100%;
+}
+
+.great-chart{
   display: inline-block;vertical-align: top;
 }
 
