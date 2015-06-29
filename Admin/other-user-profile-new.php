@@ -4153,6 +4153,8 @@ $(".extUsr").on('click', function (){
    for (i=0; i < filCont.children('a').length; i++){
         if (filCont.children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('a').eq(i).css({ opacity : "0.3"});
+        } else {
+           filCont.children('a').eq(i).css({ opacity : "1"});
         }
    }
   filCont.next().next().children('tbody').children('tr').css({ display : "table-row"});
