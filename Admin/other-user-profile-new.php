@@ -759,7 +759,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                 }
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
-
                                             </div>
                                             <div class="toFront"></div>
                                             <table style="width: 100%" class="ex-del-par">
