@@ -3154,6 +3154,18 @@ tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
+     if(kind == 0){
+        tr_av.className = "eu" + userId;
+        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
+        pseudoparent.appendChild(tr_av);
+
+      } else {
+
+        tr_av.className = "eu" + userId;
+        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
+        pseudoparent.appendChild(tr_av);
+      }
+
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
@@ -3259,17 +3271,7 @@ var fileN = filename(files[n]);
     }
 })
 
-     if(kind == 0){
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
-        pseudoparent.appendChild(tr_av);
 
-      } else {
-
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
-        pseudoparent.appendChild(tr_av);
-      }
     
 }
 
