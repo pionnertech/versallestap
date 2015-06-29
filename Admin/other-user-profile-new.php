@@ -838,7 +838,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
-                                           <div class="great-chart" style="width:20%; height:4em;"></div>
+                                           <div class="great-chart" style="width:18%; height:4em;"></div>
                                           </div>
                                             <div class="toFront">
                                             </div>
