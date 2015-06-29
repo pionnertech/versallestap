@@ -229,7 +229,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
        margin: 0 25%;
     }
 
-.ex-del-par tr{
+.ex-del-par > tbody > tr{
   display:none;
 }
 
@@ -706,7 +706,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
     <?  }  ?>
                                             </div>
                                       <div class="g-wrap"> <!--for  internal files and graphics-->
-                                            <div class="file-sent" style="width: 100%">
+                                            <div class="file-sent" style="width: 80%;display: inline-block; vertical-align: top;">
                                              <div style="width: 4em; display: inline-block; vertical-align: top;"><i class="fa fa-chevron-right fa-2x" style="color: #66A4EE"></i></div>
                                              <?   
                                            
@@ -4154,7 +4154,7 @@ $(".extUsr").on('click', function (){
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
    console.info("indice al click es : " + ind);
    var usrId = $(this).children('input').val();
-   var filCont = $(this).parent().next().next();
+   var filCont = $(this).parent().next().next()
 
    for (i=0; i < filCont.children('a').length; i++){
         if (filCont.children('a').eq(i).attr('href').search(usrId + "_in") == -1){
