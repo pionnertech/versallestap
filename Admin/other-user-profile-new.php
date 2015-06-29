@@ -235,6 +235,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
 .g-wrap{
   width:100%;
+  display: inline-block;vertical-align: top;
 }
 
     </style>    
@@ -4157,15 +4158,15 @@ $(".extUsr").on('click', function (){
    var filCont = $(this).parent().next().next()
 
    for (i=0; i < filCont.children('a').length; i++){
-        if (filCont.children('a').eq(i).attr('href').search(usrId + "_in") == -1){
-            filCont.children('a').eq(i).css({ opacity : "0.3"});
+        if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
+            filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
         } else {
            filCont.children('a').eq(i).css({ opacity : "1"});
         }
    }
 
-  filCont.next().next().children('tbody').children('tr').css({ display : "table-row"});
-  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
+  filCont.next().children('tbody').children('tr').css({ display : "table-row"});
+  filCont.next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
 
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label("Progreso")
