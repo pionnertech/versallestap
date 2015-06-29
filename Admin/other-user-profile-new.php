@@ -223,11 +223,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
   .slider-horizontal{
        margin: 0 25%;
     }
-  .file-contents:after{
-   content:\f054;
-   color: blue;
 
-  }
 
 
     </style>    
@@ -766,6 +762,28 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                             </div>
                                             <div class="toFront"></div>
+                                            <table>
+                                              <thead>
+                                                <th>Asunto</th>
+                                                <th>Descripción</th>
+                                                <th>Fecha</th>
+                                              </thead>
+                                              <tbody>
+                                                  <?
+  $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USR, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[1]);
+                            while($tss = mysqli_fetch_row($trf)){
+
+                                                  ?>
+                                              <tr class="eu<? echo $tss[2] ?>" >
+                                                 <td><? echo $tss[0] ?></td>
+                                                 <td><? echo $tss[1] ?></td>
+                                                 <td><? echo $tss[3] ?></td> 
+                                              </tr>
+                                          <?
+                                                }
+                                          ?>   
+                                              </tbody>
+                                            </table>
                                             </td>
                                         </tr>
                                         <? } 
@@ -781,65 +799,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                         </div>
                        </div> 
                   </div>
-                  <div class="tab-pane fade" id="events">
-                        <div class="module-body table"> 
-                           <div id="back-to-main"><i class="fa fa-chevron-circle-left" style="color: #16A2E4; float: left; font-size:1.5em"></i></div>                            
-                            <table class="table table-message" id="del-partners">
-                                <tbody>
-                                     <tr class="heading">
-                                          <td></td>
-                                          <td></td>
-                                          <td></td>
-                                     </tr>
-                           <? 
-
-$Query_trf_usr  =  mysqli_query($datos, "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ', B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE TRF_FAC_CODE = " . $_SESSION['TxtFacility'] );
-
-                           while ($trf = mysqli_fetch_row($Query_trf_usr)){
-
-                            ?>
-                                <tr class="u<? printf($trf[0]) ?> utrf">
-                                    <td colspan="3" >
-                                        <div class="user-schedule">
-                                            <div class="media" style="display : inline-block">
-                                                <a class="media-avatar pull-left" style=" width:4em; height: 4em" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?>">
-                                                    <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? printf($trf[0]) ?>.jpg" style="width: 100%; height: 100%">
-                                                </a>
-                                            </div>
-                                            <p style="font-size: 2em; font-style: italic; color: gray; display: inline-block; vertical-align: bottom;"><? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trf[1]))))) ?></p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="task u<? printf($trf[0]) ?>"  >
-                                    <td><span class="bolder">Asunto</span></td>
-                                    <td><span class="bolder">Descripción</span></td>
-                                    <td class="align-right"><span class="bolder">Fecha Progreso</span></td>
-                                </tr>
-
-                            <? 
-$str_traffic = "SELECT A.TRF_STSK_SRC_ID,  " .
-"A.TRF_SUBJECT, " . 
-"A.TRF_DESCRIPT, " . 
-"A.TRF_ING_DATE " . 
-"FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) " . 
-"WHERE USR_ID = " . $trf[0] . " ORDER BY TRF_ING_DATE;";
-
-$Query_traffic =  mysqli_query($datos, $str_traffic);
-
-                            while($rows = mysqli_fetch_row($Query_traffic)){  ?>         
-                                     <tr class="task st<? printf($rows[0]) ?> chrono" >
-                                         <td class="cell-title"><? echo $rows[1]; ?></td>
-                                         <td class="cell-title"><? echo $rows[2]; ?></td>
-                                         <td class="cell-time align-right"><? echo date('d/m/Y', strtotime($rows[3])); ?></td>
-                                     </tr>
-                             <?      }        ?>  
-                         <?      }        ?>        
-                                </tbody>
-                            </table>
-                        </div>
-
-                  </div>
-
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
