@@ -4166,7 +4166,7 @@ $(".extUsr").on('click', function (){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
         } else {
-           filCont.children('a').eq(i).css({ opacity : "1"});
+           filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "1"});
         }
    }
 
@@ -4178,7 +4178,6 @@ $(".extUsr").on('click', function (){
                 .diameter(125)
                 .value(78)
                 .render();
-
 });
 
 </script>
@@ -4189,7 +4188,5 @@ $(".extUsr").on('click', function (){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
-
-
 //"../backend/delegate_internal.php?muser=118&user=2&fechaF=2015-05-20 10:00:00&subject=manual&descript=manualmente conf&startD=2015-05-10 10:00:00&fac=10000&main_stsk=0&keyfile="
 ?>
