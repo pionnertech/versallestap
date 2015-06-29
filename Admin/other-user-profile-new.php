@@ -239,6 +239,8 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
 .great-chart{
   display: inline-block;vertical-align: top;
+    position: relative;
+  top: -3em;
 }
 
     </style>    
@@ -4158,7 +4160,7 @@ $(".extUsr").on('click', function (){
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
    console.info("indice al click es : " + ind);
    var usrId = $(this).children('input').val();
-   var filCont = $(this).parent().next().next()
+   var filCont = $(this).parent().next();
 
    for (i=0; i < filCont.children('a').length; i++){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
@@ -4168,8 +4170,8 @@ $(".extUsr").on('click', function (){
         }
    }
 
-  filCont.next().children('tbody').children('tr').css({ display : "table-row"});
-  filCont.next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
+  filCont.next().next().children('tbody').children('tr').css({ display : "table-row"});
+  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
 
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label("Progreso")
