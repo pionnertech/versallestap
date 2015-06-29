@@ -4148,11 +4148,11 @@ $("upgrade-own").on('click', function (){
 $(".extUsr").on('click', function (){
   
    var usrId = $(this).children('input').val() + "_in";
-
    var filCont = $(this).parent().next().next();
-
+console.info(usrId);
    for (i=0; i < filCont.children('a').length; i++){
      console.info(filCont.children('a').eq(i).attr('href'));
+     console.info(filCont.children('a').eq(i).attr('href').search(usrId));
         if (filCont.children('a').eq(i).attr('href').search(usrId) == -1){
             filCont.children('a').eq(i).css({ opacity : "0.3"});
         }
