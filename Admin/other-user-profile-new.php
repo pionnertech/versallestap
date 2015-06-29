@@ -694,7 +694,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         <a class="hovertip extUsr" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
-            <input type="hidden" value="u<? printf($fila_spec[1])?>">
+            <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
     <?  }  ?>
                                             </div>
@@ -4147,16 +4147,16 @@ $("upgrade-own").on('click', function (){
 
 $(".extUsr").on('click', function (){
   
-   var usrId = $(this).children('input').val() + "_in";
+   var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next().next();
-console.info(usrId);
+
    for (i=0; i < filCont.children('a').length; i++){
-     console.info(filCont.children('a').eq(i).attr('href'));
-     console.info(filCont.children('a').eq(i).attr('href').search(usrId));
-        if (filCont.children('a').eq(i).attr('href').search(usrId) == -1){
+        if (filCont.children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('a').eq(i).css({ opacity : "0.3"});
         }
    }
+  filCont.next().next().children('tbody').children('tr').css({ display : "table-row"});
+  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
 
 });
 
