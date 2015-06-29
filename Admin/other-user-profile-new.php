@@ -4156,7 +4156,7 @@ $("upgrade-own").on('click', function (){
 $(".extUsr").on('click', function (){
   
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   var percent = $(this).data("val");
+   var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
 
