@@ -699,10 +699,10 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                      <div class="collaborates">
 
                       <?
-$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
  while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
 
-        <a class="hovertip extUsr" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
+        <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="<? printf($fila_spec[1])?>">
@@ -4156,7 +4156,7 @@ $("upgrade-own").on('click', function (){
 $(".extUsr").on('click', function (){
   
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   console.info("indice al click es : " + ind);
+   var percent = $(this).data("val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
 
@@ -4174,7 +4174,7 @@ $(".extUsr").on('click', function (){
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label("Progreso")
                 .diameter(125)
-                .value(78)
+                .value(percent)
                 .render();
 });
 
