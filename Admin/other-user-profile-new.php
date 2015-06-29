@@ -3261,13 +3261,13 @@ var fileN = filename(files[n]);
 
      if(kind == 0){
         tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
+        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
 
       } else {
 
         tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelector("ex-del-par tbody")[ind];
+        pseudoparent =  document.querySelectorAll("ex-del-par tbody")[ind];
         pseudoparent.appendChild(tr_av);
       }
     
