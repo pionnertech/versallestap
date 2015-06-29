@@ -762,7 +762,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                             </div>
                                             <div class="toFront"></div>
-                                            <table>
+                                            <table style="width: 100%">
                                               <thead>
                                                 <th>Asunto</th>
                                                 <th>Descripción</th>
@@ -770,8 +770,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                               </thead>
                                               <tbody>
                                                   <?
-
-  $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[1]);
+  echo "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0];
+  $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0]);
                             while($tss = mysqli_fetch_row($trf)){
 
                                                   ?>
