@@ -4143,7 +4143,7 @@ $("upgrade-own").on('click', function (){
 
 $(".extUsr").on('click', function (){
   
-   var usrId = "_" + $(this).children('input').val() + "_";
+   var usrId = $(this).children('input').val() + "_in";
 
    var filCont = $(this).parent().next().next();
 
