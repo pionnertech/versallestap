@@ -4162,7 +4162,7 @@ $(".extUsr").on('click', function (){
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
 
-   for (i=0; i < filCont.children('a').length; i++){
+   for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
         } else {
