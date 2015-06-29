@@ -3133,7 +3133,7 @@ insertScheduleTraffic(subject, descript ,date, userId, ind);
 
 }
 
-var parent = document.querySelector(".ex-del-par tbody")[ind];
+var parent = document.querySelectorAll(".ex-del-par tbody")[ind];
 
 var tr_av  = document.createElement('tr');
 var td1_av = document.createElement('td');
