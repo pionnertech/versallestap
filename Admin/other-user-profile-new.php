@@ -694,7 +694,77 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         </a>
     <?  }  ?>
                                             </div>
+
+                                            <div class="file-sent" style="width: 100%">
+                                             <div style="width: 4em; display: inline-block; vertical-align: top;">Enviados   <i class="fa fa-chevron-right fa-2x" style="color: blue"></i></div>
+                                             <?   
+                                           
+                         while($steam = mysqli_fetch_row($Query_team)){
+
+                               if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/")){
+
+                                  continue; 
+
+                                    } else {
+
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/" )){
+                                    
+                                          $file_extension = "";
+
+                                        while (false !== ($archivos = readdir($handler))){
+                              
+                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
+                                             
+                                              $extension = substr($archivos, -3);
+                                              $cor = "";
+
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+
+                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"></span>
+                                                </p>
+                                                </a>
+                                                  <? }
+                                                  } 
+                                        closedir($handler);
+                                       }
+                                    }
+                                }
+                                  mysqli_data_seek($Query_team, 0);
+                                                  ?>
+
+
+                                            </div>
                                             <div class="file-contents">
+                                             <div style="width: 4em; display: inline-block; vertical-align: top;">Recibidos   <i class="fa fa-chevron-left fa-2x" style="color: green"></i></div>
                                            
                                             <?   
                                            
@@ -747,7 +817,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                           ?>
 
-                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" class="fu<? echo $steam[0] ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
                                                 </p>
                                                 </a>
@@ -760,7 +830,12 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
-                                            <div class="toFront"></div>
+                                            <div class="toFront">
+                                              
+
+
+                                            </div>
+
                                             <table style="width: 100%" class="ex-del-par">
                                               <thead>
                                                 <th>Asunto</th>
