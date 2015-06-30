@@ -245,6 +245,9 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 .person-sw{
   position:relative;
   right:2em;
+  display: inline-block;
+  vertical-align: top;
+  top: -1.5em;
 }
 
     </style>    
@@ -683,7 +686,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                                    <div class="person-sw">
                                                       <i class="fa fa-user spac" style="color: gray;"  ></i>
-                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="" data-off-text="">
+                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac"  style="color:gray" ></i>
                                                    </div>
 
