@@ -1505,6 +1505,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
         </div>
         <!--/.container-->
         <audio id="successAudio"><source src="../backend/success.mp3" type="audio/mpeg"></audio>
+        <audio id="pro-audio"><source src="../backend/progress.mp3" type="audio/mpeg"></audio>
         <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
@@ -4170,7 +4171,7 @@ $(".extUsr").on('click', function (){
 
   filCont.next().next().children('tbody').children('tr').css({ display : "none"});
   filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
-
+        var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ $("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 })
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label("Progreso")
                 .diameter(125)
