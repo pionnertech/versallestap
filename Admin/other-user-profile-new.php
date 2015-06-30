@@ -250,8 +250,6 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
   top: -1.5em;
 }
 
-
-
     </style>    
   
 </head>
@@ -4202,11 +4200,11 @@ $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
     if($(this).parent().parent().parent().children('i').eq(0).css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().parent().parent().children('i').eq(0).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(1).css("color", "rgb(30, 87, 153)");
-             swUsr($(this).parent().parent().parent().parent().prev().children('input.st').val());
+             swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
     } else {
              $(this).parent().parent().parent().children('i').eq(1).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(0).css("color", "rgb(30, 87, 153)"); 
-             swUsr($(this).parent().parent().parent().parent().prev().children('input.st').val());
+             swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
     }
 });
 
