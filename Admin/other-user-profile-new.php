@@ -250,6 +250,8 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
   top: -1.5em;
 }
 
+
+
     </style>    
   
 </head>
