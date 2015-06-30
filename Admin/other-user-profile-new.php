@@ -242,6 +242,10 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     position: relative;
   top: -3em;
 }
+.person-sw{
+  position:relative;
+  right:2em;
+}
 
     </style>    
   
@@ -667,28 +671,67 @@ $handler = mysqli_query($datos, $matrix);
                                               break;
                                           }
                                             ?> 
+                                                                         <!-- <i class="fa fa-user spac" <? if($stsk[9] == 1){ ?>  <? } else {?> style="color: gray;" <? } ?> ></i>-->
+                             <!-- <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">-->
+                             <!--<i class="fa fa-group spac" <? if($stsk[9] == 1){ ?> style="color:gray" <? } ?> ></i>-->
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><? echo $stsk[8] ?></td>
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button><i class="fa fa-<? printf($situation) ?>" style="<? printf($color) ?> ; cursor:pointer;"></i></td>
+                                            <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
+                                          <? if ($stsk[9] !== 1 || $stsk[9] !== 0 ) { ?>
+
+                                                   <div class="person-sw">
+                                                      <i class="fa fa-user spac" style="color: gray;"  ></i>
+                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="" data-off-text="">
+                                                      <i class="fa fa-group spac"  style="color:gray" ></i>
+                                                   </div>
+
+                                          <?  } elseif ($stsk[9] == 1) {    ?>
+
+                                                    <i class="fa fa-user spac"></i>
+
+                                          <?  } elseif ($stsk[9] == 0) { ?>
+
+                                                    <i class="fa fa-group spac"></i>
+
+                                            <?   } ?>
+
+                                            </td>
                                             <td class="cell-time align-right"><span><? printf(date("d/m/Y", strtotime(substr($stsk[4], 0, 10)))) ?></span></td>
                                             <input type="hidden" class="st" value="<? printf($stsk[0]) ?>">
                                             <input type="hidden" class="iss_id" value="<? printf($stsk[1]) ?>">
                                         </tr>
                                         <tr class="display-progress">
                                             <td colspan="5">
-                                    <div class="info-content">
-                                            <? 
-$shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ',  B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] ));
-                                            ?>
-                              <p class="iss-descript"><strong>Ciudadano</strong> : <? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($shine['NAME'])))); ?></p> 
-                              <p class="iss-descript"><strong>Teléfono</strong> : <? printf($shine['CTZ_TEL']) ?></p> 
-                              <p class="iss-descript"><strong>Dirección</strong> : <? printf($shine['CTZ_ADDRESS']) ?></p> 
-                              <p class="iss-descript"><strong>Descripcion compromiso</strong> : <? printf($shine['ISS_DESCRIP']) ?></p>   
-                              <i class="fa fa-user spac" <? if($stsk[9] == 1){ ?>  <? } else {?> style="color: gray;" <? } ?> ></i>
-                              <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">
-                              <i class="fa fa-group spac" <? if($stsk[9] == 1){ ?> style="color:gray" <? } ?> ></i>
+                                                 <div class="info-content" style="display:none">
+                                 <div class="docs-example">
+                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
+                                        <dl class="dl-horizontal">
+                                            <dt></dt>
+                                            <dd>
+                                               </dd>
+<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ',  B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] )) ?>
+            
+                                            <dt>Ciudadano</dt>
+                                            <dd><? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($shine['NAME'])))); ?></dd>
+                                            <dt>Dirección</dt>
+                                            <dd><? printf($shine['CTZ_ADDRESS']) ?></dd>
+                                            <dt>Telefono</dt>
+                                            <dd><? printf($shine['CTZ_TEL']) ?></dd>
+                                            <dt>Descripción</dt>
+                                            <dd><? printf($shine['ISS_DESCRIP']) ?></dd>
+                                        </dl>
+                                        <p class="adjuste">
+                                            <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                        </p>
+                                            <div class="progress tight">
+                                                <div class="bar forward"></div>
+                                            </div>
+                                        <div class="files"></div>
+                                        <pre class="pre">
+                                        </pre>
+                                    </div>
                                         </div>
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($stsk[6]) ?>%</span>
@@ -1924,7 +1967,8 @@ $(".toggle-attach").on('click', function(){
 
 
 $(".forward").on("click", function(){
-                
+        // establecemos  quien es quien 
+
 if($(this).parent().parent().next().find("input.swt-boo").bootstrapSwitch('state') == false){
 
 var stsk_id = $(this).parent().parent().children('input.st').val();
@@ -1964,6 +2008,9 @@ $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 }
+
+
+
 
 
 });
@@ -4173,7 +4220,7 @@ $(".extUsr").on('click', function (){
   filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
         var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
-                .label("Progreso")
+                .label('')
                 .diameter(125)
                 .value(percent)
                 .render();
