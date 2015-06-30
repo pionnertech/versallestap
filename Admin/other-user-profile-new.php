@@ -4168,14 +4168,16 @@ $(".extUsr").on('click', function (){
         }
    }
 
-  filCont.next().next().children('tbody').children('tr').css({ display : "table-row"});
-  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "none"});
+  filCont.next().next().children('tbody').children('tr').css({ display : "none"});
+  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
 
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label("Progreso")
                 .diameter(125)
                 .value(percent)
                 .render();
+     //$(".radial-svg").
+
 });
 
 </script>
