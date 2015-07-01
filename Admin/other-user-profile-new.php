@@ -2889,7 +2889,7 @@ parent.innerHTML = stringAl;
 function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
-    
+
 
 var tr1 = document.createElement('tr');
     tr1.className = "task Ec" ;
@@ -3091,7 +3091,6 @@ div_g1.style.verticalAlign = "top";
      str_pro  = document.createElement('strong');
      span_pro = document.createElement('span');
      pre_pro  = document.createElement('pre');
-
 
     //==== ***** classes ****
 
