@@ -1977,6 +1977,7 @@ var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().children().html());
 
 if($(this).next().attr("class") == "person-sw" ){
+
   if($(this).next().children('div').find(".swt-boo").bootstrapSwitch('state') == false){
 
 $("#audititle").html("\"" + subject + "\"");
@@ -2888,7 +2889,376 @@ parent.innerHTML = stringAl;
 function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
+    
 
+var tr1 = document.createElement('tr');
+    tr1.className = "task Ec" ;
+
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
+    var td5 = document.createElement('td');
+
+    var inp1 = document.createElement('input');
+    var inp2 = document.createElement('input');
+
+    var b   = document.createElement('b');
+    var btn = document.createElement('button');
+    
+    td1.className = "cell-icon";
+    td2.className = "cell-title";
+    td3.className = "cell-status";
+    td4.className = "cell-title";
+    td5.className = "cell-time align-right";
+    td5.innerHTML = date_fin;
+
+    btn.className   = "btn btn-small forward";
+    btn.innerHTML   = "Delegar";
+    td4.appendChild(btn);
+
+
+
+    div_s = document.createElement('div');
+    i_s   = document.createElement('i');
+    i_s2   = document.createElement('i');
+    input_s = document.createElement('input');
+
+        div_s.className   = "person-sw";
+        i_s.className     = "fa fa-user spac";
+        i_s2.className    = "fa fa-group spac";
+        input_s.className = "swt-boo";
+
+             input_s.type ="checkbox";
+             input_s.checked = "true";
+             input_s.setAttribute( "data-label-width", 3);
+             input_s.setAttribute( "data-size", "mini");
+             input_s.setAttribute( "data-on-color", "info");
+             input_s.setAttribute( "data-off-color", "default");
+             input_s.setAttribute( "data-on-text", "&ensp;");
+             input_s.setAttribute( "data-off-text", "&ensp;");
+             input_s.bootstrapSwitch();
+            
+    div_s.appendChild(i_s);
+    div_s.appendChild(input_s);
+    div_s.appendChild(i_s2);
+      
+    td4.appendChild(div_s);
+
+    td2.innerHTML = stsk_descript;
+
+    inp1.type = "hidden";
+    inp2.type = "hidden";
+
+    inp1.value = stsk;
+    inp2.value = iss;
+
+    inp1.className = "st";
+    inp2.className = "iss_id";
+    
+    b.className = "due";
+    b.style.backgroundColor = "#178FD0";
+    b.innerHTML = "EN CURSO";
+    td3.appendChild(b);
+
+
+    var is = document.createElement('i');
+    is.className    = "fa fa-warning";
+    is.style.color  = "#EE8817";
+    is.style.cursor =  "pointer"
+    td1.appendChild(is);
+
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+    tr1.appendChild(td5);
+    tr1.appendChild(inp1);
+    tr1.appendChild(inp2);
+
+    parent.appendChild(tr1);
+
+
+
+//estructura 2ndo row
+                                         
+    var tr2  = document.createElement('tr');
+    var td6  = document.createElement('td');
+    
+    var div0 = document.createElement('div');
+    var div1 = document.createElement('div');
+    var div2 = document.createElement('div');
+    var div3 = document.createElement('div');
+    var div4 = document.createElement('div');
+    var div5 = document.createElement('div');
+
+    var divFil = document.createElement('div');
+
+    var i1   = document.createElement('i');
+    var i2   = document.createElement('i');
+    var i3   = document.createElement('i');
+    var i4   = document.createElement('i');
+   
+    var p1   = document.createElement('p');
+    var p2   = document.createElement('p');
+    var p3   = document.createElement('p');
+
+    var pTbl = document.createElement('table');
+    var pTbo = document.createElement('tbody');
+    var pThe = document.createElement('thead');
+
+    var pTth1 = document.createElement('th');
+    var pTth2 = document.createElement('th');
+    var pTth3 = document.createElement('th');
+
+     pTbl.className = "extProTbl";
+     pTbl.style.width = "100%";
+   
+     pTth1.innerHTML = "Asunto";
+     pTth2.innerHTML = "Descripción";
+     pTth3.innerHTML = "Fecha";
+
+     pThe.appendChild(pTth1);
+     pThe.appendChild(pTth2);
+     pThe.appendChild(pTth3);
+     
+     pTbl.appendChild(pThe);
+     pTbl.appendChild(pTbo);
+
+
+ //=============================================
+
+
+div_g  = document.createElement('div'); // g-wrap
+div_g1 = document.createElement('div');
+div_g2 = document.createElement('div');
+
+i_g    = document.createElement('i');
+i_g.className = "fa fa-chevron-right fa-2x";
+i_g.style.color= "#66A4EE";
+
+div_g.className = "g-wrap";
+div_g1.style.width = "80%";
+div_g1.style.display = "inline-block";
+div_g1.style.verticalAlign = "top";
+
+ div_g2.style.width = "4em";
+ div_g2.style.display = "inline-block";
+ div_g2.style.verticalAlign = "top";
+
+ div_g2.appendChild(i_g);
+ div_g1.appendChild(div_g2);
+ div_g.appendChild(div_g1);
+
+
+ div_gf  = document.createElement('div');
+ div_gf2 = document.createElement('div');
+ div_
+ i_gf
+
+ div_gf2.style.width = "4em";
+ div_gf2.style.verticalAlign = "top";
+ div_gf2.style.display = "inline-block";
+
+ div_gf2.appendChild(i_gf);
+ div_gf.appendChild(div_gf2);
+
+ div_gch = document.createElement('div');
+ div_gch.className = "great-chart";
+ div_gch.style.width = "18%";
+ div_gch.style.height = "4em";
+
+   //**** micro esctructura del panel de atencion al ciudadano
+
+     div_ic      = document.createElement('div');
+     div_ic_back = document.createElement('div');
+     div_ic_pro  = document.createElement('div');
+     div_ic_file = document.createElement('div');
+     i_ic        = document.createElement('i');
+
+     dl  = document.createElement('dl');
+     dt1 = document.createElement('dt');
+     dt2 = document.createElement('dt');
+     dt3 = document.createElement('dt');
+     dt4 = document.createElement('dt');
+
+     dd1 = document.createElement('dd');   
+     dd2 = document.createElement('dd');  
+     dd3 = document.createElement('dd');
+     dd4 = document.createElement('dd');
+
+     p_pro    = document.createElement('p');
+     str_pro  = document.createElement('strong');
+     span_pro = document.createElement('span');
+     pre_pro  = document.createElement('pre');
+
+
+    //==== ***** classes ****
+
+    div0.className        = "info-content";
+    div0.style.display    = "none";
+    div_ic.className      = "docs-example";
+    div_ic_back.id        = "back";
+    div_ic_pro.className  = "progress tight";
+    div_ic_file.className = "files"
+    i_ic.className        = "fa fa-chevron-circle-right fa-2x";
+    i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
+    i_ic.style.cursor     = "pointer";
+
+    dl.className       = "dl-horizontal";
+    p_pro.className    = "ajuste"; 
+    span_pro.className = "pull-right small muted";
+    pre_pro.className  = "pre";
+
+    //************ inner HTML ******
+    dt1.innerHTML = "Ciudadano";
+    dt2.innerHTML = "Dirección";
+    dt3.innerHTML = "Telefono";
+    dt4.innerHTML = "Descripción";
+
+    dd1.innerHTML = ctz;
+    dd2.innerHTML = ctz_address;
+    dd3.innerHTML = ctz_tel;
+    dd4.innerHTML = desc;
+  
+   //********* appending **********
+    
+
+
+dl.appendChild(dt1);
+dl.appendChild(dd1);
+dl.appendChild(dt2);
+dl.appendChild(dd2);
+dl.appendChild(dt3);
+dl.appendChild(dd3);
+dl.appendChild(dt4);
+dl.appendChild(dd4);
+
+div_ic_back.appendChild(i_ic);  
+div_ic.appendChild(div_ic_back);
+div_ic.appendChild(dl);
+div_ic.appendChild(p_pro)
+div_ic.appendChild(div_ic_pro);
+div_ic.appendChild(div_ic_file);
+div_ic.appendChild(pre_pro);
+
+div0.appendChild(div_ic);
+
+
+ $.ajax({
+          type: "POST",
+          url: "../backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac,
+          success: function(data){
+    
+      var files  =  data.split("|");
+
+      var elem   = [];
+      var elem_i = [];
+      var elem_s = [];
+      var setClass ="";
+      var cor= "";
+      var fileParent = document.querySelector('.incoming-files');
+
+      for (n=0; n < files.length-1 ; n++){
+      
+         elem[n]           = document.createElement('p');
+         elem[n].className = "ifile iss" + iss;
+         elem[n].id        = files[n];
+         elem[n].setAttribute("draggable", true);
+ 
+         elem[n].ondragstart = function(event){
+                 drag(event);
+          }
+   
+          elem[n].ondblclick = function () {
+                 downloadFile("../" + fac + "/" + mainuser + "/" + files[n]);
+          }
+
+
+        var extension = files[n].substring(files[n].length -3 , files[n].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+        
+         elem_i[n]             = document.createElement('i');
+         elem_i[n].className   = "fa fa-file-" + setClass + " fa-2x";
+         elem_i[n].style.color = cor;
+         
+         elem_s[n]             = document.createElement('span');
+         elem_s[n].className   = "iname";
+         elem_s[n].innerHTML   = files[n];
+
+         elem[n].appendChild(elem_i[n]);
+         elem[n].appendChild(elem_s[n]);
+
+         fileParent.appendChild(elem[n]);
+      }
+}
+});
+
+
+    p3.appendChild(str3);
+    p3.appendChild(span1);
+    div4.appendChild(i4);
+
+
+    td6.appendChild(div0);
+    div1.appendChild(p1);
+    div1.appendChild(p2);
+    div2.appendChild(div3);
+
+    td6.appendChild(div1);
+    tr2.appendChild(td6);
+    td6.appendChild(p3);
+    td6.appendChild(div2);
+    td6.appendChild(divFil);
+    td6.appendChild(div4);
+    td6.appendChild(i2);
+    td6.appendChild(i3);
+    td6.appendChild(pTbl);
+    parent.appendChild(tr2);
+
+/*
     var tr1 = document.createElement('tr');
     tr1.className = "task Ec" ;
 
@@ -3262,6 +3632,7 @@ p4.onclick = function(){
     td6.appendChild(p5);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
+    */
 }
 
 function getFiles(iss_id, usr_id, callback){
