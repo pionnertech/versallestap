@@ -3631,7 +3631,7 @@ p4.onclick = function(){
     td6.appendChild(p5);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
-    */
+    
 }
 
 function getFiles(iss_id, usr_id, callback){
