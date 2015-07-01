@@ -1977,7 +1977,7 @@ var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().children().html());
 
 if($(this).next().attr("class") == "person-sw" ){
-  if($(this).next().bootstrapSwitch('state') == false){
+  if($(this).next().children('div').find(".swt-boo").bootstrapSwitch('state') == false){
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
