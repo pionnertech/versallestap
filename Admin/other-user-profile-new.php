@@ -1970,16 +1970,14 @@ $(".toggle-attach").on('click', function(){
 
 $(".forward").on("click", function(){
         // establecemos  quien es quien 
-
-if($(this).next().attr("class") == "person-sw" ){
-  if($(this).next().bootstrapSwitch('state') == false){
-
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
-
 dateTime = AmericanDate($(this).parent().next().children().html());
+
+if($(this).next().attr("class") == "person-sw" ){
+  if($(this).next().bootstrapSwitch('state') == false){
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
@@ -2001,9 +1999,6 @@ $(".incoming-files").css({ display : "none"});
 
 } else {
 
-var stsk_id = $(this).parent().parent().children('input.st').val();
-var iss_ident = $(this).parent().parent().children('input.iss_id').val();
-
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
 
@@ -2014,8 +2009,6 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 } else if($(this).next().hasClass('fa-user') ){
 
-var stsk_id = $(this).parent().parent().children('input.st').val();
-var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
@@ -2025,12 +2018,6 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 } else if( $(this).next().hasClass('fa-group') ){
 
-var stsk_id = $(this).parent().parent().children('input.st').val();
-var iss_ident = $(this).parent().parent().children('input.iss_id').val();
-var subject = $(this).parent().parent().children('td').eq(1).text();
-var index_current = parseInt($(this).index(".forward"));
-
-dateTime = AmericanDate($(this).parent().next().children().html());
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
@@ -2050,9 +2037,6 @@ $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('acti
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 $(".incoming-files").css({ display : "none"});
-
-
-
 
 
 }
