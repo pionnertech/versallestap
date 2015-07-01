@@ -674,15 +674,12 @@ $handler = mysqli_query($datos, $matrix);
                                               break;
                                           }
                                             ?> 
-                                                                         <!-- <i class="fa fa-user spac" <? if($stsk[9] == 1){ ?>  <? } else {?> style="color: gray;" <? } ?> ></i>-->
-                             <!-- <input type="checkbox" class="swt-boo" <? if($stsk[9] == 1){ ?> checked="true" <? } else{ ?> <? } ?> data-label-width="5" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="Yo" data-off-text="Grupo">-->
-                             <!--<i class="fa fa-group spac" <? if($stsk[9] == 1){ ?> style="color:gray" <? } ?> ></i>-->
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><? echo $stsk[8] ?></td>
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
-                                          <? if ($stsk[9] !== 1 || $stsk[9] !== 0 ) { ?>
+                                          <? if ($stsk[9] !== 1 && $stsk[9] !== 0 ) { ?>
 
                                                    <div class="person-sw">
                                                       <i class="fa fa-user spac" ></i>
@@ -1521,7 +1518,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                               </div>
                           </div>
                   </div> <!-- fin set-pro-int-->
-                      <div class="tab-pane fade" id="set-pro-own">
+                      <div class="tab-pane fade" id="set-pro-own" data-stsk="" data-iss="">
                             <div class="media-stream">
                                 <div class="sub-del" style="width:100%">
                                 <div id="back-own"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
@@ -1634,6 +1631,8 @@ jQuery.fn.justtext = function() {
     var cc3 = "At-int-ii";
     var kenin, selectInt;
     var keys;
+    var switcher=0;
+
 
 
 
@@ -1972,7 +1971,7 @@ $(".toggle-attach").on('click', function(){
 $(".forward").on("click", function(){
         // establecemos  quien es quien 
 
-if($(this).next().attr("class") == "person-sw"  ){
+if($(this).next().attr("class") == "person-sw" ){
   if($(this).next().bootstrapSwitch('state') == false){
 
 var stsk_id = $(this).parent().parent().children('input.st').val();
@@ -1987,7 +1986,6 @@ $("#current-task").val(index_current);
 
 $(".ifile[class*='iss']").css({display : "none"});
 $(".iss" + iss_ident).css({ display : "inline-block"});
-
 $("#issId").val(iss_ident);
 $("#stsk-code").val(stsk_id);
 
@@ -2006,9 +2004,11 @@ $(".incoming-files").css({ display : "none"});
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 
+$("#set-pro-own").attr("data-stsk", stsk_id );
+$("#set-pro-own").attr("data-iss", iss_ident );
+
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
-
 
 }
 
@@ -2016,6 +2016,9 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
+
+$("#set-pro-own").attr("data-stsk", stsk_id );
+$("#set-pro-own").attr("data-iss", iss_ident );
 
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
@@ -2049,12 +2052,10 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
 
 
+
+
+
 }
-
-
-
-
-
 });
 
 
@@ -4178,6 +4179,7 @@ if(string == ""){
 }
 
 document.onkeydown = checkKey;
+
 function checkKey(e) {
     e = e || window.event;
     if (e.keyCode == '38') {
@@ -4194,17 +4196,20 @@ function checkKey(e) {
       $(".tt-selectable:contains('" + $(document.activeElement).val() + "')").prev().css("background-color", "#FFF");
     }
 }
+
 function isOdd(num) { return num % 2;}
 
 $("input.swt-boo").on('switchChange.bootstrapSwitch', function (event, state){
     if($(this).parent().parent().parent().children('i').eq(0).css("color") == "rgb(30, 87, 153)" ){
              $(this).parent().parent().parent().children('i').eq(0).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(1).css("color", "rgb(30, 87, 153)");
-             swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
+             switcher = 1;
+             //swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
     } else {
              $(this).parent().parent().parent().children('i').eq(1).css("color", "gray");
              $(this).parent().parent().parent().children('i').eq(0).css("color", "rgb(30, 87, 153)"); 
-             swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
+             //swUsr($(this).parent().parent().parent().parent().parent().children("input.st").val());
+             switcher = 0;
     }
 });
 
@@ -4237,10 +4242,28 @@ function swUsr(stskId){
 }
 
 
-$("upgrade-own").on('click', function (){
+$("#upgrade-own").on('click', function (){
+
+upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $("#value-progress").val(), $("#own-descript").val(), $("#own-subtasks").val());
 
 });
 
+function upgradeOwn(stskId, issId, percent, descript, subject){
+
+  $.ajax({
+      type: "POST",
+      url: "upgrade-own.php?stsk=" + stskId + 
+      "&iss="+ issId + 
+      "&percent=" + percent + 
+      "&subject=" + subject+ 
+      "&descript=" + descript +
+      "&muser=" + $("#muser").val() +
+      "&fac=" + fac,
+      success: function (data){
+         
+      }
+  })
+}
 
 
 $(".extUsr").on('click', function (){
