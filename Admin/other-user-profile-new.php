@@ -2987,6 +2987,7 @@ var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().children().html());
 $("#current-task").val(index_current);
 
+
 if($(this).next().attr("class") == "person-sw" ){
 
   if($(this).next().children('div').find(".swt-boo").bootstrapSwitch('state') == false){
@@ -4409,7 +4410,7 @@ var ind = $("#current-task").val();
       "&fac=" + fac,
       success: function (data){
 
-        $(".forward").eq(ind).
+        
          
       }
   })
