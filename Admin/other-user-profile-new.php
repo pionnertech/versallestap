@@ -416,7 +416,7 @@ pre > a, pre > a > p{
                                                                 <? printf($fila_per[1]) ?>  <? printf($fila_per[2]) ?>
                                                             </h3>
                                                             <p>
-                                                                <small class="muted">Serviu</small></p>
+                                                                <small class="muted"></small></p>
                                                             <div class="media-option btn-group shaded-icon">
                                                                 <button class="btn btn-small">
                                                                     <i class="icon-envelope"></i>
@@ -686,21 +686,21 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
-                                          <? if ($stsk[9] !== 1 && $stsk[9] !== 0 ) { ?>
+                                          <? if ($stsk[9] == 1  ) { ?>
+                                                   <i class="fa fa-user spac"></i>
 
-                                                   <div class="person-sw">
+                                          <?  } elseif ($stsk[9] == 0) {    ?>
+
+                                                    
+                                                    <i class="fa fa-group spac"></i>
+                                          <?  } else { ?>
+
+                                                    
+                                                   <div class="person-sw" it="<? echo $stsk[9]  ?>">
                                                       <i class="fa fa-user spac" ></i>
                                                       <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
-
-                                          <?  } elseif ($stsk[9] == 1) {    ?>
-
-                                                    <i class="fa fa-user spac"></i>
-
-                                          <?  } elseif ($stsk[9] == 0) { ?>
-
-                                                    <i class="fa fa-group spac"></i>
 
                                             <?   } ?>
 
