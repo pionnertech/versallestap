@@ -3263,7 +3263,7 @@ var filestring = "";
          elem[n].appendChild(elem_s[n]);
         
 
-       filestring +=  '<a href="../"' + fac + '"/"' + usr_id+ '"/"' + files[n] + '" download>' +
+       filestring +=  '<a href="../"' + fac + '"/"' + mainuser + '"/"' + files[n] + '" download>' +
            '<p class="ifile" title="' + files[n] + '">' +
              '<i class="fa fa-file-"' + setClass + '" fa-2x" style="color: "' + cor + '" "></i>' +
              '<span class="iname"></span>' +
