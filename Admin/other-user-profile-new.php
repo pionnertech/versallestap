@@ -4411,7 +4411,7 @@ var ind = $("#current-task").val();
 
   $.ajax({
       type: "POST",
-      url: "upgrade-own.php?stsk=" + stskId + 
+      url: "../backend/upgrade-own.php?stsk=" + stskId + 
       "&iss="+ issId + 
       "&percent=" + percent + 
       "&subject=" + subject+ 
