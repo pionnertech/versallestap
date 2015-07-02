@@ -3107,6 +3107,7 @@ div_g1.style.verticalAlign = "top";
     i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
     i_ic.style.cursor     = "pointer";
 
+
     dl.className       = "dl-horizontal";
     p_pro.className    = "ajuste"; 
     span_pro.className = "pull-right small muted";
@@ -3147,6 +3148,9 @@ div_ic.appendChild(pre_pro);
 
 div0.appendChild(div_ic);
 
+    div2.className  = "progress tight";
+    div3.className  = "bar bar-warning";
+    div4.className  = "collaborates";
 
  $.ajax({
           type: "POST",
