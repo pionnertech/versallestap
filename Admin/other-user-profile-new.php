@@ -3051,7 +3051,7 @@ div_g1.style.verticalAlign = "top";
  div_g2.style.verticalAlign = "top";
 
  div_g2.appendChild(i_g);
- div_g1.appendChild(div_g2);
+ div_g.appendChild(div_g2);
  div_g.appendChild(div_g1);
 
 
