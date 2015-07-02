@@ -3053,8 +3053,7 @@ div_g1.style.verticalAlign = "top";
 
  div_gf  = document.createElement('div');
  div_gf2 = document.createElement('div');
- div_
- i_gf
+
 
  div_gf2.style.width = "4em";
  div_gf2.style.verticalAlign = "top";
