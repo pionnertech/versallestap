@@ -2914,10 +2914,18 @@ var tr1 = document.createElement('tr');
     td5.innerHTML = date_fin;
 
     btn.className   = "btn btn-small forward";
-    btn.innerHTML   = "Delegar";
+    btn.innerHTML   = "<i class='fa fa-chevron-circle-right'></i>";
     td4.appendChild(btn);
 
-
+        b.onclick = function(){
+        if(!$(this).data("val") || !$(this).data("val") === 0 ){
+             $(this).parent().parent().next().css({ display: "table-row"});
+             $(this).data("val", 1);
+       } else  {
+         $(this).parent().parent().next().css({ display: "none"});
+        $(this).data("val", 0);
+        }
+    }
 
     div_s = document.createElement('div');
     i_s   = document.createElement('i');
