@@ -3057,7 +3057,8 @@ div_g1.style.verticalAlign = "top";
  div_gf  = document.createElement('div');
  div_gf2 = document.createElement('div');
  i_gf = document.createElement('i');
-
+ i_gf.className = "fa fa-chevron-left fa-2x";
+ i_gf.style.color = "#8FEC68";
 
  div_gf2.style.width = "4em";
  div_gf2.style.verticalAlign = "top";
