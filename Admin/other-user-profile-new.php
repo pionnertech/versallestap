@@ -3257,6 +3257,7 @@ div0.appendChild(div_ic);
     td6.appendChild(div2);
     td6.appendChild(divFil);
     td6.appendChild(div4);
+    td6.appendChild(div_g);
     td6.appendChild(i2);
     td6.appendChild(i3);
     td6.appendChild(pTbl);
