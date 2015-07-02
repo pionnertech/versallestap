@@ -723,11 +723,61 @@ $handler = mysqli_query($datos, $matrix);
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                         </p>
-                                            <div class="progress tight">
+                                            <div class="progress tight">s
                                                 <div class="bar forward"></div>
                                             </div>
                                         <div class="files"></div>
                                         <pre class="pre">
+                                                                          <?    
+                                   
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+
+                                          $file_extension2 = "";
+                                        
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                          
+                                            if(preg_match_all("/_" . $stsk[1] . "_/", $archivos2) == 1){
+                                     
+                                                $extension = substr($archivos2, -3);
+                                          
+                                                $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension == 'bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                 }
+
+                                              if(strlen($archivos2) > 4){
+                                          ?>
+                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>"  draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"><? printf($archivos2) ?></span>
+                                                </p>
+                                                  <? 
+                                                  }
+                                                }
+                                              } // while false
+                                        closedir($handler2);
+                                        }
+                                      ?>
                                         </pre>
                                     </div>
                                         </div>
@@ -946,7 +996,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                 <div id="wrap-D">
                                     <div id="D-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
                                     </div>
-
                                 </div>
                                 <div class="attach">
                                     <form id="upload" method="post" action="../backend/upload-new.php" enctype="multipart/form-data">
@@ -1972,6 +2021,8 @@ var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
+$("#current-task").val(index_current);
+
 dateTime = AmericanDate($(this).parent().next().children().html());
 
 if($(this).next().attr("class") == "person-sw" ){
@@ -2934,6 +2985,7 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().children().html());
+$("#current-task").val(index_current);
 
 if($(this).next().attr("class") == "person-sw" ){
 
@@ -4344,6 +4396,8 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 
 function upgradeOwn(stskId, issId, percent, descript, subject){
 
+var ind = $("#current-task").val();
+
   $.ajax({
       type: "POST",
       url: "upgrade-own.php?stsk=" + stskId + 
@@ -4354,6 +4408,8 @@ function upgradeOwn(stskId, issId, percent, descript, subject){
       "&muser=" + $("#muser").val() +
       "&fac=" + fac,
       success: function (data){
+
+        $(".forward").eq(ind).
          
       }
   })
