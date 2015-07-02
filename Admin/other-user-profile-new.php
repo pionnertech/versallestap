@@ -2028,6 +2028,7 @@ var stsk_id = $(this).parent().parent().children('input.st').val();
 var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
+console.info("current-index:" + index_current);
 $("#current-task").val(index_current);
 
 dateTime = AmericanDate($(this).parent().next().children().html());
