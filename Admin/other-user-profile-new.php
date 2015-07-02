@@ -693,7 +693,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                                     
                                                     <i class="fa fa-group spac"></i>
-                                          <?  } elseif(is_null($stsk[9])) { ?>
+                                          <?  } elseif($stsk[9] === null) { ?>
 
                                                     
                                                    <div class="person-sw" it="<? echo $stsk[9]  ?>">
