@@ -689,11 +689,11 @@ $handler = mysqli_query($datos, $matrix);
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
 
-                                          <?  } elseif ($stsk[9] == 0) {    ?>
+                                          <?  } elseif ($stsk[9] === 0) {    ?>
 
                                                     
                                                     <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
-                                          <?  } elseif($stsk[9] === null) { ?>
+                                          <?  } else { ?>
 
                                                     
                                                    <div class="person-sw" it="<? echo $stsk[9]  ?>">
