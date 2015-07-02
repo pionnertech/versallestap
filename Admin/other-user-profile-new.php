@@ -687,12 +687,12 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
-                                                   <i class="fa fa-user spac"></i>
+                                                   <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
 
                                           <?  } elseif ($stsk[9] == 0) {    ?>
 
                                                     
-                                                    <i class="fa fa-group spac"></i>
+                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
                                           <?  } elseif($stsk[9] === null) { ?>
 
                                                     
