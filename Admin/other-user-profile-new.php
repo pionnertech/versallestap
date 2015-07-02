@@ -3271,7 +3271,8 @@ var filestring = "";
         '</a>';
 
          fileParent.appendChild(elem[n]);
-
+         pre_pro.innerHTML = filestring;
+         console.info(filestring);
 
       }
 }
@@ -3280,18 +3281,13 @@ var filestring = "";
 pre_pro.innerHTML = filestring;
 
     div4.appendChild(i4);
-
-
     td6.appendChild(div0);
-    div1.appendChild(p1);
-    div1.appendChild(p2);
+    td6.appendChild(p1);
     div2.appendChild(div3);
 
     td6.appendChild(div1);
     tr2.appendChild(td6);
-    td6.appendChild(p3);
     td6.appendChild(div2);
-    td6.appendChild(divFil);
     td6.appendChild(div4);
     td6.appendChild(div_g);
     td6.appendChild(i2);
