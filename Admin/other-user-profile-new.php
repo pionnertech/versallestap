@@ -2937,7 +2937,7 @@ var tr1 = document.createElement('tr');
              input_s.setAttribute( "data-off-color", "default");
              input_s.setAttribute( "data-on-text", "&ensp;");
              input_s.setAttribute( "data-off-text", "&ensp;");
-             input_s.bootstrapSwitch();
+             
             
     div_s.appendChild(i_s);
     div_s.appendChild(input_s);
@@ -3257,7 +3257,7 @@ div0.appendChild(div_ic);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
 
-
+  $(".swt-boo").eq($(".swt-boo").length).bootstrapSwitch();
     
 }
 
