@@ -3265,7 +3265,7 @@ var filestring = "";
 
        filestring +=  '<a href="../"' + fac + '"/"' + mainuser + '"/"' + files[n] + '" download>' +
            '<p class="ifile" title="' + files[n] + '">' +
-             '<i class="fa fa-file-"' + setClass + '" fa-2x" style="color: "' + cor + '" "></i>' +
+             '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
              '<span class="iname"></span>' +
            '</p>'+
         '</a>';
