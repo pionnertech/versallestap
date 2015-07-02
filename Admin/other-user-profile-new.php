@@ -3176,7 +3176,6 @@ div0.appendChild(div_ic);
     div3.className  = "bar bar-warning";
     div4.className  = "collaborates";
 var filestring = "";
-
  $.ajax({
           type: "POST",
           url: "../backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac,
@@ -3278,7 +3277,7 @@ var filestring = "";
 }
 });
 
-pre_pro .innerHTML = filestring;
+pre_pro.innerHTML = filestring;
 
     div4.appendChild(i4);
 
