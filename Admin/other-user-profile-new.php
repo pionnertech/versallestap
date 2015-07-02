@@ -3030,6 +3030,7 @@ var tr1 = document.createElement('tr');
      pTbl.appendChild(pTbo);
 
 
+
  //=============================================
 
 
@@ -3040,10 +3041,6 @@ div_g2 = document.createElement('div');//contenedor 2
 div_g.className = "g-wrap";
 div_g1.className = "file-sent";
 div_g2.className = "file-contents";
-
-
-
-
 
 div_g1.style.width = "80%";
 div_g1.style.display = "inline-block";
@@ -3087,9 +3084,12 @@ div_g1.style.verticalAlign = "top";
  div_gch.style.width = "18%";
  div_gch.style.height = "4em";
 
- div_g.appendChild(div_g2);
  div_g.appendChild(div_g1);
+ div_g.appendChild(div_g2);
+
  div_g.appendChild(div_gch);
+
+
 
    //**** micro esctructura del panel de atencion al ciudadano
 
@@ -3132,6 +3132,8 @@ div_g1.style.verticalAlign = "top";
     p_pro.className    = "ajuste"; 
     span_pro.className = "pull-right small muted";
     pre_pro.className  = "pre";
+
+    p1.className = ""
 
     //************ inner HTML ******
     dt1.innerHTML = "Ciudadano";
