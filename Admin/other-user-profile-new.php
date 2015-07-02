@@ -252,6 +252,11 @@ pre > a {
   display: inline-block;
   vertical-align: top;
 }
+pre > a, pre > a > p{
+  max-width: 1em;
+  max-height: 1em;
+}
+
     </style>    
   
 </head>
@@ -774,7 +779,6 @@ $handler = mysqli_query($datos, $matrix);
                                           ?>
                                   <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $_SESSION['TxtCode'] ?>/<? echo $archivos2 ?>" download>
                                         <p title="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
-                                                 <span class="iname"></span>
                                                 </p>
                                               </a>
                                                   <? 
