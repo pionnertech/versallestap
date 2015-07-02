@@ -4397,6 +4397,9 @@ function swUsr(stskId){
 
 
 $("#upgrade-own").on('click', function (){
+var ind = (parseInt($("#current-task").val())/2);
+
+$("#ext-tasks-table tbody tr.task .person-sw").eq(ind).remove().html("<i class='fa fa-user spec'></i>");
 
 upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $("#value-progress").val(), $("#own-descript").val(), $("#own-subtasks").val());
 
@@ -4416,7 +4419,8 @@ var ind = $("#current-task").val();
       "&muser=" + $("#muser").val() +
       "&fac=" + fac,
       success: function (data){
-
+        console.info(data);
+        bootbox.alert("el resultado fue  " + data);
         
          
       }
