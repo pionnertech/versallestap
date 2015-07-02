@@ -3405,9 +3405,9 @@ var filestring = "";
              '<span class="iname"></span>' +
            '</p>'+
         '</a>';
-
+         pre_pro.innerHTML = filestring;
          fileParent.appendChild(elem[n]);
-
+        
 
       }
 }
