@@ -27,11 +27,11 @@ $trf = "(" . $stsk .", " . $iss . ", '" . $descript . "', '" . $subject . "', " 
 
 
 if(!mysqli_query($datos, $query)){
-	echo mysqli_errno($datos);
+	echo mysqli_error($datos);
 }
 
 if(!mysqli_query($datos, $trf)){
-	echo mysqli_errno($datos);
+	echo mysqli_error($datos);
 }
 
 
