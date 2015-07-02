@@ -3235,9 +3235,6 @@ div0.appendChild(div_ic);
 }
 });
 
-
-    p3.appendChild(str3);
-    p3.appendChild(span1);
     div4.appendChild(i4);
 
 
