@@ -21,9 +21,12 @@ $query1= "UPDATE SUBTASKS SET  STSK_PROGRESS = " . $percent ." WHERE STSK_ID = "
 $query2= "UPDATE SUBTASKS SET  STSK_ANCIENT_PRO = " . $percent ." WHERE STSK_ID = " . $stsk . ";";
 $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
+$query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $percent . " WHERE ISS_ID = " . $iss;
 
 $trf = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_STSK_SRC_ID , TRF_DESCRIPT, TRF_SUBJECT , TRF_FAC_CODE,  TRF_USER) VALUES ";
-$trf = "(" . $stsk .", " . $iss . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
+$trf .= "(" . $stsk .", " . $iss . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
+
+
 
 
 if(!mysqli_query($datos, $query)){
