@@ -3133,7 +3133,11 @@ div_g1.style.verticalAlign = "top";
     span_pro.className = "pull-right small muted";
     pre_pro.className  = "pre";
 
-    p1.className = ""
+    
+    str_pro.innerHTML = "Grado de progreso";
+    span_pro.innerHTML = "0%";
+    p1.appendChild(str_pro);
+    p1.appendChild(span_pro);
 
     //************ inner HTML ******
     dt1.innerHTML = "Ciudadano";
