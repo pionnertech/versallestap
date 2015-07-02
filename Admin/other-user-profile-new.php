@@ -2889,8 +2889,8 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
 
-var tr1 = document.createElement('tr');
-    tr1.className = "task Ec" ;
+    var tr1 = document.createElement('tr');
+        tr1.className = "task Ec" ;
 
     var td1 = document.createElement('td');
     var td2 = document.createElement('td');
@@ -2913,6 +2913,7 @@ var tr1 = document.createElement('tr');
 
     btn.className   = "btn btn-small forward";
     btn.innerHTML   = "<i class='fa fa-chevron-circle-right'></i>";
+    btn.style.marginRight = "1em";
     td4.appendChild(btn);
 
         b.onclick = function(){
@@ -2925,6 +2926,81 @@ var tr1 = document.createElement('tr');
         }
     }
 
+
+btn.onclick =  function(){
+        // establecemos  quien es quien 
+var stsk_id = $(this).parent().parent().children('input.st').val();
+var iss_ident = $(this).parent().parent().children('input.iss_id').val();
+var subject = $(this).parent().parent().children('td').eq(1).text();
+var index_current = parseInt($(this).index(".forward"));
+dateTime = AmericanDate($(this).parent().next().children().html());
+
+if($(this).next().attr("class") == "person-sw" ){
+
+  if($(this).next().children('div').find(".swt-boo").bootstrapSwitch('state') == false){
+
+$("#audititle").html("\"" + subject + "\"");
+$("#current-task").val(index_current);
+
+$(".ifile[class*='iss']").css({display : "none"});
+$(".iss" + iss_ident).css({ display : "inline-block"});
+$("#issId").val(iss_ident);
+$("#stsk-code").val(stsk_id);
+
+//$('#delegates option:first-child').attr("selected", "selected");
+
+var current = $("#delegates").val();
+
+//fades
+$("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+$(".incoming-files").css({ display : "none"});
+
+} else {
+
+$("#set-pro-own").attr("data-stsk", stsk_id );
+$("#set-pro-own").attr("data-iss", iss_ident );
+
+$("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
+uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
+
+}
+
+} else if($(this).next().hasClass('fa-user') ){
+
+
+$("#set-pro-own").attr("data-stsk", stsk_id );
+$("#set-pro-own").attr("data-iss", iss_ident );
+
+$("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
+uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
+
+} else if( $(this).next().hasClass('fa-group') ){
+
+
+$("#audititle").html("\"" + subject + "\"");
+$("#current-task").val(index_current);
+
+$(".ifile[class*='iss']").css({display : "none"});
+$(".iss" + iss_ident).css({ display : "inline-block"});
+
+$("#issId").val(iss_ident);
+$("#stsk-code").val(stsk_id);
+
+//$('#delegates option:first-child').attr("selected", "selected");
+
+var current = $("#delegates").val();
+
+//fades
+$("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
+$("#require").removeClass('active in');$("#tasks-own").addClass('active in');
+
+$(".incoming-files").css({ display : "none"});
+
+
+}
+};
     div_s = document.createElement('div');
     i_s   = document.createElement('i');
     i_s2   = document.createElement('i');
@@ -3271,8 +3347,7 @@ var filestring = "";
         '</a>';
 
          fileParent.appendChild(elem[n]);
-         pre_pro.innerHTML = filestring;
-         console.info(filestring);
+
 
       }
 }
