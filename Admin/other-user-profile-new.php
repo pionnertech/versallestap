@@ -736,7 +736,7 @@ $handler = mysqli_query($datos, $matrix);
                                                 <div class="bar forward"></div>
                                             </div>
                                         <div class="files"></div>
-                                        <pre class="pre">
+                                        <pre class="pre" style="display:inline-flex; width: 100%">
                                                                           <?    
                                    
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
@@ -2992,6 +2992,7 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().children().html());
+console.info("current-index:" + index_current);
 $("#current-task").val(index_current);
 
 
