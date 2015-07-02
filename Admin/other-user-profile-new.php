@@ -3034,44 +3034,62 @@ var tr1 = document.createElement('tr');
 
 
 div_g  = document.createElement('div'); // g-wrap
-div_g1 = document.createElement('div');
-div_g2 = document.createElement('div');
-
-i_g    = document.createElement('i');
-i_g.className = "fa fa-chevron-right fa-2x";
-i_g.style.color= "#66A4EE";
+div_g1 = document.createElement('div');//contenedor 1
+div_g2 = document.createElement('div');//contenedor 2
 
 div_g.className = "g-wrap";
+div_g1.className = "file-sent";
+div_g2.className = "file-contents";
+
+
+
+
+
 div_g1.style.width = "80%";
 div_g1.style.display = "inline-block";
 div_g1.style.verticalAlign = "top";
 
- div_g2.style.width = "4em";
+ div_g2.style.width = "80%";
  div_g2.style.display = "inline-block";
  div_g2.style.verticalAlign = "top";
 
- div_g2.appendChild(i_g);
- div_g.appendChild(div_g2);
- div_g.appendChild(div_g1);
+//****** ????? ****** //
 
+//*************
 
- div_gf  = document.createElement('div');
- div_gf2 = document.createElement('div');
- i_gf = document.createElement('i');
- i_gf.className = "fa fa-chevron-left fa-2x";
- i_gf.style.color = "#8FEC68";
+ div_gf1  = document.createElement('div'); // contenedor flecha 1
+ div_gf2  = document.createElement('div'); // contenedor flecha 2
+
+ i_gf1  = document.createElement('i'); //flecha 1
+ i_gf1.className = "fa fa-chevron-right fa-2x";
+ i_gf1.style.color= "#66A4EE";
+
+ i_gf2 = document.createElement('i');
+ i_gf2.className = "fa fa-chevron-left fa-2x";
+ i_gf2.style.color = "#8FEC68";
 
  div_gf2.style.width = "4em";
  div_gf2.style.verticalAlign = "top";
  div_gf2.style.display = "inline-block";
 
- div_gf2.appendChild(i_gf);
- div_gf.appendChild(div_gf2);
+ div_gf1.style.width = "4em";
+ div_gf1.style.verticalAlign = "top";
+ div_gf1.style.display = "inline-block";
+
+ div_gf1.appendChild(i_gf1);
+ div_gf2.appendChild(i_gf2);
+ 
+ div_g1.appendChild(div_gf1);
+ div_g2.appendChild(div_gf2);
 
  div_gch = document.createElement('div');
  div_gch.className = "great-chart";
  div_gch.style.width = "18%";
  div_gch.style.height = "4em";
+
+ div_g.appendChild(div_g2);
+ div_g.appendChild(div_g1);
+ div_g.appendChild(div_gch);
 
    //**** micro esctructura del panel de atencion al ciudadano
 
