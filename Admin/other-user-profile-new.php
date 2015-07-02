@@ -3407,8 +3407,6 @@ var filestring = "";
         '</a>';
          pre_pro.innerHTML = filestring;
          fileParent.appendChild(elem[n]);
-        
-
       }
 }
 });
