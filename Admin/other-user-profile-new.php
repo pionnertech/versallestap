@@ -693,7 +693,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                                     
                                                     <i class="fa fa-group spac"></i>
-                                          <?  } else { ?>
+                                          <?  } elseif(is_null($stsk[9])) { ?>
 
                                                     
                                                    <div class="person-sw" it="<? echo $stsk[9]  ?>">
@@ -4454,6 +4454,13 @@ $(".extUsr").on('click', function (){
      //$(".radial-svg").
 
 });
+
+$(".viewToggle").on('click', function(){
+  $(this).parent().parent().children().not("info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().children("info-content").fadeToggle("fast");
+  })
+});
+
 
 </script>
 
