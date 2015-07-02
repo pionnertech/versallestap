@@ -244,10 +244,8 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 }
 .person-sw{
   position:relative;
-  right:-3em;
   display: inline-block;
   vertical-align: top;
-  top: -1.5em;
 }
 
     </style>    
@@ -3177,6 +3175,7 @@ div0.appendChild(div_ic);
     div2.className  = "progress tight";
     div3.className  = "bar bar-warning";
     div4.className  = "collaborates";
+var filestring = "";
 
  $.ajax({
           type: "POST",
@@ -3263,11 +3262,23 @@ div0.appendChild(div_ic);
 
          elem[n].appendChild(elem_i[n]);
          elem[n].appendChild(elem_s[n]);
+        
+
+       filestring +=  '<a href="../"' + fac + '"/"' + usr_id+ '"/"' + files[n] + '" download>' +
+           '<p class="ifile" title="' + files[n] + '">' +
+             '<i class="fa fa-file-"' + setClass + '" fa-2x" style="color: "' + cor + '" "></i>' +
+             '<span class="iname"></span>' +
+           '</p>'+
+        '</a>';
 
          fileParent.appendChild(elem[n]);
+
+
       }
 }
 });
+
+pre_pro .innerHTML = filestring;
 
     div4.appendChild(i4);
 
@@ -3293,7 +3304,7 @@ div0.appendChild(div_ic);
     
 }
 
-function getFiles(iss_id, usr_id, callback){
+function getFiles(iss_id, usr_id, callback){9
 var files;
    $.ajax({
           type: "POST",
