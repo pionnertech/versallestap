@@ -723,7 +723,7 @@ $handler = mysqli_query($datos, $matrix);
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                         </p>
-                                            <div class="progress tight">s
+                                            <div class="progress tight">
                                                 <div class="bar forward"></div>
                                             </div>
                                         <div class="files"></div>
@@ -768,9 +768,11 @@ $handler = mysqli_query($datos, $matrix);
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-                                        <p class="ifile iss<? printf($stsk_esp[1]) ?>"  draggable="true" ondragstart="drag(event)" id="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
-                                                 <span class="iname"><? printf($archivos2) ?></span>
+                                  <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $_SESSION['TxtCode'] ?>/<? echo $archivos2 ?>" download>
+                                        <p class="ifile" title="<? printf($archivos2) ?>" ><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"></span>
                                                 </p>
+                                              </a>
                                                   <? 
                                                   }
                                                 }
