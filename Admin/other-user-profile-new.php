@@ -2962,12 +2962,6 @@ var tr1 = document.createElement('tr');
     td3.appendChild(b);
 
 
-    var is = document.createElement('i');
-    is.className    = "fa fa-warning";
-    is.style.color  = "#EE8817";
-    is.style.cursor =  "pointer"
-    td1.appendChild(is);
-
     tr1.appendChild(td1);
     tr1.appendChild(td2);
     tr1.appendChild(td3);
@@ -2985,6 +2979,7 @@ var tr1 = document.createElement('tr');
     var tr2  = document.createElement('tr');
     var td6  = document.createElement('td');
     
+
     var div0 = document.createElement('div');
     var div1 = document.createElement('div');
     var div2 = document.createElement('div');
@@ -3121,8 +3116,9 @@ div_g1.style.verticalAlign = "top";
     dd4.innerHTML = desc;
   
    //********* appending **********
-    
-
+tr2.style.display = "table-row";
+tr2.className = "display-progress";
+td6.colSpan = "5";
 
 dl.appendChild(dt1);
 dl.appendChild(dd1);
@@ -3254,7 +3250,7 @@ div0.appendChild(div_ic);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
 
-  $(".swt-boo").eq($(".swt-boo").length).bootstrapSwitch();
+  $(".swt-boo").eq($(".swt-boo").length-1).bootstrapSwitch();
     
 }
 
