@@ -2919,7 +2919,7 @@ function changeListener(){
 
 if(typeof(EventSource) !== "undefined") {
 
-    var source       = new EventSource("../backend/sse-event.php?usr=" + mainuser);
+    var source       = new EventSource("../backend/sse-event-new.php?usr=" + mainuser);
     source.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
