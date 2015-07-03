@@ -266,7 +266,10 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 										    <input type="hidden"  value="<? echo $fila1[0] ?>" class="iss_key">
  											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[14]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
-											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
+											<td class="cell-status hidden-phone hidden-tablet">
+											    <b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b>
+											    <i class="fa fa-search viewToggle" style="color: lightblue; font-size:1.5em"></i>
+											</td>
 											<td class="cell-time align-right"><? 
 											if ($fila1[4] == 'pendiente'){
 											printf(date("d/m/Y", strtotime(substr($fila1[1], 0, 10))));
@@ -382,7 +385,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                               if(strlen($archivos2) > 4){
                                           ?>
-  <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $fila[15] ?>/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
+  <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $fila1[15] ?>/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
                                                   <? 
                                                   }
                                                 }
@@ -796,6 +799,12 @@ uploader =  $(object).pluploadQueue({
     });
 
 };
+
+$(".viewToggle").on('click', function(){
+  $(this).parent().parent().next().children('td').children().not("info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().next().children('td').children("info-content").fadeToggle("fast");
+  });
+});
 </script>
 <?
 
