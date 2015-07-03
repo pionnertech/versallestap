@@ -22,9 +22,9 @@ $query_str_issues = "SELECT A.ISS_ID, " .
  "C.CTZ_GEOLOC,  " . 
  "C.CTZ_TEL, " .
  "D.CAT_DESCRIPT, " .
- "A.ISS_CHARGE_USR, "  .
+ "CONCAT(E.USR_NAME, ' ' , E.USR_SURNAME),  "  .
  "A.ISS_TICKET " .
-"FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) " .
+"FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) INNER JOIN USERS E ON(E.USR_ID = A.ISS_CHARGE_USR)" .
 "INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ AND C.CTZ_FAC_ENTER = " . $_SESSION['TxtFacility'] . ") " .
 "INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE)  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
 
@@ -320,13 +320,11 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                             <td colspan="5">
                                                                               <div class="info-content" style="display:none">
                                  <div class="docs-example">
-                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
                                         <dl class="dl-horizontal">
-                                            <dt></dt>
-                                            <dd>
-                                               </dd>
                                             <dt>Ciudadano</dt>
                                             <dd><? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila1[8])))); ?></dd>
+                                            <dt>Encargado</dt>
+                                            <dd><? echo $fila1[13] ?></dd>
                                             <dt>Dirección</dt>
                                             <dd><? echo $fila1[9] ?></dd>
                                             <dt>Telefono</dt>
