@@ -1747,9 +1747,16 @@ onItemAdd: function(){
             $(".incoming-files").css({display: "none"});
     } else  {
         if($("#issId").val() !== 0){
-             $(".incoming-files p.iss" + $("#issId").val() ).css({display: "block"});
+             $(".incoming-files").css({display: "block"});
+             $(".incoming-files p" ).css({display: "none"});
+             $(".incoming-files p.iss" + $("#issId").val() ).css({display: "inline-block"});
         } 
     }   
+}, 
+onItemRemove : function(){
+   if($("#delegates").val() == ""){
+        $(".incoming-files").css({display: "none"});
+   } 
 }
    });
 
