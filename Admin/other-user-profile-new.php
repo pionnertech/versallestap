@@ -2925,7 +2925,7 @@ if(typeof(EventSource) !== "undefined") {
        var eventMessage = event.data.split('\n');
        if (eventMessage[0] !== previuosData){
         showAlert(eventMessage[0], 'req');
-          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7]);
+          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7], eventMessage[8]);
         newthum(0);
         previuosData = eventMessage[0];
     } 
@@ -2951,7 +2951,7 @@ parent.innerHTML = stringAl;
 
 }
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin, ctz_geoloc){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -3260,6 +3260,19 @@ div_g1.style.verticalAlign = "top";
      i_ic        = document.createElement('i');
 
      dl  = document.createElement('dl');
+     if(ctz_geoloc == 0){
+     img_dl = document.createElement('i');
+     img_dl.style.color = "gray";
+     img_dl.style.float = "right";
+     img_dl.className = "fa fa-camera fa-5x"; 
+
+     } else {
+     img_dl = document.createElement('img');
+     img_dl.src = "https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|" + ctz_geoloc;
+     img_dl.style.float = "right";
+     }
+     dl.appendChild(img_dl);
+
      dt1 = document.createElement('dt');
      dt2 = document.createElement('dt');
      dt3 = document.createElement('dt');
