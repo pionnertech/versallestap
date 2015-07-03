@@ -24,7 +24,7 @@ $query_str_issues = "SELECT A.ISS_ID, " .
  "D.CAT_DESCRIPT, " .
  "CONCAT(E.USR_NAME, ' ' , E.USR_SURNAME),  "  .
  "A.ISS_TICKET, " .
- "A.ISS_CHARGE_USR "
+ "A.ISS_CHARGE_USR " .
 "FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) INNER JOIN USERS E ON(E.USR_ID = A.ISS_CHARGE_USR)" .
 "INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ AND C.CTZ_FAC_ENTER = " . $_SESSION['TxtFacility'] . ") " .
 "INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE)  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
@@ -349,7 +349,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                          
+                                              echo "<script>console.info('" . $fila1[15] . "')</script>";
                                             if(preg_match_all("/_" . $fila1[15] . "_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
@@ -410,7 +410,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                             if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
                                      
                                          while (false !== ($archivos = readdir($handler))){ 
-                                      
+                                  
                                              if(preg_match_all("/_\[" . $fila1[0] . "\]_/", $archivos) == 1){
 
                                              $extension = substr($archivos, -3);
