@@ -3099,8 +3099,8 @@ $(".incoming-files").css({ display : "none"});
     div_s.appendChild(i_s2);
       
     i_s3.onclick = function (){
-        $(this).parent().parent().next().children('td').children().not(".info-content").fadeToggle("fast", function(){
-       $(this).parent().parent().next().children('td').children(".info-content").fadeToggle("fast");
+        $(this).parent().parent().next().children('td').children().not("info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().next().children('td').children("info-content").fadeToggle("fast");
   });
     }
 
@@ -4477,8 +4477,8 @@ $(".extUsr").on('click', function (){
 });
 
 $(".viewToggle").on('click', function(){
-  $(this).parent().parent().next().children('td').children().not(".info-content").fadeToggle("fast", function(){
-       $(this).parent().parent().next().children('td').children(".info-content").fadeToggle("fast");
+  $(this).parent().parent().next().children('td').children().not("info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().next().children('td').children("info-content").fadeToggle("fast");
   });
 });
 
