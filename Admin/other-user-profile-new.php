@@ -693,11 +693,13 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
+                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } elseif ($stsk[9] === 0) {    ?>
 
                                                     
                                                     <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
+                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
                                           <?  } else { ?>
 
                                                     
@@ -706,6 +708,7 @@ $handler = mysqli_query($datos, $matrix);
                                                       <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
+                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                             <?   } ?>
 
@@ -4461,9 +4464,9 @@ $(".extUsr").on('click', function (){
 });
 
 $(".viewToggle").on('click', function(){
-  $(this).parent().parent().children().not("info-content").fadeToggle("fast", function(){
-       $(this).parent().parent().children("info-content").fadeToggle("fast");
-  })
+  $(this).parent().parent().next().children('td').children().not("info-content").fadeToggle("fast", function(){
+       $(this)..parent().parent().next().children('td').children("info-content").fadeToggle("fast");
+  });
 });
 
 
