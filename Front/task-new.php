@@ -330,11 +330,11 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                             <dt>Dirección</dt>
                                             <dd><? echo $fila1[9] ?></dd>
                                             <dt>Telefono</dt>
-                                            <dd><? echo $fila[11] ?></dd>
+                                            <dd><? echo $fila1[11] ?></dd>
                                             <dt>Descripción</dt>
                                             <dd><? echo $fila1[2] ?></dd>
                                             <dt>Origen</dt>
-                                            <dd><? echo $fila[12] ?></dd>
+                                            <dd><? echo $fila1[12] ?></dd>
                                         </dl>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
