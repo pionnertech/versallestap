@@ -3071,14 +3071,17 @@ $(".incoming-files").css({ display : "none"});
 
 }
 };
-    div_s = document.createElement('div');
-    i_s   = document.createElement('i');
-    i_s2   = document.createElement('i');
+    div_s   = document.createElement('div');
+    i_s     = document.createElement('i');
+    i_s2    = document.createElement('i');
+    i_s3    = document.createElement('i'); // este tiene que ir sujeto al td
     input_s = document.createElement('input');
 
         div_s.className   = "person-sw";
         i_s.className     = "fa fa-user spac";
         i_s2.className    = "fa fa-group spac";
+        i_s3.className    = "fa fa-search viewToggle";
+
         input_s.className = "swt-boo";
 
              input_s.type ="checkbox";
@@ -3095,7 +3098,17 @@ $(".incoming-files").css({ display : "none"});
     div_s.appendChild(input_s);
     div_s.appendChild(i_s2);
       
+    i_s3.onclick = function (){
+        $(this).parent().parent().next().children('td').children().not(".info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().next().children('td').children(".info-content").fadeToggle("fast");
+  });
+    }
+
+
     td4.appendChild(div_s);
+    td4.appendChild(i_s3);
+
+
 
     td2.innerHTML = stsk_descript;
 
@@ -4464,8 +4477,8 @@ $(".extUsr").on('click', function (){
 });
 
 $(".viewToggle").on('click', function(){
-  $(this).parent().parent().next().children('td').children().not("info-content").fadeToggle("fast", function(){
-       $(this).parent().parent().next().children('td').children("info-content").fadeToggle("fast");
+  $(this).parent().parent().next().children('td').children().not(".info-content").fadeToggle("fast", function(){
+       $(this).parent().parent().next().children('td').children(".info-content").fadeToggle("fast");
   });
 });
 
