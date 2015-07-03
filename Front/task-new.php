@@ -25,8 +25,8 @@ $query_str_issues = "SELECT A.ISS_ID, " .
  "A.ISS_CHARGE_USR, "  .
  "A.ISS_TICKET " .
 "FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) " .
-"INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ) " .
-"INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE)  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
+"INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ AND CTX_FAC_ENTER = " . $_SESSION['TxtFacility'] . ") " .
+"INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE AND )  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
 
 
 $Query_task = mysqli_query($datos,$query_str_issues );
