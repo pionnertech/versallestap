@@ -350,8 +350,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
                                           
-                                            if(preg_match_all("/_" . $fila1[15] . "_/", $archivos2) == 1){
-                                     
+                                            if(preg_match_all("/_" . $fila1[0] . "_/", $archivos2) == 1){
+                                      
                                                 $extension = substr($archivos2, -3);
                                           
                                                 $cor = "";
