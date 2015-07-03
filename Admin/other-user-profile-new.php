@@ -253,8 +253,8 @@ pre > a {
   vertical-align: top;
 }
 pre > a, pre > a > p{
-  max-width: 1em;
-  max-height: 1em;
+  max-width: 3em;
+  max-height: 3em;
 }
 
     </style>    
