@@ -3081,6 +3081,9 @@ $(".incoming-files").css({ display : "none"});
         i_s.className     = "fa fa-user spac";
         i_s2.className    = "fa fa-group spac";
         i_s3.className    = "fa fa-search viewToggle";
+        i_s3.style.color  = "lightblue";
+        i_s3.style.fontSize = "1.5em";
+
 
         input_s.className = "swt-boo";
 
