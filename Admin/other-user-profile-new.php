@@ -1753,6 +1753,7 @@ onItemAdd: function(){
         } 
     }   
 }, 
+
 onItemRemove : function(){
    if($("#delegates").val() == ""){
         $(".incoming-files").css({display: "none"});
