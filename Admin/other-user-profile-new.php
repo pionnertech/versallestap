@@ -1741,20 +1741,15 @@ onChange : function(){
 $("#stsk-user").val($("#delegates").val());
 
 },
-onItemAdd: function(){
-  $("#stsk-user").val($("#delegates").val());
-      if ($("#delegates").val() == 0 || $("#delegates").val() == ""){
-            $(".incoming-files").css({display: "none"});
-    } else  {
+onItemAdd: function(value){
+  console.info(value);
+  $("#stsk-user").val($("#delegates").val()); 
         if($("#issId").val() !== 0){
              $(".incoming-files").css({display: "block"});
-             $(".incoming-files p" ).css({display: "none"});
+             $(".incoming-files > p" ).css({display: "none"});
              $(".incoming-files p.iss" + $("#issId").val() ).css({display: "inline-block"});
         } 
-    }   
 }, 
-
-
 onItemRemove : function(){
    if($("#delegates").val() == ""){
         $(".incoming-files").css({display: "none"});
