@@ -261,9 +261,9 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 						 	?>				
 										<tr class="task <? printf($class) ?>">
-										    <input type="hidden" value="<? printf($fila1[14])?>">
+										    <input type="hidden" value="<? printf($fila1[7])?>">
 										    <input type="hidden"  value="<? echo $fila1[0] ?>" class="iss_key">
- 											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[8]) ?></td>
+ 											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[14]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet"><b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b></td>
 											<td class="cell-time align-right"><? 
