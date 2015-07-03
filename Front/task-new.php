@@ -344,12 +344,12 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                         <pre class="pre" style="display:inline-flex; width: 100%">
                                                                           <?    
                                    
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fila1[15] . "/" )){
 
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                              echo "<script>console.info('" . $fila1[15] . "')</script>";
+                                          
                                             if(preg_match_all("/_" . $fila1[15] . "_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
