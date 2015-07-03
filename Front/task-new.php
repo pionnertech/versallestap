@@ -325,7 +325,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                               <div class="info-content" style="display:none">
                                  <div class="docs-example">
                                         <dl class="dl-horizontal">
-                                        <? if($fila1[10] == 10) { ?>
+                                        <? if($fila1[10] == 0) { ?>
                                         <img style="float: right" src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|<? echo $fila[10]?>">
                                         <? } else { ?>
                                          <i class="fa fa-camera fa-5x" style="color: gray; float: right"></i>
