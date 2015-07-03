@@ -1737,15 +1737,17 @@ persist: false,
 create: false,
 openOnFocus: true,
 onChange : function(){
+
 $("#stsk-user").val($("#delegates").val());
+
 },
 onItemAdd: function(){
   $("#stsk-user").val($("#delegates").val());
       if ($("#delegates").val() == 0 || $("#delegates").val() == ""){
             $(".incoming-files").css({display: "none"});
     } else  {
-        if(st == 0){
-             $(".incoming-files").css({display: "block"});
+        if($("#issId").val() !== 0){
+             $(".incoming-files p.iss" + $("#issId").val() ).css({display: "block"});
         } 
     }   
 }
