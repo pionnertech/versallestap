@@ -2215,7 +2215,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
            bootbox.alert("Requerimiento delegado existosamente");
 
                 var target =  $("#current-task").val();
-                var key_main    = document.querySelectorAll(".collaborates")[target];
+                var key_main    = document.querySelectorAll(".collaborates")[target/2]; // aqui se cambió por una razón inexplicable
 
                 for (i= 0 ; i < users.length-1; i++){
                 var a_del       = document.createElement('a');
