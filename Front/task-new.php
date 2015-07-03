@@ -9,7 +9,27 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 //TASK
-$Query_task = mysqli_query($datos, "SELECT A.ISS_ID, A.ISS_DATE_ING, A.ISS_DESCRIP, B.EST_DESCRIPT, B.EST_COLOR, A.ISS_PROGRESS, A.ISS_FINISH_DATE, A.ISS_CTZ, A.ISS_TICKET FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) WHERE A.ISS_FAC_CODE = " .  $_SESSION["TxtFacility"] . ";" );
+$query_str_issues = "SELECT A.ISS_ID, " . 
+ "A.ISS_DATE_ING,  " . 
+ "A.ISS_DESCRIP,  " . 
+ "B.EST_DESCRIPT,  " . 
+ "B.EST_COLOR, " . 
+ "A.ISS_PROGRESS, " . 
+ "A.ISS_FINISH_DATE, " . 
+ "A.ISS_CTZ, " . 
+ "CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ', C.CTZ_SURNAME2 ) ,   " . 
+ "C.CTZ_ADDRESS,  " . 
+ "C.CTZ_GEOLOC,  " . 
+ "C.CTZ_TEL, " .
+ "D.CAT_DESCRIPT, " .
+ "A.ISS_CHARGE_USR, "  .
+ "A.ISS_TICKET " .
+"FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) " .
+"INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ) " .
+"INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE)  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
+
+
+$Query_task = mysqli_query($datos,$query_str_issues );
 
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
@@ -241,7 +261,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 						 	?>				
 										<tr class="task <? printf($class) ?>">
-										    <input type="hidden" value="<? printf($fila1[7])?>">
+										    <input type="hidden" value="<? printf($fila1[14])?>">
 										    <input type="hidden"  value="<? echo $fila1[0] ?>" class="iss_key">
  											<td class="cell-icon" style="margin-right: 1em;"><? printf($fila1[8]) ?></td>
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
@@ -298,6 +318,82 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
                                         <tr class="display-progress ">
                                             <td colspan="5">
+                                                                              <div class="info-content" style="display:none">
+                                 <div class="docs-example">
+                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
+                                        <dl class="dl-horizontal">
+                                            <dt></dt>
+                                            <dd>
+                                               </dd>
+                                            <dt>Ciudadano</dt>
+                                            <dd><? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila1[8])))); ?></dd>
+                                            <dt>Dirección</dt>
+                                            <dd><? echo $fila1[9] ?></dd>
+                                            <dt>Telefono</dt>
+                                            <dd><? echo $fila[11] ?></dd>
+                                            <dt>Descripción</dt>
+                                            <dd><? echo $fila1[2] ?></dd>
+                                            <dt>Origen</dt>
+                                            <dd><? echo $fila[12] ?></dd>
+                                        </dl>
+                                        <p class="adjuste">
+                                            <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                        </p>
+                                            <div class="progress tight">
+                                                <div class="bar forward"></div>
+                                            </div>
+                                        <pre class="pre" style="display:inline-flex; width: 100%">
+                                                                          <?    
+                                   
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+
+                                          $file_extension2 = "";
+                                        
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                          
+                                            if(preg_match_all("/_" . $fila[13] . "_/", $archivos2) == 1){
+                                     
+                                                $extension = substr($archivos2, -3);
+                                          
+                                                $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension == 'bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                 }
+
+                                              if(strlen($archivos2) > 4){
+                                          ?>
+  <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $_SESSION['TxtCode'] ?>/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
+                                                  <? 
+                                                  }
+                                                }
+                                              } // while false
+                                        closedir($handler2);
+                                        }
+                                      ?>
+                                        </pre>
+                                    </div>
+                                   </div>
                                             <p class="adjuste" style="display: inline-block;">
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila1[5]) ?>%</span>
                                             </p>
