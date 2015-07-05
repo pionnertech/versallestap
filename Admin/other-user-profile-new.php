@@ -2214,7 +2214,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
            var users = data.split("|");
            bootbox.alert("Requerimiento delegado existosamente");
 
-                var target =  $("#current-task").val();
+                var target      =  $("#current-task").val();
                 var key_main    = document.querySelectorAll(".collaborates")[target/2]; // aqui se cambió por una razón inexplicable
 
                 for (i= 0 ; i < users.length-1; i++){
@@ -2866,7 +2866,7 @@ setInterval(function(){
 function changeListener(){
             $.ajax({
             type: "POST",
-            url: "../backend/time.php?usr="+mainuser+"&fac="+fac,
+            url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
             success: function(data){
                 packets = data.split("|");
            // si esta el asunto repetido...
