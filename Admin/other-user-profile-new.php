@@ -2221,7 +2221,9 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 var a_del       = document.createElement('a');
                 a_del.className = "hovertip";
                 a_del.title     = data;
-
+                a_del.onclick  = function (){
+                   hovertip(this);
+                }
                 var img_del =  document.createElement('img');
                 img_del.className = "group";
                 img_del.src = "../" + fac + "/img/" + users[i] + "_opt.jpg";
@@ -2238,6 +2240,9 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.appendChild(icom);
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
+
+
+
 
                // nueva delegacia 
                  $("#upload ul").empty();
