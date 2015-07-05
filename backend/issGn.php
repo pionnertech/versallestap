@@ -110,8 +110,8 @@ if(!mysqli_query($datos, $insertar_audi)){
 } else {
 
 $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
-
-mysqli_query($datos, "UPDATE ISSUES SET ISS_TICKET = CONCAT('IS16', SUBSTRING(ISS_DATE_ING,9, 2), 100 + ISS_ID) WHERE ISS_ID = " . $iss_call['ISS_ID']);
+$iss_ticket = mysqli_fetch_assoc(mysqli_query($datos, "SELECT DISTINCT  CONCAT('EX', '0000', (SELECT COUNT(ISS_ID) FROM ISSUES WHERE ISS_FAC_CODE = "  . $fac . ") ) AS CODIGO FROm ISSUES WHERE ISS_FAC_CODE = " . $fac));
+mysqli_query($datos, "UPDATE ISSUES SET ISS_TICKET = " . $iss_ticket['CODIGO']  . " WHERE ISS_ID = " . $iss_call['ISS_ID']);
 
 echo  $iss_call['ISS_ID'];
 }
