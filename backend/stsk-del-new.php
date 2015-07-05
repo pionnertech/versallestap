@@ -13,7 +13,7 @@ $type = $_GET['type'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
-
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_RESP = 0 WHERE (STSK_TYPE= 0 AND STSK_FAC_CODE =" . $fac ." AND STSK_ISS_ID =" . $iss_id . ")" );
 //processing array 
   $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
