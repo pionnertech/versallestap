@@ -3181,7 +3181,7 @@ $(".incoming-files").css({ display : "none"});
     var pTth2 = document.createElement('th');
     var pTth3 = document.createElement('th');
 
-     pTbl.className = "extProTbl";
+     pTbl.className = "ex-del-par";
      pTbl.style.width = "100%";
    
      pTth1.innerHTML = "Asunto";
