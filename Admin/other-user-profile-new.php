@@ -1004,7 +1004,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                     <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button>
-                                         <div class="wrap-lock"><i class="fa fa-lock fa-2x padlock" style="color: gray"></i></div>
                                     </div>
                                 </div>
                        
