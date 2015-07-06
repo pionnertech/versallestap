@@ -4550,9 +4550,7 @@ function swUsr(stskId){
 
 
 $("#upgrade-own").on('click', function (){
-var ind = (parseInt($("#current-task").val())/2);
 
-$("#ext-tasks-table tbody tr.task .person-sw").eq(ind).remove().html("<i class='fa fa-user spec'></i>");
 
 upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
 
@@ -4560,7 +4558,7 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 
 function upgradeOwn(stskId, issId, percent, descript, subject){
 
-var ind = $("#current-task").val();
+var ind = parseInt($("#current-task").val())/2);
 
   $.ajax({
       type: "POST",
@@ -4574,11 +4572,12 @@ var ind = $("#current-task").val();
       success: function (data){
         console.info(data);
         bootbox.alert("Progreso Grabado!", function(){
-          $(".task").eq(ind).next().children('td').children("div.progress").css({ width: percent + "%"});
+
+          $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
 
-          $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+          $("#kitkat li").eq(3).removeClass('active in');$("#kitkat li").eq(2).addClass('active in');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
         });
