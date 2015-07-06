@@ -651,7 +651,6 @@ $handler = mysqli_query($datos, $matrix);
                                          
                                          if($stsk[7] == 0 || $stsk[7] == '0'){
 
-                                            
                                             $color = "color:#EE8817;";
                                             $lock = "";
 
@@ -663,7 +662,6 @@ $handler = mysqli_query($datos, $matrix);
                                                  $lock = "disabled";
                                             }
                                          }
-
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
@@ -677,7 +675,6 @@ $handler = mysqli_query($datos, $matrix);
                                               case 'Atrasada':
                                                $class = "At";
                                               break;
-
                                               case 'Por Vencer':
                                               $class = "Pv";
                                               break;
