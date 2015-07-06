@@ -4591,7 +4591,6 @@ var date = new Date();
       "&muser=" + $("#muser").val() +
       "&fac=" + fac,
       success: function (data){
-      
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
