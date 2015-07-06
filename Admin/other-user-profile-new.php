@@ -2511,16 +2511,14 @@ $.ajax({
 function drop (event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
-    console.info(event.originalEvent);
-      console.info(event.dataTransfer);
     console.info(event.originalEvent.title);
-
     event.target.appendChild(document.getElementById(data));
     document.getElementById(data).style.width = "100%";
     $("#" + data + " span").css("text-align", "left");
     var chargeuser = $("#delegates").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
+
 }
 
 function allowDrop (event) {
@@ -2528,8 +2526,8 @@ function allowDrop (event) {
 }
 
 function drag (event) {
-   console.info(event.target.title);
-    event.dataTransfer.setData("text", event.target.id);
+
+    event.dataTransfer.setData("text", event.target.title);
 }
 
 
