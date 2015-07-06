@@ -2208,6 +2208,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fac=" + $("#facility").val(), 
         success : function(data){
           console.info(data);
+          var filestring = "";
            var users = data.split("|");
            bootbox.alert("Requerimiento delegado existosamente");
 
@@ -3563,6 +3564,7 @@ if(parseInt(kind) == 0){
 
 document.querySelectorAll("#ext-tasks-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table p > span.muted")[ind].innerHTML = percent + "%";
+console.info(ind + "  selectores #ext-tasks-table p > span.muted and .bar ");
 
 } else {
 
