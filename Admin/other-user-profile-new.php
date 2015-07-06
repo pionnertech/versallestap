@@ -4594,7 +4594,7 @@ var date = new Date();
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
-          $(".task").eq(ind).next().find(".collaborates").html("<a class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
+          $(".task").eq(ind).next().find(".collaborates").html("<a onclick='alterExt()' class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
             "<img src='../" + fac + "/img/" + mainuser + "_opt.jpg' class='group'>" +
             "<i class='fa fa-check-circle finished'></i>" +
             "<input type='hidden' value=" + mainuser +">" +
@@ -4644,6 +4644,30 @@ $(".viewToggle").on('click', function(){
   });
 });
 
+function alterExt(){
+     var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
+   var percent = $(this).attr("data-val");
+   var usrId = $(this).children('input').val();
+   var filCont = $(this).parent().next();
+
+   for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
+        if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
+            filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
+        } else {
+           filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "1"});
+        }
+   }
+
+  filCont.next().next().children('tbody').children('tr').css({ display : "none"});
+  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
+        var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
+        var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
+                .label('')
+                .diameter(125)
+                .value(percent)
+                .render();
+
+}
 
 </script>
 
