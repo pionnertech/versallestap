@@ -2524,6 +2524,8 @@ function allowDrop (event) {
 }
 
 function drag (event) {
+   console.info(event.target);
+   
     event.dataTransfer.setData("text", event.target.id);
 }
 
