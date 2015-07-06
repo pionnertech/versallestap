@@ -2314,6 +2314,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
             cor = "#338B93";
         break;     
 
+
     }
           filestring +=  '<a href="#" download>' +
            '<p class="ifile" title="' + far[i] + '">' +
