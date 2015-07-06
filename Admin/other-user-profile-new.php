@@ -427,6 +427,7 @@ pre > a, pre > a > p{
                                                             </div>
                                                         </div>
                                                         <?
+
 $matrix = "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
           "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per[0]. ")) * 100) AS percentage  " .
           "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per[0]. ")  " .
@@ -957,6 +958,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                               </thead>
                                               <tbody>
                                                   <?
+
+                                                  
   $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0]);
                             while($tss = mysqli_fetch_row($trf)){
 
@@ -4561,6 +4564,7 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 function upgradeOwn(stskId, issId, percent, descript, subject){
 
 var ind = (parseInt($("#current-task").val())/2);
+var date = new Date();
 
   $.ajax({
       type: "POST",
@@ -4577,6 +4581,9 @@ var ind = (parseInt($("#current-task").val())/2);
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
 
+          // adding The traffic
+
+           $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr><td>" + subject +"</td><td>" + descript + "</td><td>" + date.getDay() + "/"+ ("0" + date.getMonth()+1).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
