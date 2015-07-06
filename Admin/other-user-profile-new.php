@@ -685,7 +685,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status">
                                             <b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
+                                            <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
@@ -2238,12 +2238,16 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
 
-
+                
 
 
                // nueva delegacia 
-                 $("#upload ul").empty();
+                 
+
                }
+               $("#upload ul").empty();
+               $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
+               $(".forward").eq(target).attr("disabled", true);
         }
     });
 
