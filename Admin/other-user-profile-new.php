@@ -659,7 +659,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                             $situation = "lock";
                                             $color = "color: #44D933;";
-                                            if($stsk[9] === 1 || $stsk[3] !== "Finalizada"){
+                                            if($stsk[9] == 1 || $stsk[3] !== "Finalizada"){
                                                 $lock = "";
                                             } else {
                                                  $lock = "disabled";
@@ -689,7 +689,8 @@ $handler = mysqli_query($datos, $matrix);
                                         <tr class="task <? printf($class) ?>">
                                             <td class="cell-icon"><? echo $stsk[8] ?></td>
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
-                                            <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
+                                            <td class="cell-status">
+                                            <b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
