@@ -2511,7 +2511,6 @@ $.ajax({
 function drop (event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
-    console.info(event.originalEvent.title);
     event.target.appendChild(document.getElementById(data));
     document.getElementById(data).style.width = "100%";
     $("#" + data + " span").css("text-align", "left");
