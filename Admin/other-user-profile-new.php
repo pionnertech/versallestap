@@ -3024,7 +3024,7 @@ if(typeof(EventSource) !== "undefined") {
        var eventMessage = event.data.split('\n');
        if (eventMessage[0] !== previuosData){
         showAlert(eventMessage[0], 'req');
-          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7], eventMessage[8]);
+          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7], eventMessage[8], eventMessage[9]);
         newthum(0);
         previuosData = eventMessage[0];
     } 
@@ -3050,7 +3050,7 @@ parent.innerHTML = stringAl;
 
 }
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin, ctz_geoloc){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin, ctz_geoloc, ticket){
 
     var parent =  document.querySelector("#ext-tasks-table tbody");
 
@@ -3071,6 +3071,7 @@ function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, da
     var btn = document.createElement('button');
     
     td1.className = "cell-icon";
+    td1.innerHTML = ticket;
     td2.className = "cell-title";
     td3.className = "cell-status";
     td4.className = "cell-title";
