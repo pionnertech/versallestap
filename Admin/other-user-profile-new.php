@@ -2517,6 +2517,7 @@ function drop (event) {
     var chargeuser = $("#delegates").val();
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
+    $("#D-drop").data("files", $(this).data("files") + data + "|");
 
 }
 
