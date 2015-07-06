@@ -3178,6 +3178,7 @@ $(".incoming-files").css({ display : "none"});
         div_s.className   = "person-sw";
         i_s.className     = "fa fa-user spac";
         i_s2.className    = "fa fa-group spac";
+        i_s2.style.color  = "gray";
         i_s3.className    = "fa fa-search viewToggle";
         i_s3.style.color  = "lightblue";
         i_s3.style.fontSize = "1.5em";
@@ -4558,7 +4559,7 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 
 function upgradeOwn(stskId, issId, percent, descript, subject){
 
-var ind = parseInt($("#current-task").val())/2);
+var ind = (parseInt($("#current-task").val())/2);
 
   $.ajax({
       type: "POST",
@@ -4571,16 +4572,14 @@ var ind = parseInt($("#current-task").val())/2);
       "&fac=" + fac,
       success: function (data){
         console.info(data);
-        bootbox.alert("Progreso Grabado!", function(){
-
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
 
-          $("#kitkat li").eq(3).removeClass('active in');$("#kitkat li").eq(2).addClass('active in');
+          $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
-        });
+        bootbox.alert("Progreso Grabado!");
       }
   })
 }
