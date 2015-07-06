@@ -2240,9 +2240,65 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                  
 
                }
+                var far = $("#D-drop").data("files").split("|");
+
+               for(i=0; i < far.length; i++ ){
+                        var extension = far[i].substring(far[i].length -3 , far[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+    }
+          filestring +=  '<a href="#" download>' +
+           '<p class="ifile" title="' + far[i] + '">' +
+             '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
+             '<span class="iname"></span>' +
+           '</p>'+
+        '</a>';
+
+               }
                $("#upload ul").empty();
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
+               $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
         }
     });
 
@@ -2509,6 +2565,10 @@ $.ajax({
 
 
 function drop (event) {
+
+  if($("#D-drop").data("files") == undefined){
+     $("#D-drop").data("files") = "";
+  } 
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
