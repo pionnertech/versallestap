@@ -723,7 +723,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                         <dl class="dl-horizontal">
 <? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
-                                        
+                                         
                                          if($shine['CTZ_GEOLOC'] !== 0){ ?>
                                             <img style="float:right;" src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|<? echo $shine['CTZ_GEOLOC'] ?>">
                                           <? } else { ?>
