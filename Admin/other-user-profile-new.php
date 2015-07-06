@@ -2217,10 +2217,13 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
                 for (i= 0 ; i < users.length-1; i++){
                 var a_del       = document.createElement('a');
-                a_del.className = "hovertip";
+                a_del.className = "hovertip extUsr";
                 a_del.title     = data;
+
                 a_del.onclick  = function (){
-  var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
+
+   var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
+   
    var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
@@ -2233,8 +2236,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         }
    }
 
-  filCont.next().next().children('tbody').children('tr').css({ display : "none"});
-  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
+$(this).parent().parent().children('.ex-del-par tbody').children('tr').css({ display : "none"});
+$(this).parent().parent().children('.ex-del-par tbody').children('tr.eu' + usrId).css({ display : "table-row"});
         var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label('')
@@ -2251,7 +2254,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
                 var inp_del   = document.createElement('input');
                 inp_del.type  = "hidden";
-                inp_del.value = "u" + users[i];
+                inp_del.value = users[i]; // si es interno hay que ponerle una u antecediendo todo
               
                 var icom       = document.createElement('i');
                 icom.className = "fa fa-check-circle finished";
@@ -3587,6 +3590,8 @@ if(parseInt(kind) == 0){
 
 document.querySelectorAll("#ext-tasks-table td .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind].innerHTML = percent + "%";
+console.info("porsica el ind es : " + ind);
+$(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").attr("data-val", percent) ;
 
 } else {
 
@@ -3705,12 +3710,14 @@ $.ajax({ type:"POST",
 var fileN = filename(files[n]);
 
        if(parseInt(kind) == 0 && aux_stsk == 0){
+
       var sshot =  document.querySelectorAll(".file-contents")[ind].innerHTML;
       strHtml   =  sshot + '<a href="'+ files[n] + '" download>' +
       '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
       document.querySelectorAll(".file-contents")[ind].innerHTML = document.querySelectorAll(".file-contents")[ind].innerHTML + strHtml;
        console.info("indice: " + ind + " aqui es parseInt(kind) == 0 && aux_stsk == 0");
+
        } else if(aux_stsk !== 0) {
          
                      var sshot =  document.querySelectorAll(".int-files-for")[ind].innerHTML;
