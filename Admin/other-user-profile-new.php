@@ -4574,9 +4574,13 @@ var ind = $("#current-task").val();
       success: function (data){
         console.info(data);
         bootbox.alert("Progreso Grabado!", function(){
+          $(".task").eq(ind).next().children('td').children("div.progress").css({ width: percent + "%"});
+          $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
+
           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
-          $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+          //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+          $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
         });
       }
   })
