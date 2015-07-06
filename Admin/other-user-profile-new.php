@@ -2567,7 +2567,7 @@ $.ajax({
 function drop (event) {
 
   if($("#D-drop").data("files") == undefined){
-     $("#D-drop").data("files") = "";
+     $("#D-drop").data("files", "");
   } 
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
