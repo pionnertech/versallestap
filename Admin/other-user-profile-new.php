@@ -691,18 +691,17 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
-                                          <? if ($stsk[9] == 1  ) { ?>
+                                          <? if ($stsk[9] === 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
-                                          <?  } elseif ($stsk[9] === 0) {    ?>
+                                          <?  } elseif ($stsk[9] === 0 ) {    ?>
 
-                                                    
                                                     <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
                                                     <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+
                                           <?  } else { ?>
 
-                                                    
                                                    <div class="person-sw" it="<? echo $stsk[9]  ?>">
                                                       <i class="fa fa-user spac" ></i>
                                                       <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
@@ -721,13 +720,15 @@ $handler = mysqli_query($datos, $matrix);
                                             <td colspan="5">
                                                  <div class="info-content" style="display:none">
                                  <div class="docs-example">
-                                      <div id="back"><i class="fa fa-chevron-circle-right fa-2x" style="color: rgba(38, 134, 244, 0.9);cursor: pointer;"></i></div>
+
                                         <dl class="dl-horizontal">
-                                            <dt></dt>
-                                            <dd>
-                                               </dd>
-<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ',  B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) WHERE ISS_ID = " . $stsk[1] )) ?>
-            
+<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
+                                        
+                                         if($shine['CTZ_GEOLOC'] !== 0){ ?>
+                                            <img style="float:right;" src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|<? echo $shine['CTZ_GEOLOC'] ?>">
+                                          <? } else { ?>
+                                               <i class="fa fa-camera fa-5x" style="float:right ; color grey"></i>
+                                          <? } ?>
                                             <dt>Ciudadano</dt>
                                             <dd><? echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($shine['NAME'])))); ?></dd>
                                             <dt>Dirección</dt>
@@ -736,12 +737,14 @@ $handler = mysqli_query($datos, $matrix);
                                             <dd><? printf($shine['CTZ_TEL']) ?></dd>
                                             <dt>Descripción</dt>
                                             <dd><? printf($shine['ISS_DESCRIP']) ?></dd>
+                                            <dt>Origen</dt>
+                                            <dd><? printf($shine['CAT_DESCRIPT']) ?></dd>
                                         </dl>
                                         <p class="adjuste">
-                                            <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
+                                            <strong>Grado de progreso</strong><span class="pull-right small muted"> <? echo $shine['ISS_PROGRESS'] ?>%</span>
                                         </p>
                                             <div class="progress tight">
-                                                <div class="bar forward"></div>
+                                                <div class="bar forward" style="width: <? echo $shine['ISS_PROGRESS'] ?>%"></div>
                                             </div>
                                         <div class="files"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
