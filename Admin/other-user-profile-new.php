@@ -659,7 +659,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                             $situation = "lock";
                                             $color = "color: #44D933;";
-                                            if($stsk[9] == 1 || $stsk[3] !== "Finalizada"){
+                                            if($stsk[9] == 1 && $stsk[3] !== "Finalizada"){
                                                 $lock = "";
                                             } else {
                                                  $lock = "disabled";
