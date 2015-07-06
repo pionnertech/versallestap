@@ -2237,11 +2237,6 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.appendChild(icom);
                 a_del.appendChild(inp_del);
                 key_main.appendChild(a_del);
-
-                
-
-
-               // nueva delegacia 
                  
 
                }
@@ -3367,7 +3362,8 @@ var filestring = "";
           type: "POST",
           url: "../backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac,
           success: function(data){
-    
+            console.log(data);
+    console.info("backend/dynamics_JSON_files.php?usr_id=" + mainuser + "&iss_id=" + iss + "&fac=" + fac);
       var files  =  data.split("|");
 
       var elem   = [];
