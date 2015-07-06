@@ -3716,7 +3716,7 @@ var fileN = filename(files[n]);
       strHtml   =  sshot + '<a href="'+ files[n] + '" download>' +
       '<p class="ifile" title="' + fileN + '"><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor+ ';"></i>'
       '<span class="iname"></span></p></a>';
-      document.querySelectorAll(".file-contents")[ind].innerHTML = document.querySelectorAll(".file-contents")[ind].innerHTML + strHtml;
+      document.querySelectorAll(".file-contents")[ind].innerHTML =  strHtml;
        console.info("indice: " + ind + " aqui es parseInt(kind) == 0 && aux_stsk == 0");
 
        } else if(aux_stsk !== 0) {
