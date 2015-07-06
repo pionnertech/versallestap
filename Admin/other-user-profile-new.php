@@ -3589,10 +3589,10 @@ console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  us
     
 if(parseInt(kind) == 0){
 
-document.querySelectorAll("#ext-tasks-table td .bar")[ind].style.width = percent + "%";
-document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind].innerHTML = percent + "%";
+document.querySelectorAll("#ext-tasks-table td .bar")[ind*2].style.width = percent + "%";
+document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2].innerHTML = percent + "%";
 console.info("porsica el ind es : " + ind);
-$(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").attr("data-val", percent) ;
+$(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", percent) ;
 
 } else {
 
