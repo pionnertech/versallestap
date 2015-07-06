@@ -2210,7 +2210,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
            console.info(data);
            var filestring = "";
            var users = data.split("|");
-
+        
            bootbox.alert("Requerimiento delegado existosamente");
 
                 var target        =  $("#current-task").val();
@@ -2327,6 +2327,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
                $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
+               kenin[0].selectize.clear();
         }
     });
 
@@ -2990,7 +2991,7 @@ function changeListener(){
                              console.info(indice);
                              console.info("progreso del usuario : " + packets[10]);
                         if(parseInt(packets[10]) >= 99.5){
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=u' + packets[1] + ']').prev().css({ opacity : "1"});
+                            $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
                             $("#ext-tasks-table .due").eq(indice).parent().parent().removeClass().addClass("task Hc");
                           }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
@@ -3100,7 +3101,6 @@ var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().html());
 console.info("current-index:" + index_current);
 $("#current-task").val(index_current);
-
 
 if($(this).next().attr("class") == "person-sw" ){
 
@@ -4572,9 +4572,11 @@ var ind = $("#current-task").val();
       "&fac=" + fac,
       success: function (data){
         console.info(data);
-        bootbox.alert("el resultado fue  " + data);
-        
-         
+        bootbox.alert("Progreso Grabado!", function(){
+          $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
+          $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+          $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
+        });
       }
   })
 }
