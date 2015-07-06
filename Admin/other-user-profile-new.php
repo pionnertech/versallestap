@@ -2207,13 +2207,15 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
-          console.info(data);
-          var filestring = "";
+           console.info(data);
+           var filestring = "";
            var users = data.split("|");
+
            bootbox.alert("Requerimiento delegado existosamente");
 
-                var target      =  $("#current-task").val();
-                var key_main    = document.querySelectorAll(".collaborates")[target/2]; // aqui se cambió por una razón inexplicable
+                var tar         =  $("#current-task").val();
+                var target      =  $("input.st[value=" + tar + "]").index(".st");
+                var key_main    = document.querySelectorAll(".collaborates")[target]; // aqui se cambió por una razón inexplicable
 
                 for (i= 0 ; i < users.length-1; i++){
                 var a_del       = document.createElement('a');
@@ -2323,9 +2325,9 @@ $(this).parent().parent().children('.ex-del-par tbody').children('tr.eu' + usrId
 
                }
                $("#upload ul").empty();
-               $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
+               $(".task").eq(target).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
-               $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
+               $(".file-sent").eq(target).html($(".file-sent").eq(target).html() + filestring);
         }
     });
 
