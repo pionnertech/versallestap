@@ -804,15 +804,30 @@ $handler = mysqli_query($datos, $matrix);
                                      <div class="collaborates">
 
                       <?
-$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0);");
- while($fila_spec = mysqli_fetch_row($spec_tem)){ ?>
-
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
+ while($fila_spec = mysqli_fetch_row($spec_tem)){ 
+     if($stsk[4] == 1 ) ?>
+        <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
+            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>_opt.jpg" class="group" >
+            <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
+            <input type="hidden" value="<? printf($fila_spec[1])?>">
+        </a>
+        <? 
+        } else { 
+          if($stsk[5] == $_SESSION['TxtCode']){
+            continue; 
+          } else {
+          ?>
+        
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
-    <?  }  ?>
+
+    <?  }
+  }
+    }  ?>
                                             </div>
                                       <div class="g-wrap"> <!--for  internal files and graphics-->
                                             <div class="file-sent" style="width: 80%;display: inline-block; vertical-align: top;">
@@ -959,7 +974,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                               <tbody>
                                                   <?
 
-                                                  
+
   $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0]);
                             while($tss = mysqli_fetch_row($trf)){
 
