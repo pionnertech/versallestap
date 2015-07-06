@@ -2985,7 +2985,7 @@ function changeListener(){
                             if(packets.length == 12){
                               nest = packets[11];
                             }   
-            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest);
+            updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest, packets[10] );
                           //aqui si es de tipo externo \./\./
                              console.info(indice);
                              console.info("progreso del usuario : " + packets[10]);
@@ -3583,7 +3583,7 @@ var files;
 };
 
 
-function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk){
+function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk, customPro){
 
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind + "//admin??"+ aux_stsk);
     
@@ -3592,7 +3592,7 @@ if(parseInt(kind) == 0){
 document.querySelectorAll("#ext-tasks-table td .bar")[ind*2].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2].innerHTML = percent + "%";
 console.info("porsica el ind es : " + ind);
-$(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", percent) ;
+$(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
 } else {
 
