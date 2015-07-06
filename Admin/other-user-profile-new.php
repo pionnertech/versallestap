@@ -4591,14 +4591,18 @@ var date = new Date();
       "&muser=" + $("#muser").val() +
       "&fac=" + fac,
       success: function (data){
-        console.info(data);
+      
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
-
+          $(".task").eq(ind).find(".collaborates").html("<a class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
+            "<img src='../" + fac + "/img/" + mainuser + "_opt.jpg' class='group'>" +
+            "<i class='fa fa-check-circle finished'></i>" +
+            "<input type='hidden' value=" + mainuser +">" +
+            "</a>");
           // adding The traffic
 
-           $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr><td>" + subject +"</td><td>" + descript + "</td><td>" + date.getDay() + "/"+ ("0" + date.getMonth()+1).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
+           $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + date.getDay() + "/"+ ("0" + date.getMonth()+1).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
