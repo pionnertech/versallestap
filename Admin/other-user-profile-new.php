@@ -814,7 +814,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         </a>
         <? 
         } else { 
-          if$$fila_spec[5] == $_SESSION['TxtCode']){
+          if$fila_spec[5] == $_SESSION['TxtCode']){
             continue; 
           } else {
           ?>
