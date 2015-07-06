@@ -3379,6 +3379,7 @@ var filestring = "";
          elem[n]           = document.createElement('p');
          elem[n].className = "ifile iss" + iss;
          elem[n].id        = files[n];
+         elem[n].title     = files[n];
          elem[n].setAttribute("draggable", true);
  
          elem[n].ondragstart = function(event){
@@ -3447,7 +3448,7 @@ var filestring = "";
          elem[n].appendChild(elem_s[n]);
         
 
-       filestring +=  '<a href="../"' + fac + '"/"' + mainuser + '"/"' + files[n] + '" download>' +
+       filestring +=  '<a href="../' + fac + '/' + mainuser + '/' + files[n] + '" download>' +
            '<p class="ifile" title="' + files[n] + '">' +
              '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
              '<span class="iname"></span>' +
