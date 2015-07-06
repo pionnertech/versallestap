@@ -2237,8 +2237,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         }
    }
 
-$(this).parent().parent().children('.ex-del-par tbody').children('tr').css({ display : "none"});
-$(this).parent().parent().children('.ex-del-par tbody').children('tr.eu' + usrId).css({ display : "table-row"});
+$(this).parent().parent().children('.ex-del-par').children('tbody').children('tr').css({ display : "none"});
+$(this).parent().parent().children('.ex-del-par').children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
         var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
         var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
                 .label('')
