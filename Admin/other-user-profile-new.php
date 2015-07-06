@@ -2220,8 +2220,31 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.className = "hovertip";
                 a_del.title     = data;
                 a_del.onclick  = function (){
-                   hovertip(this);
+  var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
+   var percent = $(this).attr("data-val");
+   var usrId = $(this).children('input').val();
+   var filCont = $(this).parent().next();
+
+   for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
+        if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
+            filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
+        } else {
+           filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "1"});
+        }
+   }
+
+  filCont.next().next().children('tbody').children('tr').css({ display : "none"});
+  filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
+        var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
+        var rp1 = radialProgress(document.querySelectorAll('.great-chart')[ind])
+                .label('')
+                .diameter(125)
+                .value(percent)
+                .render();
+     //$(".radial-svg").
+
                 }
+                
                 var img_del =  document.createElement('img');
                 img_del.className = "group";
                 img_del.src = "../" + fac + "/img/" + users[i] + "_opt.jpg";
@@ -4404,11 +4427,23 @@ if($(object).data("val") == 0 || $(object).data("val") == undefined){
    $(object).data("val", 0);
 }
 }
+
+
+
+
+
+
+
+
+
+
 //funcion prototipo
 $(".ifile").on('dblclick', function(){
   var fi = $(this).children('span').html();
     downloadFile("../" + fac + "/" + mainuser + "/" + fi);
 });
+
+
 function rewind(obj){
 var  fnam = obj.previousSibling.childNodes[0].nodeValue;
 var  usr = $("input[name=user]").val();
