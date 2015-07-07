@@ -2058,6 +2058,9 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
 console.info("current-index:" + index_current);
+$("#own-descript").val('');
+$("#own-subtasks").val('');
+
 $("#current-task").val(index_current);
 
 dateTime = AmericanDate($(this).parent().next().children().html());
@@ -3133,6 +3136,9 @@ var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().html());
 console.info("current-index:" + index_current);
 $("#current-task").val(index_current);
+
+$("#own-descript").val('');
+$("#own-subtasks").val('');
 
 if($(this).next().attr("class") == "person-sw" ){
 
