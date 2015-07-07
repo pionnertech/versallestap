@@ -2670,6 +2670,8 @@ if(kind == "internal"){
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
 
+var randFiles = "";
+
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_for_front.php?'  ,
@@ -2690,7 +2692,14 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                up.setOption("url", url);
+                if(object.attr("id") !== "up-own"){
+                    up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
+                } else {
+                  
+                   up.setOption("url", url);
+                }
+                console.info( "el ide del uploader" + object.attr("id"));
+                
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
             }
         },
@@ -2764,7 +2773,9 @@ uploader =  $(object).pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-              
+                randFiles += file;
+
+                $("#up-own").data("files", randFiles);
 
             },
   
@@ -2779,6 +2790,7 @@ uploader =  $(object).pluploadQueue({
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
+                randFiles = "";
 
             },
  
@@ -4570,8 +4582,6 @@ function swUsr(stskId){
 
 
 $("#upgrade-own").on('click', function (){
-
-
 upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
 
 });
@@ -4594,7 +4604,7 @@ var date = new Date();
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
-          $(".task").eq(ind).next().find(".collaborates").html("<a onclick='alterExt()' class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
+          $(".task").eq(ind).next().find(".collaborates").html("<a onclick='alterExt(this)' class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
             "<img src='../" + fac + "/img/" + mainuser + "_opt.jpg' class='group'>" +
             "<i class='fa fa-check-circle finished'></i>" +
             "<input type='hidden' value=" + mainuser +">" +
@@ -4644,11 +4654,11 @@ $(".viewToggle").on('click', function(){
   });
 });
 
-function alterExt(){
-     var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   var percent = $(this).attr("data-val");
-   var usrId = $(this).children('input').val();
-   var filCont = $(this).parent().next();
+function alterExt(object){
+     var ind = $(object).parent().next().parent().parent().prev().index('tr.task');
+   var percent = $(object).attr("data-val");
+   var usrId = $(object).children('input').val();
+   var filCont = $(object).parent().next();
 
    for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
