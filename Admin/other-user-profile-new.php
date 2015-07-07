@@ -835,7 +835,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                              <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
-
+                          
                                if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/")){
 
                                   continue; 
@@ -2773,7 +2773,7 @@ uploader =  $(object).pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                randFiles += file.name;
+                randFiles += file.name + "|";
 
                 $("#up-own").data("files", randFiles);
 
