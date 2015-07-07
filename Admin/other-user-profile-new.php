@@ -2773,7 +2773,7 @@ uploader =  $(object).pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                randFiles += file;
+                randFiles += file.name;
 
                 $("#up-own").data("files", randFiles);
 
@@ -4611,7 +4611,7 @@ var date = new Date();
             "</a>");
           // adding The traffic
 
-           $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + date.getDay() + "/"+ ("0" + date.getMonth()+1).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
+           $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + ('0' + date.getDay()).slice(-2) + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
