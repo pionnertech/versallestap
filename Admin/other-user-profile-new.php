@@ -276,7 +276,7 @@ top:.5em;
 
 
  svg{
-  width:100px;
+  width:100px !important;
  }
 
  .front-sent:before,
@@ -1304,7 +1304,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer; <? echo $color; ?>" ><i class="fa fa-<? echo $situation ?>"></i></td>
+
+                                                                <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
