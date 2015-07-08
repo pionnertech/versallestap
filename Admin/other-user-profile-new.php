@@ -4791,7 +4791,7 @@ function graphAddedFiles(object, names){
   var nname = names.split("|");
   var filstr = "";
 
-  for (i=0; i < nname.length ; i++){
+  for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
                 case "pdf": 
@@ -4841,7 +4841,7 @@ function graphAddedFiles(object, names){
 
     }
     
-    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-' + setClass+ '" style="color:' + cor + '"></i></a>';
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass+ '" style="color:' + cor + '"></i></a>';
 
   }
 
