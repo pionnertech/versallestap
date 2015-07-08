@@ -2781,7 +2781,7 @@ uploader =  $(object).pluploadQueue({
             UploadFile: function(up, file) {
 
                 console.log('[UploadFile]', file);
-                if(object.attr("id") !== "up-own"){
+                if(object.attr("id") == "up-own" || object.hasClass("front-response")){
                     up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
                 } else {
                   
@@ -2927,7 +2927,8 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           },
           success : function (data){
            result = data.split("|");
-           console.log(result);
+           console.log(result[3]);
+
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
