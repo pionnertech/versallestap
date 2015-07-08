@@ -3942,7 +3942,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
 
     i2.className   = "fa fa-chevron-circle-right";
     
-    td1.appendChild(i1);
     td4.appendChild(i2);
     td3.appendChild(b1);
 
