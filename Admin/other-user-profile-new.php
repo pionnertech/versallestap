@@ -4791,7 +4791,7 @@ function graphAddedFiles(object, names){
   var nname = names.split("|");
   var filstr = "";
 
-  for (i=0, i < nname.length ; i++){
+  for (i=0; i < nname.length ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
                 case "pdf": 
