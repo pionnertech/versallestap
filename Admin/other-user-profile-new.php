@@ -2927,7 +2927,10 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           },
           success : function (data){
            result = data.split("|");
-           console.log(data);
+
+           console.log(result.length);
+           console.info(result[result.length]);
+           console.info(result[result.length]-1);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
@@ -2936,7 +2939,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                             
                          } else {
 
-                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length]);
+                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
                             for(i=2; i < result.length -1; i++){
                                   assoc_collar_int(result[i], ind);
