@@ -381,13 +381,16 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
 
                                           <div class="file-sent">
                                               <?
+
+                                $rtask = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE(STSK_ISS_ID = " . $stsk[1] . " AND STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $boss['BOSS'] . ")" ));
+
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_in/" )){
                                         
                                           $file_extension = "";
 
                                            while (false !== ($archivos = readdir($handler))){
-                                            echo "<script>console.info('" . $stsk[0]  . "')</script>";
-                                         if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
+                                            echo "<script>console.info('" .$rtask['STSK_ID']  . "')</script>";
+                                         if(preg_match_all("/_" . $rtask['STSK_ID'] . "_/", $archivos) == 1){
                                              
                                              $extension = substr($archivos, -3);
                                               $cor = "";
