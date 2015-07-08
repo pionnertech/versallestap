@@ -4762,7 +4762,7 @@ function alterExt(object){
 $(".fr").on("click", function(){
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
      uploaderInt($(this).parent().prev());
-      $(this).data("val", 1),
+      $(this).data("val", 1);
   } else {
     $(this).parent().prev().fadeToggle("slow");
   }
