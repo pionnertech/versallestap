@@ -257,7 +257,7 @@ pre > a, pre > a > p{
   max-height: 3em;
 }
 
-.file-contents:before {
+.file-contents:before, .front-sent:before {
 content: "\f053";
 font-size: 2em;
 color: lightblue;
@@ -265,7 +265,7 @@ font-family: 'FontAwesome';
 position: relative;
 
 }
-.file-sent:before{
+.file-sent:before, .front-received:before{
 content: "\f054";
 font-size: 2em;
 color: lightgreen;
@@ -767,6 +767,7 @@ $handler = mysqli_query($datos, $matrix);
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
                                             <i class="fa fa-paperclip fa-2x fr"  style="display: block;" title="Documentos de Respuesta"></i>
+                                            <div class="front-received" style="width: 100%">
                                                                           <?    
                                    
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
@@ -815,6 +816,56 @@ $handler = mysqli_query($datos, $matrix);
                                         closedir($handler2);
                                         }
                                       ?>
+                                      </div>
+                                      <div class="front-sent">
+                                      <?
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
+
+                                          $file_extension2 = "";
+                                        
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                          
+                                            if(preg_match_all("/_" . $stsk[1] . "_/", $archivos2) == 1){
+                                     
+                                                $extension = substr($archivos2, -3);
+                                          
+                                                $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension == 'bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                 }
+
+                                              if(strlen($archivos2) > 4){
+                                          ?>
+  <a href="../<? echo $_SESSION['TxtFacility'] ?>/reply/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
+                                                  <? 
+                                                  }
+                                                }
+                                              } // while false
+                                        closedir($handler2);
+                                        }
+                                      ?>
+                                      </div>
                                         </pre>
                                     </div>
                                         </div>
