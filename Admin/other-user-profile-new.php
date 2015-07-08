@@ -274,9 +274,17 @@ position: relative;
 top:.5em;
  }
 
+
  svg{
   width:100px;
  }
+
+ .front-sent:before,
+.front-received:before{
+  top:0;
+  margin-left: 1em;
+  display:flex;
+}
 
     </style>    
  
