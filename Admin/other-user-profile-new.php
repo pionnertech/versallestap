@@ -4776,7 +4776,7 @@ function alterExt(object){
 }
 
 $(".fr").on("click", function(){
-
+console.info($(this).index(".fr"));
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
 
      uploaderInt($(this).parent().prev());
