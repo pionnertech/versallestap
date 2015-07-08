@@ -2948,7 +2948,6 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
-
                 }
   })
 
