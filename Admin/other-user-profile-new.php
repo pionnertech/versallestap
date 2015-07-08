@@ -257,6 +257,18 @@ pre > a, pre > a > p{
   max-height: 3em;
 }
 
+.file-contents {
+content: "\f053";
+font-size: 2em;
+color: lightblue;
+font-family: 'FontAwesome';
+}
+.file-sent{
+content: "\f054";
+font-size: 2em;
+color: lightgreen;
+font-family: 'FontAwesome';
+ }
     </style>    
   
 </head>
@@ -831,7 +843,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             </div>
                                       <div class="g-wrap"> <!--for  internal files and graphics-->
                                             <div class="file-sent" style="width: 80%;display: inline-block; vertical-align: top;">
-                                             <div style="width: 4em; display: inline-block; vertical-align: top;"><i class="fa fa-chevron-right fa-2x" style="color: #66A4EE"></i></div>
                                              <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
@@ -895,7 +906,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   ?>
                                             </div>
                                             <div class="file-contents">
-                                             <div style="width: 4em; display: inline-block; vertical-align: top;"><i class="fa fa-chevron-left fa-2x" style="color: #8FEC68"></i></div>
+                                            
                                            
                                             <?   
                                            
