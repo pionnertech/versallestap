@@ -257,7 +257,8 @@ pre > a, pre > a > p{
   max-height: 3em;
 }
 
-.file-contents:before, .front-sent:before {
+.file-contents:before, .front-sent:before,
+.int-files-for:before {
 content: "\f053";
 font-size: 2em;
 color: lightblue;
@@ -265,7 +266,8 @@ font-family: 'FontAwesome';
 position: relative;
 
 }
-.file-sent:before, .front-received:before{
+.file-sent:before, .front-received:before,
+ .int-files-to:before{
 content: "\f054";
 font-size: 2em;
 color: lightgreen;
@@ -1398,6 +1400,9 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                 </div>
                                              <div class="int-files-to">
                                                     
+
+
+
                                                 </div>
 
                                                 <table style="width: 100%" class="int-trf-descript">
