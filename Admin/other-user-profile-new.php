@@ -257,13 +257,13 @@ pre > a, pre > a > p{
   max-height: 3em;
 }
 
-.file-contents {
+.file-contents:before {
 content: "\f053";
 font-size: 2em;
 color: lightblue;
 font-family: 'FontAwesome';
 }
-.file-sent{
+.file-sent:before{
 content: "\f054";
 font-size: 2em;
 color: lightgreen;
