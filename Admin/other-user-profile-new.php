@@ -288,6 +288,7 @@ top:.5em;
 .front-received{
 margin-left: 1.5em;
 display:flex;
+width:100%;
 }
     </style>    
  
