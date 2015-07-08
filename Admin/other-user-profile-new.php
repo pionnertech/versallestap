@@ -262,12 +262,16 @@ content: "\f053";
 font-size: 2em;
 color: lightblue;
 font-family: 'FontAwesome';
+position: relative;
+top:.5em;
 }
 .file-sent:before{
 content: "\f054";
 font-size: 2em;
 color: lightgreen;
 font-family: 'FontAwesome';
+position: relative;
+top:.5em;
  }
     </style>    
   
