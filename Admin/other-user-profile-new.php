@@ -1640,8 +1640,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                           <div id="int-back" style="cursor: pointer; width:20px;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
                                           <input value=" <? echo $intList ?>" id="int-del" style="width: 95%; display: inline-block; vertical-align: top;">
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 67%;display: inline-block; vertical-align: top;">
-                                          <input type="text" class="datetimepicker date-int-finish" style=" width: 30%;display: inline-block; vertical-align: top;" >
-                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:98%"></textarea>
+                                          <input type="text" class="datetimepicker date-int-finish" style=" width: 24%;display: inline-block; vertical-align: top;" >
+                                          <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:93%"></textarea>
                                           <div id="up-int"></div>
                                           <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
                                           </div>
@@ -2936,13 +2936,11 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                             
                          } else {
 
-                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1);
+                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length]);
 
-                            for(i=2; i < result.length; i++){
+                            for(i=2; i < result.length -1; i++){
                                   assoc_collar_int(result[i], ind);
                             }
-                           
-
                            // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
                          }
                      });
@@ -3899,7 +3897,7 @@ function touchHandler(event) {
 }
 
 
-function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft){
+function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft, ticket){
 
   // si el lo envia
   if (kind == 1){
@@ -3914,7 +3912,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     var td3  = document.createElement('td');
     var td4  = document.createElement('td');
     var td5  = document.createElement('td');
-    var i1   = document.createElement('i');
     var i2   = document.createElement('i');
     var b1   = document.createElement('b');
     var inp1 = document.createElement('input');
@@ -3925,7 +3922,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     } else {
           tr1.className = "task Ec-int";
     }
-    
+    td1.innerHTML = ticket;
     td3.className = "cell-status";
     td2.innerHTML = descript;
     td5.innerHTML = date;
@@ -3943,8 +3940,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     b1.className             = "due int-desglo"; 
     b1.style.backgroundColor = "#178FD0";
 
-    i1.className   = "fa fa-exclamation";
-    i1.style.color = "orange";
+
     i2.className   = "fa fa-chevron-circle-right";
     
     td1.appendChild(i1);
