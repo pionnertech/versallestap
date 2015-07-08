@@ -2865,6 +2865,11 @@ uploader =  $(object).pluploadQueue({
 
                 $("#up-own").data("files", randFiles);
 
+
+                if(object.hasClass("front-response")){
+                  graphAddedFiles(object.next().children(".front-sent"), randFiles)
+                }
+
             },
   
             ChunkUploaded: function(up, file, info) {
@@ -4771,14 +4776,79 @@ function alterExt(object){
 }
 
 $(".fr").on("click", function(){
+
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
+
      uploaderInt($(this).parent().prev());
       $(this).data("val", 1);
   } else {
     $(this).parent().prev().fadeToggle("slow");
   }
     
-})
+});
+
+function graphAddedFiles(object, names){
+  var nname = names.split("|");
+  var filstr = "";
+
+  for (i=0, i < nname.length ; i++){
+     var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+    
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-' + setClass+ '" style="color:' + cor + '"></i></a>';
+
+  }
+
+object.html(filstr);
+filstr = "";
+
+}
 </script>
 
 <?
