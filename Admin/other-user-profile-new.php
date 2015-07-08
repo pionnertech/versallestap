@@ -4776,10 +4776,9 @@ function alterExt(object){
 }
 
 $(".fr").on("click", function(){
-console.info($(this).index(".fr"));
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
 
-     uploaderInt($(this).parent().prev());
+     uploaderInt($(this).parent().prev(), $(this).parent().parent().parent().parent().parent().prev().find(".iss_id").val());
       $(this).data("val", 1);
   } else {
     $(this).parent().prev().fadeToggle("slow");
