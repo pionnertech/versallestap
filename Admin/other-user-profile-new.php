@@ -2780,6 +2780,7 @@ uploader =  $(object).pluploadQueue({
  
             UploadFile: function(up, file) {
 
+
                 console.log('[UploadFile]', file);
                 if(object.attr("id") == "up-own" || object.hasClass("front-response")){
                     up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
