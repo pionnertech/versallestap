@@ -381,7 +381,7 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
 
                                           <div class="file-sent">
                                               <?
-                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "_in/" )){
                                         
                                           $file_extension = "";
 
