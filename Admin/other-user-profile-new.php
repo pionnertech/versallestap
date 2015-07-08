@@ -2930,10 +2930,11 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
 
            console.log(result.length);
            console.info(result[result.length]);
-           console.info(result[result.length]-1);
+           console.info(result[result.length]-2);
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
+
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                             
