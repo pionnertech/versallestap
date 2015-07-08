@@ -2933,6 +2933,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
+            console.info(data);
            result = data.split("|");
            console.log(result[3]);
 
