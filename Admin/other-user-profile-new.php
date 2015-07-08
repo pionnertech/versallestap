@@ -766,7 +766,7 @@ $handler = mysqli_query($datos, $matrix);
                                             </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
-                                            <i class="fa fa-clip fa-2x fr"  title="Documentos de Respuesta"></i>
+                                            <i class="fa fa-paperclip fa-2x fr"  style="display: block;" title="Documentos de Respuesta"></i>
                                                                           <?    
                                    
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
@@ -4709,7 +4709,6 @@ function alterExt(object){
 
 $(".fr").on("click", function(){
   uploaderInt($(this).parent().prev());
-
 })
 </script>
 
