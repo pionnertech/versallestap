@@ -282,7 +282,7 @@ top:.5em;
  .front-sent:before,
 .front-received:before{
   top:0;
-  margin-left: 1em;
+  margin-left: 1.5em;
   display:flex;
 }
 
