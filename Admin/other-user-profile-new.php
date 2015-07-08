@@ -862,8 +862,9 @@ $handler = mysqli_query($datos, $matrix);
                                                   }
                                                 }
                                               } // while false
+                                            }
                                         closedir($handler2);
-                                        }
+                                        
                                       ?>
                                       </div>
                                         </pre>
