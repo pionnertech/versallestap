@@ -2912,7 +2912,7 @@ uploader =  $(object).pluploadQueue({
 
 
 function intDel(user, sub, des, date, ind, mst){
-
+console.info(user);
 console.info(ind);
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
