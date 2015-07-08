@@ -263,7 +263,7 @@ font-size: 2em;
 color: lightblue;
 font-family: 'FontAwesome';
 position: relative;
-top:.5em;
+
 }
 .file-sent:before{
 content: "\f054";
@@ -273,7 +273,13 @@ font-family: 'FontAwesome';
 position: relative;
 top:.5em;
  }
+
+ svg{
+  width:100px;
+ }
+
     </style>    
+ 
   
 </head>
 <body>
@@ -758,8 +764,9 @@ $handler = mysqli_query($datos, $matrix);
                                             <div class="progress tight">
                                                 <div class="bar forward" style="width: <? echo $shine['ISS_PROGRESS'] ?>%"></div>
                                             </div>
-                                        <div class="files"></div>
+                                        <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
+                                            <i class="fa fa-clip fa-2x fr"  title="Documentos de Respuesta"></i>
                                                                           <?    
                                    
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
@@ -4700,6 +4707,10 @@ function alterExt(object){
 
 }
 
+$(".fr").on("click", function(){
+  uploaderInt($(this).parent().prev());
+
+})
 </script>
 
 <?
