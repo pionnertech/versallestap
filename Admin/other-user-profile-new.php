@@ -2246,7 +2246,7 @@ $("#send-int").on('click', function(){
 if (mode == "first"){
     if(checkIntDel() == true){
        intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
-        selectInt[0].selectize.clear();
+        
     } else {
       bootbox.alert("Falta el siguiente campo :" + checkIntDel());
     }
@@ -2254,7 +2254,7 @@ if (mode == "first"){
 } else {
  if(checkIntDel() == true){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
-    selectInt[0].selectize.clear();
+    
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    }
@@ -2957,6 +2957,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
+                        selectInt[0].selectize.clear();
                 }
   })
 
