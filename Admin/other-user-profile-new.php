@@ -836,7 +836,7 @@ $handler = mysqli_query($datos, $matrix);
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
                                           
-                                            if(preg_match_all("/_" . $stsk[1] . "_/", $archivos2) == 1){
+                                            if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
                                           
