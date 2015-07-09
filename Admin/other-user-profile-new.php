@@ -1572,7 +1572,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 
                                                     <i it="<? echo $ii[12]  ?>" class="fa fa-group spac"></i>
                                                     
-                                          <?  } else { ?>
+                                          <?  } elseif ($ii[12] == 2) { ?>
 
                                                    <div class="person-sw" it="<? echo $ii[12] ?>">
                                                       <i class="fa fa-user spac" ></i>
