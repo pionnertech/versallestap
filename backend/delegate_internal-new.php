@@ -19,8 +19,6 @@ $outcome = "";
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
-//echo "SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")" . "<br />";
-//echo "resut " . $dept['USR_DEPT'];
 
 $team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . ")");
 
@@ -72,7 +70,7 @@ $i = 0;
 while( $fila = mysqli_fetch_row($team)){
    
    $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
-    //cho $query . "<br />";
+    
 
     $i = $i + 1;
 
@@ -83,6 +81,7 @@ $outcome = $fila[0] . "|";
 
 }
 
+echo $query . "<br />" . " Mi departamento bucle " . "<br />";
 } elseif ($user_id == "Jefaturas") {
 
 $i = 0;
@@ -92,7 +91,7 @@ $i = 0;
      while($fila = mysqli_fetch_row($team_leader)){
 
             $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
-            
+            echo $query
             $i = $i + 1;
 
            if( $i < mysqli_num_rows($team)){
@@ -100,7 +99,7 @@ $i = 0;
               }
               $outcome = $fila[0] . "|";
      }
-   
+   echo $query . "<br />" . " Jefaturas bucle " . "<br />";
 } else {
 
 $uq = explode("," , $user);
@@ -120,7 +119,7 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
               }
           $outcome .= $earray[$i] . "|";
    }
-
+echo $query . "<br />" . " indivilual bucle " . "<br />";
 }
 
 } else {
