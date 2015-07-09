@@ -2932,7 +2932,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
           },
           success : function (data){
            result = data.split("|");
-           var parent = document.querySelectorAll('.coll-int')[ind];
+           
            var string = "";
          
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
@@ -2947,10 +2947,8 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                              '</a>'; 
                                  
                             }
-                            console.info(ind);
-                            console.info(string);
 
-
+                           var parent = document.querySelectorAll('.coll-int')[ind];
                            parent.innerHTML = string;  
                          
                      });
