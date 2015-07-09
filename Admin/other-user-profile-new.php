@@ -2932,7 +2932,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
           },
           success : function (data){
            result = data.split("|");
-           var parent = document.querySelectorAll('.coll-int')[ind];
+           var parent = document.querySelectorAll('.coll-int')[ind+1];
            var string = "";
          
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
