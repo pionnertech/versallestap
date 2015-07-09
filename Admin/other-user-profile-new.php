@@ -2243,22 +2243,12 @@ $("#up-int").empty();
 
 
 $("#send-int").on('click', function(){
-if (mode == "first"){
-    if(checkIntDel() == true){
-       intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), 0);
-        
-    } else {
-      bootbox.alert("Falta el siguiente campo :" + checkIntDel());
-    }
-    
-} else {
  if(checkIntDel() == true){
     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
     
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
-   }
-}  
+   } 
 });
 
 $("#upgrade").on('click', function (){
