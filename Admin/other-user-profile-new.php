@@ -2918,6 +2918,15 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
+console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
+          "&user=" + user + 
+          "&fechaF=" + date + 
+          "&subject=" + sub + 
+          "&descript=" + des + 
+          "&startD=" + fecha  + 
+          "&fac="+ fac +
+          "&main_stsk=" + mst + 
+          "&keyfile=" + keyFile);
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -2940,7 +2949,6 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-
                          if (mode != "first"){
                             assoc_collar_int(user, ind);
                             
