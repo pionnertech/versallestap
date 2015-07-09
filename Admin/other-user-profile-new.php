@@ -2833,7 +2833,7 @@ function dropBack(event, object){
 
    event.preventDefault();
    var data     = event.dataTransfer.getData("text");
-   var exo      = event.dataTransfer.getData("text/html");
+   var exo      = event.dataTransfer.getData("html");
 
 
 
@@ -2855,7 +2855,7 @@ function dropBack(event, object){
 
 
 function dragExt(event, object){
-   event.dataTransfer.setData("text/html", object.html());
+   event.dataTransfer.setData("html", object.html());
    event.dataTransfer.setData("text", object.attr("title"));
 
 }
