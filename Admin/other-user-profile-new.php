@@ -4376,7 +4376,7 @@ if($(this).data("val") == 0 || $(this).data("val") == undefined){
      $(this).data("val", 1);
 
 var percent = $(this).attr("data-per");
-var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart"); 
+var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart"); 
         var selter = d3.select(document.querySelectorAll('.int-chart')[pseudoIndex]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
         var rp1 = radialProgress(document.querySelectorAll('.int-chart')[pseudoIndex])
                 .label('')
