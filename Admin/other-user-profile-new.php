@@ -312,27 +312,27 @@ width:100%;
   top: 1.7em;
   left: 33%;
   position: relative;
-      -webkit-transition:all 400ms ease-in-out;
-    -moz-transition:all 400ms ease-in-out;
-    transition:all 400ms ease-in-out;
+      -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
 }
 
 .newtext, .drop-zone{
-    -webkit-transition:all 400ms ease-in-out;
-    -moz-transition:all 400ms ease-in-out;
-    transition:all 400ms ease-in-out;
+    -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
 } 
 .newtext:after{
   content: "Archivos Agregado!";
-  color: green;
+  color: lightgreen;
   font-family: arial;
   font-style: italic;
   top: 1.7em;
   left: 33%;
   position: relative;
-      -webkit-transition:all 400ms ease-in-out;
-    -moz-transition:all 400ms ease-in-out;
-    transition:all 400ms ease-in-out;
+      -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
 
 }
 
