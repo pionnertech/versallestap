@@ -5067,15 +5067,12 @@ $(".bk-fi").on('click', function(){
 
   } else {
 
-    $(this).data("val", 0);
-
     var  sib = $(this).siblings('i');
-
     $(".drop-zone").eq(idf).fadeToggle("slow", function(){
-
       sib.remove();
-      
     });
+
+      $(this).data("val", 0);
     
 
     
