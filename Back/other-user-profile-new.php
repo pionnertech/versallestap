@@ -13,7 +13,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 $boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE (USR_DEPT = '" . $_SESSION['TxtDept']."' AND USR_RANGE = 'admin')"));
 
 
-$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) ORDER BY STSK_FINISH_DATE");
+$Query_task = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_SUBJECT, A.STSK_DESCRIP, SUBSTRING(A.STSK_FINISH_DATE, 1, 10), B.EST_DESCRIPT, B.EST_COLOR, SUBSTRING(A.STSK_START_DATE, 1, 10) , A.STSK_PROGRESS, A.STSK_TICKET FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE ( STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1) ORDER BY STSK_FINISH_DATE");
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1 ) GROUP BY STSK_STATE");
  
@@ -40,13 +40,13 @@ $str_query_int = "SELECT STSK_ID, " .
 "STSK_DESCRIP, " .
 "STSK_FINISH_DATE AS FECHA_FINAL, " . 
 "STSK_START_DATE AS FECHA_INICIAL, " . 
-"STSK_TYPE " .
+"STSK_TYPE,  " . 
 " FROM SUBTASKS " .  
 "WHERE ( STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") ORDER BY STSK_ID DESC LIMIT 1";
 
 $notify_int = mysqli_fetch_assoc(mysqli_query($datos, $str_query_int));
 
-$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_START_DATE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")  ORDER BY STSK_FINISH_DATE";
+$query_internal= "SELECT A.STSK_ID,  A.STSK_ISS_ID , A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_START_DATE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")  ORDER BY STSK_FINISH_DATE";
 $internal =  mysqli_query($datos, $query_internal);
 
 if(!$notify){
@@ -281,7 +281,7 @@ if(mysqli_num_rows($quntum) == 0){
                                           }
                                         ?>
                                         <tr class="task <? printf($class) ?>">
-                                            <td class="cell-icon"><i class="icon-checker high"></i></td>
+                                            <td class="cell-icon"><? echo $stsk[9] ?></td>
                                             <td class="cell-title"><div><? printf($stsk[3]) ?></div></td>
                                             <td class="cell-status"><b class="due" style="background-color: <? printf($stsk[6]) ?> !important;"><? printf($stsk[5]) ?></b></td>
                                              <? if($class == "Hc"){
@@ -609,7 +609,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                             <tr class="task <? echo $class ?>">
                                                             <input type="hidden" value="<? echo $fila_int[0] ?>" class="int-st">
                                                             <input type="hidden" value="<? echo $fila_int[1] ?>" class="int-st-src">
-                                                                <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                                <td class="cell-icon"><? echo $filaint[10] ?></td>
                                                                 <td class="cell-title"><? echo $fila_int[3] ?></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila_int[6] ?> ; "><? echo $fila_int[4] ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
