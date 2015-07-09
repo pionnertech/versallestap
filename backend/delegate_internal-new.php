@@ -20,7 +20,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
-$team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . ")");
+$team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
 
 
 $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ")" ));
@@ -68,11 +68,6 @@ if($user_id == "Mi Departamento"){
 $i = 0;
 
 while( $fila = mysqli_fetch_row($team)){
-   
-if($fila[0] == $muser){
-  continue;
-}
-
 
    $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
     $i = $i + 1;
