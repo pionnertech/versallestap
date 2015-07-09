@@ -2143,7 +2143,7 @@ $("#back-ii").click(function(){
 $("#back-own").click(function(){
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
        $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
-       
+
   } else {
     $("#set-pro-own").removeClass('active in');$("#int-require").addClass('active in');
   }
@@ -2255,14 +2255,14 @@ $("#stsk-code").val(stsk_id);
 var current = $("#delegates").val();
 
 //fades
-$("#back-own").data("val", 0);
+
 
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
 
 } else {
-
+$("#back-own").data("val", 0);
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
 
@@ -2328,8 +2328,14 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 );
-    
+  if($("#back-own").data("val") == 0){
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 )
+  } else {
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii );
+  }
+  
+
+
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    } 
@@ -2981,7 +2987,6 @@ uploader =  $(object).pluploadQueue({
 
 };
 
-
 function intDel(user, sub, des, date, ind, mst){
 
 var pre_fecha  = new Date();
@@ -3012,10 +3017,17 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
+
+
            result = data.split("|");
            
            var string = "";
-         
+
+                     if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
+                      
+                              $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-user spac"></i>');
+                      }
+
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
@@ -3039,6 +3051,8 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
+
+
                 }
   })
 
@@ -4979,6 +4993,17 @@ object.html(filstr);
 filstr = "";
 
 }
+
+
+// desde este punto se decide que se hace ocn task-own y su control de flujo 
+
+// $("back-own").data("val") te da la distincion entre 0 or undefined para externos y 1 para internos 
+// se tine que elaborar un req interno delegado... y elimnar el recibido 
+// $("#send-int"). -> crea un first task and collar
+
+
+
+
 </script>
 
 <?
