@@ -2861,7 +2861,7 @@ function dropBack(event, object){
 
 
 function dragExt(event, object){
-   console.info(object.attr('outerHTML').toString());
+   console.info(object.attr('outerHTML'));
    event.dataTransfer.setData("text", object.attr("title"));
 
 }
