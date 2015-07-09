@@ -61,8 +61,6 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', " . $muser . " , 
 
 
 
-
-
 if ($stsk_src_id == 0){
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) VALUES ";
@@ -121,10 +119,6 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
               }
           $outcome .= $earray[$i] . "|";
    }
-
-//echo $query . "<br />";
-//echo $uq . "<br />";
-//print_r($earray);
 
 
 
