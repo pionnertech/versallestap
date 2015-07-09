@@ -2100,7 +2100,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").slider('setValue', percent);
 
 $("#int-require").removeClass('active in');
-$("#tasks-own").addClass('active in');
+$("#set-pro-own").addClass('active in');
 
 } else {
 
@@ -2123,7 +2123,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").slider('setValue', percent);
 
 $("#int-require").removeClass('active in');
-$("#tasks-own").addClass('active in');
+$("#set-pro-own").addClass('active in')
 
 }  else {
 
