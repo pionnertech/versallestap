@@ -2098,7 +2098,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$(this).data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
 $("#set-pro-own").addClass('active in');
 
@@ -2141,7 +2141,12 @@ $("#back-ii").click(function(){
 });
 
 $("#back-own").click(function(){
-  $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
+  if($(this).data("val") == undefined || $(this).data("val") == 0 ){
+       $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
+  } else {
+    $("#set-pro-own").removeClass('active in');$("#int-require").addClass('active in');
+  }
+  
 })
 
 
