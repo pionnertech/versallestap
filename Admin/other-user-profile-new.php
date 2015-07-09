@@ -2579,11 +2579,12 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
-                     console.info(data);
+                    
                     var alpha = [];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
+                            console.info(delta[i]);
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
