@@ -5046,8 +5046,10 @@ filstr = "";
 
 $(".bk-fi").on('click', function(){
 
+var idf = $(this).index(".bk-fi");
+
   if($(this).data("val") == undefined || $(this).data("val") == 0){
-      var idf = $(this).index(".bk-fi");
+      
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
@@ -5067,14 +5069,9 @@ $(".bk-fi").on('click', function(){
 
   } else {
 
-    var  sib = $(this).siblings('i');
-    $(".drop-zone").eq(idf).fadeToggle("slow", function(){
-      sib.remove();
-    });
-
+     $(this).siblings('i').remove();
+       $(".drop-zone").eq(idf).fadeToggle("fast")
       $(this).data("val", 0);
-    
-
     
   }
 
