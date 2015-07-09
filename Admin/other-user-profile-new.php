@@ -309,6 +309,9 @@ width:100%;
   color: lightgray;
   font-family: arial;
   font-style: italic;
+  top: 1.7em;
+  left: 33%;
+  position: relative;
 }
 
     </style>    
@@ -798,7 +801,7 @@ $handler = mysqli_query($datos, $matrix);
                                             </div>
                                             <div class="w-ap">
                                               <i class="fa fa-files-o fa-2x bk-fi"></i>
-                                              <div ondrop="drop-back(event)" ondragover="allowDrop(event)" class="drop-zone" style="width: 80%; margin: .7em 5em; border: 5px dashed lightorange"></div>
+                                              <div ondrop="drop-back(event)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
                                           </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
