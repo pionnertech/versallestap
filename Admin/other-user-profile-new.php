@@ -2829,7 +2829,7 @@ function dropBack(event, object){
 
 
 function dragExt(event){
-   event.dataTransfer.setData("text", event.target.getAttribute("data-name"));
+   event.dataTransfer.setData("text", event.target.title);
   
 }
 
@@ -5017,7 +5017,7 @@ $(".bk-fi").on('click', function(){
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
-         $(this).attr("data-name", $(this).parent().attr("title"));
+         $(this).attr("title", $(this).parent().attr("title"));
          $(this).attr("draggable", true);
          $(this).on('dragstart', function(){
                       dragExt(event)
@@ -5026,11 +5026,8 @@ $(".bk-fi").on('click', function(){
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
-
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       
-
-
 });
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
 
