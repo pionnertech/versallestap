@@ -62,7 +62,7 @@ if(!$notify){
     $manu = $notify['STSK_DESCRIP'];
 }
 
-$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)");
+$query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID, A.STSK_RESP, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)");
 
 ?>
 <!DOCTYPE html>
@@ -740,21 +740,19 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
-                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } elseif ($stsk[9] == 0 ) {    ?>
 
                                                     <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
-                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
-
+                                                   
                                           <?  } else { ?>
 
                                                    <div class="person-sw" it="<? echo $stsk[9] ?>">
                                                       <i class="fa fa-user spac" ></i>
-                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
+                                                      <input type="checkbox" class="swt-boo-int" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
-                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+                                                 
 
                                             <?   } ?>
 
@@ -1557,14 +1555,43 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                        }
 
                                                             ?>
+        SELECT A.STSK_ID,
+         A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT,
+          A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE,
+           A.STSK_ISS_ID, A.STSK_RESP, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <input type="hidden" value="<? echo $ii[11] ?>" class="ii-iss">
-                                                                <td class="cell-icon int-lock" style="cursor: pointer; <? echo $color ?>;" ><i class="fa fa-<? echo $situation ?>"></i></td>
+                                                                <td class="cell-icon"><? echo [14] ?></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
-                                                                <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i>
+                                          <? if ($ii[13] == 1 ) { ?>
+                                                   <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
+                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+
+                                          <?  } elseif ($ii[13] == 0 ) {    ?>
+
+                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
+                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+
+                                          <?  } else { ?>
+
+                                                   <div class="person-sw" it="<? echo $stsk[9] ?>">
+                                                      <i class="fa fa-user spac" ></i>
+                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
+                                                      <i class="fa fa-group spac" style="color: gray;" ></i>
+                                                   </div>
+                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+
+                                            <?   } ?>
+
+
+
+
+
+                                                                </td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
                                                             </tr>
                                                             <tr style="display:none;">
@@ -1906,6 +1933,7 @@ kenin[0].selectize.clear();
 selectInt[0].selectize.clear();
 
 $("input[type=checkbox].swt-boo").bootstrapSwitch();
+$("input[type=checkbox].swt-boo-int").bootstrapSwitch();
 
 progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 
@@ -2054,12 +2082,15 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 
 $(".ii-forward").click(function(){
 
+
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = $(this).parent().children("input").eq(1).val();
  st_ii      = $(this).parent().children("input").eq(0).val();
  ii_iss     = $(this).parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
+
+
 
 $("#stsk-code-ii").val(st_ii);
 $("#stsk-user-ii").val(remoteUser);
@@ -2073,6 +2104,9 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
+
+
+
 
 });
 
