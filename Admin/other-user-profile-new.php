@@ -2584,7 +2584,7 @@ function thirdPulling(){
                         for(i=0; i < delta.length ; i++){
                             var alpha = delta[0].split("|");
                             console.info("console.info delta 1 :" + delta[1]);
-                              console.info("console.info delta 1 :" + delta[0]);
+                              console.info("console.info delta 0 :" + delta[0]);
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
