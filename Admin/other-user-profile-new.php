@@ -5045,7 +5045,9 @@ filstr = "";
 
 
 $(".bk-fi").on('click', function(){
-  var idf = $(this).index(".bk-fi");
+
+  $(this).siblings('i').remove(); //clean and make again
+      var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
@@ -5059,6 +5061,7 @@ $(".bk-fi").on('click', function(){
                newElems.on('dragstart', function(){
                       dragExt(event , $(this))
                     });
+               
 });
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
 
