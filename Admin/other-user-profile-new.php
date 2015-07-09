@@ -5020,7 +5020,7 @@ $(".bk-fi").on('click', function(){
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length).find('i').html(function(){
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
          $(this).attr("data-name", $(this).parent().attr("title"));
          $(this).attr("draggable", true);
          $(this).on('dragstart', function(){
