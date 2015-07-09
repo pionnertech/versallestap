@@ -312,6 +312,9 @@ width:100%;
   top: 1.7em;
   left: 33%;
   position: relative;
+      -webkit-transition:all 400ms ease-in-out;
+    -moz-transition:all 400ms ease-in-out;
+    transition:all 400ms ease-in-out;
 }
 
 .newtext, .drop-zone{
@@ -320,13 +323,16 @@ width:100%;
     transition:all 400ms ease-in-out;
 } 
 .newtext:after{
-  content: "Arrastre aqui sus archivos";
-  color: darkgreen;
+  content: "Archivos Agregado!";
+  color: green;
   font-family: arial;
   font-style: italic;
   top: 1.7em;
   left: 33%;
   position: relative;
+      -webkit-transition:all 400ms ease-in-out;
+    -moz-transition:all 400ms ease-in-out;
+    transition:all 400ms ease-in-out;
 
 }
 
@@ -2835,9 +2841,6 @@ function dropBack(event, object){
    var data     = event.dataTransfer.getData("text");
    var exo      = event.dataTransfer.getData("html");
 
-
-
-
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
    var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
@@ -2849,14 +2852,16 @@ function dropBack(event, object){
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
    setTimeout(function(){
       $(".newtext").removeClass("newtext").addClass("drop-zone");
-   }, 1000);
+   }, 800);
+
+   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']");
+   $(".front-sent").eq(frIn).append(newf);
 
 }
 
 
 function dragExt(event, object){
-   console.info(object.html().toString());
-   event.dataTransfer.setData("html", object.html());
+   console.info(object.attr('outerHTML').toString());
    event.dataTransfer.setData("text", object.attr("title"));
 
 }
