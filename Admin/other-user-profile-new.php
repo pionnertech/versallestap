@@ -2578,7 +2578,8 @@ setInterval(function(){
 function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
-              success : function (data){
+              success : function (data);{
+                     console.info(data)
                     var alpha = [];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
