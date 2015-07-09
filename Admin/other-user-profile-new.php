@@ -2098,7 +2098,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-$(this).data("val", 1); // esto es para que el boton back se devuelva a la vista interna
+$("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
 $("#set-pro-own").addClass('active in');
 
@@ -2121,7 +2121,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$("#back-own").data("val", 1);
 $("#int-require").removeClass('active in');
 $("#set-pro-own").addClass('active in')
 
@@ -2254,9 +2254,10 @@ $("#stsk-code").val(stsk_id);
 var current = $("#delegates").val();
 
 //fades
+$("#back-own").data("val", 0);
+
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
-
 $(".incoming-files").css({ display : "none"});
 
 } else {
@@ -2274,7 +2275,7 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
-
+$("#back-own").data("val", 0);
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
