@@ -2828,9 +2828,7 @@ function dropBack(event, object){
 
 
 function dragExt(event, object){
-  console.info(event.target.title);
-  console.info(object.attr("title"));
-   event.dataTransfer.setData("text", event.target.title);
+   event.dataTransfer.setData("text", object.attr("title"));
 }
 
 function allowDrop (event) {
