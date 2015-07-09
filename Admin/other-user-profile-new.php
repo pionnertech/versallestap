@@ -740,10 +740,12 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
+                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } elseif ($stsk[9] == 0 ) {    ?>
 
                                                     <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
+                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
                                                    
                                           <?  } else { ?>
 
@@ -752,8 +754,7 @@ $handler = mysqli_query($datos, $matrix);
                                                       <input type="checkbox" class="swt-boo-int" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
-                                                 
-
+                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
                                             <?   } ?>
 
                                             </td>
@@ -1560,33 +1561,26 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <input type="hidden" value="<? echo $ii[11] ?>" class="ii-iss">
-                                                                <td class="cell-icon"><? echo $ii[14] ?></td>
+                                                                <td class="cell-icon"><? echo $ii[13] ?></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
                                                                 <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i>
-                                          <? if ($ii[13] == 1 ) { ?>
-                                                   <i it="<? echo $ii[13]  ?>" class="fa fa-user spac"></i>
-                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
+                                          <? if ($ii[12] == 1 ) { ?>
+                                                   <i it="<? echo $ii[12]  ?>" class="fa fa-user spac"></i>
 
-                                          <?  } elseif ($ii[13] == 0 ) {    ?>
+                                          <?  } elseif ($ii[12] == 0 ) {    ?>
 
-                                                    <i it="<? echo $ii[13]  ?>" class="fa fa-group spac"></i>
-                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
-
+                                                    <i it="<? echo $ii[12]  ?>" class="fa fa-group spac"></i>
+                                                    
                                           <?  } else { ?>
 
-                                                   <div class="person-sw" it="<? echo $ii[13] ?>">
+                                                   <div class="person-sw" it="<? echo $ii[12] ?>">
                                                       <i class="fa fa-user spac" ></i>
                                                       <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
-                                                   <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
-
+                                                 
                                             <?   } ?>
-
-
-
-
 
                                                                 </td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
