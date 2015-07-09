@@ -2583,14 +2583,14 @@ function thirdPulling(){
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
                             alpha = delta[i].split("|");
-                            console.info(delta[i]);
+                            console.info(alpha);
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
                                 console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
-                                     alpha[2] = aa_ii;
+                                   alpha[2] = aa_ii;
                                 }
                             }
                        }
