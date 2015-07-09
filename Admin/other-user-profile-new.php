@@ -2577,7 +2577,7 @@ setInterval(function(){
 
 function thirdPulling(){
      $.ajax({ type: "POST",
-              url:"../backend/incoming-ii.php?usr=" + mainuser,
+              url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
                     var alpha = [];
                     var delta = data.split("\n");
@@ -2585,7 +2585,7 @@ function thirdPulling(){
                             alpha = delta[i].split("|");
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
-                              firstTask(alpha[0], alpha[2], "Administrador" , alpha[3], alpha[6], 0, alpha[1], 0);
+                              firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
                                 console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
