@@ -2948,7 +2948,8 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                                  
                             }
 
-                           var parent = document.querySelectorAll('.coll-int')[ind];
+                           var parent = document.querySelectorAll('.coll-int')[ind+1];
+                           console.info(ind+1);
                            parent.innerHTML = string;  
                          
                      });
