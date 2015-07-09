@@ -1563,7 +1563,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 <td class="cell-icon"><? echo $ii[13] ?></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
-                                                                <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i>
+                                                                <td class="cell-title" style="cursor:pointer;"><i class="fa fa-chevron-circle-right ii-forward"></i>
                                           <? if ($ii[12] == 1 ) { ?>
                                                    <i it="<? echo $ii[12]  ?>" class="fa fa-user spac"></i>
 
@@ -2078,21 +2078,22 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 
 $(".ii-forward").click(function(){
 
-
 dateTime = AmericanDate($(this).next().html());
 
- remoteUser = $(this).parent().children("input").eq(1).val();
- st_ii      = $(this).parent().children("input").eq(0).val();
- ii_iss     = $(this).parent().children("input").eq(2).val();
+ remoteUser = $(this).parent().parent().children("input").eq(1).val();
+ st_ii      = $(this).parent().parent().children("input").eq(0).val();
+ ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
 
 
+if($(this).next().hasClass('person-sw-int')){
 
+if($(this).next().find('.swt-boo-int').bootstrapSwitch('state') == true){
 $("#stsk-code-ii").val(st_ii);
 $("#stsk-user-ii").val(remoteUser);
 $("#stsk-user-ii").attr("name", "muser");
 
-percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
    $(".span2").data("val", percent);
@@ -2101,12 +2102,39 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
 
+} else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+
+}
+
+} else if($(this).next().hasClass('fa-user')){
+
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(remoteUser);
+$("#stsk-user-ii").attr("name", "muser");
+
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
+console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
+
+$("#int-require").removeClass('active in');
+$("#set-pro-int").addClass('active in');
+
+}  else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 
+}
 
 });
-
-
 
 $("#back-ii").click(function(){
     $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
@@ -2363,8 +2391,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         
            bootbox.alert("Requerimiento delegado existosamente");
 
-                var target        =  $("#current-task").val();
-                var key_main    = document.querySelectorAll(".collaborates")[target/2]; // aqui se cambió por una razón inexplicable
+                var target    =  $("#current-task").val();
+                var key_main  = document.querySelectorAll(".collaborates")[target/2]; // aqui se cambió por una razón inexplicable
 
                 for (i= 0 ; i < users.length-1; i++){
                 var a_del       = document.createElement('a');
@@ -3756,8 +3784,8 @@ console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  us
     
 if(parseInt(kind) == 0){
 
-document.querySelectorAll("#ext-tasks-table td .bar")[ind*2].style.width = percent + "%";
-document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2].innerHTML = percent + "%";
+document.querySelectorAll("#ext-tasks-table td .bar")[ind*2+1].style.width = percent + "%";
+document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2+1].innerHTML = percent + "%";
 console.info("porsica el ind es : " + ind);
 $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
