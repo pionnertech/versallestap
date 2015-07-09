@@ -3913,6 +3913,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
 
   // si el lo envia
   if (kind == 1){
+      var parent_int =  document.getElementById("int-body");
   } else { // si el lo recibe
       var parent_int =  document.getElementById("income-int-body");
   }
@@ -4238,9 +4239,7 @@ td_i1.appendChild(div3);
 td_i1.appendChild(div4);
 
 if(kind == 1){
-
     td_i1.appendChild(div5);
-
 } 
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
