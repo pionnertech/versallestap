@@ -5,7 +5,7 @@ $usr  = $_GET['usr'];
 $fac  = $_GET['fac'];
 $iss  = $_GET['iss'];
 
-$dir = "/var/www/html/" . $fac . "/" . $usr . "/";
+$dir = "/var/www/html/" . $fac . "/" . $usr . "_in/";
 
 $file = preg_replace('/[0-9]+/' , $iss , $p);
 

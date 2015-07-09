@@ -314,6 +314,22 @@ width:100%;
   position: relative;
 }
 
+.newtext, .drop-zone{
+    -webkit-transition:all 400ms ease-in-out;
+    -moz-transition:all 400ms ease-in-out;
+    transition:all 400ms ease-in-out;
+} 
+.newtext:after{
+  content: "Arrastre aqui sus archivos";
+  color: darkgreen;
+  font-family: arial;
+  font-style: italic;
+  top: 1.7em;
+  left: 33%;
+  position: relative;
+
+}
+
     </style>    
  
   
@@ -2825,6 +2841,9 @@ function dropBack(event, object){
    console.info("id del usuario:" + usf);
 
    backToFront(filename(data), usf, iss_ind);
+
+   $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
+   $(".newtext").removeClass("newtext").addClass("drop-zone");
 
 }
 
