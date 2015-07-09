@@ -2579,10 +2579,7 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
-
-                    var delta = data.split("\n");
-                        for(i=0; i < delta.length ; i++){
-                            var alpha = delta[1].split("|");
+                            var alpha = data.split("|");
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
@@ -2590,8 +2587,8 @@ function thirdPulling(){
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
                                    alpha[2] = aa_ii;
-                                }
-                            }
+                                
+                           } 
                        }
                   }
             });
