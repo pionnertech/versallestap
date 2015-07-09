@@ -801,7 +801,7 @@ $handler = mysqli_query($datos, $matrix);
                                             </div>
                                             <div class="w-ap">
                                               <i class="fa fa-files-o fa-2x bk-fi" style="margin-right: 2em"></i>
-                                              <div ondrop="drop-back(event)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
+                                              <div ondrop="dropBack(event)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
                                           </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
@@ -4728,15 +4728,6 @@ var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart
     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
 }
-
-
-
-
-
-
-
-
-
 
 //funcion prototipo
 $(".ifile").on('dblclick', function(){
