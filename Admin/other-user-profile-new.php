@@ -2816,13 +2816,14 @@ function drop (event) {
 function dropBack(event){
 
    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
+   var data = event.dataTransfer.getData("text");
+   console.info(data);
 }
 
 
 function dragExt(event){
    event.dataTransfer.setData("text", event.target.getAttribute("data-name"));
-   console.info(event.dataTransfer.getData("text"));
+  
 }
 
 function allowDrop (event) {
