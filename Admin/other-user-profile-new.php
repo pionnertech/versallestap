@@ -265,7 +265,7 @@ pre > a, pre > a > p{
 }
 
 .file-contents:before, .front-sent:before,
-.int-files-for:before {
+.int-files-for:before, .ii-files-sent:before {
 content: "\f053";
 font-size: 2em;
 color: lightblue;
@@ -274,7 +274,7 @@ position: relative;
 
 }
 .file-sent:before, .front-received:before,
- .int-files-to:before{
+ .int-files-to:before, .ii-files:before{
 content: "\f054";
 font-size: 2em;
 color: lightgreen;
@@ -282,7 +282,6 @@ font-family: 'FontAwesome';
 position: relative;
 top:.5em;
  }
-
 
  svg{
   width:100px !important;
@@ -1414,7 +1413,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                 </div>
                                              <div class="int-files-to">
                                                     
-
+                                             
 
 
                                                 </div>
@@ -1649,6 +1648,12 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                       } 
                                                                     } ?>
                                                                     </div>
+                                              <div class="ii-files-sent">
+
+
+
+
+                                              </div>
                                                             <table style="width: 100%;">
                                                                 <tbody class="ii-body-table">
                                                                     <tr>
@@ -4091,7 +4096,6 @@ div3.className    = "coll-int";
 div3.style.width  = "100%";
 strong.innerHTML  = "Grado de progreso";
 
-
 div4.style.width = "100%";
 
 if(kind == 1){
@@ -4108,6 +4112,10 @@ if(kind == 1){
       div5.className = "int-files-to";
 
       div5.style.width = "80%";
+
+      div_special.appendChild(div4);
+      div_special.appendChild(div5);
+      div_special.appendChild(div_special2);
 
 } else {
 
@@ -4258,11 +4266,13 @@ div3.innerHTML = amdString;
 td_i1.appendChild(p);
 td_i1.appendChild(div1);
 td_i1.appendChild(div3);
-td_i1.appendChild(div4);
+
 
 if(kind == 1){
-    td_i1.appendChild(div5);
-} 
+    td_i1.appendChild(div_special);
+} else {
+  td_i1.appendChild(div4);
+}
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
 
