@@ -4379,6 +4379,8 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                 .diameter(125)
                 .value(percent)
                 .render();
+                    $("svg").attr("width", 100);
+    $("svg").attr("height", 100);
 
 } else {
 
@@ -4584,8 +4586,8 @@ var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart
                 .diameter(125)
                 .value(percent)
                 .render();
-
-
+    $("svg").attr("width", 100);
+    $("svg").attr("height", 100);
 }
 
 
