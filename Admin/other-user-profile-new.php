@@ -4046,7 +4046,7 @@ if(kind == 0){
 
 td4.className = "ii-forward";
 // aqui yace
-td4.onclick = function (){
+i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = user_id;
