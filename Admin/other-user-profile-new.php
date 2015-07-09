@@ -2822,6 +2822,8 @@ function dropBack(event, object){
    var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
 
    console.info(data);
+   console.info("id del usuario:" + usf);
+   
    backToFront(filename(data), usf, iss_ind);
 
 }
@@ -5033,7 +5035,7 @@ $(".bk-fi").on('click', function(){
 
 
 function backToFront(name, usrId, iss){
-
+ console.info(usrId);
   $.ajax({ type: "POST",
    url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
    success: function (data){
