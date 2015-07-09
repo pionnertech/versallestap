@@ -299,6 +299,14 @@ margin-left: 1.5em;
 display:flex;
 width:100%;
 }
+
+.wrap-int-files{
+  width: 100%;
+  margin: 1em 0;
+}
+
+
+
     </style>    
  
   
@@ -1331,10 +1339,10 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                                                                                        
                                                                     <div class="coll-int" style="width: 100%">
 
-             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
+             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
                                while($prt = mysqli_fetch_row($part)){
              ?>
-                                                                        <a  class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
+                                                                        <a data-per="<? echo $prt[3] ?>" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
@@ -1344,7 +1352,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
                                                                     </div>
-                                             <div class="wrap-int-files" style="width:100%">
+                                             <div class="wrap-int-files" >
 
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
                           <?    
@@ -4363,9 +4371,18 @@ if($(this).data("val") == 0 || $(this).data("val") == undefined){
 
    var val = parseInt($(this).children("input").val().replace("u" ,""));
 
-   $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+   $(this).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
      $(this).data("val", 1);
+
+var percent = $(this).attr("data-per");
+var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart"); 
+        var selter = d3.select(document.querySelectorAll('.int-chart')[pseudoIndex]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
+        var rp1 = radialProgress(document.querySelectorAll('.int-chart')[pseudoIndex])
+                .label('')
+                .diameter(125)
+                .value(percent)
+                .render();
 
 } else {
 
