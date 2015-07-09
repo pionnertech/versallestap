@@ -67,7 +67,7 @@ $i = 0;
 
 while( $fila = mysqli_fetch_row($team)){
 
-   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1, 'INT0000" . $ngnix['TICKET'] . "') ";
+   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
     $i = $i + 1;
 
    if( $i < mysqli_num_rows($team)  ){
@@ -128,12 +128,12 @@ for ($i=0; $i < count($users);$i++){
  $user_range = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $user[0] . " AND USR_FACILITY = " . $fac . ")"));
 
     if($user_ramge['USR_RANGE'] == 'admin'){
-      $query .= "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO ,STSK_TYPE, STSK_LOCK, 'IN0000" . $ngnix['TICKET'] . ") ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1);";
+      $query .= "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO ,STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
+      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "');";
     } else{
 
-      $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK, 'IN0000" . $ngnix['TICKET'] . ") ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 1)";
+      $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
+      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', '" . $users[$i] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "')";
 
     }
 
