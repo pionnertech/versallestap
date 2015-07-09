@@ -2579,10 +2579,10 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
-                    var alpha = [];
+
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
-                            alpha = delta[i].split("|");
+                            var alpha = delta[0].split("|");
                             console.info(alpha);
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
