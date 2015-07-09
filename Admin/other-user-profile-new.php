@@ -800,7 +800,7 @@ $handler = mysqli_query($datos, $matrix);
                                                 <div class="bar forward" style="width: <? echo $shine['ISS_PROGRESS'] ?>%"></div>
                                             </div>
                                             <div class="w-ap">
-                                              <i class="fa fa-files-o fa-2x bk-fi"></i>
+                                              <i class="fa fa-files-o fa-2x bk-fi" style="margin-left: 2em"></i>
                                               <div ondrop="drop-back(event)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
                                           </div>
                                         <div class="front-response"></div>
@@ -2823,12 +2823,17 @@ function dropBack(event){
 
 
 function allowDrop (event) {
-    event.preventDefault();
 
+    event.preventDefault();
+    console.info(event.dataTransfer.getData("text"));
 }
 
 function drag (event) {
     event.dataTransfer.setData("text", event.target.title);
+}
+
+function dragExt(event){
+   event.dataTransfer.setData("text", event.target.getAttribute("data-name"));
 }
 
 
@@ -5016,7 +5021,11 @@ $(".bk-fi").on('click', function(){
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
          $(this).attr("data-name", $(this).parent().attr("title"));
          $(this).attr("draggable", true);
+         $(this).on('dragstart', function(){
+                      dragExt(event)
+                    });
   });
+  
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
 
