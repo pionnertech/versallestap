@@ -5046,7 +5046,7 @@ filstr = "";
 
 $(".bk-fi").on('click', function(){
 
-  $(this).siblings('i').remove(); //clean and make again
+  if($(this).data("val") == undefined || $(this).data("val") == 0){
       var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
@@ -5061,6 +5061,18 @@ $(".bk-fi").on('click', function(){
                newElems.on('dragstart', function(){
                       dragExt(event , $(this))
                     });
+
+
+     $(this).data("val", 1)
+
+  } else {
+
+    $(this).siblings('i').remove();
+    $(this).data("val", 0)
+  }
+
+
+
                
 });
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
