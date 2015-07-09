@@ -100,7 +100,7 @@ $i = 0;
 
 } else {
 
-$uq = explode("," , $user);
+$uq = explode("," , $user_id);
 $earray = [];
 
 for($i=0; $i < count($uq); $i++){
@@ -118,9 +118,9 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
           $outcome .= $earray[$i] . "|";
    }
 
-echo $query . "<br />";
-echo $uq . "<br />";
-print_r($earray);
+//echo $query . "<br />";
+//echo $uq . "<br />";
+//print_r($earray);
 
 
 
