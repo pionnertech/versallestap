@@ -19,8 +19,11 @@ $outcome = "";
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
+//echo "SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")" . "<br />";
+//echo "resut " . $dept['USR_DEPT'];
 
-$team = mysqli_query($datos, "SELECT USR_ID WHERE (USR_DEPT = " . $dept['USR_DEPT'] . " AND USR_FACILITY = " . $fac . ")");
+$team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $dept['USR_DEPT'] . " AND USR_FACILITY = " . $fac . ")");
+
 
 $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ")" ));
 
@@ -29,7 +32,7 @@ if($stsk_src_id == 0){
 $query_es  = "INSERT INTO SUBTASKS (STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
 $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', " . $muser . " , '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . " , " . $fac . ", 0, 0,  1, 1, 'IN0000" . $ngnix['TICKET']. "')";
 
-echo $query_es . "<br />";
+//echo $query_es . "<br />";
   $hds = mysqli_query($datos, $query_es);
 
     if($hds){
@@ -69,7 +72,7 @@ $i = 0;
 while( $fila = mysqli_fetch_row($team)){
    
    $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
-    echo $query . "<br />";
+    //cho $query . "<br />";
 
     $i = $i + 1;
 
@@ -111,7 +114,7 @@ for($i=0; $i < count($uq); $i++){
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET)  VALUES";
    for($i=0; $i < count($earray); $i++){
         $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
-         echo $query . "<br />";
+         //echo $query . "<br />";
            if( $i < count($earray)-1){
                 $query .= ",";
               }
@@ -145,7 +148,7 @@ for ($i=0; $i < count($users);$i++){
 }
 
 // cuando es el prime stsk  , no ed
-echo $query "<br />";
+//echo $query . "<br />";
 if(!mysqli_query($datos, $query)){
 
   echo mysqli_error($datos);
