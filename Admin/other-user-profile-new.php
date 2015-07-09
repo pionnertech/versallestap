@@ -2951,7 +2951,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
                             for(i=2; i < result.length -1; i++){
-                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)">' +
+                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
                                  
@@ -3905,7 +3905,6 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
 
   // si el lo envia
   if (kind == 1){
-      var parent_int =  document.getElementById("int-body");
   } else { // si el lo recibe
       var parent_int =  document.getElementById("income-int-body");
   }
@@ -4070,7 +4069,6 @@ if(kind == 1){
       div_special2.className = "int-chart";
       div_special2.style.display = "inline-block";
       div_special2.style.verticalAlign = "top";
-
       div_special.className = "wrap-int-files";
 
       div_special.style.width = "100%"
@@ -4557,23 +4555,24 @@ return true;
 
 function hovertip(object){
 
-console.info($(object).children('input').val() + " esto era para comp si era vacio");
-if($(object).data("val") == 0 || $(object).data("val") == undefined){
-
     $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(object).children("input").val().replace("u" ,""));
 
-   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
+   $(object).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
      $(object).data("val", 1);
 
-} else {
+var percent = $(object).attr("data-per");
+var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart"); 
+        var selter = d3.select(document.querySelectorAll('.int-chart')[pseudoIndex]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
+        var rp1 = radialProgress(document.querySelectorAll('.int-chart')[pseudoIndex])
+                .label('')
+                .diameter(125)
+                .value(percent)
+                .render();
 
-   var val = parseInt($(object).children("input").val().replace("u" ,""));
-   $(object).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
-   $(object).data("val", 0);
-}
+
 }
 
 
