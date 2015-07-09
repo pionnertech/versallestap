@@ -2143,6 +2143,7 @@ $("#back-ii").click(function(){
 $("#back-own").click(function(){
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
        $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
+       
   } else {
     $("#set-pro-own").removeClass('active in');$("#int-require").addClass('active in');
   }
@@ -2275,7 +2276,9 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
+
 $("#back-own").data("val", 0);
+
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
