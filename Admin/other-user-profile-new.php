@@ -304,7 +304,12 @@ width:100%;
   margin: 1em 0;
 }
 
-
+.drop-zone:after{
+  content: "Arrastre aqui sus archivos";
+  color: lightgray;
+  font-family: arial;
+  font-style: italic;
+}
 
     </style>    
  
@@ -791,6 +796,10 @@ $handler = mysqli_query($datos, $matrix);
                                             <div class="progress tight">
                                                 <div class="bar forward" style="width: <? echo $shine['ISS_PROGRESS'] ?>%"></div>
                                             </div>
+                                            <div class="w-ap">
+                                              <i class="fa fa-files-o fa-2x bk-fi"></i>
+                                              <div ondrop="drop-back(event)" ondragover="allowDrop(event)" class="drop-zone" style="width: 80%; margin: .7em 5em; border: 5px dashed lightorange"></div>
+                                          </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
                                             <i class="fa fa-paperclip fa-2x fr"  style="display: block;" title="Documentos de Respuesta"></i>
@@ -2798,17 +2807,26 @@ function drop (event) {
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
     $("#D-drop").data("files", $("#D-drop").data("files") + data + "|");
-
 }
+
+
+function dropBack(event){
+
+   event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+}
+
+
+
 
 function allowDrop (event) {
     event.preventDefault();
+
 }
 
 function drag (event) {
     event.dataTransfer.setData("text", event.target.title);
 }
-
 
 
 /*
@@ -2993,15 +3011,6 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
-console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
-          "&fechaF=" + date + 
-          "&subject=" + sub + 
-          "&descript=" + des + 
-          "&startD=" + fecha  + 
-          "&fac="+ fac +
-          "&main_stsk=" + mst + 
-          "&keyfile=" + keyFile);
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -3024,7 +3033,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
            var string = "";
 
                      if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
-                      
+
                               $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-user spac"></i>');
                       }
 
@@ -4995,6 +5004,12 @@ filstr = "";
 }
 
 
+
+$(".bk-fi").on('click', function(){
+  var idf = $(this).index(".bk-fi");
+     $(".drop-zone").eq(idf).fadeToggle("slow");
+
+});
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
 
 // $("back-own").data("val") te da la distincion entre 0 or undefined para externos y 1 para internos 
