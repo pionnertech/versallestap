@@ -2579,7 +2579,6 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
-                    
                     var alpha = [];
                     var delta = data.split("\n");
                         for(i=0; i < delta.length ; i++){
