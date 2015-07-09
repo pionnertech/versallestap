@@ -2833,23 +2833,31 @@ function dropBack(event, object){
 
    event.preventDefault();
    var data     = event.dataTransfer.getData("text");
+   var exo      = event.dataTransfer.getData("object");
+
+
+
+
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
    var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
 
-   console.info(data);
-   console.info("id del usuario:" + usf);
+   console.info(exo);
 
    backToFront(filename(data), usf, iss_ind);
-
+   //$(".file-sent").eq(frIn).append()
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
-   $(".newtext").removeClass("newtext").addClass("drop-zone");
+   setTimeout(function(){
+      $(".newtext").removeClass("newtext").addClass("drop-zone");
+   }, 1000);
 
 }
 
 
 function dragExt(event, object){
+   event.dataTransfer.setData("object", object.html());
    event.dataTransfer.setData("text", object.attr("title"));
+
 }
 
 function allowDrop (event) {
