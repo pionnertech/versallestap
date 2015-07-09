@@ -5067,10 +5067,18 @@ $(".bk-fi").on('click', function(){
 
   } else {
 
-    $(this).siblings('i').remove();
-    $(".drop-zone").eq(idf).fadeToggle("slow");
     $(this).data("val", 0);
 
+    var  sib = $(this).siblings('i');
+
+    $(".drop-zone").eq(idf).fadeToggle("slow", function(){
+
+      sib.remove();
+      
+    });
+    
+
+    
   }
 
 
