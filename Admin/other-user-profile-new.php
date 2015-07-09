@@ -2244,7 +2244,7 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#int-table > tbody .task").length-1 );
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 );
     
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
