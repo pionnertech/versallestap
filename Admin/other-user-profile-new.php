@@ -2943,7 +2943,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
 
                             for(i=2; i < result.length -1; i++){
                              string +=  '<a class="hovertip" title="" onclick="hovertip(this)">' +
-                             '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" ><input type="hidden" value="u'  + usr + '">' +
+                             '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
                                  
                             }
