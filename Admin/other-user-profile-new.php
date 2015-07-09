@@ -2586,7 +2586,7 @@ function thirdPulling(){
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
-                                console.info( alpha[0] + "/" + alpha[1] + "/" + alpha[2] + "/" + alpha[3] +  "/" + alpha[4]);
+                                console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
                                      alpha[2] = aa_ii;
