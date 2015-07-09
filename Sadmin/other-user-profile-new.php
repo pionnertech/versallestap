@@ -35,7 +35,9 @@ mysqli_data_seek($Query_team, 0);
 if(mysqli_num_rows($quntum) == 0){
 
     $contador = 0;
+
 } else {
+  
     $cont = mysqli_fetch_assoc($quntum);
     $contador = $cont['CONTADOR'];
 }
