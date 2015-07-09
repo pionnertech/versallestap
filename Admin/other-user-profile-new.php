@@ -2579,7 +2579,11 @@ function thirdPulling(){
      $.ajax({ type: "POST",
               url:"../backend/incoming-ii-new.php?usr=" + mainuser,
               success : function (data){
+
                             var alpha = data.split("|");
+                            console.info(data);
+                            console.info(alpha.length);
+                            console.info(alpha[9]);
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
                               firstTask(alpha[0], alpha[2], alpha[9] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[10]);
