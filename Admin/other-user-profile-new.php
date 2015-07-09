@@ -801,7 +801,7 @@ $handler = mysqli_query($datos, $matrix);
                                             </div>
                                             <div class="w-ap">
                                               <i class="fa fa-files-o fa-2x bk-fi" style="margin-right: 2em"></i>
-                                              <div ondrop="dropBack(event)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
+                                              <div ondrop="dropBack(event, this)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
                                           </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
@@ -2813,11 +2813,18 @@ function drop (event) {
 }
 
 
-function dropBack(event){
+function dropBack(event, object){
 
    event.preventDefault();
    var data = event.dataTransfer.getData("text");
+
+   var frIn     = $(object).index(".drop-zone");
+   var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
+   var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
+
    console.info(data);
+   backToFront(filename(data), usf, iss_ind);
+
 }
 
 
@@ -4558,9 +4565,7 @@ function filename(name){
 
 var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
 matches = regexp.exec(name);
-
 mtObj = matches.toString().replace(",", "");
-
 return mtObj;
 }
 
@@ -5034,7 +5039,16 @@ $(".bk-fi").on('click', function(){
 // $("#send-int"). -> crea un first task and collar
 
 
+function backToFront(name, usrId, iss){
 
+  $.ajax({ type: "POST",
+   url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
+   success: function (data){
+      console.info(data);
+   }
+
+})
+}
 
 </script>
 
