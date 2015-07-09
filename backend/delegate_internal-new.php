@@ -27,7 +27,7 @@ $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKE
 if($stsk_src_id == 0){
 
 $query_es  = "INSERT INTO SUBTASKS (STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
-$query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", 0, 0,  1, 1, 'IN0000" . $ngnix['TICKET']. "')";
+$query_es .= "VALUES ('" . $subject . "', '" . $descript . "', '" . $muser . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . " , " . $fac . ", 0, 0,  1, 1, 'IN0000" . $ngnix['TICKET']. "')";
 
   $hds = mysqli_query($datos, $query_es);
 
@@ -66,8 +66,10 @@ if($user_id == "Mi Departamento"){
 $i = 0;
 
 while( $fila = mysqli_fetch_row($team)){
+   
+   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
+    echo $query . "<br />";
 
-   $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', '" . $fila[0] . "', '" . $fechaF . "', 2 ,  '" . $startD . "' , '" . $muser . "', " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
     $i = $i + 1;
 
    if( $i < mysqli_num_rows($team)  ){
