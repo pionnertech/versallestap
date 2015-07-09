@@ -748,9 +748,9 @@ $handler = mysqli_query($datos, $matrix);
                                                    
                                           <?  } else { ?>
 
-                                                   <div class="person-sw" it="<? echo $stsk[9] ?>">
+                                                   <div class="person-sw">
                                                       <i class="fa fa-user spac" ></i>
-                                                      <input type="checkbox" class="swt-boo-int" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
+                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
                                                     <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
@@ -1573,9 +1573,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                     
                                           <?  } elseif ($ii[12] == 2) { ?>
 
-                                                   <div class="person-sw" it="<? echo $ii[12] ?>">
+                                                   <div class="person-sw-int" it="<? echo $ii[12] ?>">
                                                       <i class="fa fa-user spac" ></i>
-                                                      <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
+                                                      <input type="checkbox" class="swt-boo-int" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
                                                    </div>
                                                  
@@ -4120,6 +4120,34 @@ if(kind == 1){
 } else {
 
     div4.className ="ii-files";
+
+
+
+    input_b = document.createElement('input');
+    input_b.type = "checkbox";
+    input_b.className = "swt-boo-int";
+
+   div_ii = document.createElement('div');
+   i_ii   = document.createElement('i');
+   i_ii2  = document.createElement('i');
+
+    div_ii.className  = "person-sw-int";
+    i_ii.className    = "fa fa-user spac";
+    i_ii2.className   = "fa fa-group spac";
+    i_ii2.style.color = "gray";
+
+             input_b.checked = "true";
+             input_b.setAttribute( "data-label-width", 3);
+             input_b.setAttribute( "data-size", "mini");
+             input_b.setAttribute( "data-on-color", "info");
+             input_b.setAttribute( "data-off-color", "default");
+             input_b.setAttribute( "data-on-text", "&ensp;");
+             input_b.setAttribute( "data-off-text", "&ensp;");
+
+   div_ii.appendChild(i_ii);
+   div_ii.appendChild(input_b);
+   div_ii.appendChild(i_ii2);
+
 }
 
 
@@ -4272,6 +4300,7 @@ if(kind == 1){
     td_i1.appendChild(div_special);
 } else {
   td_i1.appendChild(div4);
+  td4.appendChild(div_ii);
 }
 
 td_i1.insertAdjacentHTML("beforeend",table_string);
@@ -4281,6 +4310,11 @@ parent_int.appendChild(tr1);
 parent_int.appendChild(tr2);
 
 insertAfter(tr2, tr1);
+
+if(kind == 0){
+  var ix =$(".swt-boo-int").length;
+  $(".swt-boo-int").eq(ix-1).bootstrapSwitch();
+}
 
 }
 
