@@ -5068,7 +5068,9 @@ $(".bk-fi").on('click', function(){
   } else {
 
     $(this).siblings('i').remove();
-    $(this).data("val", 0)
+    $(".drop-zone").eq(idf).fadeToggle("slow");
+    $(this).data("val", 0);
+
   }
 
 
