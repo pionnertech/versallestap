@@ -69,6 +69,11 @@ $i = 0;
 
 while( $fila = mysqli_fetch_row($team)){
    
+if($fila[0] == $muser){
+  continue;
+}
+
+
    $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
     $i = $i + 1;
 
