@@ -2931,26 +2931,24 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
-            console.info(data);
            result = data.split("|");
-           console.log(result[3]);
-
+           var parent = document.querySelectorAll('.coll-int')[ind];
+           var string = "";
+         
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
-                         if (mode != "first"){
-                            assoc_collar_int(user, ind);
-                            
-                         } else {
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
                             for(i=2; i < result.length -1; i++){
-                              console.info("indice trapasado a assoc_collar :" + ind);
-                                  assoc_collar_int(result[i], ind);
+                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)">' +
+                             '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" ><input type="hidden" value="u'  + usr + '">' +
+                             '</a>'; 
+                                 
                             }
-                           // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
-                         }
+                           parent.innerHTML = string;  
+                         
                      });
                   newthum(1);
                     $("#del-int-req input, #del-int-req textarea").val('');
@@ -3165,20 +3163,6 @@ if(typeof(EventSource) !== "undefined") {
 
 }
 
-function assoc_collar_int(usr, ind){
-
-    console.info("indice quele llega a las fotos internas es : " + ind);
-
-var parent = document.querySelectorAll('.coll-int')[ind];
-
-  var string =  '<a class="hovertip" title="" onclick="hovertip(this)">' +
-        '<img src="../' + fac + '/img/'  + usr + '_opt.jpg" class="group" ><input type="hidden" value="u'  + usr + '">' +
-        '</a>';
-
-  var stringAl   = parent.innerHTML + string;   
-parent.innerHTML = stringAl;   
-
-}
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin, ctz_geoloc, ticket){
 
