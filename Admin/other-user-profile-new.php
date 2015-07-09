@@ -2946,6 +2946,7 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
                             for(i=2; i < result.length -1; i++){
+                              console.info("indice trapasado a assoc_collar :" + ind);
                                   assoc_collar_int(result[i], ind);
                             }
                            // firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft)
