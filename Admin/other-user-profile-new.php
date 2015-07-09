@@ -257,6 +257,13 @@ pre > a, pre > a > p{
   max-height: 3em;
 }
 
+
+.int-files-for, .int-files-to{
+  width:80%;
+  display:inline-block;
+  vertical-align: top;
+}
+
 .file-contents:before, .front-sent:before,
 .int-files-for:before {
 content: "\f053";
@@ -1337,7 +1344,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
                                                                     </div>
-
+                                             <div class="wrap-int-files" style="width:100%">
 
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
                           <?    
@@ -1405,6 +1412,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                 </div>
 
+                                             <div class="int-chart" style="display: inline-block; vertical-align: top;"></div>
+                                             </div>
                                                 <table style="width: 100%" class="int-trf-descript">
                                                     <tbody>
                                                         <tr>
@@ -4039,6 +4048,8 @@ var img    = document.createElement('img');
 var inp2   = document.createElement('input');
 var div4   = document.createElement('div');
 
+
+
 tr2.style.display = "none";
 if(kind == 1){
   tr2.className     = "display-progress";
@@ -4054,10 +4065,20 @@ strong.innerHTML  = "Grado de progreso";
 div4.style.width = "100%";
 
 if(kind == 1){
-  var div5 = document.createElement('div')
+  var div_special = document.createElement('div');
+  var div_special2 = document.createElement('div');
+      div_special2.className = "int-chart";
+      div_special2.style.display = "inline-block";
+      div_special2.style.verticalAlign = "top";
+
+      div_special.className = "wrap-int-files";
+
+      div_special.style.width = "100%"
+  var div5 = document.createElement('div');
       div4.className ="int-files-for";
       div5.className = "int-files-to";
-      div5.style.width = "100%";
+
+      div5.style.width = "80%";
 
 } else {
 
