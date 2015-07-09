@@ -5023,7 +5023,6 @@ $(".bk-fi").on('click', function(){
                       dragExt(event)
                     });
   });
-
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
