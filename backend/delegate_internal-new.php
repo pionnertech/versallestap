@@ -81,7 +81,6 @@ $outcome = $fila[0] . "|";
 
 }
 
-echo $query . "<br />" . " Mi departamento bucle " . "<br />";
 } elseif ($user_id == "Jefaturas") {
 
 $i = 0;
@@ -99,7 +98,7 @@ $i = 0;
               }
               $outcome = $fila[0] . "|";
      }
-   echo $query . "<br />" . " Jefaturas bucle " . "<br />";
+
 } else {
 
 $uq = explode("," , $user);
@@ -119,7 +118,7 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
               }
           $outcome .= $earray[$i] . "|";
    }
-echo $query . "<br />" . " indivilual bucle " . "<br />";
+
 }
 
 } else {
