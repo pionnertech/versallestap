@@ -1,6 +1,6 @@
 <?php
 $muser       = $_GET['muser'];
-$user        = $_GET['user'];
+$user_id     = $_GET['user'];
 $fechaF      = date('Y-m-d h:i:s', strtotime(str_replace("/","-",$_GET['fechaF'])));
 $stsk_id     = $_GET['stsk'];
 $subject     = $_GET['subject'];
