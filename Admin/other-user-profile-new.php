@@ -1555,30 +1555,27 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                        }
 
                                                             ?>
-        SELECT A.STSK_ID,
-         A.STSK_MAIN_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT,
-          A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE,
-           A.STSK_ISS_ID, A.STSK_RESP, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"
+
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $ii[0] ?>" class="ii-stsk">
                                                                 <input type="hidden" value="<? echo $ii[1] ?>" class="main-user-ii"> 
                                                                 <input type="hidden" value="<? echo $ii[11] ?>" class="ii-iss">
-                                                                <td class="cell-icon"><? echo [14] ?></td>
+                                                                <td class="cell-icon"><? echo $ii[14] ?></td>
                                                                 <td class="cell-title"><div><? echo $ii[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due ii-desglo" style="background-color:<? echo $ii[8]; ?>"><? echo $ii[6]; ?></b></td>
                                                                 <td class="cell-title ii-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i>
                                           <? if ($ii[13] == 1 ) { ?>
-                                                   <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
+                                                   <i it="<? echo $ii[13]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } elseif ($ii[13] == 0 ) {    ?>
 
-                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
+                                                    <i it="<? echo $ii[13]  ?>" class="fa fa-group spac"></i>
                                                     <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } else { ?>
 
-                                                   <div class="person-sw" it="<? echo $stsk[9] ?>">
+                                                   <div class="person-sw" it="<? echo $ii[13] ?>">
                                                       <i class="fa fa-user spac" ></i>
                                                       <input type="checkbox" class="swt-boo" checked="true"  data-label-width="3" data-size="mini" data-on-color="info"  data-on-color="default" data-on-text="&ensp;" data-off-text="&ensp;">
                                                       <i class="fa fa-group spac" style="color: gray;" ></i>
