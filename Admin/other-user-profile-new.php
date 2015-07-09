@@ -2022,7 +2022,7 @@ dateTime = AmericanDate($(this).next().html());
 
        mode = "delegate";
  var indice = $(this).index();
- var ids    = $(this).parent().children('input').val();
+ var ids    = $("#int-table > tbody .task").length;
 
 stsk_send = ids;
 console.log("stsk_send is :" + ids);
@@ -2244,7 +2244,7 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#send-int").data("val") );
+    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#del-int-req").data("val"), $("#int-table > tbody .task").length-1 );
     
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
@@ -2902,8 +2902,7 @@ uploader =  $(object).pluploadQueue({
 
 
 function intDel(user, sub, des, date, ind, mst){
-console.info(user);
-console.info(ind);
+
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
@@ -3969,8 +3968,7 @@ i2.onclick = function(){
 
  mode = "delegate";
  var indice = $(this).parent().index(".int-forward");
- var ids    = $(this).parent().parent().children('input').val();
-
+ var ids    = $("#int-table > tbody .task").length -1;
 console.info(ids);
 console.info(indice);
 stsk_send = ids;
