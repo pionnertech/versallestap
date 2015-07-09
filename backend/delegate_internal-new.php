@@ -91,7 +91,7 @@ $i = 0;
      while($fila = mysqli_fetch_row($team_leader)){
 
             $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "') ";
-            echo $query
+            
             $i = $i + 1;
 
            if( $i < mysqli_num_rows($team)){
