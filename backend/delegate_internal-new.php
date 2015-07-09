@@ -77,6 +77,7 @@ while( $fila = mysqli_fetch_row($team)){
    }
 $outcome .= $fila[0] . "|";
 
+
 }
 
 } elseif ($user_id == "Jefaturas") {
