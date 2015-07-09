@@ -5017,14 +5017,13 @@ $(".bk-fi").on('click', function(){
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
          $(this).attr("title", $(this).parent().attr("title"));
          $(this).attr("draggable", true);
-         $(this).on('dragstart', function(){
-                      dragExt(event , $(this))
-                    });
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-      
+               newElems.on('dragstart', function(){
+                      dragExt(event , $(this))
+                    });
 });
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
 
