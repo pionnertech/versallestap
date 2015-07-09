@@ -2816,14 +2816,14 @@ function drop (event) {
 function dropBack(event, object){
 
    event.preventDefault();
-   var data = event.dataTransfer.getData("text");
+   var data     = event.dataTransfer.getData("text");
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
    var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
 
    console.info(data);
    console.info("id del usuario:" + usf);
-   
+
    backToFront(filename(data), usf, iss_ind);
 
 }
@@ -5017,7 +5017,7 @@ $(".bk-fi").on('click', function(){
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
-         $(this).attr("title", $(this).parent().attr("title"));
+         $(this).attr("title", $(this).parent().parent().attr("href"));
          $(this).attr("draggable", true);
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
