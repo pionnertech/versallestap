@@ -2880,7 +2880,7 @@ function dropBack(event, object){
    var usf      = data[1].substring(data[1].search("_in")-3, data[1].search("_in")); 
 
    console.info(exo);
-
+   console.info(data[0] + "|" + data[1]);
    backToFront(data[0], usf, iss_ind);
    //$(".file-sent").eq(frIn).append()
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
