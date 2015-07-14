@@ -10,7 +10,7 @@ $descript = $_GET['des'];
 $date     = $_GET['date'];
 $fac      = $_GET['fac'];
 $argument = $_GET['argument'];
-$ticket   = $_GET['ticket']
+$ticket   = $_GET['ticket'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
