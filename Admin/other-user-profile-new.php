@@ -2057,7 +2057,7 @@ progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 $("i.fa-lock").parent().unbind('click');
 $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
 
- dateTime = $('.datetimepicker').datetimepicker({
+var  date1 = $('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
     format:'Y/m/d',
