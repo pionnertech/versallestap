@@ -999,6 +999,7 @@ var far = $("#D-drop").data("files").split("|");
 
 //para comopromisos externos
      if(argument == 0) {  
+        
       var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
         $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(prevH + filestring);
 
