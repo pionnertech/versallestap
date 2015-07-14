@@ -14,7 +14,8 @@ $type = $_GET['type'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 if(!mysqli_query($datos, "UPDATE SUBTASKS SET STSK_RESP = 0 WHERE (STSK_TYPE= 0 AND STSK_FAC_CODE =" . $fac ." AND STSK_ISS_ID =" . $iss_id . ")" )){
-  exit mysqli_error($datos);
+  mysqli_error($datos);
+  exit ;
 }
 
 // ticket  plus
