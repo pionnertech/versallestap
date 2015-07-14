@@ -3770,7 +3770,6 @@ var idf = $(this).index(".bk-fi");
 dw_ap.appendChild(iw_ap);
 dw_ap.appendChild(ddrop);
 
-
      p_pro    = document.createElement('p');
      str_pro  = document.createElement('strong');
      span_pro = document.createElement('span');
@@ -3778,6 +3777,7 @@ dw_ap.appendChild(ddrop);
      span_p1 = document.createElement('span');
      pre_pro  = document.createElement('pre');
      pre_pro.style.width = "100%";
+     pre_pro.style.display ="inline-flex";
 
     //==== ***** classes ****
 
