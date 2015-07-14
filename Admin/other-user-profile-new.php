@@ -2381,9 +2381,9 @@ $("#up-int").empty();
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
   if($("#back-own").data("val") == 0){
-     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 )
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 , "")
   } else {
-     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii );
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii , $(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html());
   }
   
 
@@ -2450,7 +2450,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
-        "&fac=" + $("#facility").val(), 
+        "&fac=" + $("#facility").val() +
+        "&ticket=" + , 
         success : function(data){
            console.info(data);
            var filestring = "";
@@ -3073,7 +3074,7 @@ uploader =  $(object).pluploadQueue({
 
 };
 
-function intDel(user, sub, des, date, ind, mst){
+function intDel(user, sub, des, date, ind, mst, tkt){
 
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
@@ -3090,14 +3091,15 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&startD=" + fecha  + 
           "&fac="+ fac +
           "&main_stsk=" + mst + 
-          "&keyfile=" + keyFile, 
+          "&keyfile=" + keyFile +
+          "&ticket=" + tkt, 
           beforeSend: function(){
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
 
            console.info(data);
-           
+
            result = data.split("|");
            
            var string = "";
