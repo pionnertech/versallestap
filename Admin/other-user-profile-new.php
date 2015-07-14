@@ -3093,6 +3093,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&keyfile=" + keyFile +
           "&ticket=" + tkt, 
           beforeSend: function(){
+            
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
