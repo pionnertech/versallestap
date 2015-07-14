@@ -834,6 +834,7 @@ var argument = 0;
  
 
 $(".forward").on('click', function(){
+
    argument = 0;
    ticket = $(this).siblings(".cell-icon").html();
 
@@ -918,8 +919,6 @@ if(checkValues() == true){
     $("#st-description").val('');
     $(".span2").slider('setValue', 0);
 
-
-
 if(argument === 1){
 
 $("#tasks-own").removeClass('active in');$("#int-require").addClass('active in');
@@ -929,7 +928,6 @@ $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
 
 }
 }
-
 
 });
 
@@ -1104,6 +1102,7 @@ var far = $("#D-drop").data("files").split("|");
                 }
 
              } else {
+
               var weirdIndex =  (index-1)/2;
             $("#int-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
 
@@ -1745,6 +1744,71 @@ $.ajax({
               bootbox.alert("archivo eliminado");
           }
  });
+
+}
+
+
+function graphAddedFiles(object, names){
+  var nname = names.split("|");
+  var filstr = "";
+  var setClass = "";
+  var cor = "";
+  for (i=0; i < nname.length-1 ; i++){
+     var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+    
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+
+  }
+
+object.html(object.html() + filstr);
+filstr = "";
 
 }
 </script>
