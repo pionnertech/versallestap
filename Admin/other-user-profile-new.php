@@ -3616,31 +3616,7 @@ div_g1.style.verticalAlign = "top";
 
 //*************
 
- div_gf1  = document.createElement('div'); // contenedor flecha 1
- div_gf2  = document.createElement('div'); // contenedor flecha 2
-
- i_gf1  = document.createElement('i'); //flecha 1
- i_gf1.className = "fa fa-chevron-right fa-2x";
- i_gf1.style.color= "#66A4EE";
-
- i_gf2 = document.createElement('i');
- i_gf2.className = "fa fa-chevron-left fa-2x";
- i_gf2.style.color = "#8FEC68";
-
- div_gf2.style.width = "4em";
- div_gf2.style.verticalAlign = "top";
- div_gf2.style.display = "inline-block";
-
- div_gf1.style.width = "4em";
- div_gf1.style.verticalAlign = "top";
- div_gf1.style.display = "inline-block";
-
- div_gf1.appendChild(i_gf1);
- div_gf2.appendChild(i_gf2);
  
- div_g1.appendChild(div_gf1);
- div_g2.appendChild(div_gf2);
-
  div_gch = document.createElement('div');
  div_gch.className = "great-chart";
  div_gch.style.width = "18%";
@@ -3684,6 +3660,113 @@ div_g1.style.verticalAlign = "top";
      dd2 = document.createElement('dd');  
      dd3 = document.createElement('dd');
      dd4 = document.createElement('dd');
+
+
+     dwco   = document.createElement('div');
+     txarea = document.createElement('textarea');
+     iwco   = document.createElement('i');
+     
+     dwco.className = "wcom";
+     dwco.setAttribute("align", "center");
+
+     iwco.className = "fa fa-chevron-circle-right fa-3x send-com";
+     iwco.style.color = "lightgreen";
+     txarea.setAttribute("placeholder", "Respuesta al ciudadano");
+
+
+
+
+     
+
+iwco.onclick = function(){
+  
+    var obj       = $(this);
+    var comentary = $(this).prev().val();
+    var iss_ind   = $(this).parents("tr").prev().children(".iss_id").val();
+
+  if( comentary.trim() !== ""){
+        $.ajax({
+                 type: "POST",
+                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind + "&fac=" + fac, 
+                 success : function (data){
+                  console.info(data);
+                        obj.prev().replaceWith("\"" + comentary + "\"");
+                        obj.remove();
+                        bootbox.alert("Respuesta enviada satisfactoriamente");
+                        
+                 }
+        })
+
+  } else {
+
+       bootbox.alert("ingrese la respuesta al requerimiento del ciudadano");
+  }
+
+}
+
+dwco.appendChild(txarea);
+dwco.appendChild(iwco);
+
+
+   // files to back 
+    dw_ap = document.createElement('div');
+    iw_ap = document.createElement('i');
+    ddrop = document.createElement('div');
+
+   iw_ap.className = "fa fa-files-o fa-2x bk-fi";
+   iw_ap.style.marginRight = "2em";
+   ddrop.className = "drop-zone";
+
+   ddrop.style.width = "80%"; 
+   ddrop.style.margin =  "0.7em";
+   ddrop.style.border = "5px dashed orange";
+   ddrop.style.height = "5em";
+   
+
+   ddrop.ondrop = function(event){
+       dropBack(event, this);
+   }  
+   ddrop.ondragover = function(event){
+     allowDrop(event);
+   }
+
+
+iw_ap.onclick = function(){
+
+var idf = $(this).index(".bk-fi");
+
+  if($(this).data("val") == undefined || $(this).data("val") == 0){
+      
+     
+  $(".drop-zone").eq(idf).fadeToggle("slow");
+
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
+         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("draggable", true);
+  });
+  var newElems = $(".file-contents").eq(idf).find('i').clone();
+      newElems.css({ margin : "0 .2em"});
+      newElems.insertAfter($('.w-ap').eq(idf).children("i"));
+               newElems.on('dragstart', function(){
+                      dragExt(event , $(this))
+                    });
+
+
+     $(this).data("val", 1)
+
+  } else {
+
+     $(this).siblings('i').remove();
+       $(".drop-zone").eq(idf).fadeToggle("fast")
+      $(this).data("val", 0);
+    
+  }
+               
+}
+
+dw_ap.appendChild(iw_ap);
+dw_ap.appendChild(ddrop);
+
 
      p_pro    = document.createElement('p');
      str_pro  = document.createElement('strong');
@@ -3742,8 +3825,10 @@ dl.appendChild(dd4);
 div_ic_back.appendChild(i_ic);  
 div_ic.appendChild(div_ic_back);
 div_ic.appendChild(dl);
+div_ic.appendChild(dwco);
 div_ic.appendChild(p_pro)
 div_ic.appendChild(div_ic_pro);
+div_ic.appendChild(dw_ap);
 div_ic.appendChild(div_ic_file);
 div_ic.appendChild(pre_pro);
 
