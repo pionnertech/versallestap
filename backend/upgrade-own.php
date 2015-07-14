@@ -56,8 +56,8 @@ if(!mysqli_query($datos, $trf)){
 echo $percent;
 
 if((int)$percent > 99){
-	mysqli_query("UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $stsk . ";");
-	mysqli_query("UPDATE ISSUES SET ISS_STATE = 5 WHERE ISS_ID = " . $iss);
+	mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $stsk . ";");
+	mysqli_query($datos, "UPDATE ISSUES SET ISS_STATE = 5 WHERE ISS_ID = " . $iss);
 }
 
 
