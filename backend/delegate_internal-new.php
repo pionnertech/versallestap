@@ -61,12 +61,11 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', " . $muser . " , 
 } else {
 
   $number = $stsk_src_id;
+  
+  mysqli_query($datos, "UPDATE SUBTASKS SET STSK_RESP = 0 WHERE (STSK_ISS_ID =" . $stsk_src_id . " AND  STSK_FAC_CODE = " . $fac . " AND STSK_TYPE = 1)" );
   $stsk_src_id = 0;
+
 }
-
-
-
-
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) VALUES ";
 
