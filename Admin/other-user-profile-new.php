@@ -756,8 +756,13 @@ $handler = mysqli_query($datos, $matrix);
 
                                          } else {
                                             $color = "color: #44D933;";
-                                            if(($stsk[9] == 1 || $stsk[9] == 2) && $stsk[3] != "Finalizada"){
+                                            if($stsk[9] == 1 || $stsk[9] == 2){
+                                              if($stsk[3] == "Finalizada"){
+                                                $lock = "disabled";
+                                              } else {
                                                 $lock = "";
+                                              }
+                                                
                                             } else {
                                                  $lock = "disabled";
                                             }
@@ -2539,8 +2544,6 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.onclick  = function (){
 
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   console.log("objeto pasado a ind " +  $(this).parent().next().parent().parent().prev())
-   console.log("indice : " + ind);
    var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
