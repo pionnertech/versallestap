@@ -1321,10 +1321,13 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
 //callback function
 
     var  divFile = document.createElement('div');
+    var divFileSent = document.createElement('div');
     var  a       = document.createElement('a');
-
+  
 
     divFile.className = "file-contents";
+    divFileSent.className = "file-sent";
+
     
     
     tr1.appendChild(td1);
