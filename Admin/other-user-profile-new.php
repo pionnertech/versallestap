@@ -350,6 +350,13 @@ width:100%;
   font-style: italic;
 
 }
+
+.file-flex{
+  width: 2em;
+  height:2em;
+}
+
+
     </style>    
 </head>
 <body>
@@ -2881,7 +2888,8 @@ function dropBack(event, object){
       $(".newtext").removeClass("newtext").addClass("drop-zone");
    }, 800);
 
-   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']");
+   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']").clone();
+   newf.removeClass('file-opac').find('i').unwrap().parent().addClass('file-flex').find('span').remove()
    $(".front-sent").eq(frIn).append(newf);
 
 }
