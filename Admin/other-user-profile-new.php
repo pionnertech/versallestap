@@ -5258,12 +5258,12 @@ var idf = $(this).index(".bk-fi");
          $(this).attr("title", filename($(this).parent().parent().attr("href").toString()));
          $(this).attr("draggable", true);
   });
-
+  var nest = $(this);
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       $(this).siblings('i').on('dragstart', function(){
-          dragExt(event , $(this));
+          dragExt(event , nest);
         });
 
      $(this).data("val", 1)
