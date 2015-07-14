@@ -2896,7 +2896,7 @@ function dropBack(event, object){
 
 
 function dragExt(event, object){
-   console.info(object.attr('outerHTML'));
+   console.info(object.attr('title'));
    event.dataTransfer.setData("text", object.attr("title"));
 
 }
@@ -5253,7 +5253,6 @@ var idf = $(this).index(".bk-fi");
          $(this).attr("draggable", true);
   });
 
-  var nest = $(this);
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
