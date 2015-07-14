@@ -939,8 +939,9 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
 var filestring = "";
 
-$("#D-drop").data("files").replace("undefined", "");
-var far = $("#D-drop").data("files").split("|");
+
+
+var far = $("#D-drop").data("files").replace("undefined", "").split("|");
 
                for(i=0; i < far.length-1; i++ ){
                         var extension = far[i].substring(far[i].length -3 , far[i].length);
