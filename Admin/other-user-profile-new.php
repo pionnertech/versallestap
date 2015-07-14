@@ -5254,7 +5254,7 @@ var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).children('a').length - 1).find('i').html(function(){
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).children('a').length).find('i').html(function(){
          $(this).attr("title", $(this).parent().parent().attr("href"));
          $(this).attr("draggable", true);
   });
