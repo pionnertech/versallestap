@@ -25,7 +25,7 @@ $(function(){
             // Append the file name and file size
             tpl.find('p').text(data.files[0].name)
                          .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
-
+               $("#D-drop").data("files", $("#D-drop").data("files")  + data.files[0].name + "|" );
             // Add the HTML to the UL element
             data.context = tpl.appendTo(ul);
 
