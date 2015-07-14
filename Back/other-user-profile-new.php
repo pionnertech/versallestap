@@ -755,6 +755,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
 var fac = $("#facility").val();
 var current_iss;
 var inner = 0;
+var ticket = "";
 var progressbar;
 var previuosData =  "<?  echo $manu   ?>" ;
 var previuosDataInt = "<?  echo $manu_int   ?>"  ;
@@ -772,6 +773,7 @@ var argument = 0;
 
 $(".forward").on('click', function(){
    argument = 0;
+   ticket = $(this).siblings(".cell-icon").html();
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
@@ -801,7 +803,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
 
 $(".int-forward").on('click', function(){
-
+    ticket = $(this).siblings(".cell-icon").html();
    argument = 1;
 //change form action to the back to admin internal
 $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
@@ -809,6 +811,7 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    current_iss    =  $(this).parent().children('input').eq(1).val();
    inner          =  $(this).parent().index();
    subject        =  $(this).parent().children('td').eq(1).text();
+
 
    $("#audititle").html("\"" + subject + "\"");
 
@@ -846,7 +849,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 $("#upgrade").on('click', function(){
 
 if(checkValues() == true){
-    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner, argument);
+    upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner, argument, ticket);
     current_iss = 0;
 
     $("#subject").val('');
@@ -909,7 +912,7 @@ $(".swt-int").on('click', function(){
 });
 
 
-function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar){
+function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar, tic){
 
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
@@ -922,7 +925,8 @@ console.info("../backend/upgrade.php?val=" + val +
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac + 
-            "&argument=" + ar);
+            "&argument=" + ar +
+            "&ticket=" + ticket);
 
 
     $.ajax({
@@ -935,7 +939,8 @@ console.info("../backend/upgrade.php?val=" + val +
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac + 
-            "&argument=" + ar, 
+            "&argument=" + ar +
+            "&ticket=" + ticket, 
             success : function (data){
 
                 console.info(data);
@@ -1207,6 +1212,7 @@ if(kind == 0){
     btn.onclick = function(){
 
    argument = 0;
+   ticket = $(this).parent().siblings(".cell-icon").html();
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
@@ -1234,7 +1240,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 } else {
 
     btn.onclick = function(){
-
+     ticket = $(this).parent().siblings(".cell-icon").html();
    argument = 1;
 
 //change form action to the back to admin internal 
