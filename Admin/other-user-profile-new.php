@@ -336,9 +336,14 @@ width:100%;
 
 }
 
+.comentary{
+  width: 85%;
+  border-radius: 15px;
+  resize: none;
+  padding: .5em 1em;
+}
+
     </style>    
- 
-  
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -795,9 +800,8 @@ $handler = mysqli_query($datos, $matrix);
                                             <td colspan="5">
                                                  <div class="info-content" style="display:none">
                                  <div class="docs-example">
-
                                         <dl class="dl-horizontal">
-<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
+<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS , A.ISS_COMENTARY FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
 
                                          if($shine['CTZ_GEOLOC'] !== 0){ ?>
                                             <img style="float:right;" src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|<? echo $shine['CTZ_GEOLOC'] ?>">
@@ -815,6 +819,14 @@ $handler = mysqli_query($datos, $matrix);
                                             <dt>Origen</dt>
                                             <dd><? printf($shine['CAT_DESCRIPT']) ?></dd>
                                         </dl>
+                                        <div class="wcom">
+                                            <? if( is_null($shine['ISS_COMENTARY']) ||  $shine['ISS_COMENTARY'] == "" ) { ?>
+                                          <textarea class="comentary" placeholder="Respuesta al ciudadano"></textarea>
+                                          <i class="fa fa-chevron-circle-right send-com" style="color: lightgreen"></i>
+                                            <? } else { 
+                                               echo $shine['ISS_COMENTARY'];
+                                              ?>
+                                        </div>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"> <? echo $shine['ISS_PROGRESS'] ?>%</span>
                                         </p>
@@ -5085,13 +5097,37 @@ var idf = $(this).index(".bk-fi");
 // se tine que elaborar un req interno delegado... y elimnar el recibido 
 // $("#send-int"). -> crea un first task and collar
 
+$(".send-com").on('click', function(){
+  
+    var obj       = $(this);
+    var comentary = $(this).prev().val();
+    var iss_ind   = $(this).parents("tr").prev().children(".iss_id").val();
+
+  if( comentary.trim() !== ""){
+        $.ajax({
+                 type: "POST",
+                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind, 
+                 success : function (data){
+                        obj.prev().replaceWith(comentary);
+                        obj.remove();
+                        
+                 }
+        })
+
+  } else {
+
+       bootbox.alert("ingrese la respuesta al requerimiento del ciudadano");
+  }
+
+});
+
 
 function backToFront(name, usrId, iss){
  console.info(usrId);
   $.ajax({ type: "POST",
    url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
    success: function (data){
-      console.info(data);
+      
    }
 
 })
@@ -5105,5 +5141,5 @@ function backToFront(name, usrId, iss){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
-//"../backend/delegate_internal.php?muser=118&user=2&fechaF=2015-05-20 10:00:00&subject=manual&descript=manualmente conf&startD=2015-05-10 10:00:00&fac=10000&main_stsk=0&keyfile="
+
 ?>
