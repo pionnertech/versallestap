@@ -2527,7 +2527,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                }
                 var far = $("#D-drop").data("files").split("|");
 
-               for(i=0; i < far.length; i++ ){
+               for(i=0; i < far.length-1; i++ ){
                         var extension = far[i].substring(far[i].length -3 , far[i].length);
               switch(extension){
                 case "pdf": 
@@ -3035,6 +3035,7 @@ uploader =  $(object).pluploadQueue({
   
                 plupload.each(files, function(file) {
                     console.log('  File:', file);
+
                 });
             },
   
@@ -3069,12 +3070,17 @@ uploader =  $(object).pluploadQueue({
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
-
-                
                 
                 if(object.hasClass("front-response")){
+
                   graphAddedFiles(object.next().children(".front-sent"), $("#up-own").data("files"));
+                } else if (object.attr("id", "up-own")){
+
+                  var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
+
+                     graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
                 }
+                
                 randFiles = "";
 
             },
