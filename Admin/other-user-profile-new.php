@@ -1531,6 +1531,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   } 
                                                 } 
                                                }
+                                               
                                                closedir($handler2);
                                                 mysqli_data_seek($part, 0);
                                                 ?>
