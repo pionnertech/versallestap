@@ -124,7 +124,7 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ID = " . $i
 
 if ((int)$setto > 99){
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = " . $muser . " AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac .");");
 }
 
 //seek the original admin-admin subtask 
