@@ -1333,8 +1333,6 @@ $("#int-require").removeClass('active');$("#tasks-own").addClass('active in');
     divFile.className = "file-contents";
     divFileSent.className = "file-sent";
 
-    
-    
     tr1.appendChild(td1);
     tr1.appendChild(td2);
     tr1.appendChild(td3);
@@ -1498,6 +1496,8 @@ $.ajax({
     a.appendChild(pS);
     divFile.appendChild(a);
     td6.appendChild(divFile);
+    td6.appendChild(divFileSent);
+
 
  }
 
