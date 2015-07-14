@@ -3765,7 +3765,7 @@ var idf = $(this).index(".bk-fi");
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
@@ -5255,14 +5255,15 @@ var idf = $(this).index(".bk-fi");
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
+  console.info(newElems);
       newElems.css({ margin : "0 .2em"});
        newElems.on('dragstart', function(){
-          dragExt(event , $(this))
+          dragExt(event , $(this));
         });
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
 
