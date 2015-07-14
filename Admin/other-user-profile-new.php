@@ -3079,6 +3079,9 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
+
+console.info("llega el ticket = " + tkt);
+
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -3105,7 +3108,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
 
                      if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
 
-                              $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-user spac"></i>');
+                              $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-group spac"></i>');
                       }
 
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
