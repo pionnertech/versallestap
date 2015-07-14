@@ -5260,12 +5260,11 @@ var idf = $(this).index(".bk-fi");
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
-  console.info(newElems);
       newElems.css({ margin : "0 .2em"});
-       newElems.on('dragstart', function(){
+      newElems.insertAfter($('.w-ap').eq(idf).children("i"));
+      $(this).siblings('i').on('dragstart', function(){
           dragExt(event , $(this));
         });
-      newElems.insertAfter($('.w-ap').eq(idf).children("i"));
 
      $(this).data("val", 1)
 
