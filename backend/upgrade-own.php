@@ -52,6 +52,7 @@ if(!mysqli_query($datos, $trf)){
 	echo mysqli_error($datos);
 }
 
+
 echo $percent;
 
 if((int)$percent > 99){
