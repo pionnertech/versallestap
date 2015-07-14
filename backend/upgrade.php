@@ -12,6 +12,7 @@ $fac      = $_GET['fac'];
 $argument = $_GET['argument'];
 $ticket   = $_GET['ticket'];
 
+$setto = 0;
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 if($argument == 0){
