@@ -3903,7 +3903,7 @@ $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]")
 
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
-$(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]").parent().attr("data-val", customPro) 
+$(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]").parent().attr("data-per", customPro) 
 insertScheduleTraffic(subject, descript ,date, userId, ind);
 
 
@@ -3940,6 +3940,7 @@ tr_av.appendChild(td3_av);
         tr_av.className = "u" + userId;
         pseudoparent =  document.querySelectorAll(".int-table tbody")[ind];
         pseudoparent.appendChild(tr_av);
+
       }
 
 if(aux_stsk !== 0){
