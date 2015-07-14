@@ -469,7 +469,6 @@ uploader.bind('BeforeUpload', function (up, file) {
 	timepicker: false,
 	onShow :function(ctn){
 		this.setOptions({
-			minDate:
             format: 'Y/m/d'
 		})
 	}
