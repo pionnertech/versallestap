@@ -3663,6 +3663,11 @@ div_g1.style.verticalAlign = "top";
 
 
 //clip independ files:
+
+    
+
+
+
      dwco   = document.createElement('div');
      txarea = document.createElement('textarea');
      iwco   = document.createElement('i');
@@ -3769,7 +3774,10 @@ dw_ap.appendChild(ddrop);
      p_pro    = document.createElement('p');
      str_pro  = document.createElement('strong');
      span_pro = document.createElement('span');
+     str_p1  = document.createElement('strong');
+     span_p1 = document.createElement('span');
      pre_pro  = document.createElement('pre');
+     pre_pro.style.width = "100%";
 
     //==== ***** classes ****
 
@@ -3793,8 +3801,14 @@ dw_ap.appendChild(ddrop);
     str_pro.innerHTML = "Grado de progreso";
     span_pro.innerHTML = "0%";
 
+    str_p1.innerHTML = "Grado de progreso";
+    span_p1.innerHTML = "0%";
+
     p_pro.appendChild(str_pro);
     p_pro.appendChild(span_pro);
+
+    p1.appendChild(str_p1);
+    p1.appendChild(span_p1);
 
     //************ inner HTML ******
     dt1.innerHTML = "Ciudadano";
@@ -3821,6 +3835,37 @@ dl.appendChild(dd3);
 dl.appendChild(dt4);
 dl.appendChild(dd4);
 
+// files to pre-pro 
+
+ipre = document.createElement('i');
+dpre1 = document.createElement('div');
+dpre2 = document.createElement('div');
+
+ipre.className= "fa fa-paperclip fa-2x fr";
+ipre.style.display = "block";
+ipre.setAttribute("title","Documentos de Respuesta" );
+dpre1.style.width = "100%";
+
+ipre.onclick = function(){
+  if($(this).data("val") == undefined || $(this).data("val") == 0 ){
+
+     uploaderInt($(this).parent().prev(), $(this).parent().parent().parent().parent().parent().prev().find(".iss_id").val());
+      $(this).data("val", 1);
+  } else {
+    $(this).parent().prev().fadeToggle("slow");
+  }
+    
+};
+
+
+dpre1.className ="front-received";
+dpre2.className = "front-sent";
+
+
+pre_pro.appendChild(ipre);
+pre_pro.appendChild(dpre1);
+pre_pro.appendChild(dpre2);
+//=======
 div_ic_back.appendChild(i_ic);  
 div_ic.appendChild(div_ic_back);
 div_ic.appendChild(dl);
