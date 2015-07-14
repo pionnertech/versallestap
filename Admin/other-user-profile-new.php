@@ -4189,6 +4189,7 @@ $("#set-pro-own").addClass('active in');
 mode = "first";
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+$("#back-own").data("val", 1);
 
 }
 
@@ -4212,6 +4213,7 @@ $("#set-pro-own").addClass('active in')
 mode = "first";
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+$("#back-own").data("val", 0);
 
 
 }}}
