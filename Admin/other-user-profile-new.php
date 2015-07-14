@@ -3719,7 +3719,8 @@ dwco.appendChild(iwco);
     dw_ap = document.createElement('div');
     iw_ap = document.createElement('i');
     ddrop = document.createElement('div');
-
+   
+   dw_ap.className = "w-ap";
    iw_ap.className = "fa fa-files-o fa-2x bk-fi";
    iw_ap.style.marginRight = "2em";
    ddrop.className = "drop-zone";
