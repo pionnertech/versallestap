@@ -2881,12 +2881,12 @@ function dropBack(event, object){
 
    console.info(exo);
 
-   backToFront(filename(data), usf, iss_ind);
+   backToFront(data, usf, iss_ind);
    //$(".file-sent").eq(frIn).append()
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
    setTimeout(function(){
       $(".newtext").removeClass("newtext").addClass("drop-zone");
-   }, 800);
+   }, 1200);
 
    var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']").clone();
    newf.removeClass('file-opac').find('i').unwrap().parent().addClass('file-flex').find('span').remove()
@@ -3052,9 +3052,7 @@ uploader =  $(object).pluploadQueue({
                 randFiles += file.name + "|";
 
                 $("#up-own").data("files", randFiles);
-                if(object.hasClass("front-response")){
-                  graphAddedFiles(object.next().children(".front-sent"), randFiles)
-                }
+
 
             },
   
@@ -3070,15 +3068,13 @@ uploader =  $(object).pluploadQueue({
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
-                randFiles = files.toString();
-                $("#up-own").data("files", randFiles);
+
+                
+                
                 if(object.hasClass("front-response")){
-                  graphAddedFiles(object.next().children(".front-sent"), randFiles)
+                  graphAddedFiles(object.next().children(".front-sent"), $("#up-own").data("files"));
                 }
                 randFiles = "";
-
-
-
 
             },
  
@@ -3764,7 +3760,7 @@ var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length-1).find('i').html(function(){
+  $(".file-contents").eq(idf).children('a').find('i').html(function(){
          $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
   });
@@ -3774,8 +3770,6 @@ var idf = $(this).index(".bk-fi");
         dragExt(event , $(this))
       });
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-
-
 
      $(this).data("val", 1)
 
@@ -5180,7 +5174,7 @@ $(".fr").on("click", function(){
 });
 
 function graphAddedFiles(object, names){
-  var nname = names.split(",");
+  var nname = names.split("|");
   var filstr = "";
   var setClass = "";
   var cor = "";
@@ -5255,7 +5249,7 @@ var idf = $(this).index(".bk-fi");
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
   });
 
