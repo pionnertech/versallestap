@@ -10,6 +10,7 @@ $descript = $_GET['des'];
 $date     = $_GET['date'];
 $fac      = $_GET['fac'];
 $argument = $_GET['argument'];
+$ticket   = $_GET['ticket']
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -110,14 +111,19 @@ while ($row = mysqli_fetch_row($handler)) {
 
 $setto = ($adition / $n);
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . " AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1);");
+// check 
+
+
 //set DONE to local;
 if ((int)$val == 100){
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ID = " . $id . " AND STSK_TYPE = 1)" );
 }
 
 if ((int)$setto > 99){
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = " . $muser . " AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
 }
 
 //seek the original admin-admin subtask 
