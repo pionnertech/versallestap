@@ -22,4 +22,5 @@ if(mysqli_query($datos, "UPDATE ISSUES SET ISS_COMENTARY = '" . $com . "' WHERE 
 }
 
 
+
 ?>
