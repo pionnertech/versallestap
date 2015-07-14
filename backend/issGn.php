@@ -100,7 +100,7 @@ $state = 2;
 }
 
 $insertar_audi1 = "INSERT INTO ISSUES(ISS_DATE_ING, ISS_DESCRIP, ISS_CHARGE_USR, ISS_DEADLINE, ISS_DAYS , ISS_STATE, ISS_FINISH_DATE , ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_SUBJECT, ISS_PROGRESS) ";
-$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "', '" . $charge . "', '" . $date_limit . "', " . $diff . " , " . $state . ", '" . $date_limit . "', " . $tipo . " , " . $clean_rut . ", " . $fac . " , '" . $subject . "', 0);";
+$insertar_audi2 = "VALUES ('" . $date . "', '" . $audiencia . "',  999999, '" . $date_limit . "', " . $diff . " , " . $state . ", '" . $date_limit . "', " . $tipo . " , " . $clean_rut . ", " . $fac . " , '" . $subject . "', 0);";
 
 
 $insertar_audi = $insertar_audi1 . $insertar_audi2;
