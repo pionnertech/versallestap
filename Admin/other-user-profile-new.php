@@ -2450,8 +2450,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
-        "&fac=" + $("#facility").val() +
-        "&ticket=" + , 
+        "&fac=" + $("#facility").val(), 
         success : function(data){
            console.info(data);
            var filestring = "";
@@ -3093,7 +3092,7 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           "&keyfile=" + keyFile +
           "&ticket=" + tkt, 
           beforeSend: function(){
-            
+
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
