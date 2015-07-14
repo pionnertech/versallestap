@@ -5263,7 +5263,7 @@ var idf = $(this).index(".bk-fi");
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       $(this).siblings('i').on('dragstart', function(){
-          dragExt(event , nest);
+          dragExt(event , $(this).siblings('i'));
         });
 
      $(this).data("val", 1)
