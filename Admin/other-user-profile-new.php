@@ -2897,7 +2897,7 @@ function dropBack(event, object){
 
 function dragExt(event, object){
    console.info(object.attr('title'));
-   event.dataTransfer.setData("text", object.attr("title") + "|" + object.data("pseudotitle") );
+   event.dataTransfer.setData("text", object.attr("title") + "|" + object.data("val") );
 
 }
 
@@ -5252,7 +5252,7 @@ var idf = $(this).index(".bk-fi");
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
          $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
-         $(this).data("pseudotitle", $(this).parent().parent().attr("href"))
+         $(this).data("val", $(this).parent().parent().attr("href"))
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
