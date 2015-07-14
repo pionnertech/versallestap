@@ -752,6 +752,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
 
 <script type="text/javascript">
     
+ $("#D-drop").data("files", "");
 
 var fac = $("#facility").val();
 var current_iss;
@@ -939,9 +940,9 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
 
 var filestring = "";
 
+if($("#D-drop").data("files") !== ""){
 
-
-var far = $("#D-drop").data("files").replace("undefined", "").split("|");
+var far = $("#D-drop").data("files").split("|");
 
                for(i=0; i < far.length-1; i++ ){
                         var extension = far[i].substring(far[i].length -3 , far[i].length);
@@ -997,6 +998,7 @@ var far = $("#D-drop").data("files").replace("undefined", "").split("|");
         '</a>';
 
                }
+           }
 
  $("#D-drop").data("files", "");
 
