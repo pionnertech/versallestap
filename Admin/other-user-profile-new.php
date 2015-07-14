@@ -2897,7 +2897,7 @@ function dropBack(event, object){
 
 function dragExt(event, object){
    console.info(object.attr('title'));
-   event.dataTransfer.setData("text", object.attr("title") + "|" + object.data("val") );
+   event.dataTransfer.setData("text", object.attr("title") + "|" + object.attr("data-pseudo") );
 
 }
 
@@ -5251,15 +5251,14 @@ var idf = $(this).index(".bk-fi");
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
+         $(this).attr("data-pseudo", $(this).parent().parent().attr("href"))
          
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
-      newElems.data("val", $(this).attr("title"));
-      newElems.attr("title", filename($(this).attr("title")));
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       newElems.on('dragstart', function(){
           dragExt(event , $(this));
