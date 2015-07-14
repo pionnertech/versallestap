@@ -2380,7 +2380,7 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
-  if($("#back-own").data("val") == 0){
+  if($("#back-own").data("val") == 0 || $("#back-own").data("val") == undefined){
      intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 , "")
   } else {
      intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii , $(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html());
