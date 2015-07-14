@@ -14,7 +14,8 @@ $str_query = "SELECT STSK_ID, " .
 "STSK_DESCRIP, " .
 "STSK_FINISH_DATE AS FECHA_FINAL,  " .
 "STSK_START_DATE AS FECHA_INICIAL,  " .
-"STSK_TYPE " . 
+"STSK_TYPE, " .
+"STSK_TICKET " . 
 " FROM SUBTASKS  " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ") ORDER BY STSK_ID DESC LIMIT 1 ";	
 
@@ -30,7 +31,8 @@ echo "data:" . $manu['STSK_DESCRIP'] . "\n";
 echo "data:" . date('d/m/Y', strtotime($manu['FECHA_FINAL'])) . "\n";
 echo "data:" . date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "\n";
 echo "data:" . $manu['STSK_TYPE'] . "\n";
-echo "data:" . $manu['STSK_SUBJECT'] . "\n\n"; 
+echo "data:" . $manu['STSK_SUBJECT'] . "\n"; 
+echo "data:" . $manu['STSK_TICKET'] . "\n\n"; 
 
 ob_end_flush();
 flush();
