@@ -3671,6 +3671,7 @@ div_g1.style.verticalAlign = "top";
 
      iwco.className = "fa fa-chevron-circle-right fa-3x send-com";
      iwco.style.color = "lightgreen";
+     txarea.className = "comnetary";
      txarea.setAttribute("placeholder", "Respuesta al ciudadano");
 
 
@@ -3718,9 +3719,10 @@ dwco.appendChild(iwco);
    ddrop.className = "drop-zone";
 
    ddrop.style.width = "80%"; 
-   ddrop.style.margin =  "0.7em";
+   ddrop.style.margin =  "0.7em 5em";
    ddrop.style.border = "5px dashed orange";
    ddrop.style.height = "5em";
+   ddrop.style.display = "none";
    
 
    ddrop.ondrop = function(event){
