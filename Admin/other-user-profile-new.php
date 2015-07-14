@@ -5251,13 +5251,15 @@ var idf = $(this).index(".bk-fi");
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
-         $(this).attr("title", filename($(this).parent().parent().attr("href")));
+         $(this).attr("title", $(this).parent().parent().attr("href"));
          $(this).attr("draggable", true);
-         $(this).data("val", $(this).parent().parent().attr("href"))
+         
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
+      newElems.data("val", $(this).attr("title"));
+      newElems.attr("title", filename($(this).attr("title")));
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       newElems.on('dragstart', function(){
           dragExt(event , $(this));
