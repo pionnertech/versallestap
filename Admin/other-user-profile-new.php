@@ -4109,7 +4109,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     b1.style.backgroundColor = "#178FD0";
 
 
-    i2.className   = "fa fa-chevron-circle-right";
+    i2.className   = "fa fa-chevron-circle-right ii-forward";
     
     td4.appendChild(i2);
     td3.appendChild(b1);
@@ -4156,9 +4156,8 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 if(kind == 0){
-
-
-i2.className = "ii-forward";
+  
+td4.className = "cell-title";
 // aqui yace
 i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
