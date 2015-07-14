@@ -3096,7 +3096,8 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
           },
           success : function (data){
 
-
+           console.info(data);
+           
            result = data.split("|");
            
            var string = "";
