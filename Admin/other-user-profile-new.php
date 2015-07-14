@@ -5268,6 +5268,7 @@ var idf = $(this).index(".bk-fi");
 
      $(this).data("val", 1)
 
+
   } else {
 
      $(this).siblings('i').remove();
