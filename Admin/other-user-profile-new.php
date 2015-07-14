@@ -2539,7 +2539,8 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.onclick  = function (){
 
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   
+   console.log("objeto pasado a ind " +  $(this).parent().next().parent().parent().prev())
+   console.log("indice : " + ind);
    var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
@@ -5165,6 +5166,7 @@ var date = new Date();
             $(".task").eq(ind).removeAttr("class").addClass("task Hc-int");
             $(".task").eq(ind).find('b').html("FINALIZADO");
             $(".task").eq(ind).find('b').css("background-color", "#1CC131");
+            $(".task").eq(ind).children("button.forward").attr("disabled", "true");
           }
 
            $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + ('0' + date.getDay()).slice(-2) + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
