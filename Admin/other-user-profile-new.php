@@ -1488,7 +1488,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-//echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
+echo "<script>console.info(tester : '" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[4]. "\]_/", $archivos2) . "' + '/' + '" . $fint[4] . "' )</script>";
                                          if(preg_match_all("/_\[" . $fint[4] . "\]_/", $archivos2) == 1){
 
                                              $extension = substr($archivos2, -3);
@@ -1531,7 +1531,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   } 
                                                 } 
                                                }
-                                               
+
                                                closedir($handler2);
                                                 mysqli_data_seek($part, 0);
                                                 ?>
