@@ -2578,6 +2578,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
                $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
+
                kenin[0].selectize.clear();
         }
     });
@@ -3777,6 +3778,7 @@ dw_ap.appendChild(ddrop);
      str_p1  = document.createElement('strong');
      span_p1 = document.createElement('span');
      pre_pro  = document.createElement('pre');
+     bar_pro = document.createElement('div');
      pre_pro.style.width = "100%";
      pre_pro.style.display ="inline-flex";
 
@@ -3791,12 +3793,14 @@ dw_ap.appendChild(ddrop);
     i_ic.className        = "fa fa-chevron-circle-right fa-2x";
     i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
     i_ic.style.cursor     = "pointer";
+    bar_pro.className     = "bar forward";
 
 
     dl.className       = "dl-horizontal";
     p_pro.className    = "ajuste"; 
     span_pro.className = "pull-right small muted";
     pre_pro.className  = "pre";
+    div_ic_pro.appendChild(bar_pro);
 
     
     str_pro.innerHTML = "Grado de progreso";
@@ -3804,7 +3808,8 @@ dw_ap.appendChild(ddrop);
 
     str_p1.innerHTML = "Grado de progreso";
     span_p1.innerHTML = "0%";
-
+   
+    span_p1.className = "pull-right small muted";
     p_pro.appendChild(str_pro);
     p_pro.appendChild(span_pro);
 

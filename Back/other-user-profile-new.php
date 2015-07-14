@@ -1498,7 +1498,6 @@ $.ajax({
     td6.appendChild(divFile);
     td6.appendChild(divFileSent);
 
-
  }
 
      }
