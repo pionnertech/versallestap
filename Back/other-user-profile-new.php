@@ -686,6 +686,66 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                      closedir($handler);  
                                                     ?>
                                                                     </div>
+                                            <div class="file-sent">
+            <?
+
+                                        if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos2 = readdir($handler))){
+
+                                         if(preg_match_all("/_\[" . $fila_int[1] . "\]_/", $archivos2) == 1){
+                                             
+                                             $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+
+
+                                          ?>
+                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($_SESSION['TxtCode'])  ?>_alt/<? printf($archivos2)?>" class="down" download> 
+                                                                <p class="ifile" title="<? printf($archivos2) ?>">
+                                                                   <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                                   <span class="iname" ></span>
+                                                                  </p>
+                                                               </a>
+                                                    <? }
+                                                            }
+                                                         
+                                                    } 
+                                                     closedir($handler);  
+                                                    ?>
+                                    
+
+
+
+                                            </div>
+
                                                          <table style="width:100%">
                                                                 <tbody class="ii-events">
                                                                     <tr >
