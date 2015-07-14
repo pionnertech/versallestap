@@ -4215,9 +4215,8 @@ $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
 
-}
+}}}
 
-}
 
 
 var tr2    = document.createElement('tr');
