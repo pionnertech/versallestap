@@ -995,7 +995,7 @@ var far = $("#D-drop").data("files").split("|");
 
                }
 
-
+ $("#D-drop").data("files", "");
 
 //para comopromisos externos
      if(argument == 0) {  
@@ -1039,7 +1039,7 @@ var far = $("#D-drop").data("files").split("|");
              } else {
               var weirdIndex =  (index-1)/2;
             $("#int-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
-            
+
             $("#int-table > tbody > tr").eq(index + 1).find('p > span').eq(0).html(val + "%");
             $("#int-table .bar").eq(weirdIndex).css({ width: val + "%"});
 
