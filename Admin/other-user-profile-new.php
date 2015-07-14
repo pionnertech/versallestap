@@ -2578,8 +2578,11 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
                $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
-
+                
+                $(".sub-del textarea, .sub-del input").val('');
                kenin[0].selectize.clear();
+               $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+               $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
         }
     });
 
