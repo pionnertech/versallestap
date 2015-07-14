@@ -618,7 +618,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila_int[8], 0, 10))) ?></td>
                                                             </tr>
                                                         <tr class="display-progress" style="display: none;">
-                                                                <td colspan="5">
+                                                                <td colspan="6">
                                                                    <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($fila_int[5]) ?>%</span>
                                                                     </p>

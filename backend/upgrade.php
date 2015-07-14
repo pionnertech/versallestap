@@ -99,7 +99,7 @@ echo 1;
  mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $val . " WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_ID = " . $id . ");");
 
 
-$handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 1);");
+$handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_ISS_ID <> STSK_ID AND STSK_TYPE = 1)");
 
 $adition = 0;
 $n = 0;
@@ -112,7 +112,7 @@ while ($row = mysqli_fetch_row($handler)) {
 $setto = ($adition / $n);
 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . " AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1);");
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE ( STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ");");
 // check 
 
 
