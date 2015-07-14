@@ -25,7 +25,7 @@ if(mysqli_num_rows($hand) !== 0){
 
 while ($manu = mysqli_fetch_row($hand)){
 
-echo $manu[0] . "|" . $manu[1] . "|" . $manu[3] . "|'" . date('d/m/Y', strtotime($manu[4])) . "'|" . date('d/m/Y', strtotime($manu[5])) . "|" . $manu[6] . "|"  . $manu[8] . "|" . str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($manu[9])))) . "|" . $manu[10]  ;
+echo $manu[0] . "|" . $manu[1] . "|" . $manu[3] . "|" . date('d/m/Y', strtotime($manu[4])) . "|" . date('d/m/Y', strtotime($manu[5])) . "|" . $manu[6] . "|"  . $manu[8] . "|" . str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($manu[9])))) . "|" . $manu[10]  ;
 
    }
 
