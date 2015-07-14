@@ -3937,8 +3937,8 @@ tr_av.appendChild(td3_av);
 
       } else {
 
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
+        tr_av.className = "u" + userId;
+        pseudoparent =  document.querySelectorAll(".int-table tbody")[ind];
         pseudoparent.appendChild(tr_av);
       }
 
