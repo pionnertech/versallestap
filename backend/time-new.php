@@ -6,7 +6,7 @@ $fac = $_GET['fac'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //aqui era or STSK_PROGRESS IS NULL;
 $query = "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_PROGRESS <> STSK_ANCIENT_PRO )";
-
+echo $query . "<br />";
 
 $news = mysqli_query($datos, $query);
 $ran  = mysqli_query($datos, $query);
@@ -55,7 +55,7 @@ $outcome = mysqli_fetch_assoc($news);
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
-
+ echo "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR " . "<br />";
 } else {
 
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
@@ -124,6 +124,7 @@ $user_out8 = $classText;
   } else {
 
   $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
+   echo "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1 <br />";
   $user      = mysqli_fetch_assoc($query_usr);
   $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
     $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TII_STSK_ID']);
