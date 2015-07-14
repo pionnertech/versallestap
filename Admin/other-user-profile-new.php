@@ -3066,10 +3066,19 @@ uploader =  $(object).pluploadQueue({
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                    console.log("reponse", files);
+
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
+                randFiles = files.toString();
+                $("#up-own").data("files", randFiles);
+                if(object.hasClass("front-response")){
+                  graphAddedFiles(object.next().children(".front-sent"), randFiles)
+                }
                 randFiles = "";
+
+
+
 
             },
  
@@ -5170,7 +5179,7 @@ $(".fr").on("click", function(){
 });
 
 function graphAddedFiles(object, names){
-  var nname = names.split("|");
+  var nname = names.split(",");
   var filstr = "";
 
   for (i=0; i < nname.length-1 ; i++){
