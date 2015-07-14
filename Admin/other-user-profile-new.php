@@ -343,6 +343,12 @@ width:100%;
   padding: .5em 1em;
 }
 
+.wcom{
+  font-size: 1.2em;
+  color:lightgray;
+  font-style: italic;
+
+}
     </style>    
 </head>
 <body>
@@ -819,7 +825,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <dt>Origen</dt>
                                             <dd><? printf($shine['CAT_DESCRIPT']) ?></dd>
                                         </dl>
-                                        <div class="wcom">
+                                        <div class="wcom" align="center">
                                             <? if( is_null($shine['ISS_COMENTARY']) ||  $shine['ISS_COMENTARY'] == "" ) { ?>
                                           <textarea class="comentary" placeholder="Respuesta al ciudadano"></textarea>
                                           <i class="fa fa-chevron-circle-right fa-3x send-com" style="color: lightgreen"></i>
@@ -5109,7 +5115,7 @@ $(".send-com").on('click', function(){
                  url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind + "&fac=" + fac, 
                  success : function (data){
                   console.info(data);
-                        obj.prev().replaceWith(comentary);
+                        obj.prev().replaceWith("\"" + comentary + "\"");
                         obj.remove();
                         bootbox.alert("Respuesta enviada satisfactoriamente");
                         
