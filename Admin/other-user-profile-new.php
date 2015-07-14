@@ -822,7 +822,7 @@ $handler = mysqli_query($datos, $matrix);
                                         <div class="wcom">
                                             <? if( is_null($shine['ISS_COMENTARY']) ||  $shine['ISS_COMENTARY'] == "" ) { ?>
                                           <textarea class="comentary" placeholder="Respuesta al ciudadano"></textarea>
-                                          <i class="fa fa-chevron-circle-right send-com" style="color: lightgreen"></i>
+                                          <i class="fa fa-chevron-circle-right fa-3x send-com" style="color: lightgreen"></i>
                                             <? } else { 
                                                echo $shine['ISS_COMENTARY'];
                                               } ?>
@@ -5106,10 +5106,12 @@ $(".send-com").on('click', function(){
   if( comentary.trim() !== ""){
         $.ajax({
                  type: "POST",
-                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind, 
+                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind + "&fac=" + fac, 
                  success : function (data){
+                  console.info(data);
                         obj.prev().replaceWith(comentary);
                         obj.remove();
+                        bootbox.alert("Respuesta enviada satisfactoriamente");
                         
                  }
         })
