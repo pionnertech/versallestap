@@ -104,6 +104,7 @@ if(mysqli_num_rows($quntum) == 0){
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
 <input type="hidden" id="facility" value="<? printf($_SESSION['TxtFacility']) ?>">
+<input type="hidden" id="D-drop" value="">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
@@ -917,18 +918,6 @@ function upprogress(val, user, stsk_id, iss_id, des, subject, index, ar, tic){
 var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
-console.info("../backend/upgrade.php?val=" + val +
-            "&stsk_id=" +  stsk_id + 
-            "&iss_id=" + iss_id + 
-            "&user=" + user + 
-            "&subject=" + subject + 
-            "&des=" + des + 
-            "&date=" + date +
-            "&fac=" + fac + 
-            "&argument=" + ar +
-            "&ticket=" + ticket);
-
-
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade.php?val=" + val +
@@ -948,8 +937,69 @@ console.info("../backend/upgrade.php?val=" + val +
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
 
+var filestring = "";
+var far = $("#D-drop").data("files").split("|");
+
+               for(i=0; i < far.length-1; i++ ){
+                        var extension = far[i].substring(far[i].length -3 , far[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;     
+
+
+    }
+          filestring +=  '<a href="#" download>' +
+           '<p class="ifile" title="' + far[i] + '">' +
+             '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
+             '<span class="iname"></span>' +
+           '</p>'+
+        '</a>';
+
+               }
+
+
+
 //para comopromisos externos
      if(argument == 0) {  
+        $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
 
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('p').children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('div').children('div').css({ width: val +"%"});
@@ -988,7 +1038,8 @@ console.info("../backend/upgrade.php?val=" + val +
 
              } else {
               var weirdIndex =  (index-1)/2;
-
+            $("#int-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
+            
             $("#int-table > tbody > tr").eq(index + 1).find('p > span').eq(0).html(val + "%");
             $("#int-table .bar").eq(weirdIndex).css({ width: val + "%"});
 
