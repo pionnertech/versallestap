@@ -2507,6 +2507,8 @@ $("#del-subtask").on('click', function(){
     //check type.
 if(checkDelExt() == true) {
 
+$(this).attr("disabled", "true");
+
 var _fS = new Date();
 var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
@@ -2522,7 +2524,11 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
+
            console.info(data);
+
+           $(this).attr("disabled", "false");
+
            var filestring = "";
            var users = data.split("|");
         
@@ -5129,8 +5135,11 @@ function swUsr(stskId){
 
 
 $("#upgrade-own").on('click', function (){
-upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
-
+     if(checkOwn() === true){
+        upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
+     } else {
+       bootbox.alert(checkOwn());
+     }
 });
 
 function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
@@ -5149,7 +5158,6 @@ var date = new Date();
       "&ticket=" + 
       "&fac=" + fac,
       success: function (data){
-        console.info(data);
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
@@ -5392,6 +5400,16 @@ function backToFront(name, usrId, iss){
    }
 
 })
+}
+
+function checkOwn(){
+  if($("#set-pro-own").find("input[type=text]").val().trim() == ""){
+    return "Falta el asunto del progreso";
+  }
+   if($("#set-pro-own").find("textarea").val().trim() == ""){
+    return "Falta la descripción del progreso";
+  }
+return true;
 }
 
 </script>
