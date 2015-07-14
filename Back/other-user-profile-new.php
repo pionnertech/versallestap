@@ -986,7 +986,7 @@ var far = $("#D-drop").data("files").split("|");
 
 
     }
-          filestring +=  '<a href="#" download>' +
+          filestring +=  '<a href="../' + fac + '/' + mainuser +'/' + far[i] + '" download>' +
            '<p class="ifile" title="' + far[i] + '">' +
              '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
              '<span class="iname"></span>' +
