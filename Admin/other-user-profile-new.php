@@ -2520,7 +2520,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                }
                 var far = $("#D-drop").data("files").split("|");
 
-               for(i=0; i < far.length; i++ ){
+               for(i=0; i < far.length-1; i++ ){
                         var extension = far[i].substring(far[i].length -3 , far[i].length);
               switch(extension){
                 case "pdf": 
