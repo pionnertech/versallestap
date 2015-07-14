@@ -9,6 +9,8 @@ $startD      = $_GET['startD'];
 $fac         = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile     = $_GET['keyfile'];
+$ticket      = $_GET['ticket'];
+
 $number      = 0;
 $muser_range = "";
 
@@ -61,7 +63,7 @@ $query_es .= "VALUES ('" . $subject . "', '" . $descript . "', " . $muser . " , 
 
 
 
-if ($stsk_src_id == 0){
+
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) VALUES ";
 
@@ -124,29 +126,6 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
 
 }
 
-} else {
-
-$query = "";
-
-$users = explode("," , $user_id);
-
-for ($i=0; $i < count($users);$i++){
-//get the rage of user
- $user_range = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = " . $user[0] . " AND USR_FACILITY = " . $fac . ")"));
-
-    if($user_ramge['USR_RANGE'] == 'admin'){
-      $query .= "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO ,STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', " . $users[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "');";
-    } else {
-
-      $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
-      $query .= "VALUES ( " . $stsk_src_id . ", '" . $subject . "', '" . $descript . "', " . $users[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", 0, 1, 1, 'IN0000" . $ngnix['TICKET'] . "')";
-
-    }
-
-}
-
-}
 
 // cuando es el prime stsk  , no ed
 //echo $query . "<br />";

@@ -3079,6 +3079,7 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
+
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -4154,25 +4155,10 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 }
 
-td1.onclick = function (){
-
-    var obj = $(this).children('i');
-    console.info(obj.parent().parent().children('td').eq(3).children('i').attr("class"));
-    if(obj.parent().parent().children('td').eq(3).children('i').hasClass("fa-chevron-circle-right")){
-  var stsk_int = $(this).parent().children('input').val();
-    bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
-    if (confirmation){
-           unlock(stsk_int, stsk_int , obj);
-            obj.parent().parent().children('td').eq(3).html('<i class="fa fa-times-circle"></i>');
-    }
-  })
-    } 
-}
-
 if(kind == 0){
 
 
-td4.className = "ii-forward";
+i2.className = "ii-forward";
 // aqui yace
 i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
@@ -4182,21 +4168,57 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
 
-$("#stsk-code-ii").val(stsk_ident);
-$("#stsk-user-ii").val(user_id);
+// new wave
+if($(this).next().hasClass('person-sw-int')){
+
+if($(this).next().find('.swt-boo-int').bootstrapSwitch('state') == true){
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(remoteUser);
 $("#stsk-user-ii").attr("name", "muser");
 
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
-
-var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
-$("#set-pro-int").addClass('active in');
+$("#set-pro-own").addClass('active in');
+
+} else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+
 }
+
+} else if($(this).next().hasClass('fa-user')){
+
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(remoteUser);
+$("#stsk-user-ii").attr("name", "muser");
+
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
+console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
+$("#back-own").data("val", 1);
+$("#int-require").removeClass('active in');
+$("#set-pro-own").addClass('active in')
+
+}  else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+
+
 }
+
+}
+
 
 var tr2    = document.createElement('tr');
 var td_i1  = document.createElement('td');
