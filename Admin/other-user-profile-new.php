@@ -2872,23 +2872,23 @@ function drop (event) {
 function dropBack(event, object){
 
    event.preventDefault();
-   var data     = event.dataTransfer.getData("text");
+   var data     = event.dataTransfer.getData("text").split("|");
    var exo      = event.dataTransfer.getData("html");
 
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
-   var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
+   var usf      = data[1].substring(data[1].search("_in")-3, data[1].search("_in")); 
 
    console.info(exo);
 
-   backToFront(data, usf, iss_ind);
+   backToFront(data[0], usf, iss_ind);
    //$(".file-sent").eq(frIn).append()
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
    setTimeout(function(){
       $(".newtext").removeClass("newtext").addClass("drop-zone");
    }, 1200);
 
-   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']").clone();
+   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data[1] +"']").clone();
    newf.removeClass('file-opac').find('i').unwrap().parent().addClass('file-flex').find('span').remove()
    $(".front-sent").eq(frIn).append(newf);
 
@@ -2897,7 +2897,7 @@ function dropBack(event, object){
 
 function dragExt(event, object){
    console.info(object.attr('title'));
-   event.dataTransfer.setData("text", object.attr("title"));
+   event.dataTransfer.setData("text", object.attr("title") + "|" + object.data("pseudotitle") );
 
 }
 
@@ -3763,6 +3763,7 @@ var idf = $(this).index(".bk-fi");
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
          $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
+         $(this).data("pseudotitle",$(this).parent().parent().attr("href") );
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
@@ -5251,6 +5252,7 @@ var idf = $(this).index(".bk-fi");
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
          $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
+         $(this).data("pseudotitle", $(this).parent().parent().attr("href"))
   });
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
