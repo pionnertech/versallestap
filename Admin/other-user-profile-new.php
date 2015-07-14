@@ -1879,6 +1879,8 @@ jQuery.fn.justtext = function() {
     var keyFile      = "";
     var dateTime, objeto, dateTime;
 
+    var ttt = "";
+
     //ii variables 
     var remoteUser= 0;
     var st_ii     = 0;
@@ -2112,6 +2114,7 @@ switch(true){
 
 $(".int-forward").click(function(){
 
+ticket = $()
 dateTime = AmericanDate($(this).next().html());
 
        mode = "delegate";
@@ -4922,7 +4925,7 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 
 });
 
-function upgradeOwn(stskId, issId, percent, descript, subject){
+function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
 
 var ind = (parseInt($("#current-task").val())/2);
 var date = new Date();
@@ -4935,6 +4938,7 @@ var date = new Date();
       "&subject=" + subject+ 
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
+      "&ticket=" + 
       "&fac=" + fac,
       success: function (data){
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
