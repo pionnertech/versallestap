@@ -999,7 +999,8 @@ var far = $("#D-drop").data("files").split("|");
 
 //para comopromisos externos
      if(argument == 0) {  
-        $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
+      var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
+        $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(prevH + filestring);
 
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('p').children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('div').children('div').css({ width: val +"%"});
