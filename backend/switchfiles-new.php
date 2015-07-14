@@ -15,7 +15,7 @@ $dept = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_DEPT FROM USERS WHER
 
 if($charge_usr_id == "Mi Departamento"){
    
-   $team_ids = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $dept['USR_DEPT'] . " AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user')");
+   $team_ids = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user')");
 
        while($fila = mysqli_fetch_row($team_ids)){
                  
