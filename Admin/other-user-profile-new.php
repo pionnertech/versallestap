@@ -825,7 +825,7 @@ $handler = mysqli_query($datos, $matrix);
                                           <i class="fa fa-chevron-circle-right send-com" style="color: lightgreen"></i>
                                             <? } else { 
                                                echo $shine['ISS_COMENTARY'];
-                                              ?>
+                                              } ?>
                                         </div>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"> <? echo $shine['ISS_PROGRESS'] ?>%</span>
