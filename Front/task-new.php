@@ -24,7 +24,8 @@ $query_str_issues = "SELECT A.ISS_ID, " .
  "D.CAT_DESCRIPT, " .
  "CONCAT(E.USR_NAME, ' ' , E.USR_SURNAME),  "  .
  "A.ISS_TICKET, " .
- "A.ISS_CHARGE_USR " .
+ "A.ISS_CHARGE_USR ,"
+ "A.ISS_COMENTARY " .
 "FROM ISSUES A INNER JOIN EST B ON(A.ISS_STATE = B.EST_CODE) INNER JOIN USERS E ON(E.USR_ID = A.ISS_CHARGE_USR)" .
 "INNER JOIN CITIZENS C ON(C.CTZ_RUT = A.ISS_CTZ AND C.CTZ_FAC_ENTER = " . $_SESSION['TxtFacility'] . ") " .
 "INNER JOIN CAT D ON(D.CAT_ID = A.ISS_TYPE)  WHERE A.ISS_FAC_CODE = " . $_SESSION['TxtFacility'];
@@ -343,6 +344,9 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                             <dt>Origen</dt>
                                             <dd><? echo $fila1[12] ?></dd>
                                         </dl>
+                                        <div align="center" style="font-size: 1.2em; color: lightgray; font-style: italic; margin: 1em">
+                                          <? echo $fila1[16] ?>
+                                        </div>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                         </p>
