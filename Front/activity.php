@@ -1202,7 +1202,7 @@ exist = 1;
 function delegateRequirement(usr_id, imp, msg, dataF, dataS, iss_id){
 
 $.ajax({ type: "POST",
-	     url: "../backend/delegate.php?fac=" +fac +
+	     url: "../backend/delegate-new.php?fac=" +fac +
 	           "&usr_id=" + usr_id + 
 	           "&imp=" + imp +
 	           "&msg=" + msg+

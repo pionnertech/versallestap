@@ -110,7 +110,7 @@ if(!mysqli_query($datos, $insertar_audi)){
 } else {
 
 $iss_call = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ISS_ID FROM ISSUES WHERE ISS_FAC_CODE = " . $fac . " ORDER BY ISS_ID DESC LIMIT 1"));
-$iss_ticket = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(ISS_ID) AS CODIGO FROM ISSUES WHERE ISS_FAC_CODE = "  . $fac );
+$iss_ticket = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(ISS_ID) AS CODIGO FROM ISSUES WHERE ISS_FAC_CODE = "  . $fac ));
 if(!mysqli_query($datos, "UPDATE ISSUES SET ISS_TICKET = 'EX0000" . $iss_ticket['CODIGO']  . "' WHERE ISS_ID = " . $iss_call['ISS_ID'])){
    echo mysqli_error($datos);
 } else {
