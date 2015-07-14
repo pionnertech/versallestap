@@ -5164,6 +5164,7 @@ var date = new Date();
           if(percent > 99){
             $(".task").eq(ind).removeAttr("class").addClass("task Hc-int");
             $(".task").eq(ind).find('b').html("FINALIZADO");
+            $(".task").eq(ind).find('b').css("background-color", "#1CC131");
           }
 
            $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + ('0' + date.getDay()).slice(-2) + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
