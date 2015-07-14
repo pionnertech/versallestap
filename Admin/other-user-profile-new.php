@@ -3920,6 +3920,10 @@ if(kind == 1 ){
   tr_av.style.display =  "none !important";
   tr_av.className = "trf-int-usr ust" + userId;
 
+} else {
+    tr_av.className = "eu" + userId;
+    pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
+    pseudoparent.appendChild(tr_av);
 }
 
 td1_av.innerHTML = subject;
@@ -3929,19 +3933,6 @@ td3_av.innerHTML = date;
 tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
-
-     if(kind == 0){
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
-        pseudoparent.appendChild(tr_av);
-
-      } else {
-
-        tr_av.className = "u" + userId;
-        pseudoparent =  document.querySelectorAll(".int-table tbody")[ind];
-        pseudoparent.appendChild(tr_av);
-
-      }
 
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
