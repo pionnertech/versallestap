@@ -4156,7 +4156,7 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 
 if(kind == 0){
-  
+
 td4.className = "cell-title";
 // aqui yace
 i2.onclick = function (){
@@ -4267,9 +4267,9 @@ if(kind == 1){
 
 } else {
 
-    div4.className ="ii-files";
-
-
+      div4.className ="ii-files";
+  var div5 = document.createElement('div');
+      div5.className = "ii-files-sent";
 
     input_b = document.createElement('input');
     input_b.type = "checkbox";
@@ -4448,6 +4448,7 @@ if(kind == 1){
     td_i1.appendChild(div_special);
 } else {
   td_i1.appendChild(div4);
+  td_i1.appendChild(div5);
   td4.appendChild(div_ii);
 }
 
