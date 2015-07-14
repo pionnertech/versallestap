@@ -5254,19 +5254,16 @@ var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length - 1).find('i').html(function(){
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).children('a').length - 1).find('i').html(function(){
          $(this).attr("title", $(this).parent().parent().attr("href"));
          $(this).attr("draggable", true);
   });
+
   var nest = $(this);
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
       newElems.on('dragstart', function(){
-          dragExt(event , $(this));
-        });
-
-      nest.siblings('i').eq(nest.siblings('i').length - 1).on('dragstart', function(){
           dragExt(event , $(this));
         });
 
