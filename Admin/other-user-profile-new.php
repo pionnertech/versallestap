@@ -3770,10 +3770,11 @@ var idf = $(this).index(".bk-fi");
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
+      newElems.on('dragstart', function(){
+        dragExt(event , $(this))
+      });
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-               newElems.on('dragstart', function(){
-                      dragExt(event , $(this))
-                    });
+
 
 
      $(this).data("val", 1)
@@ -5181,7 +5182,8 @@ $(".fr").on("click", function(){
 function graphAddedFiles(object, names){
   var nname = names.split(",");
   var filstr = "";
-
+  var setClass = "";
+  var cor = "";
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
@@ -5232,7 +5234,7 @@ function graphAddedFiles(object, names){
 
     }
     
-    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass+ ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
 
@@ -5259,11 +5261,10 @@ var idf = $(this).index(".bk-fi");
 
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
+       newElems.on('dragstart', function(){
+          dragExt(event , $(this))
+        });
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-               newElems.on('dragstart', function(){
-                      dragExt(event , $(this))
-                    });
-
 
      $(this).data("val", 1)
 
