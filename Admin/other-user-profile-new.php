@@ -3663,14 +3663,6 @@ div_g1.style.verticalAlign = "top";
 
 
 //clip independ files:
-
-d
-
-
-
-
-
-
      dwco   = document.createElement('div');
      txarea = document.createElement('textarea');
      iwco   = document.createElement('i');
