@@ -749,24 +749,19 @@ $handler = mysqli_query($datos, $matrix);
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
-                                         if($stsk[7] == 0 || $stsk[7] == '0'){
+                                        if($stsk[9] == 1 || $stsk[9] == 2){
 
-                                            $color = "color:#EE8817;";
-                                            $lock = "";
-
-                                         } else {
-                                            $color = "color: #44D933;";
-                                            if($stsk[9] == 0 || $stsk[9] == 2){
-                                              if($stsk[3] == "Finalizada"){
+                                           if($stsk[3] == "Finalizada"){
                                                 $lock = "disabled";
                                               } else {
                                                 $lock = "";
                                               }
                                                 
                                             } else {
+
                                                  $lock = "disabled";
                                             }
-                                         }
+                                         
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
