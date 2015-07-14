@@ -9,22 +9,23 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-$Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin' ) ORDER BY USR_ID;");
+$Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin') ORDER BY USR_ID;");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_FINISH_DATE " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 
-$str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
+$str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin') ORDER BY TRF_USER; ";
 $Query_trf_usr    = mysqli_query($datos, $str_trf_usr);
-$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin' );");
+$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin');");
 // internal requirements
 
-$query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR = STSK_CHARGE_USR )  ORDER BY STSK_FINISH_DATE";
+$query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_ISS_ID = STSK_ID)  ORDER BY STSK_FINISH_DATE";
 $internal       = mysqli_query($datos, $query_internal);
 $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
 
-$vlist = "";
+$vlist = "Mi Departamento,";
+
 
 while ($Qth_list = mysqli_fetch_row( $Query_team)){
   $vlist .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_list[1] . " " . $Qth_list[2] )))) . ",";
@@ -35,14 +36,12 @@ mysqli_data_seek($Query_team, 0);
 if(mysqli_num_rows($quntum) == 0){
 
     $contador = 0;
-
 } else {
-  
     $cont = mysqli_fetch_assoc($quntum);
     $contador = $cont['CONTADOR'];
 }
 
-$intList = "Jefaturas,";
+$intList = "Mi Departamento, Jefaturas,";
 
 while ($Qth_int_list = mysqli_fetch_row( $Query_team_int)){
   $intList .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_int_list[1] . " " . $Qth_int_list[2] )))) . ",";
@@ -306,11 +305,52 @@ width:100%;
   margin: 1em 0;
 }
 
+.drop-zone:after{
+  content: "Arrastre aqui sus archivos";
+  color: lightgray;
+  font-family: arial;
+  font-style: italic;
+  top: 1.7em;
+  left: 33%;
+  position: relative;
+      -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
+}
 
+.newtext, .drop-zone{
+    -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
+} 
+.newtext:after{
+  content: "Archivos Agregado!";
+  color: lightgreen;
+  font-family: arial;
+  font-style: italic;
+  top: 1.7em;
+  left: 33%;
+  position: relative;
+      -webkit-transition:all 800ms ease-in-out;
+    -moz-transition:all 800ms ease-in-out;
+    transition:all 800ms ease-in-out;
 
+}
+
+.comentary{
+  width: 85%;
+  border-radius: 15px;
+  resize: none;
+  padding: .5em 1em;
+}
+
+.wcom{
+  font-size: 1.2em;
+  color:lightgray;
+  font-style: italic;
+
+}
     </style>    
- 
-  
 </head>
 <body>
 <input id="muser" type="hidden" value="<? printf($_SESSION["TxtCode"]) ?>">
@@ -767,9 +807,8 @@ $handler = mysqli_query($datos, $matrix);
                                             <td colspan="5">
                                                  <div class="info-content" style="display:none">
                                  <div class="docs-example">
-
                                         <dl class="dl-horizontal">
-<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
+<? $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP , CONCAT(B.CTZ_NAMES , ' ', B.CTZ_SURNAME1, ' ', B.CTZ_SURNAME2) AS NAME, B.CTZ_ADDRESS, B.CTZ_TEL, A.ISS_TICKET, B.CTZ_GEOLOC, E.CAT_DESCRIPT, A.ISS_PROGRESS , A.ISS_COMENTARY FROM ISSUES A INNER JOIN CITIZENS B ON (A.ISS_CTZ = B.CTZ_RUT) INNER JOIN CAT E ON(E.CAT_ID = A.ISS_TYPE) WHERE ISS_ID = " . $stsk[1] ));
 
                                          if($shine['CTZ_GEOLOC'] !== 0){ ?>
                                             <img style="float:right;" src="https://maps.googleapis.com/maps/api/staticmap?zoom=14&size=150x150&sensor=false&maptype=roadmap&markers=color:red|<? echo $shine['CTZ_GEOLOC'] ?>">
@@ -787,12 +826,24 @@ $handler = mysqli_query($datos, $matrix);
                                             <dt>Origen</dt>
                                             <dd><? printf($shine['CAT_DESCRIPT']) ?></dd>
                                         </dl>
+                                        <div class="wcom" align="center">
+                                            <? if( is_null($shine['ISS_COMENTARY']) ||  $shine['ISS_COMENTARY'] == "" ) { ?>
+                                          <textarea class="comentary" placeholder="Respuesta al ciudadano"></textarea>
+                                          <i class="fa fa-chevron-circle-right fa-3x send-com" style="color: lightgreen"></i>
+                                            <? } else { 
+                                               echo $shine['ISS_COMENTARY'];
+                                              } ?>
+                                        </div>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"> <? echo $shine['ISS_PROGRESS'] ?>%</span>
                                         </p>
                                             <div class="progress tight">
                                                 <div class="bar forward" style="width: <? echo $shine['ISS_PROGRESS'] ?>%"></div>
                                             </div>
+                                            <div class="w-ap">
+                                              <i class="fa fa-files-o fa-2x bk-fi" style="margin-right: 2em"></i>
+                                              <div ondrop="dropBack(event, this)" ondragover="allowDrop(event)" class="drop-zone" style="display:none; width: 80%; margin: .7em 5em; border:5px dashed orange;height: 5em"></div>
+                                          </div>
                                         <div class="front-response"></div>
                                         <pre class="pre" style="display:inline-flex; width: 100%">
                                             <i class="fa fa-paperclip fa-2x fr"  style="display: block;" title="Documentos de Respuesta"></i>
@@ -993,6 +1044,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                         closedir($handler);
                                        }
                                     }
+                                  break;
                                 }
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
@@ -1828,6 +1880,8 @@ jQuery.fn.justtext = function() {
     var keyFile      = "";
     var dateTime, objeto, dateTime;
 
+    var ttt = "";
+
     //ii variables 
     var remoteUser= 0;
     var st_ii     = 0;
@@ -2061,6 +2115,7 @@ switch(true){
 
 $(".int-forward").click(function(){
 
+ticket = $()
 dateTime = AmericanDate($(this).next().html());
 
        mode = "delegate";
@@ -2100,9 +2155,9 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
-$("#set-pro-int").addClass('active in');
+$("#set-pro-own").addClass('active in');
 
 } else {
 
@@ -2123,9 +2178,9 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$("#back-own").data("val", 1);
 $("#int-require").removeClass('active in');
-$("#set-pro-int").addClass('active in');
+$("#set-pro-own").addClass('active in')
 
 }  else {
 
@@ -2143,7 +2198,13 @@ $("#back-ii").click(function(){
 });
 
 $("#back-own").click(function(){
-  $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
+  if($(this).data("val") == undefined || $(this).data("val") == 0 ){
+       $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
+
+  } else {
+    $("#set-pro-own").removeClass('active in');$("#int-require").addClass('active in');
+  }
+  
 })
 
 
@@ -2251,13 +2312,14 @@ $("#stsk-code").val(stsk_id);
 var current = $("#delegates").val();
 
 //fades
+
+
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
-
 $(".incoming-files").css({ display : "none"});
 
 } else {
-
+$("#back-own").data("val", 0);
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
 
@@ -2271,6 +2333,8 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
+
+$("#back-own").data("val", 0);
 
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
@@ -2321,8 +2385,14 @@ $("#up-int").empty();
 
 $("#send-int").on('click', function(){
  if(checkIntDel() == true){
-    intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 );
-    
+  if($("#back-own").data("val") == 0 || $("#back-own").data("val") == undefined){
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 , "")
+  } else {
+     intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii , $(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html());
+  }
+  
+
+
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    } 
@@ -2785,16 +2855,50 @@ function drop (event) {
     moveAtDragDropfiles(data, mainuser, chargeuser);
     $("#D-drop:after").css("content", " ");
     $("#D-drop").data("files", $("#D-drop").data("files") + data + "|");
+}
+
+
+function dropBack(event, object){
+
+   event.preventDefault();
+   var data     = event.dataTransfer.getData("text");
+   var exo      = event.dataTransfer.getData("html");
+
+   var frIn     = $(object).index(".drop-zone");
+   var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
+   var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
+
+   console.info(exo);
+
+   backToFront(filename(data), usf, iss_ind);
+   //$(".file-sent").eq(frIn).append()
+   $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
+   setTimeout(function(){
+      $(".newtext").removeClass("newtext").addClass("drop-zone");
+   }, 800);
+
+   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']");
+   $(".front-sent").eq(frIn).append(newf);
+
+}
+
+
+function dragExt(event, object){
+   console.info(object.attr('outerHTML'));
+   event.dataTransfer.setData("text", object.attr("title"));
 
 }
 
 function allowDrop (event) {
+
     event.preventDefault();
+    
 }
 
 function drag (event) {
     event.dataTransfer.setData("text", event.target.title);
 }
+
 
 
 
@@ -2974,22 +3078,15 @@ uploader =  $(object).pluploadQueue({
 
 };
 
-
-function intDel(user, sub, des, date, ind, mst){
+function intDel(user, sub, des, date, ind, mst, tkt){
 
 var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
-console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
-          "&fechaF=" + date + 
-          "&subject=" + sub + 
-          "&descript=" + des + 
-          "&startD=" + fecha  + 
-          "&fac="+ fac +
-          "&main_stsk=" + mst + 
-          "&keyfile=" + keyFile);
+
+console.info("llega el ticket = " + tkt);
+
   $.ajax({
           type: "POST",
           url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
@@ -3000,22 +3097,32 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
           "&startD=" + fecha  + 
           "&fac="+ fac +
           "&main_stsk=" + mst + 
-          "&keyfile=" + keyFile, 
+          "&keyfile=" + keyFile +
+          "&ticket=" + tkt, 
           beforeSend: function(){
+
                 $("#send-int").attr("disabled", true);
           },
           success : function (data){
+
+           console.info(data);
+
            result = data.split("|");
            
            var string = "";
-         
+
+                     if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
+
+                              $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-group spac"></i>');
+                      }
+
                    bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
-                            for(i=2; i < result.length -1; i++){
+                            for(i=1; i < result.length -1; i++){
                              string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
@@ -3032,6 +3139,8 @@ console.log("backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
+
+
                 }
   })
 
@@ -3508,31 +3617,7 @@ div_g1.style.verticalAlign = "top";
 
 //*************
 
- div_gf1  = document.createElement('div'); // contenedor flecha 1
- div_gf2  = document.createElement('div'); // contenedor flecha 2
-
- i_gf1  = document.createElement('i'); //flecha 1
- i_gf1.className = "fa fa-chevron-right fa-2x";
- i_gf1.style.color= "#66A4EE";
-
- i_gf2 = document.createElement('i');
- i_gf2.className = "fa fa-chevron-left fa-2x";
- i_gf2.style.color = "#8FEC68";
-
- div_gf2.style.width = "4em";
- div_gf2.style.verticalAlign = "top";
- div_gf2.style.display = "inline-block";
-
- div_gf1.style.width = "4em";
- div_gf1.style.verticalAlign = "top";
- div_gf1.style.display = "inline-block";
-
- div_gf1.appendChild(i_gf1);
- div_gf2.appendChild(i_gf2);
  
- div_g1.appendChild(div_gf1);
- div_g2.appendChild(div_gf2);
-
  div_gch = document.createElement('div');
  div_gch.className = "great-chart";
  div_gch.style.width = "18%";
@@ -3577,10 +3662,123 @@ div_g1.style.verticalAlign = "top";
      dd3 = document.createElement('dd');
      dd4 = document.createElement('dd');
 
+
+//clip independ files:
+
+    
+
+
+
+     dwco   = document.createElement('div');
+     txarea = document.createElement('textarea');
+     iwco   = document.createElement('i');
+     
+     dwco.className = "wcom";
+     dwco.setAttribute("align", "center");
+
+     iwco.className = "fa fa-chevron-circle-right fa-3x send-com";
+     iwco.style.color = "lightgreen";
+     txarea.className = "comentary";
+     txarea.setAttribute("placeholder", "Respuesta al ciudadano");
+
+iwco.onclick = function(){
+  
+    var obj       = $(this);
+    var comentary = $(this).prev().val();
+    var iss_ind   = $(this).parents("tr").prev().children(".iss_id").val();
+
+  if( comentary.trim() !== ""){
+        $.ajax({
+                 type: "POST",
+                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind + "&fac=" + fac, 
+                 success : function (data){
+                  console.info(data);
+                        obj.prev().replaceWith("\"" + comentary + "\"");
+                        obj.remove();
+                        bootbox.alert("Respuesta enviada satisfactoriamente");
+                        
+                 }
+        })
+
+  } else {
+
+       bootbox.alert("ingrese la respuesta al requerimiento del ciudadano");
+  }
+
+}
+
+dwco.appendChild(txarea);
+dwco.appendChild(iwco);
+
+
+   // files to back 
+    dw_ap = document.createElement('div');
+    iw_ap = document.createElement('i');
+    ddrop = document.createElement('div');
+
+   iw_ap.className = "fa fa-files-o fa-2x bk-fi";
+   iw_ap.style.marginRight = "2em";
+   ddrop.className = "drop-zone";
+
+   ddrop.style.width = "80%"; 
+   ddrop.style.margin =  "0.7em 5em";
+   ddrop.style.border = "5px dashed orange";
+   ddrop.style.height = "5em";
+   ddrop.style.display = "none";
+   
+
+   ddrop.ondrop = function(event){
+       dropBack(event, this);
+   }  
+   ddrop.ondragover = function(event){
+     allowDrop(event);
+   }
+
+
+iw_ap.onclick = function(){
+
+var idf = $(this).index(".bk-fi");
+
+  if($(this).data("val") == undefined || $(this).data("val") == 0){
+      
+     
+  $(".drop-zone").eq(idf).fadeToggle("slow");
+
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length).find('i').html(function(){
+         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("draggable", true);
+  });
+  var newElems = $(".file-contents").eq(idf).find('i').clone();
+      newElems.css({ margin : "0 .2em"});
+      newElems.insertAfter($('.w-ap').eq(idf).children("i"));
+               newElems.on('dragstart', function(){
+                      dragExt(event , $(this))
+                    });
+
+
+     $(this).data("val", 1)
+
+  } else {
+
+     $(this).siblings('i').remove();
+       $(".drop-zone").eq(idf).fadeToggle("fast")
+      $(this).data("val", 0);
+    
+  }
+               
+}
+
+dw_ap.appendChild(iw_ap);
+dw_ap.appendChild(ddrop);
+
      p_pro    = document.createElement('p');
      str_pro  = document.createElement('strong');
      span_pro = document.createElement('span');
+     str_p1  = document.createElement('strong');
+     span_p1 = document.createElement('span');
      pre_pro  = document.createElement('pre');
+     pre_pro.style.width = "100%";
+     pre_pro.style.display ="inline-flex";
 
     //==== ***** classes ****
 
@@ -3589,7 +3787,7 @@ div_g1.style.verticalAlign = "top";
     div_ic.className      = "docs-example";
     div_ic_back.id        = "back";
     div_ic_pro.className  = "progress tight";
-    div_ic_file.className = "files"
+    div_ic_file.className = "files";
     i_ic.className        = "fa fa-chevron-circle-right fa-2x";
     i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
     i_ic.style.cursor     = "pointer";
@@ -3603,8 +3801,15 @@ div_g1.style.verticalAlign = "top";
     
     str_pro.innerHTML = "Grado de progreso";
     span_pro.innerHTML = "0%";
-    p1.appendChild(str_pro);
-    p1.appendChild(span_pro);
+
+    str_p1.innerHTML = "Grado de progreso";
+    span_p1.innerHTML = "0%";
+
+    p_pro.appendChild(str_pro);
+    p_pro.appendChild(span_pro);
+
+    p1.appendChild(str_p1);
+    p1.appendChild(span_p1);
 
     //************ inner HTML ******
     dt1.innerHTML = "Ciudadano";
@@ -3631,11 +3836,44 @@ dl.appendChild(dd3);
 dl.appendChild(dt4);
 dl.appendChild(dd4);
 
+// files to pre-pro 
+
+ipre = document.createElement('i');
+dpre1 = document.createElement('div');
+dpre2 = document.createElement('div');
+
+ipre.className= "fa fa-paperclip fa-2x fr";
+ipre.style.display = "block";
+ipre.setAttribute("title","Documentos de Respuesta" );
+dpre1.style.width = "100%";
+
+ipre.onclick = function(){
+  if($(this).data("val") == undefined || $(this).data("val") == 0 ){
+
+     uploaderInt($(this).parent().prev(), $(this).parent().parent().parent().parent().parent().prev().find(".iss_id").val());
+      $(this).data("val", 1);
+  } else {
+    $(this).parent().prev().fadeToggle("slow");
+  }
+    
+};
+
+
+dpre1.className ="front-received";
+dpre2.className = "front-sent";
+
+
+pre_pro.appendChild(ipre);
+pre_pro.appendChild(dpre1);
+pre_pro.appendChild(dpre2);
+//=======
 div_ic_back.appendChild(i_ic);  
 div_ic.appendChild(div_ic_back);
 div_ic.appendChild(dl);
-div_ic.appendChild(p_pro)
+div_ic.appendChild(dwco);
+div_ic.appendChild(p_pro);
 div_ic.appendChild(div_ic_pro);
+div_ic.appendChild(dw_ap);
 div_ic.appendChild(div_ic_file);
 div_ic.appendChild(pre_pro);
 
@@ -3740,13 +3978,13 @@ var filestring = "";
              '<span class="iname"></span>' +
            '</p>'+
         '</a>';
-         pre_pro.innerHTML = filestring;
+         dpre1.innerHTML = filestring;
          fileParent.appendChild(elem[n]);
       }
 }
 });
 
-pre_pro.innerHTML = filestring;
+dpre1.innerHTML = filestring;
 
     div4.appendChild(i4);
     td6.appendChild(div0);
@@ -3786,8 +4024,8 @@ console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  us
     
 if(parseInt(kind) == 0){
 
-document.querySelectorAll("#ext-tasks-table td .bar")[ind*2].style.width = percent + "%";
-document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2].innerHTML = percent + "%";
+document.querySelectorAll("#ext-tasks-table td .bar")[ind*2+1].style.width = percent + "%";
+document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2+1].innerHTML = percent + "%";
 console.info("porsica el ind es : " + ind);
 $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
@@ -3795,7 +4033,9 @@ $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]")
 
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
+$(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]").parent().attr("data-per", customPro) 
 insertScheduleTraffic(subject, descript ,date, userId, ind);
+
 
 }
 
@@ -3810,6 +4050,10 @@ if(kind == 1 ){
   tr_av.style.display =  "none !important";
   tr_av.className = "trf-int-usr ust" + userId;
 
+} else {
+    tr_av.className = "eu" + userId;
+    pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
+    pseudoparent.appendChild(tr_av);
 }
 
 td1_av.innerHTML = subject;
@@ -3819,18 +4063,6 @@ td3_av.innerHTML = date;
 tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
-
-     if(kind == 0){
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
-        pseudoparent.appendChild(tr_av);
-
-      } else {
-
-        tr_av.className = "eu" + userId;
-        pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
-        pseudoparent.appendChild(tr_av);
-      }
 
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
@@ -4010,7 +4242,7 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     b1.style.backgroundColor = "#178FD0";
 
 
-    i2.className   = "fa fa-chevron-circle-right";
+    i2.className   = "fa fa-chevron-circle-right ii-forward";
     
     td4.appendChild(i2);
     td3.appendChild(b1);
@@ -4056,25 +4288,9 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 }
 }
 
-td1.onclick = function (){
-
-    var obj = $(this).children('i');
-    console.info(obj.parent().parent().children('td').eq(3).children('i').attr("class"));
-    if(obj.parent().parent().children('td').eq(3).children('i').hasClass("fa-chevron-circle-right")){
-  var stsk_int = $(this).parent().children('input').val();
-    bootbox.confirm("Esta seguro de cerrar este requerimiento?", function (confirmation){
-    if (confirmation){
-           unlock(stsk_int, stsk_int , obj);
-            obj.parent().parent().children('td').eq(3).html('<i class="fa fa-times-circle"></i>');
-    }
-  })
-    } 
-}
-
 if(kind == 0){
 
-
-td4.className = "ii-forward";
+td4.className = "cell-title";
 // aqui yace
 i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
@@ -4084,21 +4300,58 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
 
-$("#stsk-code-ii").val(stsk_ident);
-$("#stsk-user-ii").val(user_id);
+// new wave
+if($(this).next().hasClass('person-sw-int')){
+
+if($(this).next().find('.swt-boo-int').bootstrapSwitch('state') == true){
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(remoteUser);
 $("#stsk-user-ii").attr("name", "muser");
 
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
-
-var percent = parseInt($(this).parent().next().children('td').children('p').children('span').html());
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-
+$("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
-$("#set-pro-int").addClass('active in');
+$("#set-pro-own").addClass('active in');
+
+} else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+$("#back-own").data("val", 1);
+
 }
-}
+
+} else if($(this).next().hasClass('fa-user')){
+
+$("#stsk-code-ii").val(st_ii);
+$("#stsk-user-ii").val(remoteUser);
+$("#stsk-user-ii").attr("name", "muser");
+
+percent = parseInt($(this).parent().parent().next().children('td').children('p').children('span').html());
+console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
+
+   $(".span2").data("val", percent);
+   $(".span2").slider('setValue', percent);
+$("#back-own").data("val", 1);
+$("#int-require").removeClass('active in');
+$("#set-pro-own").addClass('active in')
+
+}  else {
+
+mode = "first";
+$("#del-int-req").data("val", $(this).index());
+$("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
+$("#back-own").data("val", 0);
+
+
+}}}
+
+
 
 var tr2    = document.createElement('tr');
 var td_i1  = document.createElement('td');
@@ -4149,9 +4402,9 @@ if(kind == 1){
 
 } else {
 
-    div4.className ="ii-files";
-
-
+      div4.className ="ii-files";
+  var div5 = document.createElement('div');
+      div5.className = "ii-files-sent";
 
     input_b = document.createElement('input');
     input_b.type = "checkbox";
@@ -4330,6 +4583,7 @@ if(kind == 1){
     td_i1.appendChild(div_special);
 } else {
   td_i1.appendChild(div4);
+  td_i1.appendChild(div5);
   td4.appendChild(div_ii);
 }
 
@@ -4518,9 +4772,7 @@ function filename(name){
 
 var regexp = new RegExp(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/g);
 matches = regexp.exec(name);
-
 mtObj = matches.toString().replace(",", "");
-
 return mtObj;
 }
 
@@ -4689,15 +4941,6 @@ var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart
     $("svg").attr("height", 100);
 }
 
-
-
-
-
-
-
-
-
-
 //funcion prototipo
 $(".ifile").on('dblclick', function(){
   var fi = $(this).children('span').html();
@@ -4806,7 +5049,7 @@ upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss
 
 });
 
-function upgradeOwn(stskId, issId, percent, descript, subject){
+function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
 
 var ind = (parseInt($("#current-task").val())/2);
 var date = new Date();
@@ -4819,6 +5062,7 @@ var date = new Date();
       "&subject=" + subject+ 
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
+      "&ticket=" + 
       "&fac=" + fac,
       success: function (data){
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
@@ -4972,6 +5216,88 @@ object.html(filstr);
 filstr = "";
 
 }
+
+
+
+$(".bk-fi").on('click', function(){
+
+var idf = $(this).index(".bk-fi");
+
+  if($(this).data("val") == undefined || $(this).data("val") == 0){
+      
+     
+  $(".drop-zone").eq(idf).fadeToggle("slow");
+
+  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length).find('i').html(function(){
+         $(this).attr("title", $(this).parent().parent().attr("href"));
+         $(this).attr("draggable", true);
+  });
+  var newElems = $(".file-contents").eq(idf).find('i').clone();
+      newElems.css({ margin : "0 .2em"});
+      newElems.insertAfter($('.w-ap').eq(idf).children("i"));
+               newElems.on('dragstart', function(){
+                      dragExt(event , $(this))
+                    });
+
+
+     $(this).data("val", 1)
+
+  } else {
+
+     $(this).siblings('i').remove();
+       $(".drop-zone").eq(idf).fadeToggle("fast")
+      $(this).data("val", 0);
+    
+  }
+
+
+
+               
+});
+// desde este punto se decide que se hace ocn task-own y su control de flujo 
+
+// $("back-own").data("val") te da la distincion entre 0 or undefined para externos y 1 para internos 
+// se tine que elaborar un req interno delegado... y elimnar el recibido 
+// $("#send-int"). -> crea un first task and collar
+
+$(".send-com").on('click', function(){
+  
+    var obj       = $(this);
+    var comentary = $(this).prev().val();
+    var iss_ind   = $(this).parents("tr").prev().children(".iss_id").val();
+
+  if( comentary.trim() !== ""){
+        $.ajax({
+                 type: "POST",
+                 url: "../backend/coment.php?com=" + comentary + "&iss=" + iss_ind + "&fac=" + fac, 
+                 success : function (data){
+                  console.info(data);
+                        obj.prev().replaceWith("\"" + comentary + "\"");
+                        obj.remove();
+                        bootbox.alert("Respuesta enviada satisfactoriamente");
+                        
+                 }
+        })
+
+  } else {
+
+       bootbox.alert("ingrese la respuesta al requerimiento del ciudadano");
+  }
+
+});
+
+
+function backToFront(name, usrId, iss){
+ console.info(usrId);
+  $.ajax({ type: "POST",
+   url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
+   success: function (data){
+      
+   }
+
+})
+}
+
 </script>
 
 <?
@@ -4980,5 +5306,5 @@ filstr = "";
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
-//"../backend/delegate_internal.php?muser=118&user=2&fechaF=2015-05-20 10:00:00&subject=manual&descript=manualmente conf&startD=2015-05-10 10:00:00&fac=10000&main_stsk=0&keyfile="
+
 ?>
