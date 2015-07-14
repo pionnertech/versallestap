@@ -31,7 +31,7 @@ echo date('d/m/Y', strtotime($manu['FECHA_INICIAL'])) . "|";
 echo $manu['STSK_TYPE'] . "|" ;
 echo $manu['CTZ_TEL'] . "|";
 echo $manu['CTZ_ADDRESS'] . "|";
-echo $manu['STSK_SUBJECT'];
+echo $manu['STSK_SUBJECT'] . "|";
 echo $manu['STSK_TICKET'];
 
 
