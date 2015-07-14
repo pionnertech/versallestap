@@ -15,7 +15,8 @@ $str_query = "SELECT A.STSK_ID, " .
 "A.STSK_START_DATE AS FECHA_INICIAL,  " .
 "A.STSK_TYPE, " . 
 "C.CTZ_TEL, " .
-"C.CTZ_ADDRESS " .
+"C.CTZ_ADDRESS, " .
+"A.STSK_TICKET " .
 " FROM SUBTASKS A LEFT JOIN ISSUES B ON(B.ISS_ID = A.STSK_ISS_ID) LEFT JOIN CITIZENS C ON (B.ISS_CTZ = C.CTZ_RUT) " . 
 "WHERE ( STSK_CHARGE_USR = "  . $a . " AND STSK_LOCK = 1 AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $fac . ") ORDER BY STSK_ID DESC LIMIT 1 ";	
 
@@ -31,6 +32,7 @@ echo $manu['STSK_TYPE'] . "|" ;
 echo $manu['CTZ_TEL'] . "|";
 echo $manu['CTZ_ADDRESS'] . "|";
 echo $manu['STSK_SUBJECT'];
+echo $manu['STSK_TICKET'];
 
 
 ?>
