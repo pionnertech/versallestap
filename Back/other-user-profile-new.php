@@ -610,7 +610,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                             <tr class="task <? echo $class ?>">
                                                             <input type="hidden" value="<? echo $fila_int[0] ?>" class="int-st">
                                                             <input type="hidden" value="<? echo $fila_int[1] ?>" class="int-st-src">
-                                                                <td class="cell-icon"><? echo $filaint[10] ?></td>
+                                                                <td class="cell-icon"><? echo $fila_int[10] ?></td>
                                                                 <td class="cell-title"><? echo $fila_int[3] ?></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila_int[6] ?> ; "><? echo $fila_int[4] ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
