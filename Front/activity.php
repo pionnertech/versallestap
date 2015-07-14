@@ -217,7 +217,7 @@ select {
 								</a>
 							</li>
 							<li>
-								<a href="task.php">
+								<a href="task-new.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
 									<b id="counter-task" class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
