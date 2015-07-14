@@ -3052,8 +3052,6 @@ uploader =  $(object).pluploadQueue({
                 randFiles += file.name + "|";
 
                 $("#up-own").data("files", randFiles);
-
-
                 if(object.hasClass("front-response")){
                   graphAddedFiles(object.next().children(".front-sent"), randFiles)
                 }
@@ -5229,7 +5227,7 @@ function graphAddedFiles(object, names){
 
   }
 
-object.html(filstr);
+object.html(object.html() + filstr);
 filstr = "";
 
 }
