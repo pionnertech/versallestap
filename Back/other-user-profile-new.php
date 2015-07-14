@@ -1080,7 +1080,7 @@ setInterval(function(){
                          if(msgExt[2] !== previuosData){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
-                                        inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9]);
+                                        inputTask(msgExt[2], msgExt[0], msgExt[1], msgExt[4], msgExt[3], msgExt[6], msgExt[5] , msgExt[7] , msgExt[8], msgExt[9], msgExt[11]);
                             }
 
                     }
@@ -1114,7 +1114,7 @@ inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessag
 }
 
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind, ctz_tel, ctz_address){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind, ctz_tel, ctz_address, ticket){
 
 
 if(parseInt(kind) == 0){
@@ -1146,10 +1146,9 @@ if(parseInt(kind) == 0){
     var b    = document.createElement('b');
     var btn  = document.createElement('button');
     var i0   = document.createElement('i');
-    var icon = document.createElement('i');
+   
 
-    icon.className = "icon-checker high";
-    td1.appendChild(icon);
+    td1.innerHTML = ticket;
     
     td1.className = "cell-icon";
     td2.className = "cell-title";
