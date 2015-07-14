@@ -3662,6 +3662,15 @@ div_g1.style.verticalAlign = "top";
      dd4 = document.createElement('dd');
 
 
+//clip independ files:
+
+d
+
+
+
+
+
+
      dwco   = document.createElement('div');
      txarea = document.createElement('textarea');
      iwco   = document.createElement('i');
@@ -3671,13 +3680,8 @@ div_g1.style.verticalAlign = "top";
 
      iwco.className = "fa fa-chevron-circle-right fa-3x send-com";
      iwco.style.color = "lightgreen";
-     txarea.className = "comnetary";
+     txarea.className = "comentary";
      txarea.setAttribute("placeholder", "Respuesta al ciudadano");
-
-
-
-
-     
 
 iwco.onclick = function(){
   
@@ -3782,7 +3786,7 @@ dw_ap.appendChild(ddrop);
     div_ic.className      = "docs-example";
     div_ic_back.id        = "back";
     div_ic_pro.className  = "progress tight";
-    div_ic_file.className = "files"
+    div_ic_file.className = "files";
     i_ic.className        = "fa fa-chevron-circle-right fa-2x";
     i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
     i_ic.style.cursor     = "pointer";
@@ -3796,8 +3800,9 @@ dw_ap.appendChild(ddrop);
     
     str_pro.innerHTML = "Grado de progreso";
     span_pro.innerHTML = "0%";
-    p1.appendChild(str_pro);
-    p1.appendChild(span_pro);
+
+    p_pro.appendChild(str_pro);
+    p_pro.appendChild(span_pro);
 
     //************ inner HTML ******
     dt1.innerHTML = "Ciudadano";
@@ -3828,7 +3833,7 @@ div_ic_back.appendChild(i_ic);
 div_ic.appendChild(div_ic_back);
 div_ic.appendChild(dl);
 div_ic.appendChild(dwco);
-div_ic.appendChild(p_pro)
+div_ic.appendChild(p_pro);
 div_ic.appendChild(div_ic_pro);
 div_ic.appendChild(dw_ap);
 div_ic.appendChild(div_ic_file);
