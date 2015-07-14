@@ -2907,6 +2907,7 @@ function allowDrop (event) {
     
 }
 
+
 function drag (event) {
     event.dataTransfer.setData("text", event.target.title);
 }
