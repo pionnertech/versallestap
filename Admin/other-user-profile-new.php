@@ -3977,7 +3977,7 @@ var filestring = "";
              '<span class="iname"></span>' +
            '</p>'+
         '</a>';
-         pre_pro.innerHTML = filestring;
+         dpre1.innerHTML = filestring;
          fileParent.appendChild(elem[n]);
       }
 }
