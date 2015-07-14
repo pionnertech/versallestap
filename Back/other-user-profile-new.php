@@ -938,6 +938,8 @@ date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('
              console.info(index);
 
 var filestring = "";
+
+$("#D-drop").data("files").replace("undefined", "");
 var far = $("#D-drop").data("files").split("|");
 
                for(i=0; i < far.length-1; i++ ){
@@ -986,7 +988,7 @@ var far = $("#D-drop").data("files").split("|");
 
 
     }
-          filestring +=  '<a href="../' + fac + '/' + mainuser +'/' + far[i] + '" download>' +
+          filestring +=  '<a class="down" href="../' + fac + '/' + mainuser +'/' + far[i] + '" download>' +
            '<p class="ifile" title="' + far[i] + '">' +
              '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
              '<span class="iname"></span>' +
@@ -999,7 +1001,7 @@ var far = $("#D-drop").data("files").split("|");
 
 //para comopromisos externos
      if(argument == 0) {  
-        
+
       var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
         $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(prevH + filestring);
 
