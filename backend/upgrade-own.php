@@ -1,6 +1,4 @@
 <?php 
-
-
 $stsk     = $_GET['stsk'];
 $iss      = $_GET['iss'];
 $percent  = $_GET['percent'];
@@ -54,10 +52,12 @@ if(!mysqli_query($datos, $trf)){
 	echo mysqli_error($datos);
 }
 
+echo $percent;
 
-if($percent > 99){
+if((int)$percent > 99){
 	mysqli_query("UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $stsk . ";");
 	mysqli_query("UPDATE ISSUES SET ISS_STATE = 5 WHERE ISS_ID = " . $iss);
 }
+
 
 ?>
