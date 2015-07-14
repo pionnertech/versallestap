@@ -1081,7 +1081,6 @@ setInterval(function(){
             url: "../backend/sse-event-back.php?usr=" + mainuser + "&fac=" + fac,
             success : function(data){
                      var msgExt = data.split('|'); 
-                       
                          if(msgExt[2] !== previuosData){
                                 previuosData = msgExt[2];
                                      showAlert(msgExt[10], "externo");
@@ -1102,14 +1101,13 @@ if(typeof(EventSource) !== "undefined") {
     sourceInt.onmessage = function(event) {
 
        var eventMessage = event.data.split('\n');
-    console.info(eventMessage[2] + " vs. " + previuosDataInt);
         if(eventMessage[2] !== previuosDataInt){
 
             previuosDataInt = eventMessage[2];
 
                 showAlert(eventMessage[6], "interno");
              
-inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "");
+inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "", eventMessage[7]);
         }
     }
 
