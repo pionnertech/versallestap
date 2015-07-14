@@ -93,7 +93,7 @@ $i = 0;
 
      while($fila = mysqli_fetch_row($team_leader)){
 
-            $query .= " ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "') ";
+            $query .= " ( " . ($number + $i + 1) . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "') ";
             
             $i = $i + 1;
 
@@ -107,15 +107,22 @@ $i = 0;
 
 $uq = explode("," , $user_id);
 $earray = [];
+$rarray = [];
 
 for($i=0; $i < count($uq); $i++){
-     $us = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = '" . $uq[$i] . "' AND USR_FACILITY = " . $fac . ")"));
+     $us = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID, USR_RANGE FROM USERS WHERE( CONCAT(USR_NAME, ' ', USR_SURNAME) = '" . $uq[$i] . "' AND USR_FACILITY = " . $fac . ")"));
      $earray[$i] = $us['USR_ID'];
+     $rarray[$i] = $us['USR_RANGE'];
 }
 
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET, STSK_RESP)  VALUES";
    for($i=0; $i < count($earray); $i++){
-        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
+      if($rarray[$i] == 'admin'){
+       $query .= "  ( " . ($number + $i+1) . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
+      } else {
+       $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
+      }
+       
          //echo $query . "<br />";
            if( $i < count($earray)-1){
                 $query .= ",";
