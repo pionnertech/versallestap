@@ -1943,7 +1943,7 @@ jQuery.fn.justtext = function() {
     var user_send    = "";
     var stsk_send    = "";
     var keyFile      = "";
-    var dateTime     = ""
+    var dateTime     = "";
     var  objeto, dateTime;
 
     var ttt = "";
@@ -2065,9 +2065,9 @@ var  date1 = $('.datetimepicker').datetimepicker({
     timepicker: false,
     onShow: function (ct){
         this.setOptions({
-            minDate : '-1970/01/02',  
             maxDate : dateTime,
-            format:'d/m/Y'
+            minDate : '-1970/01/02',  
+            format  : 'd/m/Y'
         })
     }
 });
@@ -2079,6 +2079,8 @@ var datetime  = $(".seo").datetimepicker({
     format:'d/m/y',
     timepicker: false
 });
+
+
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
