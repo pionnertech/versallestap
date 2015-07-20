@@ -2090,6 +2090,8 @@ var datetime  = $(".seo").datetimepicker({
     minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
+            console.info(ct);
+      console.info(dateTime);
     if(mode == "delegate"){
             this.setOptions({
                 maxDate : dateTime,
