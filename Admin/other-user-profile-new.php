@@ -1943,7 +1943,7 @@ jQuery.fn.justtext = function() {
     var user_send    = "";
     var stsk_send    = "";
     var keyFile      = "";
-    var dateTime     = "";
+    var dateTime     = "2036/12/29";
     var  objeto, dateTime;
 
     var ttt = "";
