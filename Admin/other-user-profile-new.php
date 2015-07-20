@@ -1403,6 +1403,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
              ?>
                                                                         <a data-per="<? echo $prt[3] ?>" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
+                                                                            <i class="fa fa-check-circle finished" style="opacity: <? if ($prt[3] == 100 ) { ?> 1 <? } else { } ?>">
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
 
@@ -1472,7 +1473,9 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                }
 
                                               // closedir($handler2);
+
                                                 mysqli_data_seek($part, 0);
+
                                                 ?>
                                                 </div>
 
@@ -3401,8 +3404,16 @@ function changeListener(){
                              console.info(indice);
                              console.info("progreso del usuario : " + packets[10]);
                         if(parseInt(packets[10]) >= 99.5){
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().removeClass().addClass("task Hc");
+                          if(packets[9] == 0){
+
+                          $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
+                          
+                          } else {
+                            
+                             $("#int-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
+                          }
+                            
+                           
                           }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);
