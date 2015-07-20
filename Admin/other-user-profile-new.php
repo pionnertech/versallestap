@@ -1179,7 +1179,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                       
                                     <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
                                     <input type="hidden" value="" id="current-task"> 
-                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button>
                                     </div>
@@ -2063,12 +2063,12 @@ $('.datetimepicker').datetimepicker({
     lang:'es',
     format:'Y/m/d',
     timepicker: false,
+    minDate : '-1970/01/02', 
     onShow: function (ct){
       console.info(ct);
       console.info(dateTime);
         this.setOptions({
             maxDate : dateTime,
-            minDate : '-1970/01/02',  
             format  : 'd/m/Y'
         })
     }
@@ -5124,6 +5124,7 @@ $(".padlock:first").on('click', function(){
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val(''); 
+            $(".datetimepicker").val('');
      }
    })
 });
