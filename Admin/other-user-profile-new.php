@@ -2090,6 +2090,7 @@ var datetime  = $(".seo").datetimepicker({
     minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
+
     if(mode == "delegate"){
             this.setOptions({
                 maxDate : dateTime,
@@ -2384,7 +2385,7 @@ var current = $("#delegates").val();
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
-mode = "delegates";
+mode = "delegate";
 } else {
 
 $("#back-own").data("val", 0);
