@@ -2058,12 +2058,14 @@ progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 $("i.fa-lock").parent().unbind('click');
 $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
 
-var  date1 = $('.datetimepicker').datetimepicker({
+$('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
     format:'Y/m/d',
     timepicker: false,
     onShow: function (ct){
+      console.info(ct);
+      console.info(dateTime);
         this.setOptions({
             maxDate : dateTime,
             minDate : '-1970/01/02',  
