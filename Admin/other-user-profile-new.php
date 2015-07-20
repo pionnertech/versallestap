@@ -2090,8 +2090,6 @@ var datetime  = $(".seo").datetimepicker({
     minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
-            console.info(ct);
-      console.info(dateTime);
     if(mode == "delegate"){
             this.setOptions({
                 maxDate : dateTime,
@@ -2383,14 +2381,12 @@ $("#stsk-code").val(stsk_id);
 
 var current = $("#delegates").val();
 
-//fades
-
-
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
-
+mode = "delegates";
 } else {
+
 $("#back-own").data("val", 0);
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
