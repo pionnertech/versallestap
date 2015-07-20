@@ -2386,6 +2386,7 @@ $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('acti
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
 mode = "delegate";
+
 } else {
 
 $("#back-own").data("val", 0);
