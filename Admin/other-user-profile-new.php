@@ -3410,7 +3410,7 @@ function changeListener(){
                           
                           } else {
 
-                             $("#int-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
+                             $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').prev().css({ opacity : "1"});
                           }
                             
                            
