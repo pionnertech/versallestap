@@ -1471,7 +1471,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                 break;
                                                }
 
-                                               closedir($handler2);
+                                              // closedir($handler2);
                                                 mysqli_data_seek($part, 0);
                                                 ?>
                                                 </div>
