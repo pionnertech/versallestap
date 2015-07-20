@@ -1808,7 +1808,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                           <div id="int-back" style="cursor: pointer; width:20px;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
                                           <input value=" <? echo $intList ?>" id="int-del" style="width: 95%; display: inline-block; vertical-align: top;">
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 67%;display: inline-block; vertical-align: top;">
-                                          <input type="text" class="datetimepicker date-int-finish" style=" width: 24%;display: inline-block; vertical-align: top;" >
+                                          <input type="text" placeholder="Fecha de entrega" class="datetimepicker date-int-finish" style=" width: 24%;display: inline-block; vertical-align: top;" >
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:93%"></textarea>
                                           <div id="up-int"></div>
                                           <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
@@ -2002,6 +2002,7 @@ $(document).on('ready', function(){
 kenin = $('#delegates').selectize({
 plugins: ['remove_button'],
 delimiter: ',',
+placeholder: "Destinatarios",
 preload:true,
 closeAfterSelect: true,
 hideSelected: true, 
@@ -2035,6 +2036,7 @@ plugins: ['remove_button'],
 delimiter: ',',
 preload:true,
 closeAfterSelect: true,
+placeholder: "Destinatarios",
 hideSelected: true, 
 persist: false,
 create: false,
