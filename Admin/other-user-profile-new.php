@@ -4846,7 +4846,7 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
    $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
-   $(this).parent().next().children(".int-files-for").find("a[href*='" + val + "']").css({ opacity : "1"});
+   $(this).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
 });
 
 
