@@ -1384,7 +1384,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                 <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;" <? echo $lock ?>><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
                                                             <tr class="display-pro-int" style="display: none;">
@@ -4827,12 +4827,10 @@ $(".span2").on("slide", function (slideEvt) {
 
 $(".hovertip").on("click ", function(){
 
-if($(this).data("val") == 0 || $(this).data("val") == undefined){
-
-    $(".trf-int-usr").css({display :"none"});
+  $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(this).children("input").val().replace("u" ,""));
-
+  
    $(this).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
      $(this).data("val", 1);
@@ -4847,15 +4845,8 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                 .render();
                     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
-
-} else {
-
-   var val = parseInt($(this).children("input").val().replace("u" ,""));
-   $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
-   $(this).data("val", 0);
-}
-
-
+   $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
+   $(this).parent().next().children(".int-files-for").find("a[href*='" + val + "']").css({ opacity : "1"});
 });
 
 
