@@ -3371,6 +3371,7 @@ function changeListener(){
            //Javier Cisterna Valdes|119|aunt|otro progreso|13/05/2015|13|70||70|1|80
                 var nest = 0
              if(previan !== packets[2]){
+              previan = packets[2];
                //si no está vacio
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                        showAlert(packets[2], "pro", packets[0]);
@@ -3412,7 +3413,7 @@ function changeListener(){
                           }
                       // \./\./
                     }
-                    previan = packets[2];
+                    
                 }
             }
         })
