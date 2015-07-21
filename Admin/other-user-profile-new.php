@@ -3212,11 +3212,12 @@ console.info("llega el ticket = " + tkt);
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
-                            for(i=1; i < result.length -1; i++){
-                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
+                            for(i=1; i < result.length-1; i++){
+                              if(result[i] != ""){
+                                                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
-                                 
+                              }   
                             }
 
                            var parent = document.querySelectorAll('.coll-int')[ind+1];
