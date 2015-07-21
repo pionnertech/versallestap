@@ -3311,6 +3311,9 @@ if (um == 0){
     });
 
     function showAlert(message, type, usr_name) {
+      console.log("message :" + message);
+      console.info("previan :" + previan);
+
 if(type == "req"){
 
 var title = "Te ha llegado un nuevo requerimiento:";
