@@ -168,7 +168,7 @@ vertical-align: top;
                                      Vista Principal
                                     </a>
                                 </li>
-                                <li><a href="other-user-profile.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario </a></li>
+                                <li><a href="other-user-profile-new.php"><i class="menu-icon icon-inbox"></i>Perfil de Usuario </a></li>
                             </ul>
 
                             <!--/.widget-nav-->
