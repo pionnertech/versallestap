@@ -35,7 +35,7 @@ $datos = $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000")
 
 $query =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $stsk ));
 
-$userId = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, A.STSK_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TICKET = " . $ticket . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= " . $kind .");");
+$userId = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, A.STSK_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= " . $kind .");");
 
 if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
