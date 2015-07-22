@@ -78,7 +78,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     <link type="text/css" href="../css/theme.css" rel="stylesheet">  
     <link type="text/css" href="../css/uploader_style.css" rel="stylesheet" />
     <link type="text/css" href="../images/icons/css/font-awesome.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="../scripts/jquery.datetimepicker.css">
     <link type="text/css" href="../css/slider.css" rel="stylesheet" />
@@ -2110,6 +2110,10 @@ onChange : function(){
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 },
 onItemAdd: function(){
+        user_send = $('#int-del').val();
+       console.info(user_send);
+       keyFile = RandomString(8);
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 
       }
 });
