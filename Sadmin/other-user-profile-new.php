@@ -4162,7 +4162,7 @@ document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2+1].innerHT
 console.info("porsica el ind es : " + ind);
 $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
- var tknum = $("#ext-tasks-table .task")eq(ind).children(".cell-icon").html();
+ var tknum = $("#ext-tasks-table .task").eq(ind).children(".cell-icon").html();
 
 
 } else {
