@@ -3054,7 +3054,7 @@ uploader =  $(object).pluploadQueue({
                     up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
                 } else if(object.attr("id") == "up-int"){
                   
-                   up.setOption("url", );
+                   up.setOption("url", url);
                 }
                 console.info( "el ide del uploader" + object.attr("id"));
                 
