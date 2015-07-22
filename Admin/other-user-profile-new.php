@@ -5237,7 +5237,7 @@ var date = new Date();
       "&subject=" + subject+ 
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
-      "&ticket=" + 
+      "&ticket=" + ticket +
       "&fac=" + fac,
       success: function (data){
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
