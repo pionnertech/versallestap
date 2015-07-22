@@ -3154,7 +3154,7 @@ uploader =  $(object).pluploadQueue({
 
                     var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                     graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
+                     graphAddedFiles($(".int-files-for").eq(eind), $("#D-drop").data("dfil"));
 
                        
                 } 
