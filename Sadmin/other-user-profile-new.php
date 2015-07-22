@@ -4572,7 +4572,7 @@ if(kind == 1){
     }
     
     filstr += '<a href="../' + fac + '/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
-
+   console.info(filstr);
   }
 
 div4.innerHTML = filstr;
