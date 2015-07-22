@@ -1,11 +1,7 @@
 
-<?php ini_set('session.gc_maxlifetime', 27000);
-// each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params(27000);
-session_start();
+<?php session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
