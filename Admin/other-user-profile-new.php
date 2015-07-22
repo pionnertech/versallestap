@@ -1381,7 +1381,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-
                                                                 <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
                                                                 <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"  ><? echo $fila5[6]; ?></b></td>
@@ -3155,6 +3154,13 @@ uploader =  $(object).pluploadQueue({
                   var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
                      graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
+
+                } else if(object.attr("id", "up-int")){
+                  
+                  var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
+                      console.info("eind de internos : " + eind);
+                    graphAddedFiles($(".int-files-to").eq(eind), $("#up-own").data("files"));
+
                 }
 
                 randFiles = "";
