@@ -6,9 +6,7 @@ $keyfile = $_REQUEST['keyfile'];
 
 $iss_id = $keyfile;
 
-if(!is_dir($dir)){
-	mkdir($dir, 0775, true);
-}
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
