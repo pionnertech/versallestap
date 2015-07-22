@@ -5228,6 +5228,7 @@ $(".padlock:first").on('click', function(){
      }
    })
 });
+
 function swUsr(stskId){
   $.ajax({
        type: "POST",
