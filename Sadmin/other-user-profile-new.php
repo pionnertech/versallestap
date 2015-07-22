@@ -1415,6 +1415,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                              <div class="wrap-int-files" >
                                <div class="int-files-to">
 
+
                                           <?    
                       while($fint = mysqli_fetch_row($part)){
 
