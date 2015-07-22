@@ -3150,13 +3150,11 @@ uploader =  $(object).pluploadQueue({
                    console.info("front");
                   graphAddedFiles(object.next().children(".front-sent"), $("#D-drop").data("dfil"));
 
-                } else if (object.attr("id", "up-own")){
+                } else if (object.attr("id", "up-own") && kind !== "internal"){
 
-                      
-                              
-                              var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
+                    var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                               graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
+                     graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
 
                        
                 } 
