@@ -694,7 +694,7 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler))){
-
+echo "<script>console.info('" . preg_match_all("/_\[" . $fila_int[1] . "\]_/", $archivos2) . " ---- " . $fila_int[1] . " ---  " . "../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "_alt/')</script>";
                                          if(preg_match_all("/_\[" . $fila_int[1] . "\]_/", $archivos2) == 1){
                                              
                                              $extension = substr($archivos2, -3);
