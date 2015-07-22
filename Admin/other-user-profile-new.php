@@ -2217,7 +2217,7 @@ $(".ii-forward").click(function(){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = $(this).parent().parent().children("input").eq(1).val();
- st_ii      = $(this).parent().parent().children("input").eq(0).val();
+ st_ii      = parseInt($(this).parent().parent().children("input").eq(0).val());
  ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
 
@@ -5242,7 +5242,7 @@ var date = new Date();
       "&subject=" + subject+ 
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
-      "&ticket=" + 
+      "&ticket=" + ticket +
       "&fac=" + fac,
       success: function (data){
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
