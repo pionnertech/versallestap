@@ -4575,7 +4575,7 @@ if(kind == 1){
    console.info(filstr);
   }
 
-div4.innerHTML = filstr;
+      div4.innerHTML = filstr;
       div_special.appendChild(div4);
       div_special.appendChild(div5);
       div_special.appendChild(div_special2);
@@ -4739,7 +4739,10 @@ $.ajax({ type:"POST",
     
 }
 
-  div4.innerHTML = str_file;
+if(div4.innerHTML == ""){
+   div4.innerHTML = str_file;
+}
+ 
 
 }
 });
