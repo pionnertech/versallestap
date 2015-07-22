@@ -3242,14 +3242,6 @@ console.info("llega el ticket = " + tkt);
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
-                    if($("#D-drop").data("dfil") != undefined || $("#D-drop").data("dfil") == 0 ){
-                          console.info(ind+1);
-                          console.info($(".int-files-for").eq(ind+1));
-                          graphAddedFiles($(".int-files-for").eq(ind+1), $("#D-drop").data("dfil").toString());
-                          $("#D-drop").data("dfil", "");
-                        } else {
-                         console.info("valor actual : " +   $("#D-drop").data("dfil"));
-                        }
 
                 }
   })
@@ -4526,6 +4518,67 @@ if(kind == 1){
       div_special.appendChild(div4);
       div_special.appendChild(div5);
       div_special.appendChild(div_special2);
+
+
+var nname = $("#D-drop").data("dfil").split("|");
+  var setClass = "";
+  var cor = "";
+  var filstr= ""
+  for (i=0; i < nname.length-1 ; i++){
+     var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+    
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+
+  }
+div5.innerHTML = filstr;
+
 
 } else {
 
