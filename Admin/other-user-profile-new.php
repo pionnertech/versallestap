@@ -4727,8 +4727,11 @@ var nname = $("#D-drop").data("dfil").split("|");
     filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
-div5.innerHTML = filstr;
-
+  if(iin){
+    div4.innerHTML = filstr;
+  } else {
+    div5.innerHTML = filstr;
+  }
 
 } else {
 
@@ -4889,7 +4892,6 @@ $.ajax({ type:"POST",
 }
 if(div5.innerHTML == ""){
     div5.innerHTML = str_file;
-
 }
 
 }
