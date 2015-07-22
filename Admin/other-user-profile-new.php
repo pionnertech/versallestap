@@ -2118,6 +2118,7 @@ onItemAdd: function(){
       }
 });
 
+
 kenin[0].selectize.clear();
 selectInt[0].selectize.clear();
 
