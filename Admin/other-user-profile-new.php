@@ -356,6 +356,9 @@ width:100%;
   height:2em;
 }
 
+.progress-go > .slider{
+margin:0 6%;
+}
 
     </style>    
 </head>
@@ -1874,15 +1877,17 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                 <div id="back-ii"><i class="fa fa-chevron-circle-left fa-3x"></i></div>
                                     <h3>Subir Cumplimientos</h3>
                                     <strong id="wrapaudi"><small id="audititle"></small></strong>
-                                    <input  id="pro-subject" type="text" class="int-ii-subtasks" value="" placeholder="asunto">
-                                    <textarea id="pro-descript" placeholder="Descripcion cumplimiento" style="margin: 1.5em .5em"></textarea>
+                                    <input  id="pro-subject" type="text" class="int-ii-subtasks" value="" placeholder="asunto" style="width: 95%">
+                                    <textarea id="pro-descript" placeholder="Descripcion cumplimiento" style="margin: 1.5em 0em; width: 95%"></textarea>
                                     <div class="progress-go">
                                             <p>
                                                 <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
                                             </p>
                                              <input type="text" id="value-progress" class="span2" style="width: 28em"/>
                                     </div>
-                                    <button class="btn btn-info" id="upgrade">Subir Progreso</button>
+                                    <div align="center">
+                                        <button class="btn btn-info" id="upgrade">Subir Progreso</button>
+                                  </div>
                                 </div>
 
                                 <div class="attach" style="display:inline-block">
