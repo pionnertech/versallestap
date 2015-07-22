@@ -1378,6 +1378,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                           }
                                                     ?>
 
+
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
 
