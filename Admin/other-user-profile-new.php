@@ -3154,11 +3154,11 @@ uploader =  $(object).pluploadQueue({
 
                      graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
 
-                } else if(object.attr("id", "up-int")){
+                } else {
                   
                   var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
                       console.info("eind de internos : " + eind);
-                    graphAddedFiles($(".int-files-to").eq(eind), randFiles );
+                    graphAddedFiles($(".int-files-to").eq(eind), randFiles);
 
                 }
 
