@@ -17,7 +17,7 @@ if($user == "Mi Departamento"){
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
-$users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = " . $dept['USR_DEPT'] . " AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user')");
+$users = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user')");
 
        while($fila = mysqli_fetch_row($users)){
 
