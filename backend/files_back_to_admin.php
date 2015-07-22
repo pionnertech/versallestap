@@ -65,11 +65,16 @@ while( $fila = mysqli_fetch_row($userId) ){
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
 
-         if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
+if($bingo){//esto es para cuando se detecte el origin de aqui podemos diferenciar si es un Sadmin, Admin o back;
+  $factor = 1;
+} else {
+  $factor = 0;
+}
+         if(preg_match_all("/_\[" . ($kilo[0] + $factor) . "\]_/", $files) == 1){
 
          if($bingo == true){
 
-            $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
+            $outcome .= "../". $fac . "/" . $fila[0]  ."_alt/" . $files . "|";
           } else {
 
               if((int)$user == (int)$fila[0] ){
