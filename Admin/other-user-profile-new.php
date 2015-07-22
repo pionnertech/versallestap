@@ -2235,7 +2235,8 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
-$("#set-pro-own").addClass('active in');
+$("#set-pro-int").addClass('active in');
+
 
 } else {
 
@@ -2258,7 +2259,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 1);
 $("#int-require").removeClass('active in');
-$("#set-pro-own").addClass('active in')
+$("#set-pro-int").addClass('active in')
 
 }  else {
 
