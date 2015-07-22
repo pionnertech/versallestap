@@ -3128,7 +3128,8 @@ uploader =  $(object).pluploadQueue({
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 randFiles += file.name + "|";
                 $("#up-own").data("files", randFiles);
-                $("#up-int").data("val", randFiles);
+               console.log(randFiles);
+               console.info("data-files :" + $("#up-own").data("files"));
 
             },
   
@@ -3140,7 +3141,6 @@ uploader =  $(object).pluploadQueue({
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                    console.log("reponse", files);
-               $("#up-own").data("files", randFiles);
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
@@ -3158,7 +3158,7 @@ uploader =  $(object).pluploadQueue({
                   
                   var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
                       console.info("eind de internos : " + eind);
-                    graphAddedFiles($(".int-files-to").eq(eind), $("#up-int").data("files"));
+                    graphAddedFiles($(".int-files-to").eq(eind), $("#up-own").data("files"));
 
                 }
 
