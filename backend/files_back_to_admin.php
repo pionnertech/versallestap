@@ -56,7 +56,7 @@ if($kind == 0 || $kind == "0"){
 } else {
 
 while( $fila = mysqli_fetch_row($userId) ){
-  $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_TICKET = " . $ticket . "AND STSK_FAC_CODE = " . $fac . ")");
+  $usInt = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")");
   while($kilo = mysqli_fetch_row($usInt) ){
    $rdir = "/var/www/html/" . $fac . "/" . $fila[0] . "_alt/";
        if(!is_dir($rdir)) {
