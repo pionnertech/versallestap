@@ -1384,8 +1384,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                                 <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
-                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" data-lock="<? printf($lock) ?>" ><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title int-forward" style="cursor:pointer;" <? echo $lock ?>><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"  ><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;" data-lock="<? printf($lock) ?>"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
                                                             <tr class="display-pro-int" style="display: none;">
