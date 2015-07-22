@@ -103,7 +103,7 @@ $user_out8 = $classText;
 
   if($sp == 'admin'){
 
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . ((int)$get_main['STSK_ID']-1) . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   $user      = mysqli_fetch_assoc($query_usr);
   $pre_prog  = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE STSK_ID = " . $user['TII_STSK_ID']);
 
@@ -123,7 +123,7 @@ $user_out8 = $classText;
 
   } else {
 
-  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . ((int)$get_main['STSK_ID'] -1) . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
+  $query_usr = mysqli_query($datos, "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1" );
   // echo "SELECT CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME, A.TII_USER,  A.TII_SUBJECT, A.TII_DESCRIPT, A.TII_ING_DATE, A.TII_STSK_SRC_ID, A.TII_STSK_ID FROM TRAFFIC_II A INNER JOIN USERS B ON(A.TII_USER = B.USR_ID) WHERE (A.TII_STSK_SRC_ID = " . $get_main['STSK_ID'] . " AND A.TII_FAC_CODE = " . $fac . ") ORDER BY TII_ID DESC LIMIT 1 <br />";
   $user      = mysqli_fetch_assoc($query_usr);
   $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($user['NAME']))));
