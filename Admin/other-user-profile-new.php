@@ -3243,9 +3243,9 @@ console.info("llega el ticket = " + tkt);
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
                     if($("#D-drop").data("dfil") != undefined || $("#D-drop").data("dfil") == 0 ){
-                          console.info(ind);
-                          console.info($(".int-files-for").eq(ind));
-                          graphAddedFiles($(".int-files-for").eq(ind), $("#D-drop").data("dfil").toString());
+                          console.info(ind+1);
+                          console.info($(".int-files-for").eq(ind+1));
+                          graphAddedFiles($(".int-files-for").eq(ind+1), $("#D-drop").data("dfil").toString());
                           $("#D-drop").data("dfil", "");
                         } else {
                          console.info("valor actual : " +   $("#D-drop").data("dfil"));
