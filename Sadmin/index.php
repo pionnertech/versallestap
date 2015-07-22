@@ -552,6 +552,7 @@ function getDataTable(iss_id, object, color ){
                var matrix = data.split("|");
                object.children('i').remove();
                document.querySelectorAll(".dl-horizontal dd")[document.querySelectorAll(".dl-horizontal dd").length -1].innerHTML = matrix[7];
+               
                for(i=1;i < 6 ; i++){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
