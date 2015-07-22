@@ -2451,9 +2451,11 @@ $(".del-int").on('click', function(){
 
      mode = "first";
     $("#up-int").empty();
+    $("#up-own").empty();
        user_send = $('#int-del').val();
        console.info(user_send);
        keyFile = RandomString(8);
+       uploaderInt($("#up-own"), "", user_send, '' , "internal", keyFile);
        uploaderInt($("#up-int"), "", user_send, '' , "internal", keyFile);
 
 $("#del-int-req").data("val", $(this).index());
