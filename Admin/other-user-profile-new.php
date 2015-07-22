@@ -785,7 +785,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status">
                                             <b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
+                                            <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
@@ -1383,7 +1383,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                                 <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
-                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" data-lock="<? printf($lock) ?>" ><? echo $fila5[6]; ?></b></td>
                                                                 <td class="cell-title int-forward" style="cursor:pointer;" <? echo $lock ?>><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
@@ -1998,6 +1998,8 @@ jQuery.fn.justtext = function() {
 
 
 $(document).on('ready', function(){
+
+$("td[data-lock=disabled]").unbind("click");
 
 kenin = $('#delegates').selectize({
 plugins: ['remove_button'],
