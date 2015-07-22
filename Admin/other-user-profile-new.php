@@ -5348,8 +5348,11 @@ function graphAddedFiles(object, names){
 
 console.info("completo string ====  " + filstr);
 console.info(object);
-console.info(object.html());
+
 object.html(object.html() + filstr);
+
+console.info(object.html().toString());
+
 filstr = "";
 
 }
