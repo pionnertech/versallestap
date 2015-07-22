@@ -4162,7 +4162,7 @@ document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2+1].innerHT
 console.info("porsica el ind es : " + ind);
 $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
- var tknum = document.querySelectorAll("#ext-tasks-table .task").eq(ind).children(".cell-icon").html();
+ var tknum = $("#ext-tasks-table .task")eq(ind).children(".cell-icon").html();
 
 
 } else {
@@ -4171,7 +4171,7 @@ document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
 $(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]").parent().attr("data-per", customPro);
 
-var tknum = document.querySelectorAll("#int-table .task").eq(ind).children(".cell-icon").html()
+var tknum = $("#int-table .task").eq(ind).children(".cell-icon").html();
 
 insertScheduleTraffic(subject, descript ,date, userId, ind);
 
