@@ -3127,7 +3127,7 @@ uploader =  $(object).pluploadQueue({
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 randFiles += file.name + "|";
-                console.info("this is randfiles :" + randFiles);
+                
                 $("#up-own").data("files", randFiles);
 
 
@@ -3141,7 +3141,7 @@ uploader =  $(object).pluploadQueue({
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                    console.log("reponse", files);
-
+               $("#up-own").data("files", randFiles);
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
