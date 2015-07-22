@@ -1012,7 +1012,7 @@ var filestring = "";
      if(argument == 0) {  
 
       var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
-        graphAddedFiles($("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring, $("#D-drop").data("files"));
+        graphAddedFiles($("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent"), $("#D-drop").data("files"));
             $("#D-drop").data("files", "");
 
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('p').children('span').html(val + "%");
