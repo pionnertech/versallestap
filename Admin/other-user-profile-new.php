@@ -4562,8 +4562,8 @@ i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = user_id;
- st_ii      = stsk_ident;
- ii_iss     = issId;
+ st_ii      = $(this).parent().siblings('input.ii-stsk').val();
+ ii_iss     = $(this).parent().siblings('input.ii-iss').val();
  ii_ind     = $(this).index(".ii-forward");
  psTck      = $(this).parent().siblings(".cell-icon").html();
 $("#up-int").empty();
