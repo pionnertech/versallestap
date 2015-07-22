@@ -152,8 +152,6 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
   
      	  if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
 
-
-
      	 	  $extension = pathinfo($files, PATHINFO_EXTENSION);   
 
               while($uteams = mysqli_fetch_row($uteam)){
