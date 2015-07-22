@@ -5229,6 +5229,14 @@ function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
 var ind = (parseInt($("#current-task").val())/2);
 var date = new Date();
 
+console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" + stskId + 
+      "&iss="+ issId + 
+      "&percent=" + percent + 
+      "&subject=" + subject+ 
+      "&descript=" + descript +
+      "&muser=" + $("#muser").val() +
+      "&ticket=" + ticket +
+      "&fac=" + fac);
   $.ajax({
       type: "POST",
       url: "../backend/upgrade-own.php?stsk=" + stskId + 
@@ -5240,6 +5248,7 @@ var date = new Date();
       "&ticket=" + ticket +
       "&fac=" + fac,
       success: function (data){
+        console.info("respuesta :" + data);
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
