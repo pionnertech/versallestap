@@ -2450,8 +2450,9 @@ $(".incoming-files").css({ display : "none"});
 $(".del-int").on('click', function(){
 
      mode = "first";
-     $("#up-owm").empty();
-      $("#up-int").empty();
+    $("#up-own").empty();
+    $("#up-int").empty();
+
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 

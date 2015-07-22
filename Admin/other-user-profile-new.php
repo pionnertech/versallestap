@@ -1713,7 +1713,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                 </td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($ii[10], 0, 10))) ?></td>
                                                             </tr>
-                                                            <tr style="display:none;">
+                                                            <tr class="display-progress-ii" style="display:none;">
                                                                 <td colspan="5">
                                                                     <p>
                                                                         <strong>Grado de progreso</strong><span class="pull-right small muted"><? printf($ii[7]) ?>%</span>
@@ -2340,6 +2340,7 @@ $("#set-pro-int").addClass('active in');
 } else {
 
 mode = "first";
+
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
@@ -2547,7 +2548,9 @@ $(".incoming-files").css({ display : "none"});
 $(".del-int").on('click', function(){
 
      mode = "first";
-     
+     $("#up-own").empty();
+     $("#up-int").empty();
+
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
 
@@ -2838,7 +2841,7 @@ $(".swt-int-ii").on('click', function(){
 
     var ex = $(this).attr("id");
     var title_in = $(this).html();
-    $(".display-progress").css({ display: "none"});
+    $(".display-progress-ii").css({ display: "none"});
     $(".title-int-ii").html(title_in);
      for(i=0; i < all_on.length ; i++){
            if(all_on[i].id !== ex){
@@ -4638,8 +4641,16 @@ var div4   = document.createElement('div');
 
 tr2.style.display = "none";
 if(kind == 1){
+
   tr2.className     = "display-progress";
+} 
+
+if(iin){
+
+  tr2.className     = "display-progress-ii";
 }
+
+
 span.className    = "pull-right small muted";
 div1.className    = "progress tight";
 div2.className    = "bar bar-warning";
