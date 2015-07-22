@@ -2450,7 +2450,6 @@ $(".incoming-files").css({ display : "none"});
 $(".del-int").on('click', function(){
 
      mode = "first";
-    $("#up-own").empty();
     $("#up-int").empty();
 
 $("#del-int-req").data("val", $(this).index());
@@ -2459,6 +2458,7 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 });
 
 $("#int-back").on('click', function(){
+  
 $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
 $("#up-int").empty();
 
