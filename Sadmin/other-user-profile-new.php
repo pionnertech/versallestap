@@ -2052,7 +2052,10 @@ onChange : function(){
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 },
 onItemAdd: function(){
-
+       user_send = $('#int-del').val();
+       console.info(user_send);
+       keyFile = RandomString(8);
+       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile);
       }
 });
 
@@ -3049,9 +3052,9 @@ uploader =  $(object).pluploadQueue({
                 console.log('[UploadFile]', file);
                 if(object.attr("id") == "up-own" || object.hasClass("front-response")){
                     up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
-                } else {
+                } else if(object.attr("id") == "up-int"){
                   
-                   up.setOption("url", url);
+                   up.setOption("url", );
                 }
                 console.info( "el ide del uploader" + object.attr("id"));
                 
