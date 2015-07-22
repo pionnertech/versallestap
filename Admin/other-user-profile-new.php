@@ -3127,7 +3127,7 @@ uploader =  $(object).pluploadQueue({
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 randFiles += file.name + "|";
-
+                console.info("this is randfiles :" + randFiles);
                 $("#up-own").data("files", randFiles);
 
 
