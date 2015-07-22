@@ -3128,9 +3128,9 @@ uploader =  $(object).pluploadQueue({
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 randFiles += file.name + "|";
-                $("#up-own").data("files", randFiles);
-               console.log(randFiles);
-               console.info("data-files :" + $("#up-own").data("files"));
+                $("#D-drop").data("dfil", randFiles);
+               
+              
 
             },
   
@@ -3148,23 +3148,17 @@ uploader =  $(object).pluploadQueue({
                 
                 if(object.hasClass("front-response")){
                    console.info("front");
-                  graphAddedFiles(object.next().children(".front-sent"), $("#up-own").data("files"));
+                  graphAddedFiles(object.next().children(".front-sent"), $("#D-drop").data("dfil"));
 
                 } else if (object.attr("id", "up-own")){
 
-                       if(!keyGen){
+                      
                               
                               var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                               graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
+                               graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
 
-                       } else {
-
-                              var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
-                              console.info("eind de internos : " + eind);
-                              graphAddedFiles($(".int-files-to").eq(eind), randFiles);
-
-                       }
+                       
                 } 
 
                 randFiles = "";
@@ -3249,6 +3243,14 @@ console.info("llega el ticket = " + tkt);
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
+                        if($("#D-drop").data("dfil") != undefined || $("#D-drop").data("dfil") == 0 ){
+                          graphAddedFiles($("int-files-for").eq(ind+1), $("#D-drop").data("dfil"));
+                          $("#D-drop").data("dfil", "");
+                        } else {
+                         console.info("valor actual : " +   $("#D-drop").data("dfil"));
+                        }
+                       
+                       
 
 
                 }
