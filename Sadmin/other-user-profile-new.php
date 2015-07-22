@@ -4515,12 +4515,7 @@ if(kind == 1){
 
       div5.style.width = "80%";
 
-      div_special.appendChild(div4);
-      div_special.appendChild(div5);
-      div_special.appendChild(div_special2);
-
-
-var nname = $("#D-drop").data("dfil").split("|");
+  var nname = $("#D-drop").data("dfil").split("|");
   var setClass = "";
   var cor = "";
   var filstr= "";
@@ -4581,6 +4576,9 @@ var nname = $("#D-drop").data("dfil").split("|");
   }
 
 div4.innerHTML = filstr;
+      div_special.appendChild(div4);
+      div_special.appendChild(div5);
+      div_special.appendChild(div_special2);
 
 
 } else {
