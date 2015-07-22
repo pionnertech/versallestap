@@ -24,7 +24,7 @@ $query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' ,
 $internal       = mysqli_query($datos, $query_internal);
 $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
 
-$vlist = "Mi Departamento,";
+$vlist = "Jefaturas|";
 
 
 while ($Qth_list = mysqli_fetch_row( $Query_team)){
@@ -88,7 +88,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
     <link type="text/css" href="../scripts/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
     <link type="text/css" href="../css/style_radial.css" rel="stylesheet">
     <style type="text/css">
-.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:100%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:95%}.attach{display:none;vertical-align:top}.file-contents, .file-sent{width:80%}.file-contents,.file-contents p{display:inline-block;vertical-align:top}.display-progress{display:none}.At-int-ii{display:table-row}.Ec-int-ii,.Hc-int-ii,.Pe-int-ii,.Pv-int-ii{display:none}.At-int{display:table-row}.Ec-int,.Hc-int,.Pe-int,.Pv-int{display:none}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}.ifile, .ifile-ii{margin:.5em;display:inline-block;vertical-align:top;cursor:pointer}.iname{display:block;text-align:left}#wrap-D{display:inline-block;max-height:20em}.toggle-attach{float:right;background-color:gray;border-radius:15px}.toggle-attach i{color:#fff;padding:.2em}#D-drop{height:20em;width:20em;float:right;background-color:#fff;border-radius:20px;border:1px orange solid;overflow-y:auto;overflow-x:hidden}#D-drop:after{content:"Arrastre aqui sus archivos";color:gray;position:relative;top:8em;left:2em;font-style:italic;font-size:1.3em}.attach,#wrap-D{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.after:after{content:"Arrastre aqui sus archivos"}.no-after:after{content:""}.collaborates{width:80%}.collaborates p{display:inline-block;vertical-align:top;font-size:.8em;font-style:italic}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.incoming-files{display:none}#froback{position:relative;float:right;color:#a9a9a9;font-style:italic}.spac{margin-right:.3em;color:#1e5799;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799',endColorstr='#207cca',GradientType=0);-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.golang i,.spac{font-size:1.5em}.golang, .wrap-events{display:inline-block;vertical-align:top}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}.events{color:#24B56C;font-size:1.5em}.wrap-events{width:auto;margin:0 .5em}.chrono{display:none}#back-to-main i{cursor:pointer}#back-to-main i:hover{color:#90ee90}.user-schedule{width:100%;height:auto}.wrap-charts{display:none}strong{font-size:.8em}.progressDisplay li{padding:5px}.utrf{display:none}.bolder{font-weight:bolder}.group{width:8%;border-radius:50%;padding:6px;border:1px solid #d3d3d3;border-radius:50%;display:inline-block;vertical-align:top;-webkit-transition:all 100ms ease-in-out;-moz-transition:all 100ms ease-in-out;transition:all 100ms ease-in-out}.group:hover{border:1px solid orange;width:10%}#descript-int{width:100%;}.af{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.af:hover{color:#F70202;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}
+.done{background:#daedb1;background:-moz-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#daedb1),color-stop(28%,#abd78d),color-stop(100%,#54ca50))!important;background:-webkit-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-o-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:-ms-linear-gradient(top,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;background:linear-gradient(to bottom,#daedb1 0%,#abd78d 28%,#54ca50 100%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#daedb1',endColorstr='#54ca50',GradientType=0)!important}.warning{background:#fefcea;background:-moz-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#fefcea),color-stop(0%,#fefcea),color-stop(26%,#f1da36))!important;background:-webkit-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-o-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:-ms-linear-gradient(top,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;background:linear-gradient(to bottom,#fefcea 0%,#fefcea 0%,#f1da36 26%)!important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefcea',endColorstr='#f1da36',GradientType=0)!important}.delay{background:#ff5335;background:-moz-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(1%,#ff5335),color-stop(100%,#d00e04));background:-webkit-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-o-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:-ms-linear-gradient(top,#ff5335 1%,#d00e04 100%);background:linear-gradient(to bottom,#ff5335 1%,#d00e04 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5335',endColorstr='#d00e04',GradientType=0)}.OwnComp{width:100%}.OwnComp-bars{background-color:#FFF;width:100%;margin:.5em;border:4px solid transparent;padding:1em 1.5em;width:80%}#Urgent-Display,#Audi-Display,#Com-Display{height:0;visibility:hidden;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.sub-del{width:55%;display:inline-block;vertical-align:top}#delegates{width:100%;position:relative;float:left}.require-subtasks{padding:0 1em;margin:.5em}#st-description{width:95%}.attach{display:none;vertical-align:top}.file-contents, .file-sent{width:80%}.file-contents,.file-contents p{display:inline-block;vertical-align:top}.display-progress{display:none}.At-int-ii{display:table-row}.Ec-int-ii,.Hc-int-ii,.Pe-int-ii,.Pv-int-ii{display:none}.At-int{display:table-row}.Ec-int,.Hc-int,.Pe-int,.Pv-int{display:none}.At{display:table-row}.Ec,.Hc,.Pe,.Pv{display:none}.ifile, .ifile-ii{margin:.5em;display:inline-block;vertical-align:top;cursor:pointer}.iname{display:block;text-align:left}#wrap-D{display:inline-block;max-height:20em}.toggle-attach{float:right;background-color:gray;border-radius:15px}.toggle-attach i{color:#fff;padding:.2em}#D-drop{height: 15em; width: 18em;float: right;background-color: #fff;border-radius: 8px;border: 29px rgb(236, 236, 236) solid;border-bottom: 57px solid rgb(236, 236, 236);overflow-y: auto;overflow-x: hidden;}#D-drop:after{content: "ARRASTRE AQUI SUS ARCHIVOS";color: rgb(194, 189, 189);position: relative;vertical-align: bottom;display: inline-block;text-align: center;top: 8em;left: 3.5em;font-size: .8em;}.attach,#wrap-D{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.after:after{content:"Arrastre aqui sus archivos"}.no-after:after{content:""}.collaborates{width:80%}.collaborates p{display:inline-block;vertical-align:top;font-size:.8em;font-style:italic}#audititle{font-style:italic;color:gray;width:100%}#wrapaudi{display:block;width:100%}.incoming-files{display:none}#froback{position:relative;float:right;color:#a9a9a9;font-style:italic}.spac{margin-right:.3em;color:#1e5799;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799',endColorstr='#207cca',GradientType=0);-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.golang i,.spac{font-size:1.5em}.golang, .wrap-events{display:inline-block;vertical-align:top}.info-content{width:100%}.iss-descript{font-style:italic;font-size:.7em;display:inline-block;vertical-align:top}.events{color:#24B56C;font-size:1.5em}.wrap-events{width:auto;margin:0 .5em}.chrono{display:none}#back-to-main i{cursor:pointer}#back-to-main i:hover{color:#90ee90}.user-schedule{width:100%;height:auto}.wrap-charts{display:none}strong{font-size:.8em}.progressDisplay li{padding:5px}.utrf{display:none}.bolder{font-weight:bolder}.group{width:8%;border-radius:50%;padding:6px;border:1px solid #d3d3d3;border-radius:50%;display:inline-block;vertical-align:top;-webkit-transition:all 100ms ease-in-out;-moz-transition:all 100ms ease-in-out;transition:all 100ms ease-in-out}.group:hover{border:1px solid orange;width:10%}#descript-int{width:100%;}.af{-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}.af:hover{color:#F70202;-webkit-transition:all 600ms ease-in-out;-moz-transition:all 600ms ease-in-out;transition:all 600ms ease-in-out}
 
 .finished{
   color: #17D221;
@@ -350,6 +350,13 @@ width:100%;
   font-style: italic;
 
 }
+
+.file-flex{
+  width: 2em;
+  height:2em;
+}
+
+
     </style>    
 </head>
 <body>
@@ -742,19 +749,19 @@ $handler = mysqli_query($datos, $matrix);
 
                                         while ($stsk = mysqli_fetch_row($Query_subtask)){ 
                                          
-                                         if($stsk[7] == 0 || $stsk[7] == '0'){
+                                        if($stsk[9] == 1 || $stsk[9] == 2){
 
-                                            $color = "color:#EE8817;";
-                                            $lock = "";
-
-                                         } else {
-                                            $color = "color: #44D933;";
-                                            if(($stsk[9] == 1 || $stsk[9] == 2) && $stsk[3] != "Finalizada"){
+                                           if($stsk[3] == "Finalizada"){
+                                                $lock = "disabled";
+                                              } else {
                                                 $lock = "";
+                                              }
+                                                
                                             } else {
+
                                                  $lock = "disabled";
                                             }
-                                         }
+                                         
                                           switch ($stsk[3]){
                                               case 'Pendiente':
                                               $class = "Pe";
@@ -778,7 +785,7 @@ $handler = mysqli_query($datos, $matrix);
                                             <td class="cell-title"><? printf($stsk[2])  ?></td>
                                             <td class="cell-status">
                                             <b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
-                                            <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" <? printf($lock) ?> style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
+                                            <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
@@ -1172,7 +1179,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                       
                                     <input type="text" id="subject" class="require-subtasks eras" val="" placeholder="asunto">
                                     <input type="hidden" value="" id="current-task"> 
-                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker eras" styles="vertical-align:top; display: inline-block;"/><br><br>
+                                    <input id="end-data" type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
                                     <textarea id="st-description" placeholder="Descripcion del requerimiento" class="eras" style="margin: 1.5em .5em"></textarea>
                                     <div><button class="btn btn-info" id="del-subtask">Delegar Requerimiento</button>
                                     </div>
@@ -1371,13 +1378,13 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                           }
                                                     ?>
 
+
                                                             <tr class="task <? echo $class; ?>">
                                                                 <input type="hidden" value="<? echo $fila5[0]; ?>" class="hi-int-id">
-
                                                                 <td class="cell-icon" ><? echo $fila5[12]?></td>
                                                                 <td class="cell-title"><div><? echo $fila5[5]; ?></div></td>
-                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>" <? printf($lock) ?> ><? echo $fila5[6]; ?></b></td>
-                                                                <td class="cell-title int-forward" style="cursor:pointer;"><i class="fa fa-chevron-circle-right"></i></td>
+                                                                <td class="cell-status"><b class="due int-desglo" style="background-color:<? echo $fila5[8]; ?>"  ><? echo $fila5[6]; ?></b></td>
+                                                                <td class="cell-title int-forward" style="cursor:pointer;" data-lock="<? printf($lock) ?>"><i class="fa fa-chevron-circle-right"></i></td>
                                                                 <td class="cell-time align-right"><? echo date("d/m/Y", strtotime(substr($fila5[10], 0, 10))) ?></td>
                                                             </tr>
                                                             <tr class="display-pro-int" style="display: none;">
@@ -1391,11 +1398,12 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                                                                                        
                                                                     <div class="coll-int" style="width: 100%">
 
-             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
+             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
                                while($prt = mysqli_fetch_row($part)){
              ?>
                                                                         <a data-per="<? echo $prt[3] ?>" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
+                                                                            <i class="fa fa-check-circle finished" style="opacity: <? if ($prt[3] == 100 ) { ?> 1 <? } else { } ?>"></i>
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
 
@@ -1405,6 +1413,71 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                  ?>
                                                                     </div>
                                              <div class="wrap-int-files" >
+                               <div class="int-files-to">
+                                          <?    
+                      while($fint = mysqli_fetch_row($part)){
+
+                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/")) {
+                                  
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
+                              } 
+                           
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fint[2] . "' )</script>";
+                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
+
+                                             $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+                                          ?>
+                                          
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                         <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                         <span class="iname"></span>
+                                                     </p>
+                                                 </a>
+                                                  <? }
+                                                  } 
+                                                } 
+                                                break;
+                                               }
+
+                                              // closedir($handler2);
+
+                                                mysqli_data_seek($part, 0);
+
+                                                ?>
+                                                </div>
 
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
                           <?    
@@ -1463,15 +1536,10 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   } 
                                                 } 
                                                }
+                                              
+                                                mysqli_data_seek($part, 0);
                                                 ?>
                                                 </div>
-                                             <div class="int-files-to">
-                                                    
-                                             
-
-
-                                                </div>
-
                                              <div class="int-chart" style="display: inline-block; vertical-align: top;"></div>
                                              </div>
                                                 <table style="width: 100%" class="int-trf-descript">
@@ -1740,7 +1808,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                           <div id="int-back" style="cursor: pointer; width:20px;"><i class="fa fa-chevron-circle-left fa-2x"></i></div>
                                           <input value=" <? echo $intList ?>" id="int-del" style="width: 95%; display: inline-block; vertical-align: top;">
                                           <input type="text" id="subj-int" value="" placeholder="Ingrese un asunto" style="width: 67%;display: inline-block; vertical-align: top;">
-                                          <input type="text" class="datetimepicker date-int-finish" style=" width: 24%;display: inline-block; vertical-align: top;" >
+                                          <input type="text" placeholder="Fecha de entrega" class="datetimepicker date-int-finish" style=" width: 24%;display: inline-block; vertical-align: top;" >
                                           <textarea id="descript-int" value="" placeholder="Describa el requerimiento" style="width:93%"></textarea>
                                           <div id="up-int"></div>
                                           <div align="center"><button id="send-int" class="btn btn-info">Enviar Requerimiento</button></div>
@@ -1878,7 +1946,8 @@ jQuery.fn.justtext = function() {
     var user_send    = "";
     var stsk_send    = "";
     var keyFile      = "";
-    var dateTime, objeto, dateTime;
+    var dateTime     = "2036/12/29";
+    var  objeto;
 
     var ttt = "";
 
@@ -1930,9 +1999,12 @@ jQuery.fn.justtext = function() {
 
 $(document).on('ready', function(){
 
+$("td[data-lock=disabled]").unbind("click");
+
 kenin = $('#delegates').selectize({
 plugins: ['remove_button'],
 delimiter: ',',
+placeholder: "Destinatarios",
 preload:true,
 closeAfterSelect: true,
 hideSelected: true, 
@@ -1966,6 +2038,7 @@ plugins: ['remove_button'],
 delimiter: ',',
 preload:true,
 closeAfterSelect: true,
+placeholder: "Destinatarios",
 hideSelected: true, 
 persist: false,
 create: false,
@@ -1992,16 +2065,18 @@ progressbar =  $('.span2').slider({ step: 10 , max: 100, min: 0});
 $("i.fa-lock").parent().unbind('click');
 $("i.fa-lock").parent().parent().children('td:nth-child(5)').off();
 
- dateTime = $('.datetimepicker').datetimepicker({
+$('.datetimepicker').datetimepicker({
     step:5,
     lang:'es',
     format:'Y/m/d',
     timepicker: false,
+    minDate : '-1970/01/02', 
     onShow: function (ct){
+      console.info(ct);
+      console.info(dateTime);
         this.setOptions({
-            minDate : '-1970/01/02',  
             maxDate : dateTime,
-            format:'d/m/Y'
+            format  : 'd/m/Y'
         })
     }
 });
@@ -2013,6 +2088,8 @@ var datetime  = $(".seo").datetimepicker({
     format:'d/m/y',
     timepicker: false
 });
+
+
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
@@ -2020,6 +2097,7 @@ var datetime  = $(".seo").datetimepicker({
     minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
+
     if(mode == "delegate"){
             this.setOptions({
                 maxDate : dateTime,
@@ -2311,14 +2389,13 @@ $("#stsk-code").val(stsk_id);
 
 var current = $("#delegates").val();
 
-//fades
-
-
 $("#kitkat li").eq(2).removeClass('active');$("#kitkat li").eq(3).addClass('active');
 $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 $(".incoming-files").css({ display : "none"});
+mode = "delegate";
 
 } else {
+
 $("#back-own").data("val", 0);
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
@@ -2442,6 +2519,8 @@ $("#del-subtask").on('click', function(){
     //check type.
 if(checkDelExt() == true) {
 
+$(this).attr("disabled", "true");
+
 var _fS = new Date();
 var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " 10:00:00";
 
@@ -2457,7 +2536,11 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
         "&fechaF=" + ($(".datetimepicker").val()).replace(/\//g, "-") + 
         "&fac=" + $("#facility").val(), 
         success : function(data){
+
            console.info(data);
+
+           $(this).attr("disabled", "false");
+
            var filestring = "";
            var users = data.split("|");
         
@@ -2474,7 +2557,6 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
                 a_del.onclick  = function (){
 
    var ind = $(this).parent().next().parent().parent().prev().index('tr.task');
-   
    var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
@@ -2520,7 +2602,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                }
                 var far = $("#D-drop").data("files").split("|");
 
-               for(i=0; i < far.length; i++ ){
+               for(i=0; i < far.length-1; i++ ){
                         var extension = far[i].substring(far[i].length -3 , far[i].length);
               switch(extension){
                 case "pdf": 
@@ -2578,7 +2660,11 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
                $(".file-sent").eq(target/2).html($(".file-sent").eq(target/2).html() + filestring);
+                
+                $(".sub-del textarea, .sub-del input").val('');
                kenin[0].selectize.clear();
+               $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
+               $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
         }
     });
 
@@ -2861,31 +2947,32 @@ function drop (event) {
 function dropBack(event, object){
 
    event.preventDefault();
-   var data     = event.dataTransfer.getData("text");
+   var data     = event.dataTransfer.getData("text").split("|");
    var exo      = event.dataTransfer.getData("html");
 
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
-   var usf      = data.substring(data.search("_in")-3, data.search("_in")); 
+   var usf      = data[1].substring(data[1].search("_in")-3, data[1].search("_in")); 
 
    console.info(exo);
-
-   backToFront(filename(data), usf, iss_ind);
+   console.info(data[0] + "|" + data[1]);
+   backToFront(data[0], usf, iss_ind);
    //$(".file-sent").eq(frIn).append()
    $(".drop-zone").eq(frIn).removeClass("drop-zone").addClass("newtext");
    setTimeout(function(){
       $(".newtext").removeClass("newtext").addClass("drop-zone");
-   }, 800);
+   }, 1200);
 
-   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data +"']");
+   var newf = $(".file-contents").eq(frIn).find("a[href^='" + data[1] +"']").clone();
+   newf.removeClass('file-opac').find('i').unwrap().parent().addClass('file-flex').find('span').remove()
    $(".front-sent").eq(frIn).append(newf);
 
 }
 
 
 function dragExt(event, object){
-   console.info(object.attr('outerHTML'));
-   event.dataTransfer.setData("text", object.attr("title"));
+   console.info(object.attr('title'));
+   event.dataTransfer.setData("text", object.attr("title") + "|" + object.attr("data-pseudo") );
 
 }
 
@@ -2894,6 +2981,7 @@ function allowDrop (event) {
     event.preventDefault();
     
 }
+
 
 function drag (event) {
     event.dataTransfer.setData("text", event.target.title);
@@ -2929,6 +3017,7 @@ var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
 if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
+   var keyGen = true;
 } else {
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
@@ -3022,6 +3111,7 @@ uploader =  $(object).pluploadQueue({
   
                 plupload.each(files, function(file) {
                     console.log('  File:', file);
+
                 });
             },
   
@@ -3038,13 +3128,9 @@ uploader =  $(object).pluploadQueue({
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
                 randFiles += file.name + "|";
-
-                $("#up-own").data("files", randFiles);
-
-
-                if(object.hasClass("front-response")){
-                  graphAddedFiles(object.next().children(".front-sent"), randFiles)
-                }
+                $("#D-drop").data("dfil", randFiles);
+               
+              
 
             },
   
@@ -3059,7 +3145,22 @@ uploader =  $(object).pluploadQueue({
                 // when finish , enabe button 
                 $("#send-int").attr("disabled", false)
                 $("#SendRequest-free").attr("disabled", false);
+                
+                if(object.hasClass("front-response")){
+                   console.info("front");
+                  graphAddedFiles(object.next().children(".front-sent"), $("#D-drop").data("dfil"));
+
+                } else if (object.attr("id", "up-own") && kind !== "internal"){
+
+                    var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
+
+                     graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
+
+                       
+                } 
+
                 randFiles = "";
+                keyGen = false;
 
             },
  
@@ -3122,16 +3223,18 @@ console.info("llega el ticket = " + tkt);
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
 
-                            for(i=1; i < result.length -1; i++){
-                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
+                            for(i=1; i < result.length-1; i++){
+                              if(result[i] != ""){
+                                                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
-                                 
+                              }   
                             }
 
                            var parent = document.querySelectorAll('.coll-int')[ind+1];
                            console.info(ind+1);
                            parent.innerHTML = string;  
+
                          
                      });
                   newthum(1);
@@ -3139,7 +3242,6 @@ console.info("llega el ticket = " + tkt);
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
-
 
                 }
   })
@@ -3221,6 +3323,9 @@ if (um == 0){
     });
 
     function showAlert(message, type, usr_name) {
+      console.log("message :" + message);
+      console.info("previan :" + previan);
+
 if(type == "req"){
 
 var title = "Te ha llegado un nuevo requerimiento:";
@@ -3281,6 +3386,7 @@ function changeListener(){
            //Javier Cisterna Valdes|119|aunt|otro progreso|13/05/2015|13|70||70|1|80
                 var nest = 0
              if(previan !== packets[2]){
+              previan = packets[2];
                //si no está vacio
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
                        showAlert(packets[2], "pro", packets[0]);
@@ -3306,8 +3412,16 @@ function changeListener(){
                              console.info(indice);
                              console.info("progreso del usuario : " + packets[10]);
                         if(parseInt(packets[10]) >= 99.5){
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
-                            $("#ext-tasks-table .due").eq(indice).parent().parent().removeClass().addClass("task Hc");
+                          if(packets[9] == 0){
+
+                          $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
+                          
+                          } else {
+
+                             $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').prev().css({ opacity : "1"});
+                          }
+                            
+                           
                           }
                         if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 1){
                             console.info(indice);
@@ -3322,7 +3436,7 @@ function changeListener(){
                           }
                       // \./\./
                     }
-                    previan = packets[2];
+                    
                 }
             }
         })
@@ -3715,7 +3829,8 @@ dwco.appendChild(iwco);
     dw_ap = document.createElement('div');
     iw_ap = document.createElement('i');
     ddrop = document.createElement('div');
-
+   
+   dw_ap.className = "w-ap";
    iw_ap.className = "fa fa-files-o fa-2x bk-fi";
    iw_ap.style.marginRight = "2em";
    ddrop.className = "drop-zone";
@@ -3744,17 +3859,17 @@ var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length).find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+  $(".file-contents").eq(idf).children('a').find('i').html(function(){
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
+         $(this).data("pseudotitle",$(this).parent().parent().attr("href") );
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
+      newElems.on('dragstart', function(){
+        dragExt(event , $(this))
+      });
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-               newElems.on('dragstart', function(){
-                      dragExt(event , $(this))
-                    });
-
 
      $(this).data("val", 1)
 
@@ -3777,6 +3892,7 @@ dw_ap.appendChild(ddrop);
      str_p1  = document.createElement('strong');
      span_p1 = document.createElement('span');
      pre_pro  = document.createElement('pre');
+     bar_pro = document.createElement('div');
      pre_pro.style.width = "100%";
      pre_pro.style.display ="inline-flex";
 
@@ -3791,12 +3907,14 @@ dw_ap.appendChild(ddrop);
     i_ic.className        = "fa fa-chevron-circle-right fa-2x";
     i_ic.style.color      = "rgba(38, 134, 244, 0.9)";
     i_ic.style.cursor     = "pointer";
+    bar_pro.className     = "bar forward";
 
 
     dl.className       = "dl-horizontal";
     p_pro.className    = "ajuste"; 
     span_pro.className = "pull-right small muted";
     pre_pro.className  = "pre";
+    div_ic_pro.appendChild(bar_pro);
 
     
     str_pro.innerHTML = "Grado de progreso";
@@ -3804,7 +3922,8 @@ dw_ap.appendChild(ddrop);
 
     str_p1.innerHTML = "Grado de progreso";
     span_p1.innerHTML = "0%";
-
+   
+    span_p1.className = "pull-right small muted";
     p_pro.appendChild(str_pro);
     p_pro.appendChild(span_pro);
 
@@ -4400,6 +4519,67 @@ if(kind == 1){
       div_special.appendChild(div5);
       div_special.appendChild(div_special2);
 
+
+var nname = $("#D-drop").data("dfil").split("|");
+  var setClass = "";
+  var cor = "";
+  var filstr= ""
+  for (i=0; i < nname.length-1 ; i++){
+     var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+    
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+
+  }
+div4.innerHTML = filstr;
+
+
 } else {
 
       div4.className ="ii-files";
@@ -4714,12 +4894,10 @@ $(".span2").on("slide", function (slideEvt) {
 
 $(".hovertip").on("click ", function(){
 
-if($(this).data("val") == 0 || $(this).data("val") == undefined){
-
-    $(".trf-int-usr").css({display :"none"});
+  $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(this).children("input").val().replace("u" ,""));
-
+  
    $(this).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
      $(this).data("val", 1);
@@ -4734,15 +4912,8 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                 .render();
                     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
-
-} else {
-
-   var val = parseInt($(this).children("input").val().replace("u" ,""));
-   $(this).parent().next().next().next().children("tbody").children("tr.ust" + val).css({ display : "none"});
-   $(this).data("val", 0);
-}
-
-
+   $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
+   $(this).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
 });
 
 
@@ -5029,6 +5200,7 @@ $(".padlock:first").on('click', function(){
             $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
             $("#D-drop").empty();
             $(".eras").val(''); 
+            $(".datetimepicker").val('');
      }
    })
 });
@@ -5045,8 +5217,11 @@ function swUsr(stskId){
 
 
 $("#upgrade-own").on('click', function (){
-upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
-
+     if(checkOwn() === true){
+        upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
+     } else {
+       bootbox.alert(checkOwn());
+     }
 });
 
 function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
@@ -5074,12 +5249,19 @@ var date = new Date();
             "<input type='hidden' value=" + mainuser +">" +
             "</a>");
           // adding The traffic
+           
+          if(percent > 99){
+            $(".task").eq(ind).removeAttr("class").addClass("task Hc-int");
+            $(".task").eq(ind).find('b').html("FINALIZADO");
+            $(".task").eq(ind).find('b').css("background-color", "#1CC131");
+            $(".task").eq(ind).children("button.forward").attr("disabled", "true");
+          }
 
            $(".task").eq(ind).next().children('td').find(".ex-del-par > tbody").append( "<tr class='eu" + mainuser + "'><td>" + subject +"</td><td>" + descript + "</td><td>" + ('0' + date.getDay()).slice(-2) + "/" + ("0" + (date.getMonth()+1)).slice(-2) + "/" + date.getFullYear() + "</td></tr>");
           $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
           //$("#tasks-own").removeClass('active in');$("#require").addClass('active in');
           $("#set-pro-own").removeClass('active in');$("#require").addClass('active in');
-        bootbox.alert("Progreso Grabado!");
+          bootbox.alert("Progreso Grabado!");
       }
   })
 }
@@ -5157,7 +5339,8 @@ $(".fr").on("click", function(){
 function graphAddedFiles(object, names){
   var nname = names.split("|");
   var filstr = "";
-
+  var setClass = "";
+  var cor = "";
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
@@ -5208,15 +5391,19 @@ function graphAddedFiles(object, names){
 
     }
     
-    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass+ ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
 
-object.html(filstr);
+
+console.info(object.attr("class"));
+console.info("indice que llega : " + object.index(".int-files-for"))
+object.html(object.html() + filstr);
+console.info(object.parent().parent().parent().prev().html().toString());
+
 filstr = "";
 
 }
-
 
 
 $(".bk-fi").on('click', function(){
@@ -5228,19 +5415,22 @@ var idf = $(this).index(".bk-fi");
      
   $(".drop-zone").eq(idf).fadeToggle("slow");
 
-  $(".file-contents").eq(idf).children('a').slice(0, $(this).eq(idf).children('a').length).find('i').html(function(){
-         $(this).attr("title", $(this).parent().parent().attr("href"));
+  $(".file-contents").eq(idf).children('a').find('i').html(function(){
+         $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
+         $(this).attr("data-pseudo", $(this).parent().parent().attr("href"))
+         
   });
+
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
       newElems.insertAfter($('.w-ap').eq(idf).children("i"));
-               newElems.on('dragstart', function(){
-                      dragExt(event , $(this))
-                    });
-
+      newElems.on('dragstart', function(){
+          dragExt(event , $(this));
+        });
 
      $(this).data("val", 1)
+
 
   } else {
 
@@ -5298,6 +5488,16 @@ function backToFront(name, usrId, iss){
 })
 }
 
+function checkOwn(){
+  if($("#set-pro-own").find("input[type=text]").val().trim() == ""){
+    return "Falta el asunto del progreso";
+  }
+   if($("#set-pro-own").find("textarea").val().trim() == ""){
+    return "Falta la descripción del progreso";
+  }
+return true;
+}
+
 </script>
 
 <?
@@ -5306,5 +5506,4 @@ function backToFront(name, usrId, iss){
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
-
 ?>
