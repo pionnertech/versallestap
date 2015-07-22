@@ -57,7 +57,7 @@ if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
 // averigua si es solo admin
   if(mysqli_num_rows($handler) == 0){
-      $handler = mysqli_query("SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_TICKET = '" . $outcome['STSK_TICKET'] ."' AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
+      $handler = mysqli_query($datos, "SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_TICKET = '" . $outcome['STSK_TICKET'] ."' AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
   }
 } else {
 
