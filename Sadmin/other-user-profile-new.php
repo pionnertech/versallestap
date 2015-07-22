@@ -4523,7 +4523,9 @@ if(kind == 1){
 var nname = $("#D-drop").data("dfil").split("|");
   var setClass = "";
   var cor = "";
-  var filstr= ""
+  var filstr= "";
+  console.info('por aqui llega con kind ' + kind);
+
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
@@ -4577,6 +4579,7 @@ var nname = $("#D-drop").data("dfil").split("|");
     filstr += '<a href="../' + fac + '/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
+
 div4.innerHTML = filstr;
 
 
