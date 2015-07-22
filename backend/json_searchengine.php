@@ -46,10 +46,10 @@ while ($fila1 = mysqli_fetch_row($query2)){
 	 $i = $i + 1;
 }
 
-echo "]";
+echo "]; ";
 
 
-$query1 = mysqli_query($datos, "SELECT STSK_DESCRIP, STSK_START_DATE, STSK_FINISH_DATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_ISS_ID != STSK_ID)");
+$query1 = mysqli_query($datos, "SELECT STSK_DESCRIP, STSK_START_DATE, STSK_FINISH_DATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_MAIN_USR != STSK_CHARGE_USR )");
 
 $i = 0;
 
