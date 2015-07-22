@@ -2591,7 +2591,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&date=" + fp + 
           "&ticket=" + psTck +
           "&fac=" + fac );
- 
+
  $.ajax({ type: "POST", 
           url : "../backend/progress-ii.php?val=" + $("#value-progress").val() + 
           "&stsk_id=" + st_ii+ 
@@ -2916,7 +2916,7 @@ function thirdPulling(){
                             var alpha = data.split("|");
                             if(alpha[1] !== undefined){
                              if(alpha !== aa_ii){
-                              firstTask(alpha[0], alpha[2], alpha[7] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[8]);
+                              firstTask(alpha[0], alpha[2], alpha[7] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[8], true);
                                 //console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
                                    showAlert(alpha[2], "ii" ,  alpha[7]);
                                    newthum(2);
@@ -4435,7 +4435,7 @@ function touchHandler(event) {
 }
 
 
-function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft, ticket){
+function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, Ft, ticket, iin){
 
   // si el lo envia
   if (kind == 1){
@@ -4485,12 +4485,36 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
     td3.appendChild(b1);
 
 
+    if(iin){
+        var ii_in1 = document.createElement('input');
+
+        var ii_in2 = document.createElement('input');
+
+        var ii_in3 = document.createElement('input');
+
+ii_in1.className = "ii-stsk";
+ii_in2.className = "main-user-ii";
+ii_in3.className = "ii-iss";
+
+ii_in1.value = stsk_ident;
+ii_in2.value = user_id;
+ii_in3.value = stsk_ident;
+    }
+
     tr1.appendChild(td1);
     tr1.appendChild(td2);
     tr1.appendChild(td3);
     tr1.appendChild(td4);
     tr1.appendChild(td5);
-    tr1.appendChild(inp1);
+
+    if(iin){
+      tr1.appendChild(ii_in1);
+      tr1.appendChild(ii_in2);
+      tr1.appendChild(ii_in3);
+    } else {
+        tr1.appendChild(inp1);
+    }
+  
 
    //events
 if(kind == 1){
