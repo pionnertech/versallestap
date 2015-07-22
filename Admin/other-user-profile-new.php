@@ -1,4 +1,3 @@
-
 <?php ini_set('session.gc_maxlifetime', 27000);
 // each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(27000);
@@ -2238,9 +2237,6 @@ $("#back-own").data("val", 1); // esto es para que el boton back se devuelva a l
 $("#int-require").removeClass('active in');
 $("#set-pro-own").addClass('active in');
 
-uploaderInt($("#up-own"), ii_iss , remoteUser , st_ii , "internal");
-
-
 } else {
 
 mode = "first";
@@ -2262,8 +2258,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 1);
 $("#int-require").removeClass('active in');
-$("#set-pro-own").addClass('active in');
-uploaderInt($("#up-own"), ii_iss , remoteUser , st_ii , "internal");
+$("#set-pro-own").addClass('active in')
 
 }  else {
 
@@ -5242,7 +5237,7 @@ var date = new Date();
       "&subject=" + subject+ 
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
-      "&ticket=" + ticket +
+      "&ticket=" + 
       "&fac=" + fac,
       success: function (data){
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
@@ -5511,4 +5506,5 @@ return true;
 
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
+
 ?>
