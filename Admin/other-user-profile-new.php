@@ -2313,11 +2313,11 @@ $(".ii-forward").click(function(){
 
 dateTime = AmericanDate($(this).next().html());
 
- remoteUser = $(this).parent().parent().children("input").eq(1).val();
- st_ii      = $(this).parent().parent().children("input").eq(0).val();
- ii_iss     = $(this).parent().parent().children("input").eq(2).val();
+ remoteUser = $(this).parent().parent().children("input").eq(1).val().trim();
+ st_ii      = $(this).parent().parent().children("input").eq(0).val().trim();
+ ii_iss     = $(this).parent().parent().children("input").eq(2).val().trim();
  ii_ind     = $(this).index(".ii-forward");
- psTck      = $(this).parent().siblings(".cell-icon").html();
+ psTck      = $(this).parent().siblings(".cell-icon").html().trim();
  $("#up-int").empty();
 
 if($(this).next().hasClass('person-sw-int')){
@@ -4562,10 +4562,10 @@ i2.onclick = function (){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = user_id;
- st_ii      = $(this).parent().siblings('input.ii-stsk').val();
- ii_iss     = $(this).parent().siblings('input.ii-iss').val();
+ st_ii      = $(this).parent().siblings('input.ii-stsk').val().trim();
+ ii_iss     = $(this).parent().siblings('input.ii-iss').val().trim();
  ii_ind     = $(this).index(".ii-forward");
- psTck      = $(this).parent().siblings(".cell-icon").html();
+ psTck      = $(this).parent().siblings(".cell-icon").html().trim();
 $("#up-int").empty();
 $("#up-own").empty();
 // new wave
