@@ -2051,7 +2051,8 @@ onChange : function(){
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 },
-onItemAdd: function(){
+onItemAdd: function(item){
+    console.info(item);
        user_send = $('#int-del').val();
        console.info(user_send);
        keyFile = RandomString(8);
