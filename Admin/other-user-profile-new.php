@@ -2583,7 +2583,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
                     $("#income-int-body tr.task").eq(ii_ind).children('td').eq(2).children("b").html('Finalizada');
                     $("#income-int-body tr.task").eq(ii_ind).children('td').eq(2).children("b").css("background-color", "#1CC131");
                     $("#income-int-body tr.task").eq(ii_ind).removeClass("class").addClass("task Hc-int-ii");
-                    $("#income-int-body tr.task").eq(ii_ind).children('td').eq(3).unbind('click');
+                    $("#income-int-body tr.task").eq(ii_ind).children('td').eq(3).children('i').eq(0).unbind('click')
                 }
             $("#pro-subject").val('');
             $("#pro-descript").val('');
