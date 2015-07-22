@@ -15,7 +15,6 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 switch ($user) {
 	case 'Mi Departamento':
-		//mysqli_query($datos, "SELECT ")
 		break;
 	case 'Jefaturas':
 	 $users = [];
