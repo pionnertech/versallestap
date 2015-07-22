@@ -3017,6 +3017,7 @@ var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
 if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
+   var keyGen = true;
 } else {
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
@@ -3148,21 +3149,26 @@ uploader =  $(object).pluploadQueue({
                 if(object.hasClass("front-response")){
                    console.info("front");
                   graphAddedFiles(object.next().children(".front-sent"), $("#up-own").data("files"));
+
                 } else if (object.attr("id", "up-own")){
-                  console.info("front-own");
-                  var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                     graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
+                       if(!keyGen){
+                              
+                              var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                } else {
-                  
-                  var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
-                      console.info("eind de internos : " + eind);
-                    graphAddedFiles($(".int-files-to").eq(eind), randFiles);
+                               graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
 
-                }
+                       } else {
+
+                              var eind = $("#int-table input.hi-int-id[value=" + iss_id +"]").parent().index("tr.task");
+                              console.info("eind de internos : " + eind);
+                              graphAddedFiles($(".int-files-to").eq(eind), randFiles);
+
+                       }
+                } 
 
                 randFiles = "";
+                keyGen = false;
 
             },
  
