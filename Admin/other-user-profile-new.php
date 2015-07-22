@@ -2318,6 +2318,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
  psTck      = $(this).parent().siblings(".cell-icon").html();
+ $("#up-int").empty();
 
 if($(this).next().hasClass('person-sw-int')){
 
@@ -2591,10 +2592,8 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&ticket=" + psTck +
           "&fac=" + fac , 
           success : function(data){
-
-          
-
-            console.info(data);
+        
+          console.info(data);
           graphAddedFiles($(".ii-files-sent").eq(ii_ind), $("#D-drop").data("files"));
 
             bootbox.alert("progreso ingresado", function(){
@@ -4524,7 +4523,7 @@ dateTime = AmericanDate($(this).next().html());
  st_ii      = stsk_ident;
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
-
+$("#up-int").empty();
 // new wave
 if($(this).next().hasClass('person-sw-int')){
 
