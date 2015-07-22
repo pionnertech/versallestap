@@ -3154,7 +3154,7 @@ uploader =  $(object).pluploadQueue({
 
                     var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                     graphAddedFiles($(".int-files-for").eq(eind), $("#D-drop").data("dfil"));
+                     graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
 
                        
                 } 
@@ -5346,15 +5346,11 @@ function graphAddedFiles(object, names){
 
   }
 
-console.info("completo string ====  " + filstr);
-console.info(object);
 
-console.info(object.index(".int-files-for"))
-
+console.info(object.attr("class"));
+console.info("indice que llega : " + object.index(".int-files-for"))
 object.html(object.html() + filstr);
-$(".int-files-for").eq(12).html(object.html() + filstr);
-
-console.info(object.html().toString());
+console.info(object.parent().parent().parent().html().toString());
 
 filstr = "";
 
