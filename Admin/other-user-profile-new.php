@@ -3146,10 +3146,10 @@ uploader =  $(object).pluploadQueue({
                 $("#SendRequest-free").attr("disabled", false);
                 
                 if(object.hasClass("front-response")){
-
+                   console.info("front");
                   graphAddedFiles(object.next().children(".front-sent"), $("#up-own").data("files"));
                 } else if (object.attr("id", "up-own")){
-
+                  console.info("front-own");
                   var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
                      graphAddedFiles($(".file-sent").eq(eind), $("#up-own").data("files"));
