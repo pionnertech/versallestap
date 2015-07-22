@@ -3239,7 +3239,7 @@ console.info("llega el ticket = " + tkt);
 
                          if($("#D-drop").data("dfil") != undefined || $("#D-drop").data("dfil") == 0 ){
                           console.info(ind+1);
-                          consoele.info($(".int-files-for").eq(ind+1));
+                          console.info($(".int-files-for").eq(ind+1));
                           graphAddedFiles($(".int-files-for").eq(ind+1), $("#D-drop").data("dfil").toString());
                           $("#D-drop").data("dfil", "");
                         } else {
