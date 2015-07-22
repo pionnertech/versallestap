@@ -1956,6 +1956,7 @@ jQuery.fn.justtext = function() {
     var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
+    var psTck     = "";
     var previan   = "";
     var aa_ii     = "";
     var kenin;
@@ -2219,7 +2220,7 @@ dateTime = AmericanDate($(this).next().html());
  st_ii      = $(this).parent().parent().children("input").eq(0).val();
  ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
-
+ psTck      = $(this).parent().siblings(".cell-icon").html();
 
 if($(this).next().hasClass('person-sw-int')){
 
@@ -2490,6 +2491,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&subject=" + $("#pro-subject").val() + 
           "&des=" +  $("#pro-descript").val() + 
           "&date=" + fp + 
+          "&ticket=" + psTck +
           "&fac=" + fac , 
           success : function(data){
             console.info(data);

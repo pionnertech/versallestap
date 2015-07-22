@@ -9,6 +9,7 @@ $descript = $_GET['des'];
 $date = $_GET['date'];
 $fac = $_GET['fac'];
 $user = $_GET['user'];
+$ticket = $_GET['ticket'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
@@ -26,7 +27,8 @@ while ($row = mysqli_fetch_row($handler)) {
 
 $setto = ($adition / $n);
 
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1);");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . " AND STSK_TYPE = 1 AND STSK_TICKET = '" . $ticket . "');");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )");
 
 //set DONE to local;
 if ((int)$val == 100){
