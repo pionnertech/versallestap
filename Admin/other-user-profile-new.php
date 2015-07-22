@@ -4664,8 +4664,9 @@ if(kind == 1){
 
       div5.style.width = "80%";
 
-      div_special.appendChild(div4);
       div_special.appendChild(div5);
+      div_special.appendChild(div4);
+
       div_special.appendChild(div_special2);
 
 
@@ -4726,7 +4727,7 @@ var nname = $("#D-drop").data("dfil").split("|");
     filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
-div4.innerHTML = filstr;
+div5.innerHTML = filstr;
 
 
 } else {
@@ -4886,8 +4887,10 @@ $.ajax({ type:"POST",
         
     
 }
+if(div5.innerHTML == ""){
+    div5.innerHTML = str_file;
 
-  div4.innerHTML = str_file;
+}
 
 }
 });
