@@ -30,6 +30,7 @@ if($current !== $user && isset($current)){
   $bingo = true;
 }
 
+
 $datos = $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $query =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $stsk ));
