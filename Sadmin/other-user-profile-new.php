@@ -2222,7 +2222,7 @@ dateTime = AmericanDate($(this).next().html());
  st_ii      = $(this).parent().parent().children("input").eq(0).val();
  ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
-
+$("#up-int").empty();
 
 if($(this).next().hasClass('person-sw-int')){
 
@@ -4138,7 +4138,7 @@ dpre1.innerHTML = filestring;
     
 }
 
-function getFiles(iss_id, usr_id, callback){9
+function getFiles(iss_id, usr_id, callback){
 var files;
    $.ajax({
           type: "POST",
@@ -4438,7 +4438,7 @@ dateTime = AmericanDate($(this).next().html());
  st_ii      = stsk_ident;
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
-
+$("#up-int").empty():
 // new wave
 if($(this).next().hasClass('person-sw-int')){
 
