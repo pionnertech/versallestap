@@ -1003,79 +1003,17 @@ console.info("lo que se manda: /backend/upgrade.php?val=" + val +
             success : function (data){
 
                 console.info(data);
-         if( parseInt(data) == 1){
+         if(parseInt(data) == 1){
              bootbox.alert("Progreso grabado existosamente", function(){
              console.info(index);
 
 var filestring = "";
-
-if($("#D-drop").data("files") !== ""){
-
-var far = $("#D-drop").data("files").split("|");
-
-               for(i=0; i < far.length-1; i++ ){
-                        var extension = far[i].substring(far[i].length -3 , far[i].length);
-              switch(extension){
-                case "pdf": 
-            setClass = "pdf-o";
-            cor = "#FA2E2E";    
-        break;
-                case "lsx":
-            setClass = "excel-o";
-            cor = "#44D933";
-        break;
-                case "ocx":
-            setClass = "word-o"; 
-            cor = "#5F6FE0";
-        break;
-                case "doc":
-            setClass = "word-o"; 
-            cor = "#5F6FE0";
-        break;
-                case "xls":
-            setClass = "excel-o";
-            cor = "#44D933";
-        break;
-                case "zip":
-            setClass = "zip-o";
-            cor = "#DDCE62";
-        break;
-                case "png" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "jpg" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "gif" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "bmp" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break;     
-
-
-    }
-          filestring +=  '<a class="down" href="../' + fac + '/' + mainuser +'/' + far[i] + '" download>' +
-           '<p class="ifile" title="' + far[i] + '">' +
-             '<i class="fa fa-file-' + setClass + ' fa-2x" style="color: ' + cor + '"></i>' +
-             '<span class="iname"></span>' +
-           '</p>'+
-        '</a>';
-
-               }
-           }
-
- $("#D-drop").data("files", "");
-
 //para comopromisos externos
      if(argument == 0) {  
 
       var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
-        $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(prevH + filestring);
+        graphAddedFiles($("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring, $("#D-drop").data("files"));
+            $("#D-drop").data("files", "");
 
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('p').children('span').html(val + "%");
             $("#ext-tasks-table > tbody > tr").eq(index+1).children("td").children('div').eq(1).children('div').children('div').css({ width: val +"%"});
@@ -1115,7 +1053,9 @@ var far = $("#D-drop").data("files").split("|");
              } else {
 
               var weirdIndex =  (index-1)/2;
-            $("#int-table > tbody > tr").eq(index+1).find(".file-sent").html(filestring);
+
+            graphAddedFiles($("#int-table > tbody > tr").eq(index+1).find(".file-sent"), $("#D-drop").data("files"));
+            $("#D-drop").data("files", "");
 
             $("#int-table > tbody > tr").eq(index + 1).find('p > span').eq(0).html(val + "%");
             $("#int-table .bar").eq(weirdIndex).css({ width: val + "%"});
