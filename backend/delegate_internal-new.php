@@ -144,7 +144,7 @@ if(!mysqli_query($datos, $query)){
 } else {
  
 
-$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = " . $ticket . ") WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 1 AND STSK_MAIN_USR != STSK_CHARGE_USR)");
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = '" . $ticket . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 1 AND STSK_MAIN_USR != STSK_CHARGE_USR)");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
