@@ -2069,7 +2069,7 @@ jQuery.fn.justtext = function() {
 
 
 $(document).on('ready', function(){
-
+$("#D-drop").data("files", "");
 $("td[data-lock=disabled]").unbind("click");
 
 kenin = $('#delegates').selectize({
@@ -2591,7 +2591,12 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&ticket=" + psTck +
           "&fac=" + fac , 
           success : function(data){
+
+          
+
             console.info(data);
+
+
             bootbox.alert("progreso ingresado", function(){
                 $("#income-ing .task").eq(ii_ind).find(".person-sw-int").replaceWith('<i class="fa fa-user spac"></i>');
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
@@ -5509,7 +5514,6 @@ function graphAddedFiles(object, names){
 console.info(object.attr("class"));
 console.info("indice que llega : " + object.index(".int-files-for"))
 object.html(object.html() + filstr);
-console.info(object.parent().parent().parent().prev().html().toString());
 
 filstr = "";
 
