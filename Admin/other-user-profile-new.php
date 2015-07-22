@@ -1786,9 +1786,9 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                     </div>
                                               <div class="ii-files-sent">
 
-                          <?    if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/")) {
+                          <?    if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $ii[1] . "_alt/")) {
                                   
-                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/", 0775, true); 
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $ii[1] . "_alt/", 0775, true); 
    
                               } 
 
