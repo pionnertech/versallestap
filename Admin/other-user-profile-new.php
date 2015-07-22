@@ -5349,7 +5349,10 @@ function graphAddedFiles(object, names){
 console.info("completo string ====  " + filstr);
 console.info(object);
 
+console.info(object.index(".int-files-for"))
+
 object.html(object.html() + filstr);
+$(".int-files-for").eq(12).html(object.html() + filstr);
 
 console.info(object.html().toString());
 
