@@ -1424,7 +1424,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
                               } 
                            
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
                                         
                                           $file_extension = "";
 
