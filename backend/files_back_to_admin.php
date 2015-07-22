@@ -20,6 +20,7 @@ $current = $_REQUEST['current'];
 $first   = $_REQUEST['first'];
 $bingo   = false;
 
+$factor = 0;
 if($first == 1){
   exit;
 }
@@ -32,7 +33,7 @@ $datos = $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000")
 
 $query =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $stsk ));
 
-$userId = mysqli_query($datos, "SELECT STSK_CHARGE_USR, STSK_ID FROM SUBTASKS WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= " . $kind .");");
+$userId = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, A.STSK_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $query['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= " . $kind .");");
 
 if($kind == 0 || $kind == "0"){
  while( $fila = mysqli_fetch_row($userId) ){
@@ -61,7 +62,13 @@ while( $fila = mysqli_fetch_row($userId) ){
           }
    if($hdir = opendir($rdir)){
      while (false !== ($files = readdir($hdir))){
-         if(preg_match_all("/_\[" . $kilo[0]  . "\]_/", $files) == 1){
+
+       if($fila[2] == 'admin' ||  $fila[2] == 'sadmin'){
+         $factor = 1;
+           } else {
+            $factor = 0;
+           }
+         if(preg_match_all("/_\[" . ($kilo[0] + $factor)  . "\]_/", $files) == 1){
          if($bingo == true){
             $outcome .= "../". $fac . "/" . $fila[0] ."_alt/" . $files . "|";
           } else {
