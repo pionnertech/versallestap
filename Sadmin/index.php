@@ -551,11 +551,12 @@ function getDataTable(iss_id, object, color ){
       $(".pre").empty();
                var matrix = data.split("|");
                object.children('i').remove();
-               document.querySelectorAll(".dl-horizontal dd")[document.querySelectorAll(".dl-horizontal dd").length -1].innerHTML = matrix[8];
+             
 
                for(i=1;i < 6 ; i++){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
+                  document.querySelectorAll(".dl-horizontal dd")[document.querySelectorAll(".dl-horizontal dd").length -1].innerHTML = matrix[8];
                     document.querySelector(".adjuste span").innerHTML =  matrix[5];
                     document.querySelector(".forward").style.width = matrix[5] + "%";
                    
