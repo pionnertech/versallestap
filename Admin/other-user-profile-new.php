@@ -2568,6 +2568,8 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
             console.info(data);
             bootbox.alert("progreso ingresado", function(){
 
+                $("#income-ing .task").eq(ii_ind).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
+                
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
