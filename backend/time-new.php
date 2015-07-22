@@ -55,7 +55,10 @@ $outcome = mysqli_fetch_assoc($news);
 if($outcome["STSK_TYPE"] == 1 || $outcome["STSK_TYPE"] == "1" ){
 
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
-// echo "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR " . "<br />";
+// averigua si es solo admin
+  if(!$handler){
+      $handler = mysqli_query("SELECT STSK_PROGRESS FROM SUBTASKS WHERE (STSK_TICKET = '" . $outcome['STSK_TICKET'] ."' AND AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
+  }
 } else {
 
 $handler = mysqli_query($datos, "SELECT SUM(STSK_PROGRESS) FROM SUBTASKS WHERE (STSK_ISS_ID = " . $outcome['STSK_ISS_ID'] . " AND STSK_CHARGE_USR != STSK_MAIN_USR AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $fac. ") GROUP BY STSK_CHARGE_USR ");
