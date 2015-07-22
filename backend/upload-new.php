@@ -12,6 +12,7 @@ $uploadOk = 1;
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
+
 if($user == "Mi Departamento"){
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
