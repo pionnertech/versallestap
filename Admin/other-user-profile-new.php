@@ -4565,7 +4565,9 @@ dateTime = AmericanDate($(this).next().html());
  st_ii      = stsk_ident;
  ii_iss     = issId;
  ii_ind     = $(this).index(".ii-forward");
+ psTck      = $(this).parent().siblings(".cell-icon").html();
 $("#up-int").empty();
+$("#up-own").empty();
 // new wave
 if($(this).next().hasClass('person-sw-int')){
 
