@@ -149,9 +149,11 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
       while (false !== ($files = readdir($hdir))) {
-   echo $files . " & " . 'preg_match_all("/_\["' . $keyfile . '"\]_/", ' . $files . ") resultado : " . preg_match_all("/_\[" . $keyfile . "\]_/", $files);
+  
      	  if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
-          
+
+
+echo $files . " & " . 'preg_match_all("/_\["' . $keyfile . '"\]_/", ' . $files . ") resultado : " . preg_match_all("/_\[" . $keyfile . "\]_/", $files);
      	 	  $extension = pathinfo($files, PATHINFO_EXTENSION);   
 
               while($uteams = mysqli_fetch_row($uteam)){
