@@ -356,6 +356,9 @@ vertical-align: top;
                                             <dt>Fecha De Entrega</dt>
                                             <dd>
                                                 Etiam porta sem malesuada magna mollis euismod.</dd>
+                                             <dt>Respuesta del encargado</dt>
+                                            <dd>
+                                                Etiam porta sem malesuada magna mollis euismod.</dd>
                                         </dl>
                                         <p class="adjuste">
                                             <strong>Grado de progreso</strong><span class="pull-right small muted"></span>
@@ -548,13 +551,13 @@ function getDataTable(iss_id, object, color ){
       $(".pre").empty();
                var matrix = data.split("|");
                object.children('i').remove();
-               for(i=1;i < 5 ; i++){
+               for(i=1;i < 6 ; i++){
                     document.querySelectorAll(".dl-horizontal dd")[i].innerHTML = matrix[i]; 
                 }
-                    document.querySelector(".adjuste span").innerHTML =  matrix[5];
-                    document.querySelector(".forward").style.width = matrix[5] + "%";
+                    document.querySelector(".adjuste span").innerHTML =  matrix[6];
+                    document.querySelector(".forward").style.width = matrix[6] + "%";
                    
-                for (i=6; i < matrix.length; i++){
+                for (i=7; i < matrix.length; i++){
                      console.info(i + " - " + matrix.length);
                      recallFiles(matrix[i]);
                 } 
