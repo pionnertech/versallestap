@@ -1840,7 +1840,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                <input type="hidden" value="" name="code" id="stsk-code-ii">
                                                <input type="hidden" value="<? printf($_SESSION['TxtFacility']) ?>" name="fac">
                                                <input type="hidden" value="" name="user" id="stsk-user-ii">
-                                               <input type="hidden" value="" name="">  
+                                               <input type="hidden" value="<? echo $_SESSION['TxtCode'] ?>" name="cuser">  
                                           </div>
                                          <ul>
                 <!-- The file uploads will be shown here -->
