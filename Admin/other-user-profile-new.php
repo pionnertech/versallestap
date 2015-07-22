@@ -4731,7 +4731,7 @@ if(kind == 0){
 td_i1.colSpan = "5";
 
 if(kind == 0){
-   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1" ;
+   var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk_ident + "&kind=1&ticket=" + ticket ;
    console.info("lo que se manda desde firstTask es url_files : " + url_files);
 } else {
    var url_files =  "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + user_id + "&stsk=" + stsk_ident + "&kind=" + kind + "&first=" + Ft;
