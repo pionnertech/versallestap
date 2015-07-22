@@ -2591,6 +2591,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           "&date=" + fp + 
           "&ticket=" + psTck +
           "&fac=" + fac );
+ 
  $.ajax({ type: "POST", 
           url : "../backend/progress-ii.php?val=" + $("#value-progress").val() + 
           "&stsk_id=" + st_ii+ 
