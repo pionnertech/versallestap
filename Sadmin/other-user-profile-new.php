@@ -41,7 +41,7 @@ if(mysqli_num_rows($quntum) == 0){
     $contador = $cont['CONTADOR'];
 }
 
-$intList = "Mi Departamento, Jefaturas,";
+$intList = "Jefaturas,";
 
 while ($Qth_int_list = mysqli_fetch_row( $Query_team_int)){
   $intList .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_int_list[1] . " " . $Qth_int_list[2] )))) . ",";
