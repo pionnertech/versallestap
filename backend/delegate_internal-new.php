@@ -164,7 +164,10 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
 
               mysqli_data_seek($uteam, 0);
         }
-       unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
+        if($files !== ".." || $files !== "."){
+             unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
+        }
+      
       }
 
     }
