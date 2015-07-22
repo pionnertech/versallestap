@@ -4495,6 +4495,11 @@ function firstTask(stsk_ident, descript, user_name, date, user_id, kind, issId, 
 ii_in1.className = "ii-stsk";
 ii_in2.className = "main-user-ii";
 ii_in3.className = "ii-iss";
+ii_in1.type = "hidden";
+ii_in2.type = "hidden";
+ii_in3.type = "hidden";
+
+
 
 ii_in1.value = stsk_ident;
 ii_in2.value = user_id;
