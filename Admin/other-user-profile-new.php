@@ -2595,7 +2595,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
           
 
             console.info(data);
-
+          graphAddedFiles($(".ii-files-sent").eq(ii_ind), $("#D-drop").data("files"));
 
             bootbox.alert("progreso ingresado", function(){
                 $("#income-ing .task").eq(ii_ind).find(".person-sw-int").replaceWith('<i class="fa fa-user spac"></i>');
