@@ -2115,10 +2115,7 @@ persist: false,
 create: false,
 openOnFocus: true,
 onChange : function(){
-       user_send = $('#int-del').val();
-       console.info(user_send);
-       keyFile = RandomString(8);
-       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
+
 },
 onItemAdd: function(){
         user_send = $('#int-del').val();
