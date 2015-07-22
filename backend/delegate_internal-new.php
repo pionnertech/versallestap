@@ -164,7 +164,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
 
               mysqli_data_seek($uteam, 0);
         }
-        if($files !== ".." || $files !== "."){
+        if(strlen($files) > 4){
              unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
         }
       
