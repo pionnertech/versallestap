@@ -1717,6 +1717,13 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                                     <div class="progress tight">
                                                                         <div class="bar bar-warning" style="width: <? printf($ii[7]) ?>%;"></div>
                                                                     </div>
+                                                                    <div class="ii-coll">
+                                                                        <a class="ii-sender" >
+                                                                          <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $ii[1]  ?>_opt.jpg" class="group" >
+                                                                          <input type="hidden" value="<? printf($ii[1]) ?>">
+                                                                        </a>
+
+                                                                    </div>
                                                                     <div class="ii-files">
 
                           <?    if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/")) {
