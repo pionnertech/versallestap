@@ -5358,7 +5358,6 @@ filstr = "";
 }
 
 
-
 $(".bk-fi").on('click', function(){
 
 var idf = $(this).index(".bk-fi");
