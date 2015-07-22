@@ -4577,7 +4577,7 @@ var nname = $("#D-drop").data("dfil").split("|");
     filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
-div5.innerHTML = filstr;
+div4.innerHTML = filstr;
 
 
 } else {
