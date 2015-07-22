@@ -1,7 +1,11 @@
 
-<?php session_start();
+<?php ini_set('session.gc_maxlifetime', 27000);
+// each client should remember their session id for EXACTLY 1 hour
+session_set_cookie_params(27000);
+session_start();
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange'] === 'admin'){
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
@@ -2213,7 +2217,7 @@ $(".ii-forward").click(function(){
 dateTime = AmericanDate($(this).next().html());
 
  remoteUser = $(this).parent().parent().children("input").eq(1).val();
- st_ii      = parseInt($(this).parent().parent().children("input").eq(0).val());
+ st_ii      = $(this).parent().parent().children("input").eq(0).val();
  ii_iss     = $(this).parent().parent().children("input").eq(2).val();
  ii_ind     = $(this).index(".ii-forward");
 
