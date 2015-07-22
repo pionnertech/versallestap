@@ -2196,7 +2196,29 @@ var datetime  = $(".seo").datetimepicker({
 {
   name: 'subjects',
   source: substringMatcher(subjects)
-})
+});
+
+
+$("#search2").typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'subjects2',
+  source: substringMatcher(subjects2)
+});
+
+
+$("#search3").typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'subjects3',
+  source: substringMatcher(subjects3)
+});
 
 $("#search1, #search2, #search3").on('paste keypress keydown input', function(){
 
