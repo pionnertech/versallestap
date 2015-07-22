@@ -21,8 +21,14 @@ $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
 $query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $percent . " WHERE ISS_ID = " . $iss;
 
-$trf = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_STSK_SRC_ID , TRF_DESCRIPT, TRF_SUBJECT , TRF_FAC_CODE,  TRF_USER) VALUES ";
+if($type == 1){
+$trf = "INSERT INTO TRAFFIC_II (TII_STSK_ID, TII_STSK_SRC_ID , TII_DESCRIPT, TII_SUBJECT , TII_FAC_CODE,  TII_USER) VALUES ";
 $trf .= "(" . $stsk .", " . (int)$stsk-1 . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
+} else {
+$trf = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_STSK_SRC_ID , TRF_DESCRIPT, TRF_SUBJECT , TRF_FAC_CODE,  TRF_USER) VALUES ";
+$trf .= "(" . $stsk .", " . $stsk . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";	
+}
+
 
 if(!mysqli_query($datos, $trf)){
 	echo mysqli_error($datos);
