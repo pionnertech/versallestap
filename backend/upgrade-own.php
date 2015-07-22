@@ -21,13 +21,12 @@ $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
 $query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $percent . " WHERE ISS_ID = " . $iss;
 
-
-
 $trf = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_STSK_SRC_ID , TRF_DESCRIPT, TRF_SUBJECT , TRF_FAC_CODE,  TRF_USER) VALUES ";
-$trf .= "(" . $stsk .", " . $stsk . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
+$trf .= "(" . $stsk .", " . (int)$stsk-1 . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
 
-
-
+if(!mysqli_query($datos, $trf)){
+	echo mysqli_error($datos);
+}
 
 if(!mysqli_query($datos, $query)){
 	echo mysqli_error($datos);
@@ -48,9 +47,6 @@ if(!mysqli_query($datos, $query5)){
 	echo mysqli_error($datos);
 }
 
-if(!mysqli_query($datos, $trf)){
-	echo mysqli_error($datos);
-}
 
 
 echo $percent;
