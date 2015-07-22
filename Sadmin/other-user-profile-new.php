@@ -4596,9 +4596,9 @@ if(kind == 1){
    console.info(filstr);
   }
 
-      div4.innerHTML = filstr;
-      div_special.appendChild(div4);
+      div5.innerHTML = filstr;
       div_special.appendChild(div5);
+      div_special.appendChild(div4);
       div_special.appendChild(div_special2);
 
 
@@ -4760,8 +4760,8 @@ $.ajax({ type:"POST",
     
 }
 
-if(div4.innerHTML == ""){
-   div4.innerHTML = str_file;
+if(div5.innerHTML == ""){
+   div5.innerHTML = str_file;
 }
  
 
@@ -4787,8 +4787,8 @@ td_i1.appendChild(div3);
 if(kind == 1){
     td_i1.appendChild(div_special);
 } else {
-  td_i1.appendChild(div4);
   td_i1.appendChild(div5);
+  td_i1.appendChild(div4);
   td4.appendChild(div_ii);
 }
 
