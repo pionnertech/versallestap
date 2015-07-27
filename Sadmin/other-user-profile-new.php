@@ -3350,13 +3350,17 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                            var parent = document.querySelectorAll('.coll-int')[ind+1];
                            console.info(ind+1);
                            parent.innerHTML = string;  
-
+                console.info($("#up-int").html());
+           $("#up-int").empty();
+      console.info($("#up-int").html());
                          
                      });
                   newthum(1);
+
                     $("#del-int-req input, #del-int-req textarea").val('');
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
+
 
                 }
   })
