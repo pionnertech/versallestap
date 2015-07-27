@@ -173,6 +173,12 @@ echo "|" . $outcome['STSK_TYPE'];
 echo "|" . $pro_user['STSK_PROGRESS'];
 if(!is_null($user_out9)){
 echo "|" . $user_out9;
+
+
+
+
+       
+
 }
  
 

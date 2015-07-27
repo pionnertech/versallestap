@@ -4582,7 +4582,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
 
    $(".span2").data("val", percent);
    $(".span2").slider('setValue', percent);
-$("#back-own").data("val", 1); // esto es para que el boton back se devuelva a la vista interna
+$("#back-own").data("val", 0); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
   
@@ -4615,7 +4615,7 @@ $("#set-pro-int").addClass('active in');
 mode = "first";
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
-$("#back-own").data("val", 0);
+$("#back-own").data("val", 1);
 
 
 }}}
