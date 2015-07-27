@@ -1569,7 +1569,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                    $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
                     
                                     foreach ($s_files as $fstr) {
-                                       
+                                       echo "<script>console.info('archivo encontrado : " . $fstr . "')</script>";
                                        while($sf = mysqli_fetch_row($part)){
                                        
                                              if (preg_match ("/_\[" . $sf[2] ."\]_/", $str, $m)){
@@ -1602,8 +1602,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       break;
                                                  } ?>
 
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($str) ?>" download>
-                                                     <p class="ifile-ii" title="<? printf($str) ?>">
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($fstr) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($fstr) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
                                                      </p>
