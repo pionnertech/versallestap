@@ -1480,7 +1480,65 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                 mysqli_data_seek($part, 0);
 
-                                                ?>
+$it = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1  AND STSK_TICKET= '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $fac . " AND USR_RANGE ='back-user' )");
+$ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $fac . " )");
+
+while($fila = mysqli_fetch_row($ad)){
+
+    $handle = opendir("/var/www/html/" . $fac . "/" . $fila[1] . "_alt/");
+
+        while (false !== ($file = readdir($handle))){
+
+             while ($as = mysqli_fetch_row($it)){
+                        // echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
+                       if( preg_match_all("/_\[" . $as[0] . "\]_/", $file) == 1){
+                              $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+                                                 ?>
+
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $fila[1] ?>_alt/<? printf($file) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($file) ?>">
+                                                         <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                         <span class="iname"></span>
+                                                     </p>
+                                                 </a>
+
+                                                 <?
+                          }
+                    }
+                mysqli_data_seek($it, 0);
+             }
+             closedir($handle);
+}
+
+
+   ?>
                                                 </div>
 
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
