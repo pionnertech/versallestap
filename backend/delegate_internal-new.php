@@ -25,7 +25,7 @@ $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE
 $team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
 
 if(!isset($ticket) || $ticket == ""){
-$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
+$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT DISTINCT COUNT(STSK_TICKET) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
