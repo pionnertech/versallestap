@@ -25,7 +25,7 @@ exit;
 }
 $post_trigger = mysqli_fetch_assoc($trigger);
 //output the general and individual progress
-$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $post_trigger['PSD_TICKET'] ."')");
+$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'sadmin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $post_trigger['PSD_TICKET'] ."')");
 $query_assoc = mysqli_fetch_assoc($query);
 
 //what is the progress?
