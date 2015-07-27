@@ -1567,12 +1567,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                 mysqli_data_seek($part, 0);
 
                                    $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
-
                     
                                     foreach ($s_files as $fstr) {
                                        
                                        while($sf = mysqli_fetch_row($part)){
-                                        if($fint[5] == "admin"){
+                                       
                                              if (preg_match ("/_\[" . $sf[2] ."\]_/", $str, $m)){
                                              $extension = substr($str, -3);
                                               $cor = "";
@@ -1612,7 +1611,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                  <?
                                              }
-                                           }
+                                           
                                         }
                                       mysqli_data_seek($part, 0);
                                     }
