@@ -1414,6 +1414,9 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                         } 
                                                                     }
                                                                     mysqli_data_seek($part, 0);
+
+                                      $Ruan = array_column(mysqli_fetch_array($part),"STSK_ID") ;
+
                                                                  ?>
                                                                     </div>
                                              <div class="wrap-int-files" >
@@ -1495,15 +1498,19 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
                               } 
                            
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+
+                                   if($fint[5] == "admin") {
+                                  
+                                        $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
                                         
-                                          $file_extension = "";
+                                        //ruan...
+                                        for($i=0; $i < count($Ruan) ; $i++){
+  
+                                              foreach ($a_files as $str){ 
+    
+                                               if (preg_match ("/_\[" . $Ruan[$i] ."\]_/", $str, $m)){
 
-                                           while (false !== ($archivos2 = readdir($handler2))){
-//echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
-                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
-
-                                             $extension = substr($archivos2, -3);
+                                              $extension = substr($str, -3);
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
@@ -1530,20 +1537,26 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
-                                                 }
-                                          ?>
-                                          
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
-                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                 } 
+
+                                                 ?>
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($str) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($str) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
                                                      </p>
                                                  </a>
-                                                  <? }
-                                                  } 
-                                                } 
+
+                                                  <?
+                                                     
+                                                       }
+                                                   }
                                                }
-                                              
+                                           }//if admin
+                          
+                                       }// while fint
+
+
                                                 mysqli_data_seek($part, 0);
                                                 ?>
                                                 </div>
