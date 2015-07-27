@@ -25,7 +25,7 @@ exit;
 }
 $post_trigger = mysqli_fetch_assoc($trigger);
 //output the general and individual progress
-$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $post_trigger['STSK_TICKET'] ."')");
+$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $post_trigger['PSD_TICKET'] ."')");
 $query_assoc = mysqli_fetch_assoc($query);
 
 //what is the progress?
@@ -33,8 +33,7 @@ $query_assoc = mysqli_fetch_assoc($query);
   $add = mysqli_fetch_assoc(mysqli_query($datos, "SELECT  SUM(A.STSK_PROGRESS), COUNT(A.STSK_ID), ROUND(AVG(A.STSK_PROGRESS)) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $query_assoc['STSK_TICKET'] . "')")); 
 
 //who is?, which percentage?,
-  echo $query_assoc['STSK_TICKET'];
-  exit;
+ 
 $handler = mysqli_fetch_assoc(mysqli_query($datos, "SELECT PSD_ID, PSD_USR, PSD_PERCENT FROM PSEUDO WHERE (PSD_FAC_CODE = " . $fac . " AND PSD_TICKET = '" . $query_assoc['STSK_TICKET'] . "') ORDER BY PSD_TIMESTAMP DESC" ));
 
 //transform all into readable info
