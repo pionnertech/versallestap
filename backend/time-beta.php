@@ -12,6 +12,17 @@ $ident = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE AS RAN FROM U
 $first = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $usr . " AND STSK_PROGRESS <> STSK_ANCIENT_PRO ) ORDER BY STSK_ID DESC LIMIT 1 ");
 //si no encuentra, salga
 if(mysqli_num_rows($first) < 1){
+	            echo "0";
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ;
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ; 
+                echo "|0" ; 
      exit; 
 } 
 
@@ -36,7 +47,7 @@ switch ($sel['STSK_TYPE']) {
 	   
 
 	   //update the difference , set the traffic and variables
-       mysqli_query($datos, "UPDATE SUBTAKS SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE STSK_ID = " . $sel["STSK_ID"]);
+       mysqli_query($datos, "UPDATE SUBTAKS SET STSK_ANCIENT_PRO = " . $sel ['STSK_PROGRESS'] . " WHERE STSK_ID = " . $sel["STSK_ID"]);
        //get the gral avg
 	   $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
        //get the INFO about the partial progress
@@ -65,7 +76,7 @@ switch ($sel['STSK_TYPE']) {
             $classText = "" ;
         }
 	   //update the difference , set the traffic and variables
-       mysqli_query($datos, "UPDATE SUBTAKS SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE STSK_ID = " . $sel["STSK_ID"]);
+       mysqli_query($datos, "UPDATE SUBTAKS SET STSK_ANCIENT_PRO = " . $sel ['STSK_PROGRESS'] . " WHERE STSK_ID = " . $sel["STSK_ID"]);
        //get the gral avg
 	   $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
        //get the INFO about the partial progress
