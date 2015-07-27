@@ -23,8 +23,9 @@ echo "|" . $user_out5;
 exit;
 
 }
+$post_trigger = mysqli_fetch_assoc($trigger);
 //output the general and individual progress
-$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $trigger['STSK_TICKET'] ."')");
+$query = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = "  . $usr . " AND STSK_TICKET = '" . $post_trigger['STSK_TICKET'] ."')");
 $query_assoc = mysqli_fetch_assoc($query);
 
 //what is the progress?
@@ -50,6 +51,7 @@ if(!mysqli_query("DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
 
 } else {
 
+
 echo "|" . $user_out1;
 echo "|" . $user_out2;
 echo "|" . $user_out3;
@@ -61,5 +63,6 @@ echo "|" . $user_out6;
 
 
 
-
+r />
+<b>Fatal error</b>:  Cannot use object of type mysqli_result as array in <b>/var/www/html/backend/super-listener-int.php</b> on line <b>27</b><br />
 ?>
