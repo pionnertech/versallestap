@@ -75,24 +75,25 @@ switch ($sel['STSK_TYPE']) {
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $sel ['STSK_PROGRESS'] . " WHERE STSK_ID = " . $sel["STSK_ID"]);
        //get the gral avg
        if($ident['RAN'] == 'sadmin'){
-        $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN A.STSK_PROGRESS IS NULL THEN 0 ELSE A.STSK_PROGRESS END)) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TICKET = 'IN00000' AND STSK_FAC_CODE = 10000  AND B.USR_RANGE = 'admin')")); } else {
+        $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN A.STSK_PROGRESS IS NULL THEN 0 ELSE A.STSK_PROGRESS END)) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . "  AND B.USR_RANGE = 'admin')")); } else {
         $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
        }
 	     
        //get the INFO about the partial progress
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC_II WHERE TII_STSK_ID = " . $sel['STSK_ID'] . " ORDER BY TII_ID DESC"));
        
-                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));
-                echo "|" . $trf_str['TII_USER'];
-                echo "|" . $trf_str['TII_SUBJECT'];
-                echo "|" . $trf_str['TII_DESCRIPT'];
-                echo "|" . date('d/m/Y', strtotime($trf_str['TII_ING_DATE']));
-                echo "|" . $trf_str['TII_STSK_SRC_ID'];
-                echo "|" . $total['AVX'];
-                echo "|" . $classText;
-                echo "|" . $trf_str['TII_STSK_ID']; 
-                echo "|" . $sel['STSK_PROGRESS'];
-                echo "|" . $sel['STSK_TYPE'];
+                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));//0
+                echo "|" . $trf_str['TII_USER'];//1
+                echo "|" . $trf_str['TII_SUBJECT'];//2
+                echo "|" . $trf_str['TII_DESCRIPT'];//3
+                echo "|" . date('d/m/Y', strtotime($trf_str['TII_ING_DATE']));//4
+                echo "|" . $trf_str['TII_STSK_SRC_ID'];//5
+                echo "|" . $total['AVX'];//6
+                echo "|" . $classText;//7
+                echo "|" . $trf_str['TII_STSK_ID'];//8 
+                echo "|" . $sel['STSK_TYPE'];//9
+                echo "|" . $sel['STSK_PROGRESS'];//10
+                
 
 	break;
 
