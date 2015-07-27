@@ -29,7 +29,7 @@ $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKE
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
-if(!mysqli_query($datos, "UPDATE SUBTASKS SET STSK_MAIN_USR = " . $muser . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . "  AND STSK_MAIN_USR <> STSK_CHARGE_USR)")){
+if(!mysqli_query($datos, "UPDATE SUBTASKS SET STSK_MAIN_USR = " . $muser . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . "  AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_CHARGE_USR = " . $muser . ")")){
 mysqli_error($datos);
 exit;
 }
