@@ -2456,8 +2456,7 @@ $(".incoming-files").css({ display : "none"});
 $(".del-int").on('click', function(){
 
      mode = "first";
-    $("#up-int").empty();
-    $("#up-own").empty();
+
        user_send = $('#int-del').val();
        console.info(user_send);
        keyFile = RandomString(8);
