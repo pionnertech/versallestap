@@ -127,9 +127,9 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR 
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_ID = STSK_ISS_ID AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac .");");
 }
 
-$test = mysqli_query($datos, "SELECT STSK_RESP FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_RESP = 0)" );
+$test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_RESP FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_RESP = 0)" ));
 
-if(mysqli_num_rows($test) == 0 ){
+if($test['STSK_RESP'] == 0  ){
   mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
 }
 //seek the original admin-admin subtask 
