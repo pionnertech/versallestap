@@ -1480,6 +1480,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                 mysqli_data_seek($part, 0);
 
+$it = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1  AND STSK_TICKET= '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE ='back-user' )");
+$ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )");
 
 while($fila = mysqli_fetch_row($ad)){
 
@@ -1532,7 +1534,7 @@ while($fila = mysqli_fetch_row($ad)){
                     }
                 mysqli_data_seek($it, 0);
              }
-             //closedir($handle);
+            // closedir($handle);
 }
 
 
