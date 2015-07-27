@@ -1548,7 +1548,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                  } 
 
                                                  ?>
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($str) ?>" download>
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $fint[0] ?>_alt/<? printf($str) ?>" download>
                                                      <p class="ifile-ii" title="<? printf($str) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
@@ -1564,8 +1564,59 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                           
                                        }// while fint
 
-
                                                 mysqli_data_seek($part, 0);
+
+                                   $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
+
+                    
+                                    foreach ($s_files as $fstr) {
+                                       
+                                       while($sf = mysqli_fetch_row($part)){
+                                             if (preg_match ("/_\[" . $sf[2]; ."\]_/", $str, $m)){
+                                             $extension = substr($str, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 } ?>
+
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($str) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($str) ?>">
+                                                         <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                         <span class="iname"></span>
+                                                     </p>
+                                                 </a>
+
+                                                 <?
+                                             }
+                                           }
+                                      mysqli_data_seek($part, 0);
+                                    }
+
+ mysqli_data_seek($part, 0);
+
                                                 ?>
                                                 </div>
                                              <div class="int-chart" style="display: inline-block; vertical-align: top;"></div>
