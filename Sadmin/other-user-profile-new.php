@@ -3129,7 +3129,7 @@ function moveAtDragDropfiles(name, main_usr_id, charge_usr_id){
 var uploaderInt = function(object, iss_id , usr_id, stsk_id , kind){
 
 if(kind == "internal"){
-   var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
+   var url = '../backend/upload_int.php?fac_id=' + fac + "&iss_id=" + iss_id;
    var keyGen = true;
 } else {
     var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
