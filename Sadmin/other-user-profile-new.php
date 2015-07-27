@@ -4200,7 +4200,7 @@ $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]")
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
 $(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]").parent().attr("data-per", customPro);
-
+insertScheduleTraffic(subject, descript ,date, userId, ind)
 var tknum = $("#int-table .task").eq(ind).children(".cell-icon").html();
 
 }
