@@ -64,7 +64,7 @@ echo "|" . $user_out6 . "|";
 //iterate every dir for every file by quering by iss
 $it = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TICKET= '" . $query_assoc['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND USR_RANGE = 'back-user')");
 
-$handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "/");
+$handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "_alt/");
 
 while($fila = mysqli_fetch_row($it)){
     while (false !== ($file = readdir($handle))){
