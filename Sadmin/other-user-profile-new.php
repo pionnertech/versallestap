@@ -2536,8 +2536,6 @@ $(".del-int").on('click', function(){
        user_send = $('#int-del').val();
        console.info(user_send);
        console.info('está llegado desde aqui $(.del-int) keyFile :' + keyFile );
-       uploaderInt($("#up-own"), "", user_send, '' , "internal", keyFile);
-       uploaderInt($("#up-int"), "", user_send, '' , "internal", keyFile);
 
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
