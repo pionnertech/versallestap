@@ -36,7 +36,7 @@ $query_assoc = mysqli_fetch_assoc($query);
 $handler = mysqli_fetch_assoc(mysqli_query($datos, "SELECT PSD_ID, PSD_USR, PSD_PERCENT FROM PSEUDO WHERE (PSD_FAC_CODE = " . $fac . " AND PSD_TICKET = '" . $query_assoc['STSK_TICKET'] . "') ORDER BY PSD_TIMESTAMP DESC" ));
 
 //transform all into readable info
-$trfm = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE  USR_ID = " . $handler['PSD_ID'] . ";"));
+$trfm = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $handler['PSD_USR'] . ";"));
 
 
 $user_out1 = str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($trfm['NAME']))));
