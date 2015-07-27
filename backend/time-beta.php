@@ -22,7 +22,7 @@ if(mysqli_num_rows($first) < 1){
 //discriminemos origen y tipo
 $sel = mysqli_fetch_assoc($first);
 
-if($sel['STSK_MAIN_USR'] == $usr){
+if($sel['STSK_CHARGE_USR'] == $usr){
 
 	echo "0|0|0|0|0|0|0|0|0|0|1"; 
 
