@@ -1572,8 +1572,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                        echo "<script>console.info('archivo encontrado : " . $fstr . "')</script>";
                                        while($sf = mysqli_fetch_row($part)){
                                        
-                                             if (preg_match ("/_\[" . $sf[2] ."\]_/", $str, $m)){
-                                             $extension = substr($str, -3);
+                                             if (preg_match ("/_\[" . $sf[2] ."\]_/", $fstr, $m)){
+                                             $extension = substr($fstr, -3);
                                               $cor = "";
                                                  switch (true) {
                                                       case ($extension =='pdf'):
