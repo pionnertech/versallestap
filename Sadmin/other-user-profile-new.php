@@ -5407,6 +5407,7 @@ $.ajax({
      type: "POST",
      url: "../backend/filepack.php?ticket=" + tt + "&fac=" + fac, 
      success: function(data){
+  var nname = data.split(","); 
   var filstr = "";
   var setClass = "";
   var cor = "";
