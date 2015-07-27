@@ -1509,7 +1509,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                    if($fint[5] == "admin") {
                                   
                                         $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" );
-                                           echo "<script>console.info('count ruan : " . count($Ruan) . "')</script>";
+                                           echo "<script>console.info('count ruan : " . $fint[0] . "')</script>";
                                         //ruan...
                                         for($i=0; $i < count($Ruan) ; $i++){
   
