@@ -1398,16 +1398,20 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                                                                                        
                                                                     <div class="coll-int" style="width: 100%">
 
-             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . ((int)$fila5[11]+1) . ")"); 
+             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "')"); 
                                while($prt = mysqli_fetch_row($part)){
-             ?>
+                                                             
+                                                             if($prt[5] == 'admin'){   
+
+                                                                 ?>                                          
                                                                         <a data-per="<? echo $prt[3] ?>" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
                                                                             <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
                                                                             <i class="fa fa-check-circle finished" style="opacity: <? if ($prt[3] == 100 ) { ?> 1 <? } else { } ?>"></i>
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
 
-                                                                        <? 
+                                                                        <?
+                                                                        } 
                                                                     }
                                                                     mysqli_data_seek($part, 0);
                                                                  ?>
@@ -2054,6 +2058,8 @@ onItemAdd: function(item){
        console.info(user_send);
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile);
+       uploaderInt($("#up-own"), "", user_send, '' , "internal", keyFile);
+       uploaderInt($("#up-int"), "", user_send, '' , "internal", keyFile);
       }
 });
 
