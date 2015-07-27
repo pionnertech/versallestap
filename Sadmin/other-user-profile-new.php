@@ -2136,6 +2136,7 @@ onItemAdd: function(item){
        console.info("llega hasta aqui --- keyFile:" + keyFile);
 
        if($("#up-int").attr("id") == ""){
+              $("#up-own").empty();
               uploaderInt($("#up-own"), "", user_send, stsk_send , "internal", keyFile);
        } else {
                uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile);
