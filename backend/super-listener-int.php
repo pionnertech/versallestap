@@ -50,6 +50,7 @@ if(!mysqli_query("DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
 	  mysqli_error($datos);
 
 } else {
+	
 
 
 echo "|" . $user_out1;
