@@ -45,7 +45,10 @@ $user_out4 = $handler['PSD_PERCENT'];
 $user_out5 = $add['PROGRESS'];
 $user_out6 = $query_assoc['STSK_TICKET'];
 
-mysqli_query("DELETE FROM PSEUDO WHERE (PSD_ID = " . $handler['PSD_ID'] . " )" );
+if(!mysqli_query("DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
+	  mysqli_error($datos);
+
+} else {
 
 echo "|" . $user_out1;
 echo "|" . $user_out2;
@@ -53,6 +56,10 @@ echo "|" . $user_out3;
 echo "|" . $user_out4;
 echo "|" . $user_out5;
 echo "|" . $user_out6;
+
+}
+
+
 
 
 ?>

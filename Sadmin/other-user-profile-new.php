@@ -2818,10 +2818,10 @@ function thirdPulling(){
 
                             var alpha = data.split("|");
                             if(parseInt(alpha[1]) !== 0){
-                            console.info(alpha[1])
+                              console.info(alpha[1])
                               upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5]);
                                 //console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
-                                   showAlert("Progreso en Incidencia " + alpha[6], "" ,  alpha[1]);
+                              showAlert("Progreso en Incidencia " + alpha[6] , "" ,  alpha[1]);
                             
                        }
                   }
