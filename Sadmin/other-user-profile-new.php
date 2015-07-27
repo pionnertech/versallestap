@@ -2810,24 +2810,36 @@ setInterval(function(){
   thirdPulling();
 }, 5000);
 
+
 function thirdPulling(){
      $.ajax({ type: "POST",
-              url:"../backend/incoming-ii-new.php?usr=" + mainuser,
+              url:"../backend/super-listener-int.php?usr=" + mainuser + "&fac=" + fac,
               success : function (data){
+
                             var alpha = data.split("|");
-                            if(alpha[1] !== undefined){
-                             if(alpha !== aa_ii){
-                              firstTask(alpha[0], alpha[2], alpha[7] , alpha[3], alpha[6], 0, alpha[1], 0, alpha[8]);
+                            if(alpha[1] !== 0){
+                             console.info(data);
+                              upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5]);
                                 //console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
-                                   showAlert(alpha[2], "ii" ,  alpha[7]);
-                                   newthum(2);
-                                   alpha[2] = aa_ii;
-                                
-                           } 
+                                   showAlert("Progreso en Incidencia " + alpha[6], "" ,  alpha[1]);
+                            
                        }
                   }
             });
    }
+
+
+function upProAdmin(usr_id, usr, tck, rPer, tPer ){
+
+  var row = $("#int-table tr td:contains('" + tck + "')")
+  .parent()
+  .next();
+
+row.find('.bar').css({ width: tper + "%"});
+row.find("a.hovertip[title='" + usr + "'").attr("data-per", rPer);
+
+}
+
 
 $("#sw-int-in-out").on('click', function(){
 
