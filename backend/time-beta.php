@@ -83,7 +83,7 @@ switch ($sel['STSK_TYPE']) {
                 echo "|" . $trf_str['TII_SUBJECT'];
                 echo "|" . $trf_str['TII_DESCRIPT'];
                 echo "|" . date('d/m/Y', strtotime($trf_str['TII_ING_DATE']));
-                echo "|" . $user['TII_STSK_SRC_ID'];
+                echo "|" . $trf_str['TII_STSK_SRC_ID'];
                 echo "|" . $total['AVX'];
                 echo "|" . $classText;
                 echo "|" . $trf_str['TII_STSK_ID']; 
