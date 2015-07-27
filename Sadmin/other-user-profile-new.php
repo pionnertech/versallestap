@@ -2835,7 +2835,7 @@ function upProAdmin(usr_id, usr, tck, rPer, tPer ){
 
 row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
-row.find("a.hovertip[title='" + usr + "']").attr("data-per", rPer);
+row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 
 
 }
