@@ -2816,10 +2816,8 @@ function thirdPulling(){
                         console.info(data);
                             var alpha = data.split("|");
                             if(parseInt(alpha[1]) !== 0){
+                                    console.info(alpha[7]);
                               upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5], alpha[7]);
-      console.info(alpha[7]);
-
-      graphAddedFiles($(".int-files-for").eq())
                               showAlert("Progreso en Incidencia " + alpha[6] , "" ,  alpha[1]);
                             
                        }
@@ -2840,6 +2838,9 @@ row.find('.bar').css({ width: tPer + "%"});
 row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 //file tratment
 var ind = row.find("int-files-for").index(".int-files-for");
+
+console.info("el indice entrate a la funcion es :"  + ind);
+
 graphAddedFiles($("int-files-for").eq(ind), files.replace(",", "|"));
 
 }
