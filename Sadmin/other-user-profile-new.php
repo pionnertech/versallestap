@@ -2839,6 +2839,7 @@ row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
 row.find("a.hovertip[title='" + usr + "']").attr("data-per", rPer);
 
+
 }
 
 
