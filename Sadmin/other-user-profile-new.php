@@ -5402,6 +5402,7 @@ $(".fr").on("click", function(){
 
 function graphAddedFiles(object, names){
   var nname = names.split("|");
+  console.info("inside the function :" + names);
   var filstr = "";
   var setClass = "";
   var cor = "";
