@@ -52,15 +52,28 @@ if(!mysqli_query($datos, "DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID
 
 } else {
 
-
-
 echo "|" . $user_out1;
 echo "|" . $user_out2;
 echo "|" . $user_out3;
 echo "|" . $user_out4;
 echo "|" . $user_out5;
-echo "|" . $user_out6;
+echo "|" . $user_out6 . "|";
 
+}
+
+//iterate every dir for every file by quering by iss
+$it = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_ISS_ID = " . $query_assoc['STSK_ISS_ID'] . " AND STSK_FAC_CODE = " . $fac . ")");
+
+$handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "/");
+
+while($fila = mysqli_query($it)){
+
+    while (false !== ($file = readdir($handle))){
+
+	   if( preg_match_all("/_\[" . $fila[0] . "\]_/", $file) == 1){
+             echo $file . ",";
+	    }
+    }
 }
 
 
