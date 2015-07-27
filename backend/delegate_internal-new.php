@@ -25,7 +25,7 @@ $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE
 $team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
 
 if(!isset($ticket) || $ticket == ""){
-$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ")" ));
+$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
@@ -93,7 +93,7 @@ $i = 0;
 
      while($fila = mysqli_fetch_row($team_leader)){
 
-            $query .= " ( " . ($number + $i + 1) . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "') ";
+            $query .= " ( " . ($number + $i + 1) . " , '" . $subject . "', '" . $descript . "', " . $fila[0] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $fila[0] . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "') ";
             
             $i = $i + 1;
 
@@ -118,7 +118,7 @@ for($i=0; $i < count($uq); $i++){
 $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET, STSK_RESP)  VALUES";
    for($i=0; $i < count($earray); $i++){
       if($rarray[$i] == 'admin'){
-       $query .= "  ( " . ($number + $i+1) . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
+       $query .= "  ( " . ($number + $i+1) . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $earray[$i] . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
       } else {
        $query .= "  ( " . $number . " , '" . $subject . "', '" . $descript . "', " . $earray[$i] . ", '" . $fechaF . "', 2 ,  '" . $startD . "' , " . $muser . ", " . $fac . ", NULL, 0, 1, 1, '" . $ticket . "', 2) ";
       }
