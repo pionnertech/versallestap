@@ -1398,7 +1398,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                                                                                        
                                                                     <div class="coll-int" style="width: 100%">
 
-             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin' )"); 
+             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " )"); 
                                while($prt = mysqli_fetch_row($part)){
                                                              
                                                              if($prt[5] == 'admin'){   
@@ -1477,6 +1477,9 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                }
                                                 mysqli_data_seek($part, 0);
                                                     ?>
+
+
+
                                                 </div>
 
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
