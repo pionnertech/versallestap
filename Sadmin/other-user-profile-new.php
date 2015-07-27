@@ -1428,9 +1428,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                            
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
                                          
-                                      
                                           $file_extension = "";
-                                          $ancient = "";
+                                          
                                            while (false !== ($archivos2 = readdir($handler2))){
                                            
                                          if(preg_match_all("/_\[" . ($fint[4]) . "\]_/", $archivos2) == 1){
@@ -1473,23 +1472,9 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                  </a>
                                                   <? }
                                                    
-                                                   $hi = preg_replace("/_\[[0-9]+\]_/", "", $archivos2);
-
-                                                   if($ancient == $hi){
-
-                                                    $ancient = $hi;
-                                                    break;
-
-                                                   } else {
-
-                                                     $ancient = $hi;
-
-                                                   }
-                                                   
-
                                                   } 
                                                 } 
-                                               //break;
+                                               break;
                                                }
                                                 mysqli_data_seek($part, 0);
                                                     ?>
@@ -5594,3 +5579,5 @@ return true;
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 ?>
+
+
