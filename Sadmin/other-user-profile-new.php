@@ -2816,8 +2816,10 @@ function thirdPulling(){
                         console.info(data);
                             var alpha = data.split("|");
                             if(parseInt(alpha[1]) !== 0){
-                              upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5]);
-          console.info( alpha[0] + "," + alpha[1] + ","  + alpha[2] + "," + alpha[3] + "," + alpha[4] + ","  + alpha[5] + ","  + alpha[6]);
+                              upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5], alpha[7]);
+      console.info(alpha[7]);
+
+      graphAddedFiles($(".int-files-for").eq())
                               showAlert("Progreso en Incidencia " + alpha[6] , "" ,  alpha[1]);
                             
                        }
@@ -2827,7 +2829,7 @@ function thirdPulling(){
 
 
 
-function upProAdmin(usr_id, usr, tck, rPer, tPer ){
+function upProAdmin(usr_id, usr, tck, rPer, tPer , files ){
 
   var row = $("#int-table tr td:contains('" + tck + "')")
   .parent()
@@ -2836,6 +2838,9 @@ function upProAdmin(usr_id, usr, tck, rPer, tPer ){
 row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
 row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
+//file tratment
+var ind = row.index(".int-files-for");
+graphAddedFiles($("int-files-for").eq(ind), files.replace(",", "|"));
 
 
 }
@@ -5444,7 +5449,7 @@ function graphAddedFiles(object, names){
 
     }
     
-    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    filstr += '<a href="../' + fac +'/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
 
