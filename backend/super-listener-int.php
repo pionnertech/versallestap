@@ -63,6 +63,5 @@ echo "|" . $user_out6;
 
 
 
-r />
-<b>Fatal error</b>:  Cannot use object of type mysqli_result as array in <b>/var/www/html/backend/super-listener-int.php</b> on line <b>27</b><br />
+
 ?>
