@@ -2827,6 +2827,8 @@ function thirdPulling(){
 
 
 
+
+
 function upProAdmin(usr_id, usr, tck, rPer, tPer , files ){
 
   var row = $("#int-table tr td:contains('" + tck + "')")
@@ -3433,6 +3435,7 @@ function changeListener(){
               previan = packets[2];
                //si no está vacio
                  if(parseInt(packets[0]) !== 0 && packets[0] !== "" ){
+                  console.info(data);
                        showAlert(packets[2], "pro", packets[0]);
                        //si es de tipo externo ==*.*==
                             if(parseInt(packets[9]) == 0){
