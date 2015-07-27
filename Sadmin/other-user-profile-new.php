@@ -2842,7 +2842,7 @@ row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 var ind = row.find(".int-files-for").index(".int-files-for");
 
 
-graphAddedFiles($(".int-files-for").eq(ind), files.replace(",", "|"));
+graphAddedFiles($(".int-files-for").eq(ind), files.replace("/\,/g", "|"));
 
 }
 
