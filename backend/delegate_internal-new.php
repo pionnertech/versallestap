@@ -25,7 +25,7 @@ $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE
 $team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
 
 if(!isset($ticket) || $ticket == ""){
-$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT DISTINCT COUNT(STSK_TICKET) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
+$ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(DISTINCT STSK_TICKET) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
@@ -150,7 +150,6 @@ if(!mysqli_query($datos, $query)){
 
 } else {
 
- $echo_files  = "x<br/>";
 
 $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = '" . $ticket . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 1 AND STSK_MAIN_USR != STSK_CHARGE_USR)");
  
@@ -165,7 +164,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
               while($uteams = mysqli_fetch_row($uteam)){
 
                 if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension)){
-                        $echo_files .=  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension; 
+                        //$echo_files .=  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension; 
                   } 
               }
 
