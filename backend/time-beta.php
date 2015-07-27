@@ -29,7 +29,10 @@ switch ($sel['STSK_TYPE']) {
 
 
 	  // determine if is Finished
-	   if($sel['STSK_PROGRESS'] > 99.9){  $classText = "FINALIZADO" } else {  $classText = "" };
+	   if($sel['STSK_PROGRESS'] > 99.9){  
+	      	$classText = "FINALIZADO"; } else {  
+	     	$classText = "" ;
+	     }
 	   
 
 	   //update the difference , set the traffic and variables
@@ -57,7 +60,10 @@ switch ($sel['STSK_TYPE']) {
 	case 1:
 	   //se saca el promedio y se obtien el valor parcial  
        //  =======  caso back =======//
-       if($sel['STSK_PROGRESS'] > 99.9){  $classText = "FINALIZADO" } else {  $classText = "" };
+       if($sel['STSK_PROGRESS'] > 99.9){  
+           	$classText = "FINALIZADO";  } else { 
+            $classText = "" ;
+        }
 	   //update the difference , set the traffic and variables
        mysqli_query($datos, "UPDATE SUBTAKS SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE STSK_ID = " . $sel["STSK_ID"]);
        //get the gral avg
