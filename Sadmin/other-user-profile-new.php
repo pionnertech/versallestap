@@ -1420,7 +1420,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                       $Ruan = array();
                                       while($a_Ruan = mysqli_fetch_row($pre_Ruan)){
-
                                           array_push($Ruan, $a_Ruan[0]);
                                       }
 
@@ -1509,7 +1508,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                    if($fint[5] == "admin") {
                                   
-                                        $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
+                                        $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" );
                                            echo "<script>console.info('count ruan : " . count($Ruan) . "')</script>";
                                         //ruan...
                                         for($i=0; $i < count($Ruan) ; $i++){
