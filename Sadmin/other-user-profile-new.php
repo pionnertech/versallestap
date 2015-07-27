@@ -2827,6 +2827,7 @@ function thirdPulling(){
    }
 
 
+
 function upProAdmin(usr_id, usr, tck, rPer, tPer ){
 
   var row = $("#int-table tr td:contains('" + tck + "')")
