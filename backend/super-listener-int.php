@@ -33,6 +33,8 @@ $query_assoc = mysqli_fetch_assoc($query);
   $add = mysqli_fetch_assoc(mysqli_query($datos, "SELECT  SUM(A.STSK_PROGRESS), COUNT(A.STSK_ID), ROUND(AVG(A.STSK_PROGRESS)) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $query_assoc['STSK_TICKET'] . "')")); 
 
 //who is?, which percentage?,
+  echo $query_assoc['STSK_TICKET'];
+  exit;
 $handler = mysqli_fetch_assoc(mysqli_query($datos, "SELECT PSD_ID, PSD_USR, PSD_PERCENT FROM PSEUDO WHERE (PSD_FAC_CODE = " . $fac . " AND PSD_TICKET = '" . $query_assoc['STSK_TICKET'] . "') ORDER BY PSD_TIMESTAMP DESC" ));
 
 //transform all into readable info
@@ -50,7 +52,7 @@ if(!mysqli_query("DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
 	  mysqli_error($datos);
 
 } else {
-	
+
 
 
 echo "|" . $user_out1;
