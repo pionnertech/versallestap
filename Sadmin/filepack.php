@@ -1,0 +1,24 @@
+ <?php 
+
+$ticket = $_GET['ticket'];
+$fac    = $_GET['fac'];
+
+$it = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")");
+
+while($fila = mysqli_fetch_row($it)){
+    $handle = opendir("/var/www/html/" . $fac . "/" . $fila[1] . "_alt/");
+        while (false !== ($file = readdir($handle))){
+    	echo $file . "  - -- " . preg_match_all("/_\[" . $fila[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ")";
+	        if( preg_match_all("/_\[" . $fila[0] . "\]_/", $file) == 1){
+             echo $file . ",";
+	        }
+    }
+}
+
+
+
+
+
+
+
+ ?>
