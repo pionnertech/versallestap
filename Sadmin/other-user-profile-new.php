@@ -4565,7 +4565,8 @@ if(kind == 1){
       div5.style.width = "80%";
 
   var nname_pre = $("#D-drop").data("dfil");
-  if(nname_pre !== undefined || nname_pre != ""){
+
+  if(nname_pre != undefined || nname_pre != ""){
     var nname = nname_pre.split("|");
   var setClass = "";
   var cor = "";
