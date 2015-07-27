@@ -1572,7 +1572,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                     foreach ($s_files as $fstr) {
                                        
                                        while($sf = mysqli_fetch_row($part)){
-                                             if (preg_match ("/_\[" . $sf[2]; ."\]_/", $str, $m)){
+                                             if (preg_match ("/_\[" . $sf[2] ."\]_/", $str, $m)){
                                              $extension = substr($str, -3);
                                               $cor = "";
                                                  switch (true) {
