@@ -26,8 +26,8 @@ switch ($c_range['RAN']) {
 
        //get the AVG and set it to the current admin 
        $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> " . $muser . " AND STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac. ")"));
-              mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['AVX'] . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $muser . ")");
-
+              mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['AVX'] . ", STSK_ANCIENT_PRO = " . $avg['AVX'] . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $muser . ")");
+              
               //detecta si el origen es el sadmin , de aho mandale aviso 
               $look = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.USR_RANGE AS RAN FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE STSK_ID = " . $min['MIN']));
               if ($look['RAN'] == 'sadmin'){
