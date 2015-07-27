@@ -130,7 +130,12 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <
 $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_RESP FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_RESP = 0)" ));
 
 if($test['STSK_RESP'] == 0  ){
+  $min = mysqli_fetch_assoc(mysql_query($datos, "SELECT MIN(STSK_ID) AS MIN FROm SUBTASKS WHERE STSK_TICKET = " . $ticket  ));
+
   mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
+  $add =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT   COUNT(A.STSK_ID), ROUND(AVG(A.STSK_PROGRESS)) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $ticket . "')")); 
+  mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $add['PROGRESS'] . " WHERE STSK_ID =" . $min['MIN'] );
+
 }
 //seek the original admin-admin subtask 
 $var1 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM `SUBTASKS` WHERE (STSK_ID = " . $id . " AND STSK_TYPE = 1)"));
