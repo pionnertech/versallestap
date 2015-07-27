@@ -45,7 +45,7 @@ $user_out2 = $handler['PSD_USR'];
 $user_out3 = $handler['PSD_ID'];
 $user_out4 = $handler['PSD_PERCENT'];
 $user_out5 = $add['PROGRESS'];
-$user_out6 = $query_assoc['STSK_TICKET'];
+$user_out6 = $post_trigger['PSD_TICKET'];
 
 if(!mysqli_query($datos, "DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
 	  mysqli_error($datos);
@@ -67,18 +67,12 @@ $it = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B 
 $handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "/");
 
 while($fila = mysqli_fetch_row($it)){
-
     while (false !== ($file = readdir($handle))){
-
 	   if( preg_match_all("/_\[" . $fila[0] . "\]_/", $file) == 1){
-
              echo $file . ",";
-
 	    }
     }
 }
-
-
 
 
 ?>
