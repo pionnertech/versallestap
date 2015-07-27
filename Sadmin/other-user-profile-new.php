@@ -2135,7 +2135,7 @@ onItemAdd: function(item){
        keyFile = RandomString(8);
        console.info("llega hasta aqui --- keyFile:" + keyFile);
 
-       if($("#up-int").attr("id") == ""){
+       if($("#up-int").attr("id") == undefined){
               $("#up-own").empty();
               uploaderInt($("#up-own"), "", user_send, stsk_send , "internal", keyFile);
        } else {
