@@ -2839,9 +2839,8 @@ row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
 row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 //file tratment
-var ind = row.index(".int-files-for");
+var ind = row.find("int-files-for").index(".int-files-for");
 graphAddedFiles($("int-files-for").eq(ind), files.replace(",", "|"));
-
 
 }
 
