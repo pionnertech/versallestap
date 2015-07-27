@@ -1418,7 +1418,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     mysqli_data_seek($part, 0);
                                    
 
-                                     $Ruan = new Array();
+                                      $Ruan = array();
                                       while($a_Ruan = mysqli_fetch_row($pre_Ruan)){
 
                                           array_push($Ruan, $a_Ruan[0]);
