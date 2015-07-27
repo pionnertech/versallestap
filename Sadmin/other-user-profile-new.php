@@ -2535,9 +2535,6 @@ $(".del-int").on('click', function(){
 
        user_send = $('#int-del').val();
        console.info(user_send);
-
-
-       keyFile = RandomString(8);
        console.info('está llegado desde aqui $(.del-int) keyFile :' + keyFile );
        uploaderInt($("#up-own"), "", user_send, '' , "internal", keyFile);
        uploaderInt($("#up-int"), "", user_send, '' , "internal", keyFile);
