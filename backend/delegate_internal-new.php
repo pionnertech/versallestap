@@ -181,7 +181,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|" . $ticket . "|". $echo_files ;
+ echo (int)$number . "|" . $outcome . "|" . $ticket ;
 }
 
 
