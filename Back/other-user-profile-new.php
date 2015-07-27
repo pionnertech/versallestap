@@ -1188,7 +1188,7 @@ inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessag
 }
 
 
-function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind, ctz_tel, ctz_address, ticket){
+function inputTask(stsk_descript, stsk, iss, ctz, desc, dateIn, dateOut, kind, ctz_tel, ctz_address, tkt){
 
 
 if(parseInt(kind) == 0){
@@ -1222,7 +1222,7 @@ if(parseInt(kind) == 0){
     var i0   = document.createElement('i');
    
 
-    td1.innerHTML = ticket;
+    td1.innerHTML = tkt;
     
     td1.className = "cell-icon";
     td2.className = "cell-title";
@@ -1282,7 +1282,7 @@ if(kind == 0){
 
    argument = 0;
    ticket = $(this).parent().siblings(".cell-icon").html();
-  console.info($(this).parent());
+
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
