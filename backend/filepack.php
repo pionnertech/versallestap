@@ -30,7 +30,7 @@ while($fila = mysqli_fetch_row($ad)){
  mysqli_data_seek($ad, 0);
 
     $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
- while ($as = mysqli_fetch_row($it)){
+ while ($as = mysqli_fetch_row($ad)){
         while (false !== ($file = readdir($handle))){
                         // echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
 	                     if( preg_match_all("/_\[" . $as[0] . "\]_/", $file) == 1){
