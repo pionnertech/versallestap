@@ -7,37 +7,33 @@ $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //who is listening?
-$ident = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE AS RAN FROM USERS WHERE USR_ID = " . $usr));
+$ident = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE AS RAN,  FROM USERS WHERE USR_ID = " . $usr));
 //aqui se detectan los diferenciales de progreso independiente de que origan sean 
-$first = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME) AS NAME FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $usr . " AND STSK_PROGRESS <> STSK_ANCIENT_PRO ) ORDER BY STSK_ID DESC LIMIT 1 ");
+$first = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), B.USR_ID AS NAME FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $usr . " AND STSK_PROGRESS <> STSK_ANCIENT_PRO ) ORDER BY STSK_ID DESC LIMIT 1 ");
 //si no encuentra, salga
 if(mysqli_num_rows($first) < 1){
-	            echo "0";
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ;
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ; 
-                echo "|0" ; 
-     exit; 
+
+    echo "0|0|0|0|0|0|0|0|0|0|0"; 
+    exit;
+
 } 
 
 //si encuentra, veamos de que se trata., de quien para quien...
-
-//dicriminemos origen y tipo
-
+//discriminemos origen y tipo
 $sel = mysqli_fetch_assoc($first);
+
+if($sel['USR_ID'] == $usr){
+
+	echo "0|0|0|0|0|0|0|0|0|0|0"; 
+	
+    exit;
+}
 
 switch ($sel['STSK_TYPE']) {
 	case 0:
 	   
 	   //se saca el promedio y se obtien el valor parcial  
        //  =======  caso back =======//
-
 
 	  // determine if is Finished
 	   if($sel['STSK_PROGRESS'] > 99.9){  
