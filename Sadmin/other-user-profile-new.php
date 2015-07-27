@@ -4565,7 +4565,10 @@ if(kind == 1){
       div5.style.width = "80%";
 
   var nname_pre = $("#D-drop").data("dfil");
-
+  console.info("-")
+  console.info( $("#D-drop").data("dfil"));
+  console.log(nname_pre);
+  console.info("-")
   if(nname_pre != undefined || nname_pre != ""){
     var nname = nname_pre.split("|");
   var setClass = "";
