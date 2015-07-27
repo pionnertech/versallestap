@@ -1311,7 +1311,9 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
     btn.onclick = function(){
      ticket = $(this).parent().siblings(".cell-icon").html();
-     console.info($(this).parent())
+
+     console.info($(this).parent().siblings(".cell-icon"))
+     console.info($(this).parent().siblings(".cell-icon").html())
    argument = 1;
 
 //change form action to the back to admin internal 
