@@ -2058,8 +2058,7 @@ onItemAdd: function(item){
        console.info(user_send);
        keyFile = RandomString(8);
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile);
-       uploaderInt($("#up-own"), "", user_send, '' , "internal", keyFile);
-       uploaderInt($("#up-int"), "", user_send, '' , "internal", keyFile);
+
       }
 });
 
