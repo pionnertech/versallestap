@@ -2841,7 +2841,7 @@ row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
-graphAddedFiles($(".int-files-for").eq(ind), files.replace(new RegExp(",", "g"), "|"));
+graphAddedFiles($(".int-files-for").eq(ind), tck);
 
 }
 
@@ -4240,6 +4240,8 @@ var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mai
 console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
 }
 
+graphAddedFiles($(".int-files-for").eq(ind), tknum );
+/*
 $.ajax({ type:"POST",
          url: file_url,
          success : function (data){
@@ -4337,7 +4339,7 @@ var fileN = filename(files[n]);
 
     }
 })
-
+*/
 
     
 }
@@ -5399,9 +5401,12 @@ $(".fr").on("click", function(){
     
 });
 
-function graphAddedFiles(object, names){
-  var nname = names.split("|");
-  console.info("inside the function :" + names);
+function graphAddedFiles(object, tt){
+
+$.ajax({
+     type: "POST",
+     url: "../backend/filepack.php?ticket=" + tt + "&fac=" + fac, 
+     success: function(data){
   var filstr = "";
   var setClass = "";
   var cor = "";
@@ -5466,6 +5471,13 @@ object.html(object.html() + filstr);
 console.info(object.parent().parent().parent().prev().html().toString());
 
 filstr = "";
+
+
+
+     } 
+})
+  console.info("inside the function :" + names);
+
 
 }
 
