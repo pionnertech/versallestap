@@ -3456,7 +3456,7 @@ function changeListener(){
                             }
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest, packets[10]);
                           //aqui si es de tipo externo \./\./
-                             
+                         
                         if(parseInt(packets[10]) >= 99.5){
                           if(packets[9] == 0){
 
