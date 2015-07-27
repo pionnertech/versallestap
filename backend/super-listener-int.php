@@ -66,12 +66,14 @@ $it = mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_TYPE = 1 AN
 
 $handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "/");
 
-while($fila = mysqli_query($it)){
+while($fila = mysqli_fetch_row($it)){
 
     while (false !== ($file = readdir($handle))){
 
 	   if( preg_match_all("/_\[" . $fila[0] . "\]_/", $file) == 1){
+
              echo $file . ",";
+
 	    }
     }
 }
