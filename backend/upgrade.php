@@ -112,7 +112,7 @@ while ($row = mysqli_fetch_row($handler)) {
 $setto = ($adition / $n);
 //cuando se tiene mas de un admin controlando... esto es valido , de lo contrario pasa corbata
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_ID = STSK_ISS_ID AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1);");
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_MAIN_USR = "  . $muser . "AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ");");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $setto . " WHERE (STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_MAIN_USR = "  . $muser . " AND STSK_TICKET= '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . ");");
 // check 
 
 
