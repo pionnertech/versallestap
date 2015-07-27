@@ -68,7 +68,7 @@ $handle = opendir("/var/www/html/" . $fac . "/" . $handler['PSD_USR'] . "_alt/")
 
 while($fila = mysqli_fetch_row($it)){
     while (false !== ($file = readdir($handle))){
-    	echo $file . "  - -- " . preg_match_all("/_\[" . $fila[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ")";
+    	//echo $file . "  - -- " . preg_match_all("/_\[" . $fila[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ")";
 	   if( preg_match_all("/_\[" . $fila[0] . "\]_/", $file) == 1){
              echo $file . ",";
 	    }
