@@ -7,7 +7,7 @@ $fac = $_GET['fac'];
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //who is listening?
-$ident = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE AS RAN,  FROM USERS WHERE USR_ID = " . $usr));
+$ident = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE AS RAN FROM USERS WHERE USR_ID = " . $usr));
 //aqui se detectan los diferenciales de progreso independiente de que origan sean 
 $first = mysqli_query($datos, "SELECT A.STSK_PROGRESS, A.STSK_ANCIENT_PRO, A.STSK_ID, A.STSK_ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.STSK_TICKET, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), B.USR_ID AS NAME FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $usr . " AND STSK_PROGRESS <> STSK_ANCIENT_PRO ) ORDER BY STSK_ID DESC LIMIT 1 ");
 //si no encuentra, salga
@@ -25,7 +25,7 @@ $sel = mysqli_fetch_assoc($first);
 if($sel['USR_ID'] == $usr){
 
 	echo "0|0|0|0|0|0|0|0|0|0|0"; 
-	
+
     exit;
 }
 
@@ -79,11 +79,11 @@ switch ($sel['STSK_TYPE']) {
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC_II WHERE TII_STSK_ID = " . $sel['STSK_ID']));
        
                 echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));
-                echo "|" . $trf_str['TRF_USER'];
-                echo "|" . $trf_str['TRF_SUBJECT'];
-                echo "|" . $trf_str['TRF_DESCRIPT'];
-                echo "|" . date('d/m/Y', strtotime($trf_str['TRF_ING_DATE']));
-                echo "|" . $user['TRF_STSK_SRC_ID'];
+                echo "|" . $trf_str['TII_USER'];
+                echo "|" . $trf_str['TII_SUBJECT'];
+                echo "|" . $trf_str['TII_DESCRIPT'];
+                echo "|" . date('d/m/Y', strtotime($trf_str['TII_ING_DATE']));
+                echo "|" . $user['TII_STSK_SRC_ID'];
                 echo "|" . $total['AVX'];
                 echo "|" . $classText;
                 echo "|" . $trf_str['TII_STSK_ID']; 
