@@ -34,7 +34,7 @@ $query_assoc = mysqli_fetch_assoc($query);
 
 //who is?, which percentage?,
  
-$handler = mysqli_fetch_assoc(mysqli_query($datos, "SELECT PSD_ID, PSD_USR, PSD_PERCENT FROM PSEUDO WHERE (PSD_FAC_CODE = " . $fac . " AND PSD_TICKET = '" . $query_assoc['PSD_TICKET'] . "') ORDER BY PSD_TIMESTAMP DESC" ));
+$handler = mysqli_fetch_assoc(mysqli_query($datos, "SELECT PSD_ID, PSD_USR, PSD_PERCENT FROM PSEUDO WHERE (PSD_FAC_CODE = " . $fac . " AND PSD_TICKET = '" . $query_assoc['STSK_TICKET'] . "') ORDER BY PSD_TIMESTAMP DESC" ));
 
 //transform all into readable info
 $trfm = mysqli_fetch_assoc(mysqli_query($datos, "SELECT CONCAT(USR_NAME, ' ' , USR_SURNAME) AS NAME FROM USERS WHERE USR_ID = " . $handler['PSD_USR'] . ";"));
@@ -47,7 +47,7 @@ $user_out4 = $handler['PSD_PERCENT'];
 $user_out5 = $add['PROGRESS'];
 $user_out6 = $query_assoc['STSK_TICKET'];
 
-if(!mysqli_query("DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
+if(!mysqli_query($datos, "DELETE FROM PSEUDO WHERE PSD_ID = " . $handler['PSD_ID']  )){
 	  mysqli_error($datos);
 
 } else {
