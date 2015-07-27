@@ -20,7 +20,7 @@ while($fila = mysqli_fetch_row($ad)){
                               echo $file . ",";
 	                        }
         	          }
-
+                mysqli_data_seek($it, 0);
              }
              closedir($handle);
 }
