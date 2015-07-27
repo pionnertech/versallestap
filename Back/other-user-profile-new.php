@@ -1282,6 +1282,7 @@ if(kind == 0){
 
    argument = 0;
    ticket = $(this).parent().siblings(".cell-icon").html();
+  console.info($(this).parent());
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
@@ -1310,6 +1311,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
     btn.onclick = function(){
      ticket = $(this).parent().siblings(".cell-icon").html();
+     console.info($(this).parent())
    argument = 1;
 
 //change form action to the back to admin internal 
