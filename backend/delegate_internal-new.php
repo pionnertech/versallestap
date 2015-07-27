@@ -29,8 +29,7 @@ $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKE
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
-if(mysqli_query($datos, "UPDATE SUBTASKS SET STSK_MAIN_USR = " . $muser . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . "  AND STSK_MAIN_USR <> STSK_CHARGE_USR)")){
-
+if(!mysqli_query($datos, "UPDATE SUBTASKS SET STSK_MAIN_USR = " . $muser . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . "  AND STSK_MAIN_USR <> STSK_CHARGE_USR)")){
 mysqli_error($datos);
 exit;
 }
@@ -184,6 +183,8 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
 
  echo (int)$number . "|" . $outcome . "|" . $ticket ;
 }
+
+
 
 
 ?>
