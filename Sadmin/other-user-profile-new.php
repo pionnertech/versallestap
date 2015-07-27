@@ -3448,7 +3448,10 @@ function changeListener(){
                             if(packets.length == 12){
                               nest = packets[11];
                             }
-                console.info("indice = " + nest + " packet[5] = " + packets[5]);  
+                console.info("indice = " + nest + " packet[5] = " + packets[5]); 
+
+
+
             updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest, packets[10]);
                           //aqui si es de tipo externo \./\./
                              console.info(indice);
@@ -4201,9 +4204,6 @@ $(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]")
 
 var tknum = $("#int-table .task").eq(ind).children(".cell-icon").html();
 
-insertScheduleTraffic(subject, descript ,date, userId, ind);
-
-
 }
 
 var parent = document.querySelectorAll(".ex-del-par tbody")[ind];
@@ -4213,15 +4213,15 @@ var td1_av = document.createElement('td');
 var td2_av = document.createElement('td');
 var td3_av = document.createElement('td');
 
-if(kind == 1 ){
+if(parseInt(kind) == 1 ){
   tr_av.style.display =  "none !important";
   tr_av.className = "trf-int-usr ust" + userId;
 
 } else {
+  
     tr_av.className = "eu" + userId;
     pseudoparent =  document.querySelectorAll(".ex-del-par tbody")[ind];
     pseudoparent.appendChild(tr_av);
-}
 
 td1_av.innerHTML = subject;
 td2_av.innerHTML = descript;
@@ -4230,6 +4230,8 @@ td3_av.innerHTML = date;
 tr_av.appendChild(td1_av);
 tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
+
+}
 
 if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
