@@ -24,7 +24,7 @@ $sel = mysqli_fetch_assoc($first);
 
 if($sel['STSK_MAIN_USR'] == $usr){
 
-	echo "0|0|0|0|0|0|0|0|0|0|0"; 
+	echo "0|0|0|0|0|0|0|0|0|0|1"; 
 
     exit;
 }
