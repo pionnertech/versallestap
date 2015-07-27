@@ -4568,9 +4568,11 @@ if(kind == 1){
   console.info("-")
   console.info( $("#D-drop").data("dfil"));
   console.log(nname_pre);
-  console.info("-")
-  if(nname_pre != undefined || nname_pre != ""){
-    var nname = nname_pre.split("|");
+  console.info("-");
+  
+  if(nname_pre !== undefined || nname_pre !== ""){
+
+  var nname = nname_pre.split("|");
   var setClass = "";
   var cor = "";
   var filstr= "";
