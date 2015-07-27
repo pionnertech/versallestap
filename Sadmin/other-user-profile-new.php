@@ -1575,6 +1575,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                              if (preg_match ("/_\[" . $sf[2] ."\]_/", $fstr, $m)){
                                              $extension = substr($fstr, -3);
                                               $cor = "";
+                                              
                                                  switch (true) {
                                                       case ($extension =='pdf'):
                                                       $file_extension = "pdf-";
