@@ -1336,7 +1336,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                    <table class="table table-message" id="int-table">
                                                       <tbody id="int-body">
                                                           <tr class="heading">
-                                                              <td class="cell-icon"><i class="fa fa-exclamation"></i></td>
+                                                              <td><i class="fa fa-exclamation"></i></td>
                                                               <td class="cell-title">Descripción requerimiento</td>
                                                               <td class="cell-status">Status</td>
                                                               <td class="cell-title">Asignar</td>
@@ -4308,11 +4308,12 @@ tr_av.appendChild(td2_av);
 tr_av.appendChild(td3_av);
 
 if(aux_stsk !== 0){
+  document.querySelectorAll("#int-table .cell-icon")[ind].innerHTML
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser  ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
 } else {
-var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser ;
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser + "&ticket=" + ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
 }
 
