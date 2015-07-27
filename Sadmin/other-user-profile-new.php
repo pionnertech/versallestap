@@ -2535,6 +2535,10 @@ $(".del-int").on('click', function(){
 
        user_send = $('#int-del').val();
        console.info(user_send);
+      console.info($("#up-int").html());
+           $("#up-int").empty();
+      console.info($("#up-int").html());
+
        console.info('está llegado desde aqui $(.del-int) keyFile :' + keyFile );
 
 $("#del-int-req").data("val", $(this).index());
@@ -3351,7 +3355,6 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                      });
                   newthum(1);
                     $("#del-int-req input, #del-int-req textarea").val('');
-                      $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
 
