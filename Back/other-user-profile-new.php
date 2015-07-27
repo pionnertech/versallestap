@@ -823,6 +823,7 @@ var previuosData =  "<?  echo $manu   ?>" ;
 var previuosDataInt = "<?  echo $manu_int   ?>"  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
+var boss = <? echo $boss['BOSS'] ?>;
 
     $(document).on('ready', function(){
 
@@ -986,6 +987,7 @@ console.info("lo que se manda: /backend/upgrade.php?val=" + val +
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac + 
+            "&muser=" + boss +
             "&argument=" + ar +
             "&ticket=" + ticket);
     $.ajax({
@@ -998,6 +1000,7 @@ console.info("lo que se manda: /backend/upgrade.php?val=" + val +
             "&des=" + des + 
             "&date=" + date +
             "&fac=" + fac + 
+            "&muser=" + boss +
             "&argument=" + ar +
             "&ticket=" + ticket, 
             success : function (data){
