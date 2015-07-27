@@ -2841,7 +2841,6 @@ row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
-
 graphAddedFiles($(".int-files-for").eq(ind), files.replace(new RegExp(",", "g"), "|"));
 
 }
