@@ -3156,6 +3156,8 @@ uploader =  $(object).pluploadQueue({
  
             UploadFile: function(up, file) {
 
+                   up.setOption("url", url);
+              
                 console.info( "el ide del uploader" + object.attr("id"));
                 
                // up.setOption('multipart_params', {param1 : 'value1', param2 : 'value2'});
