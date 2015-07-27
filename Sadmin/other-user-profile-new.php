@@ -1399,7 +1399,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     <div class="coll-int" style="width: 100%">
 
              <?  
-             $pre_Ruan = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY USR_RANGE;");
+             $pre_Ruan = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' ) ;");
              $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY USR_RANGE;"); 
                                while($prt = mysqli_fetch_row($part)){
                                                              
@@ -1512,11 +1512,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                            echo "<script>console.info('count ruan : " . $fint[0] . "')</script>";
 
                                         //ruan...
-                                       // for($i=0; $i < count($Ruan) ; $i++){
+                                        for($i=0; $i < count($Ruan) ; $i++){
   
                                              foreach ($a_files as $str){ 
 
-                                               if (preg_match ("/_\[" . $fint[2] ."\]_/", $str, $m)){
+                                               if (preg_match ("/_\[" . $Ruan[$i] ."\]_/", $str, $m)){
 
                                               $extension = substr($str, -3);
                                               $cor = "";
@@ -1559,7 +1559,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                      
                                                        }
                                                    }
-                                             //  }
+                                              }
                                            }//if admin
                           
                                        }// while fint
