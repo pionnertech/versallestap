@@ -5466,11 +5466,6 @@ $.ajax({
   }
 
 
-console.info(object.attr("class"));
-console.info("indice que llega : " + object.index(".int-files-for"))
-object.html(object.html() + filstr);
-console.info(object.parent().parent().parent().prev().html().toString());
-
 filstr = "";
 
 
