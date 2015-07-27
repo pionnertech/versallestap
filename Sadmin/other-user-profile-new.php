@@ -1499,7 +1499,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               } 
                            
 
-                      echo   "<script>console.info('valor de ruan : '" . print_r($Ruan) . "')</script>";
+                      echo   "<script>console.info('valor de ruan : " . print_r($Ruan) . "')</script>";
                                    if($fint[5] == "admin") {
                                   
                                         $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
@@ -1508,8 +1508,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                         for($i=0; $i < count($Ruan) ; $i++){
   
                                               foreach ($a_files as $str){ 
-                          echo "<script>console.info('el archivo es : '" . $str. "')</script>";
-                          echo "<script>console.info('el patrón es : '" . $Ruan[$i] . "')</script>";
+                          echo "<script>console.info('el archivo es : " . $str. "')</script>";
+                          echo "<script>console.info('el patrón es : " . $Ruan[$i] . "')</script>";
                                                if (preg_match ("/_\[" . $Ruan[$i] ."\]_/", $str, $m)){
 
                                               $extension = substr($str, -3);
