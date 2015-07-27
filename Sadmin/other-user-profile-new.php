@@ -1501,16 +1501,15 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               } 
                            
 
-                      echo   "<script>console.info('valor de ruan : " . $Ruan[0] . "')</script>";
                                    if($fint[5] == "admin") {
                                   
                                         $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
-                                        
+                                           echo "<script>console.info('count ruan : " . count($Ruan) . "')</script>";
                                         //ruan...
                                         for($i=0; $i < count($Ruan) ; $i++){
   
                                               foreach ($a_files as $str){ 
-                          echo "<script>console.info('el archivo es : " . $str. "')</script>";
+                          echo "<script>console.info('el archivo es : " . $str . "')</script>";
                           echo "<script>console.info('el patrón es : " . $Ruan[$i] . "')</script>";
                                                if (preg_match ("/_\[" . $Ruan[$i] ."\]_/", $str, $m)){
 
