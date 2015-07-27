@@ -45,7 +45,7 @@ $look = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A I
 
 if($look['USR_RANGE'] == 'sadmin'){
 
-        $pro = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS PRO FROm SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_TICKET ='" . $ticket . "' STSK_FAC_CODE = " . $fac . " AND USR_RANGE = 'admin')"));
+        $pro = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS PRO FROm SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_TICKET ='" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND USR_RANGE = 'admin')"));
         
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $pro['PRO'] . " WHERE  STSK_ID = " . $min['MIN'] );
 
