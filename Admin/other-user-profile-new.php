@@ -2121,6 +2121,11 @@ onItemAdd: function(){
         user_send = $('#int-del').val();
        console.info(user_send);
        keyFile = RandomString(8);
+     
+       if($("#up-int").attr("id") == undefined){
+             $("<div id='up-int'></div>").insertAfter("#descript-int");
+       }
+
        uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile); 
 
       }
