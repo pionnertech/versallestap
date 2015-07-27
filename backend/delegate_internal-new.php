@@ -29,6 +29,14 @@ $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(STSK_ID) AS TICKE
 $ticket = "IN0000" . $ngnix['TICKET'];
 }
 
+if(mysqli_query($datos, "UPDATE SUBTASKS SET STSK_MAIN_USR = " . $muser . " WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . "  AND STSK_MAIN_USR <> STSK_CHARGE_USR)")){
+
+mysqli_error($datos);
+exit;
+}
+
+
+
 if($stsk_src_id == 0){
 
 $query_es  = "INSERT INTO SUBTASKS (STSK_SUBJECT, STSK_DESCRIP ,STSK_CHARGE_USR, STSK_FINISH_DATE, STSK_STATE, STSK_START_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_TYPE, STSK_LOCK, STSK_TICKET) ";
