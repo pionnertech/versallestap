@@ -2134,7 +2134,7 @@ onItemAdd: function(item){
        console.log('se esta ejecutando ..');
        keyFile = RandomString(8);
        console.info("llega hasta aqui --- keyFile:" + keyFile);
-       uploaderInt($("#up-int"), "", user_send, stsk_send , "internal", keyFile);
+       uploaderInt($("#up-own"), "", user_send, stsk_send , "internal", keyFile);
 
       }
 });
