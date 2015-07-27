@@ -1499,7 +1499,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               } 
                            
 
-                      echo   "<script>console.info('valor de ruan : " . print_r($Ruan) . "')</script>";
+                      echo   "<script>console.info('valor de ruan : " . $Ruan[0] . "')</script>";
                                    if($fint[5] == "admin") {
                                   
                                         $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
