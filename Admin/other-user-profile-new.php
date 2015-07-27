@@ -4678,8 +4678,9 @@ if(kind == 1){
 
       div_special.appendChild(div_special2);
 
-
+if($("#D-drop").data("dfil") !== undefined || $("#D-drop").data("dfil") !== ""){
 var nname = $("#D-drop").data("dfil").split("|");
+
   var setClass = "";
   var cor = "";
   var filstr= ""
@@ -4736,6 +4737,7 @@ var nname = $("#D-drop").data("dfil").split("|");
     filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
 
   }
+}
   if(iin){
     div5.innerHTML = filstr;
   } else {
