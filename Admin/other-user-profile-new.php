@@ -4678,7 +4678,7 @@ if(kind == 1){
 
       div_special.appendChild(div_special2);
 
-if($("#D-drop").data("dfil") !== undefined || $("#D-drop").data("dfil") !== ""){
+if($("#D-drop").data("dfil") !== undefined){
 var nname = $("#D-drop").data("dfil").split("|");
 
   var setClass = "";
