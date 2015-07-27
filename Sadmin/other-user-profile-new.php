@@ -2816,9 +2816,8 @@ function thirdPulling(){
                         console.info(data);
                             var alpha = data.split("|");
                             if(parseInt(alpha[1]) !== 0){
-                             
                               upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5]);
-                                //console.info( alpha[0] + "," + alpha[2] + "," + alpha[9] + "," + alpha[3] + "," + alpha[6] + "," + 0 + "," + alpha[1] + "," + 0 + "," + alpha[10]);
+          console.info( alpha[0] + "," + alpha[1] + ","  + alpha[2] + "," + alpha[3] + "," + alpha[4] + ","  + alpha[5] + ","  + alpha[6]);
                               showAlert("Progreso en Incidencia " + alpha[6] , "" ,  alpha[1]);
                             
                        }
@@ -4179,6 +4178,7 @@ var files;
 
 function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk, customPro){
 
+updateProgress(packets[2], packets[3], packets[6], packets[4], packets[1], packets[0], indice, packets[5], packets[9], nest, packets[10]);
 console.log(subject + ","  + descript + ","  + percent + "," +  date + "," +  userId + "," +  usr_name + ","  + ind + "," + stsk + "," + kind + "//admin??"+ aux_stsk);
     
 if(parseInt(kind) == 0){
