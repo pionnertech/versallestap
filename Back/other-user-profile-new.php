@@ -1314,6 +1314,7 @@ $("#require").removeClass('active in');$("#tasks-own").addClass('active in');
 
      console.info($(this).parent().siblings(".cell-icon"))
      console.info($(this).parent().siblings(".cell-icon").html())
+     console.info("el ticket es :" + ticket);
    argument = 1;
 
 //change form action to the back to admin internal 
