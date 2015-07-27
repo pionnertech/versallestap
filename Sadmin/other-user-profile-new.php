@@ -1418,6 +1418,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     mysqli_data_seek($part, 0);
 
                                       $Ruan = mysqli_fetch_array($pre_Ruan);
+                                      echo "<script>console.log('Ruan antes: " . count($Ruan) . "')</script>";
 
                                                                  ?>
                                                                     </div>
