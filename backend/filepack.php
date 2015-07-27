@@ -41,7 +41,7 @@ while($fila = mysqli_fetch_row($ad)){
              }
 
            }
-}
+
 
  mysqli_data_seek($it, 0);
 
