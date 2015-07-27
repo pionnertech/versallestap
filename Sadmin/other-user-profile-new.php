@@ -2835,7 +2835,7 @@ function upProAdmin(usr_id, usr, tck, rPer, tPer ){
   .parent()
   .next();
 
-row.find('.bar').css({ width: tper + "%"});
+row.find('.bar').css({ width: tPer + "%"});
 row.find("a.hovertip[title='" + usr + "'").attr("data-per", rPer);
 
 }
