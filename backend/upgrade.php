@@ -127,10 +127,6 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <
 }
 
 // test if sadminis the owner, first get the min
-
-mysqli_query($datos, "SELECT MIN(STSK_ID) FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' STSK_")
-
-
 $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_CHARGE_USR = STSK_MAIN_USR)" ));
 
 if($test['USR_RANGE'] == 'sadmin'  ){
