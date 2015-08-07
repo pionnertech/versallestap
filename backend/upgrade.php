@@ -122,16 +122,20 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ID = " . $i
 }
 
 if ((int)$setto > 99){
-
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_ID = STSK_ISS_ID AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac .");");
 }
 
-$test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_RESP FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_RESP = 0)" ));
+// test if sadminis the owner, first get the min
 
-if($test['STSK_RESP'] == 0  ){
+mysqli_query($datos, "SELECT MIN(STSK_ID) FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' STSK_")
+
+
+$test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_CHARGE_USR = STSK_MAIN_USR)" ));
+
+if($test['USR_RANGE'] == 'sadmin'  ){
+
   $min = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE STSK_TICKET = '" . $ticket . "'" ));
-
   mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
   $add =  mysqli_fetch_assoc(mysqli_query($datos, "SELECT   COUNT(A.STSK_ID), ROUND(AVG(A.STSK_PROGRESS)) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $ticket . "')")); 
   mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $add['PROGRESS'] . " WHERE STSK_ID =" . $min['MIN'] );
