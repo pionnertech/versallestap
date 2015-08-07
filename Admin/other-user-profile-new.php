@@ -4681,6 +4681,7 @@ if(kind == 1){
       div4.className = "int-files-to";
       div5.className = "int-files-for";
 
+
       div5.style.width = "80%";
 
       div_special.appendChild(div4);
