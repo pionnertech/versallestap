@@ -2575,6 +2575,7 @@ $("#send-int").on('click', function(){
   
 
 
+
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    } 
@@ -4751,7 +4752,7 @@ var nname = $("#D-drop").data("dfil").split("|");
   if(iin){
     div4.innerHTML = filstr;
   } else {
-    div5.innerHTML = filstr;
+    div4.innerHTML = filstr;
   }
 
 } else {
