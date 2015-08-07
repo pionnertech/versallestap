@@ -2541,6 +2541,7 @@ $(".del-int").on('click', function(){
        console.info(user_send);
       console.info($("#up-int").html());
            $("#up-int").empty();
+           $("#up-own").empty();
       console.info($("#up-int").html());
 
        console.info('está llegado desde aqui $(.del-int) keyFile :' + keyFile );
