@@ -4754,7 +4754,7 @@ var nname = $("#D-drop").data("dfil").split("|");
 
     if(iin){
 
-    filstr += '<a href="../reply/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    filstr += '<a href="../10000/' + user_id + '/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
      
      } else{
 
