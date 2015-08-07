@@ -4682,8 +4682,9 @@ if(kind == 1){
 
       div5.style.width = "80%";
 
-      div_special.appendChild(div5);
       div_special.appendChild(div4);
+      div_special.appendChild(div5);
+
 
       div_special.appendChild(div_special2);
 
@@ -4911,7 +4912,7 @@ $.ajax({ type:"POST",
     
 }
 if(div4.innerHTML == ""){
-    div4.innerHTML = str_file;
+    div5.innerHTML = str_file;
 }
 
 }
