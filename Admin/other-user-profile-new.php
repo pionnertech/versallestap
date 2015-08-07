@@ -4676,17 +4676,15 @@ if(kind == 1){
       div_special2.style.verticalAlign = "top";
       div_special.className = "wrap-int-files";
 
-      div_special.style.width = "100%"
+      div_special.style.width = "80%";
   var div5 = document.createElement('div');
-      div4.className ="int-files-for";
-      div5.className = "int-files-to";
+      div4.className = "int-files-to";
+      div5.className = "int-files-for";
 
       div5.style.width = "80%";
 
       div_special.appendChild(div4);
       div_special.appendChild(div5);
-
-
       div_special.appendChild(div_special2);
 
 if($("#D-drop").data("dfil") !== undefined){
@@ -4752,6 +4750,7 @@ var nname = $("#D-drop").data("dfil").split("|");
   if(iin){
     div4.innerHTML = filstr;
   } else {
+
     div4.innerHTML = filstr;
   }
 
