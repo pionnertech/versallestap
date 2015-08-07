@@ -5323,6 +5323,7 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
           url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr  + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
           success : function (data){
               console.info(data);
+              $("#D-drop").data("dfil").replace(fnam + '|', '');
               bootbox.alert("archivo eliminado");
           }
  });

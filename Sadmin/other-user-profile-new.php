@@ -2130,11 +2130,8 @@ onChange : function(){
 onItemAdd: function(item){
     console.info(item);
        user_send = $('#int-del').val();
-       console.info(user_send);
-       console.log('se esta ejecutando ..');
-       keyFile = RandomString(8);
-       console.info("llega hasta aqui --- keyFile:" + keyFile);
 
+       keyFile = RandomString(8);
        if($("#up-int").attr("id") == undefined){
               $("#up-own").empty();
               uploaderInt($("#up-own"), "", user_send, stsk_send , "internal", keyFile);
@@ -2924,6 +2921,12 @@ function upProAdmin(usr_id, usr, tck, rPer, tPer , files ){
 row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
 row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
+
+if(parseInt(tPer) > 99.85){
+    $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').html('Finalizado');
+    $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').css( "background-color", '#1CC131');
+}
+
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
