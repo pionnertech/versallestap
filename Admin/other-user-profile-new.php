@@ -9,6 +9,13 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
+
+$hoax = mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(A.STSK_CODE = B.USR_ID) SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE (STSK_FAC_CODE = "  . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] ."' );");
+
+if(!$hoax){
+  echo mysqli_error($datos);
+}
+
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_TICKET " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
@@ -3350,8 +3357,9 @@ console.info("llega el ticket = " + tkt);
 
                             for(i=1; i < result.length-1; i++){
                               if(result[i] != ""){
-                                                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
+                       string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
+                             '<i class="fa fa-check-circle finished"></i>' +
                              '</a>'; 
                               }   
                             }
@@ -4756,7 +4764,7 @@ var nname = $("#D-drop").data("dfil").split("|");
   }
 }
   
-  
+
     div4.innerHTML = filstr;
 
 
