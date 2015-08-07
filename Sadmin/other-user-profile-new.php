@@ -2922,10 +2922,10 @@ row.find('span.muted').html(tPer + "%");
 row.find('.bar').css({ width: tPer + "%"});
 row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 
-if(parseInt(tPer) > 99.85){
+if(parseInt(tPer) > 99.9){
     $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').html('Finalizado');
     $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').css( "background-color", '#1CC131');
-
+    $("#int-table tr td:contains('" + tck + "')").parent().removeAttr("class").addClass("task Hc-int");
 }
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
@@ -5282,7 +5282,7 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
-              
+
           }
  });
 }
