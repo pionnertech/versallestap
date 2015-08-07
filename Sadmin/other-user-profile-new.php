@@ -2925,8 +2925,8 @@ row.find("input[value='u" + usr_id +"']").parent().attr("data-per", rPer);
 if(parseInt(tPer) > 99.85){
     $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').html('Finalizado');
     $("#int-table tr td:contains('" + tck + "')").siblings('.cell-status').children('b').css( "background-color", '#1CC131');
-}
 
+}
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
@@ -5282,6 +5282,7 @@ if($("form#upload").attr("action") == "../backend/upload.php"){
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
+              
           }
  });
 }
