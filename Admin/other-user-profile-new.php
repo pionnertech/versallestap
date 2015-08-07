@@ -10,10 +10,11 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
 
-$hoax = mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(A.STSK_CODE = B.USR_ID) SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE (STSK_FAC_CODE = "  . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] ."' );");
+$hoax = mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE (STSK_FAC_CODE = "  . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] ."' );");
 
 if(!$hoax){
   echo mysqli_error($datos);
+
 }
 
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
