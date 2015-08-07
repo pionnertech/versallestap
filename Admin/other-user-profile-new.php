@@ -4750,7 +4750,7 @@ var nname = $("#D-drop").data("dfil").split("|");
      
      } else{
 
-    filstr +='<a href="../' + fac + '/' + user_id + '/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    filstr +='<a href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
      
      }
   }
