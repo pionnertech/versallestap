@@ -5252,6 +5252,8 @@ var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart
                 .render();
     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
+   $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
+   $(this).parent().next().children(".int-files-for").find("p[title*='_" + val + ".']").parent().css({ opacity : "1"});
 }
 
 //funcion prototipo
