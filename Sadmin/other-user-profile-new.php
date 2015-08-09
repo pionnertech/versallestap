@@ -4640,7 +4640,7 @@ if(kind == 1){
       div5.className = "int-files-to";
 
       div5.style.width = "80%";
-      div4.style.width = "80%",
+      div4.style.width = "80%";
 
   var nname_pre = $("#D-drop").data("dfil");
 
