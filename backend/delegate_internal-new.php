@@ -136,11 +136,7 @@ $query  = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP ,STSK_C
               }
           $outcome .= $earray[$i] . "|";
    }
-
-
-
 }
-
 
 // cuando es el prime stsk  , no e
 //echo $query . "<br />";
@@ -149,9 +145,6 @@ if(!mysqli_query($datos, $query)){
   echo mysqli_error($datos);
 
 } else {
-
-
-
 $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = '" . $ticket . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 1 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
