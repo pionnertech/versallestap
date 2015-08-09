@@ -4366,11 +4366,11 @@ console.info(xz);
       var builder = "/_\\[i\\]_/";
       var ndeg = new RegExp(builder.replace("i", stsk ));
       console.log(builder);
+      console.info(files[n].match(ndeg));
       if(files[n].match(ndeg)){
-         continue;
-      }
+         break;
+        }
     }
-
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
                 case "pdf": 
