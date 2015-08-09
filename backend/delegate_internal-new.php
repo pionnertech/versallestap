@@ -104,7 +104,7 @@ $i = 0;
             
             $i = $i + 1;
 
-           if( $i < mysqli_num_rows($team)){
+           if( $i < mysqli_num_rows($team_leader)){
                 $query .= ",";
               }
               $outcome = $fila[0] . "|";
