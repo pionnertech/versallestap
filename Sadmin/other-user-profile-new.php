@@ -1549,7 +1549,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                  ?>
                                                  <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $fint[0] ?>_alt/<? printf($str) ?>" download>
-                                                     <p class="ifile-ii" title="<? printf(preg_replace("/\](.*?)\./", "]" . $fint[0] . ".", $str)) ?>">
+                                                     <p class="ifile-ii" title="<? printf(preg_replace("/\](.*?)\./", "]_" . $fint[0] . ".", $str)) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
                                                      </p>
