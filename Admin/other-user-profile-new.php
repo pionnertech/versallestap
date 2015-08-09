@@ -4757,14 +4757,15 @@ var nname = $("#D-drop").data("dfil").split("|");
 
     if(iin){
 
-    filstr += '<a attr="int" href="../10000/' + user_id + '/' + nname[i] + '" title="' + nname[i] +  '" download>' +
+    filstr += '<a href="../10000/' + user_id + '/' + nname[i] + '" title="' + nname[i] +  '" download>' +
     '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
      
-     } else{
+     } else {
 
-    filstr +='<a attr="int" href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+        filstr +='<a attr="int" href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
      
      }
+
   }
 }
   
@@ -4929,6 +4930,8 @@ $.ajax({ type:"POST",
         
     
 }
+
+console.info(str_file);
 if(div4.innerHTML == ""){
     div5.innerHTML = str_file;
 }
