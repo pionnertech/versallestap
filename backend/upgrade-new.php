@@ -80,7 +80,7 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PRO
 
       $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $min['MIN'] ));
       
-           if($test == 'sadmin'){
+           if($test['USR_RANGE'] == 'sadmin'){
               
               // 4.) if this user the lucky guy?.. go ahead is he is the one!
            	  $navg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_ID <> " . $min['MIN']. " );"));
