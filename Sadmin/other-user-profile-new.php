@@ -4754,7 +4754,7 @@ if(kind == 1){
 
 var amdString = '<a class="hovertip" title="' + user_name + '" onclick="hovertip(this)">' +
                    '<img src="../' + fac + '/img/' + user_id + '_opt.jpg" class="group">' +
-                   '<i class="fa fa-check finished" style="opacity: 0"></i>' +
+                   '<i class="fa fa-check-circle finished" style="opacity: 0"></i>' +
                    '<input type="hidden" value="u' + user_id + '">' +
                    '</a>';
 /*
