@@ -4366,8 +4366,9 @@ console.info(xz);
       var builder = "/_\\[i\\]_/";
       var ndeg = new RegExp(builder.replace("i", stsk ));
       console.log(builder);
+      console.log(builder.replace("i", stsk ));
       console.info(files[n].match(ndeg));
-      if(files[n].match(ndeg)){
+      if(files[n].match(ndeg) != false){
          break;
         }
     }
