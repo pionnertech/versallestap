@@ -5649,14 +5649,18 @@ function backToFront(name, usrId, iss){
 })
 }
 
+
 function checkOwn(){
+
   if($("#set-pro-own").find("input[type=text]").val().trim() == ""){
     return "Falta el asunto del progreso";
   }
    if($("#set-pro-own").find("textarea").val().trim() == ""){
     return "Falta la descripción del progreso";
   }
+
 return true;
+
 }
 
 </script>
