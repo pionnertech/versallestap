@@ -3349,7 +3349,9 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                             for(i=1; i < result.length-1; i++){
                               if(result[i] != ""){
                                                              string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
-                             '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
+                             '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" >' +
+                             '<i class="fa fa-check finished" style="opacity: 0"></i>' + 
+                             '<input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
                               }   
                             }
