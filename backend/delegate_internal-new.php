@@ -107,7 +107,7 @@ $i = 0;
            if( $i < mysqli_num_rows($team_leader)){
                 $query .= ",";
               }
-              $outcome = $fila[0] . "|";
+              $outcome .= $fila[0] . "|";
      }
 
 } else {
