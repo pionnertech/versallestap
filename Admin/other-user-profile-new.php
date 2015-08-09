@@ -1547,7 +1547,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                           ?>
                                           
                                                  <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
-                                                     <p style="display: inline-block" title="<? printf($archivos2) ?>">
+                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x ate" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
                                                      </p>
@@ -1555,6 +1555,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                   <? }
                                                   } 
                                                 } 
+                                                break;
                                                }
 
                                           mysqli_data_seek($part, 0);
