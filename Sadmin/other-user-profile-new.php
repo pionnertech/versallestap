@@ -5549,13 +5549,13 @@ $.ajax({
     
     //trated link 
      if (targus){
-    filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
+    filstr += '<a href="../' + fac +'/' + mainuser + '_alt/' + nname[i].trim() + '"  download>' +
                  '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
 
      } else {
-          filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
+          filstr += '<a href="../' + fac + '/' + mainuser + '_alt /' + nname[i].trim() + '"  download>' +
                  '<p style="display: inline-block" title="' + nname[i] +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
