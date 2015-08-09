@@ -373,6 +373,9 @@ margin:0 6%;
   font-family: "FontAwesome";
   color: orange;
   position:relative;
+  font-size: .5em;
+  top: -.7em;
+  right: .4em;
 }
     </style>    
 </head>
@@ -4712,7 +4715,7 @@ var nname = $("#D-drop").data("dfil").split("|");
 
 // check sadmin files sended 
 
-
+var rino = new RegExp(/\.\.\//);
 
   var setClass = "";
   var cor = "";
@@ -4767,25 +4770,24 @@ var nname = $("#D-drop").data("dfil").split("|");
 
     }
 
+//file treament  
+if(nname[i].match(rino)){
 
-        filstr +='<a href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x ate" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
-    
+rname = filename(nname[i]);
+
+  filstr +='<a href="../' + fac + '/' + user_id + '_alt/' + rname + '" title="' + rname +  '" download><i class="fa fa-file-' + setClass + ' fa-2x ate" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+
+} else{
+
+  filstr +='<a href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+}
+
 
   }
 }
   
 
-  //check if we have another files coming from sadmin
-
-
-
-
-
-
-
-
-
-
+  //check if we have another files coming from sadmi
     div4.innerHTML = filstr;
 
 
