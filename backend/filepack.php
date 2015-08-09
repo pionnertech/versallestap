@@ -29,11 +29,10 @@ while($fila = mysqli_fetch_row($ad)){
  mysqli_data_seek($ad, 0);
 
 $reach = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_RESP = 1)");
+
+ while($as = mysqli_fetch_row($reach)){
+
 $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
-
-
- while ($as = mysqli_fetch_row($reach)){
-
         while (false !== ($file = readdir($handle))){
 
                echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
@@ -46,9 +45,8 @@ $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
         	          
                    }
 
-
+    closedir($handle);
            }
 
- mysqli_data_seek($it, 0);
 
  ?>
