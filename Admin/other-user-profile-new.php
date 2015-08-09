@@ -4704,7 +4704,7 @@ var nname = $("#D-drop").data("dfil").split("|");
 
 
 // check sadmin files sended 
-sadminFiles(ticket, user_id);
+sadminFiles(ticket, user_id, stsk_ident);
 
 
   var setClass = "";
@@ -5712,7 +5712,7 @@ function checkOwn(){
 return true;
 }
 
-function sadminFiles(tct, mainU){
+function sadminFiles(tct, mainU, stsk_ident){
 
 $.ajax({ type: "POST",
          url : "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainU + "&stsk=" + stsk_ident + "&kind=1&ticket=" + tct,
