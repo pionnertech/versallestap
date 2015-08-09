@@ -81,11 +81,11 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PRO
       $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $min['MIN'] ));
       
            if($test['USR_RANGE'] == 'sadmin'){
-              
+
               // 4.) if this user the lucky guy?.. go ahead is he is the one!
-           	  $navg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_ID <> " . $min['MIN']. " );"));
+           	  $navg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(A.STSK_PROGRESS, 0))) AS VX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_ID <> " . $min['MIN']. " );"));
            	             	           // 5.a) let he/she know inserting data into pseudo table
-           	          mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
+           	          mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $navg['VX'] . " )");
                             
                       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $navg['VX'] . " WHERE STSK_ID =" . $min['MIN'] );
 
