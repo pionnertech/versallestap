@@ -5718,7 +5718,9 @@ function sadminFiles(tct, mainU, stsk_ident){
 $.ajax({ type: "POST",
          url : "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainU + "&stsk=" + stsk_ident + "&kind=1&ticket=" + tct,
             success: function (data){
-                 $("#D-drop").data("dfil", data);
+              //treament 
+              var targuz = $("#D-drop").data("dfil")
+                 $("#D-drop").data("dfil", targuz + data);
             }
      
           })
