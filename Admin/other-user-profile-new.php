@@ -4369,7 +4369,7 @@ console.info(xz);
       console.log(builder.replace("i", stsk ));
       console.info(files[n].match(ndeg));
       if(files[n].match(ndeg) != false){
-         break;
+         continue;
         }
     }
         var extension = files[n].substring(files[n].length -3 , files[n].length);
