@@ -2927,7 +2927,7 @@ if(parseInt(tPer) > 99.9){
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
-graphAddedFiles($(".int-files-for").eq(ind), tck, usr_id);
+graphAddedFiles($(".int-files-for").eq(ind), tck, usr_id, true);
 
 }
 
@@ -5480,7 +5480,7 @@ $(".fr").on("click", function(){
     
 });
 
-function graphAddedFiles(object, tt, bs){
+function graphAddedFiles(object, tt, bs, targus){
 
   var rex = new RegExp(/\](.*?)\./g);
 
@@ -5543,11 +5543,19 @@ $.ajax({
     }
     
     //trated link 
-     
+     if (targus){
     filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
                  '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
+
+     } else {
+          filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
+                 '<p style="display: inline-block" title="' + nname[i] +  '"></p>' +
+                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
+                  '</a>';
+
+     }
 
   }
 
