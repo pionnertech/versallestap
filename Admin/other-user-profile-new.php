@@ -368,6 +368,12 @@ width:100%;
 margin:0 6%;
 }
 
+.ate:after{
+  content: "\f06a";
+  font-family: "FontAwesome";
+  color: orange;
+  position:relative;
+}
     </style>    
 </head>
 <body>
@@ -4762,7 +4768,7 @@ var nname = $("#D-drop").data("dfil").split("|");
     }
 
 
-        filstr +='<a attr="" href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+        filstr +='<a href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x ate" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
     
 
   }
