@@ -2697,6 +2697,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
                 $("#set-pro-int").removeClass('active in');$("#int-require").addClass('active in');
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("div.progress").children("div").css({ width: $("#value-progress").val() + "%"});
                 $("#income-int-body tr.task").eq(ii_ind).next().children("td").children("p").children("span").html($("#value-progress").val() + "%");
+                console.log("antes de mandar a incoInt : " +ii_ind);
                 incoInt($("#pro-subject").val(), $("#pro-descript").val(), fp, ii_ind );
 
                 if( $("#value-progress").val() == 100){
@@ -5104,7 +5105,7 @@ function RandomString(length) {
 
 function incoInt(sub, des, date, ind){
 
-      var parent = document.querySelectorAll(".ii-body-table")[ind-1];
+      var parent = document.querySelectorAll(".ii-body-table")[ind];
       var tr_ii  = document.createElement('tr');
       var td_ii1 = document.createElement('td'); 
       var td_ii2 = document.createElement('td');
