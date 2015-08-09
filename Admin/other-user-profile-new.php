@@ -1514,7 +1514,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
 
                                            while (false !== ($archivos2 = readdir($handler2))){
 //echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
-                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
+                                         if(preg_match_all("/_\[" . $fint[4] . "\]_/", $archivos2) == 1){
 
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
@@ -1577,7 +1577,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
 
                                            while (false !== ($archivos2 = readdir($handler2))){
 //echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
-                                         if(preg_match_all("/_\[" . $fint[1] . "\]_/", $archivos2) == 1){
+                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
 
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
