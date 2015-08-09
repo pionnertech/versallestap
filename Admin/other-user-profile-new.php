@@ -4341,7 +4341,7 @@ var xz = false;
 } else {
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser + "&ticket=" + ttck;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
-var xz == true;
+var xz = true;
 }
 
 $.ajax({ type:"POST",
