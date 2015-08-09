@@ -14,9 +14,11 @@ $hoax = mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHA
 
 if(!$hoax){
   echo mysqli_error($datos);
-
 }
 
+
+
+$boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE ( USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'sadmin')"));
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
 $Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_TICKET " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
@@ -1418,7 +1420,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                                                                                        
                                                                     <div class="coll-int" style="width: 100%">
 
-             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
+             <?  $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_ISS_ID =" . $fila5[11] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR)"); 
                                while($prt = mysqli_fetch_row($part)){
              ?>
                                                   <? if ($prt[0] != $_SESSION['TxtCode']){ ?>
@@ -1497,8 +1499,65 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                }
 
                                               // closedir($handler2);
+                                          mysqli_data_seek($part, 0);
+                          //ping to db if min is sadmin, if is... check if htere are files to grow up and show.
+                       while($fint = mysqli_fetch_row($part)){
 
-                                                mysqli_data_seek($part, 0);
+                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/")) {
+                                  
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
+                              } 
+                           
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" )){
+                                        
+                                          $file_extension = "";
+
+                                           while (false !== ($archivos2 = readdir($handler2))){
+//echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
+                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
+
+                                             $extension = substr($archivos2, -3);
+                                              $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                 }
+                                          ?>
+                                          
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
+                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                         <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x ate" style="color: <? printf($cor) ?> "></i>
+                                                         <span class="iname"></span>
+                                                     </p>
+                                                 </a>
+                                                  <? }
+                                                  } 
+                                                } 
+                                               }
+
+                                          mysqli_data_seek($part, 0);
 
                                                 ?>
                                                 </div>
