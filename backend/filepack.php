@@ -45,9 +45,10 @@ $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
         	          
                    }
 
-        closedir($handle);
-           }
 
+           }
+        closedir($handle);
+        
  mysqli_data_seek($it, 0);
 
  ?>
