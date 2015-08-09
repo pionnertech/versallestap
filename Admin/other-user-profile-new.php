@@ -2328,6 +2328,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = $(this).parent().parent().children("input").eq(2).val().trim();
  ii_ind     = $(this).index(".ii-forward");
  psTck      = $(this).parent().siblings(".cell-icon").html().trim();
+ ticket     = $(this).parent().siblings(".cell-icon").html().trim();
  $("#up-int").empty();
 
 if($(this).next().hasClass('person-sw-int')){
