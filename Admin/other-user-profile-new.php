@@ -2652,10 +2652,6 @@ $("#send-int").on('click', function(){
      sadminFiles($(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html(), mainuser, st_ii);
      intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii , $(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html());
   }
-  
-
-
-
    } else {
     bootbox.alert("Falta el siguiente campo :" + checkIntDel());
    } 
@@ -4679,6 +4675,7 @@ dateTime = AmericanDate($(this).next().html());
  ii_iss     = $(this).parent().siblings('input.ii-iss').val().trim();
  ii_ind     = $(this).index(".ii-forward");
  psTck      = $(this).parent().siblings(".cell-icon").html().trim();
+
 $("#up-int").empty();
 $("#up-own").empty();
 // new wave
@@ -5034,12 +5031,12 @@ if(iin){
 
    div4.innerHTML = str_file;
 
-}else{
+} else {
 
   if(div4.innerHTML == ""){
 
     div5.innerHTML = str_file;
-    
+
 }
 
 }
@@ -5107,7 +5104,7 @@ function RandomString(length) {
 
 function incoInt(sub, des, date, ind){
 
-      var parent = document.querySelectorAll(".ii-body-table")[ind];
+      var parent = document.querySelectorAll(".ii-body-table")[ind-1];
       var tr_ii  = document.createElement('tr');
       var td_ii1 = document.createElement('td'); 
       var td_ii2 = document.createElement('td');
