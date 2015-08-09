@@ -127,9 +127,10 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <
 }
 
 // test if sadminis the owner, first get the min
-$test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_CHARGE_USR = STSK_MAIN_USR)" ));
+$pre_test = mysqli_fetch_assoc(mysqli_query($datoso, "SELECT MIN(STSK_ID) FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")"));
+$test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $pre_test['STSK_ID'] ));
 
-if($test['USR_RANGE'] == 'sadmin'  ){
+if($test['USR_RANGE'] == 'sadmin' ){
 
   $min = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE STSK_TICKET = '" . $ticket . "'" ));
   mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
