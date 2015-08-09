@@ -4364,14 +4364,14 @@ console.info(xz);
 
     if(xz){
 
-      var builder = "/_\\[i\\]_/";
+      var builder = "_\\[i\\]_";
       console.log(builder.replace("i", stsk ));
       var ndeg = new RegExp(builder.replace("i", stsk ));
       console.log(builder);
       console.info(files[n].match(ndeg));
       console.log("pointer : " + n);
 
-      if(files[n].match(ndeg) != false){
+      if(files[n].match(ndeg) != null ){
          continue;
         }
     }
