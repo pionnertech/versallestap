@@ -4702,6 +4702,11 @@ if(kind == 1){
 if($("#D-drop").data("dfil") !== undefined){
 var nname = $("#D-drop").data("dfil").split("|");
 
+
+// check sadmin files sended 
+
+
+
   var setClass = "";
   var cor = "";
   var filstr= ""
@@ -4755,20 +4760,24 @@ var nname = $("#D-drop").data("dfil").split("|");
 
     }
 
-    if(iin){
 
-    filstr += '<a href="../10000/' + user_id + '/' + nname[i] + '" title="' + nname[i] +  '" download>' +
-    '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
-     
-     } else {
-
-        filstr +='<a attr="int" href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
-     
-     }
+        filstr +='<a attr="" href="../' + fac + '/' + user_id + '_alt/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    
 
   }
 }
   
+
+  //check if we have another files coming from sadmin
+
+
+
+
+
+
+
+
+
 
     div4.innerHTML = filstr;
 
@@ -5703,6 +5712,19 @@ function checkOwn(){
 return true;
 }
 
+function sadminFiles(tct, mainU){
+
+$.ajax({ type: "POST",
+         url : "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainU + "&stsk=" + stsk_ident + "&kind=1&ticket=" + ticket,
+            success: function (data){
+ 
+                 $("#D-drop").data("dfil", data);
+               
+            }
+     
+          })
+
+}
 </script>
 
 <?
