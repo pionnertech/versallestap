@@ -3350,7 +3350,7 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
                               if(result[i] != ""){
                             string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" >' +
-                             '<i class="fa fa-check finished" style="opacity: 0"></i>' + 
+                             '<i class="fa fa-check-circle finished" style="opacity: 0"></i>' + 
                              '<input type="hidden" value="u'  + result[i] + '">' +
                              '</a>'; 
                               }   
@@ -4640,6 +4640,7 @@ if(kind == 1){
       div5.className = "int-files-to";
 
       div5.style.width = "80%";
+      div4.style.width = "80%",
 
   var nname_pre = $("#D-drop").data("dfil");
 
