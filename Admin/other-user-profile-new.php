@@ -9,14 +9,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
 
-
-$hoax = mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) SET STSK_ANCIENT_PRO = STSK_PROGRESS WHERE (STSK_FAC_CODE = "  . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] ."' );");
-
-if(!$hoax){
-  echo mysqli_error($datos);
-}
-
-
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = STSK_ANCIENT_PRO WHERE (STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 0 AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_PROGRESS IS NULL)");
 
 $boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE ( USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'sadmin')"));
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
