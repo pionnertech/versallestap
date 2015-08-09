@@ -2169,16 +2169,12 @@ $('.datetimepicker').datetimepicker({
         })
     }
 });
-
-
 var datetime  = $(".seo").datetimepicker({
     step:5,
     lang:'es',
     format:'d/m/y',
     timepicker: false
 });
-
-
  $(".date-int-finish").datetimepicker({
     step:5,
     lang:'es',
@@ -2931,7 +2927,7 @@ if(parseInt(tPer) > 99.9){
 //file tratment
 var ind = row.find(".int-files-for").index(".int-files-for");
 
-graphAddedFiles($(".int-files-for").eq(ind), tck);
+graphAddedFiles($(".int-files-for").eq(ind), tck, usr_id);
 
 }
 
@@ -5062,7 +5058,7 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
    $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
-   $(this).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
+   $(this).parent().next().children(".int-files-for").find("p[title*='_" + val + ".']").parent().css({ opacity : "1"});
 });
 
 
@@ -5108,6 +5104,10 @@ var to   = new Date(d2[2], d2[1]-1, d2[0]);
         for (var rowIndex = 1; rowIndex < targetTable.rows.length; rowIndex++) {
 
             var rowData = [];
+
+
+
+
 
             if (rowIndex == 1) {
 
@@ -5487,7 +5487,9 @@ $(".fr").on("click", function(){
     
 });
 
-function graphAddedFiles(object, tt){
+function graphAddedFiles(object, tt, bs){
+
+  var rex = new RegExp("/\](.*?)\./");
 
 $.ajax({
      type: "POST",
@@ -5547,7 +5549,14 @@ $.ajax({
 
     }
     
-    filstr += '<a href="../' + fac +'/' + nname[i] + '" title="' + nname[i] +  '" download><i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i></a>';
+    //trated link 
+     
+
+
+    filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
+                 '<p class="ifile-ii" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
+                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
+                  '</a>';
 
   }
 
