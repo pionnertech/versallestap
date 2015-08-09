@@ -1547,7 +1547,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                           ?>
                                           
                                                  <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
-                                                     <p class="ifile-ii" title="<? printf($archivos2) ?>">
+                                                     <p style="display: inline-block" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x ate" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
                                                      </p>
@@ -1577,7 +1577,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
 
                                            while (false !== ($archivos2 = readdir($handler2))){
 //echo "<script>console.info('" . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fila5[0] . "' )</script>";
-                                         if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
+                                         if(preg_match_all("/_\[" . $fint[1] . "\]_/", $archivos2) == 1){
 
                                              $extension = substr($archivos2, -3);
                                               $cor = "";
