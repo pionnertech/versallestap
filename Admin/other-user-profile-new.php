@@ -4363,17 +4363,21 @@ console.info("xz : " + xz);
 console.info(xz);
 
     if(xz){
+
       var builder = "/_\\[i\\]_/";
+      console.log(builder.replace("i", stsk ));
       var ndeg = new RegExp(builder.replace("i", stsk ));
       console.log(builder);
-      console.log(builder.replace("i", stsk ));
       console.info(files[n].match(ndeg));
       console.log("pointer : " + n);
+
       if(files[n].match(ndeg) != false){
          continue;
         }
     }
+
      console.log("pointer after : " + n);
+
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
                 case "pdf": 
