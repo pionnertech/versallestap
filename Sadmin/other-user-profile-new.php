@@ -5551,8 +5551,6 @@ $.ajax({
     
     //trated link 
      
-
-
     filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
                  '<p class="ifile-ii" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
