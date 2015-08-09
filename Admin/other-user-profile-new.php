@@ -2580,6 +2580,7 @@ $("#send-int").on('click', function(){
   if($("#back-own").data("val") == 0 || $("#back-own").data("val") == undefined){
      intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1, 0 , "")
   } else {
+     sadminFiles($(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html(), mainuser, st_ii);
      intDel($("#int-del").val() , $("#subj-int").val(), $("#descript-int").val() , $(".date-int-finish").val(), $("#int-table > tbody .task").length-1,  st_ii , $(".ii-forward").eq(ii_ind).parent().siblings('.cell-icon').html());
   }
   
@@ -4704,7 +4705,7 @@ var nname = $("#D-drop").data("dfil").split("|");
 
 
 // check sadmin files sended 
-sadminFiles(ticket, user_id, stsk_ident);
+
 
 
   var setClass = "";
