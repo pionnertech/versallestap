@@ -33,9 +33,10 @@ $reach = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBT
  while($as = mysqli_fetch_row($reach)){
 
 $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
+
         while (false !== ($file = readdir($handle))){
 
-               echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
+              // echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
 	                     
                        if( preg_match_all("/_\[" . $as[0] . "\]_/", $file) == 1){
 
