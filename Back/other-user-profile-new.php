@@ -979,7 +979,7 @@ var _fS = new Date();
 date = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-" + ('0' + _fS.getDate()).slice(-2) + " " + ('0' + _fS.getHours()).slice(-2) + ":" + ('0' + _fS.getMinutes()).slice(-2) + ":" + ('0' + _fS.getSeconds()).slice(-2);
 
 
-console.info("lo que se manda: /backend/upgrade.php?val=" + val +
+console.info("lo que se manda: /backend/upgrade-new.php?val=" + val +
             "&stsk_id=" +  stsk_id + 
             "&iss_id=" + iss_id + 
             "&user=" + user + 
@@ -992,7 +992,7 @@ console.info("lo que se manda: /backend/upgrade.php?val=" + val +
             "&ticket=" + ticket);
     $.ajax({
            type: "POST", 
-           url: "../backend/upgrade.php?val=" + val +
+           url: "../backend/upgrade-new.php?val=" + val +
             "&stsk_id=" +  stsk_id + 
             "&iss_id=" + iss_id + 
             "&user=" + user + 
