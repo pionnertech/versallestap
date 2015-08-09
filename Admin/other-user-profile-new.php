@@ -4359,8 +4359,9 @@ $.ajax({ type:"POST",
                 arp.html('');      
         for (n=0; n < files.length-1 ; n++){
 
-    if (xz){
-      var ndeg = new RegExp('/_\[' + stsk +'\]_/');
+    if(xz){
+      var builder = "/_\\[i\\]_/";
+      var ndeg = new RegExp(builder.replace("i", stsk ));
       if(files[n].match(ndeg)){
          continue;
       }
