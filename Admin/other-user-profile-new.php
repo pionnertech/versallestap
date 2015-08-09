@@ -5030,10 +5030,23 @@ $.ajax({ type:"POST",
     
 }
 
-console.info(str_file);
-if(div4.innerHTML == ""){
+if(iin){
+
+   div4.innerHTML = str_file;
+
+}else{
+
+  if(div4.innerHTML == ""){
+
     div5.innerHTML = str_file;
+    
 }
+
+}
+
+
+
+
 
 }
 });
