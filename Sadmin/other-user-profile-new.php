@@ -1982,7 +1982,7 @@ jQuery.extend(
 
 jQuery.fn.justtext = function() {
    
-    return $(this)  .clone()
+    return $(this).clone()
             .children()
             .remove()
             .end()
