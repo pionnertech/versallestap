@@ -5482,7 +5482,7 @@ $(".fr").on("click", function(){
 
 function graphAddedFiles(object, tt, bs){
 
-  var rex = new RegExp("/\](.*?)\./");
+  var rex = new RegExp(/\](.*?)\./g);
 
 $.ajax({
      type: "POST",
@@ -5545,7 +5545,7 @@ $.ajax({
     //trated link 
      
     filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
-                 '<p class="ifile-ii" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
+                 '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
 
