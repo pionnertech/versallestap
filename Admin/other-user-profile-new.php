@@ -2301,7 +2301,7 @@ switch(true){
 
 $(".int-forward").click(function(){
 
-ticket = $()
+ticket = $(this).parent().siblings(".cell-icon").html().trim();
 dateTime = AmericanDate($(this).next().html());
 
        mode = "delegate";
