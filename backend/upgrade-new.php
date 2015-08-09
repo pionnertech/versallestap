@@ -20,7 +20,7 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE ST
 if($argument == 0){ // si es externo 
 
 //2.) get average
-$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
+$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
 //3.) set the avg of the total progress in admin and issue
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . (int)$avg['VX'] . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 0);");
      
@@ -37,7 +37,7 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX 
     
       // 6.) updating the issue state
 
-      $iss_avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(STSK_PROGRESS)) AS IAV FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_TYPE = 0);"));
+      $iss_avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS IAV FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_TYPE = 0);"));
     
                  if((int)$iss_avg['IAV'] > 99.9){
 
@@ -66,9 +66,11 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX 
 
 $min = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '"  . $ticket . "' AND STSK_FAC_CODE = " . $fac . ") "));	
 // 2.) get the average.. this time is special 
-$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_CHARGE_USR <> STSK_MAIN_USR );"));
+$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_CHARGE_USR <> STSK_MAIN_USR );"));
 
 // update first and second states .. ask if there is a third state to update
+       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['VX'] . " WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_MAIN_USR = " . $muser . ")");
+
       if((int)$val == 100){
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
       }
@@ -81,13 +83,17 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX 
            if($test == 'sadmin'){
               
               // 4.) if this user the lucky guy?.. go ahead is he is the one!
-           	  $navg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_ID <> " . $min['MIN']. " );"));
-           	          
+           	  $navg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_ID <> " . $min['MIN']. " );"));
+           	             	           // 5.a) let he/she know inserting data into pseudo table
+           	          mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $setto . " )");
+                            
+                      mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $navg['VX'] . " WHERE STSK_ID =" . $min['MIN'] );
+
            	          if($navg['VX'] > 99.5){
 
            	          	     mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $min['MIN']);
            	          }
-           	          
+         
            }
 
             $var1 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM `SUBTASKS` WHERE (STSK_ID = " . $id . " AND STSK_TYPE = 1)"));
@@ -105,7 +111,6 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT AVG(STSK_PROGRESS) AS VX 
                           	echo 1;
 
                           }
-
 }
 
 ?>
