@@ -4337,9 +4337,11 @@ if(aux_stsk !== 0){
   //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&current=" + mainuser + "&ticket=" + ttck ;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
+var xz = false;
 } else {
 var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&current=" + mainuser + "&ticket=" + ttck;
 console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
+var xz == true;
 }
 
 $.ajax({ type:"POST",
@@ -4356,6 +4358,13 @@ $.ajax({ type:"POST",
 
                 arp.html('');      
         for (n=0; n < files.length-1 ; n++){
+
+    if (xz){
+      var ndeg = new RegExp('/_\[' + stsk +'\]_/' ]);
+      if(files[n].match){
+         continue;
+      }
+    }
 
         var extension = files[n].substring(files[n].length -3 , files[n].length);
               switch(extension){
