@@ -110,6 +110,9 @@ $i = 0;
               $outcome = $fila[0] . "|";
      }
 
+echo $query;
+exit;
+
 } else {
 
 $uq = explode("," , $user_id);
