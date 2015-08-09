@@ -4360,8 +4360,8 @@ $.ajax({ type:"POST",
         for (n=0; n < files.length-1 ; n++){
 
     if (xz){
-      var ndeg = new RegExp('/_\[' + stsk +'\]_/' ]);
-      if(files[n].match){
+      var ndeg = new RegExp('/_\[' + stsk +'\]_/');
+      if(files[n].match(ndeg)){
          continue;
       }
     }
