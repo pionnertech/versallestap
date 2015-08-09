@@ -1982,7 +1982,7 @@ jQuery.extend(
 
 jQuery.fn.justtext = function() {
    
-    return $(this).clone()
+    return $(this)  .clone()
             .children()
             .remove()
             .end()
@@ -4313,9 +4313,15 @@ tr_av.appendChild(td3_av);
 }
 
 if(aux_stsk !== 0){
+  //se le pone un argumento extra para verficar el origen y sis correponde a un admin-admin o  admin-back por parte del servidor
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + aux_stsk + "&kind=" + kind + "&ticket=" + tknum + "&current=" + mainuser  ;
+console.info("que se está enviando : " + file_url + " cuando aux_stsk !== 0");
+} else {
+var file_url = "../backend/files_back_to_admin.php?fac=" + fac +  "&user=" + mainuser + "&stsk=" + stsk + "&kind=" + kind + "&ticket=" + tknum + "&current=" + mainuser ;
+console.info("que se está enviando : " + file_url + " cuando aux_stsk == 0");
+}
 
-
-graphAddedFiles($(".int-files-for").eq(ind), tknum , userId);
+graphAddedFiles($(".int-files-for").eq(ind), tknum );
 /*
 $.ajax({ type:"POST",
          url: file_url,
@@ -5483,7 +5489,7 @@ $(".fr").on("click", function(){
 
 function graphAddedFiles(object, tt, bs){
 
-  var rex = new RegExp(/\](.*?)\./g);
+  var rex = new RegExp("/\](.*?)\./");
 
 $.ajax({
      type: "POST",
@@ -5545,10 +5551,10 @@ $.ajax({
     
     //trated link 
      
-    filstr += '<a href="../' + fac +'/' + bs + '/' + nname[i] + '"  download>' +
-                 '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
-                 '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
-              '</a>';
+    filstr += '<a href="../' + fac +'/' + nname[i] + '"  download>' +
+                 '<p class="ifile-ii" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
+                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
+                  '</a>';
 
   }
 
@@ -5649,18 +5655,14 @@ function backToFront(name, usrId, iss){
 })
 }
 
-
 function checkOwn(){
-
   if($("#set-pro-own").find("input[type=text]").val().trim() == ""){
     return "Falta el asunto del progreso";
   }
    if($("#set-pro-own").find("textarea").val().trim() == ""){
     return "Falta la descripción del progreso";
   }
-
 return true;
-
 }
 
 </script>
@@ -5672,5 +5674,4 @@ return true;
     echo "<script language='javascript'>window.location='../index.php'</script>";
 }
 ?>
-
 
