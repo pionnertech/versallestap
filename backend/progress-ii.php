@@ -75,7 +75,7 @@ switch ($c_range['RAN']) {
      mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $val . " WHERE (STSK_TYPE = 1 AND STSK_CHARGE_USR = " . $user . " AND  STSK_FAC_CODE = " . $fac . " AND STSK_ISS_ID = " . $iss_id . ");");
      mysqli_query($datos, "UPDATE SUBTASKS SET STSK_RESP = 1 WHERE STSK_ID = " . $id);
     // get the AVG of all admins progress and set it to the sadmin
-    $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(STSK_PROGRESS)) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac .")"));
+    $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS,0))) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac .")"));
            mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['AVX'] . " WHERE STSK_ID = " . $min['MIN'] );
 
           //check level of finishiment from your own task
