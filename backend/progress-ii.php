@@ -33,7 +33,7 @@ switch ($c_range['RAN']) {
               if ($look['RAN'] == 'sadmin'){
               	  //update total progress
               	       $pro= mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(STSK_PROGRESS)) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (USR_RANGE = 'admin' AND STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac .")"));
-                                                mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $pro['AVX'] . " WHERE (STSK_ID = " . $min['MIN'] );
+                                                mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $pro['AVX'] . " WHERE STSK_ID = " . $min['MIN'] );
                   //let him know that a upgrede was uploaded
                              mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $avg['AVX']  . " )");  
                   // maybe you can change the state ....
@@ -85,7 +85,7 @@ switch ($c_range['RAN']) {
 
          if((int)$avg['AVX'] > 99.95 ){
 
-           mysqli_query($datos, "UPDATE SUBTAKS SET STSK_STATE = 5 WHERE STSK_ID =" . $min['MIN']);
+           mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID =" . $min['MIN']);
          }
 
                $insertar = "INSERT INTO `TRAFFIC_II` (TII_STSK_ID, TII_STSK_SRC_ID, TII_DESCRIPT, TII_SUBJECT, TII_FAC_CODE, TII_ING_DATE, TII_USER) ";
