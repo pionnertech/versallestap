@@ -75,10 +75,13 @@ while($fila = mysqli_fetch_row($ad)){
         break;
 
     }
+?>
+ <a href="../<? echo $fac ?>/<? echo $fila[1] ?>_alt/<? echo $file  ?>"  download>
+  <p style='display: inline-block' title="<?  echo preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file)  ?>"></p>
+  <i class="fa fa-file-<?  echo $setClass ?> fa-2x" style="color:<? echo  $cor  ?> ; margin: 0 0.4em"></i>
+</a>; 
 
-echo "<a href='../" ;
- echo "<a href='../" . $fac ."/" . $fila[1] . "_alt/" . $file . "'  download><p style='display: inline-block' title='" . preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file) .  "'></p><i class='fa fa-file-" . $setClass . " fa-2x' style='color:" . $cor.  "'; margin: 0 0.4em></i></a>"; 
-
+<?
 	                        }
         	          }
 
