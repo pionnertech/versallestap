@@ -20,7 +20,7 @@ $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM
 
 $str_trf_usr      = "SELECT DISTINCT A.TRF_USER, CONCAT(B.USR_NAME , ' ' ,  B.USR_SURNAME) FROM TRAFFIC A INNER JOIN USERS B ON(A.TRF_USER = B.USR_ID) WHERE (TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY TRF_USER; ";
 $Query_trf_usr    = mysqli_query($datos, $str_trf_usr);
-$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "') UNION SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'admin'  AND USR_DEPT != '" . $_SESSION['TxtDept'] . "');");
+$Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_DEPT = '" . $_SESSION['TxtDept'] . "' AND USR_RANGE = 'back-user')");
 // internal requirements
 
 $query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_ISS_ID = STSK_ID AND STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")  ORDER BY STSK_TICKET";
@@ -44,7 +44,7 @@ if(mysqli_num_rows($quntum) == 0){
     $contador = $cont['CONTADOR'];
 }
 
-$intList = "Mi Departamento, Jefaturas,";
+$intList = "Mi Departamento,";
 
 while ($Qth_int_list = mysqli_fetch_row( $Query_team_int)){
   $intList .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_int_list[1] . " " . $Qth_int_list[2] )))) . ",";
@@ -1537,9 +1537,10 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#8E9193";
                                                       break;
                                                  }
+
                                           ?>
-                                          
-                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
+
+                                                 <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download  >
                                                      <p class="ifile-ii" title="<? printf($archivos2) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x ate" style="color: <? printf($cor) ?> "></i>
                                                          <span class="iname"></span>
@@ -1627,6 +1628,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                             <td><span style="font-weight: bolder; font-style: italic">Fecha</span></td>
                                                         </tr>
                                                 <?
+
                                           echo "<script>console.info('" . $fila5[11] . "')</script>";
 $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE (TII_STSK_SRC_ID = " . $fila5[11] . " AND TII_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
 
@@ -1639,6 +1641,7 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                         </tr>
 
                                                 <? } ?>
+
                                                     </tbody>
                                                 </table>
                                               </td>
