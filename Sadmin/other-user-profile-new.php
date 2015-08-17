@@ -5497,7 +5497,7 @@ $.ajax({
   var filstr = "";
   var setClass = "";
   var cor = "";
-  
+
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
               switch(extension){
@@ -5556,7 +5556,7 @@ $.ajax({
 
 }
 
-nname_sec = nname_pri[1].split(",");
+var nname_sec = nname_pri[1].split(",");
 
      for (i=0; i < nname_sec.length-1 ; i++){
      var extension = nname_sec[i].substring(nname_sec[i].length -3 , nname_sec[i].length);
@@ -5609,17 +5609,13 @@ nname_sec = nname_pri[1].split(",");
     }
     //trated link 
      
-          filstr += '<a href="../' + fac + '/' + mainuser + '_alt/' + nname[i].trim() + '"  download>' +
-                 '<p style="display: inline-block" title="' + nname[i] +  '"></p>' +
+          filstr += '<a href="../' + fac + '/' + mainuser + '_alt/' + nname_sec[i].trim() + '"  download>' +
+                 '<p style="display: inline-block" title="' + nname_sec[i] +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
 
-     
-
 }
   
-
-
 object.html(filstr);
 
 filstr = "";
