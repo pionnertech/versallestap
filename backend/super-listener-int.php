@@ -30,7 +30,7 @@ $query_assoc = mysqli_fetch_assoc($query);
 
 //what is the progress?
 
-  $add = mysqli_fetch_assoc(mysqli_query($datos, "SELECT  SUM(A.STSK_PROGRESS), COUNT(A.STSK_ID), ROUND(AVG(A.STSK_PROGRESS)) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $query_assoc['STSK_TICKET'] . "')")); 
+  $add = mysqli_fetch_assoc(mysqli_query($datos, "SELECT  SUM(A.STSK_PROGRESS), COUNT(A.STSK_ID), ROUND(AVG(IFNULL(A.STSK_PROGRESS, 0))) AS PROGRESS FROm SUBTASKS A INNER JOIN USERS B ON(B.USR_RANGE ='admin' AND A.STSK_CHARGE_USR = B.USR_ID) WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TICKET = '" . $query_assoc['STSK_TICKET'] . "')")); 
 
 //who is?, which percentage?,
  
