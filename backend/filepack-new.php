@@ -77,7 +77,7 @@ while($fila = mysqli_fetch_row($ad)){
     }
 
 
-    echo '<a href="../' . $fac .'/' . $fila[1] . '_alt/' . $file . '"  download><p style="display: inline-block" title="' . preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file) .  '"></p><i class="fa fa-file-' . $setClass . ' fa-2x" style="color:' . $cor.  '; margin: 0 0.4em"></i></a>'; 
+    echo "<a href='../" . $fac ."/" . $fila[1] . "_alt/" . $file . "'  download><p style='display: inline-block' title='" . preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file) .  "'></p><i class='fa fa-file-" . $setClass . " fa-2x' style='color:" . $cor.  "'; margin: 0 0.4em></i></a>"; 
 
 	                        }
         	          }
