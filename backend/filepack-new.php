@@ -5,7 +5,7 @@ $fac    = $_GET['fac'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $team = "";
 
-$filstr    = "";
+$filestr    = "";
 $setClass  = "";
 $cor       = "";
 //discrimination
@@ -171,4 +171,5 @@ $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
            }
 
 
+echo $filestr
  ?>
