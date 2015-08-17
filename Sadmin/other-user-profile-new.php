@@ -1057,8 +1057,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   ?>
                                             </div>
                                             <div class="file-contents">
-                                            
-                                           
                                             <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
@@ -5493,12 +5491,75 @@ $.ajax({
      type: "POST",
      url: "../backend/filepack.php?ticket=" + tt + "&fac=" + fac, 
      success: function(data){
-  var nname = data.split(","); 
+  var nname_pri = data.split("|"); 
+  var nname = nname_pri[0].split(",");
+
   var filstr = "";
   var setClass = "";
   var cor = "";
+  
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
+              switch(extension){
+              
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+
+        filstr += '<a href="../' + fac +'/' + mainuser + '_alt/' + nname[i].trim() + '"  download>' +
+                 '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
+                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
+                  '</a>';
+
+}
+
+nname_sec = nname_pri[1].split(",");
+
+     for (i=0; i < nname_sec.length-1 ; i++){
+     var extension = nname_sec[i].substring(nname_sec[i].length -3 , nname_sec[i].length);
               switch(extension){
                 case "pdf": 
             setClass = "pdf-o";
@@ -5546,23 +5607,17 @@ $.ajax({
         break;
 
     }
-    
     //trated link 
-     if (targus){
-    filstr += '<a href="../' + fac +'/' + mainuser + '_alt/' + nname[i].trim() + '"  download>' +
-                 '<p style="display: inline-block" title="' + nname[i].replace(rex, "]_" +  bs + ".") +  '"></p>' +
-                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
-                  '</a>';
-
-     } else {
+     
           filstr += '<a href="../' + fac + '/' + mainuser + '_alt/' + nname[i].trim() + '"  download>' +
                  '<p style="display: inline-block" title="' + nname[i] +  '"></p>' +
                   '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
                   '</a>';
 
-     }
+     
 
-  }
+}
+  
 
 
 object.html(filstr);
@@ -5612,9 +5667,6 @@ var idf = $(this).index(".bk-fi");
       $(this).data("val", 0);
     
   }
-
-
-
                
 });
 // desde este punto se decide que se hace ocn task-own y su control de flujo 
@@ -5648,7 +5700,6 @@ $(".send-com").on('click', function(){
   }
 
 });
-
 
 function backToFront(name, usrId, iss){
  console.info(usrId);
