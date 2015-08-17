@@ -1327,7 +1327,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                         <input type="text" id="dfrom2" class="seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;vertical-align: top;">
                                         <input type="text" id="duntil2" class="seo" placeholder="Hasta" style="width: 10em; margin: 0 .5em;vertical-align: top;">
                                         </div>
-                                            <div class="module-body table">
+                                            <div class="module-body table" style="padding: 15px 0;">
                                                    <table class="table table-message" id="int-table">
                                                       <tbody id="int-body">
                                                           <tr class="heading">
