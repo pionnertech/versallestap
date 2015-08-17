@@ -5489,8 +5489,8 @@ $.ajax({
      type: "POST",
      url: "../backend/filepack-new.php?ticket=" + tt + "&fac=" + fac, 
      success: function(data) {
-        object.html(data);
-
+      console.info(data.toString());
+        object.html(data.toString());
      } 
 })
 
