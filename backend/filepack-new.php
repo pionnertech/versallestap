@@ -77,10 +77,7 @@ while($fila = mysqli_fetch_row($ad)){
     }
 
 
-    echo '<a href="../' . $fac .'/' . $fila[1] . '_alt/' . $file . '"  download>' .
-                 '<p style="display: inline-block" title="' . preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file) .  '"></p>' .
-                  '<i class="fa fa-file-' . $setClass . ' fa-2x" style="color:' . $cor.  '; margin: 0 0.4em"></i>' .
-                  '</a>'; 
+    echo '<a href="../' . $fac .'/' . $fila[1] . '_alt/' . $file . '"  download><p style="display: inline-block" title="' . preg_replace('/\](.*?)\./', "]_" . $fila[1]  . ".", $file) .  '"></p><i class="fa fa-file-' . $setClass . ' fa-2x" style="color:' . $cor.  '; margin: 0 0.4em"></i></a>'; 
 
 	                        }
         	          }
@@ -158,10 +155,7 @@ $handle = opendir("/var/www/html/" . $fac . "/1_alt/");
     }
 
 
-    echo  '<a href="../' . $fac .'/' . $as[1] . '_alt/' . $file . '"  download>' .
-                 '<p style="display: inline-block" title="' . $as[1] .  '"></p>' .
-                  '<i class="fa fa-file-' . $setClass . ' fa-2x" style="color:' . $cor.  '; margin: 0 0.4em"></i>' .
-                  '</a>'; 
+    echo  '<a href="../' . $fac .'/' . $as[1] . '_alt/' . $file . '"  download><p style="display: inline-block" title="' . $as[1] .  '"></p><i class="fa fa-file-' . $setClass . ' fa-2x" style="color:' . $cor.  '; margin: 0 0.4em"></i></a>'; 
 
 	                        }
         	          
