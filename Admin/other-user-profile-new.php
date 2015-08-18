@@ -3409,9 +3409,12 @@ console.info("llega el ticket = " + tkt);
            var result = data.split("|");
            var titles = result[result.length-1].split(",");
            var string = "";
-           if(titles == ""){
-            titles = user;
+           if(titles == ""  ){
+                titles = user;
            }
+
+           console.info("titles : " + titles);
+           console.info("users :" + user );
 
                      if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
 
@@ -3424,7 +3427,6 @@ console.info("llega el ticket = " + tkt);
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-2]);
                         
-
                             for(i=1; i < result.length-2 ; i++){
 
                               if(result[i] != ""){
