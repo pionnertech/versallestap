@@ -56,7 +56,7 @@ $(function(){
             $(".af").removeClass("fa-times").addClass("fa-exclamation-triangle");
             // Calculate the completion percentage of the upload
             var progress = parseInt(data.loaded / data.total * 100, 10);
-
+            console.info( data, e);
             // Update the hidden input field and trigger a change
             // so that the jQuery knob plugin knows to update the dial
             data.context.find('input').val(progress).change();
@@ -68,9 +68,11 @@ $(function(){
 
         fail:function(e, data){
             // Something has gone wrong!
+              console.info( data, e);
             data.context.addClass('error');
         }, 
         send : function(){
+           
             $("#upgrade").attr("disabled", true);
         },
         always : function(){
