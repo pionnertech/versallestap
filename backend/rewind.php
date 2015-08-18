@@ -30,7 +30,7 @@ if($type == 0) {
 $extension = pathinfo($fname, PATHINFO_EXTENSION);
 $var = basename($fname, "." . $extension);
 
-unlink($dir . $var . "_" . $stsk . "_" . $user . "." . $extension);
+unlink($dir . $var . "_[" . $stsk . "]_" . $user . "." . $extension);
 mysqli_close($datos);
 
 ?>
