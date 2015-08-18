@@ -29,26 +29,18 @@ $Query_team_int   = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME F
 $query_internal = "SELECT A.STSK_ID, A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ' , B.USR_SURNAME) , A.STSK_MAIN_USR, A.STSK_SUBJECT, A.STSK_DESCRIP, C.EST_DESCRIPT, A.STSK_PROGRESS, C.EST_COLOR, A.STSK_LOCK, A.STSK_FINISH_DATE, A.STSK_ISS_ID, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID) INNER JOIN EST C ON(C.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_ISS_ID = STSK_ID AND STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . ")  ORDER BY STSK_TICKET";
 $internal       = mysqli_query($datos, $query_internal);
 $quntum         = mysqli_query($datos, "SELECT COUNT(STSK_ID) AS CONTADOR FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode']);
-
 $vlist = "Mi Departamento,";
-
-
 while ($Qth_list = mysqli_fetch_row( $Query_team)){
   $vlist .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_list[1] . " " . $Qth_list[2] )))) . ",";
 }
-
 mysqli_data_seek($Query_team, 0);
-
 if(mysqli_num_rows($quntum) == 0){
-
     $contador = 0;
 } else {
     $cont = mysqli_fetch_assoc($quntum);
     $contador = $cont['CONTADOR'];
 }
-
 $intList = "Mi Departamento,";
-
 while ($Qth_int_list = mysqli_fetch_row( $Query_team_int)){
   $intList .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($Qth_int_list[1] . " " . $Qth_int_list[2] )))) . ",";
 }
@@ -3154,7 +3146,7 @@ console.info("llega el ticket = " + tkt);
                             for(i=1; i < result.length-2 ; i++){
 
                               if(result[i] != ""){
-                       string +=  '<a class="hovertip" title="' + titles[i] + '" onclick="hovertip(this)" data-per="0">' +
+                       string +=  '<a class="hovertip" title="' + titles[i-1] + '" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '<i class="fa fa-check-circle finished"></i>' +
                              '</a>'; 
