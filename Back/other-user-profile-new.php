@@ -1691,7 +1691,7 @@ if($("form#upload").attr("action") == "../backend/upload_back_to_admin.php"){
 }
 $.ajax({
           type: "POST",
-          url:"../backend/rewind.php?fac=" + fac + "&usr=" + mainuser + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
+          url:"../backend/rewind.php?fac=" + fac + "&usr=" + usr + "&fname=" + fnam + "&type=" + type + "&stsk=" + stsk,
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
