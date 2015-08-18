@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 */
 // 5 minutes execution time
-@set_time_limit(5 * 60);
+@set_time_limit(8 * 60);
 // Uncomment this one to fake upload time
 // usleep(5000);
 // Settings
@@ -134,12 +134,13 @@ while ($buff = fread($in, 4096)) {
 }
 @fclose($out);
 @fclose($in);
+
 // Check if file has been uploaded
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
 	copy($filePath,   $targetDir . "/" . $boss['BOSS'] . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $code . "]_" . $user . "." . strtolower($extension)  );
-	//unlink($filePath);
+	unlink($filePath);
 }
 
 
