@@ -3124,8 +3124,7 @@ console.info("llega el ticket = " + tkt);
            var result = data.split("|");
            
            var string = "";
-            console.log("si los nombres no vienen :"+ result[result.length-1] == "");
-           if(result[result.length-1] == "" ){
+           if(result[result.length-1].length < 3 ){
             var titles = user.split(",");
            } else {
             var titles = result[result.length-1].split(",");
