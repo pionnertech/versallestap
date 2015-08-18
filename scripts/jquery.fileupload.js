@@ -97,7 +97,7 @@
             // to a preferred maximum chunk size. If set to 0, null or undefined,
             // or the browser does not support the required Blob API, files will
             // be uploaded as a whole.
-            maxChunkSize:  1000000,
+            maxChunkSize: 3145728,
             // When a non-multipart upload or a chunked multipart upload has been
             // aborted, this option can be used to resume the upload by setting
             // it to the size of the already uploaded bytes. This option is most
@@ -187,10 +187,14 @@
             // dragover: function (e) {}, // .bind('fileuploaddragover', func);
 
             // Callback for the start of each chunk upload request:
-            // chunksend: function (e, data) {}, // .bind('fileuploadchunksend', func);
+             chunksend: function (e, data) {
+                console.info(e, data);
+             }, // .bind('fileuploadchunksend', func);
 
             // Callback for successful chunk uploads:
-            // chunkdone: function (e, data) {}, // .bind('fileuploadchunkdone', func);
+             chunkdone: function (e, data) {
+           console.info(e, data);
+            }, // .bind('fileuploadchunkdone', func);
 
             // Callback for failed (abort or error) chunk uploads:
             // chunkfail: function (e, data) {}, // .bind('fileuploadchunkfail', func);
