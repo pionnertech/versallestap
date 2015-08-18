@@ -728,7 +728,7 @@ echo "<script>console.info('" . preg_match_all("/_\[" . $fila_int[0] . "\]_/", $
 
 
                                           ?>
-                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($boss)  ?>_alt/<? printf($archivos2)?>" class="down" download> 
+                                                               <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($boss['BOSS']) ?>_alt/<? printf($archivos2) ?>" class="down" download> 
                                                                 <p class="ifile" title="<? printf($archivos2) ?>">
                                                                    <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                                    <span class="iname" ></span>
@@ -740,12 +740,7 @@ echo "<script>console.info('" . preg_match_all("/_\[" . $fila_int[0] . "\]_/", $
                                                     } 
                                                      closedir($handler);  
                                                     ?>
-                                    
-
-
-
                                             </div>
-
                                                          <table style="width:100%">
                                                                 <tbody class="ii-events">
                                                                     <tr >
