@@ -138,7 +138,7 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
-	copy($filePath,   $targetDir . "/" . $boss['BOSS'] . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $real_code['STSK_ID'] . "]_" . $user . "." . strtolower($extension)  );
+	copy($filePath,   $targetDir . "/" . $boss['BOSS'] . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $code . "]_" . $user . "." . strtolower($extension)  );
 	unlink($filePath);
 }
 
