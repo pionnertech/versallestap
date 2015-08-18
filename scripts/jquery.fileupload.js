@@ -92,12 +92,12 @@
             // By default, XHR file uploads are sent as multipart/form-data.
             // The iframe transport is always using multipart/form-data.
             // Set to false to enable non-multipart XHR uploads:
-            multipart: false,
+            multipart: true,
             // To upload large files in smaller chunks, set the following option
             // to a preferred maximum chunk size. If set to 0, null or undefined,
             // or the browser does not support the required Blob API, files will
             // be uploaded as a whole.
-            maxChunkSize: 3145728,
+            maxChunkSize: 0,
             // When a non-multipart upload or a chunked multipart upload has been
             // aborted, this option can be used to resume the upload by setting
             // it to the size of the already uploaded bytes. This option is most
