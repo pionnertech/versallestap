@@ -24,6 +24,9 @@ $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
 
+
+
+
 /* 
 // Support CORS
 header("Access-Control-Allow-Origin: *");
@@ -44,7 +47,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 //averiguar el numero de subtask matriz
 $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
-$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_TYPE = 0)"));
+$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_TYPE = 1)"));
 
 
 $targetDir = "/var/www/html/" . $fac;
@@ -59,6 +62,9 @@ if(!is_dir($targetDir . "/int_temp/")){
 	mkdir($targetDir . "/int_temp/", 0775, true);
 }
 
+
+
+
 // Get a file name
 if (isset($_REQUEST["name"])) {
 	$fileName = str_replace(" ", "-", $_REQUEST["name"]);
@@ -66,6 +72,10 @@ if (isset($_REQUEST["name"])) {
 	$fileName = str_replace(" ", "-", $_FILES["upl"]["name"]);
 } else {
 	$fileName = uniqid("file_");
+}
+
+if(preg_match_all('/\_\[\d+\]\_/', $fileName)){
+	$fileName = preg_replace('/\_\[\d+\]\_/', '', $fileName);
 }
 
 $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
@@ -130,7 +140,10 @@ if (!$chunks || $chunk == $chunks - 1) {
 }
 
 copy($filePath,   $targetDir . "/" . $user . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $real_code['STSK_ID'] . "]_" . $user . "." . strtolower($extension)  );
-$extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
+unlink($filePath);
+
+
+//$extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
 
 //move file 
 //if(move_uploaded_file($_FILES['file']['tmp_name'], $targetDir . "/int_temp/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_" . $rut . "_." . $extension  )){
