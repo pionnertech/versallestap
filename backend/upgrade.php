@@ -52,8 +52,6 @@ $var2 = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM `SUBTASKS` 
 $insertar = "INSERT INTO `TRAFFIC` (TRF_STSK_ID, TRF_STSK_SRC_ID, TRF_DESCRIPT, TRF_SUBJECT, TRF_FAC_CODE, TRF_ING_DATE, TRF_USER) ";
 $insertar .= "VALUES (" . $id . ", " . $var2['STSK_ID'] . " , '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', '" . $user . "');";
 
-
-
 if(!mysqli_query($datos, $insertar)){
 	echo "status failed";
 	exit;
@@ -122,11 +120,14 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_ID = " . $i
 }
 
 if ((int)$setto > 99){
+
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1);");
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE ( STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_ID = STSK_ISS_ID AND STSK_TICKET = '" . $ticket . "' AND STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac .");");
+
+
 }
 
-// test if sadminis the owner, first get the min
+// test if sadmin is the owner, first get the min
 $pre_test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")"));
 $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $pre_test['MIN'] ));
 

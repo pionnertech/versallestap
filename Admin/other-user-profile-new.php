@@ -3406,9 +3406,12 @@ console.info("llega el ticket = " + tkt);
 
            console.info(data);
 
-           result = data.split("|");
-           
+           var result = data.split("|");
+           var titles = result[result.length-1].split(",");
            var string = "";
+           if(titles == ""){
+            titles = user;
+           }
 
                      if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
 
@@ -3419,11 +3422,13 @@ console.info("llega el ticket = " + tkt);
                          $("#send-int").attr("disabled", false);
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
 
-                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-1]);
+                            firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-2]);
+                        
 
-                            for(i=1; i < result.length-1; i++){
+                            for(i=1; i < result.length-2 ; i++){
+
                               if(result[i] != ""){
-                       string +=  '<a class="hovertip" title="" onclick="hovertip(this)" data-per="0">' +
+                       string +=  '<a class="hovertip" title="' + titles[i] + '" onclick="hovertip(this)" data-per="0">' +
                              '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" ><input type="hidden" value="u'  + result[i] + '">' +
                              '<i class="fa fa-check-circle finished"></i>' +
                              '</a>'; 

@@ -63,8 +63,6 @@ if(!is_dir($targetDir . "/int_temp/")){
 }
 
 
-
-
 // Get a file name
 if (isset($_REQUEST["name"])) {
 	$fileName = str_replace(" ", "-", $_REQUEST["name"]);
@@ -77,6 +75,7 @@ if (isset($_REQUEST["name"])) {
 if(preg_match_all('/\_\[\d+\]\_/', $fileName)){
 	$fileName = preg_replace('/\_\[\d+\]\_/', '', $fileName);
 }
+
 
 $filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
 $extension = pathinfo($filePath , PATHINFO_EXTENSION);

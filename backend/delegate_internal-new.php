@@ -10,7 +10,7 @@ $fac         = $_GET['fac'];
 $stsk_src_id = $_GET['main_stsk'];
 $keyfile     = $_GET['keyfile'];
 $ticket      = $_GET['ticket'];
-
+$names       = "";
 $number      = 0;
 $muser_range = "";
 
@@ -22,7 +22,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
-$team = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
+$team = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME, ' ', USR_SURNAME) FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
 
 if(!isset($ticket) || $ticket == ""){
 $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(DISTINCT STSK_TICKET) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));
@@ -88,7 +88,7 @@ while( $fila = mysqli_fetch_row($team)){
     $query .= ",";
    }
 $outcome .= $fila[0] . "|";
-
+$names   .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila[1])))) .",";
 
 }
 
@@ -96,7 +96,7 @@ $outcome .= $fila[0] . "|";
 
 $i = 0;
 
-  $team_leader = mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin'); ");
+  $team_leader = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME, ' ', USR_SURNAME) FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin'); ");
 
      while($fila = mysqli_fetch_row($team_leader)){
 
@@ -108,6 +108,7 @@ $i = 0;
                 $query .= ",";
               }
               $outcome .= $fila[0] . "|";
+              $names   .= str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila[1])))) . ",";
      }
 
 } else {
@@ -175,7 +176,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|" . $ticket ;
+ echo (int)$number . "|" . $outcome . "|" . $ticket . "|[" . $names . "]" ;
 }
 
 
