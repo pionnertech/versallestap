@@ -3122,11 +3122,13 @@ console.info("llega el ticket = " + tkt);
            console.info(data);
 
            var result = data.split("|");
-           var titles = result[result.length-1].split(",");
+           
            var string = "";
 
            if(result[result.length-1] == "" ){
-                titles = user.split(",");
+             var titles = user.split(",");
+           } else {
+            var titles = result[result.length-1].split(",");
            }
 
            console.info("titles : " + titles);
