@@ -46,8 +46,11 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 //averiguar el numero de subtask matriz
-$hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
-$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_TYPE = 1)"));
+$hn        = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
+$depa      = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_DEPT FROM USERS WHERE USR_ID = " . $user));
+
+$boss      = mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE (USR_DEPT = '" . $fac . "' AND USR_CHARGE = 'admin')");
+$real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ID FROM SUBTASKS WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_MAIN_USR = " . $boss['BOSS'] . " AND STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_TYPE = 1)"));
 
 
 $targetDir = "/var/www/html/" . $fac;
@@ -135,7 +138,7 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
-	copy($filePath,   $targetDir . "/" . $user . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $real_code['STSK_ID'] . "]_" . $user . "." . strtolower($extension)  );
+	copy($filePath,   $targetDir . "/" . $boss['BOSS'] . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_[" . $real_code['STSK_ID'] . "]_" . $user . "." . strtolower($extension)  );
 	unlink($filePath);
 }
 
