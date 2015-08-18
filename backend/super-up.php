@@ -68,7 +68,7 @@ if (isset($_REQUEST["name"])) {
 	$fileName = uniqid("file_");
 }
 
-$filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
+$filePath = $targetDir . DIRECTORY_SEPARATOR . $user . "_alt/".  $fileName;
 $extension = pathinfo($filePath , PATHINFO_EXTENSION);
 
 
@@ -126,6 +126,7 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off 
 	rename("{$filePath}.part", $filePath);
+	copy($targetDir . "/int_temp/" );
 }
 
 $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
@@ -135,7 +136,7 @@ $extension = pathinfo($_FILES['upl']['name'], PATHINFO_EXTENSION);
 //	echo '{"jsonrpc" : "2.0", "result" : null, "id" : "id"}';
 //}
 
-	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $targetDir . "/" . $user . "_in/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $real_code['STSK_ID'] . "_" . $user . "." . strtolower($extension) )){
+	if(move_uploaded_file($_FILES['upl']['tmp_name'] , $targetDir . "/" . $user . "_alt/" . basename($_FILES['upl']['name'] , "." . strtolower($extension)) . "_" . $real_code['STSK_ID'] . "_" . $user . "." . strtolower($extension) )){
 		echo '{"status":"success"}';
 		
 	}
