@@ -23,10 +23,6 @@ $fac  = $_REQUEST['fac'];
 $code = $_REQUEST['code'];
 $user = $_REQUEST['user'];
 
-
-
-
-
 /* 
 // Support CORS
 header("Access-Control-Allow-Origin: *");
