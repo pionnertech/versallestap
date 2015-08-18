@@ -1695,7 +1695,7 @@ $.ajax({
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
-              var files =  $("#D-drop").data("dfil").replace(fnam + '|', '');
+              var files =  $("#D-drop").data("files").replace(fnam + '|', '');
 
           }
  });
