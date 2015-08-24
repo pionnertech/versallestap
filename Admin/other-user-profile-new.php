@@ -12,7 +12,7 @@ $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE
 //progress
 mysqli_query($datos, "UPDATE SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) SET A.STSK_ANCIENT_PRO = A.STSK_PROGRESS WHERE (STSK_CHARGE_USR <> " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility']  . "  AND USR_DEPT = '" . $_SESSION['TxtDept'] . "')");
 //tasks
-mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = STSK_ANCIENT_PRO WHERE (STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR)");
+mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = STSK_ANCIENT_PRO WHERE (STSK_CHARGE_USR = "  . $_SESSION['TxtCode'] . " AND STSK_LOCK = 1 AND STSK_TYPE = 1 AND STSK_MAIN_USR <> STSK_CHARGE_USR AND STSK_PROGRESS IS NULL)");
 
 $boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE ( USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'sadmin')"));
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
@@ -712,7 +712,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
           ?>
         
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
-            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $fila_spec[1]; ?>_opt.jpg" class="group" >
+            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $fila_spec[1] . '_opt.jpg' ) ){ echo 'user.jpg' }  else { echo $fila_spec[1] . '_opt.jpg' }?>" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
