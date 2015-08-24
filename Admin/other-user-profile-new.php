@@ -1134,7 +1134,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
              ?>
                                                   <? if ($prt[0] != $_SESSION['TxtCode']){ ?>
                                                                         <a data-per="<? echo $prt[3] ?>" class="hovertip" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($prt[1]))))) ?>">
-                                                                            <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? echo $prt[0]; ?>_opt.jpg" class="group" >
+                                                                            <img src="../<? echo $_SESSION['TxtFacility']  ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $prt[0] . '_opt.jpg' ) ) { echo 'user.jpg';   } else { echo $prt[0] . '_opt.jpg'; } ?>" class="group" >
                                                                             <i class="fa fa-check-circle finished" style="opacity: <? if ($prt[3] == 100 ) { ?> 1 <? } else { } ?>"></i>
                                                                             <input type="hidden" value="u<? printf($prt[0])?>">
                                                                         </a>
