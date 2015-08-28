@@ -3154,6 +3154,7 @@ console.info("llega el ticket = " + tkt);
                              '</a>'; 
                               }   
                             }
+                            
 
                            var parent = document.querySelectorAll('.coll-int')[ind+1];
                            console.info(ind+1);
