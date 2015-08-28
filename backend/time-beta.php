@@ -58,8 +58,9 @@ switch ($sel['STSK_TYPE']) {
                 echo "|" . $total['AVX'];
                 echo "|" . $classText;
                 echo "|" . $trf_str['TRF_STSK_ID']; 
-                echo "|" . $sel['STSK_PROGRESS'];
                 echo "|" . $sel['STSK_TYPE'];
+                echo "|" . $sel['STSK_PROGRESS'];
+                
 
 
 		break;
