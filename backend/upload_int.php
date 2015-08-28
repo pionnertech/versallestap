@@ -4,6 +4,7 @@
 $fac     = $_REQUEST['fac_id'];
 $user    = $_REQUEST['user'];
 $keyfile = $_REQUEST['keyfile'];
+
 	$dir = "/var/www/html/" . $fac . "/_tmp/";
 	$iss_id = $keyfile;
 if(!is_dir($dir)){
@@ -16,8 +17,6 @@ if(move_uploaded_file($_FILES['file']['tmp_name'] , $dir . basename($_FILES['fil
 
 /*
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
-
-
 
 switch ($user) {
 	case 'Mi Departamento':
