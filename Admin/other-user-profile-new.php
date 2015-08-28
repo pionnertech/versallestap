@@ -740,7 +740,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                         while (false !== ($archivos = readdir($handler))){
 
-                                            echo "<script>console.info('nombre de archivo: " . $archivos . "' + 'preg_match_all(/_ " . $stsk[1] . "_/, $archivos)')</script>";
+                                            echo "<script>console.info('nombre de archivo: " . $archivos . "' + '   preg_match_all(/_" . $stsk[1] . "_/, $archivos)')</script>";
                               
                                          if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
                                              
