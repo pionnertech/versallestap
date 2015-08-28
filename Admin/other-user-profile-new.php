@@ -3788,7 +3788,7 @@ var idf = $(this).index(".bk-fi");
   $(".file-contents").eq(idf).children('a').find('i').html(function(){
          $(this).attr("title", filename($(this).parent().parent().attr("href")));
          $(this).attr("draggable", true);
-         $(this).data("pseudotitle",$(this).parent().parent().attr("href") );
+         $(this).attr("data-pseudo",$(this).parent().parent().attr("href") );
   });
   var newElems = $(".file-contents").eq(idf).find('i').clone();
       newElems.css({ margin : "0 .2em"});
