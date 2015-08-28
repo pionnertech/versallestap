@@ -739,6 +739,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
+
+                                            echo "<script>console.info('nombre de archivo: " . $archivos . "' + 'preg_match_all(/_ " . $stsk[1] . "_/, $archivos)')</script>";
                               
                                          if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
                                              
@@ -788,8 +790,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   ?>
                                             </div>
                                             <div class="file-contents">
-                                            
-                                           
                                             <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
@@ -1415,11 +1415,8 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
 </a> 
 
 <? } ?>
-
-
-                                            </div>
-
-                                            </div>
+                                    </div>
+                            </div>
                                       <div style="width: 100%; display:none" class="seoRec">
                                         <input type="text" value="" placeholder="Búsqueda" id="search3" style="width: 36em; float: left; margin-left: 1em">
                                         <input type="text" id="dfrom3" class="seo" placeholder="Desde" style="width: 10em; margin: 0 .5em;vertical-align: top;">
@@ -3480,15 +3477,14 @@ uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
 } else if($(this).next().hasClass('fa-user') ){
 
-
 $("#set-pro-own").attr("data-stsk", stsk_id );
 $("#set-pro-own").attr("data-iss", iss_ident );
 
 $("#require").removeClass('active in');$("#set-pro-own").addClass('active in');
 uploaderInt($("#up-own"), iss_ident, $("#muser").val(), stsk_id , 0);
 
-} else if( $(this).next().hasClass('fa-group') ){
 
+} else if( $(this).next().hasClass('fa-group') ){
 
 $("#audititle").html("\"" + subject + "\"");
 $("#current-task").val(index_current);
