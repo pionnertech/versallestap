@@ -727,7 +727,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                              <?   
                                            
                          while($steam = mysqli_fetch_row($Query_team)){
-                          
+                          $tsw = 0;
                                if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "/")){
 
                                   continue; 
@@ -743,7 +743,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             echo "<script>console.info('nombre de archivo: " . $archivos . "' + '   preg_match_all(/_" . $stsk[1] . "_/, $archivos)')</script>";
                               
                                          if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
-                                             
+                                              $tsw = 1;
                                               $extension = substr($archivos, -3);
                                               $cor = "";
 
@@ -774,18 +774,20 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       break;
                                                  }
                                           ?>
-
                          <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
                                                 </p>
                                                 </a>
                                                   <? }
                                                   } 
-                                       // sacar closedir($handler);
-                                                  
+                                       closedir($handler);
+
                                        }
                                     }
-                                  break;
+
+                                  if($tsw == 1){
+                                    break;
+                                }
                                 }
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
