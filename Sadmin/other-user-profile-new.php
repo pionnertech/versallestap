@@ -5224,18 +5224,21 @@ $(".fr").on("click", function(){
 
 function graphAddedFiles(object, tt, bs, targus){
 
-  var rex = new RegExp(/\](.*?)\./g);
+var rex = new RegExp(/\](.*?)\./g);
 
 $.ajax({
      type: "POST",
      url: "../backend/filepack.php?ticket=" + tt + "&fac=" + fac, 
      success: function(data){
+
   var nname_pri = data.split("|"); 
   var nname = nname_pri[0].split(",");
 
   var filstr = "";
   var setClass = "";
   var cor = "";
+
+  console.info(data);
 
   for (i=0; i < nname.length-1 ; i++){
      var extension = nname[i].substring(nname[i].length -3 , nname[i].length);
