@@ -3,7 +3,6 @@
 
 if(isset($_SESSION['TxtCode']) && $_SESSION['TxtRange']){
 
-
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $Query_name = mysqli_query($datos, "SELECT FAC_NAME FROM FACILITY WHERE FAC_CODE = " . $_SESSION['TxtCode']);
@@ -100,11 +99,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 .display-progress{
 	display:none;
 }
-
-
 	</style>
-
-
 </head>
 <body>
 
@@ -190,7 +185,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 
 							
 							<li>
-								<a href="task.php">
+								<a href="task-new.php">
 									<i class="menu-icon icon-tasks"></i>
 									Control de Cumplimientos
 									<b id="counter-task" class="label orange pull-right"><? printf($cantidad['CANT']) ?></b>
