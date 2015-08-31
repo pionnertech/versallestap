@@ -67,13 +67,14 @@ $min = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM 
 $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_TICKET  = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR = " . $muser . " AND STSK_CHARGE_USR <> STSK_MAIN_USR );"));
 
 // update first and second states .. ask if there is a third state to update
-       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['VX'] . " WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_MAIN_USR = " . $muser . ")");
+       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['VX'] . " WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . ")");
 
       if((int)$val == 100){
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
       }
+
       if((int)$avg['VX'] > 99.5){
-        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_MAIN_USR = " . $muser . ")");
+        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . ")");
       }
 
       $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $min['MIN'] ));
