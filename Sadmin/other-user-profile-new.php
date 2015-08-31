@@ -4052,8 +4052,7 @@ tr_av.appendChild(td3_av);
 
 }
 
-
-
+console.info('ticket enviado: ' + tknum);
 graphAddedFiles($(".int-files-for").eq(ind), tknum, userId );
 /*
 $.ajax({ type:"POST",

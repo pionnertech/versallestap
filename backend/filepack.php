@@ -7,8 +7,6 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $it = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1  AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND USR_RANGE ='back-user' )");
 $ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")");
 
-
-
 while($fila = mysqli_fetch_row($ad)){
 
     $handle = opendir("/var/www/html/" . $fac . "/" . $fila[1] . "_alt/");
@@ -31,11 +29,12 @@ echo "|";
  mysqli_data_seek($it, 0);
  mysqli_data_seek($ad, 0);
 
+$sadmin_get = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE ( USR_RANGE = 'sadmin' AND USR_FACILITY = " . $fac . ")"));
 $reach = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 1 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_RESP = 1)");
 
  while($as = mysqli_fetch_row($reach)){
 
-$handle = opendir("/var/www/html/" . $fac . "/1_alt/");
+$handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "_alt/");
 
         while (false !== ($file = readdir($handle))){
 
