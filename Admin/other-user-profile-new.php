@@ -3167,6 +3167,7 @@ console.info("llega el ticket = " + tkt);
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         $("#D-drop").data("dfil", "");
+                        
                         selectInt[0].selectize.clear();
 
                 }
