@@ -1174,6 +1174,7 @@ if(typeof(EventSource) !== "undefined") {
                 showAlert(eventMessage[6], "interno");
              
 inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "", eventMessage[7]);
+newthum()
         }
     }
 
@@ -1684,6 +1685,9 @@ var  fnam = obj.previousSibling.childNodes[0].nodeValue;
 var  usr = $("input[name=user]").val();
 var stsk = $("input[name=code]").val();
 
+              var files =  $("#D-drop").data("files").replace(fnam + '|', '');
+                           $("#D-drop").data("files", files);
+
 if($("form#upload").attr("action") == "../backend/upload_back_to_admin.php"){
    var type = 0;
 } else {
@@ -1695,8 +1699,7 @@ $.ajax({
           success : function (data){
               console.info(data);
               bootbox.alert("archivo eliminado");
-              var files =  $("#D-drop").data("files").replace(fnam + '|', '');
-                           $("#D-drop").data("files", files);
+
           }
  });
 
