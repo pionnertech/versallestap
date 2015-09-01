@@ -469,7 +469,7 @@ uploader.bind('BeforeUpload', function (up, file) {
 	timepicker: false,
 	onShow :function(ctn){
 		this.setOptions({
-            format: 'Y/m/d'
+            format: 'd/m/Y'
 		})
 	}
 });
@@ -969,7 +969,6 @@ if($("#SendRequest").data("val") == 1 ){
 var name = $('.selectpicker').val();
 var msg = $("#requeriment").val();
 var dataF = $("#dtp2").val() + " 10:00:00";
-
 
 delegateRequirement(name, 1, msg, dataF, fecha_or, data);
 
