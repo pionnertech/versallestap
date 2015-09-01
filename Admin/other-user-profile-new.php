@@ -2346,7 +2346,7 @@ $(".del-int").on('click', function(){
 
 $("#del-int-req").data("val", $(this).index());
 $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in');
-
+ $("#D-drop").data("dfil", "");
 });
 
 $("#int-back").on('click', function(){
@@ -3166,8 +3166,6 @@ console.info("llega el ticket = " + tkt);
                     $("#del-int-req input, #del-int-req textarea").val('');
                       $("#up-int").empty();
                         $("#int-del").val(1);
-                        $("#D-drop").data("dfil", "");
-                        
                         selectInt[0].selectize.clear();
 
                 }
