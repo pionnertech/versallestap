@@ -302,7 +302,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet">
 											    <b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b>
-											    <i class="fa fa-search viewToggle" style="color: lightblue; font-size:1.5em"></i>
+											    <!--<i class="fa fa-search viewToggle" style="color: lightblue; font-size:1.5em"></i>-->
 											</td>
 											<td class="cell-time align-right"><? 
 											if ($fila1[4] == 'pendiente'){
@@ -344,13 +344,11 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                           <? }
                                           mysqli_data_seek($Query_depts, 0);
                                         ?>
-
 												</select>
                                                 <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
 												<div align="center" style="width:100%" ><button class="btn-info enviar">Delegar Compromiso</button></div>
 											</td>
 										</tr>   
-
                                    <? } else { ?>
 
                                         <tr class="display-progress ">
