@@ -31,7 +31,7 @@ $query_str_issues = "SELECT A.ISS_ID, " .
 
 
 $Query_task = mysqli_query($datos,$query_str_issues );
-$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
+$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(ISS_ID), ISS_STATE FROM ISSUES WHERE ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . " GROUP BY ISS_STATE");
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
 $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS CANT FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");"));
