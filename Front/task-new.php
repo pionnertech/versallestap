@@ -607,7 +607,7 @@ $(".enviar").on('click', function () {
     var msg = $(this).parent().children('textarea').val();
 
     var usr_id = $(this).parent().children('select').val();
-    var fechaF = $(this).parent().parent.children("input.datetimepicker").val();
+    var fechaF = $(this).parent().parent().children("input.datetimepicker").val();
 
     $("#attach").fadeOut("slow");
     console.info()
