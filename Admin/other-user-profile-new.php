@@ -2454,7 +2454,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
            console.info(data);
 
-           but.removeAtrr("disabled")
+           but.removeAtrr("disabled");;
 
            var filestring = "";
            var users = data.split("|");
