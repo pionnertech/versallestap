@@ -2433,7 +2433,7 @@ $("#del-subtask").on('click', function(){
     //check type.
 if(checkDelExt() == true) {
 
-var button = $(this);
+var but = $(this);
 $(this).attr("disabled", "true");
 
 var _fS = new Date();
@@ -2454,7 +2454,7 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
            console.info(data);
 
-           button.attr("disabled", "false");
+           but.removeAtrr("disabled")
 
            var filestring = "";
            var users = data.split("|");
