@@ -22,7 +22,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $dept = mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_DEPT FROM USERS WHERE (USR_ID = " . $muser . " AND USR_FACILITY= " . $fac . ")"));
 
-$team = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME, ' ', USR_SURNAME) FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE <> 'admin')");
+$team = mysqli_query($datos, "SELECT USR_ID, CONCAT(USR_NAME, ' ', USR_SURNAME) FROM USERS WHERE (USR_DEPT = '" . $dept['USR_DEPT'] . "' AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'back-user')");
 
 if(!isset($ticket) || $ticket == ""){
 $ngnix = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT(DISTINCT STSK_TICKET) AS TICKET FROM SUBTASKS WHERE (STSK_TYPE = 1 AND STSK_FAC_CODE = " . $fac . " )" ));

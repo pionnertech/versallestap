@@ -31,7 +31,7 @@ $query_str_issues = "SELECT A.ISS_ID, " .
 
 
 $Query_task = mysqli_query($datos,$query_str_issues );
-
+$Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_MAIN_USR = STSK_CHARGE_USR AND STSK_LOCK = 1 AND STSK_TYPE = 0 ) GROUP BY STSK_STATE");
 $Query_depts = mysqli_query($datos, "SELECT DISTINCT USR_DEPT FROM USERS WHERE USR_FACILITY = " .  $_SESSION['TxtFacility'] . " GROUP BY USR_DEPT;");
 
 $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS CANT FROM ISSUES WHERE (ISS_STATE = 1 AND ISS_FAC_CODE = " . $_SESSION['TxtFacility'] . ");"));
@@ -219,6 +219,44 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 									</div>
 								</div>
 								<div class="pull-right">
+					  <?  while($fi = mysqli_fetch_row($Query_alerts_ext)){ 
+                                       
+                                       switch((int)$fi[1]){
+                                          case 2:
+                                            $type = "fa-angle-double-right";
+                                            $taint = "#178FD0";
+                                            $tuba =  "En Curso";
+                                          break;
+                                          case 4:
+                                            $type = "fa-clock-o";
+                                            $taint = "#EDB405";
+                                            $tuba = "Por Vencer";
+                                          break;
+                                          case 3:
+                                            $type = "fa-exclamation-triangle";
+                                            $taint = "#E70101";
+                                            $Tuba = "Atrasado";
+                                          break;
+                                          case 5:
+                                             $type = "fa-check-circle";
+                                             $taint = "#1CC131";
+                                             $tuba = "Finalizado";
+                                          break;
+                                          case 1:
+                                             $type = "fa-flag";
+                                             $taint = "#DED901";
+                                             $tuba = "Pendiente";
+                                          break;
+
+                                       }
+
+                                    ?>
+                                    
+          <a class="btn Qext" title="<? printf($tuba) ?>"><p style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>; font-size: 1.5em; font-weight: 800;" ><? printf($fi[0]) ?></p>
+              <i class="fa <? printf($type) ?> fa-2x" style="display: inline-block; vertical-align: top;color: <? printf($taint) ?>"></i>
+          </a>
+
+                              <? } ?>
 								</div>
 							</div>
 							<div class="module-body table">								
@@ -644,6 +682,8 @@ $.ajax({
 
        $("#counter-task").html(parseInt($(this).html()) -1);
 
+       newthum(0);
+
 		} else {
 
       console.info('not works');
@@ -809,6 +849,47 @@ $(".viewToggle").on('click', function(){
        $(this).parent().parent().next().children('td').children("info-content").fadeToggle("fast");
   });
 });
+
+
+function newthum(kind){
+
+$("div.pull-right").eq(kind).html('');
+
+var gitString = "";
+var Hc = $(".Hc").length;
+var At = $(".At").length;
+var Pe = $(".Pe").length;
+var Ec = $(".Ec").length;
+var Pv = $(".Pv").length;
+
+if(Hc != 0){
+gitString += "<a class='btn' title='Finalizados'><p style='display: inline-block; vertical-align: top;color:#1CC131; font-size: 1.5em; font-weight: 800;' >" + Hc+ "</p>" +
+    "<i class='fa fa-check-circle fa-2x' style='display: inline-block; vertical-align: top;color:#1CC131'></i></a>" ;
+}
+   
+if(Ec != 0){
+gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; vertical-align: top;color:#178FD0; font-size: 1.5em; font-weight: 800;' >" + Ec + "</p>" +
+    "<i class='fa fa-angle-double-right fa-2x' style='display: inline-block; vertical-align: top;color:#178FD0'></i></a>";
+}
+        
+if(Pe != 0){
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+    "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+   
+if(Pv != 0){
+gitString += "<a class='btn' title='Por Vencer'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pv + "</p>" +
+    "<i class='fa fa-clock-o fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
+}
+    
+if(At != 0){
+    gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
+    "<i class='fa fa-exclamation-triangle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
+}
+
+$("div.pull-right").eq(kind).html(gitString);
+
+}
 </script>
 <?
 
