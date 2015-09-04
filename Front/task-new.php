@@ -322,7 +322,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td colspan="4" >
 												<textarea class="description" placeholder="describa el requerimiento"></textarea>
 												<label for="subject">Delegados</label>
-												<select id="delegates<? printf($i)?> ">
+												<select style="width:65%" id="delegates<? printf($i)?> ">
                                        <? 
 
                                        while( $deptos = mysqli_fetch_row($Query_depts)){ 
@@ -346,9 +346,8 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
                                         ?>
 
 												</select>
-												<i class="fa fa-warning"></i><i class="fa fa-envelope"></i>
                                                 <input type="text" placeholder="Fecha Termino" class="datetimepicker" styles="vertical-align:top; display: inline-block;"/><br><br>
-												<button class="btn-info enviar">Delegar Compromiso</button>
+												<div align="center" style="width:100%" ><button class="btn-info enviar">Delegar Compromiso</button></div>
 											</td>
 										</tr>   
 
