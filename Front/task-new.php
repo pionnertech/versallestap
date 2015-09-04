@@ -597,20 +597,20 @@ $(".enviar").on('click', function () {
    
    if (!check || check == false){
      
-     var iss_id = $(this).parent().parent().prev().children('input.iss_key').val();
+     var iss_id = $(this).parent().parent().parent().prev().children('input.iss_key').val();
 	
-	 $(this).parent().fadeOut('fast');
-	 $(this).parent().parent().prev().fadeOut('fast');
+	 $(this).parent().parent().fadeOut('fast');
+	 $(this).parent().parent().parent().prev().fadeOut('fast');
 
      console.info("/" + iss_id +"/");
 	 //variables 
-    var msg = $(this).parent().children('textarea').val();
+    var msg = $(this).parent().parent().children('textarea').val();
 
-    var usr_id = $(this).parent().children('select').val();
+    var usr_id = $(this).parent().parent().children('select').val();
     var fechaF = $(this).parent().parent().children("input.datetimepicker").val();
 
     $("#attach").fadeOut("slow");
-    console.info()
+
    delegate(usr_id, msg, fechaF, iss_id);
    switchTempToAsigned(iss_id, usr_id);
 
