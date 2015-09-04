@@ -302,7 +302,7 @@ $cantidad = mysqli_fetch_assoc(mysqli_query($datos, "SELECT COUNT( ISS_ID ) AS C
 											<td class="cell-title"><div><? printf($fila1[2]) ?></div></td>
 											<td class="cell-status hidden-phone hidden-tablet">
 											    <b class="due done" style="background-color:<? printf($fila1[4])?>"><? printf($fila1[3]) ?></b>
-											    <!--<i class="fa fa-search viewToggle" style="color: lightblue; font-size:1.5em"></i>-->
+											 <? if($class !== "Pe"){ ?> <i class="fa fa-search viewToggle" style="color: lightblue; font-size:1.5em"></i><? } ?>
 											</td>
 											<td class="cell-time align-right"><? 
 											if ($fila1[4] == 'pendiente'){
