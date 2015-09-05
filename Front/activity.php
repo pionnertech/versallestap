@@ -1388,7 +1388,7 @@ function fileIcons(file){
 
     }
 
-filter = "<i title='" + file + "' style='" + cor + ";float: right; margin:0 .7em' class='fa fa-file-" + setClass + " fa-2x'></i>";
+filter = "<i title='" + file + "' style='color:" + cor + ";float: right; margin:0 .3em' class='fa fa-file-" + setClass + " fa-2x'></i>";
 
 $(".clearfix").append(filter);
 
