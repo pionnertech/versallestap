@@ -442,6 +442,12 @@ $handler = mysqli_query($datos, $matrix);
                                              $taint = "#1CC131";
                                              $tuba = "Finalizado";
                                           break;
+                                         case 1:
+                                             $type = "fa-flag";
+                                             $taint = "#EDB405";
+                                             $tuba = "Pendiente";
+                                          break;
+
 
                                        }
 
