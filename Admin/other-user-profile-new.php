@@ -3196,7 +3196,7 @@ uploader =  $(object).pluploadQueue({
 
                     var eind = $("#ext-tasks-table input.iss_id[value=" + iss_id +"]").parent().index("tr.task");
 
-                     graphAddedFiles($(".file-sent").eq(eind), $("#D-drop").data("dfil"));
+                     graphAddedFiles($(".file-contents").eq(eind), $("#D-drop").data("dfil"));
 
                        
                 } 
@@ -5534,7 +5534,7 @@ function alterExt(object){
                 .value(percent)
                 .render();
     $(object).parent().siblings(".ex-del-par").find("tr").css({display : "table-row"});
-    
+
 
 
 }
