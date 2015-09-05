@@ -1825,7 +1825,7 @@ function graphAddedFiles(object, names){
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
