@@ -22,7 +22,7 @@ if($argument == 0){ // si es externo
 //2.) get average
 $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
 //3.) set the avg of the total progress in admin and issue
-       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . (int)$avg['VX'] . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 0);");
+       mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . (int)$avg['VX'] . " WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR = STSK_MAIN_USR  AND AND STSK_TYPE = 0);");
      
        mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$avg['VX'] . " WHERE (ISS_ID = " . $iss_id . " AND ISS_FAC_CODE = " . $fac . ")");
 
@@ -31,7 +31,7 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PRO
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
       }
       if((int)$avg['VX'] > 99.5){
-        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_MAIN_USR = " . $muser . ")");
+        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . " AND STSK_TYPE = 0)");
       }
     
       // 6.) updating the issue state
