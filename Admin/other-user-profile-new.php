@@ -2763,11 +2763,12 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
    $(this).data("val", 0);
 }
 
+/*
 if($(this).parents("#ext-tasks-table")){
     $(this).parent().parent().next().children('td').children().not("info-content").fadeIn("fast", function(){
        $(this).parent().parent().next().children('td').children("info-content").fadeOut("fast") 
     })
-}
+}*/
 
 });
 
