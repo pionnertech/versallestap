@@ -1007,9 +1007,10 @@ console.info("lo que se manda: /backend/upgrade-new.php?val=" + val +
 
 var filestring = "";
 //para comopromisos externos
-     if(argument == 0) {  
+     if(argument == 0) { 
 
-      var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
+
+        var  prevH = $("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent").html();
         graphAddedFiles($("#ext-tasks-table > tbody > tr").eq(index+1).find(".file-sent"), $("#D-drop").data("files"));
             $("#D-drop").data("files", "");
 
@@ -1018,9 +1019,16 @@ var filestring = "";
 
 
     var indexVal = (index-1)/2;
+
     progressTableUpdate(subject, des, date, document.querySelectorAll("#ext-tasks-table .body-int-tra")[indexVal]);
 
     newthum(0);
+
+
+     if($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html() == "PENDIENTE"){
+        alert("era pendiente");
+        console.info();
+     } 
 
             if(val == 100){
 
@@ -1047,7 +1055,6 @@ var filestring = "";
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");   
                  newthum(0)
                 }
-
              } else {
 
               var weirdIndex =  (index-1)/2;
