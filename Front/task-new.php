@@ -852,10 +852,11 @@ function newthum(kind){
 
 $("div.pull-right").eq(kind).html('');
 
+
 var gitString = "";
 var Hc = $(".Hc").length;
 var At = $(".At").length;
-var Pe = $(".Pe").length;
+var Pe = $(".Pe").length-1;
 var Ec = $(".Ec").length;
 var Pv = $(".Pv").length;
 
@@ -883,6 +884,7 @@ if(At != 0){
     gitString += "<a class='btn' title='Atrasados'><p style='display: inline-block; vertical-align: top;color:#E70101; font-size: 1.5em; font-weight: 800;' >" +At +"</p>" +
     "<i class='fa fa-exclamation-triangle fa-2x' style='display: inline-block; vertical-align: top;color:#E70101'></i></a>";
 }
+
 
 $("div.pull-right").eq(kind).html(gitString);
 
