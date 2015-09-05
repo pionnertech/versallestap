@@ -5534,6 +5534,7 @@ function alterExt(object){
                 .value(percent)
                 .render();
     $(object).parent().siblings(".ex-del-par").find("tr").css({display : "table-row"});
+    
 
 
 }
