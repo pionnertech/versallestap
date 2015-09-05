@@ -5741,9 +5741,11 @@ function checkOwn(){
    if($("#set-pro-own").find("textarea").val().trim() == ""){
     return "Falta la descripción del progreso";
   }
-  if(parseInt($(".span2").val()) == $(".span2").data("Cval")){
+  if(parseInt($(".span2").val()) === $(".span2").data("Cval")){
     return "Progreso debe ser mayor al anterior";
   }
+
+  console.info()
 return true;
 }
 
