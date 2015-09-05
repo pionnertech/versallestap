@@ -718,7 +718,6 @@ function checker(object){
 }
 
 
-
 var uploaderInt = function(object){
 
 uploader =  $(object).pluploadQueue({
@@ -856,7 +855,7 @@ $("div.pull-right").eq(kind).html('');
 var gitString = "";
 var Hc = $(".Hc").length;
 var At = $(".At").length;
-var Pe = $(".Pe").length-1;
+var Pe = $(".Pe").length;
 var Ec = $(".Ec").length;
 var Pv = $(".Pv").length;
 
@@ -871,7 +870,7 @@ gitString += "<a class='btn' title='En Curso'><p style='display: inline-block; v
 }
         
 if(Pe != 0){
- gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + Pe+ "</p>" +
+ gitString += "<a class='btn' title='Pendientes'><p style='display: inline-block; vertical-align: top;color:#EDB405; font-size: 1.5em; font-weight: 800;' >" + (Pe-1) + "</p>" +
     "<i class='fa fa-flag fa-2x' style='display: inline-block; vertical-align: top;color:#EDB405'></i></a>";
 }
    
