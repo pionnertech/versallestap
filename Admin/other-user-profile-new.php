@@ -2226,6 +2226,7 @@ percent = parseInt($(this).parent().parent().next().children('td').children('p')
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
    $(".span2").data("val", percent);
+   $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 0); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
@@ -2252,6 +2253,7 @@ percent = parseInt($(this).parent().parent().next().children('td').children('p')
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
    $(".span2").data("val", percent);
+   $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 0);
 $("#int-require").removeClass('active in');
@@ -4569,6 +4571,8 @@ percent = parseInt($(this).parent().parent().next().children('td').children('p')
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
    $(".span2").data("val", percent);
+   $(".span2").data("Cval", percent);
+
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 0); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
@@ -4593,6 +4597,7 @@ percent = parseInt($(this).parent().parent().next().children('td').children('p')
 console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii_iss + " ii_ind :" + ii_ind);
 
    $(".span2").data("val", percent);
+   $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
 $("#back-own").data("val", 0);
 $("#int-require").removeClass('active in');
@@ -5277,6 +5282,7 @@ if($("#st-description").val() == "" ){
 }
 return true;
 }
+
 function checkIntDel(){
 
 if($("#subj-int").val() == ""){
@@ -5734,6 +5740,9 @@ function checkOwn(){
   }
    if($("#set-pro-own").find("textarea").val().trim() == ""){
     return "Falta la descripción del progreso";
+  }
+  if( $(".span2").val() ==  $(".span2").data("Cval")){
+    return "Progreso debe ser mayor al anterior";
   }
 return true;
 }
