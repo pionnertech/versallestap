@@ -45,7 +45,7 @@ switch ($sel['STSK_TYPE']) {
 	   //update the difference , set the traffic and variables
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $sel ['STSK_PROGRESS'] . " WHERE STSK_ID = " . $sel["STSK_ID"]);
        //get the gral avg
-	   $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
+	   $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
        //get the INFO about the partial progress
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC WHERE TRF_STSK_ID = " . $sel['STSK_ID'] . " ORDER BY TRF_ID DESC"));
        
@@ -60,9 +60,6 @@ switch ($sel['STSK_TYPE']) {
                 echo "|" . $trf_str['TRF_STSK_ID']; 
                 echo "|" . $sel['STSK_TYPE'];
                 echo "|" . $sel['STSK_PROGRESS'];
-                
-
-
 		break;
 	
 	case 1:
@@ -72,13 +69,18 @@ switch ($sel['STSK_TYPE']) {
            	$classText = "FINALIZADO";  } else { 
             $classText = "" ;
         }
-	   //update the difference , set the traffic and variables
+	     //update the difference , set the traffic and variables
+       
        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_ANCIENT_PRO = " . $sel ['STSK_PROGRESS'] . " WHERE STSK_ID = " . $sel["STSK_ID"]);
+       
        //get the gral avg
        if($ident['RAN'] == 'sadmin'){
+
         $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN A.STSK_PROGRESS IS NULL THEN 0 ELSE A.STSK_PROGRESS END)) AS AVX FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . "  AND B.USR_RANGE = 'admin')")); } else {
         $total = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(CASE WHEN STSK_PROGRESS IS NULL THEN 0 ELSE STSK_PROGRESS END)) AS AVX FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_MAIN_USR =  " . $usr . ")" ));
+       
        }
+
 	     
        //get the INFO about the partial progress
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC_II WHERE TII_STSK_ID = " . $sel['STSK_ID'] . " ORDER BY TII_ID DESC"));
@@ -94,15 +96,9 @@ switch ($sel['STSK_TYPE']) {
                 echo "|" . $trf_str['TII_STSK_ID'];//8 
                 echo "|" . $sel['STSK_TYPE'];//9
                 echo "|" . $sel['STSK_PROGRESS'];//10
-                
-
 	break;
 
 }
-
-
-
-
 
 
 ?>
