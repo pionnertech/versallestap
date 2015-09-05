@@ -2571,6 +2571,8 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
         '</a>';
 
                }
+               $("#D-drop").data("files", "");
+
                $("#upload ul").empty();
                $(".task").eq(target/2).find(".person-sw").replaceWith('<i class="fa fa-group spac"></i>');
                $(".forward").eq(target).attr("disabled", true);
@@ -2580,7 +2582,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
                kenin[0].selectize.clear();
                $("#kitkat li").eq(3).removeClass('active');$("#kitkat li").eq(2).addClass('active');
                $("#tasks-own").removeClass('active in');$("#require").addClass('active in');
-                $("#D-drop").data("files", "");
+
         }
     });
 
@@ -3618,6 +3620,8 @@ $(".incoming-files").css({ display : "none"});
     var pTth1 = document.createElement('th');
     var pTth2 = document.createElement('th');
     var pTth3 = document.createElement('th');
+
+     tr2.style.display = "none";
 
      pTbl.className = "ex-del-par";
      pTbl.style.width = "100%";
