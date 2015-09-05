@@ -362,11 +362,11 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -432,11 +432,11 @@ $shine = mysqli_fetch_assoc(mysqli_query($datos, "SELECT A.ISS_DESCRIP ,  CONCAT
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -686,11 +686,11 @@ $trf_hand = mysqli_query($datos, $str_query_trf);
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -749,11 +749,11 @@ echo "<script>console.info('" . preg_match_all("/_\[" . $fila_int[0] . "\]_/", $
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
