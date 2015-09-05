@@ -5096,6 +5096,7 @@ $(".hovertip").on("click ", function(){
   $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(this).children("input").val().replace("u" ,""));
+   var block_user = $(this).parents("tr").prev().find(".fa-user[data-it=1]").length;
   
    $(this).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
@@ -5110,9 +5111,14 @@ var pseudoIndex = $(this).parent().next().find(".int-chart").index(".int-chart")
                 .value(percent)
                 .render();
                     $("svg").attr("width", 100);
+
     $("svg").attr("height", 100);
+
+if(block_user !== 1){
    $(this).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
    $(this).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
+}
+
 });
 
 
@@ -5294,6 +5300,7 @@ function hovertip(object){
     $(".trf-int-usr").css({display :"none"});
 
    var val = parseInt($(object).children("input").val().replace("u" ,""));
+  
 
    $(object).parent().next().next().children("tbody").children("tr.ust" + val).css({ display : "table-row"});
 
@@ -5309,8 +5316,12 @@ var pseudoIndex = $(object).parent().next().find(".int-chart").index(".int-chart
                 .render();
     $("svg").attr("width", 100);
     $("svg").attr("height", 100);
-   $(object).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
-   $(object).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
+
+          $(object).parent().next().children(".int-files-for").children("a").css({ opacity: ".3" });
+          $(object).parent().next().children(".int-files-for").find("a[href*='_" + val + ".']").css({ opacity : "1"});
+
+ 
+
 }
 
 //funcion prototipo
@@ -5484,7 +5495,9 @@ $(".extUsr").on('click', function (){
    var percent = $(this).attr("data-val");
    var usrId = $(this).children('input').val();
    var filCont = $(this).parent().next();
+   var block_user = $(this).parents("tr").prev().find(".fa-user[data-it=1]").length;
 
+if(block_user !== 1){
    for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
@@ -5492,7 +5505,7 @@ $(".extUsr").on('click', function (){
            filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "1"});
         }
    }
-
+}
   filCont.next().next().children('tbody').children('tr').css({ display : "none"});
   filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
         var selter = d3.select(document.querySelectorAll('.great-chart')[ind]).transition().each('start',function (d){ $("#pro-audio")[0].play() }).each('end', function (d){ setTimeout(function(){$("#pro-audio")[0].pause() ; $("#pro-audio")[0].currentTime = 0 }, 800)})
@@ -5512,18 +5525,23 @@ $(".viewToggle").on('click', function(){
 });
 
 function alterExt(object){
+
      var ind = $(object).parent().next().parent().parent().prev().index('tr.task');
    var percent = $(object).attr("data-val");
    var usrId = $(object).children('input').val();
    var filCont = $(object).parent().next();
+   var block_user = $(object).parents("tr").prev().find(".fa-user[data-it=1]").length;
 
+if(block_user == 1){
    for (i=0; i < filCont.children('div.file-contents').children('a').length; i++){
         if (filCont.children('div.file-contents').children('a').eq(i).attr('href').search(usrId + "_in") == -1){
             filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "0.3"});
         } else {
            filCont.children('div.file-contents').children('a').eq(i).css({ opacity : "1"});
         }
-   }
+   } 
+}
+
 
   filCont.next().next().children('tbody').children('tr').css({ display : "none"});
   filCont.next().next().children('tbody').children('tr.eu' + usrId).css({ display : "table-row"});
