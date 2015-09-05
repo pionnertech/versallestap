@@ -2773,7 +2773,6 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
 /*
 
 }*/
-
 });
 
 
