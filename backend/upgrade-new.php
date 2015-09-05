@@ -20,9 +20,9 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE ST
 if($argument == 0){ // si es externo 
 
 //prv) check the state
-  $state = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_STATE AS ST FROM SUBTASKS WHERE (STSK_ID = ". $id . " AND STSK_FAC_CODE = " . $fac . ")" ));
+ $state = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_STATE AS ST FROM SUBTASKS WHERE (STSK_ID = ". $id . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE = 0)" ));
  if( $state['ST'] == 1 ||  $state['ST'] == "1" ){
-    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 2 WHERE (STSK_ID =" . $id . " AND STSK_FAC_CODE = " . $fac .")");
+    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 2 WHERE (STSK_ID =" . $id . " AND STSK_FAC_CODE = " . $fac ." AND STSK_TYPE = 0)");
  }
 
 //2.) get average
@@ -67,6 +67,10 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PRO
 } else if($argument == 1) { // si es interno 
 
 // 2.) get the origin user..
+   $state = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_STATE AS ST FROM SUBTASKS WHERE (STSK_ID = ". $id . " AND STSK_FAC_CODE = " . $fac . " AND STSK_TYPE = 1)" ));
+ if( $state['ST'] == 1 ||  $state['ST'] == "1" ){
+    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 2 WHERE (STSK_ID =" . $id . " AND STSK_FAC_CODE = " . $fac ." AND STSK_TYPE = 1)");
+ }
 
 $min = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '"  . $ticket . "' AND STSK_FAC_CODE = " . $fac . ") "));	
 // 2.) get the average.. this time is special 
