@@ -1314,7 +1314,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $file_extension = "audio-o";
                                                       $cor = "#FF9900";
                                                       break;
-                                                 }
+                                                 
                                                  }
 
                                           ?>
@@ -1389,7 +1389,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#FF9900";
                                                       break;
                                                      
-                                                 }
+                                                 
                                                  }
                                           ?>
                                           
