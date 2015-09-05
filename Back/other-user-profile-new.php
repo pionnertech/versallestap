@@ -1026,9 +1026,10 @@ var filestring = "";
 
 
      if($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html() == "Pendiente"){
-        alert("era pendiente"); 
-        console.info("el index para cambio a en curso es : " + index);
-        console.info($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html());
+               $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pe").addClass("Ec");
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html("En Curso");
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().removeAttr("style");
+               $("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().css({backgroundColor : "#178FD0 !important"});
      } 
 
             if(val == 100){
@@ -1068,6 +1069,14 @@ var filestring = "";
 
             holindex = index;
             index = (index-1)/2;
+
+
+    if($("#int-table > tbody > tr").eq(holindex).children().eq(2).children().html() == "Pendiente"){
+               $("#int-table > tbody > tr").eq(holindex).removeClass("Pe").addClass("Ec");
+               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("En Curso")
+               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().removeAttr("style");
+               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#00BF00 !important"});
+     } 
            
             if(val == 100){
 
@@ -1206,9 +1215,9 @@ if(parseInt(kind) == 0){
     var tr1 = document.createElement('tr');
 
     if(kind == 0){
-       tr1.className = "task Ec";
+       tr1.className = "task Pe";
     } else {
-        tr1.className = "task Ec-int";
+        tr1.className = "task Pe-int";
     }
     
     var td1 = document.createElement('td');
@@ -1266,8 +1275,8 @@ if(parseInt(kind) == 0){
     inp2.id = "iss_id";
     
     b.className = "due";
-    b.style.backgroundColor = "#178FD0";
-    b.innerHTML = "EN CURSO";
+    b.style.backgroundColor = "#DED901";
+    b.innerHTML = "Pendiente";
     td3.appendChild(b);
 
     b.onclick = function(){

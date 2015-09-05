@@ -19,6 +19,12 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE ST
 
 if($argument == 0){ // si es externo 
 
+//prv) check the state
+  $state = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_STATE AS ST FROM SUBTASKS WHERE (STSK_ID = ". $id . " AND STSK_FAC_CODE = " . $fac . ")" ));
+ if( $state['ST'] == 1 ||  $state['ST'] == "1" ){
+    mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 2 WHERE (STSK_ID =" . $id . " AND STSK_FAC_CODE = " . $fac .")");
+ }
+
 //2.) get average
 $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
 //3.) set the avg of the total progress in admin and issue
