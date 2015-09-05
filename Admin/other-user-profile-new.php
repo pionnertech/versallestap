@@ -517,12 +517,12 @@ $handler = mysqli_query($datos, $matrix);
                                             <b class="due" style="background-color: <? printf($stsk[5]) ?>;"><? printf($stsk[3]) ?></b></td>
                                             <td class="cell-title" style="min-width: 80px;"><button it="" class="btn btn-small forward" style="margin-right: 1em"><i class="fa fa-chevron-circle-right"></i></button>
                                           <? if ($stsk[9] == 1  ) { ?>
-                                                   <i it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
+                                                   <i data-it="<? echo $stsk[9]  ?>" class="fa fa-user spac"></i>
                                                    <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
 
                                           <?  } elseif ($stsk[9] == 0 ) {    ?>
 
-                                                    <i it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
+                                                    <i data-it="<? echo $stsk[9]  ?>" class="fa fa-group spac"></i>
                                                     <i class="fa fa-search viewToggle" style="color: lightblue; font-size: 1.5em"></i>
                                                    
                                           <?  } else { ?>
@@ -2770,9 +2770,6 @@ if(!$(this).data("val") || !$(this).data("val") === 0 ){
    $(this).data("val", 0);
 }
 
-/*
-
-}*/
 });
 
 
