@@ -2525,7 +2525,7 @@ var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('
             $("#pro-descript").val('');
             $("#upload2 ul").empty();
            });
-               ($("#back-own").data("val", 0);
+               $("#back-own").data("val", 0);
           }
       })  
 });
