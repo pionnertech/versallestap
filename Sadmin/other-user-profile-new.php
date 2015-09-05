@@ -3381,6 +3381,7 @@ function changeListener(){
                           } else {
 
                              $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').siblings("i").css({ opacity : "1"});
+                             
                           }
                             
                            
