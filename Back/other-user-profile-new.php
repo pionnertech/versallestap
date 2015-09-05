@@ -1025,11 +1025,11 @@ var filestring = "";
     newthum(0);
 
 
- 
+     if($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html() == "Pendiente"){
         alert("era pendiente"); 
         console.info("el index para cambio a en curso es : " + index);
         console.info($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html());
-    
+     } 
 
             if(val == 100){
 
