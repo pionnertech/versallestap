@@ -1019,7 +1019,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "audio-o";
                                                       $cor = "#FF9900";
                                                       break;
-                                                 }
+                                                 
                                                  }
 
                                               if(strlen($archivos2) > 4){
