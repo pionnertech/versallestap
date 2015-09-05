@@ -788,11 +788,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
-                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      case ($extension == 'ppt' || $extension =='ptx' ):
                                                       $file_extension = "powerpoint-o";
                                                       $cor = "#B8005C";
                                                       break;
-                                                      case ($extension =='mp3'):
+                                                      case ($extension == 'mp3'):
                                                       $file_extension = "audio-o";
                                                       $cor = "#FF9900";
                                                       break;
@@ -804,10 +804,10 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                 </p>
                                                 </a>
                                                   <? }
-                                                  } 
+                                                  }  // while reader dir
                                        closedir($handler);
 
-                                       }
+                                       }//opendir
                                     }
 
                                   if($tsw == 1){
@@ -1246,7 +1246,7 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-                                                 }
+                                                 
                                           ?>
                                           
                                                  <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>_alt/<? printf($archivos2) ?>" download>
