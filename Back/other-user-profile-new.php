@@ -1075,7 +1075,7 @@ var filestring = "";
                $("#int-table > tbody > tr").eq(holindex).removeClass("Pe").addClass("Ec");
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("En Curso")
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().removeAttr("style");
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#00BF00 !important"});
+               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#178FD0 !important"});
      } 
            
             if(val == 100){
