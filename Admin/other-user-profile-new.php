@@ -797,7 +797,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-                                                 }
+                                                 
                                           ?>
                          <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>/<? printf($archivos) ?>" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
@@ -813,7 +813,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                   if($tsw == 1){
                                     break;
                                 }
-                                }
+                            }
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
