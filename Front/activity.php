@@ -573,7 +573,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
-                fileIcons(file);
+                fileIcons(file.name);
 
             },
   
