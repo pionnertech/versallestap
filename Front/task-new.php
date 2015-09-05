@@ -728,7 +728,7 @@ uploader =  $(object).pluploadQueue({
   filters : {
             max_file_size : '10mb',
             mime_types: [
-                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
+                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,mp3,ppt,pptx"},
                 {title : "Zip files", extensions : "zip" }
             ]
         },
