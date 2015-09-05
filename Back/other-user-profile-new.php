@@ -1026,8 +1026,9 @@ var filestring = "";
 
 
      if($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html() == "PENDIENTE"){
-        alert("era pendiente");
-        console.info();
+        alert("era pendiente"); 
+        console.info("el index para cambio a en curso es : " + index);
+        console.info($("#ext-tasks-table > tbody > tr").eq(index).children().eq(2).children().html());
      } 
 
             if(val == 100){
