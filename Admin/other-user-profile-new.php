@@ -4323,10 +4323,18 @@ console.info(xz);
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ptx" : 
+                case "ppt" : 
             setClass = "powerpoint-o";
-            cor = "#A80B9C";
-        break;
+            cor = "#B8005C";
+        break; 
+               case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#B8005C";
+        break; 
+              case "mp3" : 
+            setClass = "audio-o";
+            cor = "#B8005C";
+        break; 
 
     }
 

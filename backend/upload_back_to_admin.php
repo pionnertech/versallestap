@@ -27,7 +27,7 @@ if(!is_dir($target_dir . $user . "_in/")){
 }
 
 // A list of permitted file extensions
-$allowed = array('png', 'jpg', 'gif','zip', 'docx', 'xls', 'xlsx', 'pdf', 'doc','ppt', 'pptx' );
+$allowed = array('png', 'jpg', 'gif','zip', 'docx', 'xls', 'xlsx', 'pdf', 'doc','ppt', 'pptx', 'mp3' );
 
 if(isset($_FILES['upl']) && $_FILES['upl']['error'] == 0){
 
