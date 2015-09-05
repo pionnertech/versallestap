@@ -3103,8 +3103,8 @@ var pre_fecha  = new Date();
 var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).slice(-2) + "-" +
  ('0' + pre_fecha.getDate()).slice(-2) + " " + ('0' + pre_fecha.getHours()).slice(-2) + ":" + ('0' + pre_fecha.getMinutes()).slice(-2)  + ":" + ('0' + pre_fecha.getSeconds()).slice(-2) ;
 
-
 console.info("llega el ticket = " + tkt);
+
 
   $.ajax({
           type: "POST",
@@ -3342,6 +3342,7 @@ function changeListener(){
                              console.info(indice);
                              console.info("progreso del usuario : " + packets[10]);
                         if(parseInt(packets[10]) >= 99.5){
+
                           if(packets[9] == 0){
 
                           $("#ext-tasks-table .due").eq(indice).parent().parent().next().children('td').children('div.collaborates').find('input[value=' + packets[1] + ']').prev().css({ opacity : "1"});
@@ -3362,7 +3363,8 @@ function changeListener(){
                        if(parseInt(packets[6]) >= 99 && parseInt(packets[9]) == 0){
                             console.info(indice);
                             $("#ext-tasks-table .due").eq(indice).html("Finalizada").css("background-color","#1CC131" );
-                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc"); 
+                            $("#ext-tasks-table .due").eq(indice).parent().parent().removeAttr("class").addClass("task Hc");
+                            
                           }
                       // \./\./
                     }
