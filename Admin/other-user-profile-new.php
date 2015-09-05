@@ -3621,7 +3621,6 @@ $(".incoming-files").css({ display : "none"});
     var pTth2 = document.createElement('th');
     var pTth3 = document.createElement('th');
 
-     tr2.style.display = "none";
 
      pTbl.className = "ex-del-par";
      pTbl.style.width = "100%";
@@ -4052,6 +4051,7 @@ dpre1.innerHTML = filestring;
     td6.appendChild(i3);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
+    tr2.style.display = "none !important";
 
   $(".swt-boo").eq($(".swt-boo").length-1).bootstrapSwitch();
     
