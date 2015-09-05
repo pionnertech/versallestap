@@ -3295,6 +3295,7 @@ console.info("llega el ticket = " + tkt);
                       $("#up-int").empty();
                         $("#int-del").val(1);
                         selectInt[0].selectize.clear();
+                        $("#back-own").data("val", 0);
 
                 }
   })
