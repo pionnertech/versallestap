@@ -2479,7 +2479,7 @@ $("#upgrade").on('click', function (){
 var da  = new Date();
 var fp = da.getFullYear() + "-" + ('0' + (da.getMonth()+1)).slice(-2) + "-" + ('0' + da.getDate()).slice(-2) + " " + ('0' + da.getHours()).slice(-2) + ":" + ('0' + da.getMinutes()).slice(-2)  + ":" + ('0' + da.getSeconds()).slice(-2) ;
 
-console.info($(".span2").val()) === $(".span2").data("Cval") + "esta es la respuesta");
+console.info($(".span2").val() === $(".span2").data("Cval") + "esta es la respuesta");
 
 if(parseInt($(".span2").val()) === $(".span2").data("Cval")) {
 
