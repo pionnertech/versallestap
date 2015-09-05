@@ -2753,8 +2753,8 @@ $(".swt-int-ii").on('click', function(){
 
 $(".due").on('click', function(){
 
-var nob = $(this);
-if($(this).parents("#ext-tasks-table") != undefined){
+
+if($(this).parents("#ext-tasks-table").length == 1){
     nob.parent().parent().next().children('td').children().not("info-content").fadeIn("fast", function(){
        nob.parent().parent().next().children('td').children("info-content").fadeOut("fast") ;
     })
