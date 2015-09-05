@@ -1105,7 +1105,7 @@ var filestring = "";
 
 
     if($("#int-table > tbody > tr").eq(holindex).children().eq(2).children().html() == "Pendiente"){
-               $("#int-table > tbody > tr").eq(holindex).removeClass("Pe").addClass("Ec");
+               $("#int-table > tbody > tr").eq(holindex).removeClass("Pe-int").addClass("Ec-int");
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("En Curso")
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().removeAttr("style");
                $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#178FD0 !important"});
@@ -1224,7 +1224,7 @@ if(typeof(EventSource) !== "undefined") {
                 showAlert(eventMessage[6], "interno");
              
 inputTask(eventMessage[2], eventMessage[0], eventMessage[1], "", "", eventMessage[4], eventMessage[3] , eventMessage[5] , "", "", eventMessage[7]);
-newthum()
+newthum(1);
         }
     }
 
