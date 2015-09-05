@@ -449,9 +449,6 @@ $("#clip").addClass('disabled');
 uploader.bind('BeforeUpload', function (up, file) {
     up.settings.multipart_params = {"fac_id": fac , "rut" : $("#RUT").val()};
 });
-
-
-
 	$('#dtp1').datetimepicker({
 	step:5,
 	lang:'es',
@@ -576,6 +573,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
             FileUploaded: function(up, file, info) {
                 // Called when file has finished uploading
                 console.log('[FileUploaded] File:', file, "Info:", info);
+                fileIcons(file);
 
             },
   
@@ -587,7 +585,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
             UploadComplete: function(up, files) {
                 // Called when all files are either uploaded or failed
                 console.log('[UploadComplete]');
-                $("#clip").trigger('click');
+                $("#wrap-html5").fadeOut(400); 
                 up.destroy();
                 uploaderInt();
                 $("#SendRequest-free").attr("disabled", false);
@@ -776,12 +774,7 @@ for(i=0;i < cont.length ; i++){
 
 narray[narray.length] = document.querySelector("#descrip-audi").value;
 narray[narray.length] = $(".controls input[type=radio]:checked").val();
-
-
 setRequest(narray[0], narray[6] , narray[8], $("#latlng").val(), narray[4], narray[2], narray[3], narray[9] , narray[5], $("#dtp2").val(), narray[7], "");
-
-
-
 }	
 });
 
@@ -961,6 +954,7 @@ console.info("../backend/issGn.php?rut=" + rut +
  	 ,
  	success : function (data){
 
+$(".clearfix").find("i.fa").remove();
 
 console.info(data);
 
@@ -986,7 +980,7 @@ $("#SendRequest").data("val", 0);
 
  			 exist = 0;
  			 argument = 0;
- 			 $("#clip").trigger('click');
+ 			 $("#wrap-html5").fadeOut(400);
 
  			 var addvalue = parseInt($("#counter-task").html());
              $("#counter-task").html(addvalue + 1);
@@ -1216,7 +1210,7 @@ $.ajax({ type: "POST",
  			    $("textarea").val('');
  			    exist = 0;
  			    argument = 0;
- 			     $("#clip").trigger('click');
+ 			    $("#wrap-html5").fadeOut(400);
 
 	           })
 
@@ -1318,21 +1312,17 @@ $("#mkur").on('click', function(){
 
 
 $("#clip").on('click', function(){
-	if($(this).hasClass("disabled")){
-
-	} else {
-        $("#wrap-html5").fadeToggle(400);
-	}
-   
+        $("#wrap-html5").fadeToggle(400); 
 });
 
 $("#cleanup").on('click', function(){
 	$("input[type=text]").val('');
 	$("input[type=tel]").val('');
 	$("textarea").val('');
-	$("#clip").trigger('click');
+	$("#wrap-html5").fadeOut(400);
 	exist = 0;
 	argument = 0;
+	$(".clearfix").find("i.fa").remove();
 });
 
 
@@ -1343,7 +1333,72 @@ $('#Geo').on('click', function () {
 
 $('#map').on('click', function () {
   google.maps.event.trigger(map, 'resize');
-})
+});
+
+function fileIcons(file){
+
+   var filter = "";
+   var extension = file.substring(file.length -3 , file.length);
+
+	   switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+                case "ptx" : 
+            setClass = "powerpoint-o";
+            cor = "#A80B9C";
+        break;
+
+    }
+
+filter = "<i title='" + file + "' style='" + cor + ";float: right; margin:0 .7em' class='fa fa-file-" + setClass + " fa-2x'></i>";
+
+$(".clearfix").append(filter);
+
+filter = "";
+
+
+}
+
+
+
 </script>
 <?
 
