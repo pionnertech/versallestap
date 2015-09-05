@@ -2228,7 +2228,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").data("val", percent);
    $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
-   $("#value-progress").slider('setValue', percent);
+   $("#value-progress").val(percent);
 $("#back-own").data("val", 0); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
@@ -2256,6 +2256,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").data("val", percent);
    $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
+   $("#value-progress").val(percent);
 $("#back-own").data("val", 0);
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in')
@@ -4581,6 +4582,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").data("Cval", percent);
 
    $(".span2").slider('setValue', percent);
+   $("#value-progress").val(percent);
 $("#back-own").data("val", 0); // esto es para que el boton back se devuelva a la vista interna
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
@@ -4606,6 +4608,7 @@ console.info("remoteUser:" + remoteUser + " st_ii :" + st_ii + " ii_iss : " + ii
    $(".span2").data("val", percent);
    $(".span2").data("Cval", percent);
    $(".span2").slider('setValue', percent);
+    $("#value-progress").val( percent);
 $("#back-own").data("val", 0);
 $("#int-require").removeClass('active in');
 $("#set-pro-int").addClass('active in');
