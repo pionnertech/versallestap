@@ -1042,21 +1042,26 @@ var filestring = "";
 
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pv"): 
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pv");
+                                 console.info("llego la discriminacion : Pv")
                         break;
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("At"):
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("At");
+                                 console.info("llego la discriminacion : At")
                         break;
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Pe"):
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Pe");
+                                 console.info("llego la discriminacion : Pe")
                         break;
                         case $("#ext-tasks-table > tbody > tr").eq(index).hasClass("Ec"):
                                  $("#ext-tasks-table > tbody > tr").eq(index).removeClass("Ec");
+                                 console.info("llego la discriminacion : EC")
                         break;
                     }
 
                  $("#ext-tasks-table > tbody > tr").eq(index).addClass("Hc");   
-                 newthum(0)
+                 newthum(0);
                 }
+
              } else {
 
               var weirdIndex =  (index-1)/2;
