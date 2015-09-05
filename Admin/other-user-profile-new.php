@@ -5533,6 +5533,7 @@ function alterExt(object){
                 .diameter(125)
                 .value(percent)
                 .render();
+    object.parent().siblings(".ex-del-par td").css({display : "table-row"});
 
 }
 
