@@ -880,7 +880,7 @@ var percent = $(this).parent().parent().next().children('td').children('div').ch
 
 $(".span2").slider('setValue', parseInt(percent));
 $(".span2").data("val", parseInt(percent));
-
+$(".span2").data("Cval", parseInt(percent));
 
 $("#stsk-code").val(subtask_id);
 $("#stsk-user").val(user);
@@ -910,6 +910,7 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    var percent = $(this).parent().next().children('td').children('p').children('span').html();
   
    $(".span2").data("val", parseInt(percent));
+   $(".span2").data("Cval", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
@@ -1342,6 +1343,8 @@ var percent = $(this).parent().parent().next().children('td').children('div').ch
 
 $(".span2").slider('setValue', parseInt(percent));
 $(".span2").data("val", parseInt(percent));
+$(".span2").data("Cval", parseInt(percent));
+
 
 
 $("#stsk-code").val(subtask_id);
@@ -1377,6 +1380,7 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    var user = $("#muser").val();
    var percent = $(this).parent().parent().next().children('td').children('div').eq(1).children('p').children('span').html();
    $(".span2").data("val", parseInt(percent));
+   $(".span2").data("Cval", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
    $("#stsk-user").val(user);
@@ -1669,7 +1673,7 @@ function insertAfter(referenceNode, newNode) {
 }
 
 $(".span2").on("slide", function (slideEvt) {
-   if (slideEvt.value < $(this).data("val")){
+   if (slideEvt.value < $(this).data("val") ){
         alert("fuera de rango");
         $(".span2").slider('setValue', $(this).data("val"));
    }
@@ -1734,6 +1738,10 @@ if($("#subject").val() == "") {
 }
 if($("#st-description").val() == "") {
     bootbox.alert("Falta ingresar descripción");
+    return false;
+}
+if($(".span2").val() == $(".span2").data("Cval")){
+    bootbox.alert("El valor del progreso debe ser mayor al anterior");
     return false;
 }
 
