@@ -1103,19 +1103,18 @@ var filestring = "";
             holindex = index;
             index = (index-1)/2;
 
-
-    if($("#int-table > tbody > tr").eq(holindex).children().eq(2).children().html() == "Pendiente"){
+    if($("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().html() == "Pendiente"){
                $("#int-table > tbody > tr").eq(holindex).removeClass("Pe-int").addClass("Ec-int");
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("En Curso")
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().removeAttr("style");
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#178FD0 !important"});
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().html("En Curso")
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().removeAttr("style");
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().css({backgroundColor : "#178FD0 !important"});
      } 
            
             if(val == 100){
 
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().html("FINALIZADA");
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().removeAttr("style");
-               $("#int-table > tbody > tr").eq(holindex).children("td").eq(2).children().css({backgroundColor : "#00BF00 !important"});
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().html("FINALIZADA");
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().removeAttr("style");
+               $("#int-table > tbody > tr").eq(holindex).children(".cell-status").children().css({backgroundColor : "#00BF00 !important"});
 
                     switch(true){
                         case $("#int-table > tbody > tr").eq(index).hasClass("Pv-int"): 
