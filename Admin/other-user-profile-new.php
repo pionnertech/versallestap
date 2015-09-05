@@ -3874,7 +3874,7 @@ dw_ap.appendChild(ddrop);
     dd4.innerHTML = desc;
   
    //********* appending **********
-tr2.style.display = "table-row";
+
 tr2.className = "display-progress";
 td6.colSpan = "5";
 
@@ -4051,6 +4051,7 @@ dpre1.innerHTML = filestring;
     td6.appendChild(i3);
     td6.appendChild(pTbl);
     parent.appendChild(tr2);
+
     tr2.style.display = "none !important";
 
   $(".swt-boo").eq($(".swt-boo").length-1).bootstrapSwitch();
