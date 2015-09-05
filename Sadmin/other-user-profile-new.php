@@ -622,6 +622,14 @@ $handler = mysqli_query($datos, $matrix);
                                                       break;
                                                       case ($extension == "txt"):
                                                       break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
+                                                      break;
                                                  }
 
                                               if(strlen($archivos2) > 4){
@@ -670,6 +678,14 @@ $handler = mysqli_query($datos, $matrix);
                                                       $cor = "#338B93";
                                                       break;
                                                       case ($extension == "txt"):
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
                                                       break;
                                                  }
 
@@ -770,6 +786,15 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
+                                                      break;
+
                                                  }
                                           ?>
 
@@ -833,6 +858,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       default :
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
                                                       break;
                                                  }
 
@@ -972,6 +1005,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $cor = "#338B93";
                                                       break;
                                                       case ($extension == "txt"):
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
                                                       break;
                                                  }
 
@@ -1200,6 +1241,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
+                                                      break;
                                                  }
                                           ?>
                                           
@@ -1274,6 +1323,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
+                                                      break;
                                                  } 
 
                                                  ?>
@@ -1329,6 +1386,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       default :
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
                                                       break;
                                                  } ?>
 
@@ -1566,6 +1631,14 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                       default :
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-o";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-o";
+                                                      $cor = "#FF9900";
                                                       break;
                                                  }
                                           ?>
@@ -2881,7 +2954,7 @@ uploader =  $(object).pluploadQueue({
   filters : {
             max_file_size : '3mb',
             mime_types: [
-                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt"},
+                {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,pptx,ppt"},
                 {title : "Zip files", extensions : "zip" }
             ]
         },
@@ -3941,7 +4014,19 @@ var filestring = "";
                 case "bmp" : 
             setClass = "picture-o";
             cor = "#338B93";
-        break;     
+        break;  
+               case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break;   
 
     }
         
@@ -4437,10 +4522,18 @@ if(kind == 1){
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ptx" : 
-            setClass = "powerpoint-o";
-            cor = "#A80B9C";
+                case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
         break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break; 
 
     }
     
@@ -4595,10 +4688,18 @@ $.ajax({ type:"POST",
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ptx" : 
-            setClass = "powerpoint-o";
-            cor = "#A80B9C";
+               case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
         break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break; 
 
     }
     var str_nameFil = filename(files[n]);
@@ -5284,10 +5385,18 @@ $.ajax({
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ptx" : 
-            setClass = "powerpoint-o";
-            cor = "#A80B9C";
+               case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
         break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break; 
 
     }
 
@@ -5343,10 +5452,18 @@ var nname_sec = nname_pri[1].split(",");
             setClass = "picture-o";
             cor = "#338B93";
         break;
-                case "ptx" : 
-            setClass = "powerpoint-o";
-            cor = "#A80B9C";
+               case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
         break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break; 
 
     }
     //trated link 
