@@ -622,11 +622,11 @@ $handler = mysqli_query($datos, $matrix);
                                                       case ($extension == "txt"):
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -2657,7 +2657,7 @@ $(this).parent().parent().children('.ex-del-par').children('tbody').children('tr
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break;    
 
 
@@ -4121,7 +4121,7 @@ var filestring = "";
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
@@ -4333,7 +4333,7 @@ console.info(xz);
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
@@ -4706,7 +4706,7 @@ var rino = new RegExp(/\.\.\//);
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
@@ -4882,7 +4882,7 @@ $.ajax({ type:"POST",
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
@@ -5582,7 +5582,7 @@ function graphAddedFiles(object, names){
         break; 
               case "mp3" : 
             setClass = "audio-o";
-            cor = "#B8005C";
+            cor = "#FF9900";
         break; 
 
     }
