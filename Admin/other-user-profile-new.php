@@ -679,11 +679,11 @@ $handler = mysqli_query($datos, $matrix);
                                                       case ($extension == "txt"):
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -789,11 +789,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension == 'ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension == 'mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -865,11 +865,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $cor = "#8E9193";
                                                       break;
                                                      case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -1012,11 +1012,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       case ($extension == "txt"):
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  
@@ -1238,11 +1238,11 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
@@ -1307,11 +1307,11 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  
@@ -1381,11 +1381,11 @@ echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_mat
                                                       $cor = "#8E9193";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                      
@@ -1630,22 +1630,15 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                       $file_extension = "";
                                                       $cor = "#8E9193";
                                                       break;
-                                                      case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
-                                                      $cor = "#B8005C";
-                                                      break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                       case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
-                                                      case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
-                                                      $cor = "#FF9900";
-                                                      break;
+
                                                  }
                                           ?>
                                             
@@ -1703,11 +1696,11 @@ $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TI
                                                       $cor = "#8E9193";
                                                       break;
                                                      case ($extension =='ppt' || $extension =='ptx' ):
-                                                      $file_extension = "powerpoint-o";
+                                                      $file_extension = "powerpoint-";
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-o";
+                                                      $file_extension = "audio-";
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
