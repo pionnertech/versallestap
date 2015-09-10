@@ -5742,7 +5742,7 @@ function backToFront(name, usrId, iss){
   $.ajax({ type: "POST",
    url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
    success: function (data){
-      
+        console.info(data);
    }
 
 })
