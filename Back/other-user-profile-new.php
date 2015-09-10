@@ -908,6 +908,10 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    var user = $("#muser").val();
 
    var percent = $(this).parent().next().children('td').children('p').children('span').html();
+
+   if(percent == "%"){
+    percent = 0;
+   }
   
    $(".span2").data("val", parseInt(percent));
    $(".span2").data("Cval", parseInt(percent));
