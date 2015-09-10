@@ -2973,10 +2973,10 @@ var randFiles = "";
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_for_front.php?'  ,
-        chunk_size : '3mb',
+        chunk_size : '2mb',
         unique_names : true,
   filters : {
-            max_file_size : '3mb',
+            max_file_size : '2mb',
             mime_types: [
                 {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,pptx,ppt"},
                 {title : "Zip files", extensions : "zip" }

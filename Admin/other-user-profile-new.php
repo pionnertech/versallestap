@@ -3086,10 +3086,10 @@ var randFiles = "";
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_for_front.php?'  ,
-        chunk_size : '3mb',
+        chunk_size : '2mb',
         unique_names : true,
   filters : {
-            max_file_size : '3mb',
+            max_file_size : '2mb',
             mime_types: [
                 {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,mp3,ppt,pptx"},
                 {title : "Zip files", extensions : "zip" }
@@ -5596,7 +5596,6 @@ if(block_user == 1){
 
 $(".fr").on("click", function(){
   if($(this).data("val") == undefined || $(this).data("val") == 0 ){
-
      uploaderInt($(this).parent().prev(), $(this).parent().parent().parent().parent().parent().prev().find(".iss_id").val());
       $(this).data("val", 1);
   } else {
