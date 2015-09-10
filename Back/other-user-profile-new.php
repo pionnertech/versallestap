@@ -828,8 +828,8 @@ echo "<script>console.info('" . preg_match_all("/_\[" . $fila_int[0] . "\]_/", $
     <script src="../scripts/jquery.ui.widget.js"></script>
     <script src="../scripts/jquery.iframe-transport.js"></script>
     <script src="../scripts/jquery.fileupload.js"></script>
-    <script src="../scripts/script.js"></script>
     <script type="text/javascript" src="../scripts/bootbox.min.js"></script>
+    <script src="../scripts/script.js"></script>
     <script src="../scripts/jquery.datetimepicker.js"></script>
     <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
 <script src="../scripts/bootstrap-slider.js"></script>
@@ -1017,6 +1017,7 @@ console.info("lo que se manda: /backend/upgrade-new.php?val=" + val +
             "&muser=" + boss +
             "&argument=" + ar +
             "&ticket=" + ticket);
+
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade-new.php?val=" + val +
