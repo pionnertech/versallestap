@@ -458,7 +458,7 @@ $("#html5_uploader_browse").addClass('plupload_disabled');
 $("#clip").addClass('disabled');
 
  //google maps...
- 
+
  IntializeGMaps();
  uploaderInt();
 
@@ -498,7 +498,7 @@ uploader =  $("#html5_uploader").pluploadQueue({
 		chunk_size : '2mb',
 		unique_names : true,
   filters : {
-			max_file_size : '10mb',
+			max_file_size : '2mb',
 			mime_types: [
 				{title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,ppt,pptx,mp3"},
 				{title : "Zip files", extensions : "zip" }
@@ -583,8 +583,11 @@ uploader =  $("#html5_uploader").pluploadQueue({
                 console.log('[FilesRemoved]');
   
                 plupload.each(files, function(file) {
-                    console.log('  File:', file);
+                    console.log('File:', file);
                 });
+
+               
+
             },
   
             FileUploaded: function(up, file, info) {

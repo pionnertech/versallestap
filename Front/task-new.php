@@ -723,10 +723,10 @@ var uploaderInt = function(object){
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
         url : '../backend/upload_front.php?'  ,
-        chunk_size : '1mb',
+        chunk_size : '2mb',
         unique_names : true,
   filters : {
-            max_file_size : '10mb',
+            max_file_size : '2mb',
             mime_types: [
                 {title : "General files", extensions : "jpg,gif,png,pdf,xls,xlsx,docx,doc,txt,mp3,ppt,pptx"},
                 {title : "Zip files", extensions : "zip" }
