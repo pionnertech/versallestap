@@ -1339,6 +1339,8 @@ if(kind == 0){
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
    inner = $(this).parent().parent().index("");
    subject = $(this).parent().parent().children('td').eq(1).text();
+
+
    $("#audititle").html("\"" + subject + "\"");
 
    var user = $("#muser").val();
@@ -1346,10 +1348,12 @@ if(kind == 0){
 //obten el porcentaje
 var percent = $(this).parent().parent().next().children('td').children('div').children('p').children('span').html();
 
+
+
 $(".span2").slider('setValue', parseInt(percent));
 $(".span2").data("val", parseInt(percent));
 $(".span2").data("Cval", parseInt(percent));
-
+$(".span2").val(parseInt(percent));
 
 
 $("#stsk-code").val(subtask_id);
@@ -1852,7 +1856,6 @@ object.html(object.html() + filstr);
 filstr = "";
 
 }
-
 
 $("#upload div a").on("click", function(){
 if($(".span2").val() == $(".span2").data("Cval")){
