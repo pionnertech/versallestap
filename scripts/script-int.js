@@ -19,12 +19,18 @@ $(function(){
         // either via the browse button, or via drag/drop:
         add: function (e, data) {
 
+if(data.files[0].size > 2097152){
+  console.log("es mayor por que es de :" data.files[0].size);
+} else {
+    console.log("es menor por tener :" + data.files[0].size);
+}
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
                 ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span class="fa fa-times af" onclick="rewind(this)"></span></li>');
 
             // Append the file name and file size
             tpl.find('p').text(data.files[0].name)
                          .append('<i>' + formatFileSize(data.files[0].size) + '</i>');
+                
 
                $("#D-drop").data("files", $("#D-drop").data("files")  + data.files[0].name + "|" );
                $("#D-drop").data("dfil", $("#D-drop").data("dfil")  + data.files[0].name + "|" );
@@ -36,15 +42,13 @@ $(function(){
 
             // Listen for clicks on the cancel icon
             tpl.find('span').click(function(){
-
+                 tpl.find('p').text()
                 if(tpl.hasClass('working')){
                     jqXHR.abort();
                 }
-
                 tpl.fadeOut(function(){
                     tpl.remove();
                 });
-
             });
 
             // Automatically upload the file once it is added to the queue
