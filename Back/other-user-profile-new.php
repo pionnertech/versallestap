@@ -1855,7 +1855,7 @@ filstr = "";
 
 
 $("#upload div a").on("click", function(){
-if((".span2").val() == $(".span2").data("Cval")){
+if($(".span2").val() == $(".span2").data("Cval")){
 cant = 1;
 } else {
 cant = 0;
