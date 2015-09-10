@@ -1943,7 +1943,7 @@ jQuery.fn.justtext = function() {
 
 $(document).on("ready", function(){
 
-
+cloneFiles();
 
 })
 
@@ -5441,6 +5441,7 @@ function swUsr(stskId){
 $("#upgrade-own").on('click', function (){
      if(checkOwn() === true){
         upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
+        cloneFiles();
      } else {
        bootbox.alert(checkOwn());
      }
