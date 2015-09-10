@@ -5440,7 +5440,6 @@ function swUsr(stskId){
 
 $("#upgrade-own").on('click', function (){
      if(checkOwn() === true){
-        
         cloneFiles();
         upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
 
@@ -5476,7 +5475,7 @@ console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" +
         console.info("respuesta :" + data);
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
-          $(".task").eq(ind).find(".person-sw").replaceWith("<i class='fa fa-user spac'></i>");
+          $(".task").eq(ind).find(".person-sw").replaceWith("<i data-it='1' class='fa fa-user spac'></i>");
           $(".task").eq(ind).next().find(".collaborates").html("<a onclick='alterExt(this)' class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
             "<img src='../" + fac + "/img/" + mainuser + "_opt.jpg' class='group'>" +
             "<i class='fa fa-check-circle finished'></i>" +
