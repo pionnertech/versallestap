@@ -2996,6 +2996,22 @@ function dropBack(event, object){
    var frIn     = $(object).index(".drop-zone");
    var iss_ind  = $(".viewToggle").eq(frIn).parent().parent().children('input.iss_id').val();
    var usf      = data[1].substring(data[1].search("_in")-3, data[1].search("_in")); 
+   
+
+   if(usf[1] == "/" ){
+
+      usf = usf[2];
+
+   } else if(usf[0] == "/") {
+
+      usf = parseInt(usf.slice(-2));
+
+   } else {
+    usf = usf;
+
+   }
+
+console.info(usf);
 
    console.info(exo);
    console.info(data[0] + "|" + data[1]);
