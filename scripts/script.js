@@ -21,7 +21,7 @@ $(function(){
 if(data.files[0].size > 2097152){
   console.log("es mayor por que es de :" + data.files[0].size);
    
-   bootbox.alert({ buttons: { main:{ className : "btn-danger", label : "Aceptar" }}, message: "Archivo debe ser menor a 2MB"});
+   bootbox.alert("Archivo debe ser menor a 2MB!");
 
 } else {
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
