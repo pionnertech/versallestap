@@ -2065,8 +2065,7 @@ var datetime  = $(".seo").datetimepicker({
     minDate: '-1970/01/02',
     timepicker: false,
     onShow : function (oct){
-
-    if(mode == "delegate"){
+    if(mode == "first"){
             this.setOptions({
                 maxDate : dateTime,
                 format:'d/m/Y'
@@ -2218,6 +2217,7 @@ dateTime = AmericanDate($(this).parent().next().html());
 if($(this).next().hasClass('person-sw-int')){
 
 if($(this).next().find('.swt-boo-int').bootstrapSwitch('state') == true){
+
 $("#stsk-code-ii").val(st_ii);
 $("#stsk-user-ii").val(remoteUser);
 $("#stsk-user-ii").attr("name", "muser");
