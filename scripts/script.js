@@ -20,9 +20,10 @@ $(function(){
 
 if(data.files[0].size > 2097152){
   console.log("es mayor por que es de :" + data.files[0].size);
+   
+   bootbox.alert({ buttons: "btn-danger", message: "Archivo debe ser menor a 2MB"});
+   
 } else {
-    console.log("es menor por tener :" + data.files[0].size);
-}
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
                 ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span class="fa fa-times af" onclick="rewind(this)"></span></li>');
 
@@ -54,6 +55,7 @@ if(data.files[0].size > 2097152){
 
             // Automatically upload the file once it is added to the queue
             var jqXHR = data.submit();
+        }
         },
 
         progress: function(e, data){
