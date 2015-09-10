@@ -850,6 +850,7 @@ var previuosDataInt = "<?  echo $manu_int   ?>"  ;
 var mainuser = <? printf( $_SESSION['TxtCode'] )  ?>;
 var argument = 0;
 var boss = <? echo $boss['BOSS'] ?>;
+var cant = 0;
 
     $(document).on('ready', function(){
 
@@ -1746,9 +1747,12 @@ if($("#st-description").val() == "") {
 }
 if($(".span2").val() == $(".span2").data("Cval")){
     bootbox.alert("El valor del progreso debe ser mayor al anterior");
+    cant = 1;
     return false;
 }
+cant = 0;
  return true;
+
 }
 
 function rewind(obj){
