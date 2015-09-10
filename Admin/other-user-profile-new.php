@@ -2205,7 +2205,7 @@ $("#int-require").removeClass('active in');$("#del-int-req").addClass('active in
 
 $(".ii-forward").click(function(){
 
-dateTime = AmericanDate($(this).next().html());
+dateTime = AmericanDate($(this).parent().next().html());
 
  remoteUser = $(this).parent().parent().children("input").eq(1).val().trim();
  st_ii      = $(this).parent().parent().children("input").eq(0).val().trim();
@@ -3582,6 +3582,7 @@ var iss_ident = $(this).parent().parent().children('input.iss_id').val();
 var subject = $(this).parent().parent().children('td').eq(1).text();
 var index_current = parseInt($(this).index(".forward"));
 dateTime = AmericanDate($(this).parent().next().html());
+
 console.info("current-index:" + index_current);
 $("#current-task").val(index_current);
 
@@ -4557,7 +4558,7 @@ if(kind == 0){
 td4.className = "cell-title";
 // aqui yace
 i2.onclick = function (){
-dateTime = AmericanDate($(this).next().html());
+dateTime = AmericanDate($(this).parent().next().html());
 
  remoteUser = user_id;
  st_ii      = $(this).parent().siblings('input.ii-stsk').val().trim();
