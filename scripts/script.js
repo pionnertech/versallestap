@@ -18,6 +18,11 @@ $(function(){
         // either via the browse button, or via drag/drop:
         add: function (e, data) {
 
+if(data.files[0].size > 2097152){
+  console.log("es mayor por que es de :" data.files[0].size);
+} else {
+    console.log("es menor por tener :" + data.files[0].size);
+}
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
                 ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span class="fa fa-times af" onclick="rewind(this)"></span></li>');
 
