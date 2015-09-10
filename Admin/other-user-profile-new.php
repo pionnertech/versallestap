@@ -5473,12 +5473,19 @@ console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" +
       "&ticket=" + ticket +
       "&fac=" + fac,
       success: function (data){
-        cloneFiles(1);
+        
 
         console.info("respuesta :" + data);
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
           $(".task").eq(ind).find(".person-sw").replaceWith("<i data-it='1' class='fa fa-user spac'></i>");
+
+          // here comes the challenge 
+            var clone_received = $(".task").eq(ind).find(".fa-user[data-it=1]").parents("tr").next().find(".front-received").children().clone().css({ position: "relative", top :"1em"});
+                                 $(".task").eq(ind).find(".fa-user[data-it=1]").parents("tr").next().find(".file-sent").html('').append(clone_received);
+
+           //============================================
+
           $(".task").eq(ind).next().find(".collaborates").html("<a onclick='alterExt(this)' class='hovertip extUsr' data-val='" + percent + "' title='Yo'>" +
             "<img src='../" + fac + "/img/" + mainuser + "_opt.jpg' class='group'>" +
             "<i class='fa fa-check-circle finished'></i>" +
@@ -5772,7 +5779,7 @@ $.ajax({ type: "POST",
 }
 
 
-function cloneFiles(sw){
+function cloneFiles(){
 
 var tope = $("#ext-tasks-table").find(".fa-user[data-it=1]").length;
 
@@ -5783,6 +5790,9 @@ var clone_sent     = $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr
      $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-sent").html('').append(clone_received);
      $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-contents").html('').append(clone_sent); 
 }
+
+
+
 
 }
 
