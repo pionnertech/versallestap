@@ -5440,6 +5440,7 @@ function swUsr(stskId){
 
 $("#upgrade-own").on('click', function (){
      if(checkOwn() === true){
+        
         cloneFiles();
         upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
 
