@@ -21,11 +21,14 @@ $(function(){
 if(data.files[0].size > 2097152){
 
   console.log("es mayor por que es de :" + data.files[0].size);
-  console.info($(".span2").val() + " : "+  $(".span2").data("Cval"));
+
   bootbox.alert("Archivo debe ser menor a 2MB!");
 
 } else {
 
+   if(cant == 1){
+    bootbox.alert("deber marcar progreso para subir archivos");
+   } else {
             var tpl = $('<li class="working"><input type="text" value="0" data-width="48" data-height="48"'+
                 ' data-fgColor="#0788a5" data-readOnly="1" data-bgColor="#3e4043" /><p></p><span class="fa fa-times af" onclick="rewind(this)"></span></li>');
 
@@ -57,6 +60,7 @@ if(data.files[0].size > 2097152){
 
             // Automatically upload the file once it is added to the queue
             var jqXHR = data.submit();
+        }
         }
         },
 
