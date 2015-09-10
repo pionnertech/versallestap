@@ -910,10 +910,11 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    var percent = $(this).parent().next().children('td').children('p').children('span').html();
 
    if(percent == "%"){
-    percent = 0;
+       percent = 0;
    }
-  
+
    $(".span2").data("val", parseInt(percent));
+   $(".span2").val(percent);
    $(".span2").data("Cval", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
@@ -946,7 +947,6 @@ $("#upgrade").on('click', function(){
 if(checkValues() == true){
     upprogress($('.span2').val(), $("#muser").val(), $("#stsk-code").val(), current_iss, $("#st-description").val() , $("#subject").val(), inner, argument, ticket);
     current_iss = 0;
-
     $("#subject").val('');
     $("#st-description").val('');
     $(".span2").slider('setValue', 0);
@@ -1748,7 +1748,6 @@ if($(".span2").val() == $(".span2").data("Cval")){
     bootbox.alert("El valor del progreso debe ser mayor al anterior");
     return false;
 }
-
  return true;
 }
 
