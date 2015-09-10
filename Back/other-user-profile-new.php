@@ -914,7 +914,7 @@ $("#upload").attr("action", "../backend/int_files_back_to_admin.php");
    }
 
    $(".span2").data("val", parseInt(percent));
-   $(".span2").val(percent);
+   $(".span2").val(parseInt(percent));
    $(".span2").data("Cval", parseInt(percent));
    $(".span2").slider('setValue', parseInt(percent));
    $("#stsk-code").val(subtask_id);
