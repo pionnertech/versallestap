@@ -19,7 +19,7 @@ $(function(){
         add: function (e, data) {
 
 if(data.files[0].size > 2097152){
-  console.log("es mayor por que es de :" data.files[0].size);
+  console.log("es mayor por que es de :" + data.files[0].size);
 } else {
     console.log("es menor por tener :" + data.files[0].size);
 }
