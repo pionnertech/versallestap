@@ -1747,10 +1747,9 @@ if($("#st-description").val() == "") {
 }
 if($(".span2").val() == $(".span2").data("Cval")){
     bootbox.alert("El valor del progreso debe ser mayor al anterior");
-    cant = 1;
     return false;
 }
-cant = 0;
+cant = 0 
  return true;
 
 }
@@ -1853,6 +1852,16 @@ object.html(object.html() + filstr);
 filstr = "";
 
 }
+
+
+$("#upload div a").on("click", function(){
+if((".span2").val() == $(".span2").data("Cval")){
+cant = 1;
+} else {
+cant = 0;
+}
+});
+
 </script>
 <?
 
