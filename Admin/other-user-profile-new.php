@@ -2447,7 +2447,7 @@ $(".incoming-files").css({ display : "none"});
 
 $(".del-int").on('click', function(){
 
-     mode = "first";
+     mode = "";
      $("#up-own").empty();
      $("#up-int").empty();
 
