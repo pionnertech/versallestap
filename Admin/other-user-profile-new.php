@@ -5440,10 +5440,11 @@ function swUsr(stskId){
 
 $("#upgrade-own").on('click', function (){
      if(checkOwn() === true){
-        cloneFiles();
+        
         upgradeOwn($("#set-pro-own").attr("data-stsk"), $("#set-pro-own").attr("data-iss"), $('.span2').eq(1).val() , $("#own-descript").val(), $("#own-subtasks").val());
 
      } else {
+
        bootbox.alert(checkOwn());
      }
 });
@@ -5472,6 +5473,8 @@ console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" +
       "&ticket=" + ticket +
       "&fac=" + fac,
       success: function (data){
+        cloneFiles(1);
+
         console.info("respuesta :" + data);
           $(".task").eq(ind).next().children('td').children("div.progress").children('.bar').css({ width: percent + "%"});
           $(".task").eq(ind).next().children('td').find("span.muted").html(percent+"%");
@@ -5769,7 +5772,7 @@ $.ajax({ type: "POST",
 }
 
 
-function cloneFiles(){
+function cloneFiles(sw){
 
 var tope = $("#ext-tasks-table").find(".fa-user[data-it=1]").length;
 
@@ -5779,7 +5782,11 @@ var clone_sent     = $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr
 
 
 $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-sent").html('').append(clone_received);
-$("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-contents").html('').append(clone_sent);
+if(sw){
+   $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-contents").append(clone_sent);  
+} else {
+    $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-contents").html('').append(clone_sent); 
+}
 
 }
 
