@@ -5780,7 +5780,7 @@ for(i=0;i<tope;i++){
 var clone_received = $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".front-received").children().clone().css({ position: "relative", top :"1em"});
 var clone_sent     = $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".front-sent").children().clone();
 
-     $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-sent").html('')append(clone_received);
+     $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-sent").html('').append(clone_received);
      $("#ext-tasks-table .fa-user[data-it=1]").eq(i).parents("tr").next().find(".file-contents").html('').append(clone_sent); 
 }
 
