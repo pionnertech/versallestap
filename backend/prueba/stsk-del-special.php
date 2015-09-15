@@ -62,8 +62,7 @@ switch ($usrs) {
 }
 
 
-
-if(!mysqli_query($datos, $handle_stsk)){
+if(!mysqli_query($datos, rtrim($handle_stsk, ","))){
      echo $handle_stsk;
      echo mysqli_error($datos);
 
