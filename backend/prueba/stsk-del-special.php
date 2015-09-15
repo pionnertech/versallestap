@@ -46,12 +46,13 @@ switch ($usrs) {
     break;
   
   default:
-  
+
   $usrs = explode(",", $usrs);
 
   for($i=0 ;$i< count($usrs); $i++){
-       $ui =  mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_ID as ID FROM USERS WHERE CONCAT(USR_NAME , ' ' ,USR_SURNAME) = " . $usrs[$i] ));
-        $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 2, 1) , ";
+
+        $ui =  mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_ID as ID FROM USERS WHERE CONCAT(USR_NAME , ' ' ,USR_SURNAME) = " . $usrs[$i] ));
+        $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2 , '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 2, 1) , ";
         $outcome .= $ui['ID'] . "|";
   
   }
@@ -64,7 +65,7 @@ switch ($usrs) {
 
 if(!mysqli_query($datos, $handle_stsk)){
 
-
+     echo 
      echo mysqli_error($datos);
 
 } else {
