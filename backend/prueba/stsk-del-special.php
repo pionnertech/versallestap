@@ -45,7 +45,7 @@ switch ($usrs) {
 
     break;
   
-  case else:
+  default:
   $usrs = explode(",", $usrs);
 
   for($i=0 ;$i< count($usrs); $i++){
