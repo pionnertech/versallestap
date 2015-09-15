@@ -59,7 +59,7 @@ switch ($usrs) {
 }
 
 
-$handle_fin = substr($handle_stsk, 0, -1);
+$handle_fin = substr_replace($handle_stsk, "", -1);
 
 if(!mysqli_query($datos, $handle_fin)){
      echo $handle_fin;
