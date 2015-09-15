@@ -2,12 +2,13 @@
 
         $muser   = $_GET['muser'];
         $usrs    = $_GET['usrs'];
-        $stsk    = $_GET['stsk'];
         $subject = $_GET['subject'];
         $descript= $_GET['descript'];
         $startD  = $_GET['startD'];
-        $fechaF  = $_GET['endD'];
+        $fechaF  = $_GET['fechaF'];
         $fac     = $_GET['fac'];
+        $keyfile = $_GET['keyfile'];
+
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //get ticket 
@@ -28,14 +29,19 @@ $handle_stsk = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP, S
 switch ($usrs) {
   case 'Jefaturas':
 
-    $team_admin = mysqli_query($datos,"SELECT USR_ID FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin' )");
+    $team_admin = mysqli_query($datos,"SELECT USR_ID, CONCAT(USR_NAME , ' ' , USR_SURNAME) AS NAME FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin' )");
+        
+        //vaciamos la variable usrs para que pueda tener los otros datos en limpio
 
+        $usrs = "";
         while($fila = mysqli_fetch_row($team_admin)){
 
               $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript. "', " . $fila[0] . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 2, 1) , ";
+              $outcome .= $fila[0] . "|";
+              $usrs  .= $fila[1] . ",";
         }
   
-      $handle_stsk = rtrim($handle_stsk);
+      $handle_stsk = rtrim($handle_stsk, ",");
 
     break;
   
@@ -45,18 +51,56 @@ switch ($usrs) {
   for($i=0 ;$i< count($usrs); $i++){
        $ui =  mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_ID as ID FROM USERS WHERE CONCAT(USR_NAME , ' ' ,USR_SURNAME) = " . $usrs[$i] ));
         $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 2, 1) , ";
+        $outcome .= $ui['ID'] . "|";
+  
   }
   
-       $handle_stsk = rtrim($handle_stsk);
+       $handle_stsk = rtrim($handle_stsk, ",");
     break;
 }
 
 
-mysqli_query($datos, $handle_stsk);
+
+if(!mysqli_query($datos, $handle_stsk)){
 
 
+     echo mysqli_error($datos);
+
+} else {
+
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = '" . $ticket . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
+ 
+    if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
+
+      while (false !== ($files = readdir($hdir))) {
+  
+        if(preg_match_all("/_\[" . $keyfile . "\]_/", $files) == 1){
+
+          $extension = pathinfo($files, PATHINFO_EXTENSION);   
+
+              while($uteams = mysqli_fetch_row($uteam)){
+
+                if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  $dir . $uteams[0] . "/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension)){
+                        //$echo_files .=  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension; 
+                  } 
+              }
 
 
+              mysqli_data_seek($uteam, 0);
+        }
+        if(strlen($files) > 4){
+             unlink("/var/www/html/" . $fac . "/_tmp/" . $files);
+        }
+      
+      }
 
+    }
+    
+    closedir($hdir);
+
+ echo (int)$number . "|" . $outcome . "|" . $ticket . "|" . rtrim($names,  ",");
+
+
+}
 
 ?>

@@ -2436,10 +2436,9 @@ var fechaS = _fS.getFullYear() + "-" + ('0' + (_fS.getMonth()+1)).slice(-2) + "-
 
     $.ajax({
         type: "POST",
-        url: "../backend/stsk-del-special.php?iss_id=" + $("#issId").val() + 
+        url: "../backend/stsk-del-special.php?" +
         "&muser=" + $("#muser").val() +
-        "&user=" + $("#delegates").val() +
-        "&stsk=" + $("#stsk-code").val() + 
+        "&usrs=" + $("#int-del").val() + 
         "&subject=" + $("#subject").val() +
         "&descript=" + $("#st-description").val() +
         "&startD=" + fechaS + 
@@ -3103,8 +3102,8 @@ var fecha = pre_fecha.getFullYear() + "-" + ('0' + (pre_fecha.getMonth()+1)).sli
 
 
 console.info("llega el ticket = " + tkt);
-console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
+console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() + 
+          "&usrs=" + user + 
           "&fechaF=" + date + 
           "&subject=" + sub + 
           "&descript=" + des + 
@@ -3115,8 +3114,8 @@ console.info("../backend/delegate_internal-new.php?muser=" + $("#muser").val() +
           "&ticket=" + tkt);
   $.ajax({
           type: "POST",
-          url: "../backend/delegate_internal-new.php?muser=" + $("#muser").val() + 
-          "&user=" + user + 
+          url: "../backend/stsk-del-special.php?muser=" + $("#muser").val() + 
+          "&usrs=" + user + 
           "&fechaF=" + date + 
           "&subject=" + sub + 
           "&descript=" + des + 
