@@ -65,7 +65,7 @@ switch ($usrs) {
 
 if(!mysqli_query($datos, $handle_stsk)){
 
-     echo 
+     echo $handle_stsk;
      echo mysqli_error($datos);
 
 } else {
