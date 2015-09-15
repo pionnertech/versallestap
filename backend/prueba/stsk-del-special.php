@@ -40,8 +40,6 @@ switch ($usrs) {
               $outcome .= $fila[0] . "|";
               $usrs  .= $fila[1] . ",";
         }
-  
-      $handle_stsk = substr($handle_stsk, 0, -1);
 
     break;
   
@@ -57,13 +55,14 @@ switch ($usrs) {
   
   }
   
-       $handle_stsk = substr($handle_stsk, 0, -1);
     break;
 }
 
 
-if(!mysqli_query($datos, $handle_stsk)){
-     echo "wawawa";
+$handle_fin = substr($handle_stsk, 0, -1);
+
+if(!mysqli_query($datos, $handle_fin)){
+     echo $handle_fin;
      echo mysqli_error($datos);
 
 } else {
