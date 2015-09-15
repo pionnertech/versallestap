@@ -41,7 +41,7 @@ switch ($usrs) {
               $usrs  .= $fila[1] . ",";
         }
   
-      $handle_stsk = rtrim($handle_stsk, ",");
+      $handle_stsk = substr($handle_stsk, 0, -1);
 
     break;
   
@@ -57,12 +57,12 @@ switch ($usrs) {
   
   }
   
-       $handle_stsk = rtrim($handle_stsk, ",");
+       $handle_stsk = substr($handle_stsk, 0, -1);
     break;
 }
 
 
-if(!mysqli_query($datos, rtrim($handle_stsk, ","))){
+if(!mysqli_query($datos, $handle_stsk)){
      echo $handle_stsk;
      echo mysqli_error($datos);
 
