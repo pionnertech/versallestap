@@ -63,7 +63,7 @@ switch ($usrs) {
 
 
 if(!mysqli_query($datos, $handle_stsk)){
-     echo $handle_stsk;
+     echo "wawawa";
      echo mysqli_error($datos);
 
 } else {
