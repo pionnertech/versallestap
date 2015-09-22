@@ -3320,15 +3320,69 @@ setInterval(function(){
     changeListener();
 }, 3000);
 
+
+function changeListener(){
+ $.ajax({
+      type: "POST",
+      url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
+      success : function (data){
+        pks = data.split("|");
+
+            if(previan !== pks[2]){
+               previan = pks[2];
+
+              indice = $("#int-table input[value=" + pks[8] + "]").index(".hi-int-id");
+
+              updateProgress(pks[2],pks[3],pks[6],pks[4],pks[1],pks[0],pks[5],1,"",pks[10], indice);
+              
+                        //refresh partial
+                        if(parseInt(packets[10]) >= 99.5){
+
+                               $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').siblings("i").css({ opacity : "1"});
+                         }
+                         //refresh total
+                        if(parseInt(pks[6]) >= 99 && parseInt(packets[9]) == 0){
+                            console.info(indice);
+                            $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
+                            $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
+                          }
+
+
+             }
+
+             
+
+        /*
+                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));
+                echo "|" . $trf_str['TRF_USER'];
+                echo "|" . $trf_str['TRF_SUBJECT'];
+                echo "|" . $trf_str['TRF_DESCRIPT'];
+                echo "|" . date('d/m/Y', strtotime( $trf_str['TRF_ING_DATE']));
+                echo "|" . $trf_str['TRF_STSK_SRC_ID'];
+                echo "|" . $total['AVX'];
+                echo "|" . $classText;
+                echo "|" . $trf_str['TRF_STSK_ID']; 
+                echo "|" . $sel['STSK_TYPE'];
+                echo "|" . $sel['STSK_PROGRESS'];
+
+         */
+
+
+
+
+      }
+
+ })
+}
+
+
+/*
 function changeListener(){
             $.ajax({
             type: "POST",
             url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
             success: function(data){
                 packets = data.split("|");
-           // si esta el asunto repetido...
-          // console.info(data);
-           //Javier Cisterna Valdes|119|aunt|otro progreso|13/05/2015|13|70||70|1|80
                 var nest = 0
              if(previan !== packets[2]){
               previan = packets[2];
@@ -3388,6 +3442,9 @@ function changeListener(){
         })
 
     }
+
+*/
+
 
 
 if(typeof(EventSource) !== "undefined") {
@@ -4095,19 +4152,20 @@ var files;
 };
 
 
-function updateProgress(subject, descript, percent, date, userId, usr_name, ind, stsk, kind, aux_stsk, customPro){
+function updateProgress(subject, descript, percent, date, userId, usr_name, stsk, kind, aux_stsk, customPro, ind){
 
-if(parseInt(kind) == 0){
+//if(parseInt(kind) == 0){
 
+/*
 document.querySelectorAll("#ext-tasks-table td .bar")[ind*2+1].style.width = percent + "%";
 document.querySelectorAll("#ext-tasks-table td p > span.muted")[ind*2+1].innerHTML = percent + "%";
 console.info("porsica el ind es : " + ind);
 $(".file-contents").eq(ind).parent().prev().find("a input[value= "+ userId +"]").parent().attr("data-val", customPro) ;
 
  var tknum = $("#ext-tasks-table .task").eq(ind).children(".cell-icon").html();
+*/
 
-
-} else {
+//} else {
 
 document.querySelectorAll("#int-table .bar")[ind].style.width = percent + "%";
 document.querySelectorAll("#int-table p > span.muted")[ind].innerHTML = percent + "%";
@@ -4115,7 +4173,7 @@ $(".int-files-for").eq(ind).parent().prev().find("a input[value=u"+ userId +"]")
 insertScheduleTraffic(subject, descript ,date, userId, ind)
 var tknum = $("#int-table .task").eq(ind).children(".cell-icon").html();
 
-}
+//}
 
 var parent = document.querySelectorAll(".ex-del-par tbody")[ind];
 
