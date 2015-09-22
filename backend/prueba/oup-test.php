@@ -5479,7 +5479,7 @@ console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" +
       "&fac=" + fac);
   $.ajax({
       type: "POST",
-      url: "../backend/upgrade-own.php?stsk=" + stskId + 
+      url: "../backend/upgrade-own-test.php?stsk=" + stskId + 
       "&iss="+ issId + 
       "&percent=" + percent + 
       "&subject=" + subject+ 
