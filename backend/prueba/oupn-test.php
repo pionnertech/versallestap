@@ -1831,7 +1831,7 @@ jQuery.fn.justtext = function() {
 
     var st           = 0;
     var fac          = <? printf($_SESSION['TxtFacility'] ) ?>;
-    var previuosData = <? printf("\"" . $manu . "\"")  ?>;
+    var previuosData = 0//<? printf("\"" . $manu . "\"")  ?>;
     var um           = 0;
     var mainuser     = <? printf($_SESSION['TxtCode'])  ?>;
     var intPointer   = 0;
@@ -3328,7 +3328,8 @@ function changeListener(){
         pks = data.split("|");
 
             if(previan !== pks[2]){
-               previan = pks[2];
+
+                previan = pks[2];
               
                 showAlert(pks[2], "pro", pks[0]);
 
