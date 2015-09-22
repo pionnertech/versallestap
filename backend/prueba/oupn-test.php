@@ -3330,11 +3330,11 @@ function changeListener(){
 
             if(previan !== pks[2]){
                previan = pks[2];
-
+              
                 showAlert(pks[2], "pro", pks[0]);
 
                 indice = $("#int-table input[value=" + pks[8] + "]").index(".hi-int-id");
-
+                console.info(indice);
                     updateProgress(pks[2],pks[3],pks[6],pks[4],pks[1],pks[0],pks[5],1,"",pks[10], indice);
               
                         //refresh partial
@@ -3343,8 +3343,8 @@ function changeListener(){
                                $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').siblings("i").css({ opacity : "1"});
                          }
                          //refresh total
-                        if(parseInt(pks[6]) >= 99 && parseInt(packets[9]) == 0){
-                            console.info(indice);
+                        if(parseInt(pks[6]) >= 99 && parseInt(pks[9]) == 0){
+                            
                             $(".int-desglo").eq(indice).html("Finalizada").css("background-color","#1CC131" );
                             $(".int-desglo").eq(indice).parent().parent().removeClass().addClass("task Hc-int");
                           }
