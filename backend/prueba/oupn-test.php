@@ -1831,7 +1831,7 @@ jQuery.fn.justtext = function() {
 
     var st           = 0;
     var fac          = <? printf($_SESSION['TxtFacility'] ) ?>;
-    var previuosData = <? printf("\"" . $manu . "\"")  ?>;
+    var previuosData =   <? printf("\"" . $manu . "\"")  ?>;
     var um           = 0;
     var mainuser     = <? printf($_SESSION['TxtCode'])  ?>;
     var intPointer   = 0;
@@ -1849,7 +1849,7 @@ jQuery.fn.justtext = function() {
     var st_ii     = 0;
     var ii_ind    = 0;
     var ii_iss    = 0;
-    var previan   = "";
+    var previan   = 0;
     var aa_ii     = "";
     var kenin;
     //indexes
@@ -3326,7 +3326,7 @@ function changeListener(){
       url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
       success : function (data){
         pks = data.split("|");
-
+        console.info(previan )
             if(previan !== pks[2]){
 
                 previan = pks[2];
