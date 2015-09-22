@@ -1831,7 +1831,7 @@ jQuery.fn.justtext = function() {
 
     var st           = 0;
     var fac          = <? printf($_SESSION['TxtFacility'] ) ?>;
-    var previuosData = 0//<? printf("\"" . $manu . "\"")  ?>;
+    var previuosData = <? printf("\"" . $manu . "\"")  ?>;
     var um           = 0;
     var mainuser     = <? printf($_SESSION['TxtCode'])  ?>;
     var intPointer   = 0;
