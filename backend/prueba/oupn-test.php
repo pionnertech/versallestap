@@ -3338,9 +3338,9 @@ function changeListener(){
                     updateProgress(pks[2],pks[3],pks[6],pks[4],pks[1],pks[0],pks[5],1,"",pks[10], indice);
               
                         //refresh partial
-                        if(parseInt(packets[10]) >= 99.5){
+                        if(parseInt(pks[10]) >= 99.5){
 
-                               $("#int-table .coll-int").eq(indice).find('input[value=u' + packets[1] + ']').siblings("i").css({ opacity : "1"});
+                               $("#int-table .coll-int").eq(indice).find('input[value=u' + pks[1] + ']').siblings("i").css({ opacity : "1"});
                          }
                          //refresh total
                         if(parseInt(pks[6]) >= 99 && parseInt(pks[9]) == 0){
