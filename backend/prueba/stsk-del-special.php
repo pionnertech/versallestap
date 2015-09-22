@@ -5,7 +5,7 @@
         $subject = $_GET['subject'];
         $descript= $_GET['descript'];
         $startD  = $_GET['startD'];
-        $fechaF  = $_GET['fechaF'];
+        $fechaF  = date('Y-m-d h:i:s', strtotime(str_replace("/","-",$_GET['fechaF'])));
         $fac     = $_GET['fac'];
         $keyfile = $_GET['keyfile'];
 
