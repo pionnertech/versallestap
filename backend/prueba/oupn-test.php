@@ -58,13 +58,12 @@ mysqli_data_seek($Query_team_int, 0);
 $str_query = "SELECT A.STSK_DESCRIP, A.STSK_ID, B.ISS_DESCRIP, B.ISS_ID , CONCAT(C.CTZ_NAMES, ' ' , C.CTZ_SURNAME1, ' ' , C.CTZ_SURNAME2 ) AS NAME " .
 "FROM `SUBTASKS` A " .
 "INNER JOIN `ISSUES` B ON(A.STSK_ISS_ID = B.ISS_ID) " .
-"INNER JOIN `CITIZENS` C ON(B.ISS_CTZ = C.CTZ_RUT ) WHERE STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
+"INNER JOIN `CITIZENS` C ON(B.ISS_CTZ = C.CTZ_RUT ) WHERE STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " ORDER BY STSK_ID DESC LIMIT 1";
+
 $notify = mysqli_fetch_assoc(mysqli_query($datos, $str_query));
 if(!$notify){
-
     $manu = "";
 } else {
-
     $manu = $notify['STSK_DESCRIP'];
 }
 
