@@ -37,7 +37,7 @@ switch ($usrs) {
         $i=0;
         while($fila = mysqli_fetch_row($team_admin)){
 
-              $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript. "', " . $fila[0] . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 0, 'EX0000" . $ticket['TK'] . "', 2, 1) ";
+              $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript. "', " . $fila[0] . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", NULL, 0, 1, 0, 'EX0000" . $ticket['TK'] . "', 2, 1) ";
               $outcome .= $fila[0] . "|";
               $usrs  .= $fila[1] . ",";
 
@@ -58,7 +58,7 @@ switch ($usrs) {
   for($i=0 ;$i< count($usrs); $i++){
 
         $ui =  mysqli_fetch_assoc(mysqli_query($datos,"SELECT USR_ID as ID FROM USERS WHERE CONCAT(USR_NAME , ' ' ,USR_SURNAME) = '" . $usrs[$i] . "'"));
-        $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2 , '" . $fechaF. "', " . $muser . " , " . $fac . ", 0, NULL, 1, 0, 'EX0000" . $ticket['TK'] . "', 2 , 1) ";
+        $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2 , '" . $fechaF. "', " . $muser . " , " . $fac . ", NULL, 0, 1, 0, 'EX0000" . $ticket['TK'] . "', 2 , 1) ";
         $outcome .= $ui['ID'] . "|";
   
         if($i < count($usrs)-1 ){
