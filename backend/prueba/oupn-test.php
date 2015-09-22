@@ -216,8 +216,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
 
                                 <ul class="profile-tab nav nav-tabs" id="kitkat">
                                     <li class="active" id="aux-back"><a href="#friends" data-toggle="tab">Equipo de trabajo</a></li>
-                                    <li><a href="#require" data-toggle="tab">Compromisos Externos</a></li>
-                                    <li><a href="#int-require" data-toggle="tab">Compromisos Internos</a></li>
+                                    <li><a href="#int-require" data-toggle="tab">Mis Compromisos</a></li>
                                 </ul>
                                 <div class="profile-tab-content tab-content">
                                     <div class="tab-pane fade active in" id="friends">
@@ -400,7 +399,7 @@ $handler = mysqli_query($datos, $matrix);
                                             </div>
                                         </div>
                                     </div>
-                   <div class="tab-pane fade" id="require">
+                  <!-- <div class="tab-pane fade" id="require">
                     <div class="module message">
                             <div class="module-head">
                                 <h3>Control de cumplimientos</h3>
@@ -939,7 +938,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                             </div>
                         </div>
                        </div> 
-                  </div>
+                  </div> -->
 <!--  selecionar los nombres -->
                         <div class="tab-pane fade" id="tasks-own">
                            <div class="media-stream">
@@ -3112,6 +3111,8 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
           "&main_stsk=" + mst + 
           "&keyfile=" + keyFile +
           "&ticket=" + tkt);
+
+
   $.ajax({
           type: "POST",
           url: "../backend/stsk-del-special.php?muser=" + $("#muser").val() + 
