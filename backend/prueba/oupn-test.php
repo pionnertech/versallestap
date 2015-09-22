@@ -3116,7 +3116,7 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
           type: "POST",
           url: "../backend/stsk-del-special.php?muser=" + $("#muser").val() + 
           "&usrs=" + user + 
-          "&fechaF=" + date + 
+          "&fechaF=" + date + " 00:00:00" +
           "&subject=" + sub + 
           "&descript=" + des + 
           "&startD=" + fecha  + 
@@ -3133,13 +3133,14 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
            console.info(data);
 
            result = data.split("|");
-          var string = "";
+
+           var string = "";
+
            if(result[result.length-1].length < 3 ){
             var titles = user.split(",");
            } else {
             var titles = result[result.length-1].split(",");
            }
-
 
            console.info("titles : " + titles);
            console.info("users :" + user );
@@ -3149,8 +3150,10 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
                               $(".ii-forward").eq(ii_ind).parent().children(".person-sw-int").replaceWith('<i class="fa fa-group spac"></i>');
                       }
 
-                   bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+                      bootbox.alert("Su requerimiento ha sido generado existosamente", function(){
+
                          $("#send-int").attr("disabled", false);
+
                          $("#del-int-req").removeClass('active in');$("#int-require").addClass('active in');
 
                             firstTask(result[0], des, result[1] , date, result[1], 1, "", 1, result[result.length-2]);
@@ -3158,12 +3161,14 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
                             for(i=1; i < result.length-2; i++){
 
                               if(result[i] != ""){
-                            string +=  '<a class="hovertip" title="' + titles[i-1] + '" onclick="hovertip(this)" data-per="0">' +
-                             '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" >' +
-                             '<i class="fa fa-check-circle finished" style="opacity: 0"></i>' + 
-                             '<input type="hidden" value="u'  + result[i] + '">' +
-                             '</a>'; 
-                              }   
+
+                                string +=  '<a class="hovertip" title="' + titles[i-1] + '" onclick="hovertip(this)" data-per="0">' +
+                                           '<img src="../' + fac + '/img/'  + result[i] + '_opt.jpg" class="group" >' +
+                                           '<i class="fa fa-check-circle finished" style="opacity: 0"></i>' + 
+                                           '<input type="hidden" value="u'  + result[i] + '">' +
+                                           '</a>'; 
+
+                                }   
                             }
 
                            var parent = document.querySelectorAll('.coll-int')[ind+1];
