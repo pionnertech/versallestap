@@ -1289,12 +1289,12 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               } 
                            
 
-                                        //ruan...
+                                     echo "<script>console..loh('healing')</script>";   //ruan...
 
                               if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                  while (false !== ($str = readdir($handler2))){
-                                           echo "<script>console.info('" . $str . " / " . . "preg_match_all(/_" . $fint[4] . "_/, " . $str . ")')</script>";
+                             echo "<script>console.info('" . $str . " / " . . "preg_match_all(/_" . $fint[4] . "_/, " . $str . ")')</script>";
                                                if (preg_match_all("/_" . $fint[4] ."_/", $str)){
 
                                               $extension = substr($str, -3);
@@ -1354,7 +1354,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                    $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" );
                     
                                     foreach ($s_files as $fstr) {
-                                       echo "<script>console.info('archivo encontrado : " . $fstr . "')</script>";
+                                   
                                        while($sf = mysqli_fetch_row($part)){
                                        
                                              if (preg_match ("/_\[" . $sf[4] ."\]_/", $fstr, $m)){
