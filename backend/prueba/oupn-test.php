@@ -3328,9 +3328,6 @@ function changeListener(){
 
         pks = data.split("|");
 
-        console.info(previan + " == " + pks[2]);
-        console.info(previan == pks[2]);
-
             if(previan !== pks[2]){
 
                 previan = pks[2];
@@ -3346,6 +3343,7 @@ function changeListener(){
 
                                $("#int-table .coll-int").eq(indice).find('input[value=u' + pks[1] + ']').siblings("i").css({ opacity : "1"});
                          }
+
                          //refresh total
                         if(parseInt(pks[6]) >= 99 && parseInt(pks[9]) == 0){
                             
