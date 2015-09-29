@@ -1289,7 +1289,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               } 
                            
 
-                                     echo "<script>console..loh('healing')</script>";   //ruan...
+                              
 
                               if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
