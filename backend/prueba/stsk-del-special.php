@@ -106,7 +106,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
     
     closedir($hdir);
 
- echo "EX0000" . $ticket['TK'] . "|" . $outcome . "|" . $ticket . "|" . rtrim($names,  ",");
+ echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . rtrim($usrs,  ",");
 
 
 }
