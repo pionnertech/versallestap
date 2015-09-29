@@ -3362,6 +3362,7 @@ function changeListener(){
                           }
 
 
+
              }
 
         }
@@ -5364,6 +5365,7 @@ $(".fr").on("click", function(){
   }
     
 });
+
 
 function graphAddedFiles(object, tt, bs, targus){
 
