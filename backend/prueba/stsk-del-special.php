@@ -33,7 +33,7 @@ switch ($usrs) {
         
         //vaciamos la variable usrs para que pueda tener los otros datos en limpio
 
-        $usrs = "";
+        $uso = "";
         $i=0;
         while($fila = mysqli_fetch_row($team_admin)){
 
@@ -53,7 +53,7 @@ switch ($usrs) {
   
   default:
 
-  $usrs = explode(",", $usrs);
+  $uso = explode(",", $usrs);
 
   for($i=0 ;$i< count($usrs); $i++){
 
@@ -76,7 +76,7 @@ if(!mysqli_query($datos, $handle_stsk)){
 
 } else {
 
-$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = '" . $ticket . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = 'EX0000" . $ticket['TK'] . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
@@ -106,7 +106,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . rtrim($usrs,  ",");
+ echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . rtrim($uso,  ",");
 
 
 }
