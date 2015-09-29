@@ -821,18 +821,18 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                 }
                                   mysqli_data_seek($Query_team, 0);
 
-                                  
+
                                                   ?>
                                             </div>
                                             <div class="file-contents">
                                             <?   
-                                           
+                                            echo "<script>console.info('la id es : " . $stsk[0] . "')</script>";
                                 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
                                     
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
-                              echo "<script>console.info('la id es : " . $stsk[0] . "')</script>";
+                            
                               
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
                                              
