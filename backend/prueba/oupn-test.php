@@ -1192,12 +1192,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                         } 
                                                                     }
                                                                     mysqli_data_seek($part, 0);
-                                   
-
-                                      $Ruan = array();
-                                      while($a_Ruan = mysqli_fetch_row($pre_Ruan)){
-                                          array_push($Ruan, $a_Ruan[0]);
-                                      }
 
 
                                                                  ?>
@@ -1207,12 +1201,12 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             <?    
                       while($fint = mysqli_fetch_row($part)){
 
-                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/")) {
+                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/")) {
                                   
-                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
+                                    mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/", 0775, true); 
                               } 
                            
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/" )){
                                          
                                           $file_extension = "";
                                           
@@ -1282,25 +1276,19 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                 <div class="int-files-for" style="display: inline-block; vertical-align:top;">
                           <?    
 
-                      while($fint = mysqli_fetch_row($part)){
 
-                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/")) {
+                          if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/")) {
                                   
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/", 0775, true); 
                               } 
                            
 
-                                   if($fint[5] == "admin") {
-                                  
-                                        $a_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "_alt/" );
-                                           echo "<script>console.info('count ruan : " . $fint[0] . "')</script>";
-
                                         //ruan...
-                                        for($i=0; $i < count($Ruan) ; $i++){
-  
-                                             foreach ($a_files as $str){ 
 
-                                               if (preg_match ("/_\[" . $Ruan[$i] ."\]_/", $str, $m)){
+                              if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
+
+
+                                               if (preg_match_all("/_\[" . $fint[4] ."\]_/", $str)){
 
                                               $extension = substr($str, -3);
                                               $cor = "";
@@ -1350,11 +1338,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   <?
                                                      
                                                        }
-                                                   }
-                                              }
-                                           }//if admin
-                          
-                                       }// while fint
+                                            }// handler opendir
+                                       // while fint
 
                                                 mysqli_data_seek($part, 0);
 
@@ -1398,7 +1383,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                       $cor = "#B8005C";
                                                       break;
                                                       case ($extension =='mp3'):
-                                                      $file_extension = "audio-";
+                                                      $file_extension = "audio-";                                     
                                                       $cor = "#FF9900";
                                                       break;
                                                  } ?>
