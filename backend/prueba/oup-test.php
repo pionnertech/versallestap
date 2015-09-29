@@ -3078,14 +3078,14 @@ if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
    var keyGen = true;
 } else {
-    var url = '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id=" + iss_id;
+    var url = '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id=" + iss_id;
 }
 
 var randFiles = "";
 
 uploader =  $(object).pluploadQueue({
         runtimes : 'html5',
-        url : '../backend/upload_for_front.php?'  ,
+        url : '../backend/upload_for_front_test.php?'  ,
         chunk_size : '2mb',
         unique_names : true,
   filters : {
@@ -3105,7 +3105,7 @@ uploader =  $(object).pluploadQueue({
 
                 console.log('[UploadFile]', file);
                 if(object.attr("id") == "up-own" || object.hasClass("front-response")){
-                    up.setOption("url", '../backend/upload_for_front.php?fac_id=' + fac + "&iss_id="+ iss_id);
+                    up.setOption("url", '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id="+ iss_id);
                 } else {
                   
                    up.setOption("url", url);
