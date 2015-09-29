@@ -16,7 +16,7 @@ mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = STSK_ANCIENT_PRO WHERE
 
 $boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE ( USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'sadmin')"));
 $Query_team       = mysqli_query($datos, "SELECT USR_ID, USR_NAME, USR_SURNAME FROM USERS WHERE (USR_FACILITY = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' AND USR_DEPT = '" .  $_SESSION["TxtDept"] . "') ORDER BY USR_ID;");
-$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_TICKET " );
+$Query_subtask    = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_ISS_ID, A.STSK_DESCRIP, B.EST_DESCRIPT, A.STSK_FINISH_DATE, B.EST_COLOR, A.STSK_PROGRESS, A.STSK_LOCK, A.STSK_TICKET, A.STSK_RESP, A.STSK_OVER FROM SUBTASKS A INNER JOIN EST B ON(B.EST_CODE = A.STSK_STATE) WHERE (STSK_TYPE = 0 AND STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY STSK_TICKET " );
 $Query_alerts_ext = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_TYPE = 0 AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . ") GROUP BY STSK_STATE");
 $Query_alerts_int = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND STSK_MAIN_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_TYPE = 1) GROUP BY STSK_STATE");
 $Query_alerts_ii  = mysqli_query($datos, "SELECT COUNT(STSK_ID), STSK_STATE FROM SUBTASKS WHERE (STSK_CHARGE_USR = " . $_SESSION['TxtCode'] . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_LOCK = 1 AND STSK_TYPE = 1) GROUP BY STSK_STATE");
@@ -820,7 +820,71 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             </div>
                                             <div class="file-contents">
                                             <?   
-                                           
+
+if($stsk[10] == 1){
+
+if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
+    
+    $file_extension = "";
+    
+    while (false !== ($archivos = readdir($handler))){
+
+        if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
+
+             $extension = substr($archivos, -3);
+             $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension =='bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      default :
+                                                      $file_extension = "";
+                                                      $cor = "#8E9193";
+                                                      break;
+                                                     case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-";
+                                                      $cor = "#FF9900";
+                                                      break;
+                                                 }
+
+?>
+
+                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($boss) ?>/<? printf($archivos) ?>" class="file-opac" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                                                 <span class="iname"></span>
+                                                </p>
+                                                </a>
+
+<?
+
+        }
+    }
+}
+
+
+
+} else {
+
                          while($steam = mysqli_fetch_row($Query_team)){
 
                                if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/")){
@@ -887,7 +951,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                         closedir($handler);
                                        }
                                     }
-                                }
+                                }// el gran while 
+                         }// eslse
+
+
+
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
