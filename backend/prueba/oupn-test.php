@@ -5373,7 +5373,7 @@ var rex = new RegExp(/\](.*?)\./g);
 
 $.ajax({
      type: "POST",
-     url: "../backend/filepack.php?ticket=" + tt + "&fac=" + fac, 
+     url: "../backend/filepack_test.php?ticket=" + tt + "&fac=" + fac, 
      success: function(data){
 
   var nname_pri = data.split("|"); 
