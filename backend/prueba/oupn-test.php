@@ -3331,8 +3331,8 @@ function changeListener(){
         console.info(previan + " == " + pks[2]);
 
 
-
 /*
+
             if(previan !== pks[2]){
 
                 previan = pks[2];
@@ -3360,24 +3360,10 @@ function changeListener(){
 
              
 
-        /*
-                echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));
-                echo "|" . $trf_str['TRF_USER'];
-                echo "|" . $trf_str['TRF_SUBJECT'];
-                echo "|" . $trf_str['TRF_DESCRIPT'];
-                echo "|" . date('d/m/Y', strtotime( $trf_str['TRF_ING_DATE']));
-                echo "|" . $trf_str['TRF_STSK_SRC_ID'];
-                echo "|" . $total['AVX'];
-                echo "|" . $classText;
-                echo "|" . $trf_str['TRF_STSK_ID']; 
-                echo "|" . $sel['STSK_TYPE'];
-                echo "|" . $sel['STSK_PROGRESS'];
 
-         */
+
 
 */
-
-
       }
 
  })
