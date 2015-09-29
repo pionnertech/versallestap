@@ -592,7 +592,8 @@ $handler = mysqli_query($datos, $matrix);
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                          
+                                          echo "<script>console.info('" . $archivos2 . "    / preg_match_all(/_" . $stsk[1] . "_/, $archivos2')</script>";
+
                                             if(preg_match_all("/_" . $stsk[1] . "_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
@@ -3023,7 +3024,13 @@ console.info(usf);
    }, 1200);
 
    var newf = $(".file-contents").eq(frIn).find("a[href^='" + data[1] +"']").clone();
-   newf.removeClass('file-opac').find('i').unwrap().parent().addClass('file-flex').find('span').remove()
+   newf.removeClass('file-opac').find('i')
+   .unwrap()
+   .parent()
+   .addClass('file-flex')
+   .find('span')
+   .remove();
+
    $(".front-sent").eq(frIn).append(newf);
 
 }
@@ -3078,7 +3085,7 @@ if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
    var keyGen = true;
 } else {
-    var url = '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id=" + iss_id;
+    var url = '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id=" + iss_id+ "&usr=" + usr_id;
 }
 
 var randFiles = "";
@@ -5754,7 +5761,7 @@ $(".send-com").on('click', function(){
 function backToFront(name, usrId, iss){
  console.info(usrId);
   $.ajax({ type: "POST",
-   url: "../backend/backtofront.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
+   url: "../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
    success: function (data){
         console.info(data);
    }
