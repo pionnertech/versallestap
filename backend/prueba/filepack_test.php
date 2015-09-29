@@ -10,14 +10,14 @@ $ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.STSK_ISS_
 
 while($fila = mysqli_fetch_row($ad)){
 
-echo $fila[1];
+//echo $fila[1];
 
     $handle = opendir("/var/www/html/" . $fac . "/" . $fila[1] . "/");
 
         while (false !== ($file = readdir($handle))){
 
         	   while ($as = mysqli_fetch_row($it)){
-                        echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
+                        //echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
 	                     if( preg_match_all("/_\[" . $as[3] . "\]_/", $file) == 1){
                               echo $file . ",";
 	                        }
@@ -37,13 +37,12 @@ $reach      = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.S
 
  while($as = mysqli_fetch_row($reach)){
 
-echo "<br/> " . $as[3];
 
 $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
         while (false !== ($file = readdir($handle))){
 
-               echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
+               //echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
 	                     
                        if( preg_match_all("/_\[" . $as[3] . "\]_/", $file) == 1){
 
