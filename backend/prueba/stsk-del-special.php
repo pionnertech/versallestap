@@ -8,6 +8,7 @@
         $fechaF  = date('Y-m-d h:i:s', strtotime(str_replace("/","-",$_GET['fechaF'])));
         $fac     = $_GET['fac'];
         $keyfile = $_GET['keyfile'];
+        $uso     = "";
 
 
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
