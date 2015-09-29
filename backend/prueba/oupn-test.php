@@ -820,6 +820,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                   break;
                                 }
                                   mysqli_data_seek($Query_team, 0);
+                                  
                                                   ?>
                                             </div>
                                             <div class="file-contents">
