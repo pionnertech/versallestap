@@ -592,7 +592,6 @@ $handler = mysqli_query($datos, $matrix);
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
-                                          echo "<script>console.info('" . $archivos2 . "    / preg_match_all(/_" . $stsk[1] . "_/, $archivos2')</script>";
 
                                             if(preg_match_all("/_" . $stsk[1] . "_/", $archivos2) == 1){
                                      
@@ -822,13 +821,15 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             <?   
 
 if($stsk[10] == 1){
-echo "<script>console.info('INTRANET')</script>";
+
 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
     
     $file_extension = "";
     
     while (false !== ($archivos = readdir($handler))){
+
     echo "<script>console.info('" . $archivos . "    / preg_match_all(/_" . $stsk[1] . "_/, " . $archivos . ")')</script>";
+
         if(preg_match_all("/_" . $stsk[1] . "_/", $archivos) == 1){
 
              $extension = substr($archivos, -3);
@@ -1276,7 +1277,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                           $file_extension = "";
 
                                            while (false !== ($archivos2 = readdir($handler2))){
-echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fint[2] . "' )</script>";
+//echo "<script>console.info('tester : " . $archivos2 . "' + ' / ' + '" . preg_match_all("/_\[" . $fint[2]. "\]_/", $archivos2) . "' + '/' + '" . $fint[2] . "' )</script>";
                                          if(preg_match_all("/_\[" . $fint[2] . "\]_/", $archivos2) == 1){
 
                                              $extension = substr($archivos2, -3);
