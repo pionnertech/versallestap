@@ -1203,7 +1203,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             echo "<script>console.info('=========================================================================================================')</script>";
 
                       while($fint = mysqli_fetch_row($part)){
- echo "<script>console.info('subtasks presentes : " . $fint[0] . "')</script>";
+
 
                           if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/")) {
                                   
@@ -1293,7 +1293,8 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                               if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
-
+                                 while (false !== ($str = readdir($handler2))){
+                                         
                                                if (preg_match_all("/_" . $fint[4] ."_/", $str)){
 
                                               $extension = substr($str, -3);
@@ -1344,6 +1345,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   <?
                                                      
                                                        }
+                                                   } //handler readdir
                                             }// handler opendir
                                        // while fint
 
