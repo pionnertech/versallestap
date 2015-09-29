@@ -3317,7 +3317,7 @@ var iconShow = "../" + fac + "/img/pro.jpg";
 
 setInterval(function(){
     changeListener();
-}, 6000);
+}, 3000);
 
 
 function changeListener(){
@@ -3332,7 +3332,9 @@ function changeListener(){
             if(previan !== pks[2]){
                 
                  previan = pks[2];
-              
+                
+                if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
+
                  showAlert(pks[2], "pro", pks[0]);
 
                  indice = $("#int-table input[value=" + pks[8] + "]").index(".hi-int-id");
@@ -3356,7 +3358,7 @@ function changeListener(){
 
                           }
 
-
+                    }
              }
 
         }
