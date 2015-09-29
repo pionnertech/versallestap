@@ -825,19 +825,12 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             <div class="file-contents">
                                             <?   
                                            
-                         while($steam = mysqli_fetch_row($Query_team)){
-
-                               if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/")){
-
-                                  continue; 
-
-                                    } else {
-
-                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $steam[0] . "_in/" )){
+                                if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
                                     
                                           $file_extension = "";
 
                                         while (false !== ($archivos = readdir($handler))){
+                              echo "<script>console.info('la id es : " . $stsk[0] . "')</script>";
                               
                                          if(preg_match_all("/_" . $stsk[0] . "_/", $archivos) == 1){
                                              
@@ -882,7 +875,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                           ?>
 
-                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>_in/<? printf($archivos) ?>" class="file-opac" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
+                         <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($steam[0]) ?>/<? printf($archivos) ?>" class="file-opac" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
                                                  <span class="iname"></span>
                                                 </p>
                                                 </a>
@@ -890,8 +883,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                   } 
                                         closedir($handler);
                                        }
-                                    }
-                                }
+                                    
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
