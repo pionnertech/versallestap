@@ -3329,7 +3329,7 @@ function changeListener(){
         pks = data.split("|");
 
         console.info(previan + " == " + pks[2]);
-
+        console.info(previan == pks[2]);
 
 
 /*
