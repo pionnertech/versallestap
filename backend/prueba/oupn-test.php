@@ -1294,7 +1294,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                               if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" )){
 
                                  while (false !== ($str = readdir($handler2))){
-                             echo "<script>console.info('" . $str . " / " . . "preg_match_all(/_" . $fint[4] . "_/, " . $str . ")')</script>";
+                             echo "<script>console.info('" . $str . " / preg_match_all(/_" . $fint[4] . "_/, " . $str . ")')</script>";
                                                if (preg_match_all("/_" . $fint[4] ."_/", $str)){
 
                                               $extension = substr($str, -3);
