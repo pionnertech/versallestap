@@ -817,7 +817,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
-                                            <div class="file-contents">
+                                            <div class="file-contents" data-ex="treend">
                                             <?   
 
 if($stsk[10] == 1){
@@ -869,7 +869,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-                                                 
+
 
 ?>
 
