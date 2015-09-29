@@ -5469,7 +5469,7 @@ function upgradeOwn(stskId, issId, percent, descript, subject, ticket){
 var ind = (parseInt($("#current-task").val())/2);
 var date = new Date();
 
-console.info("se esta enviado lo siguiente : ../backend/upgrade-own.php?stsk=" + stskId + 
+console.info("se esta enviado lo siguiente : ../backend/upgrade-own-test.php?stsk=" + stskId + 
       "&iss="+ issId + 
       "&percent=" + percent + 
       "&subject=" + subject+ 
