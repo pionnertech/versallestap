@@ -1179,8 +1179,10 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                                     <div class="coll-int" style="width: 100%">
 
              <?  
-             $pre_Ruan = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' ) ;"); // progreso de los gomas...
-             $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 1 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY USR_RANGE;"); 
+
+             
+             $pre_Ruan = mysqli_query($datos, "SELECT A.STSK_ID FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 0 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " AND USR_RANGE = 'back-user' ) ;"); // progreso de los gomas...
+             $part = mysqli_query($datos, "SELECT A.STSK_CHARGE_USR, CONCAT(B.USR_NAME, ' ', B.USR_SURNAME), A.STSK_ID, A.STSK_PROGRESS, A.STSK_ISS_ID, B.USR_RANGE, A.STSK_TICKET FROM SUBTASKS A INNER JOIN USERS B ON(B.USR_ID = A.STSK_CHARGE_USR) WHERE (STSK_TYPE= 0 AND STSK_TICKET = '" . $fila5[12] . "' AND STSK_FAC_CODE = " . $_SESSION['TxtFacility'] . " ) ORDER BY USR_RANGE;"); 
                                while($prt = mysqli_fetch_row($part)){
                                                              
                                                              if($prt[5] == 'admin'){   
@@ -3333,7 +3335,7 @@ function changeListener(){
                 
                  previan = pks[2];
                 
-                if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
+                //if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
 
                  showAlert(pks[2], "pro", pks[0]);
 
@@ -3358,7 +3360,7 @@ function changeListener(){
 
                           }
 
-                    }
+
              }
 
         }
