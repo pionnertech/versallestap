@@ -3317,10 +3317,11 @@ var iconShow = "../" + fac + "/img/pro.jpg";
 
 setInterval(function(){
     changeListener();
-}, 5000);
+}, 6000);
 
 
 function changeListener(){
+
  $.ajax({
       type: "POST",
       url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
