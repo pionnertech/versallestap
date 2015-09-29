@@ -822,7 +822,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             <?   
 
 if($stsk[10] == 1){
-
+echo "<script>console.info('INTRANET')</script>";
 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
     
     $file_extension = "";
