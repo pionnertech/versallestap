@@ -1440,6 +1440,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                           echo "<script>console.info('" . $fila5[11] . "')</script>";
 $tr_ii = mysqli_query($datos, "SELECT TRF_USER, TRF_STSK_ID, TRF_STSK_SRC_ID, TRF_SUBJECT, TRF_DESCRIPT, TRF_ING_DATE FROM TRAFFIC WHERE (TRF_STSK_SRC_ID = " . $fila5[0] . " AND TRF_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
 
+
                                  while($fut = mysqli_fetch_row($tr_ii)){
                                                 ?>
                                                         <tr class="trf-int-usr ust<? echo $fut[0] ?>" style="display: none">
