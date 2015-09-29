@@ -820,6 +820,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             <div class="file-contents" data-ex="treend">
                                             <?   
 
+
 if($stsk[10] == 1){
 
 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
