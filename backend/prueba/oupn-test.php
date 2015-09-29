@@ -3442,24 +3442,7 @@ function changeListener(){
 
 
 
-if(typeof(EventSource) !== "undefined") {
 
-    var source       = new EventSource("../backend/sse-event-new.php?usr=" + mainuser);
-    source.onmessage = function(event) {
-
-       var eventMessage = event.data.split('\n');
-       if (eventMessage[0] !== previuosData){
-        showAlert(eventMessage[0], 'req');
-          inputTask(eventMessage[0], eventMessage[1], eventMessage[3], eventMessage[4], eventMessage[2], eventMessage[5] , eventMessage[6], eventMessage[7], eventMessage[8], eventMessage[9]);
-        newthum(0);
-        previuosData = eventMessage[0];
-    } 
-}
-} else {
-
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
-}
 
 
 function inputTask(stsk_descript, stsk, iss, ctz, desc, ctz_tel, ctz_address, date_fin, ctz_geoloc, ticket){
