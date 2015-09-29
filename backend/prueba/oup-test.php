@@ -828,7 +828,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
     
     while (false !== ($archivos = readdir($handler))){
 
-    echo "<script>console.info('" . $archivos . "    / preg_match_all(/_" . $stsk[1] . "_/, " . $archivos . ")')</script>";
+    echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
 
         if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) == 1){
 
