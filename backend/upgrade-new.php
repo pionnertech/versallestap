@@ -84,7 +84,7 @@ $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PRO
       }
 
       if((int)$avg['VX'] > 99.5){
-        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . ")");
+        mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE (STSK_CHARGE_USR = STSK_MAIN_USR AND STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . " AND STSK_TICKET = '" . $ticket . "')");
       }
 
       $test = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(B.STSK_CHARGE_USR = A.USR_ID ) WHERE STSK_ID = " . $min['MIN'] ));

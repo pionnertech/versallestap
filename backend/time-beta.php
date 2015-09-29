@@ -15,7 +15,6 @@ if(mysqli_num_rows($first) < 1){
 
     echo "0|0|0|0|0|0|0|0|0|0|0"; 
     exit;
-
 } 
 
 //si encuentra, veamos de que se trata., de quien para quien...
