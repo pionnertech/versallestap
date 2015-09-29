@@ -1199,14 +1199,18 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                              <div class="wrap-int-files" >
                                <div class="int-files-to">
             <?    
+
+            echo "<script>console.info('=========================================================================================================')</script>";
+
                       while($fint = mysqli_fetch_row($part)){
+ echo "<script>console.info('subtasks presentes : " . $fint[0] . "')</script>";
 
                           if(!is_dir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/")) {
                                   
                                     mkdir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/", 0775, true); 
                               } 
 
-                              echo "<script>console.info('subtasks presentes : " . $fint[0] . "')</script>";
+
                            
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $fint[0] . "/" )){
                                          
