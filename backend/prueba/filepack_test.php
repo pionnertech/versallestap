@@ -14,7 +14,7 @@ while($fila = mysqli_fetch_row($ad)){
         while (false !== ($file = readdir($handle))){
 
         	   while ($as = mysqli_fetch_row($it)){
-                        // echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
+                        echo $file . "  - -- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ")";
 	                     if( preg_match_all("/_\[" . $as[3] . "\]_/", $file) == 1){
                               echo $file . ",";
 	                        }
@@ -38,7 +38,7 @@ $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
         while (false !== ($file = readdir($handle))){
 
-              // echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
+               echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $as[0] . "\]_/," . $file . ") <br />";
 	                     
                        if( preg_match_all("/_\[" . $as[3] . "\]_/", $file) == 1){
 
