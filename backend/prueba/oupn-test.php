@@ -3336,7 +3336,7 @@ function changeListener(){
                 
                  previan = pks[2];
                 
-                //if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
+                if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
 
                  showAlert(pks[2], "pro", pks[0]);
 
