@@ -1343,13 +1343,13 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
 
                                                 mysqli_data_seek($part, 0);
 
-                                   $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "_alt/" );
+                                   $s_files = scandir("../" . $_SESSION['TxtFacility'] . "/" . $_SESSION['TxtCode'] . "/" );
                     
                                     foreach ($s_files as $fstr) {
                                        echo "<script>console.info('archivo encontrado : " . $fstr . "')</script>";
                                        while($sf = mysqli_fetch_row($part)){
                                        
-                                             if (preg_match ("/_\[" . $sf[2] ."\]_/", $fstr, $m)){
+                                             if (preg_match ("/_\[" . $sf[4] ."\]_/", $fstr, $m)){
                                              $extension = substr($fstr, -3);
                                               $cor = "";
 
