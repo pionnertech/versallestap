@@ -3331,9 +3331,6 @@ function changeListener(){
         console.info(previan + " == " + pks[2]);
         console.info(previan == pks[2]);
 
-
-/*
-
             if(previan !== pks[2]){
 
                 previan = pks[2];
@@ -3359,15 +3356,9 @@ function changeListener(){
 
              }
 
-             
+        }
 
-
-
-
-*/
-      }
-
- })
+   })
 }
 
 
