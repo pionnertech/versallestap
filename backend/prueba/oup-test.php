@@ -829,11 +829,10 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
     while (false !== ($archivos = readdir($handler))){
 
-    echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
+   // echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
 
         if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) == 1){
 
-            
              $extension = substr($archivos, -3);
              $cor = "";
                                                  switch (true) {
@@ -870,6 +869,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
+                                                 
 
 ?>
 
@@ -882,6 +882,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
         }
     }
+    closedir($handler);
 }
 
 
@@ -956,9 +957,6 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                     }
                                 }// el gran while 
                          }// eslse
-
-
-
                                   mysqli_data_seek($Query_team, 0);
                                                   ?>
                                             </div>
