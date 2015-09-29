@@ -77,7 +77,7 @@ if(!mysqli_query($datos, $handle_stsk)){
 
 } else {
 
-$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = 'EX0000" . $ticket['TK'] . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
+$uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = 'EX0000" . $ticket['TK'] . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
 
@@ -89,7 +89,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID FROM USERS A INNER JOI
 
               while($uteams = mysqli_fetch_row($uteam)){
 
-                if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  "/var/www/html/" . $fac . "/" . $uteams[0] . "/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension)){
+                if(copy("/var/www/html/" . $fac . "/_tmp/" . $files ,  "/var/www/html/" . $fac . "/" . $uteams[0] . "/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_" . $uteams[2] . "_." . $extension)){
                         //$echo_files .=  $dir . $uteams[0] . "_alt/" . basename(str_replace("_[" . $keyfile . "]_" , "", $files), "." . strtolower($extension)) . "_[" . $uteams[1] . "]_." . $extension; 
                   } 
               }
