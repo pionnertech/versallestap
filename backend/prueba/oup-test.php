@@ -646,13 +646,14 @@ $handler = mysqli_query($datos, $matrix);
                                       <?
 
                                     if($stsk[10] == 1){
-                            echo "<script>console.info('es del jefe')</script>";
+                           
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boos['BOSS'] . "/" )){
 
                                           $file_extension2 = "";
                                         
                                            while (false !== ($archivos2 = readdir($handler2))){
                                           
+                                          echo "<script>console.info('archivo :" . $archivos2 . " / value : " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) . "')</script>";
                                             if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
