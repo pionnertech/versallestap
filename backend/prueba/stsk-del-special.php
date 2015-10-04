@@ -108,7 +108,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM US
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . $last;
+ echo (int)$last . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . $usrs;
 
 
 }
