@@ -3316,7 +3316,7 @@ function changeListener(){
       type: "POST",
       url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
       success : function (data){
-        console.info(data);
+
         pks = data.split("|");
 
             if(previan !== pks[2]){
