@@ -792,8 +792,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         <? 
         } else if($fila_spec[4] == 2) { 
          continue;
-
-
         } else {
           if($fila_spec[5] == $_SESSION['TxtCode']){
             continue; 
