@@ -310,8 +310,9 @@ $handler = mysqli_query($datos, $matrix);
                                                     </div>
                                                 </div>
                                                <? 
-                                               if($i < $person_count-1){
+                                               if($i < $person_count){
                                                       $fila_per2 = mysqli_fetch_row($Query_team);
+                                                      if($fila_per2[1] != ""){
                                                ?>
                                                 <div class="span6">
                                                     <div class="media user">
@@ -388,7 +389,8 @@ $handler = mysqli_query($datos, $matrix);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <? } ?>
+                                                <? }
+                                                }//ultimo ?>
                                            </div>
                                             <? }
                                              mysqli_data_seek($Query_team, 0);
