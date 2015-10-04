@@ -3143,8 +3143,6 @@ console.info("../backend/stsk-del-special.php?muser=" + $("#muser").val() +
             var titles = result[result.length-1].split(",");
            }
 
-           console.info("titles : " + titles);
-           console.info("users :" + user );
 
                      if($("#back-own").data("val") !== 0 || $("#back-own").data("val") !== undefined){
 
@@ -3337,7 +3335,7 @@ function changeListener(){
 
                  showAlert(pks[2], "pro", pks[0]);
 
-                 indice = $("#int-table input[value=" + pks[8] + "]").index(".hi-int-id");
+                 indice = $("#int-table input[value=" + pks[5] + "]").index(".hi-int-id");
 
                  console.info(indice);
 
@@ -4370,6 +4368,7 @@ i2.onclick = function(){
  mode = "delegate";
  var indice = $(this).parent().index(".int-forward");
  var ids    = $("#int-table > tbody .task").length -1;
+
 console.info(ids);
 console.info(indice);
 stsk_send = ids;
