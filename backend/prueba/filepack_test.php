@@ -38,7 +38,7 @@ $reach      = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.S
  while($as = mysqli_fetch_row($reach)){
 
 
-$handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "_alt/");
+$handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
         while (false !== ($file = readdir($handle))){
 
