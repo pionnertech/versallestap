@@ -336,6 +336,7 @@ $handler = mysqli_query($datos, $matrix);
                                                             </div>
                                                         </div>
                                                         <?
+                                                      echo "<script>console.info(' ids para ver que es lo que sucede :" . $fila_per2[0] . "')</script>";
                                                        $matrix2= "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
                                                                  "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per2[0] . ")) * 100) AS percentage  " .
                                                                  "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per2[0] . ")  " .
