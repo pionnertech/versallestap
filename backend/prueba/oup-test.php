@@ -830,7 +830,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
     while (false !== ($archivos = readdir($handler))){
 
-   echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
+   //echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
 
         if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) == 1){
 
@@ -870,7 +870,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-   echo "<script>console.log('after switch: " . $archivos. "')</script>";
+   echo  '<a href="../' . printf($_SESSION['TxtFacility']) . '/'.  printf($boss['BOSS']) .'/' .  printf($archivos) . '" class="file-opac" download><p class="ifile" title="' . printf($archivos) . '"><i class="fa fa-file-' . printf($file_extension) . 'o fa-2x" style="color:' . printf($cor) .'"></i><span class="iname"></span></p></a>';
 
 ?>
 
