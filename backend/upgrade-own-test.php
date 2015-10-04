@@ -26,7 +26,7 @@ $trf = "INSERT INTO TRAFFIC_II (TII_STSK_ID, TII_STSK_SRC_ID , TII_DESCRIPT, TII
 $trf .= "(" . $stsk .", " . (int)$stsk-1 . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";
 } else {
 $trf = "INSERT INTO TRAFFIC (TRF_STSK_ID, TRF_STSK_SRC_ID , TRF_DESCRIPT, TRF_SUBJECT , TRF_FAC_CODE,  TRF_USER) VALUES ";
-$trf .= "(" . $stsk .", " . $stsk . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";	
+$trf .= "(" . $stsk .", " . $iss . ", '" . $descript . "', '" . $subject . "', " . $fac .", " . $muser . ")";	
 }
 
 
