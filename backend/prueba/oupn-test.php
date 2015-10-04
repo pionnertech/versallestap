@@ -348,8 +348,8 @@ $handler = mysqli_query($datos, $matrix);
                                                             <div class="wrap-charts wc">
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
                                                              <?
-                                                             echo "<script>console.info('" . $handler2 . "')</script>";
-                                                     
+                                                         
+                                                            if(!is_bool($handler2)){
                                                               while( $uI2 = mysqli_fetch_row($handler2)) {
                                                                 ?>
                                                                     <li>
@@ -381,7 +381,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                         </div>
                                                                     </li>
                                                                 <? } 
-                                                                  
+                                                                  }
                                                                 ?>
                                                                 </ul>
                                                             </div>
