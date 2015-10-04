@@ -26,6 +26,12 @@ $last = mysqli_insert_id($datos);
 
 //insertando el subtask ...
 $handle_stsk = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP, STSK_CHARGE_USR, STSK_STATE, STSK_FINISH_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_LOCK, STSK_TYPE, STSK_TICKET, STSK_RESP, STSK_OVER) VALUES ";
+$first_set =  " ( " . $last . ", '" . $subject ."' , '" . $descript. "', " . $muser . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", NULL, 0, 1, 0, 'EX0000" . $ticket['TK'] . "', 2, 1) ";
+
+if(!mysqli_query($datos, $handle_stsk . $first_set)){
+  echo mysqli_error($datos);
+  exit;
+}
 
 switch ($usrs) {
   case 'Jefaturas':
@@ -77,6 +83,7 @@ if(!mysqli_query($datos, $handle_stsk)){
 
 } else {
 
+
 $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR AND B.STSK_TICKET = 'EX0000" . $ticket['TK'] . "') WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_TYPE= 0 AND STSK_MAIN_USR != STSK_CHARGE_USR AND STSK_MAIN_USR = " . $muser . ")");
  
     if($hdir = opendir("/var/www/html/" . $fac . "/_tmp/")) {
@@ -107,7 +114,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM US
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . rtrim($uso,  ",");
+ echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . ;
 
 
 }
