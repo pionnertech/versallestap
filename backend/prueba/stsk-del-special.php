@@ -11,6 +11,7 @@
         $uso     = "";
 
 
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //get ticket 
 $ticket = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(COUNT(ISS_ID)) AS TK FROM ISSUES WHERE ISS_FAC_CODE = " . $fac  ));
