@@ -336,17 +336,20 @@ $handler = mysqli_query($datos, $matrix);
                                                             </div>
                                                         </div>
                                                         <?
-                                                      
+
                                                        $matrix2= "SELECT COUNT(A.STSK_ID),  B.EST_COLOR , B.EST_DESCRIPT , " .
                                                                  "ROUND((COUNT(A.STSK_ID)/(SELECT count(STSK_ID) FROM SUBTASKS WHERE STSK_CHARGE_USR = " . $fila_per2[0] . ")) * 100) AS percentage  " .
                                                                  "FROM SUBTASKS A RIGHT JOIN EST B ON(B.EST_CODE = A.STSK_STATE AND  STSK_CHARGE_USR = " . $fila_per2[0] . ")  " .
                                                                  "GROUP BY B.EST_DESCRIPT";
                                                        $handler2 = mysqli_query($datos, $matrix2);
+
                                                         ?>
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
-                                                             <? while( $uI2 = mysqli_fetch_row($handler2)) {?>
+                                                             <? while( $uI2 = mysqli_fetch_row($handler2)) {
+                                                                    
+                                                                ?>
                                                                     <li>
                                                                         <p>
                                                                          <strong>Compromisos <? printf($uI2[2]) ?></strong> <span class="pull-right small muted"><? printf($uI2[0]) ?> / <? printf($uI2[3]) ?>%</span>
@@ -375,7 +378,9 @@ $handler = mysqli_query($datos, $matrix);
                                                                             </div>
                                                                         </div>
                                                                     </li>
-                                                                <? } ?>
+                                                                <? } 
+                                                                  
+                                                                ?>
                                                                 </ul>
                                                             </div>
                                                         </div>
