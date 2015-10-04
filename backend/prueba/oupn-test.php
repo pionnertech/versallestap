@@ -3325,6 +3325,7 @@ function changeListener(){
       url: "../backend/time-new.php?usr="+mainuser+"&fac="+fac,
       success : function (data){
 
+
         pks = data.split("|");
 
             if(previan !== pks[2]){
