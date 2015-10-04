@@ -780,7 +780,7 @@ echo "<script>console.info('" . $archivos2 . "')</script>";
 $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
  
  while($fila_spec = mysqli_fetch_row($spec_tem)){ 
-
+  echo "<script>console.info('file_spec = " .$file_spec[4] . "')</script>";
      if($fila_spec[4] == 1 ){
       ?>
 
@@ -794,7 +794,6 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
           if($fila_spec[5] == $_SESSION['TxtCode']){
             continue; 
           } else if ( $fila_spec[4] == 2) {
-
           ?>
         
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
