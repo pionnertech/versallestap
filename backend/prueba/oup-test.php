@@ -790,10 +790,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
         <? 
-        } else { 
+        } else if($fila_spec[4] == 2) { 
+         continue;
+
+
+        } else {
           if($fila_spec[5] == $_SESSION['TxtCode']){
             continue; 
-          } else if ( $fila_spec[4] == 2) {
+          } else {
           ?>
         
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
