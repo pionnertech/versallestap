@@ -349,7 +349,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
                                                              <?
                                                              echo "<script>console.info('" . $handler2 . "')</script>";
-                                                             if($handler2){
+                                                     
                                                               while( $uI2 = mysqli_fetch_row($handler2)) {
                                                                 ?>
                                                                     <li>
@@ -381,7 +381,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                         </div>
                                                                     </li>
                                                                 <? } 
-                                                                  }
+                                                                  
                                                                 ?>
                                                                 </ul>
                                                             </div>
