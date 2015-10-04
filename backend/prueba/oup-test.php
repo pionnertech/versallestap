@@ -644,6 +644,68 @@ $handler = mysqli_query($datos, $matrix);
                                       </div>
                                       <div class="front-sent">
                                       <?
+
+                                    if($stsk[10] == 1){
+
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boos['BOSS'] . "/" )){
+
+                                          $file_extension2 = "";
+                                        
+                                           while (false !== ($archivos2 = readdir($handler2))){
+                                          
+                                            if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) == 1){
+                                     
+                                                $extension = substr($archivos2, -3);
+                                          
+                                                $cor = "";
+                                                 switch (true) {
+                                                      case ($extension =='pdf'):
+                                                      $file_extension = "pdf-";
+                                                      $cor = "#FA2E2E";
+                                                      break;
+                                                      case ($extension =='xls' || $extension =='lsx'):
+                                                      $file_extension = "excel-";
+                                                      $cor = "#44D933";
+                                                      break;
+                                                      case ($extension =='doc' || $extension =='ocx' ):
+                                                      $file_extension = 'word-';
+                                                      $cor = "#5F6FE0";
+                                                      break;
+                                                      case ($extension == 'zip'):
+                                                      $file_extension = "archive-";
+                                                      $cor = "#DDCE62";
+                                                      break;
+                                                      case ($extension == "png" || $extension =='jpg' || $extension == 'bmp'):
+                                                      $file_extension = "picture-";
+                                                      $cor = "#338B93";
+                                                      break;
+                                                      case ($extension == "txt"):
+                                                      break;
+                                                      case ($extension =='ppt' || $extension =='ptx' ):
+                                                      $file_extension = "powerpoint-";
+                                                      $cor = "#B8005C";
+                                                      break;
+                                                      case ($extension =='mp3'):
+                                                      $file_extension = "audio-";
+                                                      $cor = "#FF9900";
+                                                      break;
+                                                 }
+
+                                              if(strlen($archivos2) > 4){
+                                          ?>
+  <a href="../<? echo $_SESSION['TxtFacility'] ?>/reply/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
+                                                  <? 
+                                                  }
+                                                }
+                                              } // while false
+                                            }
+                                        closedir($handler2);
+
+
+
+                                    } else {
+
+
                                         if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/reply/" )){
 
                                           $file_extension2 = "";
@@ -697,7 +759,7 @@ $handler = mysqli_query($datos, $matrix);
                                               } // while false
                                             }
                                         closedir($handler2);
-                                        
+                                        } // else
                                       ?>
                                       </div>
                                         </pre>
@@ -871,10 +933,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       break;
                                                  }
 
-
-
-  // echo  '<a data-ttr="urre" href="../' . $_SESSION['TxtFacility'] . '/'.  $boss['BOSS'].'/' .  $archivos . '" class="file-opac" download><p class="ifile" title="' . $archivos . '"><i class="fa fa-file-' . $file_extension . 'o fa-2x" style="color:' . $cor .'"></i><span class="iname"></span></p></a>';
-echo "<script>console.info('las vueltas de  : " . $archivos . "')</script>";
+  // echo '<a data-ttr="urre" href="../' . $_SESSION['TxtFacility'] . '/'.  $boss['BOSS'].'/' .  $archivos . '" class="file-opac" download><p class="ifile" title="' . $archivos . '"><i class="fa fa-file-' . $file_extension . 'o fa-2x" style="color:' . $cor .'"></i><span class="iname"></span></p></a>';
 ?>
 
                          <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? printf($boss['BOSS']) ?>/<? printf($archivos) ?>" class="file-opac" download><p class="ifile" title="<? printf($archivos) ?>"><i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
