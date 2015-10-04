@@ -26,14 +26,6 @@ $last = mysqli_insert_id($datos);
 
 //insertando el subtask ...
 $handle_stsk = "INSERT INTO SUBTASKS (STSK_ISS_ID, STSK_SUBJECT, STSK_DESCRIP, STSK_CHARGE_USR, STSK_STATE, STSK_FINISH_DATE, STSK_MAIN_USR, STSK_FAC_CODE, STSK_PROGRESS, STSK_ANCIENT_PRO, STSK_LOCK, STSK_TYPE, STSK_TICKET, STSK_RESP, STSK_OVER) VALUES ";
-$first_set =  " ( " . $last . ", '" . $subject ."' , '" . $descript. "', " . $muser . ", 2, '" . $fechaF. "', " . $muser . " , " . $fac . ", NULL, 0, 1, 0, 'EX0000" . $ticket['TK'] . "', 2, 1) ";
-
-if(!mysqli_query($datos, $handle_stsk . $first_set)){
-  echo mysqli_error($datos);
-  exit;
-}
-
-$another_new = mysqli_insert_id($datos);
 
 switch ($usrs) {
   case 'Jefaturas':
@@ -116,7 +108,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM US
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . $another_new;
+ echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . $last;
 
 
 }
