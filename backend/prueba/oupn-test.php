@@ -758,7 +758,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
   }
     }  ?>
                                             </div>
-                                      <div class="g-wrap"> <!--for  internal files and graphics-->
+                                      <div class="g-wrap"> <!--for  internal files and graphics
                                             <div class="file-sent" style="width: 80%;display: inline-block; vertical-align: top;">
                                              <?   
                                            
@@ -1210,7 +1210,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                <div class="int-files-to">
             <?    
 
-            echo "<script>console.info('=========================================================================================================')</script>";
+           // echo "<script>console.info('=========================================================================================================')</script>";
 
                       while($fint = mysqli_fetch_row($part)){
 
@@ -1760,7 +1760,7 @@ $tr_ii = mysqli_query($datos, "SELECT TRF_USER, TRF_STSK_ID, TRF_STSK_SRC_ID, TR
                                     <button class="btn btn-info" id="upgrade-own" style="margin: 2em 0; position: relative; left:40%">Subir Progreso</button>
                                 </div>
                             </div>
-                       </div>
+                           </div>
                             <!--/.module-body-->
                         </div>
                         <!--/.module-->
