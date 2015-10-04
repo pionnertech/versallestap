@@ -870,7 +870,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-
+   echo "<script>console.log('after switch: " . $archivos. "')</script>";
 
 ?>
 
@@ -883,7 +883,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
         }
     }
-    closedir($handler);
+   // closedir($handler);
 }
 
 
