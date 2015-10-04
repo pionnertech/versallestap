@@ -33,6 +33,8 @@ if(!mysqli_query($datos, $handle_stsk . $first_set)){
   exit;
 }
 
+$another_new = mysqli_insert_id($datos);
+
 switch ($usrs) {
   case 'Jefaturas':
 
@@ -114,7 +116,7 @@ $uteam = mysqli_query($datos, "SELECT A.USR_ID, B.STSK_ID, B.STSK_ISS_ID FROM US
     
     closedir($hdir);
 
- echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . ;
+ echo (int)$number . "|" . $outcome . "|EX0000" . $ticket['TK'] . "|" . $another_new;
 
 
 }
