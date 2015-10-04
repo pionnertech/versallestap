@@ -870,7 +870,8 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                       $cor = "#FF9900";
                                                       break;
                                                  }
-   echo  '<a href="../' . printf($_SESSION['TxtFacility']) . '/'.  printf($boss['BOSS']) .'/' .  printf($archivos) . '" class="file-opac" download><p class="ifile" title="' . printf($archivos) . '"><i class="fa fa-file-' . printf($file_extension) . 'o fa-2x" style="color:' . printf($cor) .'"></i><span class="iname"></span></p></a>';
+
+   echo  '<a data-ttr="urre" href="../' . printf($_SESSION['TxtFacility']) . '/'.  printf($boss['BOSS']) .'/' .  printf($archivos) . '" class="file-opac" download><p class="ifile" title="' . printf($archivos) . '"><i class="fa fa-file-' . printf($file_extension) . 'o fa-2x" style="color:' . printf($cor) .'"></i><span class="iname"></span></p></a>';
 
 ?>
 
