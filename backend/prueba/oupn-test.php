@@ -310,7 +310,7 @@ $handler = mysqli_query($datos, $matrix);
                                                     </div>
                                                 </div>
                                                <? 
-                                               if($i < $person_count){
+                                               if($i < $person_count-1){
                                                       $fila_per2 = mysqli_fetch_row($Query_team);
                                                ?>
                                                 <div class="span6">
@@ -349,7 +349,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
                                                              <?
                                                          
-                                                            if(!is_bool($handler2)){
+                                                            
                                                               while( $uI2 = mysqli_fetch_row($handler2)) {
                                                                 ?>
                                                                     <li>
@@ -381,7 +381,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                         </div>
                                                                     </li>
                                                                 <? } 
-                                                                  }
+                                                                  
                                                                 ?>
                                                                 </ul>
                                                             </div>
