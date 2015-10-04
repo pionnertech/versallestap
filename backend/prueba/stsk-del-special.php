@@ -64,7 +64,7 @@ switch ($usrs) {
         $handle_stsk .= " ( " . $last . ", '" . $subject ."' , '" . $descript . "', " . $ui['ID'] . ", 2 , '" . $fechaF. "', " . $muser . " , " . $fac . ", NULL, 0, 1, 0, 'EX0000" . $ticket['TK'] . "', 2 , 1) ";
         $outcome .= $ui['ID'] . "|";
   
-        if($i < count($usrs)-1 ){
+        if($i < count($uso)-1 ){
           $handle_stsk .= ", ";
         }
 
