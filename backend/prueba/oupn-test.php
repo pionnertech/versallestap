@@ -3337,7 +3337,7 @@ function changeListener(){
                  showAlert(pks[2], "pro", pks[0]);
 
                  indice = $("#int-table input[value=" + pks[5] + "]").index(".hi-int-id");
-
+                  console.info(pks[5]);
                  console.info(indice);
 
                     updateProgress(pks[2],pks[3],pks[6],pks[4],pks[1],pks[0],pks[5],1,"",pks[10], indice);
