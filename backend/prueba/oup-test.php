@@ -5633,6 +5633,7 @@ console.info("se esta enviado lo siguiente : ../backend/upgrade-own-test.php?sts
       "&descript=" + descript +
       "&muser=" + $("#muser").val() +
       "&ticket=" + ticket +
+      "&type=0" +
       "&fac=" + fac,
       success: function (data){
         

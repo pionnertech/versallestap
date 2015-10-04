@@ -30,6 +30,7 @@ $trf .= "(" . $stsk .", " . $iss . ", '" . $descript . "', '" . $subject . "', "
 }
 
 
+
 if(!mysqli_query($datos, $trf)){
 	echo mysqli_error($datos);
 }
