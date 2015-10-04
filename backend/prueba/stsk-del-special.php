@@ -55,6 +55,7 @@ switch ($usrs) {
   
   default:
 
+
   $uso = explode(",", $usrs);
 
   for($i=0 ;$i< count($uso); $i++){
