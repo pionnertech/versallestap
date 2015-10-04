@@ -781,7 +781,10 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
  
  while($fila_spec = mysqli_fetch_row($spec_tem)){ 
 
-     if($fila_spec[4] == 1 ){ ?>
+     if($fila_spec[4] == 1 ){
+    echo "<script>console.info('several : " . $fila_spec[5] . "')</script>";
+      ?>
+
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>_opt.jpg" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
