@@ -347,7 +347,9 @@ $handler = mysqli_query($datos, $matrix);
                                                         <div class="media">
                                                             <div class="wrap-charts wc">
                                                                 <ul class="widget widget-usage unstyled progressDisplay">
-                                                             <? while( $uI2 = mysqli_fetch_row($handler2)) {
+                                                             <?
+                                                             if($handler){
+                                                              while( $uI2 = mysqli_fetch_row($handler2)) {
                                                                     
                                                                 ?>
                                                                     <li>
@@ -379,7 +381,7 @@ $handler = mysqli_query($datos, $matrix);
                                                                         </div>
                                                                     </li>
                                                                 <? } 
-                                                                  
+                                                                  }
                                                                 ?>
                                                                 </ul>
                                                             </div>
