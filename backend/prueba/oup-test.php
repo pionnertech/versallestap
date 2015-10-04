@@ -691,9 +691,10 @@ $handler = mysqli_query($datos, $matrix);
                                                       break;
                                                  }
 
+echo "<script>console.info('" . $archivos . "')</script>";
                                               if(strlen($archivos2) > 4){
                                           ?>
-  <a href="../<? echo $_SESSION['TxtFacility'] ?>/reply/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
+  <a href="../<? echo $_SESSION['TxtFacility'] ?>/<? echo $boss['BOSS'] ?>/<? echo $archivos2 ?>" download title="<? printf($archivos2) ?>" > <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x"  style="color: <? printf($cor) ?> "></i></a>
                                                   <? 
                                                   }
                                                 }
