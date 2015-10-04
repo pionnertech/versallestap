@@ -647,7 +647,7 @@ $handler = mysqli_query($datos, $matrix);
 
                                     if($stsk[10] == 1){
                            
-                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boos['BOSS'] . "/" )){
+                                        if($handler2 = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
 
                                           $file_extension2 = "";
                                         
