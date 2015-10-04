@@ -16,7 +16,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 $query = "UPDATE SUBTASKS SET STSK_CHARGE_USR = " . $muser ." WHERE STSK_ID = " . $stsk . ";";
 
 $query1= "UPDATE SUBTASKS SET  STSK_PROGRESS = " . $percent ." WHERE STSK_ID = " . $stsk . ";";
-$query2= "UPDATE SUBTASKS SET  STSK_ANCIENT_PRO = " . $percent ." WHERE STSK_ID = " . $stsk . ";";
+//$query2= "UPDATE SUBTASKS SET  STSK_ANCIENT_PRO = " . $percent ." WHERE STSK_ID = " . $stsk . ";";
 $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
 $query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $percent . " WHERE ISS_ID = " . $iss;
