@@ -5448,74 +5448,7 @@ $.ajax({
 
 }
 
-var nname_sec = nname_pri[1].split(",");
 
-     for (i=0; i < nname_sec.length-1 ; i++){
-     var extension = nname_sec[i].substring(nname_sec[i].length -3 , nname_sec[i].length);
-              switch(extension){
-                case "pdf": 
-            setClass = "pdf-o";
-            cor = "#FA2E2E";    
-        break;
-                case "lsx":
-            setClass = "excel-o";
-            cor = "#44D933";
-        break;
-                case "ocx":
-            setClass = "word-o"; 
-            cor = "#5F6FE0";
-        break;
-                case "doc":
-            setClass = "word-o"; 
-            cor = "#5F6FE0";
-        break;
-                case "xls":
-            setClass = "excel-o";
-            cor = "#44D933";
-        break;
-                case "zip":
-            setClass = "zip-o";
-            cor = "#DDCE62";
-        break;
-                case "png" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "jpg" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "gif" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break; 
-                case "bmp" : 
-            setClass = "picture-o";
-            cor = "#338B93";
-        break;
-               case 'ppt' :  
-             setClass = "powerpoint-o";
-             cor = "#B8005C";
-        break;
-              case 'ptx':
-             setClass = "powerpoint-o";
-             cor = "#B8005C";
-        break;
-              case 'mp3':
-             setClass = "audio-o";
-             cor = "#FF9900";
-        break; 
-
-    }
-    //trated link 
-     
-          filstr += '<a href="../' + fac + '/' + mainuser + '_alt/' + nname_sec[i].trim() + '"  download>' +
-                 '<p style="display: inline-block" title="' + nname_sec[i] +  '"></p>' +
-                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
-                  '</a>';
-
-}
-  
 object.html(filstr);
 
 filstr = "";
