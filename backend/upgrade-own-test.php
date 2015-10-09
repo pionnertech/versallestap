@@ -19,8 +19,10 @@ $query1= "UPDATE SUBTASKS SET  STSK_PROGRESS = " . $percent ." WHERE STSK_ID = "
 //$query2= "UPDATE SUBTASKS SET  STSK_ANCIENT_PRO = " . $percent ." WHERE STSK_ID = " . $stsk . ";";
 $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
-$query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $percent . " WHERE ISS_ID = " . $iss;
 
+$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
+
+$query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $avg['VX'] . " WHERE ISS_ID = " . $iss;
 
 if($type == 1){
 $trf = "INSERT INTO TRAFFIC_II (TII_STSK_ID, TII_STSK_SRC_ID , TII_DESCRIPT, TII_SUBJECT , TII_FAC_CODE,  TII_USER) VALUES ";
