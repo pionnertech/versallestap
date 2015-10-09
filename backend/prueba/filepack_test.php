@@ -11,7 +11,7 @@ $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
         while (false !== ($file = readdir($handle))){
 
-               //echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ") <br />";
+               echo $file . " --- " . preg_match_all("/_\[" . $as[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ") <br />";
                        
                        if( preg_match_all("/_\[" . $fila[3] . "\]_/", $file) == 1){
 
