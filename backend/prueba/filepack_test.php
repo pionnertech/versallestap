@@ -5,18 +5,16 @@ $fac    = $_GET['fac'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 $sadmin_get = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE ( USR_RANGE = 'sadmin' AND USR_FACILITY = " . $fac . ")"));
-$reach      = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 0 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND STSK_RESP = 1)");
 
-$ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 0 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")");
-
-while($fila = mysqli_fetch_row($ad)){
+//just get the ISS ID 
+$iss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID as ISS FROM SUBTASKS WHERE (STSK_TICKET = '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")"));
 $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
         while (false !== ($file = readdir($handle))){
 
               // echo $file . " --- " . preg_match_all("/_\[" . $fila[0] . "\]_/", $file) . " --- " . "preg_match_all(/_\[" . $fila[0] . "\]_/," . $file . ") <br />";
                        
-                       if( preg_match_all("/_\[" . $fila[3] . "\]_/", $file) == 1){
+                       if( preg_match_all("/_\[" . $iss['ISS'] . "\]_/", $file) == 1){
 
                               echo $file . ",";
 
@@ -26,7 +24,6 @@ $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
     closedir($handle);
 
-          } 
 
 
 
