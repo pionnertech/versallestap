@@ -1409,7 +1409,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                                  <a href="../<? printf($_SESSION['TxtFacility']) ?>/<? echo $_SESSION['TxtCode'] ?>/<? printf($fstr) ?>" download>
                                                      <p class="ifile-ii" title="<? printf($fstr) ?>">
                                                          <i class="fa fa-file-<? printf($file_extension) ?>o fa-2x" style="color: <? printf($cor) ?> "></i>
-                                                         <span class="iname"></span>
+                                                         <!--<span class="iname"></span> royal -->
                                                      </p>
                                                  </a>
 
