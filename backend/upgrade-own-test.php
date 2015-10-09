@@ -43,9 +43,9 @@ if(!mysqli_query($datos, $query)){
 if(!mysqli_query($datos, $query1)){
 	echo mysqli_error($datos);
 }
-if(!mysqli_query($datos, $query2)){
-	echo mysqli_error($datos);
-}
+//if(!mysqli_query($datos, $query2)){
+//	echo mysqli_error($datos);
+//}
 if(!mysqli_query($datos, $query3)){
 	echo mysqli_error($datos);
 }
