@@ -30,6 +30,7 @@ $handle = opendir("/var/www/html/" . $fac . "/" . $sadmin_get['USR_ID'] . "/");
 
 
 
+
 /*
 $it = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 0 AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . " AND USR_RANGE ='back-user' )");
 $ad = mysqli_query($datos, "SELECT A.STSK_ID, B.USR_ID, B.USR_RANGE, A.STSK_ISS_ID FROM SUBTASKS A INNER JOIN USERS B ON(A.STSK_CHARGE_USR = B.USR_ID ) WHERE (STSK_TYPE = 0 AND USR_RANGE = 'admin' AND STSK_TICKET= '" . $ticket . "' AND STSK_FAC_CODE = " . $fac . ")");
