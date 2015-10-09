@@ -3225,7 +3225,7 @@ if(kind == "internal"){
    var url = '../backend/upload_int.php?fac_id=' + fac + "&stsk=" + stsk_id + "&user=" + usr_id + "&keyfile=" + keyFile;
    var keyGen = true;
 } else {
-    var url = '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id=" + iss_id+ "&usr=" + usr_id;
+    var url = '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id=" + iss_id+ "&usr=" + mainuser;
 }
 
 var randFiles = "";
