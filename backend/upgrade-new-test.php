@@ -45,6 +45,7 @@ if ($si['SI'] == 1){
 
                 $insertar = "INSERT INTO `TRAFFIC` (TRF_STSK_ID, TRF_STSK_SRC_ID, TRF_DESCRIPT, TRF_SUBJECT, TRF_FAC_CODE, TRF_ING_DATE, TRF_USER) ";
                 $insertar .= "VALUES (" . $id . ", " . $iss_id . " , '" . $descript . "', '" . $subject . "', " . $fac . ", '" . $date . "', " . $user . ");";
+                
      
                       if(!mysqli_query($datos, $insertar)){
                          echo mysqli_error($datos);
