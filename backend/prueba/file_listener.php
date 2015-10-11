@@ -13,12 +13,18 @@ $rdir = "/var/www/html/" . $fac . "/" . $user ;
 
 $fi = new FilesystemIterator($rdir, FilesystemIterator::SKIP_DOTS);
 
-echo iterator_count($fi) . "\n\n";
+echo iterator_count($fi) . "\n";
+
+$files = scandir('data', SCANDIR_SORT_DESCENDING);
+$newest_file = $files[0];
+
+echo $newest_file . "\n\n";
 
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !
 
 sleep(2);
+
 
 }
 
