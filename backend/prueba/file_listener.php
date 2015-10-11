@@ -21,14 +21,15 @@ iterator_count($fi) . "\n";
 $files = scandir($rdir, SCANDIR_SORT_DESCENDING);
 $newest_file = $files[0];
 
-echo $newest_file . "\n\n";
+
 
 //find the _[ISS number]_ in the last file
-/*
+
 $matches = array();
 preg_match('/_\[([0-9]+)\]_/', $newest , $matches);
 
-
+echo $newest_file . "\n\n";
+/*
 //get the real number
 $rx = array();
 preg_match('/([0-9]+)/', $matches[0] , $rx);
