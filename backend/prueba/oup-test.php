@@ -3262,7 +3262,7 @@ uploader =  $(object).pluploadQueue({
 
                 console.log('[UploadFile]', file);
                 if(object.attr("id") == "up-own" || object.hasClass("front-response")){
-                    up.setOption("url", '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id="+ iss_id);
+                    up.setOption("url", '../backend/upload_for_front_test.php?fac_id=' + fac + "&iss_id="+ iss_id + "&usr=" + mainuser);
                 } else {
                   
                    up.setOption("url", url);
