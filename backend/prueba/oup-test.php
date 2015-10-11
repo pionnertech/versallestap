@@ -1060,8 +1060,13 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                               <tbody>
                                                   <?
 
-
-  $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[0]);
+//el traffico no se refleja
+     if($stsk[10] == 1 ) {
+           $swer = 1;
+     } else {
+           $swer = 0;
+     }                                           
+  $trf = mysqli_query($datos, "SELECT TRF_SUBJECT, TRF_DESCRIPT, TRF_USER, TRF_ING_DATE FROM TRAFFIC WHERE TRF_STSK_SRC_ID = " . $stsk[$swer]);
                             while($tss = mysqli_fetch_row($trf)){
 
                                                   ?>
