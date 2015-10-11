@@ -801,6 +801,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             break;
             
             case 0:
+            if($fila_spec[8] !== 'admin'){
               ?>
 
         <a class="hovertip extUsr" data-sp="<? echo $fila_spec[4] ?>"  data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
@@ -809,6 +810,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
               <?
+          }
                 break;
             default:
             break;
