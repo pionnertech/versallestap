@@ -33,7 +33,7 @@ $post_trigger = mysqli_fetch_assoc($trigger);
 if(substr($post_trigger['PSD_TICKET'], 0, 2) == 'EX'){
 
 
-$query = mysqli_query($datos, "SELECT A.ISS_PROGRESS,  A.ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.ISS_TICKET  FROM SUBTASKS  A INNER JOIN USERS B ON (B.USR_ID = A.ISS_CHARGE_USR) WHERE (USR_RANGE = 'sadmin' AND ISS_FAC_CODE = " . $fac . " AND ISS_CHARGE_USR = "  . $usr . " AND ISS_TICKET = '" . $post_trigger['PSD_TICKET'] ."')");
+$query = mysqli_query($datos, "SELECT A.ISS_PROGRESS,  A.ISS_ID, A.STSK_TYPE, B.USR_RANGE, A.ISS_TICKET  FROM ISSUES  A INNER JOIN USERS B ON (B.USR_ID = A.ISS_CHARGE_USR) WHERE (USR_RANGE = 'sadmin' AND ISS_FAC_CODE = " . $fac . " AND ISS_CHARGE_USR = "  . $usr . " AND ISS_TICKET = '" . $post_trigger['PSD_TICKET'] ."')");
 $query_assoc = mysqli_fetch_assoc($query);
 
 //what is the progress
