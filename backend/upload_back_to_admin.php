@@ -10,7 +10,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //averiguar el numero de subtask matriz
 
 //get the boss ...
-$boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE(USR_DEPT = (SELECT USR_DEPT FROm USERS WHERE USR_ID = " . $usr . ") AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin')"));
+$boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE(USR_DEPT = (SELECT USR_DEPT FROm USERS WHERE USR_ID = " . $user . ") AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin')"));
 $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
 $real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS RC FROM SUBTASKS WHERE (  STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_MAIN_USR = " . $boss['BOSS'] . " AND STSK_TYPE = 0)"));
 
@@ -29,6 +29,7 @@ if(!is_dir($target_dir . $user . "_in/")){
 	chmod($target_dir . $user . "_in/", 0775);
 	mkdir($target_dir . $user . "_in/", 0775, true);
 }
+
 
 // A list of permitted file extensions
 $allowed = array('png', 'jpg', 'gif','zip', 'docx', 'xls', 'xlsx', 'pdf', 'doc','ppt', 'pptx', 'mp3' );
