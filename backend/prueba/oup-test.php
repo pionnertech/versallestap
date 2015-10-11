@@ -654,7 +654,7 @@ $handler = mysqli_query($datos, $matrix);
                                            while (false !== ($archivos2 = readdir($handler2))){
                                           
                                           echo "<script>console.info('archivo :" . $archivos2 . " / value : " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) . "')</script>";
-                                            if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos2) == 1){
+                                            if(preg_match_all("/_\[" . $stsk[1] . "\]_" . $_SESSION['TxtCode'] . "/", $archivos2) == 1){
                                      
                                                 $extension = substr($archivos2, -3);
                                           
