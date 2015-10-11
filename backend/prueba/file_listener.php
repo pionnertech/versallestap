@@ -7,7 +7,7 @@
 $user = $_GET['muser'];
 $fac  = $_GET['fac'];
 
-$rdir = "/var/www/html/" . $fac . "/" . $user . "/";
+$rdir = "/var/www/html/" . $fac . "/" . $user . "";
 
 
 echo shell_exec($rdir . " find . -type f | wc -l");
