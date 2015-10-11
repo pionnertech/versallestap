@@ -20,9 +20,6 @@ $query1= "UPDATE SUBTASKS SET  STSK_PROGRESS = " . $percent ." WHERE STSK_ID = "
 $query3= "UPDATE SUBTASKS SET  STSK_LOCK = 1 WHERE STSK_ID = " . $stsk . ";";
 $query4= "UPDATE SUBTASKS SET  STSK_RESP = 1 WHERE STSK_ID = " . $stsk . ";";
 
-$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
-
-$query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $avg['VX'] . " WHERE ISS_ID = " . $iss;
 
 if($type == 1){
 $trf = "INSERT INTO TRAFFIC_II (TII_STSK_ID, TII_STSK_SRC_ID , TII_DESCRIPT, TII_SUBJECT , TII_FAC_CODE,  TII_USER) VALUES ";
@@ -55,6 +52,11 @@ if(!mysqli_query($datos, $query3)){
 if(!mysqli_query($datos, $query4)){
 	echo mysqli_error($datos);
 }
+
+$avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
+
+$query5= "UPDATE ISSUES   SET  ISS_PROGRESS = " . $avg['VX'] . " WHERE ISS_ID = " . $iss;
+
 if(!mysqli_query($datos, $query5)){
 	echo mysqli_error($datos);
 }
