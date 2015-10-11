@@ -48,7 +48,7 @@ switch ($sel['STSK_TYPE']) {
        //get the INFO about the partial progress
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC WHERE TRF_STSK_ID = " . $sel['STSK_ID'] . " ORDER BY TRF_ID DESC"));
        //get the REAL TRF_ISS_SRC_ID depending of STSK_OVER
-         $min  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac .") "))
+         $min  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac .") "));
 
           if($sel['STSK_OVER'] == 1){
              $real = $min['MIN'];
