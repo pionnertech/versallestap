@@ -58,6 +58,7 @@ switch ($sel['STSK_TYPE']) {
              $real = $trf_str['TRF_STSK_SRC_ID'];
           }
        
+       
                 echo str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($sel['NAME']))));
                 echo "|" . $trf_str['TRF_USER'];
                 echo "|" . $trf_str['TRF_SUBJECT'];
