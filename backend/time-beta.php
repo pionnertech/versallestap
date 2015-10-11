@@ -52,7 +52,7 @@ switch ($sel['STSK_TYPE']) {
         //get the OVER...
          $over = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER FROM SUBTASKS WHERE (STSK_ID = " . $min['MIN'] . " AND STSK_FAC_CODE = " . $fac. ")" ));
           
-          if($over['STSK_OVER'] == 1){
+          if($over['STSK_OVER'] == 1 && $ident['RAN'] !== 'sadmin'){
              $real = $min['MIN'];
           } else {
              $real = $trf_str['TRF_STSK_SRC_ID'];
