@@ -914,6 +914,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
         if(preg_match_all("/_\[" . $stsk[1] . "\]_." . $_SESSION['TxtCode'] . "/", $archivos) == 1){
 
+
              $extension = substr($archivos, -3);
              $cor = "";
                                                  switch (true) {
