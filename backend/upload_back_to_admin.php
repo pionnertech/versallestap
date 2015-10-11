@@ -15,6 +15,7 @@ $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS 
 
 $sw = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER FROm SUBTASKS WHERE (STSK_ISS_ID = " . $hn['STSK_ISS_ID']) . " AND STSK_CHARGE_USR = " . $boss['BOSS'] . " AND STSK_TYPE = 0)" ));
 
+
 if($sw['STSK_OVER'] == 1){
 
    $real_code = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS RC FROM SUBTASKS WHERE (  STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = " . $boss['BOSS'] . " AND STSK_TYPE = 0 AND STSK_OVER = 1)"));
