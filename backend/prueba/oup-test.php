@@ -785,7 +785,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         switch ($fila_spec[4]) {
 
             case 1:
-
+             
                 if($fila_spec[1] == $_SESSION['TxtCode']){
             ?>
         <a class="hovertip extUsr" data-sp="<? echo $fila_spec[4] ?>"  data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
@@ -795,7 +795,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
         </a>
             <?
 
-            continue;
+            break 1;
 
                 }
             break;
