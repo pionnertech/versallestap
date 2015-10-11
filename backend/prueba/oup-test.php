@@ -784,7 +784,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
    
         switch ($fila_spec[4]) {
             case 1:
-                
+                if($fila_spec[2] == $_SESSION['TxtCode']){
             ?>
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $_SESSION['TxtCode'] . '_opt.jpg' ) ) { echo 'user.jpg';   } else { echo $_SESSION['TxtCode'] . '_opt.jpg'; } ?>" class="group" >
@@ -792,13 +792,14 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
             <?
+
             continue;
-                
+                }
             break;
             
             default:
               ?>
-              
+
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $fila_spec[1] . '_opt.jpg' ) ) { echo 'user.jpg';   } else { echo $fila_spec[1] . '_opt.jpg'; } ?>" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
