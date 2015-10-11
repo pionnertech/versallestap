@@ -11,7 +11,7 @@ $rdir = "/var/www/html/" . $fac . "/" . $user ;
 
 $fi = new FilesystemIterator($rdir, FilesystemIterator::SKIP_DOTS);
 
-echo iterator_count($fi)) . "\n\n";
+echo iterator_count($fi) . "\n\n";
 
 flush();
 
