@@ -28,7 +28,7 @@ $newest_file = $files[0];
 $matches = array();
 preg_match('/_\[([0-9]+)\]_/', $newest , $matches);
 
-echo $newest_file . "\n\n";
+echo $matches[0] . "\n\n";
 /*
 //get the real number
 $rx = array();
