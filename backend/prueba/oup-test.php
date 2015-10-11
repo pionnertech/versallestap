@@ -777,36 +777,42 @@ echo "<script>console.info('" . $archivos2 . "')</script>";
                                      <div class="collaborates">
 
                       <?
-$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
- 
- while($fila_spec = mysqli_fetch_row($spec_tem)){ 
-  echo "<script>console.info('file_spec = " . $fila_spec[4] . "')</script>";
-     if($fila_spec[4] == 1 ){
-      ?>
 
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR, B.STSK_OVER FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
+
+ while ($fila_spec = mysqli_fetch_row($spec_tem)){
+   
+        switch ($fila_spec[4]) {
+            case 1:
+                
+            ?>
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
-            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? echo $_SESSION['TxtCode'] ?>_opt.jpg" class="group" >
+            <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $_SESSION['TxtCode'] . '_opt.jpg' ) ) { echo 'user.jpg';   } else { echo $_SESSION['TxtCode'] . '_opt.jpg'; } ?>" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
-        <? 
-        } else if($fila_spec[4] == 2) { 
-         continue;
-        } else {
-          if($fila_spec[5] == $_SESSION['TxtCode']){
-            continue; 
-          } else {
-          ?>
-        
+            <?
+            continue;
+                
+            break;
+            
+            default:
+              ?>
+              
         <a class="hovertip extUsr" data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
             <img src="../<? echo $_SESSION['TxtFacility'] ?>/img/<? if(!is_file('../' . $_SESSION['TxtFacility'] . '/img/' . $fila_spec[1] . '_opt.jpg' ) ) { echo 'user.jpg';   } else { echo $fila_spec[1] . '_opt.jpg'; } ?>" class="group" >
             <i class="fa fa-check-circle finished" <? if($fila_spec[2] == 5){ ?> style="opacity: 1;"  <? } else {?> <? } ?> ></i>
             <input type="hidden" value="<? printf($fila_spec[1])?>">
         </a>
+              <?
+                break;
+        }
 
-    <?  }
-  }
-    }  ?>
+}
+
+?>
+
+
                                             </div>
                                       <div class="g-wrap"> <!--for  internal files and graphics-->
                                             <div class="file-sent" style="width: 80%;display: inline-block; vertical-align: top;">
@@ -1559,7 +1565,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
                                                         </tr>
                                                 <?
 
-                                          echo "<script>console.info('" . $fila5[11] . "')</script>";
+                                          
 $tr_ii = mysqli_query($datos, "SELECT TII_USER, TII_STSK_ID, TII_STSK_SRC_ID, TII_SUBJECT, TII_DESCRIPT, TII_ING_DATE FROM TRAFFIC_II WHERE (TII_STSK_SRC_ID = " . $fila5[11] . " AND TII_FAC_CODE = " . $_SESSION['TxtFacility'] . ")" );
 
                                  while($fut = mysqli_fetch_row($tr_ii)){
