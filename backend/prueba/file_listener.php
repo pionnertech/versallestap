@@ -14,15 +14,10 @@ $fac  = $_GET['fac'];
 $rdir = "/var/www/html/" . $fac . "/" . $user ;
 
 //get the folder
-$fi = new FilesystemIterator($rdir, FilesystemIterator::SKIP_DOTS);
-//counter
-iterator_count($fi) . "\n";
-
 $files = scandir($rdir, SCANDIR_SORT_DESCENDING);
 $newest_file = $files[0];
 
 //find the _[ISS number]_ in the last file
-
 $matches = array();
 preg_match('/_\[([0-9]+)\]_/', $newest_file , $matches);
 
@@ -34,7 +29,7 @@ preg_match('/([0-9]+)/', $matches[0] , $rx);
 //get all files with this 
 $outcome =  preg_grep('/_\[' . $rx[0] . '\]_/', $files);
 
-echo  implode("|", $outcome) . "\n\n";
+echo  implode("|", $outcome) . "|" . $rx[0] . "\n\n";
 
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !

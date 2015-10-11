@@ -1853,6 +1853,7 @@ jQuery.fn.justtext = function() {
     var previan   = 0;
     var aa_ii     = "";
     var kenin;
+    var anc_all = 0;
     //indexes
     var cc1 = "At";
     var cc2 = "At-int";
@@ -5552,6 +5553,118 @@ function checkOwn(){
   }
 return true;
 }
+
+
+if(typeof(EventSource) !== "undefined") {
+
+    var source       = new EventSource("../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac);
+    source.onmessage = function(event) {
+                       
+                            var file    = event.data.split("|");
+                            var str_all = event.data;
+                            if(anc_all !== str_all && anc_all !== 0){
+
+         var filstr = "";
+         var object   = $(".hi-int-id[value=" + file[file.length -1] +"]").parent().next().find(".int-files-for");
+         // extract 
+          for (i=0; i < file.length-1 ; i++){
+              var extension = file[i].substring(file[i].length -3 , file[i].length);
+              switch(extension){
+                case "pdf": 
+            setClass = "pdf-o";
+            cor = "#FA2E2E";    
+        break;
+                case "lsx":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "ocx":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "doc":
+            setClass = "word-o"; 
+            cor = "#5F6FE0";
+        break;
+                case "xls":
+            setClass = "excel-o";
+            cor = "#44D933";
+        break;
+                case "zip":
+            setClass = "zip-o";
+            cor = "#DDCE62";
+        break;
+                case "png" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "jpg" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "gif" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break; 
+                case "bmp" : 
+            setClass = "picture-o";
+            cor = "#338B93";
+        break;
+               case 'ppt' :  
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'ptx':
+             setClass = "powerpoint-o";
+             cor = "#B8005C";
+        break;
+              case 'mp3':
+             setClass = "audio-o";
+             cor = "#FF9900";
+        break; 
+
+    }//switch
+
+            filstr += '<a href="../' + fac +'/' + mainuser + '/' + file[i].trim() + '"  download>' +
+                 '<p style="display: inline-block" title="' + file[i].trim() +  '"></p>' +
+                  '<i class="fa fa-file-' + setClass + ' fa-2x" style="color:' + cor + '; margin: 0 0.4em"></i>' +
+                  '</a>';
+
+          }//loop
+   
+   object.html(filstr);
+
+   filstr = "";
+    anc_all = str_all;
+    }//if
+
+}//event
+
+                    
+                      }
+} else {
+
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
+
+}
+
+
+
+
+function fileListner(){
+
+$.ajax({
+    type:"POST",
+    url:"../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac,
+    success: function (data){
+         //split 
+          var file = data.split("|");
+          var str_all = data;
+
+})//ajax
+
+}
+
 
 </script>
 
