@@ -2697,6 +2697,7 @@ function thirdPulling(){
                         console.info(data);
                             var alpha = data.split("|");
                             if(parseInt(alpha[1]) !== 0){
+                                console.info("llega desde thirdPulling");
                                     console.info(alpha[7]);
                               upProAdmin(alpha[2], alpha[1], alpha[6], alpha[4], alpha[5], alpha[7]);
                               showAlert("Progreso en Incidencia " + alpha[6] , "" ,  alpha[1]);
@@ -3335,6 +3336,7 @@ function changeListener(){
                 
                 if(parseInt(pks[0]) !== 0 && pks[0] !== "" ){
 
+            console.info("llega desde changeListener");
                  showAlert(pks[2], "pro", pks[0]);
 
                  indice = $("#int-table input[value=" + pks[5] + "]").index(".hi-int-id");
