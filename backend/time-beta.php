@@ -49,8 +49,10 @@ switch ($sel['STSK_TYPE']) {
        $trf_str = mysqli_fetch_assoc(mysqli_query($datos, "SELECT * FROM TRAFFIC WHERE TRF_STSK_ID = " . $sel['STSK_ID'] . " ORDER BY TRF_ID DESC"));
        //get the REAL TRF_ISS_SRC_ID depending of STSK_OVER
          $min  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT MIN(STSK_ID) AS MIN FROM SUBTASKS WHERE (STSK_TICKET = '" . $sel['STSK_TICKET'] . "' AND STSK_FAC_CODE = " . $fac .") "));
-
-          if($sel['STSK_OVER'] == 1){
+        //get the OVER...
+         $over = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER FROM SUBTASKS WHERE (STSK_ID = " . $min['MIN'] . " AND STSK_FAC_CODE = " . $fac. ")" ));
+          
+          if($over['STSK_OVER'] == 1){
              $real = $min['MIN'];
           } else {
              $real = $trf_str['TRF_STSK_SRC_ID'];
