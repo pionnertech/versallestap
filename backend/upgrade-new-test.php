@@ -31,10 +31,12 @@ $si= mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER AS SI FROM SUBTAS
 if ($si['SI'] == 1){
   $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . "AND STSK_TYPE = 0);"));
                             mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$avg['VX'] . " WHERE (ISS_ID = " . $iss_id . " AND ISS_FAC_CODE = " . $fac . ")");
-
+                            mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['VX'] . " WHERE (STSK_CHARGE_USR = " . $muser . " AND STSK_ISS_ID = " . $iss_id . ")");
       if((int)$val == 100){
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
       }
+
+
 
         if((int)$avg['VX'] > 99.5){
         mysqli_query($datos, "UPDATE ISSUE SET STSK_STATE = 5 WHERE (STSK_ISS_ID = " . $iss_id . " AND ISS_FAC_CODE = " . $fac . " )");
