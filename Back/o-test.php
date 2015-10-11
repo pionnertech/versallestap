@@ -1023,6 +1023,7 @@ console.info("lo que se manda: /backend/upgrade-new.php?val=" + val +
             "&argument=" + ar +
             "&ticket=" + ticket);
 
+
     $.ajax({
            type: "POST", 
            url: "../backend/upgrade-new-test.php?val=" + val +
