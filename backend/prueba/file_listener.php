@@ -15,7 +15,7 @@ $fi = new FilesystemIterator($rdir, FilesystemIterator::SKIP_DOTS);
 
 echo iterator_count($fi) . "\n";
 
-$files = scandir('data', SCANDIR_SORT_DESCENDING);
+$files = scandir($rdir, SCANDIR_SORT_DESCENDING);
 $newest_file = $files[0];
 
 echo $newest_file . "\n\n";
