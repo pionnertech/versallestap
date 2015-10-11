@@ -29,7 +29,7 @@ if($argument == 0){ // si es externo
 $si= mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER AS SI FROM SUBTASKS where (STSK_ISS_ID  = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . ")"));
 
 if ($si['SI'] == 1){
-  $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_CHARGE_USR <> STSK_MAIN_USR AND STSK_TYPE = 0);"));
+  $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . "AND STSK_TYPE = 0);"));
                             mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$avg['VX'] . " WHERE (ISS_ID = " . $iss_id . " AND ISS_FAC_CODE = " . $fac . ")");
 
       if((int)$val == 100){
