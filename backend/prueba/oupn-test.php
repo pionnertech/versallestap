@@ -3272,21 +3272,29 @@ if (um == 0){
       console.log("message :" + message);
       console.info("previan :" + previan);
 
-if(type == "req"){
+switch(type){
 
-var title = "Te ha llegado un nuevo requerimiento:";
-var iconShow = "../" + fac + "/img/task.jpg" ;
+        case "ii":
+        var title = usr_name + " te envió un requerimiento :";
+        var iconShow = "../" + fac + "/img/itask.jpg" ;
 
-} else if(type == "ii"){
+    break;
+        case "":
+        var title = usr_name + " ha marcado un progreso :";
+        var iconShow = "../" + fac + "/img/pro.jpg";
+    break;
+        case "req":
+        var title = "Te ha llegado un nuevo requerimiento:";
+        var iconShow = "../" + fac + "/img/task.jpg" ;
+    break;
+        case "file":
 
-var title = usr_name + " te envió un requerimiento :";
-var iconShow = "../" + fac + "/img/itask.jpg" ;
+        var title = "Se han enviado archivos al requerimiento";
+        var iconShow = "../" + fac + "/img/fileGen.png" ;
 
-} else {
-
-var title = usr_name + " ha marcado un progreso :";
-var iconShow = "../" + fac + "/img/pro.jpg";
+    break;
 }
+
 
         var instance = new Notification(
             title , {
