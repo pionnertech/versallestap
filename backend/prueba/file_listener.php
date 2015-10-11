@@ -18,7 +18,7 @@ echo iterator_count($fi) . "\n\n";
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !
 
-sleep(1);
+sleep(2);
 
 }
 
