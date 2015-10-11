@@ -15,6 +15,9 @@ $ticket   = $_GET['ticket'];
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 // 1.) marca el progreso 
+
+//mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $avg['VX'] . " )");
+
 mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS =  " . $val . " WHERE STSK_ID = " . $id . " ;");
 
 if($argument == 0){ // si es externo 
@@ -26,17 +29,21 @@ if($argument == 0){ // si es externo
 
 //2.) get average
 
- //since here swith if overall
+ //since here swith if overall}
 $si= mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER AS SI FROM SUBTASKS where (STSK_ISS_ID  = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . ")"));
 
 if ($si['SI'] == 1){
   $avg = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(AVG(IFNULL(STSK_PROGRESS, 0))) AS VX FROM SUBTASKS WHERE (STSK_ISS_ID = " . $iss_id . " AND STSK_MAIN_USR = " . $muser . " AND STSK_TYPE = 0);"));
                             mysqli_query($datos, "UPDATE ISSUES SET ISS_PROGRESS = " . (int)$avg['VX'] . " WHERE (ISS_ID = " . $iss_id . " AND ISS_FAC_CODE = " . $fac . ")");
                             mysqli_query($datos, "UPDATE SUBTASKS SET STSK_PROGRESS = " . $avg['VX'] . " WHERE (STSK_CHARGE_USR = " . $muser . " AND STSK_ISS_ID = " . $iss_id . ")");
+     
+     mysqli_query($datos, "INSERT INTO PSEUDO (PSD_USR, PSD_TICKET, PSD_FAC_CODE, PSD_PERCENT) VALUES ( " . $muser . " ,'" . $ticket .  "', " . $fac . ", " . $avg['VX'] . " )");
+
+
+
       if((int)$val == 100){
         mysqli_query($datos, "UPDATE SUBTASKS SET STSK_STATE = 5 WHERE STSK_ID = " . $id );
       }
-
 
 
         if((int)$avg['VX'] > 99.5){
@@ -55,6 +62,10 @@ if ($si['SI'] == 1){
                       } else {
                         echo 1;
                       }
+
+
+
+
   // 
 } else {
   
