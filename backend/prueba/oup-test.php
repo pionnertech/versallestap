@@ -778,7 +778,7 @@ echo "<script>console.info('" . $archivos2 . "')</script>";
 
                       <?
 
-$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR, B.STSK_OVER, A.USR_RANG FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
+$spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME), A.USR_ID, B.STSK_STATE, B.STSK_PROGRESS, B.STSK_RESP, B.STSK_CHARGE_USR, B.STSK_MAIN_USR, B.STSK_OVER, A.USR_RANGE FROM USERS A INNER JOIN SUBTASKS B ON(A.USR_ID = B.STSK_CHARGE_USR) WHERE (STSK_ISS_ID = " . $stsk[1] . "  AND STSK_TYPE = 0);");
 
  while ($fila_spec = mysqli_fetch_row($spec_tem)){
    
