@@ -864,7 +864,7 @@ var cant = 0;
 $(".forward").on('click', function(){
 
    argument = 0;
-   ticket = $(this).siblings(".cell-icon").html();
+   ticket = $(this).parent().siblings(".cell-icon").html();
 
    var subtask_id =  $(this).parent().parent().children('input').eq(0).val();
    current_iss =  $(this).parent().parent().children('input').eq(1).val();
