@@ -912,7 +912,7 @@ if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "
 
    //echo "<script>console.info('" . $archivos . "    / preg_match_all(/_\[" . $stsk[1] . "\]_/, " . $archivos . ") -- " . preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) . "')</script>";
 
-        if(preg_match_all("/_\[" . $stsk[1] . "\]_/", $archivos) == 1){
+        if(preg_match_all("/_\[" . $stsk[1] . "\]_." . $_SESSION['TxtCode'] . "/", $archivos) == 1){
 
              $extension = substr($archivos, -3);
              $cor = "";
