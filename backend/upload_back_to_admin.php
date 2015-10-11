@@ -12,7 +12,7 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //get the boss ...
 $boss = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS BOSS FROM USERS WHERE(USR_DEPT = (SELECT USR_DEPT FROm USERS WHERE USR_ID = " . $user . ") AND USR_FACILITY = " . $fac . " AND USR_RANGE = 'admin')"));
 $hn = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_ISS_ID FROM SUBTASKS WHERE STSK_ID = " . $code));
-$sw = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER FROm SUBTASKS WHERE (STSK_ISS_ID = " . $hn['STSK_ISS_ID']) . " AND STSK_CHARGE_USR = " . $boss['BOSS'] . " AND STSK_TYPE = 0)" ));
+$sw = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER FROm SUBTASKS WHERE (STSK_ISS_ID = " . $hn['STSK_ISS_ID'] . " AND STSK_CHARGE_USR = " . $boss['BOSS'] . " AND STSK_TYPE = 0)" ));
 
 if($sw['STSK_OVER'] == 1){
 
