@@ -26,9 +26,10 @@ $newest_file = $files[0];
 //find the _[ISS number]_ in the last file
 
 $matches = array();
-preg_match('/_\[([0-9]+)\]_/', $newest , $matches);
+preg_match('/_\[([0-9]+)\]_/', $newest_file , $matches);
 
 echo $matches[0] . "\n\n";
+
 /*
 //get the real number
 $rx = array();
