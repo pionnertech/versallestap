@@ -20,7 +20,7 @@ $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHER
 $file = preg_replace('/[0-9]+/' ,  $iss  , $p);
 
 if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file)){
-	echo "/var/www/html/" . $fac . "/" . .$sadmin['USR_ID'] . "/" . $file;
+	echo "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file;
 } else {
 	echo "no copiado";
 }

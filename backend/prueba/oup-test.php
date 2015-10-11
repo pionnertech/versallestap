@@ -3594,7 +3594,7 @@ var iconShow = "../" + fac + "/img/pro.jpg";
             // Something to do
         };
         instance.onshow = function () {
-            if( type == "req" || type == "ii"){
+            if( type == "req" || type == "ii" ){
                $('#chatAudio')[0].play(); 
            } else {
                $('#successAudio')[0].play();
@@ -5925,6 +5925,7 @@ function backToFront(name, usrId, iss){
   $.ajax({ type: "POST",
    url: "../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
    success: function (data){
+        console.info("../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss);
         console.info(data);
    }
 
