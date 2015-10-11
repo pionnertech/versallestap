@@ -5649,27 +5649,10 @@ if(typeof(EventSource) !== "undefined") {
 }//event
 
                     
-                      }
+                      
 } else {
 
     document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
-}
-
-
-
-
-function fileListner(){
-
-$.ajax({
-    type:"POST",
-    url:"../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac,
-    success: function (data){
-         //split 
-          var file = data.split("|");
-          var str_all = data;
-
-})//ajax
 
 }
 
