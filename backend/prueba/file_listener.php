@@ -28,13 +28,14 @@ preg_match('/_\[([0-9]+)\]_/', $newest , $matches);
 //get the real number
 $rx = array();
 preg_match('/([0-9]+)/', $matches[0] , $rx);
-
+echo $rx[0] . "\n\n";
+/*
 //get all files with this 
 $outcome =  preg_grep('/_\[' . $rx[0] . '\]_/', $files);
  
 
 echo  $outcome[0] . "\n\n";
-
+*/
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !
 
