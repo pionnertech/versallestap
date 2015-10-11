@@ -22,7 +22,7 @@ $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID AS ID  FROM USE
 $extension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
 
 if(move_uploaded_file($_FILES['file']['tmp_name'], $dir . "/" . $sadmin['ID'] . "/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_[" . $iss_id . "]_" . $user . "." . $extension  )) {
-	echo $dir . "/" . $sadmin['ID'] . "/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_[" . $iss_id . "]_." . $extension  ;
+	echo $dir . "/" . $sadmin['ID'] . "/" . basename($_FILES['file']['name'], "." . strtolower($extension)) . "_[" . $iss_id . "]_" . $user . "." . $extension  ;
 }
 
 
