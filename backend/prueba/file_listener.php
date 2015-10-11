@@ -21,8 +21,6 @@ iterator_count($fi) . "\n";
 $files = scandir($rdir, SCANDIR_SORT_DESCENDING);
 $newest_file = $files[0];
 
-
-
 //find the _[ISS number]_ in the last file
 
 $matches = array();
