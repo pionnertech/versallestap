@@ -25,6 +25,7 @@ if($argument == 0){ // si es externo
  }
 
 //2.) get average
+ 
  //since here swith if overall
 $si= mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER AS SI FROM SUBTASKS where (STSK_ISS_ID  = " . $iss_id . " AND STSK_CHARGE_USR = " . $muser . ")"));
 
