@@ -794,10 +794,11 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
             <?
 
             continue;
+
                 }
             break;
             
-            default:
+            case 0:
               ?>
 
         <a class="hovertip extUsr" data-sp="<? echo $fila_spec[4] ?>"  data-val="<? echo $fila_spec[3]; ?>" title="<? printf(str_replace('\' ', '\'', ucwords(str_replace('\'', '\' ', strtolower($fila_spec[0]))))) ?>">
