@@ -32,7 +32,7 @@ preg_match('/([0-9]+)/', $matches[0] , $rx);
 //get all files with this 
 $outcome = preg_grep('/_\[' . $rx[0] . '\]_/', $files);
  
-echo $outcome . "\n\n";
+echo implode("|", $outcome) . "\n\n";
 
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !
