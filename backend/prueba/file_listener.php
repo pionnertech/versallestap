@@ -33,8 +33,7 @@ foreach (scandir($rdir) as $node) {
 
 $max = array_keys($array, max($array));
 
-echo $max;
-$newest_file = $f_array[$max];
+$newest_file = $f_array[$max[0]];
 
 //find the _[ISS number]_ in the last file
 $matches = array();
