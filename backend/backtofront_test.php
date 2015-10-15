@@ -25,8 +25,8 @@ if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $fi
 	echo "no copiado";
 }
 
-
 } else {
+
 
 
 $file = preg_replace('/[0-9]+/' , "[" . $iss . "]" , $p);
