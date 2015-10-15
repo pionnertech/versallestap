@@ -5576,6 +5576,7 @@ function fileStr(){
                        console.info(data);
                             var file    = data.split("|");
                             var str_all = data;
+                            console.info(anc_all + "" + str_all);
                             if(anc_all !== str_all && anc_all !== 0){
                                 
          showAlert("Archivos añadidos", "file", "" );
