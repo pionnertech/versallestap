@@ -27,7 +27,8 @@ arsort($array);
 
 $newest_file = $array[0];
 
-echo $newest_file;
+echo $newest_file . "\n";
+
 //find the _[ISS number]_ in the last file
 $matches = array();
 preg_match('/_\[([0-9]+)\]_/', $newest_file , $matches);
