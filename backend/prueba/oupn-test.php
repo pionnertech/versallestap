@@ -1774,6 +1774,7 @@ $tr_ii = mysqli_query($datos, "SELECT TRF_USER, TRF_STSK_ID, TRF_STSK_SRC_ID, TR
         <!--/.container-->
         <audio id="successAudio"><source src="../backend/success.mp3" type="audio/mpeg"></audio>
         <audio id="pro-audio"><source src="../backend/progress.mp3" type="audio/mpeg"></audio>
+        <audio id="file_audio"><source src="../backend/file_audio.mp3" type="audio/mpeg"></audio>
         <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
@@ -3312,6 +3313,9 @@ switch(type){
         instance.onshow = function () {
             if( type == "req" || type == "ii"){
                $('#chatAudio')[0].play(); 
+
+           } else if(type = "file"){
+               $("#file_audio")[0].play();
            } else {
                $('#successAudio')[0].play();
            }
@@ -5565,7 +5569,6 @@ return true;
 
 setInterval(function(){
    fileStr();
-   console.info("ejecutandose")
 }, 4000)
 
 function fileStr(){
