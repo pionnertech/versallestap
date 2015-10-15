@@ -3291,7 +3291,7 @@ switch(type){
         case "file":
 
         var title = "Se han enviado archivos al requerimiento";
-        var iconShow = "../" + fac + "/img/fileGen.png" ;
+        var iconShow = "../" + fac + "/img/filegen.png" ;
 
     break;
 }
