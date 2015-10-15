@@ -14,8 +14,8 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 //get ticket 
 $ticket = mysqli_fetch_assoc(mysqli_query($datos, "SELECT ROUND(COUNT(ISS_ID)) AS TK FROM ISSUES WHERE ISS_FAC_CODE = " . $fac  ));
 //insertar ISSUE patron  ...  todo identico en el stsk and iss
-$handle_iss = "INSERT INTO ISSUES (ISS_SUBJECT, ISS_DESCRIP, ISS_CHARGE_USR,ISS_FINISH_DATE, ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_PROGRESS, ISS_LOCK, ISS_TICKET, ISS_COMENTARY, ISS_STATE) VALUES ";
-$handle_iss .= " ('" . $subject . "', '" . $descript . " ', " . $muser . ", '" . $fechaF . "', 0 , 00000000 , " . $fac . " , 0, 1, 'EX0000" . $ticket['TK'] . "', NULL, 2)";
+$handle_iss = "INSERT INTO ISSUES (ISS_SUBJECT, ISS_DESCRIP, ISS_CHARGE_USR,ISS_FINISH_DATE, ISS_TYPE, ISS_CTZ, ISS_FAC_CODE, ISS_PROGRESS, ISS_LOCK, ISS_TICKET, ISS_COMENTARY, ISS_STATE, ISS_OVER) VALUES ";
+$handle_iss .= " ('" . $subject . "', '" . $descript . " ', " . $muser . ", '" . $fechaF . "', 0 , 00000000 , " . $fac . " , 0, 1, 'EX0000" . $ticket['TK'] . "', NULL, 2, 1)";
 //insertando
 if(!mysqli_query($datos, $handle_iss)){
    mysqli_error($datos);
