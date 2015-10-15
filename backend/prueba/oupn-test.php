@@ -5570,7 +5570,7 @@ setInterval(function(){
 function fileStr(){
         $.ajax({
             type : "POST",
-            url"../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac, 
+            url : "../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac, 
             success : function(data) {
                        console.info(data);
                             var file    = data.split("|");
