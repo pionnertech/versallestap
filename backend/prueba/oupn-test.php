@@ -1778,6 +1778,7 @@ $tr_ii = mysqli_query($datos, "SELECT TRF_USER, TRF_STSK_ID, TRF_STSK_SRC_ID, TR
         <audio id="chatAudio"><source src="notify.ogg" type="audio/ogg"><source src="../backend/notify.mp3" type="audio/mpeg"><source src="notify.wav" type="audio/wav"></audio>
     </div>
     <!--/.wrapper-->
+    
     <div class="footer">
         <div class="container">
             <b class="copyright">&copy; 2015 Eque-e </b>Todos los derechos reservados.
