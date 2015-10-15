@@ -5577,8 +5577,8 @@ function fileStr(){
                        console.info(data);
                             var file    = data.split("|");
                             var str_all = data;
-                            if(anc_str == 0 ){
-                                anc_str = str_all ;
+                            if(anc_all == 0 ){
+                                anc_all = str_all ;
                             } 
 
                             if(anc_all !== str_all){
