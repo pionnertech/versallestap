@@ -1830,6 +1830,7 @@ jQuery.fn.justtext = function() {
 <? include_once "../backend/json_searchengine.php" ?>
 
 
+
     var st           = 0;
     var fac          = <? printf($_SESSION['TxtFacility'] ) ?>;
     var previuosData =   <? printf("\"" . $manu . "\"")  ?>;
@@ -1853,7 +1854,8 @@ jQuery.fn.justtext = function() {
     var previan   = 0;
     var aa_ii     = "";
     var kenin;
-    var anc_all = 0;
+    var anc_all = 
+    <? include_once  "../backend/file_listener.php?muser=" . $_SESSION['TxtCode'] . "&fac=" . $_SESSION['TxtFacility'] ?>
     //indexes
     var cc1 = "At";
     var cc2 = "At-int";
@@ -5576,6 +5578,7 @@ function fileStr(){
                        console.info(data);
                             var file    = data.split("|");
                             var str_all = data;
+
                             console.info(anc_all + " v/s " + str_all);
                             if(anc_all !== str_all && anc_all !== 0){
                                 
