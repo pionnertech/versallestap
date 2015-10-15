@@ -5567,7 +5567,7 @@ if(typeof(EventSource) !== "undefined") {
 
     var source       = new EventSource("../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac);
     source.onmessage = function(event) {
-                       
+                       console.info(event.data);
                             var file    = event.data.split("|");
                             var str_all = event.data;
                             if(anc_all !== str_all && anc_all !== 0){
