@@ -17,7 +17,7 @@ if($swt['SW'] == 1){
 $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'sadmin')"));
 
 $file_pre = preg_replace('/_[0-9]+_/' ,  '[' . $iss . ']' , $p);
-$file     = preg_replace('/(\d+)(?!.*\d)/g', $usr, $file_pre);
+$file     = preg_replace('/(\d+)(?!.*\d)/', $usr, $file_pre);
 
 if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file)){
 	echo "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file;
