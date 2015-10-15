@@ -23,9 +23,10 @@ foreach (scandir($rdir) as $node) {
     $array[$nodePath] = filemtime($rdir . $nodePath);
 }
 
-$newest_file = $array[1];
+$newest_file = $array[$nodePath];
 
 echo $newest_file;
+
 //find the _[ISS number]_ in the last file
 $matches = array();
 preg_match('/_\[([0-9]+)\]_/', $newest_file , $matches);
