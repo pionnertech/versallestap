@@ -5563,13 +5563,18 @@ return true;
 }
 
 
-if(typeof(EventSource) !== "undefined") {
+setInterval(function(){
+  fileStr();
+}, 5000)
 
-    var source       = new EventSource("../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac);
-    source.onmessage = function(event) {
-                       console.info(event.data);
-                            var file    = event.data.split("|");
-                            var str_all = event.data;
+function fileStr(){
+        $.ajax({
+            type : "POST",
+            url"../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac, 
+            success : function(event) {
+                       console.info(data);
+                            var file    = data.split("|");
+                            var str_all = data;
                             if(anc_all !== str_all && anc_all !== 0){
 
          var filstr = "";
@@ -5640,22 +5645,15 @@ if(typeof(EventSource) !== "undefined") {
 
           }//loop
    
-   object.html(filstr);
+    object.html(filstr);
 
-   filstr = "";
+    filstr = "";
     anc_all = str_all;
     }//if
-
-}//event
-
-                    
+  }
+})//event
                       
-} else {
-
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support server-sent events...";
-
-}
-
+} 
 
 </script>
 
