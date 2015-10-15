@@ -6,6 +6,7 @@ $fac  = $_GET['fac'];
 $iss  = $_GET['iss'];
 
 $dir = "/var/www/html/" . $fac . "/" . $usr . "_in/";
+
 $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
@@ -15,9 +16,10 @@ if($swt['SW'] == 1){
 
 
 $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'sadmin')"));
+$muser  = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID as BOSS FROM USERS  WHERe (USR_RANGE = 'admin'  AND USR_FACILITY = " . $fac . " AND USR_DEPT = (SELECT USR_DEPT FROM USERS WHERE USR_ID = " . $usr . "))" ));
 
 $file_pre = preg_replace('/_[0-9]+_/' ,  '_[' . $iss . ']_' , $p);
-$file     = preg_replace('/(\d+)(?!.*\d)/', $usr, $file_pre);
+$file     = preg_replace('/(\d+)(?!.*\d)/', $muser['BOSS'] , $file_pre);
 
 
 if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file)){
