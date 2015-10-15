@@ -906,7 +906,7 @@ $spec_tem = mysqli_query($datos, "SELECT CONCAT(A.USR_NAME , ' ',  A.USR_SURNAME
                                             <?   
 
 
-if($stsk[10] == 1 && $stsk[9] == 1){
+if($stsk[9] == 1){ //
 
 if($handler = opendir("../" . $_SESSION['TxtFacility'] . "/" . $boss['BOSS'] . "/" )){
     
