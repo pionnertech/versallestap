@@ -9,23 +9,30 @@ while(true){
 $user = $_GET['muser'];
 $fac  = $_GET['fac'];
 
-
 //set the dir
 $rdir = "/var/www/html/" . $fac . "/" . $user ;
 
 //get the folder... get the newest.. WTF
 
 $array = array();
+$f_array = array();
 $files = scandir($rdir);
+
+$i = 0;
+
 foreach (scandir($rdir) as $node) {
+
     $nodePath = $folder . DIRECTORY_SEPARATOR . $node;
     if (is_dir($nodePath)) continue;
-    $array[$nodePath] = filemtime($rdir . $nodePath);
+
+    $array[$i] = filemtime($rdir . $nodePath);
+    $f_array[$i] = $nodePath;
+    
+    $i = $i +1;
 }
 
-$newest_file = $array[$nodePath];
-
-echo $newest_file;
+$max = array_keys($array, max($array));
+$newest_file = $f_array[$max];
 
 //find the _[ISS number]_ in the last file
 $matches = array();
@@ -34,7 +41,6 @@ preg_match('/_\[([0-9]+)\]_/', $newest_file , $matches);
 //get the real number
 $rx = array();
 preg_match('/([0-9]+)/', $matches[0] , $rx);
-
 
 //get all files with this 
 $outcome =  preg_grep('/_\[' . $rx[0] . '\]_/', $files);
