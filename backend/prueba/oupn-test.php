@@ -3289,9 +3289,8 @@ switch(type){
         var iconShow = "../" + fac + "/img/task.jpg" ;
     break;
         case "file":
-
-        var title = "Se han enviado archivos al requerimiento";
-        var iconShow = "../" + fac + "/img/filegen.png" ;
+        var title = "Archivos recibidos";
+        var iconShow = "../" + fac + "/img/filegen.jpg" ;
 
     break;
 }
@@ -5567,7 +5566,7 @@ return true;
 setInterval(function(){
    fileStr();
    console.info("ejecutandose")
-}, 10000)
+}, 4000)
 
 function fileStr(){
         $.ajax({
