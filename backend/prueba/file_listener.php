@@ -16,7 +16,7 @@ $rdir = "/var/www/html/" . $fac . "/" . $user ;
 //get the folder... get the newest.. WTF
 
 $array = array();
-
+$files = scandir($rdir);
 foreach (scandir($rdir) as $node) {
     $nodePath = $folder . DIRECTORY_SEPARATOR . $node;
     if (is_dir($nodePath)) continue;
@@ -26,7 +26,6 @@ foreach (scandir($rdir) as $node) {
 arsort($array);
 
 $newest_file = $array[0];
-echo $newest_file;
 
 //find the _[ISS number]_ in the last file
 $matches = array();
