@@ -23,11 +23,7 @@ foreach (scandir($rdir) as $node) {
     $array[$nodePath] = filemtime($rdir . $nodePath);
 }
 
-arsort($array);
-
 $newest_file = $array[1];
-
-echo var_dump($array);
 
 
 //find the _[ISS number]_ in the last file
