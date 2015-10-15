@@ -20,8 +20,9 @@ $array = array();
 foreach (scandir($rdir) as $node) {
     $nodePath = $folder . DIRECTORY_SEPARATOR . $node;
     if (is_dir($nodePath)) continue;
-    $array[$nodePath] = filemtime($nodePath);
+    $array[$nodePath] = filemtime($rdir . $nodePath);
 }
+
 arsort($array);
 
 $newest_file = array_slice($array, 0, 1);
