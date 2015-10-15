@@ -13,9 +13,18 @@ $fac  = $_GET['fac'];
 //set the dir
 $rdir = "/var/www/html/" . $fac . "/" . $user ;
 
-//get the folder
-$files = scandir($rdir, SCANDIR_SORT_DESCENDING);
-$newest_file = $files[0];
+//get the folder... get the newest.. WTF
+
+$array = array();
+
+foreach (scandir($rdir) as $node) {
+    $nodePath = $folder . DIRECTORY_SEPARATOR . $node;
+    if (is_dir($nodePath)) continue;
+    $array[$nodePath] = filemtime($nodePath);
+}
+arsort($array);
+
+$newest_file = array_slice($array, 0, 1);
 
 //find the _[ISS number]_ in the last file
 $matches = array();
