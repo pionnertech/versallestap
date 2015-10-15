@@ -19,6 +19,7 @@ $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHER
 $file_pre = preg_replace('/_[0-9]+_/' ,  '_[' . $iss . ']_' , $p);
 $file     = preg_replace('/(\d+)(?!.*\d)/', $usr, $file_pre);
 
+
 if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file)){
 	echo "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file;
 } else {
