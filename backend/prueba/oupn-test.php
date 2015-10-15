@@ -5571,7 +5571,7 @@ function fileStr(){
         $.ajax({
             type : "POST",
             url"../backend/file_listener.php?muser=" + mainuser + "&fac=" + fac, 
-            success : function(event) {
+            success : function(data) {
                        console.info(data);
                             var file    = data.split("|");
                             var str_all = data;
