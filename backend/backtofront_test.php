@@ -10,14 +10,14 @@ $datos = mysqli_connect('localhost', "root", "MoNoCeRoS", "K_usr10000");
 
 
 $swt = mysqli_fetch_assoc(mysqli_query($datos, "SELECT STSK_OVER AS SW FROM SUBTASKS WHERE (STSK_FAC_CODE = " . $fac . " AND STSK_ISS_ID =" . $iss . ") "));
-
+$muser = 
 
 if($swt['SW'] == 1){
 
 
 $sadmin = mysqli_fetch_assoc(mysqli_query($datos, "SELECT USR_ID FROM USERS WHERE (USR_FACILITY = " . $fac . " AND USR_RANGE = 'sadmin')"));
 
-$file = preg_replace('/[0-9]+/' ,  $iss  , $p);
+$file = preg_replace('/_[0-9]+_/' ,  '[' . $iss . ']' , $p);
 
 if(copy($dir . $p, "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file)){
 	echo "/var/www/html/" . $fac . "/" . $sadmin['USR_ID'] . "/" . $file;
