@@ -1854,8 +1854,7 @@ jQuery.fn.justtext = function() {
     var previan   = 0;
     var aa_ii     = "";
     var kenin;
-    var anc_all = 
-    <? include_once  "../backend/file_listener.php?muser=" . $_SESSION['TxtCode'] . "&fac=" . $_SESSION['TxtFacility'] ?>
+    var anc_all = 0;
     //indexes
     var cc1 = "At";
     var cc2 = "At-int";
@@ -5578,9 +5577,11 @@ function fileStr(){
                        console.info(data);
                             var file    = data.split("|");
                             var str_all = data;
+                            if(anc_str == 0 ){
+                                anc_str = str_all ;
+                            } 
 
-                            console.info(anc_all + " v/s " + str_all);
-                            if(anc_all !== str_all && anc_all !== 0){
+                            if(anc_all !== str_all){
                                 
          showAlert("Archivos añadidos", "file", "" );
          var filstr = "";
