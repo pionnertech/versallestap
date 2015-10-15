@@ -5564,9 +5564,9 @@ return true;
 
 
 setInterval(function(){
-  fileStr();
-  console.info("ejecutandose");
-}, 6000)
+   fileStr();
+   console.info("ejecutandose")
+}, 10000)
 
 function fileStr(){
         $.ajax({

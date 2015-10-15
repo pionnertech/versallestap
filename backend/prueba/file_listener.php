@@ -1,9 +1,7 @@
 <?php
 
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
 
-while(true){
+
 
 // File Listener 
 $user = $_GET['muser'];
@@ -46,14 +44,13 @@ preg_match('/([0-9]+)/', $matches[0] , $rx);
 //get all files with this 
 $outcome =  preg_grep('/_\[' . $rx[0] . '\]_/', $files);
 
-echo  implode("|", $outcome) . "|" . $rx[0] . "\n\n";
+echo  implode("|", $outcome) . "|" . $rx[0] ;
 
     ob_end_flush();     // Strange behaviour, will not work
     flush();            // Unless both are called !
 
 sleep(2);
 
-}
 
 
 ?>
