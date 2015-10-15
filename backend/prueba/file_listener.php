@@ -27,7 +27,7 @@ arsort($array);
 
 $newest_file = $array[1];
 
-echo $newest_file;
+echo var_dump($array);
 
 //find the _[ISS number]_ in the last file
 $matches = array();
