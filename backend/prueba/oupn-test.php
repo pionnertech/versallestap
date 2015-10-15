@@ -5577,7 +5577,7 @@ function fileStr(){
                             var file    = data.split("|");
                             var str_all = data;
                             if(anc_all !== str_all && anc_all !== 0){
-
+         showAlert("Archivos añadidos", "file", "" );
          var filstr = "";
          var object   = $(".hi-int-id[value=" + file[file.length -1] +"]").parent().next().find(".int-files-for");
          // extract 
