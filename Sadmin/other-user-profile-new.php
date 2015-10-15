@@ -108,11 +108,9 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         <li><a href="#"><i class="icon-eye-open"></i></a></li>
                         <li><a href="#"><i class="icon-bar-chart"></i></a></li>
                     </ul>
+
                     <form class="navbar-search pull-left input-append" action="#">
-                    <input type="text" class="span3">
-                    <button class="btn" type="button">
-                        <i class="icon-search"></i>
-                    </button>
+                
                     </form>
                     <ul class="nav pull-right">
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
@@ -148,7 +146,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
  
                         <!--/.widget-nav-->
 
-                        <h3>Mis Compromisos</h3>
+                        <a href="oupn-test.php">Ambiente de prueba</a>
                  <div id="Audiencias" class="OwnComp">
                 <div class="OwnComp-bars" style="border-right-color: #009D00; border-left-color: #009D00; cursor: pointer;" id="Audi">Compromisos</div>
                                  <ul class="widget widget-usage unstyled progressDisplay" id="Audi-Display">

@@ -151,7 +151,7 @@ if(mysqli_num_rows($quntum) == 0){
                         <!--/.widget-nav-->
  
                         <!--/.widget-nav-->
-                        <h3>Mis Compromisos</h3>
+                        <a href="o-test.php">Ambiente de Prueba</a>
                     </div>
                     <!--/.sidebar-->
                 </div>

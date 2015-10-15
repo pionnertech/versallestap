@@ -103,6 +103,7 @@ $query_incoming = mysqli_query($datos, "SELECT A.STSK_ID, A.STSK_MAIN_USR, CONCA
                         <li><a href="#"><i class="icon-eye-open"></i></a></li>
                         <li><a href="#"><i class="icon-bar-chart"></i></a></li>
                     </ul>
+                     <div  align="center"><strong color="green">AMBIENTE DE PRUEBA</strong></div>
                     <form class="navbar-search pull-left input-append" action="#">
                     <input type="text" class="span3">
                     <button class="btn" type="button">
@@ -5923,7 +5924,7 @@ $(".send-com").on('click', function(){
 function backToFront(name, usrId, iss){
  console.info(usrId);
   $.ajax({ type: "POST",
-   url: "../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss,
+   url: "../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss + "&muser=" main,
    success: function (data){
         console.info("../backend/backtofront_test.php?usr="+ usrId + "&fac=" + fac + "&file=" + name + "&iss=" + iss);
         console.info(data);

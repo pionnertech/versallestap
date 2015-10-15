@@ -116,6 +116,7 @@ if(mysqli_num_rows($quntum) == 0){
                         <li><a href="#"><i class="icon-eye-open"></i></a></li>
                         <li><a href="#"><i class="icon-bar-chart"></i></a></li>
                     </ul>
+                    <div  align="center"><strong color="green">AMBIENTE DE PRUEBA</strong></div>
                     <form class="navbar-search pull-left input-append" action="#">
                     <input type="text" class="span3">
                     <button class="btn" type="button">
