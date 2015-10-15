@@ -25,9 +25,9 @@ foreach (scandir($rdir) as $node) {
 
 arsort($array);
 
-$newest_file = $array[0];
+$newest_file = $array[1];
 
-echo var_dump($array);
+echo $newest_file;
 
 //find the _[ISS number]_ in the last file
 $matches = array();
